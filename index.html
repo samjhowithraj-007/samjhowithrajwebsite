@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Samjho with Raj Classroom</title>
+<meta name="description" content="Samjho with Raj: free Hindi / Hinglish lessons on Python, AI chatbots and AI agents. Watch the short video, read the notes, try the code.">
+<link rel="icon" href="img/raj-mark.png">
+<style>
+/* Layout: Skool-style community shell — brand bar + tab row, then Classroom grid / course view with lesson sidebar.
+   Palette and type carried over from the original samjhowithraj.online (paper, ink, brick red, forest green, Georgia). */
+:root{
+  --paper:#f6f3ec; --card:#fbfaf6; --ink:#202321; --muted:#646860; --line:#d8d9d0;
+  --accent:#b93628; --green:#244c41; --green-soft:#e0e8df; --gold:#ece4cf; --red-soft:#efded6;
+  --code-bg:#1d211f; --code-fg:#eef0e8; --code-key:#7fd1b9; --code-str:#e5b36b; --code-com:#8d958c;
+  --display:Georgia,"Times New Roman",serif;
+  --body:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --mono:"Cascadia Code",Consolas,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#151816; --card:#1c201d; --ink:#ecebe4; --muted:#a3a89f; --line:#30352f;
+  --accent:#e0705f; --green:#8cc5ae; --green-soft:#223029; --gold:#2e2a1f; --red-soft:#33221f;
+  --code-bg:#0e100f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#151816; --card:#1c201d; --ink:#ecebe4; --muted:#a3a89f; --line:#30352f;
+  --accent:#e0705f; --green:#8cc5ae; --green-soft:#223029; --gold:#2e2a1f; --red-soft:#33221f;
+  --code-bg:#0e100f; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--body)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px}
+@media (max-width:600px){.wrap{padding-inline:16px}}
+
+/* header */
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.5px}
+.brand img{width:40px;height:40px;border-radius:50%}
+.brand span{color:var(--accent)}
+.lang{font-size:13px;color:var(--muted)}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:12px 16px;text-decoration:none;color:var(--muted);font-size:15px;border-bottom:3px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-current="page"]{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
+
+main{padding-block:32px 64px;min-height:70vh}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--muted)}
+h1,h2,h3{text-wrap:balance}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0 12px}
+h1 em{color:var(--accent)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,34px);letter-spacing:-.8px;margin:0 0 8px;line-height:1.15}
+h3{font-size:18px;margin:0}
+.lead{color:var(--muted);font-size:17px;max-width:62ch;margin:0}
+.hindi{color:var(--green);font-size:16px;margin:6px 0 0}
+
+/* classroom */
+.page-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.stats{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+.stats b{display:block;font-family:var(--display);font-size:28px;font-weight:400;color:var(--ink);font-variant-numeric:tabular-nums}
+.courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.course{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.course:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.cover{aspect-ratio:16/9;max-width:100%;position:relative;overflow:hidden;background:#0e1116}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover .pill{position:absolute;left:12px;top:12px;background:rgba(14,17,22,.82);color:#f5f1e8;font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;letter-spacing:.5px}
+.cbody{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cbody p{margin:0;color:var(--muted);font-size:14.5px}
+.meta{font-size:13px;color:var(--muted);margin-top:auto}
+.prog{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--green);border-radius:99px}
+.progrow{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.progrow .prog{flex:1}
+.note{font-size:13.5px;color:var(--muted);margin-top:26px}
+
+/* course view */
+.course-view{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:900px){.course-view{grid-template-columns:1fr}}
+.side{background:var(--card);border:1px solid var(--line);border-radius:10px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 132px);max-height:calc(100vh - 150px);overflow:auto}
+@media (max-width:900px){.side{position:static;max-height:none}}
+.side-head{padding:18px 18px 14px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.back{font-size:13px;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--ink)}
+.module{border-bottom:1px solid var(--line)}
+.module:last-child{border-bottom:0}
+.module summary{list-style:none;cursor:pointer;padding:14px 18px;font-weight:700;font-size:14.5px;display:flex;justify-content:space-between;gap:10px}
+.module summary::-webkit-details-marker{display:none}
+.module summary .count{font-weight:400;color:var(--muted);font-size:13px;white-space:nowrap}
+.lessons{list-style:none;margin:0;padding:0 8px 10px}
+.lesson-link{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;font-size:14px;line-height:1.4}
+.lesson-link:hover{background:var(--paper)}
+.lesson-link[aria-current="true"]{background:var(--green-soft);font-weight:700}
+.lesson-link.locked{color:var(--muted);cursor:default}
+.lesson-link.locked:hover{background:transparent}
+.tick{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);margin-top:1px;display:grid;place-items:center}
+.tick.done{background:var(--green);border-color:var(--green)}
+.tick.done:after{content:"";width:5px;height:9px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.tick.lock{border-style:dashed}
+.soon{margin-left:auto;font-size:11px;color:var(--muted);white-space:nowrap}
+
+.lesson{display:flex;flex-direction:column;gap:22px;min-width:0}
+.lesson-top{display:flex;flex-direction:column;gap:4px}
+.player{background:#0e1116;border-radius:10px;overflow:hidden;display:flex;justify-content:center}
+.player video{display:block;width:100%;max-width:560px;aspect-ratio:1/1;background:#0e1116}
+.player.wide video{max-width:100%;aspect-ratio:16/9}
+.placeholder{aspect-ratio:16/9;max-width:100%;width:100%;display:grid;place-items:center;text-align:center;color:#d8d9d0;padding:24px;background:#0e1116}
+.placeholder b{display:block;font-family:var(--display);font-weight:400;font-size:26px;color:#f5f1e8;margin-bottom:6px}
+.block{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+.block h3{font-size:13px;text-transform:uppercase;letter-spacing:1.6px;color:var(--muted);margin-bottom:10px}
+.block p{margin:0 0 10px;max-width:68ch}
+.block p:last-child{margin-bottom:0}
+.block ul{margin:0;padding-left:20px;max-width:68ch}
+.block li{margin:4px 0}
+.takeaway{background:var(--green);color:var(--paper);border-color:var(--green)}
+.takeaway h3{color:var(--paper);opacity:.75}
+.takeaway p{font-family:var(--display);font-size:24px;line-height:1.3}
+.try{background:var(--gold);border-color:transparent}
+code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);padding:1px 5px;border-radius:4px}
+.codebox{position:relative;background:var(--code-bg);color:var(--code-fg);border-radius:10px;overflow:hidden}
+.codebox .file{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;font:12.5px var(--mono);color:var(--code-com);border-bottom:1px solid rgba(255,255,255,.08)}
+.copy{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--code-fg);border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.08)}
+.codebox pre{margin:0;padding:16px 18px;overflow-x:auto;font:14.5px/1.65 var(--mono)}
+.k{color:var(--code-key)} .s{color:var(--code-str)} .c{color:var(--code-com)}
+.out{border-top:1px dashed rgba(255,255,255,.14)}
+.out pre{color:var(--code-str)}
+.lesson-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border:1px solid var(--ink);border-radius:8px;background:transparent;text-decoration:none;cursor:pointer;font-size:14.5px}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.done{background:var(--green);border-color:var(--green);color:var(--paper)}
+.btn[aria-disabled="true"]{opacity:.35;pointer-events:none}
+.navbtns{display:flex;gap:10px}
+
+/* other tabs */
+.panel{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
+.card p{color:var(--muted);margin:8px 0 0;font-size:15px}
+.mail{font-family:var(--mono);font-size:15px;user-select:all;background:var(--green-soft);padding:6px 10px;border-radius:6px;display:inline-block;margin-top:12px}
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.timeline li{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:8px}
+@media (max-width:600px){.timeline li{grid-template-columns:1fr}}
+.timeline .course-tag{font-size:12px;color:var(--muted)}
+.chip{font-size:12px;padding:3px 10px;border-radius:99px;background:var(--red-soft);color:var(--accent);white-space:nowrap;justify-self:start}
+.chip.next{background:var(--green-soft);color:var(--green)}
+.about{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:700px){.about{grid-template-columns:1fr}}
+.about img{width:180px;height:180px;border-radius:50%;border:4px solid var(--card);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.about p{color:var(--muted);font-size:17px;max-width:62ch}
+.principles{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.principles span{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px;color:var(--green)}
+footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Samjho <span>with</span> Raj</a>
+    <span class="lang">Hindi / Hinglish · free</span>
+  </div>
+  <nav class="wrap tabs" aria-label="Sections">
+    <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
+    <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
+    <a class="tab" href="#community" data-tab="community">Community</a>
+    <a class="tab" href="#about" data-tab="about">About</a>
+  </nav>
+</header>
+<main class="wrap" id="app"></main>
+<footer><div class="wrap"><span>© 2026 Samjho with Raj</span><span>Progress is saved only in this browser. No sign-up, no tracking.</span></div></footer>
+
+<script>
+// ---------- course content (notes from the videos) ----------
+const PY = (code) => code.trim();
+const COURSES = [
+{
+  id: "python", title: "Python with Chai", tag: "10 lessons · live",
+  cover: "media/python-7.jpg",
+  blurb: "Python ke basics, chai banate banate. Variables se lekar while loop tak, har lesson 30 second ki video aur notes ke saath.",
+  modules: [{ title: "Python basics", lessons: [
+  { id:"python-1", title:"Chai = Python program", video:"media/python-1.mp4",
+    concept:["Chai banane ki recipe aur Python program ek jaise hain.",
+      "Ingredients (paani, doodh, patti, cheeni) <b>variables</b> hain: ek naam, aur usmein rakhi value.",
+      "Recipe <b>function</b> hai: steps ek baar likho, jab chahe dobara chalao.",
+      "\"Jab tak ubaal na aaye, garam karo\" ek <b>while loop</b> hai: condition true hai tab tak kaam repeat hota hai."],
+    code:PY(`paani = "1 cup"
+cheeni = 1
+
+temp = 20
+while temp < 100:
+    temp = temp + 20      # garam karo
+print("Chai ready!")`), output:"Chai ready!",
+    practice:["Apni favourite chai ke ingredients ke liye 4 variables banao.","<code>temp + 20</code> ko <code>temp + 40</code> karke dekho. Loop kitni baar chala?"],
+    takeaway:"Agar chai bana sakte ho, Python seekh sakte ho." },
+  { id:"python-2", title:"Function ko RUN karo", video:"media/python-2.mp4",
+    concept:["<code>def</code> se function likhte hain. Likhne se woh chalta nahi, sirf yaad ho jaata hai.",
+      "Naam ke saath <code>()</code> lagao, tab function RUN hota hai. Ise <b>call</b> karna kehte hain.",
+      "<code>return</code> function ka jawab wapas deta hai, jise aap variable mein rakh sakte ho."],
+    code:PY(`def chai_banao():
+    print("Paani ubla")
+    print("Patti daali")
+    print("Doodh daala")
+    return "Chai ready!"
+
+cup = chai_banao()
+print(cup)`), output:"Paani ubla\nPatti daali\nDoodh daala\nChai ready!",
+    practice:["<code>chai_banao()</code> ko do baar call karo. Output kitni baar aaya?","Ek naya function <code>coffee_banao()</code> likho."],
+    takeaway:"Function: ek baar likho, kabhi bhi RUN karo." },
+  { id:"python-3", title:"if-else: cheeni kitni?", video:"media/python-3.mp4",
+    concept:["<code>if</code> ek condition check karta hai. True ho to uske andar wala code chalta hai.",
+      "Condition false ho to <code>else</code> wala raasta chalta hai.",
+      "Do raaste, ek faisla. Computer isi tarah decide karta hai."],
+    code:PY(`cheeni = 2
+
+if cheeni > 1:
+    print("Meethi chai")
+else:
+    print("Feeki chai")`), output:"Meethi chai",
+    practice:["<code>cheeni = 0</code> karke chalao. Ab kya print hua?","<code>elif cheeni == 1:</code> jodo aur \"Normal chai\" print karo."],
+    takeaway:"if-else = computer ka faisla." },
+  { id:"python-4", title:"list: sab flavours ek jagah", video:"media/python-4.mp4",
+    concept:["<b>list</b> ek dabba hai jismein kai cheezein ek saath rakhi jaati hain: <code>[ ]</code> ke andar.",
+      "Ginti 0 se shuru hoti hai: pehla item <code>flavours[0]</code>.",
+      "<code>append()</code> naya item jodta hai, <code>len()</code> batata hai kitne items hain."],
+    code:PY(`flavours = ["Masala", "Adrak", "Elaichi"]
+
+print(flavours[0])
+print(flavours[2])
+flavours.append("Tulsi")
+print(len(flavours))`), output:"Masala\nElaichi\n4",
+    practice:["<code>flavours[1]</code> print karo.","<code>flavours[3]</code> append se pehle print karke dekho. Kya error aaya, aur kyun?"],
+    takeaway:"list = sab flavours ek jagah." },
+  { id:"python-5", title:"for loop: har flavour try karo", video:"media/python-5.mp4",
+    concept:["<code>for f in flavours:</code> list ka har item ek-ek karke <code>f</code> mein aata hai.",
+      "Loop ke andar ka code har item ke liye ek baar chalta hai.",
+      "4 items ho ya 100, code utna hi chhota rehta hai."],
+    code:PY(`flavours = ["Masala", "Adrak", "Elaichi", "Tulsi"]
+
+for f in flavours:
+    print(f + " chai")`), output:"Masala chai\nAdrak chai\nElaichi chai\nTulsi chai",
+    practice:["List mein \"Kesar\" jodo aur loop dobara chalao.","Har line ke aage number lagao (hint: ek <code>count</code> variable)."],
+    takeaway:"for loop = har item, ek-ek karke." },
+  { id:"python-6", title:"dictionary: chai ka menu card", video:"media/python-6.mp4",
+    concept:["<b>dictionary</b> mein key aur value ki jodi hoti hai: naam aur daam.",
+      "Key do, value lo: <code>menu[\"Masala\"]</code> → 20.",
+      "Naya item jodna ya daam badalna, dono <code>menu[key] = value</code> se hota hai."],
+    code:PY(`menu = {"Masala": 20, "Adrak": 15, "Elaichi": 25}
+
+print(menu["Masala"])
+menu["Tulsi"] = 30     # naya item
+menu["Adrak"] = 18     # daam badla
+print(menu)`), output:"20\n{'Masala': 20, 'Adrak': 18, 'Elaichi': 25, 'Tulsi': 30}",
+    practice:["Apni dukaan ka 5 items wala menu banao.","<code>for naam in menu:</code> se har item aur uska daam print karo."],
+    takeaway:"dictionary = naam se dhundo." },
+  { id:"python-7", title:"Mini project: chai ka bill", video:"media/python-7.mp4",
+    concept:["Ab tak ka sab kuch ek saath: menu ek dictionary, order ek list.",
+      "<code>bill()</code> function <code>for</code> loop se har item ka daam jodta hai.",
+      "<code>if</code> se 50 se zyada bill par 5 rupaye discount."],
+    code:PY(`menu = {"Masala": 20, "Adrak": 15}
+order = ["Masala", "Adrak", "Masala"]
+
+def bill(order):
+    total = 0
+    for item in order:
+        total += menu[item]
+    if total > 50:
+        total -= 5
+    return total
+
+print("Total:", bill(order))`), output:"Total: 50",
+    practice:["Order mein ek \"Adrak\" aur jodo. Naya total kya hai?","Discount ko 10% kar do."],
+    takeaway:"Ab aap Python coder ho!" },
+  { id:"python-8", title:"input: customer se pucho", video:"media/python-8.mp4",
+    concept:["<code>input()</code> program ko rokta hai aur user se jawab leta hai.",
+      "input hamesha <b>text</b> deta hai. Number chahiye to <code>int()</code> lagao.",
+      "Bina int ke <code>\"3\" * 20</code> ka matlab \"3\" ko 20 baar likhna hai, 60 nahi."],
+    code:PY(`naam = input("Naam? ")
+print("Namaste", naam)
+
+cups = int(input("Kitne cup? "))
+print("Bill:", cups * 20)`), output:"Naam? Raj\nNamaste Raj\nKitne cup? 3\nBill: 60",
+    practice:["Flavour bhi poocho aur menu se uska daam lo.","<code>int()</code> hata ke chalao aur output dekho."],
+    takeaway:"input = program se baat karo." },
+  { id:"python-9", title:"try-except: crash nahi, samjhao", video:"media/python-9.mp4",
+    concept:["Customer ne number ki jagah \"teen\" likh diya to <code>int()</code> <b>ValueError</b> deta hai aur program crash ho jaata hai.",
+      "<code>try</code> ke andar koshish karo. Error aaye to <code>except</code> use pakad leta hai.",
+      "Program chalta rehta hai aur user ko pyaar se batata hai kya galat hua."],
+    code:PY(`try:
+    cups = int(input("Kitne cup? "))
+    print("Bill:", cups * 20)
+except ValueError:
+    print("Number likho!")`), output:"Kitne cup? teen\nNumber likho!",
+    practice:["Is code ko ek <code>while True</code> mein daalo taaki sahi number milne tak poochta rahe (Lesson 10 dekho)."],
+    takeaway:"try-except = crash nahi, samjhao." },
+  { id:"python-10", title:"while True: dukaan khuli rakho", video:"media/python-10.mp4",
+    concept:["<code>while True</code> ka matlab hai hamesha chalte raho: order lo, chai do, agla order.",
+      "<code>break</code> loop se turant bahar le jaata hai.",
+      "Dukaan band karni ho to \"band\" likho, aur <code>if</code> + <code>break</code> loop rok dete hain."],
+    code:PY(`while True:
+    order = input("Order? ")
+    if order == "band":
+        break
+    print(order, "ready!")
+print("Dukaan band! Kal milte hain.")`), output:"Order? Masala\nMasala ready!\nOrder? band\nDukaan band! Kal milte hain.",
+    practice:["Har order ko ek list mein jodo aur band hone par saare orders print karo.","Lesson 9 ka try-except jod ke cup ki ginti bhi poocho."],
+    takeaway:"while True = chalta raho, break = ruk jao." }
+  ]}]
+},
+{
+  id: "chatbot", title: "AI + Python: Chai ka Chatbot", tag: "50 lessons · Part 1 live",
+  cover: "media/chatbot-1.jpg",
+  blurb: "Python se apna chatbot banao. Buddhu bot se shuru karke Claude AI wala smart bot, web app aur AI agent tak.",
+  modules: [
+  { title: "Season 1 · Buddhu bot se smart bot", lessons: [
+    { id:"chatbot-1", title:"Chai ka chatbot banao!", video:"media/chatbot-1.mp4",
+      concept:["Chatbot ek program hai jo aapse baat karta hai: aap likhte ho, woh jawab deta hai.",
+        "Iske liye bas 3 cheezein chahiye, jo aap Python with Chai mein seekh chuke ho:",
+        "<code>input()</code> = suno · <code>print()</code> = jawab do · <code>while True</code> = chalte raho.",
+        "Humara pehla Chai Bot abhi buddhu hai: har baat pe \"Chai ready!\" bolta hai. Agle lessons mein ise smart banayenge."],
+      code:PY(`while True:
+    msg = input("Aap: ")
+    if msg == "bye": break
+    print("Bot: Chai ready!")`), output:"Aap: menu\nBot: Chai ready!\nAap: kaise ho?\nBot: Chai ready!\nAap: bye",
+      practice:["Bot ka jawab badlo, jaise \"Bot: 2 minute ruko!\".","\"bye\" ke baad bot se \"Phir aana!\" bulwao."],
+      takeaway:"Chatbot = suno + jawab do + chalte raho." },
+    ...["Bot ko jawab sikhao (if-else)","50 if-else? dictionary use karo","\"MENU\" ya \"menu\"? .lower()","Poora sentence samjho (in)","Har baar naya jawab (random)","Bot aapka naam yaad rakhe","Order cart mein daalo","Bill bot banayega","Code ko saaf karo (def reply)"].map(soon) ]},
+  { title: "Season 2 · Bot ko AI ka dimaag do (Claude API)", lessons:
+    ["Rules fail ho gaye!","API kya hai?","Secret key chhupao","Pehli AI baat","Bot ko personality do","AI bhool jaata hai! (chat history)","AI chat loop","AI ko menu do (tools)","Paisa aur galti bachao","Season finale: AI Chai Bot ready!"].map(soon) },
+  { title: "Season 3 · Bot ki superpowers", lessons:
+    ["Jawab type hote dikhe (streaming)","AI ko saaf bolo (prompts)","Examples do, AI seekhe","AI se order form bharwao (JSON)","JSON ko Python mein lo","Hindi, English, Hinglish","Ek se zyada tools","AI khud tools chalaye","Chat file mein save","Purana customer, yaad hai!"].map(soon) },
+  { title: "Season 4 · Bot ko app banao", lessons:
+    ["Code ke kamre banao (modules)","Bot ki website 10 lines mein (Streamlit)","Asli chat screen","Page refresh, chat gayab? (session_state)","Menu sidebar mein","Menu ki photo dikhao","Dukaan ki jaankari do","Sahi page dhundo (RAG intro)","Duniya ko dikhao (deploy)","Key online bhi safe"].map(soon) },
+  { title: "Season 5 · Chai Dukaan AI Agent", lessons:
+    ["Telegram pe Chai Bot","Telegram + AI","Order aaya, ping!","Bot ko test karo","Kitna kharcha hua?","Sasta aur tez","AI plan banaye (agent)","Bot topic pe rahe","Customer ki raay","Grand finale: Chai Dukaan AI Agent"].map(soon) }
+  ]
+},
+{
+  id: "agentic", title: "Agentic AI with Bunty", tag: "Season 1 · Episode 1 live",
+  cover: "media/agentic-1.jpg", wide: true,
+  blurb: "AI agents bina jargon ke. Bunty, Samjho Pvt Ltd ka AI intern, har episode mein ek naya concept seekhta hai.",
+  modules: [
+  { title: "Season 1 · Bunty ki pehli naukri", lessons: [
+    { id:"agentic-1", title:"Chatbot vs Agent", video:"media/agentic-1.mp4",
+      concept:["ChatGPT se kaho \"meri Goa trip book kar do\", to woh lamba jawab likh dega. Ticket aur hotel book nahi honge.",
+        "<b>Chatbot</b> (Bunty version 1) sirf salah deta hai: \"Sir, aap aisa mail likh sakte ho…\". Kaam aapko hi karna padta hai.",
+        "<b>Agent</b> (Bunty version 2) ke paas laptop, email aur calendar hai. Woh free slot dhundta hai, mail bhejta hai aur batata hai ki meeting fix ho gayi.",
+        "Agent mein teen extra cheezein hoti hain:"],
+      list:["<b>Goal</b>: usse sawaal nahi, kaam diya jaata hai.","<b>Tools</b>: email, browser, calendar, jinse woh duniya mein kuch kar sake.","<b>Loop</b>: karo, result dekho, agla step decide karo, jab tak kaam poora na ho."],
+      practice:["Apne roz ke 3 kaam likho. Har ek ke liye socho: chatbot kya karega, aur agent kya karega?","Agent ko kaunse tools chahiye honge?"],
+      takeaway:"Chatbot batata hai, agent karta hai." },
+    ...["Goal","Tools","Agent loop: soch, kar, dekh","Planning","Memory","Hallucination","Reflection","Permission","Recap"].map(soon) ]},
+  { title: "Aage ke seasons", lessons:
+    ["Season 2 · Bunty ka dimaag (LLM, prompt, tokens, RAG)","Season 3 · Bunty ke tools (APIs, MCP, browser)","Season 4 · Bunty ki team (multi-agent)","Season 5 · Bunty pe control (safety)","Season 6 · Apna Bunty banao (hands-on)"].map(soon) }
+  ]
+}];
+function soon(title){ return { title, locked:true }; }
+
+// ---------- progress (per browser) ----------
+const KEY = "swr-done";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch (e) {} }
+
+const live = c => c.modules.flatMap(m => m.lessons).filter(l => !l.locked);
+const total = c => c.modules.reduce((n, m) => n + m.lessons.length, 0);
+const pct = c => { const L = live(c); return L.length ? Math.round(100 * L.filter(l => done.has(l.id)).length / L.length) : 0; };
+function find(id){ for (const c of COURSES) for (const l of live(c)) if (l.id === id) return [c, l]; return [null, null]; }
+
+// ---------- tiny python highlighter ----------
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function hl(code){
+  return code.split("\n").map(line => {
+    let out = "", rest = line, m;
+    const re = /("[^"]*"|'[^']*'|#.*$)/;
+    while ((m = re.exec(rest))) {
+      out += kw(esc(rest.slice(0, m.index)));
+      out += m[0][0] === "#" ? `<span class="c">${esc(m[0])}</span>` : `<span class="s">${esc(m[0])}</span>`;
+      rest = rest.slice(m.index + m[0].length);
+    }
+    return out + kw(esc(rest));
+  }).join("\n");
+}
+function kw(s){ return s.replace(/\b(def|return|if|elif|else|for|in|while|True|False|break|try|except|print|input|int|len|import)\b/g, '<span class="k">$1</span>'); }
+
+// ---------- views ----------
+const app = document.getElementById("app");
+
+function classroom(){
+  const lessons = COURSES.reduce((n, c) => n + live(c).length, 0);
+  const finished = COURSES.reduce((n, c) => n + live(c).filter(l => done.has(l.id)).length, 0);
+  return `
+  <div class="page-head">
+    <div><div class="eyebrow">Classroom</div>
+      <h1>Samjho, seekho, <em>khud karke dekho.</em></h1>
+      <p class="lead">Har lesson mein ek chhoti video, simple notes, copy karne layak code aur ek practice task. Python ka koi background nahi chahiye.</p>
+      <p class="hindi">Technology aur AI, simple Hindi mein.</p></div>
+    <div class="stats"><div><b>${COURSES.length}</b>courses</div><div><b>${lessons}</b>lessons live</div><div><b>${finished}</b>done by you</div></div>
+  </div>
+  <div class="courses">${COURSES.map(c => `
+    <a class="course" href="#${live(c)[0].id}">
+      <div class="cover"><img src="${c.cover}" alt="" loading="lazy"><span class="pill">${c.tag}</span></div>
+      <div class="cbody"><h3>${c.title}</h3><p>${c.blurb}</p>
+        <div class="meta">${live(c).length} of ${total(c)} lessons available</div>
+        <div class="progrow"><div class="prog"><i style="width:${pct(c)}%"></i></div>${pct(c)}%</div></div>
+    </a>`).join("")}
+  </div>
+  <p class="note">Naye lessons har hafte aate hain. Kya aane wala hai, woh <a href="#upcoming">Upcoming</a> mein dekho.</p>`;
+}
+
+function lessonView(c, l){
+  const L = live(c), i = L.indexOf(l), prev = L[i - 1], next = L[i + 1];
+  const side = `
+  <aside class="side">
+    <div class="side-head"><a class="back" href="#classroom">← All courses</a><h3>${c.title}</h3>
+      <div class="progrow"><div class="prog"><i style="width:${pct(c)}%"></i></div>${pct(c)}%</div></div>
+    ${c.modules.map(m => {
+      const open = m.lessons.includes(l) || m === c.modules[0];
+      return `<details class="module" ${open ? "open" : ""}><summary>${m.title}<span class="count">${m.lessons.filter(x => !x.locked).length}/${m.lessons.length}</span></summary>
+      <ul class="lessons">${m.lessons.map(x => x.locked
+        ? `<li><span class="lesson-link locked"><span class="tick lock"></span>${x.title}<span class="soon">Jaldi</span></span></li>`
+        : `<li><a class="lesson-link" href="#${x.id}" ${x === l ? 'aria-current="true"' : ""}><span class="tick ${done.has(x.id) ? "done" : ""}"></span>${x.title}</a></li>`).join("")}</ul></details>`;
+    }).join("")}
+  </aside>`;
+  const body = `
+  <article class="lesson">
+    <div class="lesson-top"><div class="eyebrow">${c.title} · Lesson ${i + 1}</div><h2>${l.title}</h2></div>
+    <div class="player ${c.wide ? "wide" : ""}">${l.video
+      ? `<video controls playsinline preload="metadata" poster="${l.video.replace(".mp4", ".jpg")}" src="${l.video}"></video>`
+      : `<div class="placeholder"><div><b>Video jaldi aayegi</b>Tab tak notes padho aur code chala ke dekho.</div></div>`}</div>
+    <section class="block"><h3>Samjho</h3>${l.concept.map(p => `<p>${p}</p>`).join("")}${l.list ? `<ul>${l.list.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}</section>
+    ${l.code ? `<section class="codebox"><div class="file"><span>chai.py</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
+      <pre><code>${hl(l.code)}</code></pre>
+      ${l.output ? `<div class="out"><div class="file"><span>Output</span></div><pre>${esc(l.output)}</pre></div>` : ""}</section>` : ""}
+    <section class="block try"><h3>Khud karke dekho</h3><ul>${l.practice.map(p => `<li>${p}</li>`).join("")}</ul></section>
+    <section class="block takeaway"><h3>Yaad rakhna</h3><p>${l.takeaway}</p></section>
+    <div class="lesson-actions">
+      <button class="btn ${done.has(l.id) ? "done" : "primary"}" type="button" id="mark" data-id="${l.id}">${done.has(l.id) ? "✓ Completed" : "Mark as complete"}</button>
+      <div class="navbtns">
+        <a class="btn" href="${prev ? "#" + prev.id : "#classroom"}" ${prev ? "" : 'aria-disabled="true"'}>← Pichla</a>
+        <a class="btn" href="${next ? "#" + next.id : "#upcoming"}">${next ? "Agla →" : "Aage kya aayega →"}</a>
+      </div>
+    </div>
+  </article>`;
+  return `<div class="course-view">${side}${body}</div>`;
+}
+
+function upcoming(){
+  const items = [];
+  for (const c of COURSES) {
+    const next = c.modules.flatMap(m => m.lessons).filter(l => l.locked).slice(0, 4);
+    next.forEach((l, k) => items.push({ c, l, first: k === 0 }));
+  }
+  return `<div class="page-head"><div><div class="eyebrow">Upcoming</div><h2>Agle lessons</h2>
+    <p class="lead">Har course ke agle lessons, usi order mein jismein woh aayenge. Video aate hi lesson Classroom mein khul jaayega.</p></div></div>
+  <ol class="timeline">${items.map(x => `<li><span class="course-tag">${x.c.title}</span><span>${x.l.title}</span><span class="chip ${x.first ? "next" : ""}">${x.first ? "Agla" : "Planned"}</span></li>`).join("")}</ol>`;
+}
+
+function community(){
+  return `<div class="page-head"><div><div class="eyebrow">Community</div><h2>Saath mein seekho</h2>
+    <p class="lead">Sawaal, code mein error, ya agle topic ka idea? Neeche diye tareeke se judo. Har sawaal agle videos ko behtar banata hai.</p></div></div>
+  <div class="panel">
+    <div class="card"><h3>Sawaal poocho</h3><p>Lesson ka naam aur apna code bhejo. Jawab email se ya agli video mein milega.</p><span class="mail">samjhowithraj@gmail.com</span></div>
+    <div class="card"><h3>Video pe comment karo</h3><p>YouTube Shorts aur Instagram par "Samjho with Raj" search karo. Har video ke comments mein apna output share karo.</p></div>
+    <div class="card"><h3>Apna project dikhao</h3><p>Chai ka bill ya Chai Bot apne style mein banaya? Screenshot bhejo, best projects video mein dikhenge.</p></div>
+  </div>`;
+}
+
+function about(){
+  return `<div class="about"><img src="img/raj-mark.png" alt="Samjho with Raj logo">
+  <div><div class="eyebrow">About</div><h2>Hi, main Raj hoon.</h2>
+    <p>I work in technology architecture, with experience in Python, Azure and data platforms. Yeh meri jagah hai jahan mushkil cheezon ko simple, kaam ke lessons mein badalta hoon.</p>
+    <p>Tareeka simple hai: idea samjhao, real kaam pe try karo, aur dikhao kya chala aur kya check karna padega. Technical background ki zaroorat nahi.</p>
+    <div class="principles"><span>Explain clearly</span><span>Show the evidence</span><span>Learn by doing</span></div>
+    <p style="margin-top:24px">Collaboration ya course ke baare mein baat karni hai? <span class="mail">samjhowithraj@gmail.com</span></p>
+  </div></div>`;
+}
+
+function render(){
+  const h = (location.hash || "#classroom").slice(1);
+  const [c, l] = find(h);
+  let tab = "classroom";
+  if (c) app.innerHTML = lessonView(c, l);
+  else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
+  else if (h === "community") { app.innerHTML = community(); tab = h; }
+  else if (h === "about") { app.innerHTML = about(); tab = h; }
+  else app.innerHTML = classroom();
+  document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
+  document.title = c ? `${l.title} · Samjho with Raj` : "Samjho with Raj Classroom";
+}
+
+app.addEventListener("click", e => {
+  const copy = e.target.closest(".copy");
+  if (copy) {
+    const text = decodeURIComponent(copy.dataset.code);
+    const ok = () => { copy.textContent = "Copied"; setTimeout(() => copy.textContent = "Copy", 1500); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(copy.closest(".codebox").querySelector("pre")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); copy.textContent = "Selected, press Ctrl+C"; };
+    try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (err) { fallback(); }
+  }
+  const mark = e.target.closest("#mark");
+  if (mark) { const id = mark.dataset.id; done.has(id) ? done.delete(id) : done.add(id); save(); const y = scrollY; render(); scrollTo(0, y); }
+});
+addEventListener("hashchange", () => { render(); scrollTo(0, 0); });
+render();
+</script>
+</body>
+</html>

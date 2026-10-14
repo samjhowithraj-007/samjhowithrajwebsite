@@ -1,0 +1,33 @@
+# Publishes this site to GitHub Pages (www.samjhowithraj.online) on every push to main.
+name: Publish website
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["README.md", "archive/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Collect site files
+        run: mkdir site && cp -r index.html CNAME img media site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
