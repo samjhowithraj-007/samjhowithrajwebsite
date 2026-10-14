@@ -152,6 +152,9 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 .about p{color:var(--muted);font-size:17px;max-width:62ch}
 .principles{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .principles span{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px;color:var(--green)}
+.social{display:flex;gap:8px;flex-wrap:wrap}
+.social a{font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:6px 12px;color:var(--ink);background:var(--card)}
+.social a:hover{border-color:var(--ink)}
 footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -161,7 +164,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Samjho <span>with</span> Raj</a>
-    <span class="lang">Free lessons</span>
+    <div class="social" data-social></div>
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
@@ -171,7 +174,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </nav>
 </header>
 <main class="wrap" id="app"></main>
-<footer><div class="wrap"><span>© 2026 Samjho with Raj</span><span>Progress is saved only in this browser. No sign-up, no tracking.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Samjho with Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No sign-up, no tracking.</span></div></footer>
 
 <script>
 // ---------- course content (notes from the videos) ----------
@@ -357,6 +360,14 @@ print("Dukaan band! Kal milte hain.")`), output:"Order? Masala\nMasala ready!\nO
     ["Season 2 · Bunty's brain (LLMs, prompts, tokens, RAG)","Season 3 · Bunty's tools (APIs, MCP, browser)","Season 4 · Bunty's team (multi-agent)","Season 5 · Keeping Bunty in check (safety)","Season 6 · Build your own Bunty (hands-on)"].map(soon) }
   ]
 }];
+// Social profiles: shown in the header, footer, Community and About
+const SOCIAL = [
+  { name: "YouTube", url: "https://www.youtube.com/@SamjhowithRaj" },
+  { name: "Instagram", url: "https://www.instagram.com/samjhowithraj/" },
+  { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61595088790170" },
+];
+function fillSocial(){ document.querySelectorAll("[data-social]").forEach(el => {
+  el.innerHTML = SOCIAL.map(x => `<a href="${x.url}" target="_blank" rel="noopener">${x.name}</a>`).join(""); }); }
 function soon(title){ return { title, locked:true }; }
 
 // ---------- progress (per browser) ----------
@@ -464,7 +475,7 @@ function community(){
     <p class="lead">Have a question, an error in your code, or an idea for the next topic? Get in touch below. Every question helps make the next videos better.</p></div></div>
   <div class="panel">
     <div class="card"><h3>Ask a question</h3><p>Send the lesson name and your code. You'll get an answer by email or in a future video.</p><span class="mail">samjhowithraj@gmail.com</span></div>
-    <div class="card"><h3>Comment on the videos</h3><p>Search for "Samjho with Raj" on YouTube Shorts and Instagram, and share your output in the comments.</p></div>
+    <div class="card"><h3>Comment on the videos</h3><p>Watch every lesson as a short video and share your output in the comments.</p><div class="social" data-social style="margin-top:12px"></div></div>
     <div class="card"><h3>Show your project</h3><p>Built your own chai bill or Chai Bot? Send a screenshot. The best projects will be featured in a video.</p></div>
   </div>`;
 }
@@ -475,6 +486,7 @@ function about(){
     <p>I work in technology architecture, with experience in Python, Azure and data platforms. This is where I turn complicated ideas into simple, useful lessons.</p>
     <p>The approach is simple: explain the idea, try it on a real task, and show what worked and what needs checking. You don't need a technical background.</p>
     <div class="principles"><span>Explain clearly</span><span>Show the evidence</span><span>Learn by doing</span></div>
+    <div class="social" data-social style="margin-top:20px"></div>
     <p style="margin-top:24px">Want to talk about a collaboration or a course? <span class="mail">samjhowithraj@gmail.com</span></p>
   </div></div>`;
 }
@@ -489,6 +501,7 @@ function render(){
   else if (h === "about") { app.innerHTML = about(); tab = h; }
   else app.innerHTML = classroom();
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
+  fillSocial();
   document.title = c ? `${l.title} · Samjho with Raj` : "Samjho with Raj Classroom";
 }
 
