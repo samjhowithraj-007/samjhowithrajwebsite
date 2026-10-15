@@ -330,7 +330,19 @@ print("Dukaan band! Kal milte hain.")`), output:"Order? Masala\nMasala ready!\nO
     print("Bot: Chai ready!")`), output:"Aap: menu\nBot: Chai ready!\nAap: kaise ho?\nBot: Chai ready!\nAap: bye",
       practice:["Change the bot's reply, for example to \"Bot: Give me 2 minutes!\".","Make the bot say \"Come again!\" after \"bye\"."],
       takeaway:"Chatbot = listen + reply + keep going." },
-    ...["Teach the bot to reply (if-else)","50 if-elses? Use a dictionary","\"MENU\" or \"menu\"? Use .lower()","Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
+    { id:"chatbot-2", title:"Teach the bot to reply (if-else)", video:"media/chatbot-2.mp4",
+      concept:["In Part 1 the bot said \"Chai ready!\" to everything. Now it gets a brain: <b>if-else</b>.",
+        "<code>if</code> checks the first condition, <code>elif</code> (else if) checks the next one, and <code>else</code> catches everything else.",
+        "Python checks them from top to bottom and runs only the <b>first</b> branch that matches."],
+      code:PY(`while True:
+    msg = input("Aap: ")
+    if msg == "bye": break
+    if msg == "menu": print("Masala, Adrak!")
+    elif msg == "price": print("Rs 20")
+    else: print("Samjha nahi!")`), output:"Aap: menu\nMasala, Adrak!\nAap: price\nRs 20\nAap: kaise ho?\nSamjha nahi!",
+      practice:["Add an <code>elif</code> for \"hello\" that replies \"Namaste!\".","Type \"MENU\" in capitals. Why does the bot not understand? (Part 4 fixes this.)"],
+      takeaway:"if-else is the bot's brain." },
+    ...["50 if-elses? Use a dictionary","\"MENU\" or \"menu\"? Use .lower()","Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
   { title: "Season 2 · Give the bot an AI brain (Claude API)", lessons:
     ["When rules aren't enough","What is an API?","Keep your secret key safe","Your first AI conversation","Give the bot a personality","AI forgets! (chat history)","The AI chat loop","Give the AI the menu (tools)","Save money and avoid errors","Season finale: the AI Chai Bot is ready!"].map(soon) },
   { title: "Season 3 · Bot superpowers", lessons:
