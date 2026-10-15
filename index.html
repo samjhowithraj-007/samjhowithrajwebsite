@@ -342,7 +342,19 @@ print("Dukaan band! Kal milte hain.")`), output:"Order? Masala\nMasala ready!\nO
     else: print("Samjha nahi!")`), output:"Aap: menu\nMasala, Adrak!\nAap: price\nRs 20\nAap: kaise ho?\nSamjha nahi!",
       practice:["Add an <code>elif</code> for \"hello\" that replies \"Namaste!\".","Type \"MENU\" in capitals. Why does the bot not understand? (Part 4 fixes this.)"],
       takeaway:"if-else is the bot's brain." },
-    ...["50 if-elses? Use a dictionary","\"MENU\" or \"menu\"? Use .lower()","Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
+    { id:"chatbot-3", title:"50 if-elses? Use a dictionary", video:"media/chatbot-3.mp4",
+      concept:["Every new question meant another <code>elif</code>. With 50 questions the code gets long and messy.",
+        "A <b>dictionary</b> is the bot's answer diary: each question (the <b>key</b>) points to its answer (the <b>value</b>).",
+        "<code>replies.get(msg, \"Samjha nahi!\")</code> looks up the answer and falls back to the default when the question is missing."],
+      code:PY(`replies = {"menu": "Masala, Adrak!",
+           "price": "Rs 20"}
+while True:
+    msg = input("Aap: ")
+    if msg == "bye": break
+    print(replies.get(msg, "Samjha nahi!"))`), output:"Aap: menu\nMasala, Adrak!\nAap: price\nRs 20\nAap: kaise ho?\nSamjha nahi!",
+      practice:["Add \"timing\": \"Subah 7 - raat 10\" to the dictionary. How many lines did it take?","Type \"Menu\" with a capital M. Why does it fail? (Part 4 fixes this.)"],
+      takeaway:"A dictionary is the bot's diary: new question = one new line." },
+    ...[""\"MENU\" or \"menu\"? Use .lower()","Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
   { title: "Season 2 · Give the bot an AI brain (Claude API)", lessons:
     ["When rules aren't enough","What is an API?","Keep your secret key safe","Your first AI conversation","Give the bot a personality","AI forgets! (chat history)","The AI chat loop","Give the AI the menu (tools)","Save money and avoid errors","Season finale: the AI Chai Bot is ready!"].map(soon) },
   { title: "Season 3 · Bot superpowers", lessons:
