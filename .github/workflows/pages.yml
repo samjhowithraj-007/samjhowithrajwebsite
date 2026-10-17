@@ -1,4 +1,4 @@
-# Publishes this site to GitHub Pages (www.samjhowithraj.online) on every push to main. README and archive changes skip it.
+# Publishes this site to GitHub Pages (www.techsamjhoraj.com) on every push to main. README and archive changes skip it.
 name: Publish website
 on:
   push:

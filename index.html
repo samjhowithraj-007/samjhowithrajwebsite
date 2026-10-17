@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Samjho with Raj Classroom</title>
-<meta name="description" content="Samjho with Raj: free lessons on Python, AI chatbots and AI agents, plus a private Financial Tracker for family money planning. Watch a short video, read the notes, try the code.">
+<meta name="description" content="Samjho with Raj: free lessons on Python, AI chatbots and AI agents, Watch a short video, read the notes, try the code.">
 <link rel="icon" href="img/raj-mark.png">
 <style>
 /* Layout: Skool-style community shell — brand bar + tab row, then Classroom grid / course view with lesson sidebar.
@@ -155,74 +155,6 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 .social{display:flex;gap:8px;flex-wrap:wrap}
 .social a{font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:6px 12px;color:var(--ink);background:var(--card)}
 .social a:hover{border-color:var(--ink)}
-/* financial tracker */
-:root{--c-ins:#7a5ea8;--c-debt:#b93628;--c-ef:#c98a1b;--c-edu:#2f6f9f;--c-ret:#244c41;--c-home:#8a6f4d;--c-par:#b0577f;--c-free:#b9bcb2;--c-ess:#5d6b66;--c-ann:#a08a5a;--c-fun:#c9b98f}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-ins:#b59ae0;--c-debt:#e0705f;--c-ef:#e3b04f;--c-edu:#7fb3dc;--c-ret:#8cc5ae;--c-home:#c4a57e;--c-par:#e08fb2;--c-free:#5a5f57;--c-ess:#7d8c86;--c-ann:#b29a66;--c-fun:#6f6650}}
-:root[data-theme="dark"]{--c-ins:#b59ae0;--c-debt:#e0705f;--c-ef:#e3b04f;--c-edu:#7fb3dc;--c-ret:#8cc5ae;--c-home:#c4a57e;--c-par:#e08fb2;--c-free:#5a5f57;--c-ess:#7d8c86;--c-ann:#b29a66;--c-fun:#6f6650}
-.fp-disc{background:var(--gold);border-radius:10px;padding:14px 18px;font-size:14px;margin-bottom:22px;max-width:none}
-.fp-disc b{color:var(--ink)}
-.fp{display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:28px;align-items:start}
-@media (max-width:1100px){.fp{grid-template-columns:1fr}}
-.fp-form{display:flex;flex-direction:column;gap:12px;min-width:0}
-.fp-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.fp-tools .btn{padding:8px 14px;font-size:13.5px}
-.fp-jump{display:none}
-@media (max-width:1100px){.fp-jump{display:inline-flex}}
-.fp-tools label{font-size:13.5px;color:var(--muted);display:flex;gap:6px;align-items:center;cursor:pointer}
-.fp-banner{font-size:13.5px;background:var(--green-soft);color:var(--green);border-radius:8px;padding:9px 12px}
-.fp-sec{background:var(--card);border:1px solid var(--line);border-radius:10px}
-.fp-sec summary{list-style:none;cursor:pointer;padding:14px 18px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:10px}
-.fp-sec summary::-webkit-details-marker{display:none}
-.fp-sec summary:after{content:"+";color:var(--muted);font-weight:400}
-.fp-sec[open] summary:after{content:"−"}
-.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;padding:0 18px 18px}
-@media (max-width:420px){.fp-grid{grid-template-columns:1fr}}
-.fp-f{display:flex;flex-direction:column;gap:4px;font-size:13.5px;min-width:0}
-.fp-f>span{color:var(--muted);font-weight:600;line-height:1.3}
-.fp-in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
-.fp-in:focus-within{border-color:var(--ink)}
-.fp-in input,.fp-in select{flex:1;min-width:0;width:100%;border:0;background:transparent;padding:9px 10px;font:inherit;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
-.fp-in input:focus,.fp-in select:focus{outline:none}
-.fp-in i{font-style:normal;color:var(--muted);padding:0 10px;font-size:13px;white-space:nowrap}
-.fp-in i:first-child{padding-right:0}
-.fp-f small{color:var(--muted);font-size:12px;line-height:1.35}
-.fp-full{grid-column:1/-1}
-.fp-sub{grid-column:1/-1;font-size:12px;text-transform:uppercase;letter-spacing:1.4px;font-weight:700;color:var(--muted);margin-top:6px;border-top:1px solid var(--line);padding-top:12px}
-.fp-kid{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.4fr auto;gap:10px;align-items:end}
-.fp-x{border:1px solid var(--line);background:transparent;border-radius:8px;padding:8px 11px;cursor:pointer;color:var(--muted)}
-.fp-x:hover{color:var(--accent);border-color:var(--accent)}
-.fp-add{grid-column:1/-1;justify-self:start;padding:8px 14px;font-size:13.5px}
-.fp-res{display:flex;flex-direction:column;gap:18px;min-width:0;container-type:inline-size;scroll-margin-top:130px}
-.fp-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.fp-kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:13px;color:var(--muted)}
-.fp-kpi b{display:block;font-family:var(--display);font-weight:400;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2;margin:2px 0}
-.fp-kpi.neg b{color:var(--accent)}
-.fp-stack{display:flex;height:26px;border-radius:6px;overflow:hidden;background:var(--line);margin:4px 0 12px}
-.fp-stack i{display:block;height:100%;min-width:0}
-.fp-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);list-style:none;margin:0;padding:0}
-.fp-legend li{display:flex;align-items:center;gap:6px}
-.fp-dot{width:11px;height:11px;border-radius:3px;flex:none;display:inline-block}
-.fp-split{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:center}
-@container (max-width:600px){.fp-split{grid-template-columns:1fr;justify-items:center}}
-.fp-donut{width:200px;height:200px}
-.fp-donut text{fill:var(--ink);font-family:var(--body)}
-.fp-tw{overflow-x:auto;width:100%}
-.fp-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
-.fp-table th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:6px 8px;border-bottom:1px solid var(--line)}
-.fp-table td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-.fp-table tr:last-child td{border-bottom:0}
-.fp-table .r{text-align:right;white-space:nowrap}
-.fp-table small{display:block;color:var(--muted);font-size:12.5px;line-height:1.4}
-.fp-phase{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--red-soft);color:var(--accent);margin-bottom:8px}
-.fp-phase.ok{background:var(--green-soft);color:var(--green)}
-.fp-checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.fp-check{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
-.fp-check h4{margin:0;font-size:15px;display:flex;justify-content:space-between;gap:8px;align-items:center}
-.fp-check p{margin:0;color:var(--muted)}
-.fp-check .big{font-family:var(--display);font-size:20px;color:var(--ink)}
-.fp-as{border:0;background:transparent;padding:0;color:var(--green);text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer;font-size:inherit}
-.fp-res .block p,.fp-res .block li{font-size:14.5px}
-@media print{header,footer,.fp-form,.fp-tools{display:none!important}.fp{grid-template-columns:1fr}.fp-sec,.block,.fp-kpi,.fp-check{break-inside:avoid}}
 footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -236,7 +168,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
-    <a class="tab" href="#tracker" data-tab="tracker">Financial Tracker</a>
+    <a class="tab" href="https://www.paisasamjhoraj.com" target="_blank" rel="noopener">Money lessons ↗</a>
     <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
     <a class="tab" href="#community" data-tab="community">Community</a>
     <a class="tab" href="#about" data-tab="about">About</a>
@@ -458,6 +390,7 @@ const SOCIAL = [
   { name: "YouTube", url: "https://www.youtube.com/@SamjhowithRaj" },
   { name: "Instagram", url: "https://www.instagram.com/samjhowithraj/" },
   { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab" },
+  { name: "Money lessons", url: "https://www.paisasamjhoraj.com" },
 ];
 function fillSocial(){ document.querySelectorAll("[data-social]").forEach(el => {
   el.innerHTML = SOCIAL.map(x => `<a href="${x.url}" target="_blank" rel="noopener">${x.name}</a>`).join(""); }); }
@@ -512,7 +445,7 @@ function classroom(){
         <div class="progrow"><div class="prog"><i style="width:${pct(c)}%"></i></div>${pct(c)}%</div></div>
     </a>`).join("")}
   </div>
-  <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Try the <a href="#tracker">Financial Tracker</a>.</p>`;
+  <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>`;
 }
 
 function lessonView(c, l){
@@ -584,339 +517,19 @@ function about(){
   </div></div>`;
 }
 
-// ---------- financial tracker (runs only in this browser; nothing is sent anywhere) ----------
-const FP_KEY = "swr-tracker";
-const FP_LOANS = [["Credit card dues", 36], ["Personal loan", 14], ["Car / two-wheeler loan", 9.5], ["Education loan", 10], ["Home loan", 8.5], ["Other loan", 12]];
-const FP_ASSUME = { infl:6, eduInfl:10, homeInfl:6, eqRet:10, safeRet:7, epfRet:8, postRet:7, college:18, retAge:60, life:85,
-  hMetro:15, hNon:10, hParent:5, hPrem:2000, pPrem:5000, termMult:10, tPrem:1200, hiRate:12, debtMonths:18, efMonths:12,
-  goalFloor:20, parentFund:200000, parentYears:3 };
-// The Verma family from "Middle-Class Family Ka Money Plan" (Episode 01). Fictional example.
-function fpVerma(){ return { example:true, remember:false, adults:2, earners:2, age:35, job:"private", city:"nonmetro", home:"rent", parents:2,
-  kids:[{ age:8, cost:1000000 }, { age:4, cost:1000000 }], income:100000,
-  exp:{ housing:18000, groceries:14000, utilities:4000, transport:6000, school:10000, health:6000, emi:0, annual:6000, leisure:5000, other:0 },
-  savings:60000, epf:400000, invest:0, health:500000, parentsHealth:0, term:0, efMonths:0,
-  loans:FP_LOANS.map(([name, rate]) => ({ name, amt:0, rate })),
-  homeGoal:{ on:false, price:5000000, years:7, down:20 }, a:{ ...FP_ASSUME } }; }
-function fpBlank(){ const s = fpVerma(); s.example = false; s.parents = 0; s.kids = []; s.income = 0;
-  Object.keys(s.exp).forEach(k => s.exp[k] = 0); s.savings = s.epf = s.invest = s.health = s.term = 0; s.earners = 1; return s; }
-let fp = fpVerma();
-try { const saved = JSON.parse(localStorage.getItem(FP_KEY) || "null");
-  if (saved) { const d = fpVerma(); fp = { ...d, ...saved, exp:{ ...d.exp, ...saved.exp }, a:{ ...FP_ASSUME, ...saved.a }, homeGoal:{ ...d.homeGoal, ...saved.homeGoal } }; } } catch (e) {}
-function fpSave(){ try { fp.remember ? localStorage.setItem(FP_KEY, JSON.stringify(fp)) : localStorage.removeItem(FP_KEY); } catch (e) {} }
-
-const fpGet = p => p.split(".").reduce((o, k) => o == null ? o : o[k], fp);
-function fpSet(p, v){ const ks = p.split("."), last = ks.pop(); ks.reduce((o, k) => o[k], fp)[last] = v; }
-const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
-function inrShort(n){ n = Math.round(n); const a = Math.abs(n);
-  if (a >= 1e7) return "₹" + (n / 1e7).toFixed(2).replace(/\.?0+$/, "") + " crore";
-  if (a >= 1e5) return "₹" + (n / 1e5).toFixed(2).replace(/\.?0+$/, "") + " lakh";
-  return inr(n); }
-const pctOf = (x, y) => y > 0 ? Math.round(100 * x / y) : 0;
-// Monthly investment that grows to fv in `years` at an assumed yearly return (illustrative, not guaranteed).
-function sipFor(fv, years, ret){ if (fv <= 0) return 0; const r = Math.pow(1 + ret / 100, 1 / 12) - 1, n = Math.round(years * 12);
-  return r > 0 ? fv * r / (Math.pow(1 + r, n) - 1) : fv / n; }
-
-function fpCalc(s){
-  const a = s.a, e = s.exp;
-  const essentials = e.housing + e.groceries + e.utilities + e.transport + e.school + e.health + e.emi;
-  const spend = essentials + e.annual + e.leisure + e.other;
-  const surplus = s.income - spend, avail = Math.max(0, surplus);
-  const kids = s.kids.length, nonEarning = Math.max(0, s.adults - s.earners), deps = kids + s.parents + nonEarning;
-
-  // 1. Emergency fund: months of essential expenses
-  const efWhy = [];
-  let m = { govt:4, private:6, variable:9 }[s.job] || 6;
-  efWhy.push(`${m} months for ${{ govt:"a very stable job", private:"a private-sector salary", variable:"self-employed or variable income" }[s.job]}`);
-  if (s.earners <= 1) { m += 1; efWhy.push("+1 for a single income"); }
-  if (deps >= 3) { m += 1; efWhy.push(`+1 for ${deps} dependants`); }
-  m = Math.min(m, 12);
-  const efAuto = m; if (s.efMonths > 0) m = s.efMonths;
-  const efTarget = m * essentials, efGap = Math.max(0, efTarget - s.savings);
-
-  // 2. Insurance (rules of thumb)
-  const healthNeed = ((s.city === "metro" ? a.hMetro : a.hNon) + (s.adults + kids > 4 ? 5 : 0)) * 1e5;
-  const healthGap = Math.max(0, healthNeed - s.health);
-  const parentNeed = s.parents * a.hParent * 1e5, parentGap = Math.max(0, parentNeed - s.parentsHealth);
-  const loansTotal = s.loans.reduce((n, l) => n + l.amt, 0);
-  const needsTerm = deps > 0 || s.adults > 1;
-  const termNeed = needsTerm ? a.termMult * 12 * s.income + loansTotal : 0, termGap = Math.max(0, termNeed - s.term);
-  const insMonthly = (healthGap / 1e5 * a.hPrem + parentGap / 1e5 * a.pPrem + termGap / 1e6 * a.tPrem) / 12;
-
-  // 3. Costly debt
-  const hiLoans = s.loans.filter(l => l.amt > 0 && l.rate >= a.hiRate), hiTotal = hiLoans.reduce((n, l) => n + l.amt, 0);
-  const debtMonthly = hiTotal / Math.max(1, a.debtMonths);
-  const efMonthly = efGap / Math.max(1, a.efMonths);
-
-  // 4. Long-term goals
-  const retFor = y => y >= 7 ? a.eqRet : a.safeRet;
-  const goals = [];
-  s.kids.forEach((k, i) => { const y = Math.max(0, a.college - k.age), fv = k.cost * Math.pow(1 + a.eduInfl / 100, y);
-    goals.push({ key:"edu", name:`Child ${i + 1}: college (now ${k.age})`, years:y, today:k.cost, fv, infl:"eduInfl", ret:retFor(y), sip:y > 0 ? sipFor(fv, y, retFor(y)) : 0, dueNow:y === 0 }); });
-  const ry = Math.max(0, a.retAge - s.age);
-  const living = e.groceries + e.utilities + e.transport + e.health + e.annual + e.leisure + e.other + (s.home === "rent" ? e.housing : 0);
-  const atRet = living * Math.pow(1 + a.infl / 100, ry), T = Math.max(1, a.life - a.retAge);
-  const rr = (1 + a.postRet / 100) / (1 + a.infl / 100) - 1;
-  const corpus = 12 * atRet * (Math.abs(rr) > 1e-6 ? (1 - Math.pow(1 + rr, -T)) / rr * (1 + rr) : T);
-  const existing = s.epf * Math.pow(1 + a.epfRet / 100, ry) + s.invest * Math.pow(1 + a.eqRet / 100, ry);
-  const retNeed = Math.max(0, corpus - existing);
-  goals.push({ key:"ret", name:"Retirement", years:ry, today:living, fv:corpus, existing, infl:"infl", ret:a.eqRet, sip:ry > 0 ? sipFor(retNeed, ry, a.eqRet) : 0, dueNow:ry === 0 });
-  if (s.home === "rent" && s.homeGoal.on && s.homeGoal.price > 0) { const h = s.homeGoal, y = Math.max(1, h.years), fv = h.price * h.down / 100 * Math.pow(1 + a.homeInfl / 100, y);
-    goals.push({ key:"home", name:`Home down payment (${h.down}%)`, years:y, today:h.price * h.down / 100, fv, infl:"homeInfl", ret:retFor(y), sip:sipFor(fv, y, retFor(y)) }); }
-  if (s.parents > 0 && a.parentFund > 0) { const y = Math.max(1, a.parentYears), fv = s.parents * a.parentFund * Math.pow(1 + a.infl / 100, y);
-    goals.push({ key:"par", name:"Parents' care fund", years:y, today:s.parents * a.parentFund, fv, infl:"infl", ret:a.safeRet, sip:sipFor(fv, y, a.safeRet) }); }
-  const goalNeed = goals.reduce((n, g) => n + g.sip, 0);
-
-  // Split the surplus: keep a small share for long-term goals, fill safety buckets in order, the rest goes to goals.
-  const reserved = Math.min(goalNeed, avail * a.goalFloor / 100);
-  let pool = avail - reserved;
-  const take = want => { const x = Math.min(pool, want); pool -= x; return x; };
-  const ins = take(insMonthly), debt = take(debtMonthly), ef = take(efMonthly);
-  const goalAlloc = reserved + Math.min(pool, goalNeed - reserved);
-  pool -= goalAlloc - reserved;
-  const share = goalNeed > 0 ? goalAlloc / goalNeed : 0;
-  goals.forEach(g => g.got = g.sip * share);
-  const sumKey = k => goals.filter(g => g.key === k).reduce((n, g) => n + g.got, 0);
-  const buckets = [
-    { key:"ins", name:"Insurance gaps (premiums)", color:"var(--c-ins)", amt:ins, why:"Buy the missing health and term cover first. Premium is a rough estimate." },
-    { key:"debt", name:"Pay off costly debt", color:"var(--c-debt)", amt:debt, why:`Loans at ${a.hiRate}% or more, cleared in about ${a.debtMonths} months, on top of the normal EMI.` },
-    { key:"ef", name:"Emergency fund", color:"var(--c-ef)", amt:ef, why:`Fill the gap in about ${a.efMonths} months. Keep it in a savings account, FD or liquid fund.` },
-    { key:"edu", name:"Children's education", color:"var(--c-edu)", amt:sumKey("edu"), why:"One pot per child, invested until college." },
-    { key:"ret", name:"Retirement", color:"var(--c-ret)", amt:sumKey("ret"), why:"On top of EPF deducted from salary." },
-    { key:"home", name:"Home down payment", color:"var(--c-home)", amt:sumKey("home"), why:"Short goals stay in safer options." },
-    { key:"par", name:"Parents' care fund", color:"var(--c-par)", amt:sumKey("par"), why:"For medical bills and support, in safer options." },
-    { key:"free", name:"Not yet assigned", color:"var(--c-free)", amt:pool, why:"Every goal is covered at these assumptions. Use it to reach goals sooner or for planned wants." },
-  ].filter(b => b.amt >= 1);
-  const safetyOpen = insMonthly + debtMonthly + efMonthly > 0;
-  return { essentials, spend, surplus, avail, deps, kids, efMonths:m, efAuto, efWhy, efTarget, efGap, healthNeed, healthGap, parentNeed, parentGap,
-    needsTerm, termNeed, termGap, loansTotal, insMonthly, hiLoans, hiTotal, debtMonthly, efMonthly, goals, goalNeed, goalAlloc, buckets, safetyOpen, corpus, existing, atRet, ry, T };
-}
-
-// ----- form -----
-function fpNum(k, label, o = {}){
-  return `<label class="fp-f ${o.full ? "fp-full" : ""}"><span>${label}</span><span class="fp-in">${o.pre ? `<i>${o.pre}</i>` : ""}<input type="number" inputmode="decimal" min="0" step="${o.step || "any"}" data-k="${k}" value="${fpGet(k) || (o.blank ? "" : 0)}" ${o.ph != null ? `placeholder="${o.ph}"` : ""}>${o.suf ? `<i>${o.suf}</i>` : ""}</span>${o.rupee ? `<small data-amt="${k}"></small>` : ""}${o.hint ? `<small>${o.hint}</small>` : ""}</label>`;
-}
-const fpR = (k, label, o = {}) => fpNum(k, label, { pre:"₹", rupee:true, step:"500", ...o });
-function fpSel(k, label, opts, o = {}){
-  return `<label class="fp-f ${o.full ? "fp-full" : ""}"><span>${label}</span><span class="fp-in"><select data-k="${k}">${opts.map(([v, t]) => `<option value="${v}" ${String(fpGet(k)) === String(v) ? "selected" : ""}>${t}</option>`).join("")}</select></span>${o.hint ? `<small>${o.hint}</small>` : ""}</label>`;
-}
-function fpSec(id, title, body, open){ return `<details class="fp-sec" id="fps-${id}" ${open ? "open" : ""}><summary>${title}</summary><div class="fp-grid">${body}</div></details>`; }
-
-function fpForm(){
-  const s = fp;
-  const kids = s.kids.map((k, i) => `<div class="fp-kid">${fpNum(`kids.${i}.age`, `Child ${i + 1} age`, { suf:"yrs", step:"1" })}${fpR(`kids.${i}.cost`, "College cost today", { step:"50000" })}<button type="button" class="fp-x" data-del="${i}" aria-label="Remove child ${i + 1}">✕</button></div>`).join("");
-  const loans = s.loans.map((l, i) => fpR(`loans.${i}.amt`, `${l.name}: amount owed`, { step:"1000" }) + fpNum(`loans.${i}.rate`, "Interest rate", { suf:"% a year", step:"0.5" })).join("");
-  return `<form class="fp-form" id="fp-form" onsubmit="return false">
-    <div class="fp-tools">
-      <button type="button" class="btn" data-fp="verma">Load Verma family example</button>
-      <button type="button" class="btn" data-fp="clear">Start blank</button>
-      <button type="button" class="btn primary fp-jump" data-fp="jump">See my plan ↓</button>
-      <label><input type="checkbox" data-k="remember" ${s.remember ? "checked" : ""}> Remember my inputs on this device</label>
-    </div>
-    ${s.example ? `<div class="fp-banner">You're looking at the fictional Verma family from the Money Plan series (Lucknow, ₹1 lakh a month). Change any number to make it yours.</div>` : ""}
-    ${fpSec("house", "1 · Household", `
-      ${fpNum("adults", "Adults at home", { step:"1" })}
-      ${fpNum("earners", "Earning adults", { step:"1" })}
-      ${fpNum("age", "Age of main earner", { suf:"yrs", step:"1" })}
-      ${fpSel("job", "Job stability", [["govt", "Very stable (govt / PSU)"], ["private", "Private-sector salary"], ["variable", "Self-employed / variable"]])}
-      ${fpSel("city", "City type", [["metro", "Metro"], ["nonmetro", "Non-metro"]])}
-      ${fpSel("home", "Home", [["rent", "Rented"], ["own", "Own (paid off or on EMI)"]])}
-      ${fpNum("parents", "Parents you support (fully or partly)", { step:"1", full:true })}
-      <div class="fp-sub">Children</div>
-      ${kids || `<small class="fp-full" style="color:var(--muted)">No children added.</small>`}
-      ${s.kids.length < 6 ? `<button type="button" class="btn fp-add" data-fp="kid">+ Add a child</button>` : ""}
-    `, true)}
-    ${fpSec("money", "2 · Monthly income and expenses", `
-      ${fpR("income", "Take-home income (all earners)", { full:true, step:"1000", hint:"What reaches the bank each month, after tax and EPF." })}
-      <div class="fp-sub">Essentials</div>
-      ${fpR("exp.housing", "Rent or home-loan EMI")}
-      ${fpR("exp.groceries", "Groceries and household")}
-      ${fpR("exp.utilities", "Electricity, gas, phone, internet")}
-      ${fpR("exp.transport", "Transport and fuel")}
-      ${fpR("exp.school", "School fees and tuition")}
-      ${fpR("exp.health", "Health: medicines, insurance premiums")}
-      ${fpR("exp.emi", "Other EMIs (car, personal, card)", { full:true })}
-      <div class="fp-sub">Planned and flexible</div>
-      ${fpR("exp.annual", "Set aside for yearly costs", { hint:"Diwali, admissions, gifts, repairs ÷ 12" })}
-      ${fpR("exp.leisure", "Leisure and eating out")}
-      ${fpR("exp.other", "Anything else", { full:true })}
-    `, true)}
-    ${fpSec("assets", "3 · Savings and investments", `
-      ${fpR("savings", "Savings you can use quickly", { full:true, step:"5000", hint:"Bank balance, FDs, liquid funds. This counts toward the emergency fund." })}
-      ${fpR("epf", "EPF / PPF balance", { step:"10000" })}
-      ${fpR("invest", "Other investments", { step:"10000", hint:"Mutual funds, shares, NPS" })}
-    `)}
-    ${fpSec("cover", "4 · Insurance and loans", `
-      ${fpR("health", "Health cover for your family", { step:"100000", hint:"Total sum insured, incl. employer policy" })}
-      ${fpR("parentsHealth", "Health cover for parents", { step:"100000" })}
-      ${fpR("term", "Term life cover", { full:true, step:"500000", hint:"Pure term plans only. Leave out endowment / money-back policies." })}
-      <div class="fp-sub">Loans and dues</div>
-      ${loans}
-    `)}
-    ${fpSec("goals", "5 · Goals", `
-      ${s.home === "rent" ? `<label class="fp-f fp-full" style="flex-direction:row;gap:8px;align-items:center"><input type="checkbox" data-k="homeGoal.on" ${s.homeGoal.on ? "checked" : ""}><span>Plan to buy a home</span></label>
-      ${s.homeGoal.on ? fpR("homeGoal.price", "Home price today", { step:"100000" }) + fpNum("homeGoal.years", "In how many years", { suf:"yrs", step:"1" }) + fpNum("homeGoal.down", "Down payment", { suf:"%", step:"5", full:true, hint:"Banks usually lend the rest as a home loan." }) : ""}` : `<small class="fp-full" style="color:var(--muted)">You own your home, so no home goal is added.</small>`}
-      ${fpNum("efMonths", "Emergency fund target", { suf:"months", step:"1", blank:true, ph:`auto: ${fpCalc(s).efAuto}`, hint:"Leave blank to use the suggested number." })}
-      ${s.parents > 0 ? fpR("a.parentFund", "Parents' care fund, per parent", { step:"25000" }) + fpNum("a.parentYears", "Build it in", { suf:"yrs", step:"1" }) : ""}
-      ${s.kids.length ? fpNum("a.college", "Age a child starts college", { suf:"yrs", step:"1" }) : ""}
-      ${fpNum("a.retAge", "Retire at age", { suf:"yrs", step:"1" })}
-      ${fpNum("a.life", "Plan money up to age", { suf:"yrs", step:"1" })}
-    `)}
-    ${fpSec("assume", "6 · Assumptions (change any)", `
-      <small class="fp-full" style="color:var(--muted)">Guesses about the future, not promises. Try lower returns and higher inflation to see a safer plan.</small>
-      ${fpNum("a.infl", "General inflation", { suf:"% a year", step:"0.5" })}
-      ${fpNum("a.eduInfl", "Education cost inflation", { suf:"% a year", step:"0.5" })}
-      ${fpNum("a.homeInfl", "Home price growth", { suf:"% a year", step:"0.5" })}
-      ${fpNum("a.eqRet", "Return, goals 7+ years away", { suf:"% a year", step:"0.5", hint:"Mostly equity funds. Can be lower or negative in some years." })}
-      ${fpNum("a.safeRet", "Return, goals under 7 years", { suf:"% a year", step:"0.5", hint:"FDs, debt funds, RD." })}
-      ${fpNum("a.epfRet", "Return on EPF / PPF", { suf:"% a year", step:"0.25" })}
-      ${fpNum("a.postRet", "Return after retirement", { suf:"% a year", step:"0.5" })}
-      ${fpNum("a.hiRate", "Debt counts as costly from", { suf:"% a year", step:"0.5" })}
-      ${fpNum("a.debtMonths", "Clear costly debt in", { suf:"months", step:"1" })}
-      ${fpNum("a.efMonths", "Build emergency fund in", { suf:"months", step:"1" })}
-      ${fpNum("a.goalFloor", "Keep for goals while building safety", { suf:"% of surplus", step:"5", full:true, hint:"So long-term saving starts early. Set 0 for strict safety-first." })}
-      <div class="fp-sub">Insurance rules of thumb</div>
-      ${fpNum("a.hMetro", "Family health cover, metro", { suf:"lakh", step:"1" })}
-      ${fpNum("a.hNon", "Family health cover, non-metro", { suf:"lakh", step:"1" })}
-      ${fpNum("a.hParent", "Health cover per parent", { suf:"lakh", step:"1" })}
-      ${fpNum("a.termMult", "Term cover", { suf:"× yearly income", step:"1" })}
-      ${fpR("a.hPrem", "Health premium per ₹1 lakh a year", { step:"100", hint:"Very rough. Get real quotes." })}
-      ${fpR("a.pPrem", "Senior health premium per ₹1 lakh", { step:"100" })}
-      ${fpR("a.tPrem", "Term premium per ₹10 lakh a year", { step:"100", full:true, hint:"Depends on age, health, smoking. Get real quotes." })}
-    `)}
-  </form>`;
-}
-
-// ----- results -----
-const fpA = (k, text) => `<button type="button" class="fp-as" data-focus="${k}" title="Change this assumption">${text}</button>`;
-function fpDonut(buckets, total){
-  const C = 2 * Math.PI * 70; let off = 0;
-  const arcs = buckets.map(b => { const len = total > 0 ? C * b.amt / total : 0;
-    const el = `<circle r="70" cx="100" cy="100" fill="none" stroke="${b.color}" stroke-width="26" stroke-dasharray="${len} ${C - len}" stroke-dashoffset="${-off}" transform="rotate(-90 100 100)"><title>${b.name}: ${inr(b.amt)}</title></circle>`;
-    off += len; return el; }).join("");
-  return `<svg class="fp-donut" viewBox="0 0 200 200" role="img" aria-label="Split of your monthly surplus">
-    <circle r="70" cx="100" cy="100" fill="none" stroke="var(--line)" stroke-width="26"/>${arcs}
-    <text x="100" y="96" text-anchor="middle" font-size="12" opacity=".7">surplus</text>
-    <text x="100" y="118" text-anchor="middle" font-size="19" font-weight="700">${inrShort(total)}</text></svg>`;
-}
-function fpResults(){
-  const s = fp, a = s.a, r = fpCalc(s), e = s.exp;
-  if (s.income <= 0) return `<div class="block"><h3>Your plan</h3><p>Enter your monthly take-home income and expenses in the form (or load the Verma example) to see where each rupee of your surplus could go.</p></div>`;
-  const seg = (x, c, n) => x > 0 ? `<i style="width:${Math.min(100, 100 * x / Math.max(s.income, r.spend))}%;background:${c}" title="${n}: ${inr(x)}"></i>` : "";
-  const flex = e.leisure + e.other;
-  const kpis = `<div class="fp-kpis">
-    <div class="fp-kpi">Take-home<b>${inr(s.income)}</b>a month</div>
-    <div class="fp-kpi">Essentials<b>${inr(r.essentials)}</b>${pctOf(r.essentials, s.income)}% of income</div>
-    <div class="fp-kpi">All spending<b>${inr(r.spend)}</b>${pctOf(r.spend, s.income)}% of income</div>
-    <div class="fp-kpi ${r.surplus < 0 ? "neg" : ""}">Monthly surplus<b>${inr(r.surplus)}</b>${r.surplus >= 0 ? pctOf(r.surplus, s.income) + "% saving rate" : "spending more than income"}</div></div>`;
-  const bar = `<section class="block"><h3>Where your income goes</h3>
-    <div class="fp-stack" role="img" aria-label="Income split">${seg(r.essentials, "var(--c-ess)", "Essentials")}${seg(e.annual, "var(--c-ann)", "Yearly costs")}${seg(flex, "var(--c-fun)", "Leisure and other")}${seg(r.avail, "var(--c-ret)", "Surplus")}</div>
-    <ul class="fp-legend"><li><span class="fp-dot" style="background:var(--c-ess)"></span>Essentials ${inr(r.essentials)}</li><li><span class="fp-dot" style="background:var(--c-ann)"></span>Yearly costs ${inr(e.annual)}</li><li><span class="fp-dot" style="background:var(--c-fun)"></span>Leisure and other ${inr(flex)}</li><li><span class="fp-dot" style="background:var(--c-ret)"></span>Surplus to plan ${inr(r.avail)}</li></ul></section>`;
-
-  let split;
-  if (r.surplus <= 0) split = `<section class="block"><h3>Your monthly split</h3><p><b>There is no surplus to split yet.</b> Your expenses are ${inr(-r.surplus)} a month more than your income${r.surplus === 0 ? " (exactly equal)" : ""}.</p>
-    <p>Safety first: list every expense for one month, cut what you can from leisure and "anything else", and avoid new credit-card or app loans to fill the gap. Even ₹1,000 a month into an emergency fund is a start.</p></section>`;
-  else split = `<section class="block"><h3>Your monthly split · ${inr(r.avail)}</h3>
-    <span class="fp-phase ${r.safetyOpen ? "" : "ok"}">${r.safetyOpen ? "Stage 1: build safety first" : "Stage 2: safety done, grow long-term goals"}</span>
-    <div class="fp-split">${fpDonut(r.buckets, r.avail)}
-      <div class="fp-tw"><table class="fp-table"><thead><tr><th>Bucket</th><th class="r">₹ a month</th><th class="r">Share</th></tr></thead><tbody>
-      ${r.buckets.map((b, i) => `<tr><td><span class="fp-dot" style="background:${b.color};margin-right:6px"></span><b>${b.name}</b><small>${b.why}</small></td><td class="r">${inr(b.amt)}</td><td class="r">${pctOf(b.amt, r.avail)}%</td></tr>`).join("")}
-      </tbody></table></div></div>
-    <p style="margin-top:12px;color:var(--muted);font-size:13.5px">Order used: insurance → costly debt → emergency fund → long-term goals. While safety is being built, ${fpA("a.goalFloor", `${a.goalFloor}% of the surplus`)} still goes to goals so they get time to grow. As each safety gap closes, its money moves to the goals.</p></section>`;
-
-  const status = ok => `<span class="chip ${ok ? "next" : ""}">${ok ? "OK" : "Gap"}</span>`;
-  const prog = (have, need) => `<div class="prog"><i style="width:${need > 0 ? Math.min(100, 100 * have / need) : 100}%"></i></div>`;
-  const checks = `<section class="block"><h3>Safety check</h3><div class="fp-checks">
-    <div class="fp-check"><h4>Emergency fund ${status(r.efGap <= 0)}</h4><span class="big">${inrShort(r.efTarget)}</span>
-      <p>${r.efMonths} months of essentials (${inr(r.essentials)}). ${s.efMonths > 0 ? "You set this." : r.efWhy.join(", ") + "."}</p>${prog(s.savings, r.efTarget)}
-      <p>You have ${inrShort(s.savings)}${r.efGap > 0 ? ` · gap ${inrShort(r.efGap)}` : " · covered"}.</p></div>
-    <div class="fp-check"><h4>Health cover ${status(r.healthGap <= 0 && r.parentGap <= 0)}</h4><span class="big">${inrShort(r.healthNeed)}</span>
-      <p>Family floater, ${fpA(s.city === "metro" ? "a.hMetro" : "a.hNon", `rule of thumb for a ${s.city === "metro" ? "metro" : "non-metro"} city`)}. You have ${inrShort(s.health)}.</p>${prog(s.health, r.healthNeed)}
-      ${s.parents ? `<p>Parents: ${fpA("a.hParent", `${inrShort(a.hParent * 1e5)} each`)}, separate policy. You have ${inrShort(s.parentsHealth)}.</p>` : ""}</div>
-    <div class="fp-check"><h4>Term life cover ${status(r.termGap <= 0)}</h4>${r.needsTerm ? `<span class="big">${inrShort(r.termNeed)}</span>
-      <p>${fpA("a.termMult", `${a.termMult}× yearly income`)}${r.loansTotal ? ` + loans ${inrShort(r.loansTotal)}` : ""}. Split it between earners by income. You have ${inrShort(s.term)}.</p>${prog(s.term, r.termNeed)}`
-      : `<p>No one depends on your income, so term cover may not be needed yet.</p>`}</div>
-    <div class="fp-check"><h4>Costly debt ${status(r.hiTotal <= 0)}</h4><span class="big">${r.hiTotal ? inrShort(r.hiTotal) : "None"}</span>
-      <p>${r.hiTotal ? r.hiLoans.map(l => `${l.name} ${inrShort(l.amt)} at ${l.rate}%`).join(" · ") + `. Paying it off saves that interest for sure.` : `No loans at ${fpA("a.hiRate", `${a.hiRate}% or more`)}. Lower-rate loans (home, education) can keep their normal EMI.`}</p></div>
-  </div>${r.insMonthly > 0 ? `<p style="margin-top:12px;color:var(--muted);font-size:13.5px">Estimated premium for the missing cover: about ${inr(r.insMonthly)} a month, using ${fpA("a.hPrem", "rough premium rates")}. Real premiums depend on age and health, so get quotes.</p>` : ""}</section>`;
-
-  const goals = `<section class="block"><h3>Long-term goals</h3><div class="fp-tw"><table class="fp-table">
-    <thead><tr><th>Goal</th><th class="r">Money needed then</th><th class="r">Needed a month</th><th class="r">In this plan</th></tr></thead><tbody>
-    ${r.goals.map(g => `<tr><td><b>${g.name}</b><small>${g.dueNow ? "Due now" : `In ${g.years} years`} · ${g.key === "ret"
-        ? `living costs ${inr(g.today)}/month today → ${inr(r.atRet)}/month at ${a.retAge}, for ${r.T} years, at ${fpA("a.infl", `${a.infl}% inflation`)} and ${fpA("a.postRet", `${a.postRet}% return after retiring`)}. EPF/PPF and investments may grow to ${inrShort(g.existing)} (${fpA("a.epfRet", `${a.epfRet}%`)} / ${fpA("a.eqRet", `${a.eqRet}%`)}).`
-        : `${inrShort(g.today)} today at ${fpA(g.infl, `${a[g.infl]}% a year cost growth`)}`}${g.dueNow ? "" : ` · invested at ${fpA(g.ret === a.eqRet ? "a.eqRet" : "a.safeRet", `${g.ret}% assumed return`)}`}</small></td>
-      <td class="r">${inrShort(g.fv)}${g.years > 0 ? `<small>≈ ${inrShort(g.fv / Math.pow(1 + a.infl / 100, g.years))} in today's money</small>` : ""}</td><td class="r">${g.dueNow ? "—" : inr(g.sip)}</td><td class="r">${g.dueNow ? "—" : inr(g.got)}${!g.dueNow && g.sip > 0 ? `<small>${pctOf(g.got, g.sip)}% of need</small>` : ""}</td></tr>`).join("")}
-    </tbody></table></div>
-    <p style="margin-top:12px;color:var(--muted);font-size:13.5px">"Needed a month" is what would reach the goal if the assumed return actually happens. Returns are not guaranteed and can be lower. A gap today is normal: it shrinks as safety buckets fill, income grows and you step up your monthly amount.</p></section>`;
-
-  const tips = [];
-  if (s.loans[0].amt > 0) tips.push("Credit-card dues often cost 36–42% a year. Pay the full bill, not the minimum, and stop new spending on the card until it is cleared.");
-  if (s.savings > r.efTarget && r.hiTotal > 0) tips.push(`Your savings are ${inrShort(s.savings - r.efTarget)} above the emergency target. Using that extra to clear costly debt could be worth considering.`);
-  else if (s.savings > r.efTarget * 1.25 && r.efTarget > 0) tips.push(`Your savings are ${inrShort(s.savings - r.efTarget)} above the emergency target. The extra could be moved into your goal pots.`);
-  if (s.health > 0) tips.push("An employer group policy usually ends when you leave the job. A personal family floater keeps you covered between jobs.");
-  if (r.needsTerm && r.termGap > 0) tips.push("For life cover, a pure term plan usually gives the most cover per rupee. Avoid buying insurance as an investment.");
-  if (e.annual === 0) tips.push("Yearly costs (festivals, admissions, insurance renewals) are set to zero. Spreading them over 12 months stops them from breaking the emergency fund.");
-  if (s.kids.length && r.goals.some(g => g.key === "edu" && g.got < g.sip)) tips.push("Education goals have fixed dates, so they cannot be postponed the way retirement savings sometimes can. Review them every year.");
-  tips.push("EPF deducted from your salary is not part of take-home, so it is extra retirement saving on top of this plan.");
-  tips.push("Revisit this plan once a year, and after any salary change, new child, loan or job change.");
-
-  return `${kpis}${bar}${split}${checks}${goals}
-    <section class="block"><h3>Things to keep in mind</h3><ul>${tips.map(t => `<li>${t}</li>`).join("")}</ul></section>
-    <p class="fp-disc"><b>Educational and illustrative only.</b> This is not financial, investment, tax or insurance advice. Returns and inflation are assumptions you can change; no return is guaranteed and markets can fall. Insurance amounts are rules of thumb and premiums are rough guesses. For decisions about your own money, speak to a SEBI-registered investment adviser.</p>
-    <div class="fp-tools"><button type="button" class="btn" onclick="print()">Print or save as PDF</button></div>`;
-}
-
-function tracker(){
-  return `<div class="page-head"><div><div class="eyebrow">Financial Tracker</div>
-      <h1>Your family's <em>money plan</em>, one bucket at a time.</h1>
-      <p class="lead">Enter your household, income and expenses. See how much of your monthly surplus could go to the emergency fund, insurance, costly debt and long-term goals: safety first, then the future.</p>
-      <p class="hindi">Companion to the "Middle-Class Family Ka Money Plan" video series.</p></div></div>
-    <p class="fp-disc"><b>Private:</b> everything is calculated in your browser. Nothing you type is sent anywhere. <b>Educational only:</b> the numbers are illustrations based on assumptions you can change, not advice.</p>
-    <div class="fp">${fpForm()}<div class="fp-res" id="fp-res" aria-live="polite">${fpResults()}</div></div>`;
-}
-function fpAmtHints(){ document.querySelectorAll("[data-amt]").forEach(el => { const v = +fpGet(el.dataset.amt) || 0; el.textContent = v >= 1e5 ? inrShort(v) : ""; });
-  const ef = document.querySelector('#fp-form [data-k="efMonths"]'); if (ef) ef.placeholder = "auto: " + fpCalc(fp).efAuto; }
-function fpRedraw(full){
-  fpSave();
-  if (full) { const y = scrollY, open = [...document.querySelectorAll(".fp-sec")].map(d => d.open), f = document.activeElement?.dataset?.k;
-    app.innerHTML = tracker(); document.querySelectorAll(".fp-sec").forEach((d, i) => d.open = open[i] ?? d.open);
-    if (f) document.querySelector(`[data-k="${f}"]`)?.focus(); scrollTo(0, y); }
-  else document.getElementById("fp-res").innerHTML = fpResults();
-  fpAmtHints();
-}
-app.addEventListener("input", e => {
-  const el = e.target.closest("#fp-form [data-k]"); if (!el) return;
-  const k = el.dataset.k;
-  if (el.type === "checkbox") fpSet(k, el.checked);
-  else if (el.tagName === "SELECT") fpSet(k, el.value);
-  else { const v = parseFloat(el.value); fpSet(k, isFinite(v) && v > 0 ? Math.min(v, 1e10) : 0); }
-  if (k !== "remember") { fp.example = false; document.querySelector(".fp-banner")?.remove(); }
-  // Changes that add or remove form fields redraw the form; the rest only redraw the results.
-  fpRedraw(["home", "parents", "homeGoal.on"].includes(k));
-});
-app.addEventListener("click", e => {
-  const b = e.target.closest("[data-fp],[data-del],[data-focus]"); if (!b || !document.getElementById("fp-form")) return;
-  if (b.dataset.fp === "verma") { fp = { ...fpVerma(), remember:fp.remember }; fpRedraw(true); }
-  else if (b.dataset.fp === "clear") { fp = { ...fpBlank(), remember:fp.remember }; fpRedraw(true); }
-  else if (b.dataset.fp === "jump") document.getElementById("fp-res").scrollIntoView({ block:"start" });
-  else if (b.dataset.fp === "kid") { fp.kids.push({ age:5, cost:1000000 }); fp.example = false; fpRedraw(true); }
-  else if (b.dataset.del != null) { fp.kids.splice(+b.dataset.del, 1); fp.example = false; fpRedraw(true); }
-  else if (b.dataset.focus) { const inp = document.querySelector(`#fp-form [data-k="${b.dataset.focus}"]`); if (!inp) return;
-    inp.closest("details").open = true; inp.scrollIntoView({ block:"center" }); inp.focus({ preventScroll:true }); inp.select?.(); }
-});
-
 function render(){
   const h = (location.hash || "#classroom").slice(1);
   const [c, l] = find(h);
   let tab = "classroom";
   if (c) app.innerHTML = lessonView(c, l);
-  else if (h === "tracker") { app.innerHTML = tracker(); tab = h; fpAmtHints(); }
+  else if (h === "tracker") { location.replace("https://www.paisasamjhoraj.com/#planner"); return; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
   else if (h === "about") { app.innerHTML = about(); tab = h; }
   else app.innerHTML = classroom();
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Samjho with Raj` : tab === "tracker" ? "Financial Tracker · Samjho with Raj" : "Samjho with Raj Classroom";
+  document.title = c ? `${l.title} · Samjho with Raj` : "Samjho with Raj Classroom";
 }
 
 app.addEventListener("click", e => {
