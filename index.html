@@ -168,7 +168,14 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-.install{font-size:13px;font-weight:700;border:1px solid var(--ink);border-radius:99px;padding:6px 12px;background:var(--ink);color:var(--paper);cursor:pointer;white-space:nowrap}
+.install{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;border:1px solid var(--ink);border-radius:99px;padding:3px 12px 3px 3px;background:var(--ink);color:var(--paper);cursor:pointer;white-space:nowrap;animation:install-pop 5s ease-in-out 1.5s infinite}
+.install img{width:28px;height:28px;border-radius:50%;display:block;background:#fff;flex:none}
+.install::after{content:"";position:absolute;inset:-2px;border-radius:99px;border:2px solid var(--accent);opacity:0;pointer-events:none;animation:install-ring 5s ease-out 1.5s infinite}
+.install:hover,.install:hover::after{animation-play-state:paused}
+@keyframes install-pop{0%,14%,100%{transform:none}4%{transform:scale(1.14) rotate(-3deg)}8%{transform:scale(.95)}11%{transform:scale(1.04)}}
+@keyframes install-ring{0%{opacity:.8;transform:scale(1)}16%{opacity:0;transform:scale(1.4)}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.install,.install::after{animation:none}}
+@media (max-width:420px){.install{padding-right:10px;gap:5px}.install img{width:24px;height:24px}.install-x{display:none}}
 .install[hidden]{display:none}
 .bar-right{display:flex;gap:10px;align-items:center}
 .install-help{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:22px 22px 18px;max-width:min(420px,calc(100vw - 32px));font-size:15.5px}
@@ -197,7 +204,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Samjho <span>with</span> Raj</a>
-    <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button" hidden>Install app</button></div>
+    <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button" hidden><img src="img/icon-192.png" alt="" width="28" height="28">Install<span class="install-x"> app</span></button></div>
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
