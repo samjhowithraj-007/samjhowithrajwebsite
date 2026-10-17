@@ -1,6 +1,6 @@
-# samjhowithraj.online
+# techsamjhoraj.com
 
-Source of https://www.samjhowithraj.online, a free Hindi / Hinglish classroom for the Samjho with Raj videos.
+Source of https://www.techsamjhoraj.com, a free Hindi / Hinglish classroom for the Samjho with Raj videos.
 
 - `index.html` — the whole site: Classroom, lesson pages, Financial Tracker, Upcoming, Community, About. Course and lesson notes live in the `COURSES` list near the top of the script.
 - `media/` — lesson videos (`<lesson-id>.mp4`) and their poster images (`<lesson-id>.jpg`)
