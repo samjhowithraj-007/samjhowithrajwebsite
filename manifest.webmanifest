@@ -1,0 +1,59 @@
+{
+  "id": "./",
+  "name": "Tech Samjho Raj",
+  "short_name": "Tech Samjho",
+  "description": "Free Hinglish video lessons with English notes: Python with chai, an AI chatbot in Python and AI agents.",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "start_url": "./#classroom",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#202321",
+  "theme_color": "#202321",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Classroom",
+      "url": "./#classroom",
+      "icons": [
+        {
+          "src": "img/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Upcoming lessons",
+      "url": "./#upcoming",
+      "icons": [
+        {
+          "src": "img/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,13 @@
 <title>Samjho with Raj Classroom</title>
 <meta name="description" content="Samjho with Raj: free lessons on Python, AI chatbots and AI agents, Watch a short video, read the notes, try the code.">
 <link rel="icon" href="img/raj-mark.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#202321">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tech Samjho">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 /* Layout: Skool-style community shell — brand bar + tab row, then Classroom grid / course view with lesson sidebar.
    Palette and type carried over from the original techsamjhoraj.com (paper, ink, brick red, forest green, Georgia). */
@@ -158,13 +165,16 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.install{font-size:13px;font-weight:700;border:1px solid var(--ink);border-radius:99px;padding:6px 12px;background:var(--ink);color:var(--paper);cursor:pointer;white-space:nowrap}
+.install[hidden]{display:none}
+.bar-right{display:flex;gap:10px;align-items:center}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
     <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Samjho <span>with</span> Raj</a>
-    <div class="social" data-social></div>
+    <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button" hidden>Install app</button></div>
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
@@ -545,6 +555,14 @@ app.addEventListener("click", e => {
 });
 addEventListener("hashchange", () => { render(); scrollTo(0, 0); });
 render();
+
+// ---------- installable app (PWA) ----------
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+let installEvt = null;
+const installBtn = document.getElementById("install");
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; installBtn.hidden = false; });
+installBtn.addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; installBtn.hidden = true; });
+addEventListener("appinstalled", () => { installBtn.hidden = true; });
 </script>
 </body>
 </html>
