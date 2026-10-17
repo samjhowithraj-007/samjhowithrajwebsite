@@ -168,6 +168,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .install{font-size:13px;font-weight:700;border:1px solid var(--ink);border-radius:99px;padding:6px 12px;background:var(--ink);color:var(--paper);cursor:pointer;white-space:nowrap}
 .install[hidden]{display:none}
 .bar-right{display:flex;gap:10px;align-items:center}
+.install-help{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:22px 22px 18px;max-width:min(420px,calc(100vw - 32px));font-size:15.5px}
+.install-help::backdrop{background:rgba(0,0,0,.45)}
+.install-help h3{margin:0 0 10px;font-size:19px}
+.install-help ol{padding-left:20px;margin:8px 0}
+.install-help li{margin:6px 0}
+.install-help p{margin:8px 0;color:var(--muted)}
+.install-help .btn{margin-top:10px}
+@media (max-width:700px){.bar .social{display:none}}
 </style>
 </head>
 <body>
@@ -186,6 +194,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </header>
 <main class="wrap" id="app"></main>
 <footer><div class="wrap"><span>© 2026 Samjho with Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No sign-up, no tracking.</span></div></footer>
+<dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><button class="btn" type="button" data-close>Got it</button></dialog>
 
 <script>
 // ---------- course content (notes from the videos) ----------
@@ -555,14 +564,38 @@ app.addEventListener("click", e => {
 });
 addEventListener("hashchange", () => { render(); scrollTo(0, 0); });
 render();
-
 // ---------- installable app (PWA) ----------
+// Chrome / Edge on Android and desktop: real install prompt. iPhone, in-app browsers (WhatsApp, Instagram, Facebook)
+// and browsers without a prompt: the same button opens step-by-step help instead.
 if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+const ua = navigator.userAgent;
+const isStandalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+const isMobile = isIOS || /Android/.test(ua);
+const inApp = /Instagram|FBAN|FBAV|FB_IAB|WhatsApp|Line\/|; wv\)|Snapchat/.test(ua) || (isIOS && !/Safari\//.test(ua));
 let installEvt = null;
-const installBtn = document.getElementById("install");
-addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; installBtn.hidden = false; });
-installBtn.addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; installBtn.hidden = true; });
-addEventListener("appinstalled", () => { installBtn.hidden = true; });
+const installBtn = document.getElementById("install"), help = document.getElementById("install-help");
+if (isMobile && !isStandalone) installBtn.hidden = false;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; if (!isStandalone) installBtn.hidden = false; });
+addEventListener("appinstalled", () => { installBtn.hidden = true; installEvt = null; });
+function installSteps(){
+  const site = location.host.replace(/^www\./, "");
+  if (inApp) return `<p>You opened this page inside another app (WhatsApp, Instagram or Facebook). Apps can only be installed from your phone's own browser.</p><ol>
+      <li>Tap the <b>⋮</b> or <b>⋯</b> menu at the top or bottom of this screen.</li>
+      <li>Choose <b>${isIOS ? "Open in Safari" : "Open in Chrome"}</b> (sometimes called "Open in browser").</li>
+      <li>Then tap <b>Install app</b> again.</li></ol>
+    <p>Or open ${isIOS ? "Safari" : "Chrome"} yourself and type <b>${site}</b> in the address bar at the top (not in a Google search box).</p>`;
+  if (isIOS) return /CriOS|FxiOS|EdgiOS/.test(ua)
+    ? `<p>On iPhone, apps install from <b>Safari</b>. Open Safari, type <b>${site}</b> in the address bar, then follow these steps:</p><ol><li>Tap the <b>Share</b> button (square with an arrow).</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol>`
+    : `<ol><li>Tap the <b>Share</b> button (square with an arrow) at the bottom of Safari.</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>. The app appears on your home screen.</li></ol>`;
+  return `<ol><li>Tap the <b>⋮</b> menu at the top right of Chrome.</li><li>Tap <b>Install app</b> (or <b>Add to Home screen</b>).</li><li>Tap <b>Install</b>. The app appears on your home screen.</li></ol>
+    <p>If you don't see it, make sure you opened <b>${site}</b> in Chrome itself, not inside WhatsApp or Instagram.</p>`;
+}
+installBtn.addEventListener("click", async () => {
+  if (installEvt) { installEvt.prompt(); const r = await installEvt.userChoice; installEvt = null; if (r.outcome === "accepted") installBtn.hidden = true; return; }
+  help.querySelector(".ih-body").innerHTML = installSteps(); help.showModal();
+});
+help.addEventListener("click", e => { if (e.target === help || e.target.closest("[data-close]")) help.close(); });
 </script>
 </body>
 </html>
