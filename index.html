@@ -602,7 +602,7 @@ const isMobile = isIOS || /Android/.test(ua);
 const inApp = /Instagram|FBAN|FBAV|FB_IAB|WhatsApp|Line\/|; wv\)|Snapchat/.test(ua) || (isIOS && !/Safari\//.test(ua));
 let installEvt = null;
 const installBtn = document.getElementById("install"), help = document.getElementById("install-help");
-if (isMobile && !isStandalone) installBtn.hidden = false;
+if (!isStandalone) installBtn.hidden = false; // every browser: a real prompt where offered, step-by-step help elsewhere
 addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; if (!isStandalone) installBtn.hidden = false; });
 addEventListener("appinstalled", () => { installBtn.hidden = true; installEvt = null; });
 const SHARE = '<svg class="ih-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>', PLUS = '<svg class="ih-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
@@ -625,6 +625,13 @@ function installSteps(){
         <li><span class="ih-n">2</span><span>Scroll down and tap <b>Add to Home Screen</b> ${PLUS}. Not there? Tap <b>Edit Actions</b> at the bottom of the list and add it.</span></li>
         <li><span class="ih-n">3</span><span>Tap <b>Add</b> at the top right. The app icon appears on your home screen.</span></li></ol>
       <div class="ih-arrow" aria-hidden="true">Share is down here<span>⬇</span></div>`;
+  if (!isMobile) {
+    const edge = /Edg\//.test(ua), safari = /Safari\//.test(ua) && !/Chrome|Chromium|Edg\//.test(ua), firefox = /Firefox\//.test(ua);
+    if (firefox) return `<p>Firefox on a computer can't install website apps. Open <b>${site}</b> in <b>Chrome</b> or <b>Edge</b> and click <b>Install app</b> there, or install it on your phone.</p>`;
+    if (safari) return `<ol><li>In the menu bar, click <b>File</b>.</li><li>Click <b>Add to Dock</b>.</li><li>Click <b>Add</b>. The app opens from your Dock.</li></ol><p>Needs macOS Sonoma or newer.</p>`;
+    if (edge) return `<ol><li>Click the <b>⋯</b> menu at the top right of Edge.</li><li>Go to <b>Apps</b> → <b>Install this site as an app</b>.</li><li>Click <b>Install</b>.</li></ol><p>Already installed? Open it from <b>Apps</b> in the same menu, or from your Start menu.</p>`;
+    return `<ol><li>Look for the <b>install icon</b> (a screen with a down arrow) at the right end of Chrome's address bar and click it. Or click <b>⋮</b> → <b>Cast, save and share</b> → <b>Install page as app</b>.</li><li>Click <b>Install</b>. The app gets its own window and a desktop / Start menu shortcut.</li></ol><p>If it says <b>Open in app</b> instead, it's already installed on this computer.</p>`;
+  }
   return `<ol><li>Tap the <b>⋮</b> menu at the top right of Chrome.</li><li>Tap <b>Install app</b> (or <b>Add to Home screen</b>).</li><li>Tap <b>Install</b>. The app appears on your home screen.</li></ol>
     <p>If you don't see it, make sure you opened <b>${site}</b> in Chrome itself, not inside WhatsApp or Instagram.</p>`;
 }
