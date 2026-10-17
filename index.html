@@ -176,6 +176,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .install-help p{margin:8px 0;color:var(--muted)}
 .install-help .btn{margin-top:10px}
 @media (max-width:700px){.bar .social{display:none}}
+.install-help.ios{margin:16px auto auto}
+.ih-ico{width:22px;height:22px;vertical-align:-5px;color:#0a84ff;display:inline-block}
+.ih-steps{list-style:none;padding:0!important;display:flex;flex-direction:column;gap:12px}
+.ih-steps li{display:flex;gap:10px;align-items:flex-start;margin:0!important}
+.ih-n{flex:none;width:26px;height:26px;border-radius:50%;background:#0a84ff;color:#fff;font-weight:700;font-size:14px;display:grid;place-items:center}
+.ih-lead{color:var(--ink)!important}
+.ih-arrow{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);background:#0a84ff;color:#fff;font-weight:700;font-size:14px;padding:8px 14px;border-radius:99px;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:0 6px 20px rgba(0,0,0,.3);animation:ih-bounce 1.2s ease-in-out infinite}
+.ih-arrow span{font-size:20px;line-height:1}
+@keyframes ih-bounce{0%,100%{translate:0 0}50%{translate:0 8px}}
+@media (prefers-reduced-motion:reduce){.ih-arrow{animation:none}}
 </style>
 </head>
 <body>
@@ -578,6 +588,7 @@ const installBtn = document.getElementById("install"), help = document.getElemen
 if (isMobile && !isStandalone) installBtn.hidden = false;
 addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; if (!isStandalone) installBtn.hidden = false; });
 addEventListener("appinstalled", () => { installBtn.hidden = true; installEvt = null; });
+const SHARE = '<svg class="ih-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>', PLUS = '<svg class="ih-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 function installSteps(){
   const site = location.host.replace(/^www\./, "");
   if (inApp) return `<p>You opened this page inside another app (WhatsApp, Instagram or Facebook). Apps can only be installed from your phone's own browser.</p><ol>
@@ -587,13 +598,17 @@ function installSteps(){
     <p>Or open ${isIOS ? "Safari" : "Chrome"} yourself and type <b>${site}</b> in the address bar at the top (not in a Google search box).</p>`;
   if (isIOS) return /CriOS|FxiOS|EdgiOS/.test(ua)
     ? `<p>On iPhone, apps install from <b>Safari</b>. Open Safari, type <b>${site}</b> in the address bar, then follow these steps:</p><ol><li>Tap the <b>Share</b> button (square with an arrow).</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol>`
-    : `<ol><li>Tap the <b>Share</b> button (square with an arrow) at the bottom of Safari.</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>. The app appears on your home screen.</li></ol>`;
+    : `<p class="ih-lead">On iPhone, apps from websites are added with Safari's Share button. It takes 3 taps:</p><ol class="ih-steps">
+        <li><span class="ih-n">1</span><span>Tap <b>Share</b> ${SHARE} in the bar at the <b>bottom</b> of Safari (the arrow below points to it). If you only see <b>⋯</b>, tap that first, then <b>Share</b>.</span></li>
+        <li><span class="ih-n">2</span><span>Scroll down and tap <b>Add to Home Screen</b> ${PLUS}. Not there? Tap <b>Edit Actions</b> at the bottom of the list and add it.</span></li>
+        <li><span class="ih-n">3</span><span>Tap <b>Add</b> at the top right. The app icon appears on your home screen.</span></li></ol>
+      <div class="ih-arrow" aria-hidden="true">Share is down here<span>⬇</span></div>`;
   return `<ol><li>Tap the <b>⋮</b> menu at the top right of Chrome.</li><li>Tap <b>Install app</b> (or <b>Add to Home screen</b>).</li><li>Tap <b>Install</b>. The app appears on your home screen.</li></ol>
     <p>If you don't see it, make sure you opened <b>${site}</b> in Chrome itself, not inside WhatsApp or Instagram.</p>`;
 }
 installBtn.addEventListener("click", async () => {
   if (installEvt) { installEvt.prompt(); const r = await installEvt.userChoice; installEvt = null; if (r.outcome === "accepted") installBtn.hidden = true; return; }
-  help.querySelector(".ih-body").innerHTML = installSteps(); help.showModal();
+  help.querySelector(".ih-body").innerHTML = installSteps(); help.classList.toggle("ios", isIOS && !inApp && !/CriOS|FxiOS|EdgiOS/.test(ua)); help.showModal();
 });
 help.addEventListener("click", e => { if (e.target === help || e.target.closest("[data-close]")) help.close(); });
 </script>
