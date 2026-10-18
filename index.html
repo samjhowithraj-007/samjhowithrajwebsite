@@ -213,6 +213,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .legal h2{font-size:22px;margin:26px 0 6px}
 .legal p,.legal li{color:var(--muted);font-size:15.5px}
 .legal ul{padding-left:20px}
+.cb-fab{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:99px;border:1px solid #202321;background:#202321;color:#fff;font:700 14px var(--body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.cb-fab span{font-size:20px;line-height:1}
+.cb-fab[aria-expanded="true"]{display:none}
+.cb-panel{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:31;width:min(380px,calc(100vw - 32px));height:min(540px,calc(100vh - 110px));display:flex;flex-direction:column;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:hidden}
+.cb-panel[hidden]{display:none}
+.cb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#202321;color:#fff}
+.cb-head b{font-size:15px;display:block}
+.cb-head small{opacity:.8;font-size:12px}
+.cb-head .cb-av{width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;flex:none}
+.cb-x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:4px 6px}
+.cb-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;overscroll-behavior:contain}
+.cb-msg{max-width:86%;padding:9px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-line;overflow-wrap:anywhere}
+.cb-msg.bot{background:var(--green-soft);border-bottom-left-radius:4px;align-self:flex-start}
+.cb-msg.me{background:#202321;color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.cb-msg a{color:inherit;font-weight:700}
+.cb-msg.typing{opacity:.6;font-style:italic}
+.cb-chips{display:flex;gap:6px;overflow-x:auto;padding:0 14px 10px;scrollbar-width:none}
+.cb-chips::-webkit-scrollbar{display:none}
+.cb-chips button{flex:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:6px 11px;font-size:13px;cursor:pointer;white-space:nowrap}
+.cb-chips button:hover{border-color:var(--ink)}
+.cb-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+.cb-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:99px;padding:10px 14px;background:var(--paper);color:var(--ink);font:inherit;font-size:15px}
+.cb-form input:focus{outline:none;border-color:var(--ink)}
+.cb-form button{border:0;border-radius:99px;background:#202321;color:#fff;font-weight:700;padding:0 16px;cursor:pointer}
+.cb-foot{font-size:11.5px;color:var(--muted);padding:0 14px 10px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cb-fab{border-color:rgba(255,255,255,.35)}}
+:root[data-theme="dark"] .cb-fab{border-color:rgba(255,255,255,.35)}
+@media (max-width:480px){.cb-panel{right:8px;left:8px;width:auto;bottom:8px;height:min(78vh,600px)}.cb-fab b{display:none}.cb-fab{padding:12px}}
+@media print{.cb-fab,.cb-panel{display:none!important}}
 </style>
 </head>
 <body>
@@ -654,6 +683,82 @@ app.addEventListener("click", e => {
 });
 addEventListener("hashchange", () => { render(); scrollTo(0, 0); });
 render();
+// ---------- SamjhoBot (rule-based, runs only in this browser; nothing is sent anywhere) ----------
+// Same idea as the AI + Python course: a dictionary of keywords → replies, .lower(), and "in" checks. First match wins.
+function samjhoBot(BOT){
+  const fab = document.createElement("button"), panel = document.createElement("section");
+  fab.className = "cb-fab"; fab.type = "button"; fab.setAttribute("aria-expanded", "false"); fab.setAttribute("aria-controls", "cb-panel");
+  fab.innerHTML = '<span aria-hidden="true">☕</span><b>SamjhoBot</b>'; fab.title = "Chat with SamjhoBot";
+  panel.className = "cb-panel"; panel.id = "cb-panel"; panel.hidden = true; panel.setAttribute("aria-label", "SamjhoBot chat");
+  panel.innerHTML = `<div class="cb-head"><span class="cb-av" aria-hidden="true">☕</span><div><b>SamjhoBot</b><small>${BOT.tagline}</small></div><button class="cb-x" type="button" aria-label="Close chat">×</button></div>
+    <div class="cb-log" role="log" aria-live="polite"></div><div class="cb-chips"></div>
+    <form class="cb-form"><input name="q" autocomplete="off" placeholder="Type a message…" aria-label="Message" maxlength="200"><button type="submit">Send</button></form>
+    <div class="cb-foot">${BOT.foot}</div>`;
+  document.body.append(fab, panel);
+  const log = panel.querySelector(".cb-log"), chips = panel.querySelector(".cb-chips"), form = panel.querySelector(".cb-form");
+  const say = (html, who) => { const m = document.createElement("div"); m.className = "cb-msg " + who; m.innerHTML = html; log.append(m); log.scrollTop = log.scrollHeight; return m; };
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
+  const setChips = list => { chips.innerHTML = list.map(c => `<button type="button">${c}</button>`).join(""); };
+  function reply(text){
+    const t = " " + text.toLowerCase().replace(/[^a-z0-9₹&+ ]/g, " ").replace(/\s+/g, " ") + " ";
+    const has = k => k.includes(" ") ? t.includes(" " + k + " ") || t.includes(k) : t.includes(" " + k + " ") || (k.length > 4 && t.includes(k));
+    for (const [keys, ans] of BOT.rules) if (keys.some(has)) return typeof ans === "function" ? ans(t) : ans;
+    return BOT.fallback;
+  }
+  function ask(text){
+    text = text.trim(); if (!text) return;
+    say(esc(text), "me");
+    const dots = say("SamjhoBot is typing…", "bot typing");
+    setTimeout(() => { dots.remove(); const r = reply(text); say(r.text || r, "bot"); if (r.chips) setChips(r.chips); }, 450);
+  }
+  let started = false;
+  const open = () => { panel.hidden = false; fab.setAttribute("aria-expanded", "true");
+    if (!started) { started = true; say(BOT.hello, "bot"); setChips(BOT.chips); }
+    if (matchMedia("(min-width:481px)").matches) form.q.focus(); };
+  const close = () => { panel.hidden = true; fab.setAttribute("aria-expanded", "false"); fab.focus(); };
+  fab.addEventListener("click", open);
+  panel.querySelector(".cb-x").addEventListener("click", close);
+  panel.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  chips.addEventListener("click", e => { const b = e.target.closest("button"); if (b) ask(b.textContent); });
+  form.addEventListener("submit", e => { e.preventDefault(); ask(form.q.value); form.q.value = ""; });
+  log.addEventListener("click", e => { const a = e.target.closest('a[href^="#"]'); if (a && matchMedia("(max-width:480px)").matches) close(); });
+}
+const CHAI_MENU = { masala:20, adrak:15, elaichi:25, tulsi:30 };
+let chaiCart = [];
+samjhoBot({
+  tagline: "Chai shop + course guide",
+  foot: "A simple rule-based bot, built like the one in the AI + Python course. It can't understand everything!",
+  hello: "Namaste! ☕ I'm SamjhoBot.\nI run a tiny chai shop and I know my way around this classroom. Order a chai, or ask me where to start learning.",
+  chips: ["menu", "order masala", "bill", "Where do I start?", "How are you built?", "Next lesson"],
+  rules: [
+    [["hi", "hello", "hey", "namaste", "hii", "helo"], { text: "Namaste! 🙏 Kya lenge? Type <b>menu</b> to see the chai, or ask about the lessons.", chips: ["menu", "Where do I start?"] }],
+    [["how are you built", "how do you work", "your code", "who made you", "are you ai", "are you chatgpt", "built"], { text: "No AI inside me! I'm a Python-style dictionary of keywords and replies, plus <code>.lower()</code> and <code>in</code> checks. Exactly what you build in <a href=\"#chatbot-2\">AI + Python Part 2</a> and <a href=\"#chatbot-3\">Part 3</a>. 🤖", chips: ["Start the chatbot course", "menu"] }],
+    [["start", "beginner", "begin", "new to", "learn python", "python", "basics", "shuru"], { text: "Start with <a href=\"#python-1\">Python with Chai</a>: 10 short lessons, each with a video, notes and code. No background needed. ☕🐍", chips: ["Start the chatbot course", "Agentic AI", "Next lesson"] }],
+    [["bill", "total", "pay", "kitna hua", "hisaab"], () => {
+      if (!chaiCart.length) return { text: "Your cart is empty! Try <b>order masala</b> first. ☕", chips: ["order masala", "menu"] };
+      let total = chaiCart.reduce((n, f) => n + CHAI_MENU[f], 0); const off = total > 50 ? 5 : 0; total -= off;
+      const lines = Object.entries(chaiCart.reduce((o, f) => (o[f] = (o[f] || 0) + 1, o), {})).map(([f, n]) => `${n} × ${f[0].toUpperCase() + f.slice(1)} = ₹${n * CHAI_MENU[f]}`).join("\n");
+      chaiCart = [];
+      return { text: `🧾 Your bill:\n${lines}${off ? "\nDiscount on bills over ₹50: −₹5" : ""}\n<b>Total: ₹${total}</b>\n\nThis is the exact logic from <a href=\"#python-7\">Python Lesson 7: the chai bill</a>!`, chips: ["order adrak", "Where do I start?"] }; }],
+    [["order", "want", "chahiye", "masala", "adrak", "elaichi", "tulsi"], t => {
+      const got = Object.keys(CHAI_MENU).filter(f => t.includes(f));
+      if (!got.length) return { text: "Which chai? We have Masala, Adrak, Elaichi and Tulsi. Try <b>order masala</b>.", chips: ["order masala", "order tulsi", "menu"] };
+      chaiCart.push(...got);
+      return { text: `${got.map(f => f[0].toUpperCase() + f.slice(1)).join(" + ")} chai, coming up! ☕ (${chaiCart.length} in your cart)\nType <b>bill</b> when you're done.`, chips: ["bill", "order elaichi", "menu"] }; }],
+    [["menu", "chai", "flavour", "flavor", "price", "rate", "kitne ka"], { text: "☕ Aaj ka menu:\nMasala ₹20 · Adrak ₹15 · Elaichi ₹25 · Tulsi ₹30\n\nIn code, this menu is a dictionary: <code>menu = {\"Masala\": 20, ...}</code>. See <a href=\"#python-6\">Lesson 6</a>.", chips: ["order masala", "order adrak", "bill"] }],
+    [["chatbot", "chat bot", "bot course", "claude", "api"], { text: "<a href=\"#chatbot-1\">AI + Python: Build a Chai Chatbot</a> goes from a simple bot like me to a Claude-powered bot, a web app and an AI agent. 50 parts, new ones every week.", chips: ["How are you built?", "Next lesson"] }],
+    [["agent", "agentic", "bunty", "ai agent"], { text: "Meet Bunty, the AI intern! <a href=\"#agentic-1\">Agentic AI with Bunty</a> explains agents without jargon. Episode 1: chatbot vs agent.", chips: ["Where do I start?", "Next lesson"] }],
+    [["next", "upcoming", "new lesson", "coming", "when"], { text: "See what's coming in <a href=\"#upcoming\">Upcoming</a>. Want an email when a lesson goes live? Use the sign-up box at the end of any lesson. 📬", chips: ["Where do I start?", "menu"] }],
+    [["money", "finance", "sip", "invest", "paisa", "budget", "mutual fund", "loan"], { text: "Money lessons live on our sister site 💰 <a href=\"https://www.paisasamjhoraj.com\" target=\"_blank\" rel=\"noopener\">paisasamjhoraj.com</a>: budgeting, SIPs, index funds and a family Money Planner.", chips: ["Where do I start?"] }],
+    [["install", "app", "download", "home screen"], { text: "Tap the <b>Install</b> button at the top right (the one with Raj's face) to add this classroom to your phone or computer like an app. 📲", chips: ["Where do I start?"] }],
+    [["email", "notify", "subscribe", "newsletter", "update"], { text: "Use the <b>Get new lessons by email</b> box on the Classroom page or at the end of any lesson. One short email per new lesson; unsubscribe any time. 📬", chips: ["Next lesson"] }],
+    [["youtube", "video", "instagram", "facebook", "twitter", " x "], { text: "Watch every lesson on <a href=\"https://www.youtube.com/@SamjhowithRaj\" target=\"_blank\" rel=\"noopener\">YouTube @SamjhowithRaj</a>. The icons at the top link to Instagram, Facebook and X too.", chips: ["Where do I start?"] }],
+    [["contact", "question", "help", "doubt", "error", "raj", "mail"], { text: "Stuck on some code? Write to <b>samjhowithraj@gmail.com</b> with the lesson name and your code. 🙂", chips: ["Where do I start?", "menu"] }],
+    [["thank", "thanks", "shukriya", "dhanyavad", "nice", "great", "awesome"], { text: "Shukriya! ☕ Ek aur chai?", chips: ["order masala", "bill"] }],
+    [["bye", "band", "close", "exit", "quit"], { text: "Dukaan band! Kal milte hain. 👋\n(That's the <code>break</code> from <a href=\"#python-10\">Lesson 10</a>.)", chips: ["menu"] }],
+  ],
+  fallback: { text: "Samjha nahi! 😅 I'm a simple bot and only know a few words.\nTry: <b>menu</b>, <b>order masala</b>, <b>bill</b>, <b>python</b>, <b>chatbot</b> or <b>next lesson</b>.\n(Making me smarter is what the <a href=\"#chatbot-1\">chatbot course</a> is about!)", chips: ["menu", "Where do I start?", "How are you built?"] },
+});
 // ---------- installable app (PWA) ----------
 // Chrome / Edge on Android and desktop: real install prompt. iPhone, in-app browsers (WhatsApp, Instagram, Facebook)
 // and browsers without a prompt: the same button opens step-by-step help instead.
