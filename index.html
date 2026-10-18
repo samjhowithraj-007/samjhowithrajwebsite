@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "12 lessons · live",
+  id: "python", title: "Python with Chai", tag: "13 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -441,7 +441,20 @@ print(bill)
 with open("bill.txt", "a") as f:
     f.write("\\nAdrak: Rs 15")`), output:"Total: Rs 50",
     practice:["Run the append part twice, then read the file again. How many Adrak lines are there?","Change \"a\" to \"w\" and run it. What happened to the old bill?"],
-    takeaway:"r = read, w = write fresh, a = add to the end." }
+    takeaway:"r = read, w = write fresh, a = add to the end." },
+  { id:"python-13", title:"Modules: the lucky chai", video:"media/python-13.mp4",
+    concept:["A <b>module</b> is a ready-made toolbox of code. You don't write it yourself, you <code>import</code> it.",
+      "<code>random</code> comes with Python. <code>random.choice(list)</code> picks one item from a list, a different one each run.",
+      "<code>random.randint(1, 10)</code> gives a whole number from 1 to 10, and both ends are included."],
+    code:PY(`import random
+
+chai = ["Masala", "Adrak", "Elaichi"]
+print("Aaj ki lucky chai:", random.choice(chai))
+
+num = random.randint(1, 10)
+print("Lucky number:", num)`), output:"Aaj ki lucky chai: Elaichi\nLucky number: 7\n(run it again: you get new answers)",
+    practice:["Add two more flavours to the list and run it 5 times. Did every flavour come up?","Make a game: if the lucky number is 7, print \"Chai free!\""],
+    takeaway:"Don't build every tool yourself: import it." }
   ]}]
 },
 {
