@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "17 lessons · live",
+  id: "python", title: "Python with Chai", tag: "18 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -500,7 +500,22 @@ unique.add("Sita")
 print("Ravi" in unique, "Zoya" in unique)
 print(len(unique))`), output:"4 3\nTrue False\n4",
     practice:["Add \"Ravi\" again with add(). Did len(unique) change?","Turn the set back into a list with list(unique) and print it."],
-    takeaway:"Set = a guest list with no doubles." }
+    takeaway:"Set = a guest list with no doubles." },
+  { id:"python-18", title:"datetime: shop timing", video:"media/python-18.mp4",
+    concept:["<code>datetime</code> is Python's clock. <code>from datetime import datetime</code> brings it in, and <code>datetime.now()</code> gives the date and time right now.",
+      "<code>strftime()</code> formats it: <code>\"%H:%M\"</code> gives 09:30, <code>\"%d-%m-%Y\"</code> gives 18-10-2026.",
+      "<code>now.hour</code> is just the hour (0–23), so you can decide things: is the shop open?"],
+    code:PY(`from datetime import datetime
+
+now = datetime.now()
+print(now.strftime("%d-%m-%Y %H:%M"))
+
+if 8 <= now.hour < 22:
+    print("Dukaan khuli hai!")
+else:
+    print("Kal aana!")`), output:"18-10-2026 09:30\nDukaan khuli hai!\n(your date and time will be different)",
+    practice:["Print just the day name with now.strftime(\"%A\").","Change the hours so the shop opens at 7 and closes at 11 at night."],
+    takeaway:"datetime = Python's clock: now(), strftime(), hour." }
   ]}]
 },
 {
