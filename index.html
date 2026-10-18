@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Samjho with Raj Classroom</title>
-<meta name="description" content="Samjho with Raj: free lessons on Python, AI chatbots and AI agents, Watch a short video, read the notes, try the code.">
+<title>Tech Samjho Raj Classroom</title>
+<meta name="description" content="Tech Samjho Raj: free lessons on Python, AI chatbots and AI agents, Watch a short video, read the notes, try the code.">
 <link rel="icon" href="img/raj-mark.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#202321">
@@ -253,6 +253,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .promo p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
 .promo .go{font-weight:700;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:600px){.promo{grid-template-columns:1fr}}
+/* ---------- book page ---------- */
+.bookhero{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px;align-items:start;margin-top:10px}
+@media (max-width:760px){.bookhero{grid-template-columns:1fr}.bookcov{max-width:320px}}
+.bookcov{position:relative}
+.bookcov img{width:100%;height:auto;border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.28);display:block}
+.chotu-bob{position:absolute;right:-18px;bottom:-22px;width:110px;height:110px;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){.chotu-bob{animation:none}}
+.bookhero .ticks{padding-left:1.2em}.bookhero .ticks li{margin:.3em 0}
+.bookhero .author{color:var(--muted)}
+.pricebox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:14px}
+.pricebox .price{font-size:26px}.pricebox s{color:var(--muted);font-size:18px}
+.buyrow{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.buyrow .btn[aria-disabled]{opacity:.6;cursor:default}
+.pricebox small{color:var(--muted)}
+.bookprev,.booktoc,.bookfaq{margin-top:40px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:12px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:4px;font-size:14.5px}
+.pcard span{color:var(--muted)}
+.toc3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.toc3 ol{padding-left:1.4em;margin:6px 0}.toc3 li{margin:.2em 0}
+.bookfaq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0}
+.bookfaq summary{cursor:pointer;font-weight:600}
+.bookbox{display:grid;grid-template-columns:70px minmax(0,1fr);gap:14px;align-items:center;background:var(--gold);border-radius:12px;padding:12px;margin-top:18px;text-decoration:none;color:inherit}
+.bookbox img{width:70px;border-radius:4px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.bookbox .pl{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.bookbox p{margin:2px 0 4px;color:var(--muted);font-size:14.5px}.bookbox .go{font-weight:700;font-size:14px;text-decoration:underline}
+.tab .new{font-size:10px;background:var(--accent);color:#fff;border-radius:6px;padding:1px 5px;margin-left:4px;vertical-align:2px}
+
 .books{margin-top:34px}
 .books .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:14px}
 .book{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:inherit}
@@ -268,19 +297,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <body>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Samjho <span>with</span> Raj</a>
+    <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Tech <span>Samjho</span> Raj</a>
     <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button"><img src="img/icon-192.png" alt="" width="28" height="28">Install<span class="install-x"> app</span></button></div>
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
-    <a class="tab" href="https://www.paisasamjhoraj.com" target="_blank" rel="noopener">Money lessons ↗</a>
+    <a class="tab" href="#book" data-tab="book">Book<span class="new">New</span></a>
     <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
     <a class="tab" href="#community" data-tab="community">Community</a>
     <a class="tab" href="#about" data-tab="about">About</a>
   </nav>
 </header>
 <main class="wrap" id="app"></main>
-<footer><div class="wrap"><span>© 2026 Samjho with Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No tracking. <a href="#privacy">Privacy</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Tech Samjho Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No tracking. <a href="#privacy">Privacy</a></span></div></footer>
 <dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><button class="btn" type="button" data-close>Got it</button></dialog>
 
 <script>
@@ -731,6 +760,7 @@ function lessonView(c, l){
         <a class="btn" href="${next ? "#" + next.id : "#upcoming"}">${next ? "Next →" : "What's next →"}</a>
       </div>
     </div>
+    ${bookBox(l.id)}
     ${promo(l.id)}
     ${signup("Liked this lesson? Get an email when the next one is out.")}
   </article>`;
@@ -760,7 +790,7 @@ function community(){
 }
 
 function about(){
-  return `<div class="about"><img src="img/raj-mark.png" alt="Samjho with Raj logo">
+  return `<div class="about"><img src="img/raj-mark.png" alt="Tech Samjho Raj logo">
   <div><div class="eyebrow">About</div><h2>Hi, I'm Raj.</h2>
     <p>I work in technology architecture, with experience in Python, Azure and data platforms. This is where I turn complicated ideas into simple, useful lessons.</p>
     <p>The approach is simple: explain the idea, try it on a real task, and show what worked and what needs checking. You don't need a technical background.</p>
@@ -781,6 +811,7 @@ function promo(here){
   return `<a class="promo" href="${p.link}"${rel}><img src="${p.image}" alt="" loading="lazy"><div><span class="pl">${p.label}</span><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta}${ext ? " ↗" : " →"}</span></div></a>`;
 }
 const PROMOS = [
+  { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish. Launch price ₹199.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
   { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
   { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
   { label:"From Raj", title:"Watch every lesson on YouTube", text:"Short Hinglish videos on Python, AI chatbots and agents. Subscribe so you don't miss a part.", image:"media/agentic-1.jpg", link:"https://www.youtube.com/@SamjhowithRaj", cta:"Subscribe on YouTube" },
@@ -799,6 +830,68 @@ function books(){
   return `<section class="books" id="books"><div class="eyebrow">Keep learning</div><h2>Recommended books</h2>
     <div class="bgrid">${BOOKS.map(b => `<a class="book" href="${url(b)}" target="_blank" rel="noopener${AMAZON_TAG ? " sponsored" : ""}"><span class="spine" style="background:${b.bg}" aria-hidden="true">${b.icon}</span><b>${b.title}</b><small>${b.author}</small><p>${b.why}</p><span class="go">See on Amazon ↗</span></a>`).join("")}</div>
     <p class="disc">${AMAZON_TAG ? "These are affiliate links: if you buy through them, Raj may earn a small commission at no extra cost to you." : "Links open Amazon India. Raj doesn't earn anything from them."}</p></section>`;
+}
+// ---------- The book: Python with Chai (paid PDF; free 4-page teasers only) ----------
+// Paste the product links from Gumroad / Instamojo / Razorpay Payment Pages into BOOK.buy. Empty = "Coming soon".
+// Never upload the full book PDF to this site: only the *-preview.pdf teasers live in notes/.
+const BOOK = {
+  title: "Python with Chai", sub: "From Basic to Expert", author: "Raj",
+  cred: "AI expert · Azure & Claude certified AI architect · 20 years in tech",
+  price: 299, launch: 199, bundle: 399, launchOn: true,
+  buy: { en: "", hi: "", both: "" },
+  cover: { en: "media/book-cover-en.jpg", hi: "media/book-cover-hi.jpg" },
+  chapters: [[1, "basic", "Hello, Python!", "Hello, Python!"], [2, "basic", "Variables and data types", "Variables aur data types"], [3, "basic", "Strings: playing with text", "Strings: text se khelo"], [4, "basic", "Numbers, maths and input()", "Numbers, maths aur input()"], [5, "basic", "Decisions: if, elif, else", "Faisle: if, elif, else"], [6, "basic", "Loops: do it again and again", "Loops: baar baar karo"], [7, "basic", "Lists: many items, one box", "Lists: kai items, ek dabba"], [8, "basic", "Tuples and sets", "Tuples aur sets"], [9, "basic", "Dictionaries: the menu card", "Dictionaries: menu card"], [10, "basic", "Functions: write once, use forever", "Functions: ek baar likho, hamesha use karo"], [11, "inter", "Errors and debugging", "Errors aur debugging"], [12, "inter", "Files, CSV and JSON", "Files, CSV aur JSON"], [13, "inter", "Modules and the standard library", "Modules aur standard library"], [14, "inter", "Classes and objects", "Classes aur objects"], [15, "inter", "OOP: inheritance and magic methods", "OOP: inheritance aur magic methods"], [16, "inter", "Comprehensions, lambda and sorting", "Comprehensions, lambda aur sorting"], [17, "inter", "Iterators and generators", "Iterators aur generators"], [18, "inter", "collections and itertools", "collections aur itertools"], [19, "inter", "Recursion, scope and closures", "Recursion, scope aur closures"], [20, "inter", "Project: the Chai Shop app", "Project: Chai Shop app"], [21, "expert", "Decorators", "Decorators"], [22, "expert", "Context managers", "Context managers"], [23, "expert", "Type hints and dataclasses", "Type hints aur dataclasses"], [24, "expert", "Testing with pytest", "pytest se testing"], [25, "expert", "Packages, venv and pip", "Packages, venv aur pip"], [26, "expert", "Logging and command-line apps", "Logging aur command-line apps"], [27, "expert", "Threads and processes", "Threads aur processes"], [28, "expert", "asyncio: async and await", "asyncio: async aur await"], [29, "expert", "Web APIs, JSON and regex", "Web APIs, JSON aur regex"], [30, "expert", "Performance, and the expert capstone", "Performance, aur expert capstone"]],
+  previews: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 30],
+};
+// Which book chapter goes deeper on each video lesson (lesson pages show a small "In the book" box).
+const BOOK_FOR_LESSON = { "python-1":1, "python-2":10, "python-3":5, "python-4":7, "python-5":6, "python-6":9, "python-7":20, "python-8":4,
+  "python-9":11, "python-10":6, "python-11":12, "python-12":12, "python-13":13, "python-14":3, "python-15":6, "python-16":10,
+  "python-17":8, "python-18":13, "python-19":14, "python-20":30 };
+const CHOTU = '<svg class="chotu-bob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M78 34q-10-12 0-24M100 30q-10-12 0-24M122 34q-10-12 0-24" fill="none" stroke="#2b2a33" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M150 82q34 0 32 30t-36 28" fill="none" stroke="#2b2a33" stroke-width="9" stroke-linecap="round"/><path d="M44 52h112l-12 104q-2 14-16 14H72q-14 0-16-14z" fill="#fffaf0" stroke="#2b2a33" stroke-width="6" stroke-linejoin="round"/><path d="M47 54h106l-2 14H49z" fill="#d98b3a"/><path d="M44 52h112" stroke="#2b2a33" stroke-width="6" stroke-linecap="round"/><path d="M53 140h94" stroke="#f4c26b" stroke-width="7"/><ellipse cx="70" cy="114" rx="9" ry="6" fill="#ffb3b3"/><ellipse cx="130" cy="114" rx="9" ry="6" fill="#ffb3b3"/><path d="M84 170v14h-10M116 170v14h10" fill="none" stroke="#2b2a33" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="82" cy="98" rx="7" ry="9" fill="#2b2a33"/><ellipse cx="118" cy="98" rx="7" ry="9" fill="#2b2a33"/><circle cx="84" cy="95" r="2.6" fill="#fff"/><circle cx="120" cy="95" r="2.6" fill="#fff"/><path d="M84 118q16 22 32 0z" fill="#c0392b" stroke="#2b2a33" stroke-width="4" stroke-linejoin="round"/><path d="M46 104q-22 4-26 24" fill="none" stroke="#2b2a33" stroke-width="7" stroke-linecap="round"/><circle cx="20" cy="130" r="7" fill="#fffaf0" stroke="#2b2a33" stroke-width="5"/><path d="M152 96q22-12 24-40" fill="none" stroke="#2b2a33" stroke-width="7" stroke-linecap="round"/><circle cx="176" cy="52" r="8" fill="#fffaf0" stroke="#2b2a33" stroke-width="5"/><path d="M188 40l8-6M190 54h10M162 36l-4-8" stroke="#2b2a33" stroke-width="3" stroke-linecap="round"/></svg>';
+const bookTitle = n => (BOOK.chapters.find(c => c[0] === n) || [n, "", ""])[2];
+const preview = (n, lang) => `notes/book-ch${n}-${lang}-preview.pdf`;
+function buyBtn(key, label, price){
+  const url = BOOK.buy[key];
+  return url ? `<a class="btn primary" href="${url}" target="_blank" rel="noopener">${label} · ₹${price}</a>`
+             : `<span class="btn" aria-disabled="true">${label} · Coming soon</span>`;
+}
+function bookPage(){
+  const p = BOOK.launchOn ? `<s>₹${BOOK.price}</s> <b>₹${BOOK.launch}</b> <span class="chip next">Launch offer</span>` : `<b>₹${BOOK.price}</b>`;
+  const now = BOOK.launchOn ? BOOK.launch : BOOK.price;
+  const lv = { basic: "Basic", inter: "Intermediate", expert: "Expert" };
+  const toc = Object.keys(lv).map(k => `<div><h3>${lv[k]}</h3><ol start="${BOOK.chapters.find(c => c[1] === k)[0]}">${BOOK.chapters.filter(c => c[1] === k).map(c => `<li>${c[2]}</li>`).join("")}</ol></div>`).join("");
+  const anyBuy = BOOK.buy.en || BOOK.buy.hi || BOOK.buy.both;
+  return `<section class="bookhero">
+    <div class="bookcov"><img src="${BOOK.cover.en}" alt="Python with Chai book cover" width="420" height="596">${CHOTU}</div>
+    <div><div class="eyebrow">New book · by ${BOOK.author}</div><h2>${BOOK.title}: ${BOOK.sub}</h2>
+      <p class="lead">Learn Python the chai way: one cup, one chapter. 30 illustrated chapters take you from <code>print()</code> to decorators, asyncio and a real capstone project, with Chotu the chai-cup buddy on every page.</p>
+      <ul class="ticks">
+        <li>30 chapters · 300+ illustrated pages · Basic → Intermediate → Expert</li>
+        <li>Two editions: <b>English</b> and <b>Hinglish</b></li>
+        <li>120+ examples; every output checked by really running the code</li>
+        <li>Common mistakes with real error messages, practice, answers, cheat sheets and an index</li></ul>
+      <p class="author">by <b>${BOOK.author}</b> · ${BOOK.cred}</p>
+      <div class="pricebox"><div class="price">${p}</div>
+        <div class="buyrow">${buyBtn("en", "English edition", now)}${buyBtn("hi", "Hinglish edition", now)}${buyBtn("both", "Both editions", BOOK.bundle)}</div>
+        <small>${anyBuy ? "Instant PDF download after payment (UPI, cards, net banking)." : "Payments open very soon. Leave your email below to get the launch price."}</small></div>
+    </div></section>
+  <section class="bookprev"><div class="eyebrow">Free preview</div><h2>Peek inside before you buy</h2>
+    <p class="lead">Each preview shows a chapter's title page, its chai-shop story and a sneak peek of the rest.</p>
+    <div class="pgrid">${BOOK.previews.map(n => `<div class="pcard"><b>Chapter ${n}</b><span>${bookTitle(n)}</span>
+      <div><a href="${preview(n, "en")}" target="_blank" rel="noopener">English</a> · <a href="${preview(n, "hi")}" target="_blank" rel="noopener">Hinglish</a></div></div>`).join("")}</div></section>
+  <section class="booktoc"><div class="eyebrow">Inside the book</div><h2>Contents</h2><div class="toc3">${toc}</div></section>
+  <section class="bookfaq"><div class="eyebrow">Questions</div><h2>Good to know</h2>
+    <details><summary>What format is it?</summary><p>A PDF (A5 pages) that reads well on a phone, tablet or laptop, and prints nicely.</p></details>
+    <details><summary>English or Hinglish?</summary><p>Same chapters, same code, same pages. Pick the language you enjoy reading, or get both.</p></details>
+    <details><summary>Do I need to know coding?</summary><p>No. Chapter 1 starts from installing Python. The expert chapters are there when you're ready.</p></details>
+    <details><summary>Something wrong with my copy?</summary><p>Email <span class="mail">samjhowithraj@gmail.com</span> with your order number.</p></details>
+    <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
+  ${anyBuy ? "" : signup("Get one email when the book is available, with the launch price.")}`;
+}
+function bookBox(id){
+  const n = BOOK_FOR_LESSON[id]; if (!n) return "";
+  return `<a class="bookbox" href="#book"><img src="${BOOK.cover.en}" alt="" loading="lazy"><div><span class="pl">In the book</span>
+    <b>Chapter ${n}: ${bookTitle(n)}</b><p>Go deeper with more examples, common mistakes and practice. Free 4-page preview inside.</p><span class="go">See the book →</span></div></a>`;
 }
 // ---------- email updates (Brevo) ----------
 // Action URL of the Brevo sign-up form (Marketing → Forms → Tech lessons sign-up → Share → Simple HTML). Double opt-in is on.
@@ -843,6 +936,7 @@ function render(){
   let tab = "classroom";
   if (c) app.innerHTML = lessonView(c, l);
   else if (h === "tracker") { location.replace("https://www.paisasamjhoraj.com/#planner"); return; }
+  else if (h === "book") { app.innerHTML = bookPage(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
   else if (h === "about") { app.innerHTML = about(); tab = h; }
@@ -850,7 +944,7 @@ function render(){
   else app.innerHTML = classroom();
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Samjho with Raj` : tab === "privacy" ? "Privacy · Samjho with Raj" : "Samjho with Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "book" ? "Python with Chai (book) · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
