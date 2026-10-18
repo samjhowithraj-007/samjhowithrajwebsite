@@ -132,6 +132,7 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 .copy{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--code-fg);border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer}
 .copy:hover{background:rgba(255,255,255,.08)}
 .codebox pre{margin:0;padding:16px 18px;overflow-x:auto;font:14.5px/1.65 var(--mono)}
+.codebox code{background:none;padding:0;border-radius:0;font-size:inherit;color:inherit}
 .k{color:var(--code-key)} .s{color:var(--code-str)} .c{color:var(--code-com)}
 .out{border-top:1px dashed rgba(255,255,255,.14)}
 .out pre{color:var(--code-str)}
@@ -287,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "11 lessons · live",
+  id: "python", title: "Python with Chai", tag: "12 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -428,7 +429,19 @@ with open("bill.txt", "w") as f:
 
 print("Bill saved!")`), output:"Bill saved!\n(bill.txt now contains: Total: Rs 50)",
     practice:["Run it, then open <code>bill.txt</code> in Notepad. What's inside?","Write 3 lines into the file (hint: add <code>\\n</code> at the end of each line)."],
-    takeaway:"A variable forgets; a file remembers." }
+    takeaway:"A variable forgets; a file remembers." },
+  { id:"python-12", title:"Files: read the bill back", video:"media/python-12.mp4",
+    concept:["<code>open(\"bill.txt\", \"r\")</code> opens a file for <b>reading</b>, and <code>read()</code> gives you all its text.",
+      "<code>\"w\"</code> wipes the file and writes it fresh; <code>\"a\"</code> (append) keeps what is there and adds to the end.",
+      "So yesterday's bill is safe: read it back, and add today's orders below it."],
+    code:PY(`with open("bill.txt", "r") as f:
+    bill = f.read()
+print(bill)
+
+with open("bill.txt", "a") as f:
+    f.write("\\nAdrak: Rs 15")`), output:"Total: Rs 50",
+    practice:["Run the append part twice, then read the file again. How many Adrak lines are there?","Change \"a\" to \"w\" and run it. What happened to the old bill?"],
+    takeaway:"r = read, w = write fresh, a = add to the end." }
   ]}]
 },
 {
