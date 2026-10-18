@@ -168,13 +168,15 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-.install{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;border:1px solid #202321;border-radius:99px;padding:3px 12px 3px 3px;background:#202321;color:#fff;cursor:pointer;white-space:nowrap;animation:install-pop 5s ease-in-out 1.5s infinite}
+.install{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;border:1px solid #202321;border-radius:99px;padding:3px 12px 3px 3px;background:#202321;color:#fff;cursor:pointer;white-space:nowrap;animation:install-pop 5s ease-in-out 1.5s 3}
 .install img{width:28px;height:28px;border-radius:50%;display:block;background:#fff;flex:none}
-.install::after{content:"";position:absolute;inset:-2px;border-radius:99px;border:2px solid var(--accent);opacity:0;pointer-events:none;animation:install-ring 5s ease-out 1.5s infinite}
+.install::after{content:"";position:absolute;inset:-2px;border-radius:99px;border:2px solid var(--accent);opacity:0;pointer-events:none;animation:install-ring 5s ease-out 1.5s 3}
 .install:hover,.install:hover::after{animation-play-state:paused}
-@keyframes install-pop{0%,14%,100%{transform:none}4%{transform:scale(1.14) rotate(-3deg)}8%{transform:scale(.95)}11%{transform:scale(1.04)}}
+@keyframes install-pop{0%,14%,100%{transform:none}5%{transform:scale(1.1)}10%{transform:scale(.98)}}
 @keyframes install-ring{0%{opacity:.8;transform:scale(1)}16%{opacity:0;transform:scale(1.4)}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.install,.install::after{animation:none}}
+/* shown from the first paint so the header never jumps; hidden inside the installed app */
+@media (display-mode:standalone){.install{display:none!important}}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .install{border-color:rgba(255,255,255,.35)}}
 :root[data-theme="dark"] .install{border-color:rgba(255,255,255,.35)}
 @media (max-width:420px){.install{padding-right:10px;gap:5px}.install img{width:24px;height:24px}.install-x{display:none}}
@@ -248,7 +250,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Samjho <span>with</span> Raj</a>
-    <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button" hidden><img src="img/icon-192.png" alt="" width="28" height="28">Install<span class="install-x"> app</span></button></div>
+    <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button"><img src="img/icon-192.png" alt="" width="28" height="28">Install<span class="install-x"> app</span></button></div>
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
