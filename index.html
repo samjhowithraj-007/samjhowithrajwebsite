@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "15 lessons · live",
+  id: "python", title: "Python with Chai", tag: "16 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -475,7 +475,19 @@ print(f"Tip ke saath: Rs {total + 10}")`), output:"3 cup chai: Rs 50\nTip ke saa
 print(list(range(5)))
 print(list(range(2, 11, 2)))`), output:"Cup 1 ready\nCup 2 ready\nCup 3 ready\nCup 4 ready\nCup 5 ready\nCup 6 ready\nCup 7 ready\nCup 8 ready\nCup 9 ready\nCup 10 ready\n[0, 1, 2, 3, 4]\n[2, 4, 6, 8, 10]",
     practice:["Print the 5 times table: 5, 10, 15 … 50 (hint: a step of 5).","Count down from 10 to 1 with range(10, 0, -1)."],
-    takeaway:"range(start, stop, step): the stop never comes." }
+    takeaway:"range(start, stop, step): the stop never comes." },
+  { id:"python-16", title:"Default values: less sugar", video:"media/python-16.mp4",
+    concept:["If a function needs a value and you don't give one, Python stops with a <b>TypeError</b> (missing argument).",
+      "A <b>default value</b> fixes that: <code>def chai_banao(cheeni=1):</code> uses 1 when you say nothing, and your value when you pass one.",
+      "Parameters with defaults go <b>last</b>: <code>def chai_banao(size, cheeni=1)</code> works, <code>(cheeni=1, size)</code> is a SyntaxError."],
+    code:PY(`def chai_banao(cheeni=1):
+    print(f"Cheeni: {cheeni} chammach")
+
+chai_banao()
+chai_banao(0)
+chai_banao(3)`), output:"Cheeni: 1 chammach\nCheeni: 0 chammach\nCheeni: 3 chammach",
+    practice:["Add a second parameter size=\"cutting\" and print both values.","Call chai_banao(cheeni=2). Does naming the argument work too?"],
+    takeaway:"Default = the answer Python uses when you say nothing." }
   ]}]
 },
 {
