@@ -287,7 +287,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "10 lessons · live",
+  id: "python", title: "Python with Chai", tag: "11 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -416,7 +416,19 @@ except ValueError:
     print(order, "ready!")
 print("Dukaan band! Kal milte hain.")`), output:"Order? Masala\nMasala ready!\nOrder? band\nDukaan band! Kal milte hain.",
     practice:["Add every order to a list and print all the orders when the shop closes.","Add the try-except from Lesson 9 and also ask how many cups."],
-    takeaway:"while True keeps going; break stops." }
+    takeaway:"while True keeps going; break stops." },
+  { id:"python-11", title:"Files: save the bill", video:"media/python-11.mp4",
+    concept:["A variable lives only in memory (RAM). When the program closes, its value is gone.",
+      "A <b>file</b> stays on the disk, like the shop's register book: it is still there tomorrow.",
+      "<code>open(\"bill.txt\", \"w\")</code> opens a file for <b>writing</b>, and <code>with</code> closes it for you automatically."],
+    code:PY(`total = 50
+
+with open("bill.txt", "w") as f:
+    f.write("Total: Rs " + str(total))
+
+print("Bill saved!")`), output:"Bill saved!\n(bill.txt now contains: Total: Rs 50)",
+    practice:["Run it, then open <code>bill.txt</code> in Notepad. What's inside?","Write 3 lines into the file (hint: add <code>\\n</code> at the end of each line)."],
+    takeaway:"A variable forgets; a file remembers." }
   ]}]
 },
 {
