@@ -200,6 +200,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){.ih-arrow{animation:none}}
 .install-help.ios-chrome{margin:auto auto 16px}
 .ih-arrow.up{bottom:auto;top:max(10px,env(safe-area-inset-top));right:14px;left:auto;transform:none}
+.signup{background:var(--green-soft);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px 26px;align-items:center;margin-top:26px}
+@media (max-width:760px){.signup{grid-template-columns:1fr}}
+.signup h3{margin:0 0 4px;font-size:19px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.signup p{margin:0;color:var(--muted);font-size:14.5px}
+.signup form{display:flex;gap:8px;flex-wrap:wrap;margin:0}
+.signup input{flex:1 1 200px;min-width:0;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit;font-size:15px}
+.signup input:focus{outline:none;border-color:var(--ink)}
+.signup form small{flex-basis:100%;font-size:12.5px;color:var(--muted)}
+.signup .ok{color:var(--green);font-weight:700;font-size:15px}
+.legal{max-width:760px}
+.legal h2{font-size:22px;margin:26px 0 6px}
+.legal p,.legal li{color:var(--muted);font-size:15.5px}
+.legal ul{padding-left:20px}
 </style>
 </head>
 <body>
@@ -217,7 +230,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </nav>
 </header>
 <main class="wrap" id="app"></main>
-<footer><div class="wrap"><span>© 2026 Samjho with Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No sign-up, no tracking.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Samjho with Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No tracking. <a href="#privacy">Privacy</a></span></div></footer>
 <dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><button class="btn" type="button" data-close>Got it</button></dialog>
 
 <script>
@@ -500,7 +513,8 @@ function classroom(){
         <div class="progrow"><div class="prog"><i style="width:${pct(c)}%"></i></div>${pct(c)}%</div></div>
     </a>`).join("")}
   </div>
-  <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>`;
+  <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
+  ${signup("New Python and AI lessons, straight to your inbox. Free.")}`;
 }
 
 function lessonView(c, l){
@@ -536,6 +550,7 @@ function lessonView(c, l){
         <a class="btn" href="${next ? "#" + next.id : "#upcoming"}">${next ? "Next →" : "What's next →"}</a>
       </div>
     </div>
+    ${signup("Liked this lesson? Get an email when the next one is out.")}
   </article>`;
   return `<div class="course-view">${side}${body}</div>`;
 }
@@ -548,7 +563,8 @@ function upcoming(){
   }
   return `<div class="page-head"><div><div class="eyebrow">Upcoming</div><h2>Next lessons</h2>
     <p class="lead">The next lessons for each course, in the order they will be released. Each lesson opens in the Classroom as soon as its video is out.</p></div></div>
-  <ol class="timeline">${items.map(x => `<li><span class="course-tag">${x.c.title}</span><span>${x.l.title}</span><span class="chip ${x.first ? "next" : ""}">${x.first ? "Next" : "Planned"}</span></li>`).join("")}</ol>`;
+  <ol class="timeline">${items.map(x => `<li><span class="course-tag">${x.c.title}</span><span>${x.l.title}</span><span class="chip ${x.first ? "next" : ""}">${x.first ? "Next" : "Planned"}</span></li>`).join("")}</ol>
+  ${signup("Get an email the day each of these lessons goes live.")}`;
 }
 
 function community(){
@@ -572,6 +588,43 @@ function about(){
   </div></div>`;
 }
 
+const PAISA = false;
+// ---------- email updates (MailerLite) ----------
+// Paste the form's action URL from MailerLite (Forms → Embedded form → HTML code) to switch the sign-up box on.
+// While it is empty, no sign-up box is shown and nothing is ever sent.
+const SIGNUP = { action: "" };
+function signup(lead){
+  if (!SIGNUP.action) return "";
+  return `<section class="signup"><div><h3>Get new lessons by email</h3><p>${lead}</p></div>
+    <form class="signup-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
+      <button class="btn primary" type="submit">Notify me</button>
+      <small>One short email when something new is out. Unsubscribe any time. <a href="#privacy">Privacy</a></small></form></section>`;
+}
+document.addEventListener("submit", async e => {
+  const f = e.target.closest(".signup-form"); if (!f) return;
+  e.preventDefault();
+  const email = f.email.value.trim(), note = f.querySelector("small"), btn = f.querySelector("button");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { note.textContent = "Please enter a valid email address."; f.email.focus(); return; }
+  btn.disabled = true; btn.textContent = "Sending…";
+  const body = new FormData(); body.append("fields[email]", email); body.append("ml-submit", "1"); body.append("anticsrf", "true");
+  try { await fetch(SIGNUP.action, { method: "POST", body, mode: "no-cors" });
+    f.outerHTML = `<p class="ok">Almost done! Check your inbox (and the spam folder) and click the confirm link.</p>`; }
+  catch (err) { btn.disabled = false; btn.textContent = "Notify me"; note.textContent = "Couldn't connect. Check your internet and try again."; }
+});
+function privacy(){
+  return `<article class="legal"><div class="eyebrow">Privacy</div><h1>Your privacy</h1><p>Last updated 18 October 2026.</p>
+    <h2>No account needed</h2><p>Every lesson${PAISA ? ", calculator and the Money Planner" : ""} is open to everyone. You never need to sign up to learn here.</p>
+    <h2>What stays on your device</h2><p>${PAISA ? "Lesson progress, and your Money Planner inputs if you tick “Remember”, are" : "Lesson progress is"} saved in your own browser (local storage). It is never sent to us or anyone else. Clearing this site's data in your browser removes it.</p>
+    <h2>Email updates (only if you sign up)</h2><ul>
+      <li>If you enter your email in a “Get new lessons by email” box, we use it only to tell you when a new lesson or episode is published.</li>
+      <li>You are added only after you click the confirmation link we email you.</li>
+      <li>Your address is stored with our email service, MailerLite, which sends the emails for us. We never sell or share it, and we never send ads.</li>
+      <li>Our emails may record whether they were opened or a link was clicked, so we learn which lessons are useful.</li>
+      <li>Every email has an unsubscribe link. To have your address deleted completely, write to <span class="mail">samjhowithraj@gmail.com</span>.</li></ul>
+    <h2>No tracking on this site</h2><p>No analytics, advertising or tracking cookies. The site is hosted on GitHub Pages; GitHub may keep basic technical logs (such as IP addresses) to run and protect its service. Links to YouTube, Instagram, Facebook and X follow those sites' own policies.</p>
+    <h2>Questions</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span>.</p></article>`;
+}
+
 function render(){
   const h = (location.hash || "#classroom").slice(1);
   const [c, l] = find(h);
@@ -581,10 +634,11 @@ function render(){
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
   else if (h === "about") { app.innerHTML = about(); tab = h; }
+  else if (h === "privacy") { app.innerHTML = privacy(); tab = h; }
   else app.innerHTML = classroom();
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Samjho with Raj` : "Samjho with Raj Classroom";
+  document.title = c ? `${l.title} · Samjho with Raj` : tab === "privacy" ? "Privacy · Samjho with Raj" : "Samjho with Raj Classroom";
 }
 
 app.addEventListener("click", e => {
