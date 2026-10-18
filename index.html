@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "14 lessons · live",
+  id: "python", title: "Python with Chai", tag: "15 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -464,7 +464,18 @@ cups = 3
 print(f"{cups} cup chai: Rs {total}")
 print(f"Tip ke saath: Rs {total + 10}")`), output:"3 cup chai: Rs 50\nTip ke saath: Rs 60",
     practice:["Add a variable flavour = \"Masala\" and print: Masala chai x 3 = Rs 50","Remove the f and run it again. What gets printed?"],
-    takeaway:"Put an f before the quotes, then fill in the { }." }
+    takeaway:"Put an f before the quotes, then fill in the { }." },
+  { id:"python-15", title:"range(): 10 cups at once", video:"media/python-15.mp4",
+    concept:["<code>range(1, 11)</code> is a counting machine: it gives 1, 2, 3 … 10. Put it in a <code>for</code> loop and 2 lines do the work of 10.",
+      "The <b>stop</b> number is never included: <code>range(5)</code> gives 0 to 4, and <code>range(1, 6)</code> gives 1 to 5.",
+      "A third number is the <b>step</b>: <code>range(2, 11, 2)</code> jumps by 2 and gives 2, 4, 6, 8, 10."],
+    code:PY(`for i in range(1, 11):
+    print(f"Cup {i} ready")
+
+print(list(range(5)))
+print(list(range(2, 11, 2)))`), output:"Cup 1 ready\nCup 2 ready\nCup 3 ready\nCup 4 ready\nCup 5 ready\nCup 6 ready\nCup 7 ready\nCup 8 ready\nCup 9 ready\nCup 10 ready\n[0, 1, 2, 3, 4]\n[2, 4, 6, 8, 10]",
+    practice:["Print the 5 times table: 5, 10, 15 … 50 (hint: a step of 5).","Count down from 10 to 1 with range(10, 0, -1)."],
+    takeaway:"range(start, stop, step): the stop never comes." }
   ]}]
 },
 {
