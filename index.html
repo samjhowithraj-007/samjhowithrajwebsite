@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "16 lessons · live",
+  id: "python", title: "Python with Chai", tag: "17 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -487,7 +487,20 @@ chai_banao()
 chai_banao(0)
 chai_banao(3)`), output:"Cheeni: 1 chammach\nCheeni: 0 chammach\nCheeni: 3 chammach",
     practice:["Add a second parameter size=\"cutting\" and print both values.","Call chai_banao(cheeni=2). Does naming the argument work too?"],
-    takeaway:"Default = the answer Python uses when you say nothing." }
+    takeaway:"Default = the answer Python uses when you say nothing." },
+  { id:"python-17", title:"Sets: how many customers?", video:"media/python-17.mp4",
+    concept:["A list keeps duplicates: Ravi came twice, so <code>len(log)</code> says 4 when only 3 people came.",
+      "A <b>set</b> keeps each value only once: <code>set(log)</code> drops the double, and <code>len()</code> gives the real count.",
+      "<code>add()</code> puts in a new value (an existing one changes nothing), and <code>in</code> answers True or False. A set has no fixed order."],
+    code:PY(`log = ["Ravi", "Neha", "Ravi", "Amit"]
+unique = set(log)
+print(len(log), len(unique))
+
+unique.add("Sita")
+print("Ravi" in unique, "Zoya" in unique)
+print(len(unique))`), output:"4 3\nTrue False\n4",
+    practice:["Add \"Ravi\" again with add(). Did len(unique) change?","Turn the set back into a list with list(unique) and print it."],
+    takeaway:"Set = a guest list with no doubles." }
   ]}]
 },
 {
