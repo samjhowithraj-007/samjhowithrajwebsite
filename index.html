@@ -244,6 +244,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 :root[data-theme="dark"] .cb-fab{border-color:rgba(255,255,255,.35)}
 @media (max-width:480px){.cb-panel{right:8px;left:8px;width:auto;bottom:8px;height:min(78vh,600px)}.cb-fab{padding:9px 14px 9px 11px;font-size:13.5px}}
 @media print{.cb-fab,.cb-panel{display:none!important}}
+.promo{display:grid;grid-template-columns:200px minmax(0,1fr);gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:26px;text-decoration:none;color:inherit}
+.promo:hover{border-color:var(--ink)}
+.promo img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block;background:#0e1116}
+.promo .pl{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.promo h3{margin:4px 0;font-size:18px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.promo p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.promo .go{font-weight:700;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:600px){.promo{grid-template-columns:1fr}}
+.books{margin-top:34px}
+.books .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:14px}
+.book{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:inherit}
+.book:hover{border-color:var(--ink)}
+.book .spine{height:84px;border-radius:8px;display:grid;place-items:center;font-size:34px;margin-bottom:6px}
+.book b{font-size:16px;line-height:1.3}
+.book small{color:var(--muted);font-size:13px}
+.book p{margin:0;color:var(--muted);font-size:14px;flex:1}
+.book .go{font-weight:700;font-size:13.5px;margin-top:6px;text-decoration:underline;text-underline-offset:3px}
+.books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
 </style>
 </head>
 <body>
@@ -545,6 +563,8 @@ function classroom(){
     </a>`).join("")}
   </div>
   <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
+  ${books()}
+  ${promo()}
   ${signup("New Python and AI lessons, straight to your inbox. Free.")}`;
 }
 
@@ -581,6 +601,7 @@ function lessonView(c, l){
         <a class="btn" href="${next ? "#" + next.id : "#upcoming"}">${next ? "Next →" : "What's next →"}</a>
       </div>
     </div>
+    ${promo(l.id)}
     ${signup("Liked this lesson? Get an email when the next one is out.")}
   </article>`;
   return `<div class="course-view">${side}${body}</div>`;
@@ -615,11 +636,40 @@ function about(){
     <p>The approach is simple: explain the idea, try it on a real task, and show what worked and what needs checking. You don't need a technical background.</p>
     <div class="principles"><span>Explain clearly</span><span>Show the evidence</span><span>Learn by doing</span></div>
     <div class="social" data-social style="margin-top:20px"></div>
-    <p style="margin-top:24px">Want to talk about a collaboration or a course? <span class="mail">samjhowithraj@gmail.com</span></p>
+    <p style="margin-top:24px">Want to talk about a collaboration, a course or sponsoring the featured spot? <span class="mail">samjhowithraj@gmail.com</span></p>
   </div></div>`;
 }
 
 const PAISA = false;
+// ---------- Featured slot (house promos and sponsors; plain links, no ad network, no tracking) ----------
+// Edit PROMOS to change what the slot shows. label: "From Raj" for your own things, "Sponsored" for a paid sponsor.
+// The home page shows the first promo; lesson pages rotate through the rest and never promote the page you're on.
+function promo(here){
+  const list = PROMOS.filter(p => p.link !== "#" + here && p.link !== "#learn/" + here); if (!list.length) return "";
+  const p = here ? list[[...here].reduce((n, c) => n + c.charCodeAt(0), 0) % list.length] : list[0];
+  const ext = /^https?:/.test(p.link), rel = ext ? ` target="_blank" rel="noopener${p.label === "Sponsored" ? " sponsored" : ""}"` : "";
+  return `<a class="promo" href="${p.link}"${rel}><img src="${p.image}" alt="" loading="lazy"><div><span class="pl">${p.label}</span><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta}${ext ? " ↗" : " →"}</span></div></a>`;
+}
+const PROMOS = [
+  { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
+  { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
+  { label:"From Raj", title:"Watch every lesson on YouTube", text:"Short Hinglish videos on Python, AI chatbots and agents. Subscribe so you don't miss a part.", image:"media/agentic-1.jpg", link:"https://www.youtube.com/@SamjhowithRaj", cta:"Subscribe on YouTube" },
+];
+// ---------- Recommended books (Amazon India) ----------
+// Paste your Amazon Associates tracking ID here (for example "samjhowithraj-21") to turn the links into affiliate links.
+const AMAZON_TAG = "";
+const BOOKS = [
+  { title:"Automate the Boring Stuff with Python", author:"Al Sweigart", why:"Practical Python for everyday tasks. A great next step after Python with Chai.", q:"Automate the Boring Stuff with Python Al Sweigart", icon:"🐍", bg:"#e0e8df" },
+  { title:"Python Crash Course", author:"Eric Matthes", why:"A friendly, project-based introduction to Python, from basics to small apps.", q:"Python Crash Course Eric Matthes", icon:"🚀", bg:"#ece4cf" },
+  { title:"Head First Python", author:"Paul Barry", why:"Visual and playful. Good if you like learning with pictures and puzzles.", q:"Head First Python Paul Barry", icon:"🧠", bg:"#efded6" },
+  { title:"AI Engineering", author:"Chip Huyen", why:"How real AI apps and agents are built with large language models.", q:"AI Engineering Chip Huyen", icon:"🤖", bg:"#dfe3f0" },
+];
+function books(){
+  const url = b => "https://www.amazon.in/s?k=" + encodeURIComponent(b.q) + (AMAZON_TAG ? "&tag=" + encodeURIComponent(AMAZON_TAG) : "");
+  return `<section class="books" id="books"><div class="eyebrow">Keep learning</div><h2>Recommended books</h2>
+    <div class="bgrid">${BOOKS.map(b => `<a class="book" href="${url(b)}" target="_blank" rel="noopener${AMAZON_TAG ? " sponsored" : ""}"><span class="spine" style="background:${b.bg}" aria-hidden="true">${b.icon}</span><b>${b.title}</b><small>${b.author}</small><p>${b.why}</p><span class="go">See on Amazon ↗</span></a>`).join("")}</div>
+    <p class="disc">${AMAZON_TAG ? "These are affiliate links: if you buy through them, Raj may earn a small commission at no extra cost to you." : "Links open Amazon India. Raj doesn't earn anything from them."}</p></section>`;
+}
 // ---------- email updates (Brevo) ----------
 // Action URL of the Brevo sign-up form (Marketing → Forms → Tech lessons sign-up → Share → Simple HTML). Double opt-in is on.
 // Leave it empty to hide the sign-up box everywhere.
@@ -652,6 +702,7 @@ function privacy(){
       <li>Your address is stored with our email service, Brevo, which sends the emails for us. We never sell or share it, and we never send ads.</li>
       <li>Our emails may record whether they were opened or a link was clicked, so we learn which lessons are useful.</li>
       <li>Every email has an unsubscribe link. To have your address deleted completely, write to <span class="mail">samjhowithraj@gmail.com</span>.</li></ul>
+    <h2>Featured spots and book links</h2><p>The “Featured” card and the book list are plain links chosen by Raj, not an ad network, so they don't track you. Paid sponsors are always labelled “Sponsored”. Book links go to Amazon India and may be affiliate links (the page says when they are); Amazon's own privacy policy applies once you are there.</p>
     <h2>No tracking on this site</h2><p>No analytics, advertising or tracking cookies. The site is hosted on GitHub Pages; GitHub may keep basic technical logs (such as IP addresses) to run and protect its service. Links to YouTube, Instagram, Facebook and X follow those sites' own policies.</p>
     <h2>Questions</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span>.</p></article>`;
 }
@@ -751,6 +802,7 @@ askRaj({
     [["chatbot", "chat bot", "bot course", "claude", "api"], { text: "<a href=\"#chatbot-1\">AI + Python: Build a Chai Chatbot</a> goes from a simple bot like me to a Claude-powered bot, a web app and an AI agent. 50 parts, new ones every week.", chips: ["How are you built?", "Next lesson"] }],
     [["agent", "agentic", "bunty", "ai agent"], { text: "Meet Bunty, the AI intern! <a href=\"#agentic-1\">Agentic AI with Bunty</a> explains agents without jargon. Episode 1: chatbot vs agent.", chips: ["Where do I start?", "Next lesson"] }],
     [["next", "upcoming", "new lesson", "coming", "when"], { text: "See what's coming in <a href=\"#upcoming\">Upcoming</a>. Want an email when a lesson goes live? Use the sign-up box at the end of any lesson. 📬", chips: ["Where do I start?", "menu"] }],
+    [["book", "books", "read", "reading"], { text: "📚 Raj's recommended books are on the <a href=\"#classroom\">Classroom</a> page: scroll down to <b>Recommended books</b>. Great next steps after Python with Chai.", chips: ["Where do I start?", "Next lesson"] }],
     [["money", "finance", "sip", "invest", "paisa", "budget", "mutual fund", "loan"], { text: "Money lessons live on our sister site 💰 <a href=\"https://www.paisasamjhoraj.com\" target=\"_blank\" rel=\"noopener\">paisasamjhoraj.com</a>: budgeting, SIPs, index funds and a family Money Planner.", chips: ["Where do I start?"] }],
     [["install", "app", "download", "home screen"], { text: "Tap the <b>Install</b> button at the top right (the one with Raj's face) to add this classroom to your phone or computer like an app. 📲", chips: ["Where do I start?"] }],
     [["email", "notify", "subscribe", "newsletter", "update"], { text: "Use the <b>Get new lessons by email</b> box on the Classroom page or at the end of any lesson. One short email per new lesson; unsubscribe any time. 📬", chips: ["Next lesson"] }],
