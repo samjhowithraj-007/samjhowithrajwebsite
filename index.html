@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "18 lessons · live",
+  id: "python", title: "Python with Chai", tag: "19 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -515,7 +515,27 @@ if 8 <= now.hour < 22:
 else:
     print("Kal aana!")`), output:"18-10-2026 09:30\nDukaan khuli hai!\n(your date and time will be different)",
     practice:["Print just the day name with now.strftime(\"%A\").","Change the hours so the shop opens at 7 and closes at 11 at night."],
-    takeaway:"datetime = Python's clock: now(), strftime(), hour." }
+    takeaway:"datetime = Python's clock: now(), strftime(), hour." },
+  { id:"python-19", title:"Classes: the chai shop", video:"media/python-19.mp4",
+    concept:["Two shops with separate variables (<code>dukaan1_naam</code>, <code>dukaan2_cups</code> …) get messy fast. A <b>class</b> is the blueprint of one shop.",
+      "<code>__init__</code> sets up each new shop, and <code>self</code> means \"this shop\": <code>self.naam</code>, <code>self.cups</code>.",
+      "A function inside the class is a <b>method</b>. Each <b>object</b> (raju, pappu) keeps its own count."],
+    code:PY(`class ChaiDukaan:
+    def __init__(self, naam):
+        self.naam = naam
+        self.cups = 0
+
+    def bechna(self):
+        self.cups += 1
+        print(self.naam, self.cups)
+
+raju = ChaiDukaan("Raju")
+pappu = ChaiDukaan("Pappu")
+raju.bechna()
+raju.bechna()
+pappu.bechna()`), output:"Raju 1\nRaju 2\nPappu 1",
+    practice:["Add a third shop for \"Sita\" and sell 3 cups there.","Add a method hisaab(self) that prints how many cups the shop has sold."],
+    takeaway:"Class = the blueprint, object = a real shop." }
   ]}]
 },
 {
