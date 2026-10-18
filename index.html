@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "19 lessons · live",
+  id: "python", title: "Python with Chai", tag: "20 lessons · complete",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -535,7 +535,18 @@ raju.bechna()
 raju.bechna()
 pappu.bechna()`), output:"Raju 1\nRaju 2\nPappu 1",
     practice:["Add a third shop for \"Sita\" and sell 3 cups there.","Add a method hisaab(self) that prints how many cups the shop has sold."],
-    takeaway:"Class = the blueprint, object = a real shop." }
+    takeaway:"Class = the blueprint, object = a real shop." },
+  { id:"python-20", title:"Finale: you know Python!", video:"media/python-20.mp4",
+    concept:["<b>Parts 1–10, the basics:</b> variables, functions, if-else, lists, for loops, dictionaries, input, try-except and while True.",
+      "<b>Parts 11–19, the pro moves:</b> files (r, w, a), import random, f-strings, range(), default values, sets, datetime and classes.",
+      "Small ideas combine into real programs. Next stop: the <a href=\"#chatbot-1\">AI + Python course</a>, where the chai shop gets its own chatbot."],
+    code:PY(`import random
+
+for i in range(1, 4):
+    chai = random.choice(["Masala", "Adrak"])
+    print(f"Cup {i}: {chai}")`), output:"Cup 1: Adrak\nCup 2: Masala\nCup 3: Masala\n(random: your cups will be different)",
+    practice:["Turn this into a ChaiDukaan class with a method that serves 3 random cups.","Save the cups to a file with \"a\" so every run adds to the bill."],
+    takeaway:"You know Python. Next: AI + Python, the chai chatbot." }
   ]}]
 },
 {
