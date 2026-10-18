@@ -242,7 +242,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .cb-foot{font-size:11.5px;color:var(--muted);padding:0 14px 10px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cb-fab{border-color:rgba(255,255,255,.35)}}
 :root[data-theme="dark"] .cb-fab{border-color:rgba(255,255,255,.35)}
-@media (max-width:480px){.cb-panel{right:8px;left:8px;width:auto;bottom:8px;height:min(78vh,600px)}.cb-fab b{display:none}.cb-fab{padding:12px}}
+@media (max-width:480px){.cb-panel{right:8px;left:8px;width:auto;bottom:8px;height:min(78vh,600px)}.cb-fab{padding:9px 14px 9px 11px;font-size:13.5px}}
 @media print{.cb-fab,.cb-panel{display:none!important}}
 </style>
 </head>
@@ -685,14 +685,14 @@ app.addEventListener("click", e => {
 });
 addEventListener("hashchange", () => { render(); scrollTo(0, 0); });
 render();
-// ---------- SamjhoBot (rule-based, runs only in this browser; nothing is sent anywhere) ----------
+// ---------- Ask Raj chat helper (rule-based, runs only in this browser; nothing is sent anywhere) ----------
 // Same idea as the AI + Python course: a dictionary of keywords → replies, .lower(), and "in" checks. First match wins.
-function samjhoBot(BOT){
+function askRaj(BOT){
   const fab = document.createElement("button"), panel = document.createElement("section");
   fab.className = "cb-fab"; fab.type = "button"; fab.setAttribute("aria-expanded", "false"); fab.setAttribute("aria-controls", "cb-panel");
-  fab.innerHTML = '<span aria-hidden="true">☕</span><b>SamjhoBot</b>'; fab.title = "Chat with SamjhoBot";
-  panel.className = "cb-panel"; panel.id = "cb-panel"; panel.hidden = true; panel.setAttribute("aria-label", "SamjhoBot chat");
-  panel.innerHTML = `<div class="cb-head"><span class="cb-av" aria-hidden="true">☕</span><div><b>SamjhoBot</b><small>${BOT.tagline}</small></div><button class="cb-x" type="button" aria-label="Close chat">×</button></div>
+  fab.innerHTML = '<span aria-hidden="true">☕</span><b>Ask Raj</b>'; fab.title = "Ask Raj: automated chat helper";
+  panel.className = "cb-panel"; panel.id = "cb-panel"; panel.hidden = true; panel.setAttribute("aria-label", "Ask Raj chat");
+  panel.innerHTML = `<div class="cb-head"><span class="cb-av" aria-hidden="true">☕</span><div><b>Ask Raj</b><small>Automated helper · ${BOT.tagline}</small></div><button class="cb-x" type="button" aria-label="Close chat">×</button></div>
     <div class="cb-log" role="log" aria-live="polite"></div><div class="cb-chips"></div>
     <form class="cb-form"><input name="q" autocomplete="off" placeholder="Type a message…" aria-label="Message" maxlength="200"><button type="submit">Send</button></form>
     <div class="cb-foot">${BOT.foot}</div>`;
@@ -710,7 +710,7 @@ function samjhoBot(BOT){
   function ask(text){
     text = text.trim(); if (!text) return;
     say(esc(text), "me");
-    const dots = say("SamjhoBot is typing…", "bot typing");
+    const dots = say("Typing…", "bot typing");
     setTimeout(() => { dots.remove(); const r = reply(text); say(r.text || r, "bot"); if (r.chips) setChips(r.chips); }, 450);
   }
   let started = false;
@@ -727,10 +727,10 @@ function samjhoBot(BOT){
 }
 const CHAI_MENU = { masala:20, adrak:15, elaichi:25, tulsi:30 };
 let chaiCart = [];
-samjhoBot({
+askRaj({
   tagline: "Chai shop + course guide",
   foot: "A simple rule-based bot, built like the one in the AI + Python course. It can't understand everything!",
-  hello: "Namaste! ☕ I'm SamjhoBot.\nI run a tiny chai shop and I know my way around this classroom. Order a chai, or ask me where to start learning.",
+  hello: "Namaste! ☕ I'm Ask Raj, Raj's automated helper (not Raj himself).\nI run a tiny chai shop and I know my way around this classroom. Order a chai, or ask me where to start learning.",
   chips: ["menu", "order masala", "bill", "Where do I start?", "How are you built?", "Next lesson"],
   rules: [
     [["hi", "hello", "hey", "namaste", "hii", "helo"], { text: "Namaste! 🙏 Kya lenge? Type <b>menu</b> to see the chai, or ask about the lessons.", chips: ["menu", "Where do I start?"] }],
