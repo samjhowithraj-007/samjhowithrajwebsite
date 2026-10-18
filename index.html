@@ -885,7 +885,7 @@ function bookPage(){
       <p class="author">by <b>${BOOK.author}</b> · ${BOOK.cred}</p>
       <div class="pricebox"><div class="price">${p}</div>
         <div class="buyrow">${buyBtn("en", "English edition", now)}${buyBtn("hi", "Hinglish edition", now)}${buyBtn("both", "Both editions", BOOK.bundle)}</div>
-        <small>${anyBuy ? "Instant PDF download after payment (UPI, cards, net banking)." : "Payments open very soon. Leave your email below to get the launch price."}</small></div>
+        <small>${anyBuy ? "Instant PDF + EPUB download after payment." : "Payments open very soon. Leave your email below to get the launch price."}</small></div>
     </div></section>
   <section class="bookprev"><div class="eyebrow">Free preview</div><h2>Peek inside before you buy</h2>
     <p class="lead">Each preview shows a chapter's title page, its chai-shop story and a sneak peek of the rest.</p>
@@ -893,7 +893,7 @@ function bookPage(){
       <div><a href="${preview(n, "en")}" target="_blank" rel="noopener">English</a> · <a href="${preview(n, "hi")}" target="_blank" rel="noopener">Hinglish</a></div></div>`).join("")}</div></section>
   <section class="booktoc"><div class="eyebrow">Inside the book</div><h2>Contents</h2><div class="toc3">${toc}</div></section>
   <section class="bookfaq"><div class="eyebrow">Questions</div><h2>Good to know</h2>
-    <details><summary>What format is it?</summary><p>A PDF (A5 pages) that reads well on a phone, tablet or laptop, and prints nicely.</p></details>
+    <details><summary>What format is it?</summary><p>PDF + EPUB, both included in every purchase. The PDF (A5 pages) reads well on a phone, tablet or laptop and prints nicely; the EPUB is for Kindle, Kobo and phone e-book readers.</p></details>
     <details><summary>English or Hinglish?</summary><p>Same chapters, same code, same pages. Pick the language you enjoy reading, or get both.</p></details>
     <details><summary>Do I need to know coding?</summary><p>No. Chapter 1 starts from installing Python. The expert chapters are there when you're ready.</p></details>
     <details><summary>Something wrong with my copy?</summary><p>Email <span class="mail">samjhowithraj@gmail.com</span> with your order number.</p></details>
