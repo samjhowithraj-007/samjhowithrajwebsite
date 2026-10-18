@@ -253,6 +253,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .promo p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
 .promo .go{font-weight:700;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:600px){.promo{grid-template-columns:1fr}}
+.annc{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,#5b1a8f,#c2185b 60%,#ff7a2f);color:#fff;font-size:14px;padding:7px 12px 7px 16px}
+.annc[hidden]{display:none}
+.annc a{flex:1;color:#fff;text-decoration:none;text-align:center;line-height:1.35}.annc a u{text-underline-offset:2px}.annc s{opacity:.7}
+.annc button{background:none;border:0;color:#fff;font-size:20px;line-height:1;cursor:pointer;padding:2px 6px;opacity:.85}
+.bookcard{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;background:linear-gradient(135deg,#2a1260,#5b1a8f 55%,#c2185b);color:#fff;border-radius:16px;padding:20px;margin:30px 0 10px;text-decoration:none;position:relative;overflow:hidden}
+.bookcard img{width:150px;border-radius:8px;box-shadow:0 12px 26px rgba(0,0,0,.35);transform:rotate(-3deg)}
+.bookcard .eyebrow{color:#ffd166}.bookcard h2{margin:4px 0 6px;color:#fff}.bookcard p{margin:0 0 12px;opacity:.92}
+.bookcard .pr{display:inline-block;background:#ffd166;color:#2a1260;font-weight:800;border-radius:10px;padding:6px 14px;margin-right:10px}.bookcard .pr s{opacity:.6;font-weight:600;margin-right:6px}
+.bookcard .go{font-weight:700;text-decoration:underline}
+@media (max-width:560px){.bookcard{grid-template-columns:96px minmax(0,1fr);gap:14px;padding:16px}.bookcard img{width:96px}}
 /* ---------- book page ---------- */
 .bookhero{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px;align-items:start;margin-top:10px}
 @media (max-width:760px){.bookhero{grid-template-columns:1fr}.bookcov{max-width:320px}}
@@ -295,6 +305,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </style>
 </head>
 <body>
+<div class="annc" id="annc" hidden><a href="#book">☕ <b>New book: Python with Chai</b>, Basic → Expert · <s>₹299</s> ₹199 launch · <u>Free preview →</u></a><button type="button" aria-label="Hide this message" id="annc-x">×</button></div>
 <header>
   <div class="wrap bar">
     <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Tech <span>Samjho</span> Raj</a>
@@ -722,6 +733,7 @@ function classroom(){
     </a>`).join("")}
   </div>
   <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
+  ${bookCard()}
   ${books()}
   ${promo()}
   ${signup("New Python and AI lessons, straight to your inbox. Free.")}`;
@@ -888,6 +900,19 @@ function bookPage(){
     <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
   ${anyBuy ? "" : signup("Get one email when the book is available, with the launch price.")}`;
 }
+function bookCard(){
+  const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
+  return `<a class="bookcard" href="#book"><img src="${BOOK.cover.en}" alt="Python with Chai book cover" loading="lazy">
+    <div><div class="eyebrow">New book by ${BOOK.author}</div><h2>${BOOK.title}: ${BOOK.sub}</h2>
+    <p>Everything from these lessons and much more: 30 illustrated chapters, 120+ examples, mistakes, practice and answers. English and Hinglish editions.</p>
+    <span class="pr">${now}</span><span class="go">Read a free preview →</span></div></a>`;
+}
+(function annc(){
+  const bar = document.getElementById("annc"), KEY = "annc-book-1";
+  let off = false; try { off = localStorage.getItem(KEY) === "1"; } catch (e) {}
+  if (!off) bar.hidden = false;
+  document.getElementById("annc-x").addEventListener("click", () => { bar.hidden = true; try { localStorage.setItem(KEY, "1"); } catch (e) {} });
+})();
 function bookBox(id){
   const n = BOOK_FOR_LESSON[id]; if (!n) return "";
   return `<a class="bookbox" href="#book"><img src="${BOOK.cover.en}" alt="" loading="lazy"><div><span class="pl">In the book</span>
