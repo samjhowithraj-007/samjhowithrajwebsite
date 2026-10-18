@@ -288,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const PY = (code) => code.trim();
 const COURSES = [
 {
-  id: "python", title: "Python with Chai", tag: "13 lessons · live",
+  id: "python", title: "Python with Chai", tag: "14 lessons · live",
   cover: "media/python-7.jpg",
   blurb: "Learn Python basics while making chai. From variables to while loops, each lesson has a 30-second video and notes.",
   modules: [{ title: "Python basics", lessons: [
@@ -454,7 +454,17 @@ print("Aaj ki lucky chai:", random.choice(chai))
 num = random.randint(1, 10)
 print("Lucky number:", num)`), output:"Aaj ki lucky chai: Elaichi\nLucky number: 7\n(run it again: you get new answers)",
     practice:["Add two more flavours to the list and run it 5 times. Did every flavour come up?","Make a game: if the lucky number is 7, print \"Chai free!\""],
-    takeaway:"Don't build every tool yourself: import it." }
+    takeaway:"Don't build every tool yourself: import it." },
+  { id:"python-14", title:"f-strings: a neat bill", video:"media/python-14.mp4",
+    concept:["<code>\"Total: Rs \" + total</code> crashes with a <b>TypeError</b>: Python won't add text and a number.",
+      "An <b>f-string</b> has an <code>f</code> before the quotes. Anything inside <code>{ }</code> is filled in with its value, no <code>str()</code> needed.",
+      "You can even do maths inside the braces: <code>{total + 10}</code>."],
+    code:PY(`total = 50
+cups = 3
+print(f"{cups} cup chai: Rs {total}")
+print(f"Tip ke saath: Rs {total + 10}")`), output:"3 cup chai: Rs 50\nTip ke saath: Rs 60",
+    practice:["Add a variable flavour = \"Masala\" and print: Masala chai x 3 = Rs 50","Remove the f and run it again. What gets printed?"],
+    takeaway:"Put an f before the quotes, then fill in the { }." }
   ]}]
 },
 {
