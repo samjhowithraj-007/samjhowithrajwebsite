@@ -1,5 +1,5 @@
 // Offline support for Tech Samjho Raj. Bump VERSION on any change to this file or the precache list.
-const VERSION = "v28";
+const VERSION = "v29";
 const CACHE = "samjhowithraj-" + VERSION;
 const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/raj-mark.png", "img/icon-192.png", "img/icon-512.png", "img/apple-touch-icon.png"];
 

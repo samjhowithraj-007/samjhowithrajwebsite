@@ -274,7 +274,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .bookhero .ticks{padding-left:1.2em}.bookhero .ticks li{margin:.3em 0}
 .bookhero .author{color:var(--muted)}
 .pricebox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:14px}
-.pricebox .price{font-size:26px}.pricebox s{color:var(--muted);font-size:18px}
+.pricebox .price{font-size:26px}.pricebox .both{font-size:17px;margin-top:4px;color:var(--muted)}.pricebox .both b{color:var(--ink,inherit)}.pricebox s{color:var(--muted);font-size:18px}
 .buyrow{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
 .buyrow .btn[aria-disabled]{opacity:.6;cursor:default}
 .pricebox small{color:var(--muted)}
@@ -823,7 +823,7 @@ function promo(here){
   return `<a class="promo" href="${p.link}"${rel}><img src="${p.image}" alt="" loading="lazy"><div><span class="pl">${p.label}</span><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta}${ext ? " ↗" : " →"}</span></div></a>`;
 }
 const PROMOS = [
-  { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish. Launch price ₹199.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
+  { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish, with free chapter previews.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
   { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
   { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
   { label:"From Raj", title:"Watch every lesson on YouTube", text:"Short Hinglish videos on Python, AI chatbots and agents. Subscribe so you don't miss a part.", image:"media/agentic-1.jpg", link:"https://www.youtube.com/@SamjhowithRaj", cta:"Subscribe on YouTube" },
@@ -844,17 +844,21 @@ function books(){
     <p class="disc">${AMAZON_TAG ? "These are affiliate links: if you buy through them, Raj may earn a small commission at no extra cost to you." : "Links open Amazon India. Raj doesn't earn anything from them."}</p></section>`;
 }
 // ---------- The book: Python with Chai (paid PDF; free 4-page teasers only) ----------
-// Paste the product links from Gumroad / Instamojo / Razorpay Payment Pages into BOOK.buy. Empty = "Coming soon".
+// BOOK.buy = the Gumroad product links WITHOUT a code (empty = "Coming soon"). While the launch runs, buyBtn() adds
+// "/LAUNCH" (Gumroad code: Rs 100 off, expires 15 Nov 2026), so after that date the site switches back by itself.
+// Never put the private discount code on this site.
 // Never upload the full book PDF to this site: only the *-preview.pdf teasers live in notes/.
 const BOOK = {
   title: "Python with Chai", sub: "From Basic to Expert", author: "Raj",
   cred: "AI expert · Azure & Claude certified AI architect · 20 years in tech",
-  price: 299, launch: 199, bundle: 399, launchOn: true,
-  buy: { en: "", hi: "", both: "" },
+  price: 299, launch: 199, bundle: 399, bundleLaunch: 299,
+  launchCode: "LAUNCH", launchEnds: "2026-11-16T00:00:00+05:30", launchEndsLabel: "15 Nov",
+  buy: { en: "", hi: "", both: "" },  // https://samjhowithraj.gumroad.com/l/python-with-chai-{en,hinglish,both} once published
   cover: { en: "media/book-cover-en.jpg", hi: "media/book-cover-hi.jpg" },
   chapters: [[1, "basic", "Hello, Python!", "Hello, Python!"], [2, "basic", "Variables and data types", "Variables aur data types"], [3, "basic", "Strings: playing with text", "Strings: text se khelo"], [4, "basic", "Numbers, maths and input()", "Numbers, maths aur input()"], [5, "basic", "Decisions: if, elif, else", "Faisle: if, elif, else"], [6, "basic", "Loops: do it again and again", "Loops: baar baar karo"], [7, "basic", "Lists: many items, one box", "Lists: kai items, ek dabba"], [8, "basic", "Tuples and sets", "Tuples aur sets"], [9, "basic", "Dictionaries: the menu card", "Dictionaries: menu card"], [10, "basic", "Functions: write once, use forever", "Functions: ek baar likho, hamesha use karo"], [11, "inter", "Errors and debugging", "Errors aur debugging"], [12, "inter", "Files, CSV and JSON", "Files, CSV aur JSON"], [13, "inter", "Modules and the standard library", "Modules aur standard library"], [14, "inter", "Classes and objects", "Classes aur objects"], [15, "inter", "OOP: inheritance and magic methods", "OOP: inheritance aur magic methods"], [16, "inter", "Comprehensions, lambda and sorting", "Comprehensions, lambda aur sorting"], [17, "inter", "Iterators and generators", "Iterators aur generators"], [18, "inter", "collections and itertools", "collections aur itertools"], [19, "inter", "Recursion, scope and closures", "Recursion, scope aur closures"], [20, "inter", "Project: the Chai Shop app", "Project: Chai Shop app"], [21, "expert", "Decorators", "Decorators"], [22, "expert", "Context managers", "Context managers"], [23, "expert", "Type hints and dataclasses", "Type hints aur dataclasses"], [24, "expert", "Testing with pytest", "pytest se testing"], [25, "expert", "Packages, venv and pip", "Packages, venv aur pip"], [26, "expert", "Logging and command-line apps", "Logging aur command-line apps"], [27, "expert", "Threads and processes", "Threads aur processes"], [28, "expert", "asyncio: async and await", "asyncio: async aur await"], [29, "expert", "Web APIs, JSON and regex", "Web APIs, JSON aur regex"], [30, "expert", "Performance, and the expert capstone", "Performance, aur expert capstone"]],
   previews: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 30],
 };
+BOOK.launchOn = Date.now() < Date.parse(BOOK.launchEnds);
 // Which book chapter goes deeper on each video lesson (lesson pages show a small "In the book" box).
 const BOOK_FOR_LESSON = { "python-1":1, "python-2":10, "python-3":5, "python-4":7, "python-5":6, "python-6":9, "python-7":20, "python-8":4,
   "python-9":11, "python-10":6, "python-11":12, "python-12":12, "python-13":13, "python-14":3, "python-15":6, "python-16":10,
@@ -863,12 +867,12 @@ const CHOTU = '<svg class="chotu-bob" viewBox="0 0 200 200" xmlns="http://www.w3
 const bookTitle = n => (BOOK.chapters.find(c => c[0] === n) || [n, "", ""])[2];
 const preview = (n, lang) => `notes/book-ch${n}-${lang}-preview.pdf`;
 function buyBtn(key, label, price){
-  const url = BOOK.buy[key];
+  const url = BOOK.buy[key] && (BOOK.launchOn ? BOOK.buy[key].replace(/\/$/, "") + "/" + BOOK.launchCode : BOOK.buy[key]);
   return url ? `<a class="btn primary" href="${url}" target="_blank" rel="noopener">${label} · ₹${price}</a>`
              : `<span class="btn" aria-disabled="true">${label} · Coming soon</span>`;
 }
 function bookPage(){
-  const p = BOOK.launchOn ? `<s>₹${BOOK.price}</s> <b>₹${BOOK.launch}</b> <span class="chip next">Launch offer</span>` : `<b>₹${BOOK.price}</b>`;
+  const p = BOOK.launchOn ? `<s>₹${BOOK.price}</s> <b>₹${BOOK.launch}</b> <span class="chip next">Launch offer · ends ${BOOK.launchEndsLabel}</span><div class="both">Both editions: <s>₹${BOOK.bundle}</s> <b>₹${BOOK.bundleLaunch}</b></div>` : `<b>₹${BOOK.price}</b><div class="both">Both editions: <b>₹${BOOK.bundle}</b></div>`;
   const now = BOOK.launchOn ? BOOK.launch : BOOK.price;
   const lv = { basic: "Basic", inter: "Intermediate", expert: "Expert" };
   const toc = Object.keys(lv).map(k => `<div><h3>${lv[k]}</h3><ol start="${BOOK.chapters.find(c => c[1] === k)[0]}">${BOOK.chapters.filter(c => c[1] === k).map(c => `<li>${c[2]}</li>`).join("")}</ol></div>`).join("");
@@ -884,7 +888,7 @@ function bookPage(){
         <li>Common mistakes with real error messages, practice, answers, cheat sheets and an index</li></ul>
       <p class="author">by <b>${BOOK.author}</b> · ${BOOK.cred}</p>
       <div class="pricebox"><div class="price">${p}</div>
-        <div class="buyrow">${buyBtn("en", "English edition", now)}${buyBtn("hi", "Hinglish edition", now)}${buyBtn("both", "Both editions", BOOK.bundle)}</div>
+        <div class="buyrow">${buyBtn("en", "English edition", now)}${buyBtn("hi", "Hinglish edition", now)}${buyBtn("both", "Both editions", BOOK.launchOn ? BOOK.bundleLaunch : BOOK.bundle)}</div>
         <small>${anyBuy ? "Instant PDF + EPUB download after payment." : "Payments open very soon. Leave your email below to get the launch price."}</small></div>
     </div></section>
   <section class="bookprev"><div class="eyebrow">Free preview</div><h2>Peek inside before you buy</h2>
@@ -910,7 +914,7 @@ function bookCard(){
 (function annc(){
   const bar = document.getElementById("annc"), KEY = "annc-book-1";
   let off = false; try { off = localStorage.getItem(KEY) === "1"; } catch (e) {}
-  if (!off) bar.hidden = false;
+  if (!off && BOOK.launchOn) bar.hidden = false;
   document.getElementById("annc-x").addEventListener("click", () => { bar.hidden = true; try { localStorage.setItem(KEY, "1"); } catch (e) {} });
 })();
 function bookBox(id){
