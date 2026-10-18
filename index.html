@@ -589,10 +589,10 @@ function about(){
 }
 
 const PAISA = false;
-// ---------- email updates (MailerLite) ----------
-// Paste the form's action URL from MailerLite (Forms → Embedded form → HTML code) to switch the sign-up box on.
-// While it is empty, no sign-up box is shown and nothing is ever sent.
-const SIGNUP = { action: "" };
+// ---------- email updates (Brevo) ----------
+// Action URL of the Brevo sign-up form (Marketing → Forms → Tech lessons sign-up → Share → Simple HTML). Double opt-in is on.
+// Leave it empty to hide the sign-up box everywhere.
+const SIGNUP = { action: "https://b84d134c.sibforms.com/serve/MUIFAGa0d6bBzbwnGhlK4X2SAd35dgQhWQswONpSFeBU3WaVY9BqB6d7ioEN2scVEvMNomanThGiZng32Tuo7Bz8byhjCmmby6aawAqTnrsI-snxBQYuWWFxGBNK9Ozya8R3Q269ICrI03TrQCyPIvgqN_WQHAO1_GxNwrCxauoN--NtwRGPEbCEYb_6sXgCsiUhuY0g5mcL4Cf6oQ==" };
 function signup(lead){
   if (!SIGNUP.action) return "";
   return `<section class="signup"><div><h3>Get new lessons by email</h3><p>${lead}</p></div>
@@ -606,7 +606,7 @@ document.addEventListener("submit", async e => {
   const email = f.email.value.trim(), note = f.querySelector("small"), btn = f.querySelector("button");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { note.textContent = "Please enter a valid email address."; f.email.focus(); return; }
   btn.disabled = true; btn.textContent = "Sending…";
-  const body = new FormData(); body.append("fields[email]", email); body.append("ml-submit", "1"); body.append("anticsrf", "true");
+  const body = new FormData(); body.append("EMAIL", email); body.append("email_address_check", ""); body.append("locale", "en"); body.append("html_type", "simple");
   try { await fetch(SIGNUP.action, { method: "POST", body, mode: "no-cors" });
     f.outerHTML = `<p class="ok">Almost done! Check your inbox (and the spam folder) and click the confirm link.</p>`; }
   catch (err) { btn.disabled = false; btn.textContent = "Notify me"; note.textContent = "Couldn't connect. Check your internet and try again."; }
@@ -618,7 +618,7 @@ function privacy(){
     <h2>Email updates (only if you sign up)</h2><ul>
       <li>If you enter your email in a “Get new lessons by email” box, we use it only to tell you when a new lesson or episode is published.</li>
       <li>You are added only after you click the confirmation link we email you.</li>
-      <li>Your address is stored with our email service, MailerLite, which sends the emails for us. We never sell or share it, and we never send ads.</li>
+      <li>Your address is stored with our email service, Brevo, which sends the emails for us. We never sell or share it, and we never send ads.</li>
       <li>Our emails may record whether they were opened or a link was clicked, so we learn which lessons are useful.</li>
       <li>Every email has an unsubscribe link. To have your address deleted completely, write to <span class="mail">samjhowithraj@gmail.com</span>.</li></ul>
     <h2>No tracking on this site</h2><p>No analytics, advertising or tracking cookies. The site is hosted on GitHub Pages; GitHub may keep basic technical logs (such as IP addresses) to run and protect its service. Links to YouTube, Instagram, Facebook and X follow those sites' own policies.</p>
