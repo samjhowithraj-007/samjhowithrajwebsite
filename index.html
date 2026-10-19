@@ -1045,19 +1045,20 @@ async function runBox(box){
   const code = boxCode(box), sin = box.querySelector(".stdin textarea").value;
   out.hidden = false; pre.textContent = ""; runB.disabled = true; stopB.hidden = false;
   const add = (txt, cls) => { const sp = document.createElement("span"); if (cls) sp.className = cls; sp.textContent = txt; pre.appendChild(sp); pre.scrollTop = pre.scrollHeight; };
-  const t0 = performance.now();
-  const kind = await PYRUN.run(code, sin, m => {
+  const t0 = performance.now(); let ranOut = false;
+  let kind = await PYRUN.run(code, sin, m => {
     if (m.t === "status") stat.textContent = m.s;
     else if (m.t === "out") add(m.s);
     else if (m.t === "in") add(m.s, "i");
     else if (m.t === "err") add(m.s, "e");
-    else if (m.t === "error" && /EOFError/.test(m.s) && sin.trim())   // a while-True chat loop used up the sample answers
+    else if (m.t === "error" && /EOFError/.test(m.s) && sin.trim() && (ranOut = true))   // a while-True chat loop used up the sample answers: a normal finish
       add((pre.textContent && !pre.textContent.endsWith("\n") ? "\n" : "") + "\n(No more lines in the Input box, so the loop stops here. Add more lines to keep chatting.)", "n");
     else if (m.t === "error") { add((pre.textContent && !pre.textContent.endsWith("\n") ? "\n" : "") + m.s, "e");
       if (/EOFError/.test(m.s)) add("\n\nTip: type the answers for input() in the Input box above, one per line.", "n"); }
     else if (m.t === "stopped") add((pre.textContent ? "\n" : "") + m.s, "e");
   }, FILES_FOR[box.dataset.id]);
   if (!pre.textContent) add("(no output)", "n");
+  if (ranOut && kind === "error") kind = "done";
   if (kind === "done" && !document.querySelector(".signup.after-run")) {
     const lead = "Liked running Python here? Get an email when the next lesson is out.";
     box.insertAdjacentHTML("afterend", signup(lead, "after-run"));
