@@ -1110,7 +1110,7 @@ DIWALI.on = Date.now() < Date.parse(DIWALI.ends);
 function signup(lead, extraCls){
   if (!SIGNUP.action) return "";
   const head = DIWALI.on ? "&#129684; Diwali gift: extra 10% off the book" : "Get new lessons by email";
-  const sub = DIWALI.on ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Learning with a friend? Send them this page too.` : lead;
+  const sub = DIWALI.on ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Tip: our emails sometimes land in Promotions or Spam. Learning with a friend? Send them this page too.` : lead;
   return `<section class="signup${extraCls ? " " + extraCls : ""}"><div><h3>${head}</h3><p>${sub}</p></div>
     <form class="signup-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
       <button class="btn primary" type="submit">Notify me</button>
@@ -1124,7 +1124,7 @@ document.addEventListener("submit", async e => {
   btn.disabled = true; btn.textContent = "Sending…";
   const body = new FormData(); body.append("EMAIL", email); body.append("email_address_check", ""); body.append("locale", "en"); body.append("html_type", "simple");
   try { await fetch(SIGNUP.action, { method: "POST", body, mode: "no-cors" });
-    f.outerHTML = `<p class="ok">Almost done! Check your inbox (and the spam folder) and click the confirm link.${DIWALI.on ? " Raj will email your Diwali code and the cheat sheet before 8 Nov." : ""}</p>`; }
+    f.outerHTML = `<p class="ok">Almost done! Check your email and click the confirm link. It comes from Brevo (our email service), so look in your Inbox, the <b>Promotions</b> tab and the <b>Spam</b> folder.${DIWALI.on ? " Your Diwali code and the cheat sheet will arrive the same way before 8 Nov: if you can't find them, check Promotions and Spam." : ""}</p>`; }
   catch (err) { btn.disabled = false; btn.textContent = "Notify me"; note.textContent = "Couldn't connect. Check your internet and try again."; }
 });
 function privacy(){
