@@ -926,6 +926,7 @@ function bookPage(){
   <section class="bookfaq"><div class="eyebrow">Questions</div><h2>Good to know</h2>
     <details><summary>What format is it?</summary><p>PDF + EPUB, both included in every purchase. The PDF (A5 pages) reads well on a phone, tablet or laptop and prints nicely; the EPUB is for Kindle, Kobo and phone e-book readers.</p></details>
     <details><summary>English or Hinglish?</summary><p>Same chapters, same code, same pages. Pick the language you enjoy reading, or get both.</p></details>
+    <details><summary>I don't have Python installed. Can I still use the book?</summary><p>Yes. Paste any example into the free <a href="#playground">Playground</a> and press Run: it runs right in your browser, even on a phone. Almost every example works there; only a few advanced ones (threads and processes, real web requests, terminal commands like <code>pip install</code>) need Python on a computer.</p></details>
     <details><summary>Do I need to know coding?</summary><p>No. Chapter 1 starts from installing Python. The expert chapters are there when you're ready.</p></details>
     <details><summary>Something wrong with my copy?</summary><p>Email <span class="mail">samjhowithraj@gmail.com</span> with your order number.</p></details>
     <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
@@ -1092,7 +1093,7 @@ const PG_EXAMPLES = [
 function playground(){
   const ex = PG_EXAMPLES[0];
   return `<div class="page-head"><div><div class="eyebrow">Playground</div><h1>Run Python <em>right here.</em></h1>
-    <p class="lead">Type Python and press Run. It runs inside your own browser: no install, no sign-up, nothing is sent to a server.</p></div></div>
+    <p class="lead">Type Python and press Run. It runs inside your own browser: no install, no sign-up, nothing is sent to a server. Reading <a href="#book">Python with Chai</a>? Paste its examples here and run them.</p></div></div>
   <div class="pghead"><label>Start from an example<select id="pg-ex">${PG_EXAMPLES.map((x, i) => `<option value="${i}">${esc(x[0])}</option>`).join("")}</select></label></div>
   <section class="codebox" id="pg-box" data-run data-pg data-code="${encodeURIComponent(ex[1])}" data-stdin=""><div class="file"><span>main.py</span><span>Ctrl + Enter runs</span></div>
     <textarea class="ed" spellcheck="false" aria-label="Python code editor" rows="${ex[1].split("\n").length + 2}">${esc(ex[1])}</textarea>
