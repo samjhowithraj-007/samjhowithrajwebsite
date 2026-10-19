@@ -253,6 +253,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .promo p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
 .promo .go{font-weight:700;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:600px){.promo{grid-template-columns:1fr}}
+/* ---------- live Python (Pyodide in a Web Worker) ---------- */
+.runbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid rgba(255,255,255,.08)}
+.runbar button{font:600 14px var(--body);border-radius:8px;cursor:pointer;padding:9px 14px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--code-fg)}
+.runbar button:hover{background:rgba(255,255,255,.08)}
+.runbar .run{background:var(--code-key);border-color:var(--code-key);color:#10231c;font-weight:700;min-width:96px}
+.runbar .run:hover{background:var(--code-key);filter:brightness(1.08)}
+.runbar .stop{border-color:#ff8a7a;color:#ffb3a8}
+.runbar .rstat{font:12.5px var(--mono);color:var(--code-com)}
+.codebox textarea.ed{display:block;width:100%;box-sizing:border-box;margin:0;padding:16px 18px;border:0;resize:vertical;min-height:120px;background:transparent;color:var(--code-fg);font:14.5px/1.65 var(--mono);tab-size:4;white-space:pre;overflow:auto}
+.codebox textarea.ed:focus{outline:2px solid var(--code-key);outline-offset:-2px}
+.stdin{padding:8px 14px 12px;border-top:1px solid rgba(255,255,255,.08)}
+.stdin label{display:block;font:12.5px var(--mono);color:var(--code-com);margin-bottom:6px}
+.stdin textarea{width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);color:var(--code-fg);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:8px 10px;font:14px/1.5 var(--mono)}
+.runout{border-top:1px dashed rgba(255,255,255,.14)}
+.runout pre{white-space:pre-wrap;word-break:break-word;color:var(--code-fg);min-height:1.6em;max-height:420px;overflow:auto}
+.runout .e{color:#ff9c8c}.runout .i{color:var(--code-str)}.runout .n{color:var(--code-com)}
+.pghead{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:18px 0 12px}
+.pghead label{font-size:14px;color:var(--muted)}
+.pghead select{display:block;margin-top:4px;font:15px var(--body);padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.pgnote{font-size:14px;color:var(--muted);margin-top:14px;max-width:72ch}
+@media (max-width:600px){.runbar .run{flex:1 1 100%;padding:13px;font-size:16px}.codebox textarea.ed,.codebox pre{font-size:13.5px}}
 .annc{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,#5b1a8f,#c2185b 60%,#ff7a2f);color:#fff;font-size:14px;padding:7px 12px 7px 16px}
 .annc[hidden]{display:none}
 .annc a{flex:1;color:#fff;text-decoration:none;text-align:center;line-height:1.35}.annc a u{text-underline-offset:2px}.annc s{opacity:.7}
@@ -314,6 +335,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
     <a class="tab" href="#book" data-tab="book">Book<span class="new">New</span></a>
+    <a class="tab" href="#playground" data-tab="playground">Playground</a>
     <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
     <a class="tab" href="#community" data-tab="community">Community</a>
     <a class="tab" href="#about" data-tab="about">About</a>
@@ -733,6 +755,7 @@ function classroom(){
     </a>`).join("")}
   </div>
   <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
+  <p class="note">New: run Python right here in your browser, no install needed. Every Python lesson has a <b>▶ Run</b> button, or open the <a href="#playground">Playground</a>.</p>
   ${bookCard()}
   ${books()}
   ${promo()}
@@ -760,8 +783,9 @@ function lessonView(c, l){
       ? `<video controls playsinline preload="metadata" poster="${l.video.replace(".mp4", ".jpg")}" src="${l.video}"></video>`
       : `<div class="placeholder"><div><b>Video coming soon</b>Until then, read the notes and run the code.</div></div>`}</div>
     <section class="block"><h3>The idea</h3>${l.concept.map(p => `<p>${p}</p>`).join("")}${l.list ? `<ul>${l.list.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}</section>
-    ${l.code ? `<section class="codebox"><div class="file"><span>chai.py</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
+    ${l.code ? `<section class="codebox"${RUNNABLE.includes(c.id) ? ` data-run data-id="${l.id}" data-code="${encodeURIComponent(l.code)}"` : ""}><div class="file"><span>chai.py</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
       <pre><code>${hl(l.code)}</code></pre>
+      ${RUNNABLE.includes(c.id) ? runParts(l.code, false, l.id) : ""}
       ${l.output ? `<div class="out"><div class="file"><span>Output</span></div><pre>${esc(l.output)}</pre></div>` : ""}</section>` : ""}
     <section class="block try"><h3>Try it yourself</h3><ul>${l.practice.map(p => `<li>${p}</li>`).join("")}</ul></section>
     <section class="block takeaway"><h3>Remember</h3><p>${l.takeaway}</p></section>
@@ -924,6 +948,153 @@ function bookBox(id){
   return `<a class="bookbox" href="#book"><img src="${BOOK.cover.en}" alt="" loading="lazy"><div><span class="pl">In the book</span>
     <b>Chapter ${n}: ${bookTitle(n)}</b><p>Go deeper with more examples, common mistakes and practice. Free 4-page preview inside.</p><span class="go">See the book →</span></div></a>`;
 }
+// ---------- live Python: Pyodide in a Web Worker (lazy-loaded on the first Run, never blocks the page) ----------
+const RUNNABLE = ["python", "chatbot"];
+const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masala\nband",
+  "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye" };
+const FILES_FOR = { "python-12": { "bill.txt": "Total: Rs 50" } };   // created only if the file is not there yet
+const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
+const PYRUN = (() => {
+  const SRC = `importScripts("${PYODIDE}pyodide.js");
+let py; const dec = new TextDecoder();
+const ready = loadPyodide({ indexURL: "${PYODIDE}" }).then(p => { py = p; postMessage({ t: "ready" }); }, e => postMessage({ t: "loaderr", s: String(e) }));
+function clean(msg) {
+  const L = msg.split("\\n"); let i = L.findIndex(x => x.includes('File "<exec>"'));
+  const body = i < 0 ? L.filter(x => x.trim()) : L.slice(i);
+  return (i < 0 ? "" : "Traceback (most recent call last):\\n") + body.join("\\n").replaceAll("<exec>", "main.py").trimEnd();
+}
+onmessage = async e => {
+  await ready; const { code, stdin, files } = e.data;
+  for (const [name, text] of Object.entries(files || {})) if (!py.FS.analyzePath(name).exists) py.FS.writeFile(name, text);
+  const lines = stdin ? stdin.replace(/\\r/g, "").split("\\n") : []; let k = 0;
+  py.setStdout({ write: b => { postMessage({ t: "out", s: dec.decode(b, { stream: true }) }); return b.length; } });
+  py.setStderr({ write: b => { postMessage({ t: "err", s: dec.decode(b, { stream: true }) }); return b.length; } });
+  py.setStdin({ stdin: () => { if (k < lines.length && !(k === lines.length - 1 && lines[k] === "")) { const v = lines[k++]; postMessage({ t: "in", s: v + "\\n" }); return v; } return null; } });
+  try {
+    await py.loadPackagesFromImports(code, { messageCallback: m => postMessage({ t: "status", s: m }) });
+    const ns = py.globals.get("dict")(); ns.set("__name__", "__main__");
+    postMessage({ t: "start" });
+    await py.runPythonAsync(code, { globals: ns });
+    ns.destroy(); postMessage({ t: "done" });
+  } catch (err) { postMessage({ t: "error", s: clean(String(err && err.message || err)) }); }
+};`;
+  let w = null, ready = null, cur = null;
+  function spawn() {
+    w = new Worker(URL.createObjectURL(new Blob([SRC], { type: "text/javascript" })));
+    ready = new Promise((res, rej) => {
+      w.onmessage = e => { const m = e.data; if (m.t === "ready") res(); else if (m.t === "loaderr") rej(new Error(m.s)); else if (cur) cur.on(m); };
+      w.onerror = e => rej(new Error(e.message || "Python could not start"));
+    });
+  }
+  function finish(kind, m) { if (!cur) return; const c = cur; cur = null; clearTimeout(c.timer); if (m) c.cb(m); c.res(kind); }
+  function stop(msg) {
+    if (w) { w.terminate(); w = null; ready = null; }
+    finish("stopped", { t: "stopped", s: msg || "Stopped." });
+  }
+  async function run(code, stdin, cb, files) {
+    if (cur) stop();
+    const first = !w; if (first) spawn();
+    cb({ t: "status", s: first ? "Loading Python… (first run downloads about 10 MB, then it is cached)" : "Running…" });
+    try { await ready; } catch (e) { w = null; cb({ t: "error", s: "Python could not load. Check your internet connection and try again.\n" + e.message }); return "error"; }
+    return new Promise(res => {
+      cur = { cb, res, timer: 0, on: m => {
+        if (m.t === "start") { cb({ t: "status", s: "Running…" }); cur.timer = setTimeout(() => stop("⏱ Stopped after 20 seconds. Is there a loop that never ends?"), 20000); }
+        else if (m.t === "done" || m.t === "error") finish(m.t, m);
+        else cb(m);
+      } };
+      w.postMessage({ code, stdin, files });
+    });
+  }
+  return { run, stop, busy: () => !!cur };
+})();
+
+function runParts(code, pg, id){
+  const needsIn = /\binput\s*\(/.test(code);
+  return `<div class="stdin"${needsIn || pg ? "" : " hidden"}><label>Input for <code style="background:none;color:inherit;padding:0">input()</code>: one answer per line</label><textarea rows="2" spellcheck="false" aria-label="Input for input(), one answer per line" placeholder="e.g. Masala">${esc(STDIN_FOR[id] || "")}</textarea></div>
+    <div class="runbar"><button class="run" type="button" data-act="run">&#9654; Run</button>${pg ? "" : '<button type="button" data-act="edit">Edit code</button>'}<button type="button" data-act="reset"${pg ? "" : " hidden"}>Reset</button><button class="stop" type="button" data-act="stop" hidden>&#9632; Stop</button><span class="rstat" aria-live="polite"></span></div>
+    <div class="runout" hidden><div class="file"><span>Your output</span></div><pre aria-live="polite"></pre></div>`;
+}
+function editorFor(box){
+  let ta = box.querySelector("textarea.ed");
+  if (!ta) {
+    ta = document.createElement("textarea"); ta.className = "ed"; ta.spellcheck = false; ta.setAttribute("aria-label", "Python code editor");
+    ta.value = decodeURIComponent(box.dataset.code); const pre = box.querySelector(":scope > pre"); pre.replaceWith(ta);
+  }
+  ta.rows = Math.min(28, ta.value.split("\n").length + 1);
+  return ta;
+}
+function boxCode(box){ const ta = box.querySelector("textarea.ed"); return ta ? ta.value : decodeURIComponent(box.dataset.code); }
+async function runBox(box){
+  const out = box.querySelector(".runout"), pre = out.querySelector("pre"), stat = box.querySelector(".rstat");
+  const runB = box.querySelector('[data-act="run"]'), stopB = box.querySelector('[data-act="stop"]');
+  const code = boxCode(box), sin = box.querySelector(".stdin textarea").value;
+  out.hidden = false; pre.textContent = ""; runB.disabled = true; stopB.hidden = false;
+  const add = (txt, cls) => { const sp = document.createElement("span"); if (cls) sp.className = cls; sp.textContent = txt; pre.appendChild(sp); pre.scrollTop = pre.scrollHeight; };
+  const t0 = performance.now();
+  const kind = await PYRUN.run(code, sin, m => {
+    if (m.t === "status") stat.textContent = m.s;
+    else if (m.t === "out") add(m.s);
+    else if (m.t === "in") add(m.s, "i");
+    else if (m.t === "err") add(m.s, "e");
+    else if (m.t === "error") { add((pre.textContent && !pre.textContent.endsWith("\n") ? "\n" : "") + m.s, "e");
+      if (/EOFError/.test(m.s)) add("\n\nTip: type the answers for input() in the Input box above, one per line.", "n"); }
+    else if (m.t === "stopped") add((pre.textContent ? "\n" : "") + m.s, "e");
+  }, FILES_FOR[box.dataset.id]);
+  if (!pre.textContent) add("(no output)", "n");
+  stat.textContent = kind === "done" ? `Done in ${((performance.now() - t0) / 1000).toFixed(1)} s` : kind === "error" ? "Finished with an error" : "Stopped";
+  runB.disabled = false; stopB.hidden = true;
+}
+app.addEventListener("click", e => {
+  const b = e.target.closest(".runbar button"); if (!b) return;
+  const box = b.closest(".codebox"), act = b.dataset.act;
+  if (act === "run") runBox(box);
+  else if (act === "stop") PYRUN.stop("■ Stopped by you.");
+  else if (act === "edit") { editorFor(box).focus(); b.hidden = true; box.querySelector('[data-act="reset"]').hidden = false; }
+  else if (act === "reset") {
+    const ta = box.querySelector("textarea.ed");
+    if (box.dataset.pg !== undefined) { ta.value = decodeURIComponent(box.dataset.code); ta.rows = Math.min(28, ta.value.split("\n").length + 1); box.querySelector(".stdin textarea").value = box.dataset.stdin || ""; }
+    else if (ta) { const pre = document.createElement("pre"); pre.innerHTML = `<code>${hl(decodeURIComponent(box.dataset.code))}</code>`; ta.replaceWith(pre); b.hidden = true; box.querySelector('[data-act="edit"]').hidden = false; }
+    box.querySelector(".runout").hidden = true; box.querySelector(".rstat").textContent = "";
+  }
+});
+app.addEventListener("keydown", e => {   // Tab indents inside the editor; Ctrl/Cmd+Enter runs
+  const ta = e.target.closest && e.target.closest("textarea.ed"); if (!ta) return;
+  if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runBox(ta.closest(".codebox")); }
+  else if (e.key === "Tab" && !e.shiftKey) { e.preventDefault(); ta.setRangeText("    ", ta.selectionStart, ta.selectionEnd, "end"); }
+});
+app.addEventListener("change", e => {
+  if (e.target.id !== "pg-ex") return;
+  const ex = PG_EXAMPLES[+e.target.value], box = document.getElementById("pg-box");
+  box.dataset.code = encodeURIComponent(ex[1]); box.dataset.stdin = ex[2] || "";
+  const ta = box.querySelector("textarea.ed"); ta.value = ex[1]; ta.rows = Math.min(28, ex[1].split("\n").length + 1);
+  box.querySelector(".stdin textarea").value = ex[2] || ""; box.querySelector(".runout").hidden = true; box.querySelector(".rstat").textContent = "";
+});
+const PG_EXAMPLES = [
+  ["Hello, chai!", 'print("Namaste! Chai ready hai ☕")\nprint("2 + 3 =", 2 + 3)'],
+  ["Chai bill (variables + f-string)", 'cups = 3\nprice = 20\ntotal = cups * price\nprint(f"{cups} cups x Rs {price} = Rs {total}")'],
+  ["Your order (input)", 'name = input("Your name? ")\ncups = int(input("How many cups? "))\nprint(f"Hi {name}! {cups} chai = Rs {cups * 20}")', "Asha\n2"],
+  ["Loop: count the cups", 'for cup in range(1, 6):\n    print("Cup", cup, "ready ☕")\nprint("All done!")'],
+  ["Decisions: if / elif / else", 'bill = 140\nif bill >= 200:\n    print("Free samosa!")\nelif bill >= 100:\n    print("10% off")\nelse:\n    print("Thank you!")'],
+  ["List: the order queue", 'orders = ["Masala", "Adrak", "Elaichi"]\norders.append("Tulsi")\nprint("Orders:", orders)\nprint("First:", orders[0], "| Count:", len(orders))'],
+  ["Dictionary: the menu", 'menu = {"Masala": 20, "Adrak": 15, "Elaichi": 25}\nfor item, price in menu.items():\n    print(f"{item:8} Rs {price}")\nprint("Cheapest:", min(menu, key=menu.get))'],
+  ["Function: make a bill", 'def bill(cups, price=20):\n    return cups * price\n\nprint(bill(3))\nprint(bill(2, price=25))'],
+  ["Files + JSON", 'import json\n\nmenu = {"Masala": 20, "Adrak": 15}\nwith open("menu.json", "w") as f:\n    json.dump(menu, f)\n\nwith open("menu.json") as f:\n    print("Read back:", json.load(f))'],
+  ["Class: a chai shop", 'class ChaiShop:\n    def __init__(self, name):\n        self.name = name\n        self.sold = 0\n\n    def sell(self, cups):\n        self.sold += cups\n\nshop = ChaiShop("Raju")\nshop.sell(3)\nshop.sell(2)\nprint(shop.name, "sold", shop.sold, "cups")'],
+  ["Errors: try / except", 'cups = "two"\ntry:\n    print(int(cups) * 20)\nexcept ValueError:\n    print("Please type a number like 2")\n\nprint(10 / 0)   # this one is not caught: read the traceback!'],
+  ["Infinite loop (try Stop)", 'n = 0\nwhile True:\n    n += 1\n    if n % 5_000_000 == 0:\n        print("still going…", n)'],
+  ["numpy (loads on demand)", 'import numpy as np\n\nsales = np.array([12, 18, 9, 22, 15])\nprint("Total:", sales.sum(), "| Average:", sales.mean())'],
+];
+function playground(){
+  const ex = PG_EXAMPLES[0];
+  return `<div class="page-head"><div><div class="eyebrow">Playground</div><h1>Run Python <em>right here.</em></h1>
+    <p class="lead">Type Python and press Run. It runs inside your own browser: no install, no sign-up, nothing is sent to a server.</p></div></div>
+  <div class="pghead"><label>Start from an example<select id="pg-ex">${PG_EXAMPLES.map((x, i) => `<option value="${i}">${esc(x[0])}</option>`).join("")}</select></label></div>
+  <section class="codebox" id="pg-box" data-run data-pg data-code="${encodeURIComponent(ex[1])}" data-stdin=""><div class="file"><span>main.py</span><span>Ctrl + Enter runs</span></div>
+    <textarea class="ed" spellcheck="false" aria-label="Python code editor" rows="${ex[1].split("\n").length + 2}">${esc(ex[1])}</textarea>
+    ${runParts(ex[1], true)}</section>
+  <p class="pgnote">Good to know: this is real Python 3.12 (Pyodide), loaded once (about 10 MB) and then cached. <code>input()</code> reads from the Input box. Files you create live only in this tab. numpy and pandas load automatically when you import them. Threads and processes don't work in a browser and internet access is limited, so a few advanced examples won't run here. A program that runs longer than 20 seconds is stopped; you can also press Stop.</p>
+  ${signup("New Python and AI lessons, straight to your inbox. Free.")}`;
+}
 // ---------- email updates (Brevo) ----------
 // Action URL of the Brevo sign-up form (Marketing → Forms → Tech lessons sign-up → Share → Simple HTML). Double opt-in is on.
 // Leave it empty to hide the sign-up box everywhere.
@@ -968,6 +1139,7 @@ function render(){
   if (c) app.innerHTML = lessonView(c, l);
   else if (h === "tracker") { location.replace("https://www.paisasamjhoraj.com/#planner"); return; }
   else if (h === "book") { app.innerHTML = bookPage(); tab = h; }
+  else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
   else if (h === "about") { app.innerHTML = about(); tab = h; }
@@ -975,7 +1147,7 @@ function render(){
   else app.innerHTML = classroom();
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "book" ? "Python with Chai (book) · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
