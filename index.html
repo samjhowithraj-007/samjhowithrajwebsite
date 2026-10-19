@@ -273,6 +273,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .pghead label{font-size:14px;color:var(--muted)}
 .pghead select{display:block;margin-top:4px;font:15px var(--body);padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .pgnote{font-size:14px;color:var(--muted);margin-top:14px;max-width:72ch}
+.signup.after-run{margin-top:16px;animation:pop .35s ease-out}@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (max-width:600px){.runbar .run{flex:1 1 100%;padding:13px;font-size:16px}.codebox textarea.ed,.codebox pre{font-size:13.5px}}
 .annc{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,#5b1a8f,#c2185b 60%,#ff7a2f);color:#fff;font-size:14px;padding:7px 12px 7px 16px}
 .annc[hidden]{display:none}
@@ -928,7 +929,7 @@ function bookPage(){
     <details><summary>Do I need to know coding?</summary><p>No. Chapter 1 starts from installing Python. The expert chapters are there when you're ready.</p></details>
     <details><summary>Something wrong with my copy?</summary><p>Email <span class="mail">samjhowithraj@gmail.com</span> with your order number.</p></details>
     <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
-  ${anyBuy ? "" : signup("Get one email when the book is available, with the launch price.")}`;
+  ${anyBuy && !DIWALI.on ? "" : signup("Get one email when the book is available, with the launch price.")}`;
 }
 function bookCard(){
   const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
@@ -1041,6 +1042,10 @@ async function runBox(box){
     else if (m.t === "stopped") add((pre.textContent ? "\n" : "") + m.s, "e");
   }, FILES_FOR[box.dataset.id]);
   if (!pre.textContent) add("(no output)", "n");
+  if (kind === "done" && !document.querySelector(".signup.after-run")) {
+    const lead = "Liked running Python here? Get an email when the next lesson is out.";
+    box.insertAdjacentHTML("afterend", signup(lead, "after-run"));
+  }
   stat.textContent = kind === "done" ? `Done in ${((performance.now() - t0) / 1000).toFixed(1)} s` : kind === "error" ? "Finished with an error" : "Stopped";
   runB.disabled = false; stopB.hidden = true;
 }
@@ -1099,9 +1104,14 @@ function playground(){
 // Action URL of the Brevo sign-up form (Marketing → Forms → Tech lessons sign-up → Share → Simple HTML). Double opt-in is on.
 // Leave it empty to hide the sign-up box everywhere.
 const SIGNUP = { action: "https://b84d134c.sibforms.com/serve/MUIFAGa0d6bBzbwnGhlK4X2SAd35dgQhWQswONpSFeBU3WaVY9BqB6d7ioEN2scVEvMNomanThGiZng32Tuo7Bz8byhjCmmby6aawAqTnrsI-snxBQYuWWFxGBNK9Ozya8R3Q269ICrI03TrQCyPIvgqN_WQHAO1_GxNwrCxauoN--NtwRGPEbCEYb_6sXgCsiUhuY0g5mcL4Cf6oQ==" };
-function signup(lead){
+// Diwali offer: subscribers get a PRIVATE extra-10% book code + a free cheat sheet by email from Raj (never shown here).
+const DIWALI = { ends: "2026-11-09T00:00:00+05:30" };
+DIWALI.on = Date.now() < Date.parse(DIWALI.ends);
+function signup(lead, extraCls){
   if (!SIGNUP.action) return "";
-  return `<section class="signup"><div><h3>Get new lessons by email</h3><p>${lead}</p></div>
+  const head = DIWALI.on ? "&#129684; Diwali gift: extra 10% off the book" : "Get new lessons by email";
+  const sub = DIWALI.on ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Learning with a friend? Send them this page too.` : lead;
+  return `<section class="signup${extraCls ? " " + extraCls : ""}"><div><h3>${head}</h3><p>${sub}</p></div>
     <form class="signup-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
       <button class="btn primary" type="submit">Notify me</button>
       <small>One short email when something new is out. Unsubscribe any time. <a href="#privacy">Privacy</a></small></form></section>`;
@@ -1114,7 +1124,7 @@ document.addEventListener("submit", async e => {
   btn.disabled = true; btn.textContent = "Sending…";
   const body = new FormData(); body.append("EMAIL", email); body.append("email_address_check", ""); body.append("locale", "en"); body.append("html_type", "simple");
   try { await fetch(SIGNUP.action, { method: "POST", body, mode: "no-cors" });
-    f.outerHTML = `<p class="ok">Almost done! Check your inbox (and the spam folder) and click the confirm link.</p>`; }
+    f.outerHTML = `<p class="ok">Almost done! Check your inbox (and the spam folder) and click the confirm link.${DIWALI.on ? " Raj will email your Diwali code and the cheat sheet before 8 Nov." : ""}</p>`; }
   catch (err) { btn.disabled = false; btn.textContent = "Notify me"; note.textContent = "Couldn't connect. Check your internet and try again."; }
 });
 function privacy(){
