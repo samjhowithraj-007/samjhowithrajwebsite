@@ -950,7 +950,7 @@ function bookBox(id){
     <b>Chapter ${n}: ${bookTitle(n)}</b><p>Go deeper with more examples, common mistakes and practice. Free 4-page preview inside.</p><span class="go">See the book →</span></div></a>`;
 }
 // ---------- live Python: Pyodide in a Web Worker (lazy-loaded on the first Run, never blocks the page) ----------
-const RUNNABLE = ["python", "chatbot"];
+const RUNNABLE = ["python", "chatbot", "agentic"];   // every Python lesson, incl. future AI / LLM / agentic courses
 const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masala\nband",
   "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye" };
 const FILES_FOR = { "python-12": { "bill.txt": "Total: Rs 50" } };   // created only if the file is not there yet
