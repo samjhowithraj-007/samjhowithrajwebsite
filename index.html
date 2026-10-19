@@ -55,7 +55,7 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 body{position:relative}
 body::before{content:"";position:absolute;left:0;right:0;top:0;height:1100px;z-index:-1;pointer-events:none;   /* grid + glow behind the top of the page only (a fixed, masked layer was slow on phones) */
@@ -1445,7 +1445,7 @@ function render(){
   else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
