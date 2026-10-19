@@ -613,7 +613,7 @@ for i in range(1, 4):
   ]}]
 },
 {
-  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · Part 1 live",
+  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 4 parts live",
   cover: "media/chatbot-1.jpg",
   blurb: "Build your own chatbot with Python. Start with a simple rule-based bot and grow it into a Claude-powered bot, a web app and an AI agent.",
   modules: [
@@ -653,7 +653,20 @@ while True:
     print(replies.get(msg, "Samjha nahi!"))`), output:"Aap: menu\nMasala, Adrak!\nAap: price\nRs 20\nAap: kaise ho?\nSamjha nahi!",
       practice:["Add \"timing\": \"Subah 7 - raat 10\" to the dictionary. How many lines did it take?","Type \"Menu\" with a capital M. Why does it fail? (Part 4 fixes this.)"],
       takeaway:"A dictionary is the bot's diary: new question = one new line." },
-    ...["\"MENU\" or \"menu\"? Use .lower()","Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
+    { id:"chatbot-4", title:"\"MENU\" or \"menu\"? .lower() + .strip()", videoSoon:"Video coming 20 Oct",
+      concept:["A customer types \"MENU\" with Caps Lock on, or adds a space by mistake: \" menu\". The Part 3 bot replies \"Samjha nahi!\", because its diary only has \"menu\".",
+        "For Python, \"MENU\", \"menu\" and \" menu\" are three different strings.",
+        "<code>.lower()</code> makes every letter small. <code>.strip()</code> removes extra spaces at the start and the end. Add both right after <code>input()</code>: clean the message first, then look it up."],
+      list:["<code>msg.lower()</code> on its own line changes nothing. Strings never change, so keep the result: <code>msg = msg.lower()</code>.",
+        "The dictionary keys must be lowercase too: <code>\"menu\"</code>, not <code>\"Menu\"</code>.",
+        "<code>.strip()</code> only trims the ends. The space inside \"masala chai\" stays."],
+      code:PY(`replies = {"menu": "Masala, Adrak!", "price": "Rs 20"}
+while True:
+    msg = input("Aap: ").lower().strip()
+    print(replies.get(msg, "Samjha nahi!"))`), output:"Aap:   MENU \nMasala, Adrak!\nAap: Price\nRs 20\nAap: menu\nMasala, Adrak!",
+      practice:["Press Run: the Input box already has \"  MENU \", \"Price\" and \"menu\". Then try \" menu \" and \"PRICE\".","Add \"timing\": \"Subah 7 - raat 10\" and type \"TIMING\".","Remove <code>.strip()</code> and type \" menu\" with a space in front. What happens?"],
+      takeaway:"Clean it first, then look it up. (Pehle saaf karo, phir dhundo.)" },
+    ...["Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
   { title: "Season 2 · Give the bot an AI brain (Claude API)", lessons:
     ["When rules aren't enough","What is an API?","Keep your secret key safe","Your first AI conversation","Give the bot a personality","AI forgets! (chat history)","The AI chat loop","Give the AI the menu (tools)","Save money and avoid errors","Season finale: the AI Chai Bot is ready!"].map(soon) },
   { title: "Season 3 · Bot superpowers", lessons:
@@ -782,7 +795,7 @@ function lessonView(c, l){
     <div class="lesson-top"><div class="eyebrow">${c.title} · Lesson ${i + 1}</div><h2>${l.title}</h2></div>
     <div class="player ${c.wide ? "wide" : ""}">${l.video
       ? `<video controls playsinline preload="metadata" poster="${l.video.replace(".mp4", ".jpg")}" src="${l.video}"></video>`
-      : `<div class="placeholder"><div><b>Video coming soon</b>Until then, read the notes and run the code.</div></div>`}</div>
+      : `<div class="placeholder"><div><b>${l.videoSoon || "Video coming soon"}</b>Until then, read the notes and run the code.</div></div>`}</div>
     <section class="block"><h3>The idea</h3>${l.concept.map(p => `<p>${p}</p>`).join("")}${l.list ? `<ul>${l.list.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}</section>
     ${l.code ? `<section class="codebox"${RUNNABLE.includes(c.id) ? ` data-run data-id="${l.id}" data-code="${encodeURIComponent(l.code)}"` : ""}><div class="file"><span>chai.py</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
       <pre><code>${hl(l.code)}</code></pre>
@@ -953,7 +966,7 @@ function bookBox(id){
 // ---------- live Python: Pyodide in a Web Worker (lazy-loaded on the first Run, never blocks the page) ----------
 const RUNNABLE = ["python", "chatbot", "agentic"];   // every Python lesson, incl. future AI / LLM / agentic courses
 const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masala\nband",
-  "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye" };
+  "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye", "chatbot-4": "  MENU \nPrice\nmenu" };
 const FILES_FOR = { "python-12": { "bill.txt": "Total: Rs 50" } };   // created only if the file is not there yet
 const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
 const PYRUN = (() => {
@@ -1038,6 +1051,8 @@ async function runBox(box){
     else if (m.t === "out") add(m.s);
     else if (m.t === "in") add(m.s, "i");
     else if (m.t === "err") add(m.s, "e");
+    else if (m.t === "error" && /EOFError/.test(m.s) && sin.trim())   // a while-True chat loop used up the sample answers
+      add((pre.textContent && !pre.textContent.endsWith("\n") ? "\n" : "") + "\n(No more lines in the Input box, so the loop stops here. Add more lines to keep chatting.)", "n");
     else if (m.t === "error") { add((pre.textContent && !pre.textContent.endsWith("\n") ? "\n" : "") + m.s, "e");
       if (/EOFError/.test(m.s)) add("\n\nTip: type the answers for input() in the Input box above, one per line.", "n"); }
     else if (m.t === "stopped") add((pre.textContent ? "\n" : "") + m.s, "e");
