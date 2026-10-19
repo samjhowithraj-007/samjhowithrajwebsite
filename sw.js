@@ -1,7 +1,7 @@
 // Offline support for Tech Samjho Raj. Bump VERSION on any change to this file or the precache list.
-const VERSION = "v37";
+const VERSION = "v38";
 const CACHE = "samjhowithraj-" + VERSION;
-const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/raj-mark.png", "img/icon-192.png", "img/icon-512.png", "img/apple-touch-icon.png"];
+const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/badge-96.png", "img/favicon-32.png", "img/icon-192.png", "img/icon-512.png", "img/apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

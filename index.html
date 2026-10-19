@@ -4,38 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Tech Samjho Raj Classroom</title>
-<meta name="description" content="Tech Samjho Raj: free lessons on Python, AI chatbots and AI agents, Watch a short video, read the notes, try the code.">
-<link rel="icon" href="img/raj-mark.png">
+<meta name="description" content="Tech Samjho Raj: free lessons on Python, AI chatbots and AI agents. Watch a short video, read the notes, try the code.">
+<link rel="canonical" href="https://www.techsamjhoraj.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tech Samjho Raj">
+<meta property="og:title" content="Tech Samjho Raj: free Python and AI lessons">
+<meta property="og:description" content="Short Hinglish videos, simple English notes and Python code you can run right in your browser. No background needed.">
+<meta property="og:url" content="https://www.techsamjhoraj.com/">
+<meta property="og:image" content="https://www.techsamjhoraj.com/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tech Samjho Raj logo: Raj's drawn portrait and the words Free Python + AI lessons">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@samjhowithraj">
+<meta name="twitter:title" content="Tech Samjho Raj: free Python and AI lessons">
+<meta name="twitter:description" content="Short Hinglish videos, simple English notes and Python code you can run right in your browser.">
+<meta name="twitter:image" content="https://www.techsamjhoraj.com/img/og-card.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.techsamjhoraj.com/#org", "name": "Tech Samjho Raj", "url": "https://www.techsamjhoraj.com/", "logo": "https://www.techsamjhoraj.com/img/icon-512.png", "sameAs": ["https://www.youtube.com/@SamjhowithRaj", "https://www.instagram.com/samjhowithraj/", "https://www.facebook.com/profile.php?id=61595088790170", "https://x.com/samjhowithraj"]}, {"@type": "WebSite", "name": "Tech Samjho Raj", "url": "https://www.techsamjhoraj.com/", "inLanguage": "en"}, {"@type": "Course", "name": "Python with Chai", "description": "Learn Python basics while making chai: 20 short lessons with videos, notes and code you can run in the browser.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}, {"@type": "Course", "name": "AI + Python: Build a Chai Chatbot", "description": "Build your own chatbot with Python, from a rule-based bot to a Claude-powered bot, a web app and an AI agent.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}, {"@type": "Course", "name": "Agentic AI with Bunty", "description": "AI agents without the jargon: Bunty, the AI intern, learns one new idea in every episode.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}]}</script>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#202321">
+<script>try{if(localStorage.getItem("swr-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
+<meta name="theme-color" content="#0b1020">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tech Samjho">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
-/* Layout: Skool-style community shell — brand bar + tab row, then Classroom grid / course view with lesson sidebar.
-   Palette and type carried over from the original techsamjhoraj.com (paper, ink, brick red, forest green, Georgia). */
+/* Layout: brand bar + tab row, then Classroom grid / course view with lesson sidebar.
+   Look (2026-10-19): dark-first "dev tool" theme with a faint grid and glow, glassy cards, amber (chai) + cyan (code) accents.
+   Light theme on request (sun/moon button, remembered in this browser). */
 :root{
-  --paper:#f6f3ec; --card:#fbfaf6; --ink:#202321; --muted:#646860; --line:#d8d9d0;
-  --accent:#b93628; --green:#244c41; --green-soft:#e0e8df; --gold:#ece4cf; --red-soft:#efded6;
-  --code-bg:#1d211f; --code-fg:#eef0e8; --code-key:#7fd1b9; --code-str:#e5b36b; --code-com:#8d958c;
-  --display:Georgia,"Times New Roman",serif;
-  --body:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --paper:#0a0e13; --card:rgba(20,27,35,.78); --solid:#121922; --ink:#e9eef3; --muted:#9aa8b5; --line:rgba(255,255,255,.09);
+  --accent:#f5b544; --on-accent:#1b1205; --cyan:#4fd8c8; --green:#4fd8c8; --green-soft:rgba(79,216,200,.11); --gold:rgba(245,181,68,.10); --red-soft:rgba(245,181,68,.14);
+  --glow-a:rgba(245,181,68,.17); --glow-c:rgba(79,216,200,.14); --gridline:rgba(255,255,255,.035);
+  --code-bg:#070a0e; --code-fg:#e6edf3; --code-key:#7fe0cf; --code-str:#f5c26b; --code-com:#7f8b97;
+  --display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"Cascadia Code",Consolas,"SFMono-Regular",Menlo,monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#151816; --card:#1c201d; --ink:#ecebe4; --muted:#a3a89f; --line:#30352f;
-  --accent:#e0705f; --green:#8cc5ae; --green-soft:#223029; --gold:#2e2a1f; --red-soft:#33221f;
-  --code-bg:#0e100f; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#151816; --card:#1c201d; --ink:#ecebe4; --muted:#a3a89f; --line:#30352f;
-  --accent:#e0705f; --green:#8cc5ae; --green-soft:#223029; --gold:#2e2a1f; --red-soft:#33221f;
-  --code-bg:#0e100f; color-scheme:dark}
+:root[data-theme="light"]{
+  --paper:#f6f4ee; --card:rgba(255,255,255,.86); --solid:#ffffff; --ink:#14181d; --muted:#56616c; --line:rgba(20,24,29,.12);
+  --accent:#a65c08; --on-accent:#ffffff; --cyan:#0b766b; --green:#0b766b; --green-soft:#e2f2ef; --gold:#fbf0da; --red-soft:#fbe8d2;
+  --glow-a:rgba(245,181,68,.22); --glow-c:rgba(79,216,200,.18); --gridline:rgba(20,24,29,.05);
+  --code-bg:#11161c; color-scheme:light;
+}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--body)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body{position:relative}
+body::before{content:"";position:absolute;left:0;right:0;top:0;height:1100px;z-index:-1;pointer-events:none;   /* grid + glow behind the top of the page only (a fixed, masked layer was slow on phones) */
+  background:linear-gradient(to bottom,transparent 45%,var(--paper) 100%),radial-gradient(640px 420px at 12% -6%,var(--glow-a),transparent 62%),radial-gradient(720px 520px at 92% -4%,var(--glow-c),transparent 62%),
+    linear-gradient(var(--gridline) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,var(--gridline) 1px,transparent 1px) 0 0/44px 44px}
+::selection{background:var(--accent);color:var(--on-accent)}
 a{color:inherit}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
@@ -43,11 +69,16 @@ button{font:inherit;color:inherit}
 @media (max-width:600px){.wrap{padding-inline:16px}}
 
 /* header */
-header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
+header{background:color-mix(in srgb,var(--paper) 93%,transparent);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.5px}
 .brand img{width:40px;height:40px;border-radius:50%}
-.brand span{color:var(--accent)}
+.brand .wm{font-family:"Sora",var(--display);font-weight:800;letter-spacing:-.02em;color:#fff}
+.brand .t{color:#22d3ee}
+.brand{white-space:nowrap;min-width:0}
+@media (max-width:440px){.brand{font-size:16.5px;gap:8px}.brand img{width:34px;height:34px}}
+@media (max-width:370px){.brand{font-size:15px}.brand img{width:30px;height:30px}}
+:root[data-theme="light"] .brand .wm{color:#121a2e}:root[data-theme="light"] .brand .t{color:#0e7490}
 .lang{font-size:13px;color:var(--muted)}
 .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
@@ -55,12 +86,12 @@ header{background:var(--card);border-bottom:1px solid var(--line);position:stick
 .tab:hover{color:var(--ink)}
 .tab[aria-current="page"]{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
 
-main{padding-block:32px 64px;min-height:70vh}
+main{padding-block:32px 64px;min-height:100vh;min-height:100svh}
 .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--muted)}
 h1,h2,h3{text-wrap:balance}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0 12px}
-h1 em{color:var(--accent)}
-h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,34px);letter-spacing:-.8px;margin:0 0 8px;line-height:1.15}
+h1{font-family:var(--display);font-weight:750;font-size:clamp(34px,5.4vw,58px);line-height:1.04;letter-spacing:-.035em;margin:10px 0 14px}
+h1 em{font-style:normal;background:linear-gradient(92deg,var(--accent),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(25px,3.2vw,34px);letter-spacing:-.025em;margin:0 0 8px;line-height:1.15}
 h3{font-size:18px;margin:0}
 .lead{color:var(--muted);font-size:17px;max-width:62ch;margin:0}
 .hindi{color:var(--green);font-size:16px;margin:6px 0 0}
@@ -83,6 +114,33 @@ h3{font-size:18px;margin:0}
 .progrow{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 .progrow .prog{flex:1}
 .note{font-size:13.5px;color:var(--muted);margin-top:26px}
+/* hero call to action + byline */
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+.btn.big{padding:14px 22px;font-size:16px;font-weight:700;border-radius:10px}
+.btn.big.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.big.primary:hover{filter:brightness(1.08)}
+.cta .sub{font-size:13px;color:var(--muted);flex-basis:100%}
+.byline{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:14px;color:var(--muted)}
+.byline img{width:34px;height:34px;border-radius:50%}
+.byline a{color:var(--ink);font-weight:700;text-decoration:none}
+/* course cards: show the whole cover, level tag, start button */
+.cover img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(18px) brightness(.5);transform:scale(1.25)}
+.cover img.fg{position:relative;object-fit:contain}
+.ctags{display:flex;gap:6px;flex-wrap:wrap}
+.ctag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--green-soft);color:var(--green)}
+.ctag.lvl{background:var(--gold);color:var(--ink)}
+.cgo{align-self:flex-start;margin-top:4px;font-weight:700;font-size:14.5px;padding:9px 16px;border-radius:8px;background:var(--ink);color:var(--paper)}
+.course:hover .cgo{background:var(--accent)}
+/* footer */
+.fgrid{display:grid!important;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:28px 32px;padding-block:20px 8px}
+@media (max-width:820px){.fgrid{grid-template-columns:1fr 1fr}.fabout{grid-column:1/-1}}
+.fabout p{margin:10px 0 14px;max-width:44ch;font-size:14px}
+.fabout .brand{font-size:18px;color:var(--ink)}
+.fabout .brand img{width:32px;height:32px}
+footer h4{margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--ink)}
+footer nav a{display:block;padding:4px 0;text-decoration:none;font-size:14px}
+footer nav a:hover{color:var(--ink);text-decoration:underline}
+.fbottom{border-top:1px solid var(--line);margin-top:18px;padding-top:16px;padding-bottom:64px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
 /* course view */
 .course-view{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start}
@@ -169,7 +227,7 @@ code{font-family:var(--mono);font-size:.92em;background:var(--green-soft);paddin
 footer{border-top:1px solid var(--line);padding-block:24px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-.install{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;border:1px solid #202321;border-radius:99px;padding:3px 12px 3px 3px;background:#202321;color:#fff;cursor:pointer;white-space:nowrap;animation:install-pop 5s ease-in-out 1.5s 3}
+.install{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:3px 12px 3px 3px;background:#11161c;color:#fff;cursor:pointer;white-space:nowrap;animation:install-pop 5s ease-in-out 1.5s 3}
 .install img{width:28px;height:28px;border-radius:50%;display:block;background:#fff;flex:none}
 .install::after{content:"";position:absolute;inset:-2px;border-radius:99px;border:2px solid var(--accent);opacity:0;pointer-events:none;animation:install-ring 5s ease-out 1.5s 3}
 .install:hover,.install:hover::after{animation-play-state:paused}
@@ -216,12 +274,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .legal h2{font-size:22px;margin:26px 0 6px}
 .legal p,.legal li{color:var(--muted);font-size:15.5px}
 .legal ul{padding-left:20px}
-.cb-fab{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:99px;border:1px solid #202321;background:#202321;color:#fff;font:700 14px var(--body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.cb-fab{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:99px;border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);background:#11161c;color:#fff;font:700 14px var(--body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .cb-fab span{font-size:20px;line-height:1}
 .cb-fab[aria-expanded="true"]{display:none}
-.cb-panel{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:31;width:min(380px,calc(100vw - 32px));height:min(540px,calc(100vh - 110px));display:flex;flex-direction:column;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:hidden}
+.cb-panel{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:31;width:min(380px,calc(100vw - 32px));height:min(540px,calc(100vh - 110px));display:flex;flex-direction:column;background:var(--solid);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:hidden}
 .cb-panel[hidden]{display:none}
-.cb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#202321;color:#fff}
+.cb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(120deg,#11161c,#1c2530);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
 .cb-head b{font-size:15px;display:block}
 .cb-head small{opacity:.8;font-size:12px}
 .cb-head .cb-av{width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;flex:none}
@@ -229,7 +287,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .cb-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;overscroll-behavior:contain}
 .cb-msg{max-width:86%;padding:9px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-line;overflow-wrap:anywhere}
 .cb-msg.bot{background:var(--green-soft);border-bottom-left-radius:4px;align-self:flex-start}
-.cb-msg.me{background:#202321;color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.cb-msg.me{background:var(--accent);color:var(--on-accent);border-bottom-right-radius:4px;align-self:flex-end}
 .cb-msg a{color:inherit;font-weight:700}
 .cb-msg.typing{opacity:.6;font-style:italic}
 .cb-chips{display:flex;gap:6px;overflow-x:auto;padding:0 14px 10px;scrollbar-width:none}
@@ -239,7 +297,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .cb-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
 .cb-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:99px;padding:10px 14px;background:var(--paper);color:var(--ink);font:inherit;font-size:15px}
 .cb-form input:focus{outline:none;border-color:var(--ink)}
-.cb-form button{border:0;border-radius:99px;background:#202321;color:#fff;font-weight:700;padding:0 16px;cursor:pointer}
+.cb-form button{border:0;border-radius:99px;background:var(--accent);color:var(--on-accent);font-weight:700;padding:0 16px;cursor:pointer}
 .cb-foot{font-size:11.5px;color:var(--muted);padding:0 14px 10px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cb-fab{border-color:rgba(255,255,255,.35)}}
 :root[data-theme="dark"] .cb-fab{border-color:rgba(255,255,255,.35)}
@@ -280,7 +338,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .annc a{flex:1;color:#fff;text-decoration:none;text-align:center;line-height:1.35}.annc a u{text-underline-offset:2px}.annc s{opacity:.7}
 .annc button{background:none;border:0;color:#fff;font-size:20px;line-height:1;cursor:pointer;padding:2px 6px;opacity:.85}
 .bookcard{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;background:linear-gradient(135deg,#2a1260,#5b1a8f 55%,#c2185b);color:#fff;border-radius:16px;padding:20px;margin:30px 0 10px;text-decoration:none;position:relative;overflow:hidden}
-.bookcard img{width:150px;border-radius:8px;box-shadow:0 12px 26px rgba(0,0,0,.35);transform:rotate(-3deg)}
+.bookcard img{width:150px;height:auto;border-radius:8px;box-shadow:0 12px 26px rgba(0,0,0,.35);transform:rotate(-3deg)}
 .bookcard .eyebrow{color:#ffd166}.bookcard h2{margin:4px 0 6px;color:#fff}.bookcard p{margin:0 0 12px;opacity:.92}
 .bookcard .pr{display:inline-block;background:#ffd166;color:#2a1260;font-weight:800;border-radius:10px;padding:6px 14px;margin-right:10px}.bookcard .pr s{opacity:.6;font-weight:600;margin-right:6px}
 .bookcard .go{font-weight:700;text-decoration:underline}
@@ -312,7 +370,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .bookbox img{width:70px;border-radius:4px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
 .bookbox .pl{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;color:var(--muted)}
 .bookbox p{margin:2px 0 4px;color:var(--muted);font-size:14.5px}.bookbox .go{font-weight:700;font-size:14px;text-decoration:underline}
-.tab .new{font-size:10px;background:var(--accent);color:#fff;border-radius:6px;padding:1px 5px;margin-left:4px;vertical-align:2px}
+.tab .new{font-size:10px;background:var(--accent);color:var(--on-accent);border-radius:6px;padding:1px 5px;margin-left:4px;vertical-align:2px}
 
 .books{margin-top:34px}
 .books .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:14px}
@@ -324,26 +382,138 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .book p{margin:0;color:var(--muted);font-size:14px;flex:1}
 .book .go{font-weight:700;font-size:13.5px;margin-top:6px;text-decoration:underline;text-underline-offset:3px}
 .books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
+.bookcard .pr s{opacity:1;color:#6b4a00}
+/* ---------- Shop, Workshops, Live Cohort ---------- */
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:8px}
+.item{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;color:inherit;text-decoration:none}
+.item .art{height:170px;border-radius:10px;display:grid;place-items:center;font-size:46px;overflow:hidden;background:linear-gradient(135deg,var(--gold),var(--green-soft))}
+.item .art img{height:146px;width:auto;box-shadow:0 10px 24px rgba(0,0,0,.35);border-radius:4px;transform:rotate(-3deg)}
+.item h3{font-size:18px}.item p{margin:0;color:var(--muted);font-size:14.5px;flex:1}
+.item .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.item .tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--gold);color:var(--accent)}
+.item .price{font-weight:800;font-size:18px}.item .price s{color:var(--muted);font-weight:500;font-size:15px;margin-right:6px}
+p.disc{font-size:13px;color:var(--muted)}
+.wk-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:26px 0}
+.wk-topics .card h3{display:flex;gap:10px;align-items:center}
+.wk-topics .card h3 span{font-size:22px}
+.wk-form{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:14px}
+@media (max-width:640px){.wk-form{grid-template-columns:1fr}}
+.wk-form label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.wk-form .full{grid-column:1/-1}
+.wk-form input,.wk-form select,.wk-form textarea{font:15px var(--body);padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--solid);color:var(--ink)}
+.wk-form input:focus,.wk-form select:focus,.wk-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.wk-form small{color:var(--muted);font-size:12.5px}
+.wk-form .ok{grid-column:1/-1}
+.signup.cohort{scroll-margin-top:150px;background:linear-gradient(135deg,color-mix(in srgb,var(--cyan) 16%,transparent),color-mix(in srgb,var(--accent) 14%,transparent))}
+/* lower sections are laid out only when scrolled near (faster first screen on phones) */
+.books,.promo,.signup,.bookcard,footer,.note{content-visibility:auto;contain-intrinsic-size:auto 500px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* ---------- 2026-10-19 look: glass, glow, micro-interactions ---------- */
+.course,.block:not(.takeaway):not(.try),.card,.side,.signup,.promo,.book,.pricebox,.pcard,.bookfaq details,.timeline li{background:var(--card);border-color:var(--line)}
+.block.try{background:var(--gold);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+.takeaway{background:linear-gradient(135deg,color-mix(in srgb,var(--cyan) 22%,var(--solid)),var(--solid));color:var(--ink);border:1px solid color-mix(in srgb,var(--cyan) 40%,transparent)}
+.takeaway h3{color:var(--cyan);opacity:1}.takeaway p{font-family:var(--display);font-weight:650;letter-spacing:-.01em}
+.course,.btn,.book,.promo,.tab,.cgo,.kbtn,.tbtn{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background-color .18s ease,color .18s ease}
+.course{border-radius:14px}
+.course:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 50%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 22%,transparent),0 22px 44px -18px var(--glow-a)}
+.cover{background:#06090d}
+.prog{background:color-mix(in srgb,var(--ink) 12%,transparent)}
+.prog i{background:linear-gradient(90deg,var(--accent),var(--cyan))}
+.ctag{background:var(--green-soft);color:var(--cyan)}.ctag.lvl{background:var(--gold);color:var(--accent)}
+.cgo{background:color-mix(in srgb,var(--ink) 92%,transparent);color:var(--paper)}
+.course:hover .cgo{background:var(--accent);color:var(--on-accent)}
+.btn{border-color:color-mix(in srgb,var(--ink) 30%,transparent);border-radius:10px}
+.btn:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.big.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);box-shadow:0 10px 30px -10px var(--glow-a)}
+.btn.done{background:var(--cyan);border-color:var(--cyan);color:#06221e}
+.tab{border-radius:8px 8px 0 0}
+.tab[aria-current="page"]{border-bottom-color:var(--accent)}
+.eyebrow{color:var(--cyan);letter-spacing:.18em}
+.stats b{font-family:var(--display);font-weight:700}
+.lesson-link[aria-current="true"]{background:var(--green-soft);box-shadow:inset 3px 0 0 var(--cyan)}
+.lesson-link:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.tick.done{background:var(--cyan);border-color:var(--cyan)}
+code{background:var(--green-soft);color:inherit}
+.codebox{border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 50px -24px rgba(0,0,0,.6)}
+.signup{background:linear-gradient(135deg,var(--green-soft),var(--gold))}
+.signup input,.pghead select{background:var(--solid)}
+footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
+.chip{background:var(--red-soft);color:var(--accent)}.chip.next{background:var(--green-soft);color:var(--cyan)}
+
+/* hero with live terminal */
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:36px;align-items:center;margin-bottom:26px}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:26px}}
+.hero .stats{margin-top:22px}
+.term{background:#070a0e;border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.75),0 0 0 1px rgba(79,216,200,.08),0 0 60px -20px var(--glow-c);color:#e6edf3}
+.term-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07);font:12.5px var(--mono);color:#7f8b97}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:8px}
+.term{contain:layout paint}
+.term-body{contain:strict;height:300px;overflow:hidden;margin:0;padding:16px 18px 20px;font:14px/1.7 var(--mono);min-height:300px;white-space:pre-wrap;word-break:break-word}
+.term-body .p{color:#7fe0cf}.term-body .u{color:#f5c26b}.term-body .b{color:#e6edf3}.term-body .d{color:#7f8b97}
+.term-body .cur{display:inline-block;width:8px;height:1.05em;vertical-align:-2px;background:#7fe0cf;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (max-width:600px){.term-body{font-size:12.5px;min-height:318px;height:318px}}
+
+/* header buttons: search (Ctrl K) and theme */
+.kbtn,.tbtn{display:inline-flex;align-items:center;gap:8px;height:36px;border:1px solid var(--line);border-radius:99px;background:color-mix(in srgb,var(--ink) 5%,transparent);color:var(--muted);font-size:13.5px;cursor:pointer;padding:0 12px}
+.kbtn:hover,.tbtn:hover{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+.kbtn svg,.tbtn svg{width:16px;height:16px;flex:none}
+.kbtn kbd{font:11.5px var(--mono);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--muted)}
+.tbtn{width:36px;padding:0;justify-content:center}
+@media (max-width:860px){.kbtn kbd,.kbtn .kl{display:none}.kbtn{width:36px;padding:0;justify-content:center}}
+@media (max-width:420px){.bar-right .tbtn{display:none}}
+.bar-right{gap:8px}
+
+/* command palette */
+.cmdk{width:min(620px,calc(100vw - 24px));max-height:min(70vh,560px);margin:12vh auto auto;padding:0;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--solid) 92%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);color:var(--ink);box-shadow:0 40px 90px -30px rgba(0,0,0,.7);overflow:hidden}
+.cmdk[open]{display:flex;flex-direction:column;animation:cmdin .16s ease-out}
+@keyframes cmdin{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+.cmdk::backdrop{background:rgba(3,6,10,.55);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.cmdk-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.cmdk-in svg{width:18px;height:18px;color:var(--muted);flex:none}
+.cmdk-in input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:17px var(--body);outline:none}
+.cmdk-in kbd{font:11.5px var(--mono);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--muted)}
+.cmdk-list{list-style:none;margin:0;padding:8px;overflow-y:auto;flex:1}
+.cmdk-list .grp{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:10px 10px 4px}
+.cmdk-list a{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--ink)}
+.cmdk-list a .ic{flex:none;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--green-soft);color:var(--cyan);font-size:14px}
+.cmdk-list a.ask .ic{background:var(--gold);color:var(--accent)}
+.cmdk-list a b{display:block;font-weight:600;font-size:15px;line-height:1.35}
+.cmdk-list a small{display:block;color:var(--muted);font-size:13px;line-height:1.4;margin-top:2px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cmdk-list a[aria-selected="true"]{background:color-mix(in srgb,var(--ink) 8%,transparent);box-shadow:inset 2px 0 0 var(--accent)}
+.cmdk-foot{display:flex;gap:14px;flex-wrap:wrap;padding:9px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+@media (max-width:600px){.cmdk{margin:8px auto auto;max-height:80vh}.cmdk-foot{display:none}}
+@media (prefers-reduced-motion:reduce){.cmdk[open]{animation:none}.term-body .cur{animation:none}.course:hover,.btn:hover{transform:none}}
 </style>
 </head>
 <body>
 <div class="annc" id="annc" hidden><a href="#book">☕ <b>New book: Python with Chai</b>, Basic → Expert · <s>₹299</s> ₹199 launch · <u>Free preview →</u></a><button type="button" aria-label="Hide this message" id="annc-x">×</button></div>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#classroom"><img src="img/raj-mark.png" alt="">Tech <span>Samjho</span> Raj</a>
-    <div class="bar-right"><div class="social" data-social></div><button class="install" id="install" type="button"><img src="img/icon-192.png" alt="" width="28" height="28">Install<span class="install-x"> app</span></button></div>
+    <a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
+    <div class="bar-right"><div class="social" data-social></div><button class="kbtn" id="cmdk-open" type="button" aria-label="Search lessons (Ctrl K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="kl">Search</span><kbd>Ctrl K</kbd></button><button class="tbtn" id="theme" type="button" aria-label="Switch light or dark theme" title="Light / dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button><button class="install" id="install" type="button"><img src="img/icon-192.png" alt="" width="28" height="28">Install<span class="install-x"> app</span></button></div>
   </div>
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
-    <a class="tab" href="#book" data-tab="book">Book<span class="new">New</span></a>
+    <a class="tab" href="#shop" data-tab="shop">Shop<span class="new">New</span></a>
     <a class="tab" href="#playground" data-tab="playground">Playground</a>
     <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
+    <a class="tab" href="#workshops" data-tab="workshops">Workshops</a>
     <a class="tab" href="#community" data-tab="community">Community</a>
     <a class="tab" href="#about" data-tab="about">About</a>
   </nav>
 </header>
 <main class="wrap" id="app"></main>
-<footer><div class="wrap"><span>© 2026 Tech Samjho Raj</span><div class="social" data-social></div><span>Progress is saved only in this browser. No tracking. <a href="#privacy">Privacy</a></span></div></footer>
+<footer><div class="wrap fgrid">
+  <div class="fabout"><a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
+    <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
+  <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
+  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
+  <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="mailto:samjhowithraj@gmail.com">Contact</a><a href="#privacy">Privacy</a></nav>
+</div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
+<dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
 <dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><button class="btn" type="button" data-close>Got it</button></dialog>
 
 <script>
@@ -749,23 +919,41 @@ function kw(s){ return s.replace(/\b(def|return|if|elif|else|for|in|while|True|F
 // ---------- views ----------
 const app = document.getElementById("app");
 
+// "Continue where you left off": the last lesson opened, kept only in this browser
+const LAST = "swr-last";
+const LEVEL = { python: "Beginner", chatbot: "Beginner to intermediate", agentic: "Beginner" };
+const started = c => live(c).some(l => done.has(l.id)) || (() => { try { const [lc] = find(localStorage.getItem(LAST) || ""); return lc === c; } catch (e) { return false; } })();
+const nextIn = c => live(c).find(l => !done.has(l.id)) || live(c)[0];
+function heroCta(){
+  let last = null; try { last = find(localStorage.getItem(LAST) || "")[1]; } catch (e) {}
+  const first = live(COURSES[0])[0];
+  const main = last ? `<a class="btn big primary" href="#${last.id}">Continue: ${last.title} →</a>` : `<a class="btn big primary" href="#${first.id}">Start learning free →</a>`;
+  return `<div class="cta">${main}<a class="btn big" href="#playground">▶ Try Python in your browser</a>
+    <span class="sub">${last ? "Picks up where you left off in this browser." : "No sign-up, no install. Start with lesson 1 of Python with Chai."}</span></div>`;
+}
+
 function classroom(){
   const lessons = COURSES.reduce((n, c) => n + live(c).length, 0);
   const finished = COURSES.reduce((n, c) => n + live(c).filter(l => done.has(l.id)).length, 0);
   return `
-  <div class="page-head">
-    <div><div class="eyebrow">Classroom</div>
+  <div class="hero">
+    <div><div class="eyebrow">Free Python + AI classroom</div>
       <h1>Understand it, learn it, <em>try it yourself.</em></h1>
       <p class="lead">Every lesson has a short video, simple notes, code you can copy and a practice task. No Python background needed.</p>
-      <p class="hindi">Videos are in Hinglish with on-screen text. All notes are in English.</p></div>
-    <div class="stats"><div><b>${COURSES.length}</b>courses</div><div><b>${lessons}</b>lessons live</div><div><b>${finished}</b>done by you</div></div>
+      <p class="hindi">Videos are in Hinglish with on-screen text. All notes are in English.</p>
+      ${heroCta()}
+      <div class="byline"><img src="img/badge-96.png" alt="" width="34" height="34"><span>Taught by <a href="#about">Raj</a>, technology architect (Python, Azure, data)</span></div>
+      <div class="stats"><div><b>${COURSES.length}</b>courses</div><div><b>${lessons}</b>lessons live</div><div><b>${finished}</b>done by you</div></div></div>
+    <div class="term" role="img" aria-label="A terminal running the Chai Bot from the AI + Python course: it greets the customer, takes an order for masala chai and prints the bill."><div class="term-bar"><i></i><i></i><i></i><span>chai_bot.py</span></div><pre class="term-body" id="term"></pre></div>
   </div>
+  <h2 class="sr-only">Courses</h2>
   <div class="courses">${COURSES.map(c => `
-    <a class="course" href="#${live(c)[0].id}">
-      <div class="cover"><img src="${c.cover}" alt="" loading="lazy"><span class="pill">${c.tag}</span></div>
-      <div class="cbody"><h3>${c.title}</h3><p>${c.blurb}</p>
+    <a class="course" href="#${nextIn(c).id}">
+      <div class="cover"><img class="bg" src="${c.cover}" alt="" loading="lazy" aria-hidden="true"><img class="fg" src="${c.cover}" alt="" loading="lazy"><span class="pill">${c.tag}</span></div>
+      <div class="cbody"><div class="ctags"><span class="ctag lvl">${LEVEL[c.id] || "Beginner"}</span><span class="ctag">Free</span></div><h3>${c.title}</h3><p>${c.blurb}</p>
         <div class="meta">${live(c).length} of ${total(c)} lessons available</div>
-        <div class="progrow"><div class="prog"><i style="width:${pct(c)}%"></i></div>${pct(c)}%</div></div>
+        <div class="progrow"><div class="prog"><i style="width:${pct(c)}%"></i></div>${pct(c)}%</div>
+        <span class="cgo">${started(c) ? (pct(c) === 100 ? "Review course →" : "Continue →") : "Start course →"}</span></div>
     </a>`).join("")}
   </div>
   <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
@@ -840,7 +1028,7 @@ function community(){
 }
 
 function about(){
-  return `<div class="about"><img src="img/raj-mark.png" alt="Tech Samjho Raj logo">
+  return `<div class="about"><img src="img/badge-256.png" alt="Raj, drawn portrait (Tech Samjho Raj logo)" width="180" height="180">
   <div><div class="eyebrow">About</div><h2>Hi, I'm Raj.</h2>
     <p>I work in technology architecture, with experience in Python, Azure and data platforms. This is where I turn complicated ideas into simple, useful lessons.</p>
     <p>The approach is simple: explain the idea, try it on a real task, and show what worked and what needs checking. You don't need a technical background.</p>
@@ -864,6 +1052,7 @@ const PROMOS = [
   { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish, with free chapter previews.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
   { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
   { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
+  { label:"From Raj", title:"AI workshops for colleges and companies", text:"AI for jobs, Python + AI and AI agents, taught by Raj as a talk or a hands-on session.", image:"img/og-card.jpg", link:"#workshops", cta:"Plan a workshop" },
   { label:"From Raj", title:"Watch every lesson on YouTube", text:"Short Hinglish videos on Python, AI chatbots and agents. Subscribe so you don't miss a part.", image:"media/agentic-1.jpg", link:"https://www.youtube.com/@SamjhowithRaj", cta:"Subscribe on YouTube" },
 ];
 // ---------- Recommended books (Amazon India) ----------
@@ -947,7 +1136,7 @@ function bookPage(){
 }
 function bookCard(){
   const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
-  return `<a class="bookcard" href="#book"><img src="${BOOK.cover.en}" alt="Python with Chai book cover" loading="lazy">
+  return `<a class="bookcard" href="#book"><img src="${BOOK.cover.en}" alt="Python with Chai book cover" loading="lazy" width="420" height="596">
     <div><div class="eyebrow">New book by ${BOOK.author}</div><h2>${BOOK.title}: ${BOOK.sub}</h2>
     <p>Everything from these lessons and much more: 30 illustrated chapters, 120+ examples, mistakes, practice and answers. English and Hinglish editions.</p>
     <span class="pr">${now}</span><span class="go">Read a free preview →</span></div></a>`;
@@ -1154,27 +1343,109 @@ function privacy(){
       <li>Your address is stored with our email service, Brevo, which sends the emails for us. We never sell or share it, and we never send ads.</li>
       <li>Our emails may record whether they were opened or a link was clicked, so we learn which lessons are useful.</li>
       <li>Every email has an unsubscribe link. To have your address deleted completely, write to <span class="mail">samjhowithraj@gmail.com</span>.</li></ul>
+    <h2>Workshop enquiries and the cohort waitlist</h2><p>If you send a workshop enquiry or join the Live Cohort waitlist, we use your details only to reply or to tell you when the cohort opens. They are kept with Brevo, like the email updates, and never sold or shared. Until those forms are connected, they open your own email app instead and nothing is stored here.</p>
     <h2>Featured spots and book links</h2><p>The “Featured” card and the book list are plain links chosen by Raj, not an ad network, so they don't track you. Paid sponsors are always labelled “Sponsored”. Book links go to Amazon India and may be affiliate links (the page says when they are); Amazon's own privacy policy applies once you are there.</p>
     <h2>No tracking on this site</h2><p>No analytics, advertising or tracking cookies. The site is hosted on GitHub Pages; GitHub may keep basic technical logs (such as IP addresses) to run and protect its service. Links to YouTube, Instagram, Facebook and X follow those sites' own policies.</p>
     <h2>Questions</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span>.</p></article>`;
 }
 
+// ---------- Earning: Shop, Workshops, Live Cohort ----------
+// Forms post to Brevo like the sign-up box (Marketing → Forms → Share → Simple HTML gives the action URL).
+// While an action is empty, the form opens the visitor's email app with the details filled in instead, so no enquiry is lost.
+const WORKSHOP_FORM = { action: "" };   // Brevo form "Workshop enquiry" → list "Workshop enquiries" (FIRSTNAME, ORG, TOPIC, DATE, MESSAGE)
+const COHORT_FORM = { action: "" };     // Brevo form "Live cohort waitlist" → list "Cohort waitlist" (email only)
+const PROMPTS = { link: "" };           // Gumroad link for the "50 AI prompts" pack (from the Payments session). Empty = "Coming soon".
+const RAJ_MAIL = "samjhowithraj@gmail.com";
+function cohortBox(){
+  return `<section class="signup cohort" id="cohort"><div><h3>🚀 Python + AI Live Cohort</h3><p>A small live online batch with Raj, from Python basics to your own AI chatbot. Join the waitlist to hear first when the dates and details are announced.</p></div>
+    <form class="cohort-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
+      <button class="btn primary" type="submit">Join the waitlist</button>
+      <small>Email only. One email when the dates are out. <a href="#privacy">Privacy</a></small></form></section>`;
+}
+function shop(){
+  const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
+  return `<div class="page-head"><div><div class="eyebrow">Shop</div><h1>Learn more, <em>support the channel.</em></h1>
+    <p class="lead">Everything here is made by Raj. Every purchase helps keep the lessons on this site free.</p></div></div>
+  <div class="shop">
+    <a class="item" href="#book"><div class="art"><img src="${BOOK.cover.en}" alt="" width="420" height="596" loading="lazy"></div>
+      <div class="row"><span class="tag">E-book</span><span class="tag">English + Hinglish</span></div><h3>${BOOK.title}: ${BOOK.sub}</h3>
+      <p>30 illustrated chapters, 120+ examples, mistakes, practice and answers. PDF + EPUB.</p>
+      <div class="row"><span class="price">${now}</span><span class="btn">Free preview →</span></div></a>
+    <div class="item"><div class="art" aria-hidden="true">✨</div>
+      <div class="row"><span class="tag">Prompt pack</span></div><h3>50 AI prompts pack</h3>
+      <p>Ready-to-use AI prompts from Raj.${PROMPTS.link ? "" : " Details and price are coming soon."}</p>
+      <div class="row">${PROMPTS.link ? `<a class="btn primary" href="${PROMPTS.link}" target="_blank" rel="noopener">Get the pack</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
+    <a class="item" href="#workshops"><div class="art" aria-hidden="true">🎤</div>
+      <div class="row"><span class="tag">For colleges and companies</span></div><h3>AI workshops by Raj</h3>
+      <p>AI for jobs, Python + AI and AI agents, as a talk or a hands-on session.</p><div class="row"><span class="btn">Plan a workshop →</span></div></a>
+    <a class="item" href="#cohort" data-cohort><div class="art" aria-hidden="true">🚀</div>
+      <div class="row"><span class="tag">Waitlist open</span></div><h3>Python + AI Live Cohort</h3>
+      <p>Learn live with Raj in a small online batch. Join the waitlist below.</p><div class="row"><span class="btn">Join the waitlist ↓</span></div></a>
+  </div>
+  ${cohortBox()}
+  <p class="disc" style="margin-top:18px">Book payments are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>`;
+}
+function workshops(){
+  return `<div class="page-head"><div><div class="eyebrow">Workshops</div><h1>AI workshops for <em>colleges and companies</em></h1>
+    <p class="lead">Sessions by Raj that make AI simple and useful: what it is, how to use it in your work, and how to build with it. Taught like the videos: one clear idea at a time, with live demos.</p>
+    <div class="byline"><img src="img/badge-96.png" alt="" width="34" height="34"><span><b>Raj</b> · ${BOOK.cred}</span></div></div></div>
+  <div class="wk-topics">
+    <div class="card"><h3><span aria-hidden="true">💼</span>AI for jobs and careers</h3><p>How AI is changing work in your field, which skills matter now, and how to use AI tools safely and well.</p></div>
+    <div class="card"><h3><span aria-hidden="true">🐍</span>Python + AI, hands-on</h3><p>From the first lines of Python to a working chatbot that uses an AI model, built step by step in the browser. No setup needed.</p></div>
+    <div class="card"><h3><span aria-hidden="true">🤖</span>AI agents, explained</h3><p>What agents are, how they plan and use tools, and where they help or fail. The Bunty way, without jargon.</p></div>
+  </div>
+  <p class="lead">The format is planned with you: a talk, a hands-on session or a longer course, online or in person. Tell us a little about your group.</p>
+  <form class="wk-form" novalidate>
+    <label>Your name<input name="name" required autocomplete="name"></label>
+    <label>College or company<input name="org" required autocomplete="organization"></label>
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>Topic<select name="topic"><option>AI for jobs and careers</option><option>Python + AI, hands-on</option><option>AI agents, explained</option><option>Something else</option></select></label>
+    <label>Preferred date (roughly)<input name="date" type="date"></label>
+    <label class="full">Anything else? (optional)<textarea name="msg" rows="3" placeholder="Group size, level, online or in person…"></textarea></label>
+    <div class="full"><button class="btn primary big" type="submit">Send enquiry</button></div>
+    <small class="full">${WORKSHOP_FORM.action ? "We use these details only to reply to your enquiry. They are kept with our email service, Brevo, and never shared." : "This opens your email app with the details filled in, addressed to Raj. Nothing is stored on this site."} <a href="#privacy">Privacy</a></small>
+  </form>
+  ${cohortBox()}`;
+}
+const mailto = (subject, body) => `mailto:${RAJ_MAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+document.addEventListener("submit", async e => {
+  const wf = e.target.closest(".wk-form"), cf = e.target.closest(".cohort-form"); if (!wf && !cf) return;
+  e.preventDefault();
+  const f = wf || cf, btn = f.querySelector("button"), note = f.querySelector("small"), val = n => (f[n] && f[n].value || "").trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"))) { note.textContent = "Please enter a valid email address."; f.email.focus(); return; }
+  if (wf && (!val("name") || !val("org"))) { note.textContent = "Please add your name and your college or company."; (val("name") ? f.org : f.name).focus(); return; }
+  const action = wf ? WORKSHOP_FORM.action : COHORT_FORM.action;
+  if (!action) {
+    location.href = wf ? mailto(`Workshop enquiry: ${val("org")}`, `Name: ${val("name")}\nCollege or company: ${val("org")}\nEmail: ${val("email")}\nTopic: ${val("topic")}\nPreferred date: ${val("date") || "flexible"}\n\n${val("msg")}`)
+                       : mailto("Python + AI Live Cohort waitlist", `Please add me to the waitlist: ${val("email")}`);
+    note.textContent = "Your email app should open with the message ready. Press Send there.";
+    return;
+  }
+  btn.disabled = true; const label = btn.textContent; btn.textContent = "Sending…";
+  const body = new FormData(); body.append("EMAIL", val("email")); body.append("email_address_check", ""); body.append("locale", "en"); body.append("html_type", "simple");
+  if (wf) { body.append("FIRSTNAME", val("name")); body.append("ORG", val("org")); body.append("TOPIC", val("topic")); body.append("DATE", val("date")); body.append("MESSAGE", val("msg").slice(0, 500)); }
+  try { await fetch(action, { method: "POST", body, mode: "no-cors" });
+    f.outerHTML = `<p class="ok">${wf ? "Thank you! Raj will reply by email within a few days." : "You're on the list! Check your email and click the confirm link (look in Promotions and Spam too)."}</p>`; }
+  catch (err) { btn.disabled = false; btn.textContent = label; note.textContent = "Couldn't connect. Check your internet and try again."; }
+});
 function render(){
   const h = (location.hash || "#classroom").slice(1);
   const [c, l] = find(h);
   let tab = "classroom";
-  if (c) app.innerHTML = lessonView(c, l);
+  if (c) { app.innerHTML = lessonView(c, l); try { localStorage.setItem(LAST, l.id); } catch (e) {} }
   else if (h === "tracker") { location.replace("https://www.paisasamjhoraj.com/#planner"); return; }
-  else if (h === "book") { app.innerHTML = bookPage(); tab = h; }
+  else if (h === "book") { app.innerHTML = bookPage(); tab = "shop"; }
+  else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
+  else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
   else if (h === "about") { app.innerHTML = about(); tab = h; }
   else if (h === "privacy") { app.innerHTML = privacy(); tab = h; }
-  else app.innerHTML = classroom();
+  else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
@@ -1190,7 +1461,203 @@ app.addEventListener("click", e => {
 });
 addEventListener("hashchange", () => { render(); scrollTo(0, 0); });
 render();
-// ---------- Ask Raj chat helper (rule-based, runs only in this browser; nothing is sent anywhere) ----------
+// ---------- hero terminal: the Chai Bot from AI + Python, typing in a loop (static for reduced motion) ----------
+const TERM_SCRIPT = [["p", "$ python chai_bot.py"], ["b", "☕ Chai Bot: Namaste! Kya lenge? (menu / order / bill)"], ["u", "> menu"],
+  ["b", "☕ Masala ₹20 · Adrak ₹15 · Elaichi ₹25 · Tulsi ₹30"], ["u", "> order masala"], ["b", "☕ Masala chai, coming up!"],
+  ["u", "> bill"], ["b", "🧾 1 × Masala = ₹20\n   Total: ₹20. Shukriya! 🙏"], ["d", "# 40 lines of Python. Build it in AI + Python, Part 1."]];
+let termRun = 0;
+function startTerm(){
+  const el = document.getElementById("term"); if (!el) return;
+  if (!startTerm.seen) {                                    // first time: wait for the page to settle and for the terminal to be on screen
+    startTerm.seen = true;
+    const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); setTimeout(startTerm, 600); } });
+    io.observe(el); el.textContent = "$ python chai_bot.py"; return;
+  }
+  const run = ++termRun, e = s => s.replace(/[&<>]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;" })[c]);
+  const line = ([k, t]) => `<span class="${k}">${e(t)}</span>\n`;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.innerHTML = TERM_SCRIPT.map(line).join(""); return; }
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  (async () => {
+    while (run === termRun && document.body.contains(el)) {
+      let done = "";
+      for (const [k, t] of TERM_SCRIPT) {
+        if (run !== termRun) return;
+        if (k === "u" || k === "p") {                       // typed by the "user"
+          for (let i = 1; i <= t.length; i++) { if (run !== termRun) return; el.innerHTML = done + `<span class="${k}">${e(t.slice(0, i))}</span><span class="cur"></span>`; await wait(55 + Math.random() * 45); }
+          done += line([k, t]); await wait(350);
+        } else { done += line([k, t]); el.innerHTML = done + '<span class="cur"></span>'; await wait(k === "d" ? 2600 : 650); }
+      }
+      await wait(1500);
+    }
+  })();
+}
+// ---------- theme: dark first; the choice is remembered in this browser ----------
+document.getElementById("theme").addEventListener("click", () => {
+  const light = document.documentElement.dataset.theme !== "light";
+  if (light) document.documentElement.dataset.theme = "light"; else delete document.documentElement.dataset.theme;
+  try { localStorage.setItem("swr-theme", light ? "light" : "dark"); } catch (e) {}
+});
+// ---------- command palette (Ctrl K or /): lessons, pages, full-text search, and "Ask Raj" ----------
+const CMDK = (() => {
+  const dlg = document.getElementById("cmdk"), q = document.getElementById("cmdk-q"), list = document.getElementById("cmdk-list");
+  const e = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
+  const PAGES = [["#classroom", "Classroom", "All courses and your progress", "🏠"], ["#playground", "Python Playground", "Run Python in your browser", "▶"],
+    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
+    ["#about", "About Raj", "Who teaches here", "👋"], ["#community", "Community", "Ask a question, share your project", "💬"], ["#privacy", "Privacy", "What this site stores (almost nothing)", "🔒"]];
+  const LESSONS = COURSES.flatMap(c => live(c).map((l, i) => [`#${l.id}`, l.title, `${c.title} · Lesson ${i + 1}`, "📄"]));
+  let items = [], sel = 0, seq = 0;
+  const norm = s => s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9 ]/g, " ");
+  const match = (txt, words) => { const t = norm(txt); return words.every(w => t.includes(w)); };
+  function paint(){
+    list.innerHTML = items.map((it, i) => it.grp ? `<li class="grp" role="presentation">${e(it.grp)}</li>`
+      : `<li role="presentation"><a href="${e(it.href || "#")}" role="option" id="ck-${i}" class="${it.ask ? "ask" : ""}" aria-selected="${i === sel}" data-i="${i}"><span class="ic" aria-hidden="true">${it.ic}</span><span><b>${e(it.t)}</b><small>${e(it.s || "")}</small></span></a></li>`).join("");
+    q.setAttribute("aria-activedescendant", "ck-" + sel);
+    const a = list.querySelector('[aria-selected="true"]'); if (a) a.scrollIntoView({ block: "nearest" });
+  }
+  const pick = arr => arr.map(([href, t, s, ic]) => ({ href, t, s, ic }));
+  async function update(){
+    const text = q.value.trim(), words = norm(text).split(/\s+/).filter(Boolean), my = ++seq;
+    if (!words.length) {
+      let last = null; try { last = find(localStorage.getItem(LAST) || "")[1]; } catch (err) {}
+      items = [{ grp: "Jump to" }, ...(last ? [{ href: "#" + last.id, t: "Continue: " + last.title, s: "Where you left off", ic: "⏯" }] : []),
+        ...pick(PAGES.slice(0, 4)), { grp: "Courses" }, ...COURSES.map(c => ({ href: "#" + nextIn(c).id, t: c.title, s: `${live(c).length} lessons live`, ic: "🎓" })),
+        { grp: "Help" }, { ask: true, t: "Ask Raj", s: "Chat with the helper about any lesson", ic: "☕" }];
+    } else {
+      const quick = pick([...LESSONS, ...PAGES].filter(x => match(x[1] + " " + x[2], words))).slice(0, 6);
+      items = [...(quick.length ? [{ grp: "Lessons and pages" }, ...quick] : [])];
+      items.push({ grp: "Ask" }, { ask: true, t: `Ask Raj: “${text}”`, s: "Get an answer from this site's lessons", ic: "☕" });
+      paint();
+      try {                                                    // full-text matches from the Ask Raj index
+        const { hits } = await SITE_SEARCH.search(text, 8); if (my !== seq) return;
+        const seen = new Set(quick.map(x => x.href)), more = [];
+        for (const h of hits) if (h.cover >= .5 && !seen.has(h.it.url)) { seen.add(h.it.url); more.push({ href: h.it.url, t: h.it.title.replace(/^.*? · /, ""), s: h.it.text.replace(/\s+/g, " ").slice(0, 140), ic: "🔎" }); }
+        if (more.length) items.splice(items.findIndex(x => x.grp === "Ask"), 0, { grp: "Found in the notes" }, ...more.slice(0, 5));
+      } catch (err) {}
+    }
+    const firstReal = items.findIndex(x => !x.grp); sel = Math.max(0, firstReal); paint();
+  }
+  function go(i){
+    const it = items[i]; if (!it || it.grp) return;
+    dlg.close();
+    if (it.ask) ASK_RAJ.open(q.value.trim() || ""); else location.hash = it.href;
+  }
+  function move(d){ let i = sel; do { i = (i + d + items.length) % items.length; } while (items[i].grp && i !== sel); sel = i; paint(); }
+  function open(){ if (dlg.open) return; q.value = ""; dlg.showModal(); update(); q.focus(); }
+  q.addEventListener("input", update);
+  q.addEventListener("keydown", ev => {
+    if (ev.key === "ArrowDown") { ev.preventDefault(); move(1); } else if (ev.key === "ArrowUp") { ev.preventDefault(); move(-1); }
+    else if (ev.key === "Enter") { ev.preventDefault(); go(sel); }
+  });
+  list.addEventListener("click", ev => { const a = ev.target.closest("a[data-i]"); if (a) { ev.preventDefault(); go(+a.dataset.i); } });
+  list.addEventListener("mousemove", ev => { const a = ev.target.closest("a[data-i]"); if (a && +a.dataset.i !== sel) { sel = +a.dataset.i; paint(); } });
+  dlg.addEventListener("click", ev => { if (ev.target === dlg) dlg.close(); });   // click outside closes
+  document.getElementById("cmdk-open").addEventListener("click", open);
+  addEventListener("keydown", ev => {
+    const typing = /^(input|textarea|select)$/i.test(ev.target.tagName) || ev.target.isContentEditable;
+    if ((ev.key === "k" || ev.key === "K") && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); open(); }
+    else if (ev.key === "/" && !typing && !dlg.open) { ev.preventDefault(); open(); }
+  });
+  return { open };
+})();
+// ---------- Ask Raj, layer 2: search every page of this site ----------
+// site-index.json is built by tools/build-index.mjs before each push (every lesson, page, Upcoming list and book FAQ).
+// BM25 ranking + Hinglish synonyms + typo tolerance, all in this browser; nothing is sent anywhere.
+// Layer 3 (optional): ASK_WORKER = the Cloudflare Worker URL (repo ask-raj-worker). It sends the question and the top
+// passages to Claude, which answers only from them. Empty = search answers only. Any error or timeout uses layer 2.
+const ASK_WORKER = "";
+const SITE_SEARCH = (() => {
+  const STOP = new Set(("a an the is are was were be been to of in on at for and or with from by it its this that these those i me my you your we our they them " +
+    "do does did can could should would will may how what why when where which who whose please tell explain about there here want need know " +
+    "hai hain ho hota hoti hote kya kyu kyun kaise kaisa kaisi ka ki ke ko se me mein mai main mujhe mera meri hum tum aap ye yeh wo woh us ek aur ya bhi " +
+    "to toh na nahi koi kuch batao bataiye bata samjhao samjha samjhaiye karte karna karo kare kar raha rahi rahe tha thi hoga sakta sakte sakti chahiye " +
+    "wala wali wale par pe liye lie hota sir bhai bhaiya yaar " +
+    "banate banta banti banaye banana banao likhte likhe likho milega milegi milta milti karu karun kaha kahan kis kisi bare baare example examples use").split(" "));
+  const SYN = { kitab:"book", kitaab:"book", pustak:"book", daam:"price", dam:"price", keemat:"price", kimat:"price", cost:"price", rate:"price", rupee:"price",
+    kitna:"price", kitne:"price", shuru:"start", suru:"start", begin:"start", beginner:"start", sikhna:"learn", seekhna:"learn", sikhu:"learn", sikho:"learn",
+    seekho:"learn", padhai:"learn", galti:"mistake", galat:"error", crash:"error", chalao:"run", chalana:"run", chalaye:"run", execute:"run",
+    agla:"next", agle:"next", agli:"next", naya:"new", nayi:"new", naye:"new", muft:"free", kab:"upcoming", aane:"upcoming", sawal:"question",
+    jawab:"answer", suchi:"list", shabd:"string", ginti:"count", baar:"loop", repeat:"loop", dohrana:"loop", agar:"if", condition:"if", warna:"else",
+    shabdkosh:"dictionary", dict:"dictionary", padhna:"read", likhna:"write", download:"install", phone:"install", mobile:"install",
+    mail:"email", subscribe:"email", newsletter:"email", cheeni:"sugar", meetha:"sugar", meethi:"sugar", bot:"chatbot", bunty:"agent", agentic:"agent",
+    youtube:"video", data:"privacy", track:"privacy", tracking:"privacy", epub:"pdf", kindle:"pdf", hindi:"hinglish", angrezi:"english",
+    samay:"datetime", waqt:"datetime", time:"datetime", date:"datetime", poocho:"input", pucho:"input", user:"input", class:"class", object:"class",
+    pdf:"format", format:"pdf", author:"raj", teacher:"raj", sikhata:"raj", contact:"email", help:"question", doubt:"question", fstring:"string", teach:"raj", farak:"difference", fark:"difference", antar:"difference", vs:"difference" };
+  const stem = t => t.length > 4 && t.endsWith("ies") ? t.slice(0, -3) + "y" : t.length > 4 && /(ss|x|z|ch|sh)es$/.test(t) ? t.slice(0, -2)
+    : t.length > 3 && t.endsWith("s") && !t.endsWith("ss") ? t.slice(0, -1) : t.length > 5 && t.endsWith("ing") ? t.slice(0, -3) : t;
+  const toks = s => s.toLowerCase().normalize("NFKD").replace(/\bf[\s-]?strings?\b/g, "fstring").replace(/[^a-z0-9_]+/g, " ").split(" ")
+    .filter(t => t.length > 1 && !STOP.has(t)).map(stem);
+  const lev = (a, b, max) => { if (Math.abs(a.length - b.length) > max) return max + 1; let p = [...Array(b.length + 1).keys()];
+    for (let i = 1; i <= a.length; i++) { const c = [i]; let lo = i;
+      for (let j = 1; j <= b.length; j++) { c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); lo = Math.min(lo, c[j]); }
+      if (lo > max) return max + 1; p = c; } return p[b.length]; };
+  let ready = null;
+  const load = () => ready || (ready = fetch("site-index.json").then(r => r.json()).then(j => {
+    const docs = j.items.map(it => { const tf = new Map(), w = [...toks(it.title), ...toks(it.title), ...toks(it.text)];
+      w.forEach(t => tf.set(t, (tf.get(t) || 0) + 1)); return { it, tf, len: w.length }; });
+    const df = new Map(); docs.forEach(d => d.tf.forEach((_, t) => df.set(t, (df.get(t) || 0) + 1)));
+    return { docs, df, avg: docs.reduce((n, d) => n + d.len, 0) / docs.length };
+  }).catch(e => { ready = null; throw e; }));
+  // Each question word expands to itself, a Hinglish synonym, and close spellings (typos / partial words).
+  // A passage scores BM25 per question word (best expansion only); "cover" = share of question words it contains.
+  async function search(q, k = 5){
+    const ix = await load(), groups = [], terms = new Map();
+    for (const t of new Set(toks(q))) {
+      const idf = x => Math.log(1 + (ix.docs.length - ix.df.get(x) + .5) / (ix.df.get(x) + .5));   // rare words count more in snippets
+      const g = new Map(), add = (x, w) => { g.set(x, Math.max(g.get(x) || 0, w)); terms.set(x, Math.max(terms.get(x) || 0, w * idf(x))); };
+      if (ix.df.has(t)) add(t, 1);
+      else if (t.length >= 4) {
+        const max = t.length >= 7 ? 2 : 1;
+        for (const v of ix.df.keys()) if (lev(t, v, max) <= max) add(v, .8);
+        for (const v of ix.df.keys()) if (v.length > t.length && v.startsWith(t)) add(v, .6);
+      }
+      const syn = SYN[t] && stem(SYN[t]); if (syn && ix.df.has(syn)) add(syn, .9);
+      groups.push(g);
+    }
+    if (!terms.size) return { hits: [], terms };
+    const N = ix.docs.length, k1 = 1.2, b = .75;
+    const bm = (d, t) => { const f = d.tf.get(t); if (!f) return 0; const n = ix.df.get(t);
+      return Math.log(1 + (N - n + .5) / (n + .5)) * f * (k1 + 1) / (f + k1 * (1 - b + b * d.len / ix.avg)); };
+    const hits = ix.docs.map(d => { let sc = 0, cov = 0;
+      for (const g of groups) { let best = 0; g.forEach((w, t) => { best = Math.max(best, w * bm(d, t)); }); if (best > 0) { sc += best; cov++; } }
+      cov /= groups.length; return { it: d.it, score: sc * cov * cov, cover: cov }; })
+      .filter(h => h.score > 0).sort((a, b) => b.score - a.score).slice(0, k);
+    return { hits, terms };
+  }
+  // the 1–2 sentences of a passage that match the question best
+  function snippet(text, terms, title = ""){
+    const tt0 = new Set(toks(title)), own = [...terms.keys()].filter(t => !tt0.has(t));
+    if (own.length) terms = new Map(own.map(t => [t, terms.get(t)]));   // words already in the title don't pick the sentence
+    const parts = text.split(/(?<=[.!?])\s+|\n(?=\S)/).filter(p => p.trim().length > 2);
+    let best = 0, bs = -1;
+    parts.forEach((p, i) => { const tt = new Set(toks(p)); let s = 0; terms.forEach((w, t) => { if (tt.has(t)) s += w; }); if (i === 0) s -= .5; if (s > bs) { bs = s; best = i; } });
+    let out = parts[best]; if (parts[best + 1] && out.length < 140) out += " " + parts[best + 1];
+    return out.length > 300 ? out.slice(0, 297) + "…" : out;
+  }
+  return { load, search, snippet };
+})();
+const ASK_MIN = 1.5, ASK_COVER = .6;   // the best passage must score this and contain 60% of the question's words (tuned on test questions)
+async function siteAnswer(q){
+  let res; try { res = await SITE_SEARCH.search(q); } catch (e) { return null; }
+  const hits = res.hits; if (!hits.length || hits[0].score < ASK_MIN || hits[0].cover < ASK_COVER) return null;
+  const e = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
+  const top = hits.filter(h => h.score >= hits[0].score * .6);
+  const urls = [...new Map(top.map(h => [h.it.url, h.it])).values()];
+  const link = it => `<a href="${it.url}">${e(it.title.replace(/^.*? · /, ""))}</a>`;
+  const local = { text: `<b>${e(hits[0].it.title)}</b>\n${e(SITE_SEARCH.snippet(hits[0].it.text, res.terms, hits[0].it.title))}\n👉 ${link(hits[0].it)}` +
+      (urls.length > 1 ? `\nAlso see: ${urls.slice(1, 3).map(link).join(" · ")}` : ""), chips: ["Where do I start?", "Next lesson"] };
+  if (!ASK_WORKER) return local;
+  const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 8000);
+  try {
+    const r = await fetch(ASK_WORKER.replace(/\/$/, "") + "/ask", { method: "POST", headers: { "content-type": "application/json" }, signal: ctl.signal,
+      body: JSON.stringify({ site: "tech", q: q.slice(0, 300), chunks: hits.slice(0, 4).map(h => ({ id: h.it.id, title: h.it.title, url: h.it.url })) }) });   // the Worker reads the text from the published index
+    const j = r.ok ? await r.json() : null;
+    if (!j || !j.answer) return local;
+    const html = e(j.answer).replace(/\*\*([^*]{1,80})\*\*/g, "<b>$1</b>")
+      .replace(/\[([^\]]{1,90})\]\((#[\w\-\/]+|https:\/\/www\.(?:tech|paisa)samjhoraj\.com\/[^\s)]*)\)/g, '<a href="$2">$1</a>');
+    return { text: html + `\n<small>✨ AI answer from this site's lessons. Check the linked page to be sure.</small>`, chips: local.chips };
+  } catch (err) { return local; } finally { clearTimeout(timer); }
+}
+// ---------- Ask Raj chat helper: layer 1 = hand-written replies (rule-based, runs only in this browser) ----------
 // Same idea as the AI + Python course: a dictionary of keywords → replies, .lower(), and "in" checks. First match wins.
 function askRaj(BOT){
   const fab = document.createElement("button"), panel = document.createElement("section");
@@ -1210,13 +1677,21 @@ function askRaj(BOT){
     const t = " " + text.toLowerCase().replace(/[^a-z0-9₹&+ ]/g, " ").replace(/\s+/g, " ") + " ";
     const has = k => k.includes(" ") ? t.includes(" " + k + " ") || t.includes(k) : t.includes(" " + k + " ") || (k.length > 4 && t.includes(k));
     for (const [keys, ans] of BOT.rules) if (keys.some(has)) return typeof ans === "function" ? ans(t) : ans;
-    return BOT.fallback;
+    return null;
+  }
+  // Short messages, chips and shop commands get the hand-written reply; real questions search the site first
+  // (and ask the AI if ASK_WORKER is set). The hand-written reply, then the fallback, cover anything the search misses.
+  async function answer(text){
+    const rule = reply(text), words = text.split(/\s+/).length, first = text.toLowerCase().split(/\W+/)[0];
+    if (rule && (BOT.chips.includes(text) || words <= 3 || (BOT.first || []).includes(first))) return rule;
+    const smart = BOT.smart && await BOT.smart(text);
+    return smart || rule || BOT.fallback;
   }
   function ask(text){
     text = text.trim(); if (!text) return;
     say(esc(text), "me");
-    const dots = say("Typing…", "bot typing");
-    setTimeout(() => { dots.remove(); const r = reply(text); say(r.text || r, "bot"); if (r.chips) setChips(r.chips); }, 450);
+    const dots = say("Typing…", "bot typing"), t0 = Date.now();
+    answer(text).then(r => setTimeout(() => { dots.remove(); say(r.text || r, "bot"); if (r.chips) setChips(r.chips); }, Math.max(0, 450 - (Date.now() - t0))));
   }
   let started = false;
   const open = () => { panel.hidden = false; fab.setAttribute("aria-expanded", "true");
@@ -1229,18 +1704,21 @@ function askRaj(BOT){
   chips.addEventListener("click", e => { const b = e.target.closest("button"); if (b) ask(b.textContent); });
   form.addEventListener("submit", e => { e.preventDefault(); ask(form.q.value); form.q.value = ""; });
   log.addEventListener("click", e => { const a = e.target.closest('a[href^="#"]'); if (a && matchMedia("(max-width:480px)").matches) close(); });
+  return { open: q => { open(); if (q) ask(q); } };   // used by the Ctrl K palette
 }
 const CHAI_MENU = { masala:20, adrak:15, elaichi:25, tulsi:30 };
 let chaiCart = [];
-askRaj({
+const ASK_RAJ = askRaj({
   tagline: "Chai shop + course guide",
-  foot: "A simple rule-based bot, built like the one in the AI + Python course. It can't understand everything!",
-  hello: "Namaste! ☕ I'm Ask Raj, Raj's automated helper (not Raj himself).\nI run a tiny chai shop and I know my way around this classroom. Order a chai, or ask me where to start learning.",
+  foot: "Answers come from this site's own lessons and pages. Built like the bot in the AI + Python course.",
+  first: ["order", "bill", "menu", "hi", "hello", "hey", "namaste", "thanks", "thank", "shukriya", "bye"],
+  smart: siteAnswer,
+  hello: "Namaste! ☕ I'm Ask Raj, Raj's automated helper (not Raj himself).\nI run a tiny chai shop and I know every lesson on this site. Ask me anything about the lessons (\"what is a for loop?\", \"book ka price kya hai?\"), or order a chai.",
   chips: ["menu", "order masala", "bill", "Where do I start?", "How are you built?", "Next lesson"],
   rules: [
     [["hi", "hello", "hey", "namaste", "hii", "helo"], { text: "Namaste! 🙏 Kya lenge? Type <b>menu</b> to see the chai, or ask about the lessons.", chips: ["menu", "Where do I start?"] }],
     [["how are you built", "how do you work", "your code", "who made you", "are you ai", "are you chatgpt", "built"], { text: "No AI inside me! I'm a Python-style dictionary of keywords and replies, plus <code>.lower()</code> and <code>in</code> checks. Exactly what you build in <a href=\"#chatbot-2\">AI + Python Part 2</a> and <a href=\"#chatbot-3\">Part 3</a>. 🤖", chips: ["Start the chatbot course", "menu"] }],
-    [["start", "beginner", "begin", "new to", "learn python", "python", "basics", "shuru"], { text: "Start with <a href=\"#python-1\">Python with Chai</a>: 10 short lessons, each with a video, notes and code. No background needed. ☕🐍", chips: ["Start the chatbot course", "Agentic AI", "Next lesson"] }],
+    [["start", "beginner", "begin", "new to", "learn python", "python", "basics", "shuru"], { text: "Start with <a href=\"#python-1\">Python with Chai</a>: 20 short lessons, each with a video, notes and code. No background needed. ☕🐍", chips: ["Start the chatbot course", "Agentic AI", "Next lesson"] }],
     [["bill", "total", "pay", "kitna hua", "hisaab"], () => {
       if (!chaiCart.length) return { text: "Your cart is empty! Try <b>order masala</b> first. ☕", chips: ["order masala", "menu"] };
       let total = chaiCart.reduce((n, f) => n + CHAI_MENU[f], 0); const off = total > 50 ? 5 : 0; total -= off;
@@ -1261,11 +1739,12 @@ askRaj({
     [["install", "app", "download", "home screen"], { text: "Tap the <b>Install</b> button at the top right (the one with Raj's face) to add this classroom to your phone or computer like an app. 📲", chips: ["Where do I start?"] }],
     [["email", "notify", "subscribe", "newsletter", "update"], { text: "Use the <b>Get new lessons by email</b> box on the Classroom page or at the end of any lesson. One short email per new lesson; unsubscribe any time. 📬", chips: ["Next lesson"] }],
     [["youtube", "video", "instagram", "facebook", "twitter", " x "], { text: "Watch every lesson on <a href=\"https://www.youtube.com/@SamjhowithRaj\" target=\"_blank\" rel=\"noopener\">YouTube @SamjhowithRaj</a>. The icons at the top link to Instagram, Facebook and X too.", chips: ["Where do I start?"] }],
+    [["who is raj", "about raj", "raj kaun", "kaun hai raj", "who teaches", "who made this", "teacher"], { text: "Raj works in technology architecture (Python, Azure, data platforms) and turns complicated ideas into simple lessons. More on the <a href=\"#about\">About</a> page. (I'm his automated helper, not Raj himself.)", chips: ["Where do I start?"] }],
     [["contact", "question", "help", "doubt", "error", "raj", "mail"], { text: "Stuck on some code? Write to <b>samjhowithraj@gmail.com</b> with the lesson name and your code. 🙂", chips: ["Where do I start?", "menu"] }],
     [["thank", "thanks", "shukriya", "dhanyavad", "nice", "great", "awesome"], { text: "Shukriya! ☕ Ek aur chai?", chips: ["order masala", "bill"] }],
     [["bye", "band", "close", "exit", "quit"], { text: "Dukaan band! Kal milte hain. 👋\n(That's the <code>break</code> from <a href=\"#python-10\">Lesson 10</a>.)", chips: ["menu"] }],
   ],
-  fallback: { text: "Samjha nahi! 😅 I'm a simple bot and only know a few words.\nTry: <b>menu</b>, <b>order masala</b>, <b>bill</b>, <b>python</b>, <b>chatbot</b> or <b>next lesson</b>.\n(Making me smarter is what the <a href=\"#chatbot-1\">chatbot course</a> is about!)", chips: ["menu", "Where do I start?", "How are you built?"] },
+  fallback: { text: "Samjha nahi! 😅 I couldn't find that on this site.\nTry other words, or: <b>menu</b>, <b>order masala</b>, <b>python</b>, <b>chatbot</b> or <b>next lesson</b>. Still stuck? Write to <b>samjhowithraj@gmail.com</b>.\n(Making me smarter is what the <a href=\"#chatbot-1\">chatbot course</a> is about!)", chips: ["menu", "Where do I start?", "How are you built?"] },
 });
 // ---------- installable app (PWA) ----------
 // Chrome / Edge on Android and desktop: real install prompt. iPhone, in-app browsers (WhatsApp, Instagram, Facebook)

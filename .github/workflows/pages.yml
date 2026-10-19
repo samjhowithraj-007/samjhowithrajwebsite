@@ -3,7 +3,7 @@ name: Publish website
 on:
   push:
     branches: [main]
-    paths-ignore: ["README.md", "archive/**"]
+    paths-ignore: ["README.md", "IMPROVEMENTS.md", "archive/**", "tools/**"]
   workflow_dispatch:
 
 permissions:
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - name: Collect site files
-        run: mkdir site && cp -r index.html CNAME manifest.webmanifest sw.js robots.txt sitemap.xml googleef50f6b23d7dfe9f.html img media notes site/
+        run: mkdir site && cp -r index.html CNAME manifest.webmanifest sw.js robots.txt sitemap.xml site-index.json googleef50f6b23d7dfe9f.html img media notes site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
