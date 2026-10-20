@@ -32,7 +32,7 @@ ctx.window = ctx.self = ctx.globalThis = ctx;
 vm.createContext(ctx);
 vm.runInContext(script + `
 ;signup = () => ""; promo = () => ""; bookBox = () => ""; bookCard = () => "";
-globalThis.__site = { PROMPTS, COURSES, BOOK, classroom, upcoming, community, about, privacy, playground, bookPage, books, shop, workshops };`, ctx, { filename: "index.html" });
+globalThis.__site = { PUZZLES, puzzlesPage, PROMPTS, COURSES, BOOK, classroom, upcoming, community, about, privacy, playground, bookPage, books, shop, workshops };`, ctx, { filename: "index.html" });
 const S = ctx.__site;
 
 // ---- helpers ----
@@ -103,6 +103,10 @@ add("book", "book-buy", "Python with Chai (book): price and how to buy", "#book"
 if (S.PROMPTS && S.PROMPTS.link) add("book", "prompts-buy", "50 AI Prompts for Jobs + Study: price and how to buy", "#shop",
   `The prompt pack "50 AI Prompts for Jobs + Study" by Raj: ready-to-use AI prompts for job search and studies, English and Hinglish PDFs in one download. ` +
   `Price: ${rs(S.PROMPTS.price)}. Buy it in the Shop: the "Get the 50 prompts" button opens Gumroad, and the PDFs download right after payment.`);
+{ const Z = S.PUZZLES; add("book", "puzzles-buy", "Reasoning Samjho (book): price and how to buy", "#puzzles",
+  `The book ${Z.title}: ${Z.sub}, by Raj (Dimaag Dada): 192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements, English and Hinglish, PDF + EPUB. ` +
+  `Price: ${rs(Z.price)} per edition, ${rs(Z.bundle)} for both.` + (Z.launchOn ? ` Launch offer until ${Z.launchEndsLabel}: ${rs(Z.launch)} per edition, ${rs(Z.bundleLaunch)} for both; the buy buttons apply it automatically.` : "") +
+  (Z.buy.en ? " Buy it on the Reasoning Samjho page." : " Coming soon: leave your email on the Reasoning Samjho page to hear the day it's out.") + " Free Chapter 1 preview (Seating Arrangement) in English and Hinglish on the same page."); }
 add("page", "install-app", "Install the Tech Samjho Raj app", "#classroom",
   "Install this site as an app (free, works offline): tap the Install app button at the top right of any page. " +
   "Android (Chrome): tap Install. iPhone (Safari): tap the Share button at the bottom, then Add to Home Screen. " +
@@ -120,6 +124,7 @@ page("book", "Python with Chai (book)", "#book", S.bookPage());
 page("playground", "Python Playground", "#playground", S.playground());
 page("shop", "Shop", "#shop", S.shop());
 page("workshops", "Workshops", "#workshops", S.workshops());
+page("puzzles", "Reasoning Samjho (book)", "#puzzles", S.puzzlesPage());
 page("community", "Community", "#community", S.community());
 page("about", "About Raj", "#about", S.about());
 page("privacy", "Privacy", "#privacy", S.privacy());

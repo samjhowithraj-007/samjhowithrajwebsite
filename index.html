@@ -510,7 +510,7 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
   <div class="fabout"><a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
     <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
   <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
-  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
+  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Reasoning Samjho (book)</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
   <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="mailto:samjhowithraj@gmail.com">Contact</a><a href="#privacy">Privacy</a></nav>
 </div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
 <dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
@@ -1313,10 +1313,11 @@ const SIGNUP = { action: "https://b84d134c.sibforms.com/serve/MUIFAGa0d6bBzbwnGh
 // Diwali offer: subscribers get a PRIVATE extra-10% book code + a free cheat sheet by email from Raj (never shown here).
 const DIWALI = { ends: "2026-11-09T00:00:00+05:30" };
 DIWALI.on = Date.now() < Date.parse(DIWALI.ends);
-function signup(lead, extraCls){
+function signup(lead, extraCls, plain){   // plain = skip the Diwali offer text (pages about other products)
   if (!SIGNUP.action) return "";
-  const head = DIWALI.on ? "&#129684; Diwali gift: extra 10% off the book" : "Get new lessons by email";
-  const sub = DIWALI.on ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Tip: our emails sometimes land in Promotions or Spam. Learning with a friend? Send them this page too.` : lead;
+  const dw = DIWALI.on && !plain;
+  const head = dw ? "&#129684; Diwali gift: extra 10% off the book" : "Get new lessons by email";
+  const sub = dw ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Tip: our emails sometimes land in Promotions or Spam. Learning with a friend? Send them this page too.` : lead;
   return `<section class="signup${extraCls ? " " + extraCls : ""}"><div><h3>${head}</h3><p>${sub}</p></div>
     <form class="signup-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
       <button class="btn primary" type="submit">Notify me</button>
@@ -1371,6 +1372,10 @@ function shop(){
       <div class="row"><span class="tag">E-book</span><span class="tag">English + Hinglish</span></div><h3>${BOOK.title}: ${BOOK.sub}</h3>
       <p>30 illustrated chapters, 120+ examples, mistakes, practice and answers. PDF + EPUB.</p>
       <div class="row"><span class="price">${now}</span><span class="btn">Free preview →</span></div></a>
+    <a class="item" href="#puzzles"><div class="art"><img src="${PUZZLES.cover}" alt="" width="420" height="596" loading="lazy"></div>
+      <div class="row"><span class="tag">E-book</span><span class="tag">${PUZZLES.buy.en ? "English + Hinglish" : "Coming soon"}</span></div><h3>${PUZZLES.title}: ${PUZZLES.sub}</h3>
+      <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements.</p>
+      <div class="row"><span class="price">${PUZZLES.launchOn ? `<s>₹${PUZZLES.price}</s>₹${PUZZLES.launch}` : `₹${PUZZLES.price}`}</span><span class="btn">Free Chapter 1 →</span></div></a>
     <div class="item"><div class="art" aria-hidden="true">✨</div>
       <div class="row"><span class="tag">Prompt pack</span><span class="tag">English + Hinglish</span></div><h3>50 AI Prompts for Jobs + Study</h3>
       <p>${PROMPTS.link ? "Ready-to-use AI prompts for your job search and your studies, by Raj. Both editions (English and Hinglish PDFs) in one download." : "Ready-to-use AI prompts from Raj. Details and price are coming soon."}</p>
@@ -1428,6 +1433,45 @@ document.addEventListener("submit", async e => {
     f.outerHTML = `<p class="ok">${wf ? "Thank you! Raj will reply by email within a few days." : "You're on the list! Check your email and click the confirm link (look in Promotions and Spam too)."}</p>`; }
   catch (err) { btn.disabled = false; btn.textContent = label; note.textContent = "Couldn't connect. Check your internet and try again."; }
 });
+// ---------- Book 2: Reasoning Samjho (Dimaag Dada; paid PDF + EPUB, free Chapter 1 teasers only) ----------
+// PUZZLES.buy = Gumroad links WITHOUT a code (empty = "Coming soon"). Until launchEnds, the buttons add "/" + launchCode
+// automatically, like the Python with Chai book. Never print the code itself on the page, and never publish the full book.
+const PUZZLES = {
+  title: "Reasoning Samjho", sub: "Puzzle se Selection tak",
+  price: 299, launch: 199, bundle: 399, bundleLaunch: 299,
+  launchCode: "DADA", launchEnds: "2026-12-01T00:00:00+05:30", launchEndsLabel: "30 Nov",
+  buy: { en: "", hi: "", both: "" },
+  cover: "media/puzzles-cover-en.jpg",
+};
+PUZZLES.launchOn = Date.now() < Date.parse(PUZZLES.launchEnds);
+function pzBuy(key, label, price){
+  const u = PUZZLES.buy[key] && (PUZZLES.launchOn ? PUZZLES.buy[key].replace(/\/$/, "") + "/" + PUZZLES.launchCode : PUZZLES.buy[key]);
+  return u ? `<a class="btn primary" href="${u}" target="_blank" rel="noopener">${label} · ₹${price}</a>` : `<span class="btn" aria-disabled="true">${label} · Coming soon</span>`;
+}
+function puzzlesPage(){
+  const Z = PUZZLES, now = Z.launchOn ? Z.launch : Z.price, any = Z.buy.en || Z.buy.hi || Z.buy.both;
+  const p = Z.launchOn ? `<s>₹${Z.price}</s> <b>₹${Z.launch}</b> <span class="chip next">Launch offer · ends ${Z.launchEndsLabel}</span><div class="both">Both editions: <s>₹${Z.bundle}</s> <b>₹${Z.bundleLaunch}</b></div>`
+                       : `<b>₹${Z.price}</b><div class="both">Both editions: <b>₹${Z.bundle}</b></div>`;
+  return `<section class="bookhero">
+    <div class="bookcov"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596"></div>
+    <div><div class="eyebrow">New book · by Raj</div><h2>${Z.title}: ${Z.sub}</h2>
+      <p class="lead">Reasoning for competitive exams, taught by Dimaag Dada in his tuition class: draw it, place the surest clue first, and let the paper think for you.</p>
+      <ul class="ticks">
+        <li>192 original reasoning puzzles, from easy to hard</li>
+        <li>For SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placement tests</li>
+        <li>3 mock tests; every answer checked</li>
+        <li>Two editions: <b>English</b> and <b>Hinglish</b>, PDF + EPUB</li></ul>
+      <p class="author">by <b>Raj</b> · ${BOOK.cred}</p>
+      <div class="pricebox"><div class="price">${p}</div>
+        <div class="buyrow">${pzBuy("en", "English edition", now)}${pzBuy("hi", "Hinglish edition", now)}${pzBuy("both", "Both editions", Z.launchOn ? Z.bundleLaunch : Z.bundle)}</div>
+        <small>${any ? "Instant PDF + EPUB download after payment." : "Coming soon. Leave your email below to hear the day it's out, at the launch price."}</small></div>
+    </div></section>
+  <section class="bookprev"><div class="eyebrow">Free preview</div><h2>Chapter 1: Seating Arrangement</h2>
+    <p class="lead">The chapter's title page, Dada's class story and a peek at what's inside. Every bank and SSC paper has a seating set.</p>
+    <div class="pgrid"><div class="pcard"><b>Chapter 1</b><span>Seating Arrangement</span>
+      <div><a href="notes/puzzles-1-en-preview.pdf" target="_blank" rel="noopener">English</a> · <a href="notes/puzzles-1-hi-preview.pdf" target="_blank" rel="noopener">Hinglish</a></div></div></div></section>
+  ${any && !DIWALI.on ? "" : signup("Get one email the day Reasoning Samjho is out, with the launch price.", "", true)}`;
+}
 function render(){
   const h = (location.hash || "#classroom").slice(1);
   const [c, l] = find(h);
@@ -1437,6 +1481,7 @@ function render(){
   else if (h === "book") { app.innerHTML = bookPage(); tab = "shop"; }
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
+  else if (h === "puzzles") { app.innerHTML = puzzlesPage(); tab = "shop"; }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
@@ -1445,7 +1490,7 @@ function render(){
   else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "puzzles" ? "Reasoning Samjho (book) · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
@@ -1502,7 +1547,7 @@ const CMDK = (() => {
   const dlg = document.getElementById("cmdk"), q = document.getElementById("cmdk-q"), list = document.getElementById("cmdk-list");
   const e = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
   const PAGES = [["#classroom", "Classroom", "All courses and your progress", "🏠"], ["#playground", "Python Playground", "Run Python in your browser", "▶"],
-    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
+    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#puzzles", "Reasoning Samjho (book)", "192 reasoning puzzles for SSC, Bank, CAT…", "🧩"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
     ["#about", "About Raj", "Who teaches here", "👋"], ["#community", "Community", "Ask a question, share your project", "💬"], ["#privacy", "Privacy", "What this site stores (almost nothing)", "🔒"]];
   const LESSONS = COURSES.flatMap(c => live(c).map((l, i) => [`#${l.id}`, l.title, `${c.title} · Lesson ${i + 1}`, "📄"]));
   let items = [], sel = 0, seq = 0;
