@@ -1354,7 +1354,7 @@ function privacy(){
 // While an action is empty, the form opens the visitor's email app with the details filled in instead, so no enquiry is lost.
 const WORKSHOP_FORM = { action: "" };   // Brevo form "Workshop enquiry" → list "Workshop enquiries" (FIRSTNAME, ORG, TOPIC, DATE, MESSAGE)
 const COHORT_FORM = { action: "" };     // Brevo form "Live cohort waitlist" → list "Cohort waitlist" (email only)
-const PROMPTS = { link: "" };           // Gumroad link for the "50 AI prompts" pack (from the Payments session). Empty = "Coming soon".
+const PROMPTS = { link: "https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", price: 149 };   // Gumroad (live 20 Oct). No /LAUNCH code: that is only for the Python with Chai books. Empty link = "Coming soon".
 const RAJ_MAIL = "samjhowithraj@gmail.com";
 function cohortBox(){
   return `<section class="signup cohort" id="cohort"><div><h3>🚀 Python + AI Live Cohort</h3><p>A small live online batch with Raj, from Python basics to your own AI chatbot. Join the waitlist to hear first when the dates and details are announced.</p></div>
@@ -1372,9 +1372,9 @@ function shop(){
       <p>30 illustrated chapters, 120+ examples, mistakes, practice and answers. PDF + EPUB.</p>
       <div class="row"><span class="price">${now}</span><span class="btn">Free preview →</span></div></a>
     <div class="item"><div class="art" aria-hidden="true">✨</div>
-      <div class="row"><span class="tag">Prompt pack</span></div><h3>50 AI prompts pack</h3>
-      <p>Ready-to-use AI prompts from Raj.${PROMPTS.link ? "" : " Details and price are coming soon."}</p>
-      <div class="row">${PROMPTS.link ? `<a class="btn primary" href="${PROMPTS.link}" target="_blank" rel="noopener">Get the pack</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
+      <div class="row"><span class="tag">Prompt pack</span><span class="tag">English + Hinglish</span></div><h3>50 AI Prompts for Jobs + Study</h3>
+      <p>${PROMPTS.link ? "Ready-to-use AI prompts for your job search and your studies, by Raj. Both editions (English and Hinglish PDFs) in one download." : "Ready-to-use AI prompts from Raj. Details and price are coming soon."}</p>
+      <div class="row">${PROMPTS.link ? `<span class="price">₹${PROMPTS.price}</span><a class="btn primary" href="${PROMPTS.link}" target="_blank" rel="noopener">Get the 50 prompts · ₹${PROMPTS.price}</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
     <a class="item" href="#workshops"><div class="art" aria-hidden="true">🎤</div>
       <div class="row"><span class="tag">For colleges and companies</span></div><h3>AI workshops by Raj</h3>
       <p>AI for jobs, Python + AI and AI agents, as a talk or a hands-on session.</p><div class="row"><span class="btn">Plan a workshop →</span></div></a>
@@ -1383,7 +1383,7 @@ function shop(){
       <p>Learn live with Raj in a small online batch. Join the waitlist below.</p><div class="row"><span class="btn">Join the waitlist ↓</span></div></a>
   </div>
   ${cohortBox()}
-  <p class="disc" style="margin-top:18px">Book payments are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>`;
+  <p class="disc" style="margin-top:18px">Payments for the books and the prompt pack are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>`;
 }
 function workshops(){
   return `<div class="page-head"><div><div class="eyebrow">Workshops</div><h1>AI workshops for <em>colleges and companies</em></h1>
