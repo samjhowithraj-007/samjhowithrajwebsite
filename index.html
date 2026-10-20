@@ -1049,7 +1049,7 @@ function promo(here){
   return `<a class="promo" href="${p.link}"${rel}><img src="${p.image}" alt="" loading="lazy"><div><span class="pl">${p.label}</span><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta}${ext ? " ↗" : " →"}</span></div></a>`;
 }
 const PROMOS = [
-  { label:"New from Raj", title:"50 AI Prompts for Jobs + Study", text:"Ready-to-use prompts for your job search and your studies, in English and Hinglish PDFs. ₹149.", image:"media/prompts-pack.jpg", link:"https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", cta:"Get the 50 prompts · ₹149" },
+  { label:"New from Raj", title:"50 AI Prompts for Jobs + Study", text:"Ready-to-use prompts for your job search and your studies, in English and Hinglish PDFs. ₹149.", image:"media/prompts-cover.jpg", link:"https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", cta:"Get the 50 prompts · ₹149" },
   { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish, with free chapter previews.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
   { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
   { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
@@ -1377,7 +1377,7 @@ function shop(){
       <div class="row"><span class="tag">E-book</span><span class="tag">${PUZZLES.buy.en ? "English + Hinglish" : "Coming soon"}</span></div><h3>${PUZZLES.title}: ${PUZZLES.sub}</h3>
       <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements.</p>
       <div class="row"><span class="price">${PUZZLES.launchOn ? `<s>₹${PUZZLES.price}</s>₹${PUZZLES.launch}` : `₹${PUZZLES.price}`}</span><span class="btn">Free Chapter 1 →</span></div></a>
-    <div class="item"><div class="art" aria-hidden="true">✨</div>
+    <div class="item"><div class="art"><img src="media/prompts-thumb.jpg" alt="50 AI Prompts for Jobs + Study: English and Hinglish book covers" width="400" height="400" loading="lazy" style="transform:none;border-radius:10px"></div>
       <div class="row"><span class="tag">Prompt pack</span><span class="tag">English + Hinglish</span></div><h3>50 AI Prompts for Jobs + Study</h3>
       <p>${PROMPTS.link ? "Ready-to-use AI prompts for your job search and your studies, by Raj. Both editions (English and Hinglish PDFs) in one download." : "Ready-to-use AI prompts from Raj. Details and price are coming soon."}</p>
       <div class="row">${PROMPTS.link ? `<span class="price">₹${PROMPTS.price}</span><a class="btn primary" href="${PROMPTS.link}" target="_blank" rel="noopener">Get the 50 prompts · ₹${PROMPTS.price}</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
