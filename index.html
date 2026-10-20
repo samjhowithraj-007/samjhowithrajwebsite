@@ -958,9 +958,9 @@ function classroom(){
   </div>
   <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
   <p class="note">New: run Python right here in your browser, no install needed. Every Python lesson has a <b>▶ Run</b> button, or open the <a href="#playground">Playground</a>.</p>
+  ${promo()}
   ${bookCard()}
   ${books()}
-  ${promo()}
   ${signup("New Python and AI lessons, straight to your inbox. Free.")}`;
 }
 
@@ -1049,6 +1049,7 @@ function promo(here){
   return `<a class="promo" href="${p.link}"${rel}><img src="${p.image}" alt="" loading="lazy"><div><span class="pl">${p.label}</span><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta}${ext ? " ↗" : " →"}</span></div></a>`;
 }
 const PROMOS = [
+  { label:"New from Raj", title:"50 AI Prompts for Jobs + Study", text:"Ready-to-use prompts for your job search and your studies, in English and Hinglish PDFs. ₹149.", image:"media/prompts-pack.jpg", link:"https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", cta:"Get the 50 prompts · ₹149" },
   { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish, with free chapter previews.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
   { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
   { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
@@ -1438,12 +1439,15 @@ document.addEventListener("submit", async e => {
 // automatically, like the Python with Chai book. Never print the code itself on the page, and never publish the full book.
 const PUZZLES = {
   title: "Reasoning Samjho", sub: "Puzzle se Selection tak",
-  price: 299, launch: 199, bundle: 399, bundleLaunch: 299,
+  price: 299, launch: 275, bundle: 399, bundleLaunch: 367,   // launch = DADA 8% off (Gumroad rounds 299*0.92, 399*0.92)
   launchCode: "DADA", launchEnds: "2026-12-01T00:00:00+05:30", launchEndsLabel: "30 Nov",
-  buy: { en: "", hi: "", both: "" },
+  codeLive: false,   // set true only after Payments confirms the DADA code works on all 3 products (20 Oct: not yet)
+  buy: { en: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-en",
+         hi: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-hinglish",
+         both: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-both" },
   cover: "media/puzzles-cover-en.jpg",
 };
-PUZZLES.launchOn = Date.now() < Date.parse(PUZZLES.launchEnds);
+PUZZLES.launchOn = PUZZLES.codeLive && Date.now() < Date.parse(PUZZLES.launchEnds);
 function pzBuy(key, label, price){
   const u = PUZZLES.buy[key] && (PUZZLES.launchOn ? PUZZLES.buy[key].replace(/\/$/, "") + "/" + PUZZLES.launchCode : PUZZLES.buy[key]);
   return u ? `<a class="btn primary" href="${u}" target="_blank" rel="noopener">${label} · ₹${price}</a>` : `<span class="btn" aria-disabled="true">${label} · Coming soon</span>`;
@@ -1470,7 +1474,7 @@ function puzzlesPage(){
     <p class="lead">The chapter's title page, Dada's class story and a peek at what's inside. Every bank and SSC paper has a seating set.</p>
     <div class="pgrid"><div class="pcard"><b>Chapter 1</b><span>Seating Arrangement</span>
       <div><a href="notes/puzzles-1-en-preview.pdf" target="_blank" rel="noopener">English</a> · <a href="notes/puzzles-1-hi-preview.pdf" target="_blank" rel="noopener">Hinglish</a></div></div></div></section>
-  ${any && !DIWALI.on ? "" : signup("Get one email the day Reasoning Samjho is out, with the launch price.", "", true)}`;
+  ${any ? "" : signup("Get one email the day Reasoning Samjho is out, with the launch price.", "", true)}`;
 }
 function render(){
   const h = (location.hash || "#classroom").slice(1);
