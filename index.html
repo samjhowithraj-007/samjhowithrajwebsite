@@ -1440,8 +1440,8 @@ document.addEventListener("submit", async e => {
 const PUZZLES = {
   title: "Reasoning Samjho", sub: "Puzzle se Selection tak",
   price: 299, launch: 275, bundle: 399, bundleLaunch: 367,   // launch = DADA 8% off (Gumroad rounds 299*0.92, 399*0.92)
-  launchCode: "DADA", launchEnds: "2026-12-01T00:00:00+05:30", launchEndsLabel: "30 Nov",
-  codeLive: false,   // set true only after Payments confirms the DADA code works on all 3 products (20 Oct: not yet)
+  launchCode: "DADA", launchEnds: "2026-11-30T19:00:00+05:30", launchEndsLabel: "30 Nov",   // Gumroad expires DADA 30 Nov 19:17 IST; stop a bit earlier
+  codeLive: true,    // Payments confirmed DADA = 8% off on all 3 products (20 Oct)
   buy: { en: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-en",
          hi: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-hinglish",
          both: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-both" },
