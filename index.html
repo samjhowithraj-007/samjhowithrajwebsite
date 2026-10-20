@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Tech Samjho Raj: free Python and AI lessons">
 <meta name="twitter:description" content="Short Hinglish videos, simple English notes and Python code you can run right in your browser.">
 <meta name="twitter:image" content="https://www.techsamjhoraj.com/img/og-card.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.techsamjhoraj.com/#org", "name": "Tech Samjho Raj", "url": "https://www.techsamjhoraj.com/", "logo": "https://www.techsamjhoraj.com/img/icon-512.png", "sameAs": ["https://www.youtube.com/@SamjhowithRaj", "https://www.instagram.com/samjhowithraj/", "https://www.facebook.com/profile.php?id=61595088790170", "https://x.com/samjhowithraj"]}, {"@type": "WebSite", "name": "Tech Samjho Raj", "url": "https://www.techsamjhoraj.com/", "inLanguage": "en"}, {"@type": "Course", "name": "Python with Chai", "description": "Learn Python basics while making chai: 20 short lessons with videos, notes and code you can run in the browser.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}, {"@type": "Course", "name": "AI + Python: Build a Chai Chatbot", "description": "Build your own chatbot with Python, from a rule-based bot to a Claude-powered bot, a web app and an AI agent.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}, {"@type": "Course", "name": "Agentic AI with Bunty", "description": "AI agents without the jargon: Bunty, the AI intern, learns one new idea in every episode.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.techsamjhoraj.com/#org", "name": "Tech Samjho Raj", "url": "https://www.techsamjhoraj.com/", "logo": "https://www.techsamjhoraj.com/img/icon-512.png", "sameAs": ["https://www.youtube.com/@SamjhowithRaj", "https://www.youtube.com/channel/UCMcwMtuOjp39M0JtLpbwvZg", "https://www.youtube.com/@DimaagDada", "https://www.youtube.com/channel/UCNWkh6b3_R8EfD0Gqr0mfWw", "https://www.youtube.com/@PaisaSamjhoRaj", "https://www.youtube.com/channel/UC3xxrIwhTVKi-Tg7rTS37Mg", "https://www.instagram.com/samjhowithraj/", "https://www.facebook.com/profile.php?id=61595088790170", "https://x.com/samjhowithraj"]}, {"@type": "WebSite", "name": "Tech Samjho Raj", "url": "https://www.techsamjhoraj.com/", "inLanguage": "en"}, {"@type": "Course", "name": "Python with Chai", "description": "Learn Python basics while making chai: 20 short lessons with videos, notes and code you can run in the browser.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}, {"@type": "Course", "name": "AI + Python: Build a Chai Chatbot", "description": "Build your own chatbot with Python, from a rule-based bot to a Claude-powered bot, a web app and an AI agent.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}, {"@type": "Course", "name": "Agentic AI with Bunty", "description": "AI agents without the jargon: Bunty, the AI intern, learns one new idea in every episode.", "provider": {"@id": "https://www.techsamjhoraj.com/#org"}, "isAccessibleForFree": true, "educationalLevel": "Beginner", "inLanguage": "en"}]}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -405,6 +405,13 @@ p.disc{font-size:13px;color:var(--muted)}
 .wk-form small{color:var(--muted);font-size:12.5px}
 .wk-form .ok{grid-column:1/-1}
 .signup.cohort{scroll-margin-top:150px;background:linear-gradient(135deg,color-mix(in srgb,var(--cyan) 16%,transparent),color-mix(in srgb,var(--accent) 14%,transparent))}
+/* our YouTube channels */
+.chans{display:flex;flex-wrap:wrap;gap:10px}
+.chan{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card);text-decoration:none;color:var(--ink)}
+.chan:hover{border-color:#ff0000}
+.chan svg{width:22px;height:22px;fill:#ff0000;flex:none}
+.chan b{display:block;font-size:14px;line-height:1.2}.chan small{display:block;font-size:12px;color:var(--muted)}
+.fchan{padding-block:6px 4px}.fchan h4{margin-bottom:10px}
 /* lower sections are laid out only when scrolled near (faster first screen on phones) */
 .books,.promo,.signup,.bookcard,footer,.note{content-visibility:auto;contain-intrinsic-size:auto 500px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -510,9 +517,9 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
   <div class="fabout"><a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
     <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
   <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
-  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Reasoning Samjho (book)</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
+  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Dimaag Dada · Reasoning Samjho</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
   <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="mailto:samjhowithraj@gmail.com">Contact</a><a href="#privacy">Privacy</a></nav>
-</div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
+</div><div class="wrap fchan"><h4>Our YouTube channels</h4><div class="chans" data-channels></div></div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
 <dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
 <dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><button class="btn" type="button" data-close>Got it</button></dialog>
 
@@ -877,13 +884,21 @@ const ICONS = {
 };
 // Social profiles: shown in the header, footer, Community and About
 const SOCIAL = [
-  { name: "YouTube", icon: "youtube", color: "#ff0000", url: "https://www.youtube.com/@SamjhowithRaj" },
+  { name: "YouTube: Tech Samjho Raj", icon: "youtube", color: "#ff0000", url: "https://www.youtube.com/@SamjhowithRaj" },
   { name: "Instagram", icon: "instagram", color: "#e1306c", url: "https://www.instagram.com/samjhowithraj/" },
   { name: "Facebook", icon: "facebook", color: "#1877f2", url: "https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab" },
   { name: "X", icon: "x", url: "https://x.com/samjhowithraj" },
   { name: "Money lessons: paisasamjhoraj.com", icon: "money", color: "var(--green)", url: "https://www.paisasamjhoraj.com" },
 ];
-function fillSocial(){ document.querySelectorAll("[data-social]").forEach(el => {
+// Our YouTube channels (20 Oct 2026). Handles confirmed 20 Oct: @DimaagDada, @PaisaSamjhoRaj (UC IDs kept in sameAs).
+const CHANNELS = [
+  { name: "Tech Samjho Raj", what: "Python, AI and agents", url: "https://www.youtube.com/@SamjhowithRaj" },
+  { name: "Dimaag Dada", what: "Roz 1 exam puzzle (SSC, Bank, Railway, CAT)", url: "https://www.youtube.com/@DimaagDada" },
+  { name: "Paisa Samjho Raj", what: "Money for families", url: "https://www.youtube.com/@PaisaSamjhoRaj" },
+];
+function fillChannels(){ document.querySelectorAll("[data-channels]").forEach(el => {
+  el.innerHTML = CHANNELS.map(c => `<a class="chan" href="${c.url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.youtube}</svg><span><b>${c.name}</b><small>${c.what}</small></span></a>`).join(""); }); }
+function fillSocial(){ fillChannels(); document.querySelectorAll("[data-social]").forEach(el => {
   el.innerHTML = SOCIAL.map(x => x.icon
     ? `<a class="ico" href="${x.url}" target="_blank" rel="noopener" aria-label="${x.name}" title="${x.name}"${x.color ? ` style="--sb:${x.color}"` : ""}><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[x.icon]}</svg></a>`
     : `<a href="${x.url}" target="_blank" rel="noopener">${x.name}</a>`).join(""); }); }
@@ -1034,6 +1049,7 @@ function about(){
     <p>The approach is simple: explain the idea, try it on a real task, and show what worked and what needs checking. You don't need a technical background.</p>
     <div class="principles"><span>Explain clearly</span><span>Show the evidence</span><span>Learn by doing</span></div>
     <div class="social" data-social style="margin-top:20px"></div>
+    <h3 style="margin-top:26px">Our YouTube channels</h3><div class="chans" data-channels style="margin-top:10px"></div>
     <p style="margin-top:24px">Want to talk about a collaboration, a course or sponsoring the featured spot? <span class="mail">samjhowithraj@gmail.com</span></p>
   </div></div>`;
 }
@@ -1458,8 +1474,9 @@ function puzzlesPage(){
                        : `<b>₹${Z.price}</b><div class="both">Both editions: <b>₹${Z.bundle}</b></div>`;
   return `<section class="bookhero">
     <div class="bookcov"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596"></div>
-    <div><div class="eyebrow">New book · by Raj</div><h2>${Z.title}: ${Z.sub}</h2>
+    <div><div class="eyebrow">Dimaag Dada · Reasoning Samjho</div><h2>${Z.title}: ${Z.sub}</h2>
       <p class="lead">Reasoning for competitive exams, taught by Dimaag Dada in his tuition class: draw it, place the surest clue first, and let the paper think for you.</p>
+      <p><a class="btn" href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">▶ Roz 1 puzzle: Dimaag Dada on YouTube</a></p>
       <ul class="ticks">
         <li>192 original reasoning puzzles, from easy to hard</li>
         <li>For SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placement tests</li>
@@ -1494,7 +1511,7 @@ function render(){
   else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "puzzles" ? "Reasoning Samjho (book) · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "puzzles" ? "Dimaag Dada · Reasoning Samjho · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
@@ -1551,7 +1568,7 @@ const CMDK = (() => {
   const dlg = document.getElementById("cmdk"), q = document.getElementById("cmdk-q"), list = document.getElementById("cmdk-list");
   const e = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
   const PAGES = [["#classroom", "Classroom", "All courses and your progress", "🏠"], ["#playground", "Python Playground", "Run Python in your browser", "▶"],
-    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#puzzles", "Reasoning Samjho (book)", "192 reasoning puzzles for SSC, Bank, CAT…", "🧩"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
+    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#puzzles", "Dimaag Dada · Reasoning Samjho", "192 reasoning puzzles for SSC, Bank, CAT…", "🧩"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
     ["#about", "About Raj", "Who teaches here", "👋"], ["#community", "Community", "Ask a question, share your project", "💬"], ["#privacy", "Privacy", "What this site stores (almost nothing)", "🔒"]];
   const LESSONS = COURSES.flatMap(c => live(c).map((l, i) => [`#${l.id}`, l.title, `${c.title} · Lesson ${i + 1}`, "📄"]));
   let items = [], sel = 0, seq = 0;

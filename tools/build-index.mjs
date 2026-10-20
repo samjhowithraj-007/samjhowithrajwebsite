@@ -124,7 +124,7 @@ page("book", "Python with Chai (book)", "#book", S.bookPage());
 page("playground", "Python Playground", "#playground", S.playground());
 page("shop", "Shop", "#shop", S.shop());
 page("workshops", "Workshops", "#workshops", S.workshops());
-page("puzzles", "Reasoning Samjho (book)", "#puzzles", S.puzzlesPage());
+page("puzzles", "Dimaag Dada · Reasoning Samjho", "#puzzles", S.puzzlesPage());
 page("community", "Community", "#community", S.community());
 page("about", "About Raj", "#about", S.about());
 page("privacy", "Privacy", "#privacy", S.privacy());
