@@ -383,6 +383,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .book .go{font-weight:700;font-size:13.5px;margin-top:6px;text-decoration:underline;text-underline-offset:3px}
 .books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
 .bookcard .pr s{opacity:1;color:#6b4a00}
+.dadabar{display:flex;align-items:center;justify-content:space-between;gap:14px 20px;flex-wrap:wrap;padding:14px 18px;margin:0 0 22px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(120deg,rgba(15,58,42,.55),rgba(47,122,87,.25))}
+.dbrand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.dbrand img{width:56px;height:56px;border-radius:50%;flex:none}
+.dbrand .wm{display:block;font-family:"Sora",var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff}
+.dbrand .d{color:#f5a623}.dbrand small{display:block;color:var(--muted);font-size:13.5px}
+:root[data-theme="light"] .dbrand .wm{color:#121a2e}:root[data-theme="light"] .dbrand .d{color:#b35c00}
+.dadabar .social a.ico{width:42px;height:42px}.dadabar .social a.ico svg{width:20px;height:20px}
 .bookcard.dada{background:linear-gradient(135deg,#0f3a2a,#1d5a41 55%,#2f7a57)}.bookcard.dada .eyebrow{color:#ffd166}
 /* ---------- Shop, Workshops, Live Cohort ---------- */
 .shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:8px}
@@ -1466,6 +1473,12 @@ document.addEventListener("submit", async e => {
 // ---------- Book 2: Reasoning Samjho (Dimaag Dada; paid PDF + EPUB, free Chapter 1 teasers only) ----------
 // PUZZLES.buy = Gumroad links WITHOUT a code (empty = "Coming soon"). Until launchEnds, the buttons add "/" + launchCode
 // automatically, like the Python with Chai book. Never print the code itself on the page, and never publish the full book.
+// Dimaag Dada's own channels (brand bar at the top of #puzzles, 25 Oct)
+const DADA_SOCIAL = [
+  { name: "Dimaag Dada on YouTube: roz 1 puzzle", icon: "youtube", color: "#ff0000", url: "https://www.youtube.com/@DimaagDada" },
+  { name: "Dimaag Dada on Instagram (@dimaagdada)", icon: "instagram", color: "#e1306c", url: "https://www.instagram.com/dimaagdada/" },
+  { name: "Dimaag Dada on Facebook", icon: "facebook", color: "#1877f2", url: "https://www.facebook.com/dimaagdada" },
+];
 const PUZZLES = {
   title: "Reasoning Samjho", sub: "Puzzle se Selection tak",
   price: 299, launch: 275, bundle: 399, bundleLaunch: 367,   // launch = DADA 8% off (Gumroad rounds 299*0.92, 399*0.92)
@@ -1485,11 +1498,11 @@ function puzzlesPage(){
   const Z = PUZZLES, now = Z.launchOn ? Z.launch : Z.price, any = Z.buy.en || Z.buy.hi || Z.buy.both;
   const p = Z.launchOn ? `<s>₹${Z.price}</s> <b>₹${Z.launch}</b> <span class="chip next">Launch offer · ends ${Z.launchEndsLabel}</span><div class="both">Both editions: <s>₹${Z.bundle}</s> <b>₹${Z.bundleLaunch}</b></div>`
                        : `<b>₹${Z.price}</b><div class="both">Both editions: <b>₹${Z.bundle}</b></div>`;
-  return `<section class="bookhero">
+  return `<div class="dadabar"><a class="dbrand" href="#puzzles"><img src="img/dada-badge-128.png" alt="" width="56" height="56"><span><span class="wm"><span class="d">Dimaag</span> Dada</span><small>Roz 1 exam puzzle · SSC, Bank, Railway, CAT</small></span></a><div class="social">${DADA_SOCIAL.map(x => `<a class="ico" href="${x.url}" target="_blank" rel="noopener" aria-label="${x.name}" title="${x.name}" style="--sb:${x.color}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[x.icon]}</svg></a>`).join("")}</div></div>
+  <section class="bookhero">
     <div class="bookcov"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596"></div>
     <div><div class="eyebrow">Dimaag Dada · Reasoning Samjho</div><h2>${Z.title}: ${Z.sub}</h2>
       <p class="lead">Reasoning for competitive exams, taught by Dimaag Dada in his tuition class: draw it, place the surest clue first, and let the paper think for you.</p>
-      <p><a class="btn" href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">▶ Roz 1 puzzle: Dimaag Dada on YouTube</a> <a class="btn" href="https://www.instagram.com/dimaagdada/" target="_blank" rel="noopener">Instagram @dimaagdada</a> <a class="btn" href="https://www.facebook.com/dimaagdada" target="_blank" rel="noopener">Facebook: Dimaag Dada</a></p>
       <ul class="ticks">
         <li>192 original reasoning puzzles, from easy to hard</li>
         <li>For SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placement tests</li>
