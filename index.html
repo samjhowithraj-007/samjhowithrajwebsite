@@ -383,6 +383,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .book .go{font-weight:700;font-size:13.5px;margin-top:6px;text-decoration:underline;text-underline-offset:3px}
 .books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
 .bookcard .pr s{opacity:1;color:#6b4a00}
+.bookcard.dada{background:linear-gradient(135deg,#0f3a2a,#1d5a41 55%,#2f7a57)}.bookcard.dada .eyebrow{color:#ffd166}
 /* ---------- Shop, Workshops, Live Cohort ---------- */
 .shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:8px}
 .item{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;color:inherit;text-decoration:none}
@@ -506,6 +507,7 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
     <a class="tab" href="#shop" data-tab="shop">Shop<span class="new">New</span></a>
+    <a class="tab" href="#puzzles" data-tab="puzzles">Dimaag Dada</a>
     <a class="tab" href="#playground" data-tab="playground">Playground</a>
     <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
     <a class="tab" href="#workshops" data-tab="workshops">Workshops</a>
@@ -977,6 +979,7 @@ function classroom(){
   <p class="note">New lessons arrive every week. See what's coming in <a href="#upcoming">Upcoming</a>. Planning your family's money? Visit <a href="https://www.paisasamjhoraj.com">paisasamjhoraj.com</a> for money lessons, calculators and the family Money Planner.</p>
   <p class="note">New: run Python right here in your browser, no install needed. Every Python lesson has a <b>▶ Run</b> button, or open the <a href="#playground">Playground</a>.</p>
   ${promo()}
+  ${dadaCard()}
   ${bookCard()}
   ${books()}
   ${signup("New Python and AI lessons, straight to your inbox. Free.")}`;
@@ -1153,6 +1156,13 @@ function bookPage(){
     <details><summary>Something wrong with my copy?</summary><p>Email <span class="mail">samjhowithraj@gmail.com</span> with your order number.</p></details>
     <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
   ${anyBuy && !DIWALI.on ? "" : signup("Get one email when the book is available, with the launch price.")}`;
+}
+function dadaCard(){   // Dimaag Dada home card (25 Oct): the puzzle brand, easy to find
+  const Z = PUZZLES, now = Z.launchOn ? `<s>₹${Z.price}</s>₹${Z.launch}` : `₹${Z.price}`;
+  return `<a class="bookcard dada" href="#puzzles"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" loading="lazy" width="420" height="596">
+    <div><div class="eyebrow">Dimaag Dada · Roz 1 puzzle</div><h2>${Z.title}: ${Z.sub}</h2>
+    <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements. English and Hinglish.</p>
+    <span class="pr">${now}</span><span class="go">Free Chapter 1 →</span></div></a>`;
 }
 function bookCard(){
   const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
@@ -1505,7 +1515,7 @@ function render(){
   else if (h === "book") { app.innerHTML = bookPage(); tab = "shop"; }
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
-  else if (h === "puzzles") { app.innerHTML = puzzlesPage(); tab = "shop"; }
+  else if (h === "puzzles") { app.innerHTML = puzzlesPage(); tab = "puzzles"; }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
