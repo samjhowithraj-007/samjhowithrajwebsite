@@ -1087,7 +1087,7 @@ const PROMOS = [
 ];
 // ---------- Recommended books (Amazon India) ----------
 // Paste your Amazon Associates tracking ID here (for example "samjhowithraj-21") to turn the links into affiliate links.
-const AMAZON_TAG = "";
+const AMAZON_TAG = "000007f-21";   // Raj's Amazon Associates store ID (26 Oct 2026)
 const BOOKS = [
   { title:"Automate the Boring Stuff with Python", author:"Al Sweigart", why:"Practical Python for everyday tasks. A great next step after Python with Chai.", q:"Automate the Boring Stuff with Python Al Sweigart", icon:"🐍", bg:"#e0e8df" },
   { title:"Python Crash Course", author:"Eric Matthes", why:"A friendly, project-based introduction to Python, from basics to small apps.", q:"Python Crash Course Eric Matthes", icon:"🚀", bg:"#ece4cf" },
@@ -1098,7 +1098,7 @@ function books(){
   const url = b => "https://www.amazon.in/s?k=" + encodeURIComponent(b.q) + (AMAZON_TAG ? "&tag=" + encodeURIComponent(AMAZON_TAG) : "");
   return `<section class="books" id="books"><div class="eyebrow">Keep learning</div><h2>Recommended books</h2>
     <div class="bgrid">${BOOKS.map(b => `<a class="book" href="${url(b)}" target="_blank" rel="noopener${AMAZON_TAG ? " sponsored" : ""}"><span class="spine" style="background:${b.bg}" aria-hidden="true">${b.icon}</span><b>${b.title}</b><small>${b.author}</small><p>${b.why}</p><span class="go">See on Amazon ↗</span></a>`).join("")}</div>
-    <p class="disc">${AMAZON_TAG ? "These are affiliate links: if you buy through them, Raj may earn a small commission at no extra cost to you." : "Links open Amazon India. Raj doesn't earn anything from them."}</p></section>`;
+    <p class="disc">${AMAZON_TAG ? "As an Amazon Associate I earn from qualifying purchases. These are Raj's affiliate links: buying through them costs you nothing extra." : "Links open Amazon India. Raj doesn't earn anything from them."}</p></section>`;
 }
 // ---------- The book: Python with Chai (paid PDF; free 4-page teasers only) ----------
 // BOOK.buy = the Gumroad product links WITHOUT a code (empty = "Coming soon"). While the launch runs, buyBtn() adds
