@@ -865,12 +865,13 @@ while True:
   ]
 },
 {
-  id: "agentic", title: "Agentic AI with Bunty", tag: "Season 1 · Episode 1 live",
+  id: "agentic", title: "Agentic AI with Bunty", tag: "Season 1 · 3 episodes live",
+  playlist: "https://www.youtube.com/playlist?list=PLFXyjVk2qV6A",   // "Agentic AI 🤖: Bunty ki kahani (Season 1)"
   cover: "media/agentic-1.jpg", wide: true,
   blurb: "AI agents without the jargon. Bunty, the AI intern at Samjho Pvt Ltd, learns one new idea in every episode.",
   modules: [
   { title: "Season 1 · Bunty's first job", lessons: [
-    { id:"agentic-1", title:"Chatbot vs agent", video:"media/agentic-1.mp4",
+    { id:"agentic-1", title:"Chatbot vs agent", video:"media/agentic-1.mp4", yt:"https://youtu.be/dB214ADgSjw",
       concept:["Ask ChatGPT to \"book my Goa trip\" and it writes a long answer. No ticket or hotel actually gets booked.",
         "A <b>chatbot</b> (Bunty version 1) only gives advice: \"Sir, you could write the email like this…\". You still do the work yourself.",
         "An <b>agent</b> (Bunty version 2) has a laptop, email and a calendar. It finds a free slot, sends the email and tells you the meeting is fixed.",
@@ -878,7 +879,21 @@ while True:
       list:["<b>Goal</b>: you give it a task, not a question.","<b>Tools</b>: email, browser, calendar, so it can act in the world.","<b>Loop</b>: act, check the result, decide the next step, until the job is done."],
       practice:["Write down 3 of your daily tasks. For each one, what would a chatbot do, and what would an agent do?","Which tools would the agent need?"],
       takeaway:"A chatbot tells you; an agent does it." },
-    ...["Goal","Tools","The agent loop: think, act, check","Planning","Memory","Hallucination","Reflection","Permission","Recap"].map(soon) ]},
+    { id:"agentic-2", title:"Goal: tell Bunty what \"done\" looks like", videoSoon:"Short coming soon",
+      concept:["Raj told Bunty \"do something nice\"… and Bunty switched off all the office lights!",
+        "The mistake was not Bunty's. Raj gave a <b>question</b>, not a <b>goal</b>.",
+        "An agent needs a clear goal: what to do, by when, and what \"done\" looks like. Then it knows when to stop."],
+      list:["Vague: \"Increase sales.\"","Clear: \"Email this week's 20 new leads, and give me the list of replies by Friday.\""],
+      practice:["Take one vague task from your work (\"improve the report\") and rewrite it as a goal: what, by when, and what done looks like.","Ask: how would an agent know it has finished?"],
+      takeaway:"A clear goal gives clear work. (Goal saaf, toh kaam saaf.)" },
+    { id:"agentic-3", title:"Tools: Bunty's hands", videoSoon:"Short coming soon",
+      concept:["Raj asked Bunty for today's weather. Bunty said: \"Sir, I don't even have a window!\"",
+        "An AI model has a fast brain but no hands. On its own it can't see or touch the world.",
+        "<b>Tools</b> are the agent's hands: a weather app, a browser, email, a calendar, a calculator."],
+      list:["With a weather tool: \"Will it rain in Pune tomorrow?\"","Bunty runs the tool, reads the result: \"Sir, 80% chance. Take an umbrella.\""],
+      practice:["List 3 tools an agent would need to plan your weekend trip.","For each tool, write what it gives back to the agent."],
+      takeaway:"The LLM thinks; tools let it act." },
+    ...["The agent loop: think, act, check","Planning","Memory","Hallucination","Reflection","Permission","Recap"].map(soon) ]},
   { title: "Coming seasons", lessons:
     ["Season 2 · Bunty's brain (LLMs, prompts, tokens, RAG)","Season 3 · Bunty's tools (APIs, MCP, browser)","Season 4 · Bunty's team (multi-agent)","Season 5 · Keeping Bunty in check (safety)","Season 6 · Build your own Bunty (hands-on)"].map(soon) }
   ]
@@ -1012,6 +1027,7 @@ function lessonView(c, l){
     <div class="player ${c.wide ? "wide" : ""}">${l.video
       ? `<video controls playsinline preload="metadata" poster="${l.video.replace(".mp4", ".jpg")}" src="${l.video}"></video>`
       : `<div class="placeholder"><div><b>${l.videoSoon || "Video coming soon"}</b>Until then, read the notes and run the code.</div></div>`}</div>
+    ${l.yt || c.playlist ? `<p class="note" style="margin:0">${l.yt ? `▶ <a href="${l.yt}" target="_blank" rel="noopener">Watch this episode on YouTube</a>` : ""}${l.yt && c.playlist ? " · " : ""}${c.playlist ? `Every ${c.title} episode on <a href="${c.playlist}" target="_blank" rel="noopener">YouTube</a>` : ""}</p>` : ""}
     <section class="block"><h3>The idea</h3>${l.concept.map(p => `<p>${p}</p>`).join("")}${l.list ? `<ul>${l.list.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}</section>
     ${l.code ? `<section class="codebox"${RUNNABLE.includes(c.id) ? ` data-run data-id="${l.id}" data-code="${encodeURIComponent(l.code)}"` : ""}><div class="file"><span>chai.py</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
       <pre><code>${hl(l.code)}</code></pre>
