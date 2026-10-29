@@ -390,7 +390,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .dbrand .d{color:#f5a623}.dbrand small{display:block;color:var(--muted);font-size:13.5px}
 :root[data-theme="light"] .dbrand .wm{color:#121a2e}:root[data-theme="light"] .dbrand .d{color:#b35c00}
 .dadabar .social a.ico{width:42px;height:42px}.dadabar .social a.ico svg{width:20px;height:20px}
-.join{display:inline-block;margin-top:4px}.ih-join{font-size:14px}
+.signup form .jbtn{padding:11px 14px;font-size:14px;font-weight:700;color:#fff;border:0}.signup form .jbtn.wa{background:#1fa855}.signup form .jbtn.tg{background:#229ed9}.ih-join{font-size:14px}
 .bookcard.dada{background:linear-gradient(135deg,#0f3a2a,#1d5a41 55%,#2f7a57)}.bookcard.dada .eyebrow{color:#ffd166}
 /* ---------- Shop, Workshops, Live Cohort ---------- */
 .shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:8px}
@@ -1382,8 +1382,8 @@ function signup(lead, extraCls, plain){   // plain = skip the Diwali offer text 
   const sub = dw ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Tip: our emails sometimes land in Promotions or Spam. Learning with a friend? Send them this page too.` : lead;
   return `<section class="signup${extraCls ? " " + extraCls : ""}"><div><h3>${head}</h3><p>${sub}</p></div>
     <form class="signup-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
-      <button class="btn primary" type="submit">Notify me</button>
-      <small>One short email when something new is out. Unsubscribe any time. <a href="#privacy">Privacy</a><br><span class="join">Or join: <a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Telegram</a></span></small></form></section>`;
+      <button class="btn primary" type="submit">Notify me</button><a class="btn jbtn wa" href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">Join on WhatsApp</a><a class="btn jbtn tg" href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Join on Telegram</a>
+      <small>One short email when something new is out. Unsubscribe any time. <a href="#privacy">Privacy</a></small></form></section>`;
 }
 document.addEventListener("submit", async e => {
   const f = e.target.closest(".signup-form"); if (!f) return;
