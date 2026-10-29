@@ -801,7 +801,7 @@ for i in range(1, 4):
   ]}]
 },
 {
-  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 4 parts live",
+  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 5 parts live",
   cover: "media/chatbot-1.jpg",
   blurb: "Build your own chatbot with Python. Start with a simple rule-based bot and grow it into a Claude-powered bot, a web app and an AI agent.",
   modules: [
@@ -854,7 +854,22 @@ while True:
     print(replies.get(msg, "Samjha nahi!"))`), output:"Aap:   MENU \nMasala, Adrak!\nAap: Price\nRs 20\nAap: menu\nMasala, Adrak!",
       practice:["Press Run: the Input box already has \"  MENU \", \"Price\" and \"menu\". Then try \" menu \" and \"PRICE\".","Add \"timing\": \"Subah 7 - raat 10\" and type \"TIMING\".","Remove <code>.strip()</code> and type \" menu\" with a space in front. What happens?"],
       takeaway:"Clean it first, then look it up. (Pehle saaf karo, phir dhundo.)" },
-    ...["Understand whole sentences (in)","A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
+    { id:"chatbot-5", title:"Understand whole sentences: the in word", videoSoon:"Short coming soon",
+      concept:["A customer types \"masala chai ka menu dikhao\". The Part 4 bot replies \"Samjha nahi!\", because it looks up the whole sentence in its diary, and the diary only has \"menu\".",
+        "A real chai bhaiya just catches the one useful word. Python can do the same with <code>in</code>: is this word inside the sentence?",
+        "Go through every key in the diary with <code>for word in replies:</code>. If <code>word in msg</code>, print its reply."],
+      list:["<code>\"menu\" in \"masala chai ka menu dikhao\"</code> is <code>True</code>.",
+        "\"menu aur price\" has two key words, so the bot gives both replies.",
+        "If no key word matches, the bot stays quiet. Part 10 fixes this."],
+      code:PY(`replies = {"menu": "Masala, Adrak!", "price": "Rs 20"}
+while True:
+    msg = input("Aap: ").lower().strip()
+    for word in replies:
+        if word in msg:
+            print(replies[word])`), output:"Aap: Masala chai ka MENU dikhao\nMasala, Adrak!\nAap: Price kya hai bhaiya?\nRs 20\nAap: menu aur price\nMasala, Adrak!\nRs 20",
+      practice:["Press Run: the Input box already has the three sentences. Then try \"bhaiya menu please\".","Add \"timing\": \"Subah 7 - raat 10\" and ask \"shop ki timing kya hai?\"","Type \"kaise ho?\". Why is the bot quiet?"],
+      takeaway:"Small word on the left, big sentence on the right. Next: Part 6, a new reply every time." },
+    ...["A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
   { title: "Season 2 · Give the bot an AI brain (Claude API)", lessons:
     ["When rules aren't enough","What is an API?","Keep your secret key safe","Your first AI conversation","Give the bot a personality","AI forgets! (chat history)","The AI chat loop","Give the AI the menu (tools)","Save money and avoid errors","Season finale: the AI Chai Bot is ready!"].map(soon) },
   { title: "Season 3 · Bot superpowers", lessons:
@@ -1224,7 +1239,8 @@ function bookBox(id){
 // ---------- live Python: Pyodide in a Web Worker (lazy-loaded on the first Run, never blocks the page) ----------
 const RUNNABLE = ["python", "chatbot", "agentic"];   // every Python lesson, incl. future AI / LLM / agentic courses
 const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masala\nband",
-  "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye", "chatbot-4": "  MENU \nPrice\nmenu" };
+  "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye", "chatbot-4": "  MENU \nPrice\nmenu",
+  "chatbot-5": "Masala chai ka MENU dikhao\nPrice kya hai bhaiya?\nmenu aur price" };
 const FILES_FOR = { "python-12": { "bill.txt": "Total: Rs 50" } };   // created only if the file is not there yet
 const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
 const PYRUN = (() => {
