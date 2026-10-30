@@ -854,7 +854,7 @@ while True:
     print(replies.get(msg, "Samjha nahi!"))`), output:"Aap:   MENU \nMasala, Adrak!\nAap: Price\nRs 20\nAap: menu\nMasala, Adrak!",
       practice:["Press Run: the Input box already has \"  MENU \", \"Price\" and \"menu\". Then try \" menu \" and \"PRICE\".","Add \"timing\": \"Subah 7 - raat 10\" and type \"TIMING\".","Remove <code>.strip()</code> and type \" menu\" with a space in front. What happens?"],
       takeaway:"Clean it first, then look it up. (Pehle saaf karo, phir dhundo.)" },
-    { id:"chatbot-5", title:"Understand whole sentences: the in word", videoSoon:"Short coming soon",
+    { id:"chatbot-5", title:"Understand whole sentences: the in word", videoSoon:"Watch the Short on YouTube (link below)", yt:"https://youtube.com/shorts/KeE1-ZhnYnQ",
       concept:["A customer types \"masala chai ka menu dikhao\". The Part 4 bot replies \"Samjha nahi!\", because it looks up the whole sentence in its diary, and the diary only has \"menu\".",
         "A real chai bhaiya just catches the one useful word. Python can do the same with <code>in</code>: is this word inside the sentence?",
         "Go through every key in the diary with <code>for word in replies:</code>. If <code>word in msg</code>, print its reply."],
