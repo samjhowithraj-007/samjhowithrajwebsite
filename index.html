@@ -351,6 +351,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .chotu-bob{position:absolute;right:-18px;bottom:-22px;width:110px;height:110px;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
 @media (prefers-reduced-motion:reduce){.chotu-bob{animation:none}}
+/* 3D mascots (5 Nov 2026): Botu on the Tech home hero, Dimaag Dada on his pages */
+.heroart{position:relative}.mascot{position:absolute;pointer-events:none;height:auto;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35))}.mascot.botu{width:92px;right:-14px;bottom:-34px;animation:mbob 3s ease-in-out infinite}.pricebox.has-dada{position:relative;padding-right:150px}.pricebox .mascot.dada{width:108px;right:20px;bottom:0}.bookcard.dada{padding-right:118px}.bookcard img.dada3d{position:absolute;right:16px;bottom:0;width:88px;transform:none;border-radius:0;box-shadow:none;pointer-events:none;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}@keyframes mbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@media (max-width:900px){.mascot.botu{width:76px;right:-4px;bottom:-30px}}@media (max-width:560px){.pricebox.has-dada{padding-right:96px}.pricebox .mascot.dada{width:72px;right:12px}}@media (max-width:560px){.bookcard.dada{padding-right:16px}.bookcard img.dada3d{display:none}}@media (prefers-reduced-motion:reduce){.mascot{animation:none}}
 .bookhero .ticks{padding-left:1.2em}.bookhero .ticks li{margin:.3em 0}
 .bookhero .author{color:var(--muted)}
 .pricebox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:14px}
@@ -1013,7 +1015,7 @@ function classroom(){
       ${heroCta()}
       <div class="byline"><img src="img/badge-96.png" alt="" width="34" height="34"><span>Taught by <a href="#about">Raj</a>, technology architect (Python, Azure, data). New lessons on <a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">WhatsApp</a> and <a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Telegram</a>.</span></div>
       <div class="stats"><div><b>${COURSES.length}</b>courses</div><div><b>${lessons}</b>lessons live</div><div><b>${finished}</b>done by you</div></div></div>
-    <div class="term" role="img" aria-label="A terminal running the Chai Bot from the AI + Python course: it greets the customer, takes an order for masala chai and prints the bill."><div class="term-bar"><i></i><i></i><i></i><span>chai_bot.py</span></div><pre class="term-body" id="term"></pre></div>
+    <div class="heroart"><div class="term" role="img" aria-label="A terminal running the Chai Bot from the AI + Python course: it greets the customer, takes an order for masala chai and prints the bill."><div class="term-bar"><i></i><i></i><i></i><span>chai_bot.py</span></div><pre class="term-body" id="term"></pre></div><img class="mascot botu" src="img/botu-hello.webp" alt="Botu, the Tech Samjho Raj robot, waving" width="202" height="320"></div>
   </div>
   <h2 class="sr-only">Courses</h2>
   <div class="courses">${COURSES.map(c => `
@@ -1213,7 +1215,7 @@ function bookPage(){
 }
 function dadaCard(){   // Dimaag Dada home card (25 Oct): the puzzle brand, easy to find
   const Z = PUZZLES, now = Z.launchOn ? `<s>₹${Z.price}</s>₹${Z.launch}` : `₹${Z.price}`;
-  return `<a class="bookcard dada" href="#puzzles"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" loading="lazy" width="420" height="596">
+  return `<a class="bookcard dada" href="#puzzles"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" loading="lazy" width="420" height="596"><img class="dada3d" src="img/dada-3d.webp" alt="" loading="lazy" width="208" height="360">
     <div><div class="eyebrow">Dimaag Dada · Roz 1 puzzle</div><h2>${Z.title}: ${Z.sub}</h2>
     <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements. English and Hinglish.</p>
     <span class="pr">${now}</span><span class="go">Free Chapter 1 →</span></div></a>`;
@@ -1559,7 +1561,7 @@ function puzzlesPage(){
         <li>3 mock tests; every answer checked</li>
         <li>Two editions: <b>English</b> and <b>Hinglish</b>, PDF + EPUB</li></ul>
       <p class="author">by <b>Raj</b> · ${BOOK.cred}</p>
-      <div class="pricebox"><div class="price">${p}</div>
+      <div class="pricebox has-dada"><img class="mascot dada" src="img/dada-3d.webp" alt="Dimaag Dada giving a thumbs up" width="208" height="360"><div class="price">${p}</div>
         <div class="buyrow">${pzBuy("en", "English edition", now)}${pzBuy("hi", "Hinglish edition", now)}${pzBuy("both", "Both editions", Z.launchOn ? Z.bundleLaunch : Z.bundle)}</div>
         <small>${any ? "Instant PDF + EPUB download after payment." : "Coming soon. Leave your email below to hear the day it's out, at the launch price."}</small></div>
     </div></section>
