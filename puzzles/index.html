@@ -98,6 +98,7 @@ main{max-width:1000px;margin:0 auto;padding:16px 16px 110px}
 .pay .err{color:#c0392b;font-size:13px;min-height:1.2em}.pay .tm{font:700 11px ui-monospace,Consolas,monospace;color:#b45309;letter-spacing:.06em}
 @media (max-width:560px){.hero h2{font-size:24px}.win{flex-direction:column;text-align:center}.btns{justify-content:center}.hero>img.dada{height:min(78%,200px)}}
 @media (prefers-reduced-motion:reduce){.cheer{transition:none}}
+.watch{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#2a1414,#1f3439);border:1px solid var(--line);border-radius:18px;padding:12px;text-decoration:none;margin-bottom:6px}.watch img{width:30%;max-width:140px;aspect-ratio:4/5;object-fit:cover;object-position:50% 8%;background:#ffe2a8;border-radius:12px;flex:none}.watch b{display:block;font:800 17px/1.2 var(--disp)}.watch small{display:block;color:var(--muted);font-size:13px;margin:4px 0 8px}.wbtns{display:flex;flex-wrap:wrap;gap:6px}.watch>a{flex:none;width:30%;max-width:140px}.watch>a img{width:100%!important}.wb{text-decoration:none;background:#ff0033;color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:8px 12px;min-height:36px;display:inline-flex;align-items:center}.wb.alt{background:var(--card);border:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -185,6 +186,8 @@ function playTab(){
   return `<a class="hero" href="#/play/${d.id}"><img class="bg" src="scenes/${d.id}-sm.webp" alt=""><img class="dada" src="img/dada.webp" alt="Dimaag Dada" width="360" height="623"><span class="eyebrow">Aaj ka puzzle · free</span><h2>${esc(d.title)}</h2><p>Kitne second mein?</p><span class="cta">Play now</span></a>
   <div class="streak"><span class="n">${st.n}🔥</span><div><b style="font-size:14px">Day streak</b><p>${st.today ? "Shabaash! Aaj ka puzzle ho gaya." : "Ek puzzle solve karo, streak chalti rahegi!"}</p></div><div class="dots" aria-hidden="true">${days.map(x => `<i${st.days.includes(x) ? ' class="on"' : ""}></i>`).join("")}</div></div>
   <div class="sec"><h3>Jigsaws</h3><span>${SCENES.length} scenes</span></div><div class="grid">${SCENES.map(card).join("")}</div>
+  <div class="sec"><h3>Watch Dimaag Dada</h3><span>On YouTube</span></div>
+  <div class="watch"><a href="https://www.youtube.com/@DimaagDada/videos" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/dada-thumbs.webp" alt="" loading="lazy"></a><div><b>▶ Dada's puzzle videos</b><small>Brain teasers, maths tricks and exam puzzles. Free to watch.</small><span class="wbtns"><a class="wb" href="https://www.youtube.com/@DimaagDada/videos" target="_blank" rel="noopener">Watch all videos</a><a class="wb alt" href="https://www.youtube.com/@DimaagDada?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a></span></div></div>
   <div class="sec"><h3>Dada Comics</h3><span>New: read free</span></div>
   <div class="grid"><a href="comics.html" style="text-decoration:none">${TILE('<img src="img/comic/trail-1-cover.webp" alt="" loading="lazy" width="512" height="382" style="object-fit:cover;aspect-ratio:512/382">', "The Puzzle Trail", "Episode 1 · solve clues to turn pages", BADGE.free)}</a></div>
   <div class="sec"><h3>Board games</h3><span>New: Botu Chess</span></div>
