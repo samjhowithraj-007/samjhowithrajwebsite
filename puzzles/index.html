@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dada World · Play, Club, Learn, Shop</title>
-<meta name="description" content="Dada World by Dimaag Dada: free jigsaw puzzles every day, the Dada Club, Learn with Dada and the Dada Shop. Works offline.">
+<meta name="description" content="Dada World by Dimaag Dada: free daily puzzles and board games, Dada comics and videos, plus the Dada Club &amp; Shop. Works offline.">
 <meta name="theme-color" content="#0f181b">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="img/icon-192.png">
@@ -102,16 +102,15 @@ main{max-width:1000px;margin:0 auto;padding:16px 16px 110px}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="#/"><img src="img/icon-96.webp" alt="" width="38" height="38"><span class="nm">Dada World<small>Play · Club · Learn · Shop</small></span></a><span class="sp"></span>
+<header class="top"><a class="brand" href="#/"><img src="img/icon-96.webp" alt="" width="38" height="38"><span class="nm">Dada World<small>Play · Read · Club</small></span></a><span class="sp"></span>
 <select class="ib" id="cur" aria-label="Currency"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option><option value="AED">AED</option></select>
 <button class="ib" id="snd" aria-label="Sound on or off">🔊</button></header>
 <main id="app"></main>
 <nav class="tabs" aria-label="Sections" id="tabs">
 <a href="#/" data-t="play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 4h7v4a2 2 0 1 0 0 4v8H4zM13 4h7v7h-4a2 2 0 1 1 0 4h4v5h-7"/></svg>Play</a>
-<a href="#/club" data-t="club"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg>Club</a>
-<a href="#/learn" data-t="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5zM6 10v5c3 3 9 3 12 0v-5"/></svg>Learn</a>
-<a href="#/shop" data-t="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 7h16l-1.5 12h-13zM9 7a3 3 0 0 1 6 0"/></svg>Shop</a></nav>
-<div class="cheer" id="cheer" aria-live="polite"><img src="img/gullak-happy.webp" alt=""><span id="cheert">Shabaash!</span></div>
+<a href="#/read" data-t="read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 5c4-1 7 0 10 2 3-2 6-3 10-2v14c-4-1-7 0-10 2-3-2-6-3-10-2zM12 7v14"/></svg>Read &amp; Watch</a>
+<a href="#/club" data-t="club"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg>Club &amp; Shop</a></nav>
+<div class="cheer" id="cheer" aria-live="polite"><img src="img/dada-thumbs.webp" alt=""><span id="cheert">Shabaash!</span></div>
 <div class="sheet" id="sheet" hidden></div>
 <script>
 // Dada World (Tech Samjho Raj). Phase 1, 5 Nov 2026: Play (jigsaws, daily puzzle, streak), Club, Learn, Shop, 5 currencies, Razorpay Checkout in TEST MODE.
@@ -147,6 +146,7 @@ const PRODUCTS = [
   { k: "pack", cat: "Digital", img: "img/ludo.webp", imgS: "scenes/mystery-house-sm.webp", t: "Club scene pack", s: "5 jigsaws · digital", badge: "new" },
   { k: "book", cat: "Books", img: "img/puzzle-book.webp", t: "Dada Puzzle Book 1", s: "100 puzzles · print + PDF", was: 1 },
   { k: "comic", cat: "Comics", img: "img/comics-trail.webp", t: "Dada Comics #1 · free to read in the app", s: "The Puzzle Trail · Anna & Chiklu", badge: "new", free: "comics.html" },
+  { k: "book2", cat: "Books", img: "img/comic/trail-1-cover.webp", t: "Anna &amp; Chiklu's Puzzle Book", s: "Puzzles for kids 7–12 · coming soon", badge: "soon", soon: 1 },
   { k: "pencil", cat: "Stationery", img: "img/stationery.webp", t: "Dada pencil set", s: "Ships in India only" }
 ];
 const app = document.getElementById("app");
@@ -158,7 +158,7 @@ const club = () => store.get("club", false);
 function guessCur(){ let c = "INR"; try { const r = ((navigator.language || "").split("-")[1] || "").toUpperCase();
   if (r === "US") c = "USD"; else if (r === "GB") c = "GBP"; else if (r === "AE") c = "AED";
   else if (["DE","FR","IT","ES","NL","IE","PT","AT","BE","FI","GR"].includes(r)) c = "EUR"; } catch (e) {} return c; }
-let cur = store.get("cur", null); if (!SYM[cur]) cur = guessCur();
+let cur = store.get("cur", null); if (!SYM[cur]) cur = "INR";
 const val = k => PRICE[k][cur];
 const money = v => SYM[cur] + (cur === "INR" ? Math.round(v) : v.toFixed(2));
 const fmtP = k => val(k) == null ? "India only" : money(val(k));
@@ -185,14 +185,19 @@ function playTab(){
     return `<a class="sc${o ? "" : " lock"}" href="${o ? "#/play/" + s.id : "#/club"}"><img src="scenes/${s.id}-sm.webp" alt="${esc(s.title)}" loading="lazy" width="480" height="320"><span class="badge${s.free || o ? "" : " club"}">${tag}</span><div class="meta"><span>${esc(s.title)}</span><span class="stars" aria-label="${stars[s.id] || 0} of 3 stars">${starTxt(s.id)}</span></div></a>`; };
   return `<a class="hero" href="#/play/${d.id}"><img class="bg" src="scenes/${d.id}-sm.webp" alt=""><img class="dada" src="img/dada.webp" alt="Dimaag Dada" width="360" height="623"><span class="eyebrow">Aaj ka puzzle · free</span><h2>${esc(d.title)}</h2><p>Kitne second mein?</p><span class="cta">Play now</span></a>
   <div class="streak"><span class="n">${st.n}🔥</span><div><b style="font-size:14px">Day streak</b><p>${st.today ? "Shabaash! Aaj ka puzzle ho gaya." : "Ek puzzle solve karo, streak chalti rahegi!"}</p></div><div class="dots" aria-hidden="true">${days.map(x => `<i${st.days.includes(x) ? ' class="on"' : ""}></i>`).join("")}</div></div>
-  <div class="sec"><h3>Jigsaws</h3><span>${SCENES.length} scenes</span></div><div class="grid">${SCENES.map(card).join("")}</div>
-  <div class="sec"><h3>Watch Dimaag Dada</h3><span>On YouTube</span></div>
-  <div class="watch"><a href="https://www.youtube.com/@DimaagDada/videos" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/dada-thumbs.webp" alt="" loading="lazy"></a><div><b>▶ Dada's puzzle videos</b><small>Brain teasers, maths tricks and exam puzzles. Free to watch.</small><span class="wbtns"><a class="wb" href="https://www.youtube.com/@DimaagDada/videos" target="_blank" rel="noopener">Watch all videos</a><a class="wb alt" href="https://www.youtube.com/@DimaagDada?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a></span></div></div>
-  <div class="sec"><h3>Dada Comics</h3><span>New: read free</span></div>
-  <div class="grid"><a href="comics.html" style="text-decoration:none">${TILE('<img src="img/comic/trail-1-cover.webp" alt="" loading="lazy" width="512" height="382" style="object-fit:cover;aspect-ratio:512/382">', "The Puzzle Trail", "Episode 1 · solve clues to turn pages", BADGE.free)}</a></div>
-  <div class="sec"><h3>Board games</h3><span>New: Botu Chess</span></div>
+    <div class="sec"><h3>Board games</h3><span>Free · play now</span></div>
   <div class="grid"><a href="ludo.html" style="text-decoration:none">${TILE('<img src="img/ludo.webp" alt="" loading="lazy" width="512" height="382">', "Dada Ludo", "2–4 players · play now", BADGE.free)}</a><a href="snakes-sums.html" style="text-decoration:none">${TILE('<img src="img/snakes-sums.webp" alt="" loading="lazy" width="512" height="382">', "Snakes &amp; Sums", "Maths board game · play now", BADGE.free)}</a><a href="chess.html" style="text-decoration:none">${TILE('<img src="img/chess.webp" alt="" loading="lazy" width="512" height="286" style="object-fit:cover;aspect-ratio:512/382">', "Botu Chess", "Play Botu or a friend · play now", BADGE.free)}</a></div>
+  <div class="sec"><h3>Jigsaws</h3><span>${SCENES.length} scenes</span></div><div class="grid">${SCENES.map(card).join("")}</div>
+  ${BOOK2()}
   ${club() ? "" : `<div class="sec"><h3>Want every puzzle?</h3><a class="ib" href="#/club">See Dada Club →</a></div>`}`;
+}
+function BOOK2(){ return `<div class="watch"><img src="img/comic/trail-1-cover.webp" alt="" loading="lazy" style="object-fit:cover"><div><b>📘 Anna &amp; Chiklu's Puzzle Book</b><small>Mazes, number puzzles and spot-the-difference for kids 7–12. Coming soon.</small><span class="wbtns"><a class="wb" href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Notify me</a></span></div></div>`; }
+function readTab(){
+  return `<div class="sec"><h3>Dada Comics</h3><span>Read free</span></div>
+  <div class="grid"><a href="comics.html" style="text-decoration:none">${TILE('<img src="img/comic/trail-1-cover.webp" alt="" loading="lazy" width="512" height="382" style="object-fit:cover;aspect-ratio:512/382">', "The Puzzle Trail", "Episode 1 · solve clues to turn pages", BADGE.free)}</a></div>
+  <p class="foot" style="text-align:left">Liked Anna &amp; Chiklu? Their puzzle book is coming. <a href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Notify me →</a></p>
+  <div class="sec"><h3>Watch Dimaag Dada</h3><span>On YouTube</span></div>
+  <div class="watch"><a href="https://www.youtube.com/@DimaagDada/videos" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/dada-thumbs.webp" alt="" loading="lazy"></a><div><b>▶ Dada's puzzle videos</b><small>Brain teasers, maths tricks and exam puzzles. Free to watch.</small><span class="wbtns"><a class="wb" href="https://www.youtube.com/@DimaagDada/videos" target="_blank" rel="noopener">Watch all videos</a><a class="wb alt" href="https://www.youtube.com/@DimaagDada?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a></span></div></div>`;
 }
 function tierCard(n, k, list, best){
   const v = val(k) * (yearly ? 10 : 1);
@@ -202,7 +207,7 @@ function tierCard(n, k, list, best){
 function clubTab(){
   return `<div class="hero" style="min-height:170px;background:linear-gradient(160deg,#2b1640,#10262a)"><img class="dada" src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="110" height="190" style="height:86%"><span class="eyebrow">Dada Club</span><h2>Sab games. Naye puzzles har mahine.</h2><p>Cancel any time</p></div>
   <div class="seg" role="group" aria-label="Billing"><button type="button" data-bill="m" aria-pressed="${!yearly}">Monthly</button><button type="button" data-bill="y" aria-pressed="${yearly}">Yearly · 2 months free</button></div>
-  <div class="tiers">${tierCard("Club Play", "play", ["All jigsaws + board games", "New scenes every month", "No ads"])}${tierCard("Club Pro", "pro", ["Everything in Club Play", "All Learn with Dada classes (coming soon)", "Printable workbooks (coming soon)", "10% off in the Shop"], 1)}${tierCard("Family", "fam", ["Club Pro for up to 4 kids", "Separate profiles + progress"])}</div>
+  <div class="tiers">${tierCard("Club Play", "play", ["All jigsaws + board games", "New scenes every month", "No ads"])}${tierCard("Club Pro", "pro", ["Everything in Club Play", "Dada video classes (coming soon)", "Printable workbooks (coming soon)", "10% off in the Shop"], 1)}${tierCard("Family", "fam", ["Club Pro for up to 4 kids", "Separate profiles + progress"])}</div>
   <p class="foot" style="margin-top:14px">Free plan: 3 scenes, 1 daily puzzle, 1 free Club puzzle every week.</p>${testNote()}`;
 }
 function learnTab(){
@@ -219,7 +224,7 @@ function shopTab(){
   return `<div class="hero" style="min-height:200px"><img class="bg" src="img/puzzle-book.webp" alt="" style="opacity:.85"><span class="eyebrow">Dada Shop · launch offer</span><h2>Puzzle Book 1 is here</h2><p>100 puzzles · print + PDF</p>${val("book") == null ? "" : `<button class="cta" type="button" data-buynow="book">Buy ${fmtP("book")}</button>`}</div>
   <div class="chips" role="group" aria-label="Category">${cats.map(c => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === shopCat}">${c}</button>`).join("")}</div>
   <div class="prods">${list.length ? list.map(p => `<div class="prod"><div class="thumb"><img src="${p.imgS || p.img}" alt="" loading="lazy" width="480" height="360" style="aspect-ratio:${p.k === "comic" ? "3/4" : "4/3"}">${p.badge ? BADGE[p.badge === "new" ? "neu" : p.badge] : ""}</div><b>${p.t}</b><small>${p.s}</small>
-    <div class="row">${p.free ? `<span class="price">Free</span><a class="cta" style="padding:7px 12px;font-size:13px" href="${p.free}">Read now</a>` : `<span class="price">${fmtP(p.k)}${p.was && val(p.k) != null ? `<span class="was">${money(val(p.k) * 1.3)}</span>` : ""}</span>${val(p.k) == null ? '<small>Coming abroad</small>' : `<button class="add" type="button" data-add="${p.k}" aria-pressed="${inCart(p.k)}" aria-label="${inCart(p.k) ? "Remove" : "Add"} ${p.t}">${inCart(p.k) ? "✓" : "+"}</button>`}`}</div></div>`).join("") : '<p class="note">Board games are coming soon.</p>'}</div>
+    <div class="row">${p.soon ? `<span class="price">Soon</span><a class="cta" style="padding:7px 12px;font-size:13px" href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Notify me</a>` : p.free ? `<span class="price">Free</span><a class="cta" style="padding:7px 12px;font-size:13px" href="${p.free}">Read now</a>` : `<span class="price">${fmtP(p.k)}${p.was && val(p.k) != null ? `<span class="was">${money(val(p.k) * 1.3)}</span>` : ""}</span>${val(p.k) == null ? '<small>Coming abroad</small>' : `<button class="add" type="button" data-add="${p.k}" aria-pressed="${inCart(p.k)}" aria-label="${inCart(p.k) ? "Remove" : "Add"} ${p.t}">${inCart(p.k) ? "✓" : "+"}</button>`}`}</div></div>`).join("") : '<p class="note">Board games are coming soon.</p>'}</div>
   ${items.length ? `<div class="cartbar"><span>${items.length} item${items.length > 1 ? "s" : ""} · ${money(total)}</span><button type="button" data-pay="${Math.round(total * 100)}" data-what="${items.map(k => PRODUCTS.find(p => p.k === k).t).join(" + ")}">Checkout</button></div>` : ""}${testNote()}`;
 }
 function testNote(){ return CONFIG.SAMPLE_PRICES ? `<p class="note">Test mode: prices are samples and no real money is taken yet.</p>` : ""; }
@@ -362,10 +367,10 @@ function render(){
   if (a === "play") { const s = SCENES.find(x => x.id === id);
     if (!s) { location.hash = "#/"; return; } if (!open(s)) { location.hash = "#/club"; return; }
     document.title = s.title + " · Dada World"; app.innerHTML = playPage(s); setTab("play"); startGame(s, store.get("lv", 0)); }
-  else if (a === "club") { document.title = "Dada Club · Dada World"; app.innerHTML = clubTab() + footer(); setTab("club"); }
-  else if (a === "learn") { document.title = "Learn with Dada · Dada World"; app.innerHTML = learnTab() + footer(); setTab("learn"); }
-  else if (a === "shop") { document.title = "Dada Shop · Dada World"; app.innerHTML = shopTab() + footer(); setTab("shop"); }
-  else { document.title = "Dada World · Play, Club, Learn, Shop"; app.innerHTML = playTab() + footer(); setTab("play"); }
+  else if (a === "read") { document.title = "Read & Watch · Dada World"; app.innerHTML = readTab() + footer(); setTab("read"); }
+  else if (a === "club" || a === "shop") { document.title = "Club & Shop · Dada World"; app.innerHTML = clubTab() + '<div class="sec" id="shop"><h3>Dada Shop</h3><span>Books · digital · stationery</span></div>' + shopTab() + footer(); setTab("club"); }
+  else { if (a === "learn") { location.hash = "#/"; return; } document.title = "Dada World · Play, Read, Club"; app.innerHTML = playTab() + footer(); setTab("play"); }
+  $("cur").style.display = (a === "club" || a === "shop") ? "" : "none";
   scrollTo(0, 0);
 }
 app.addEventListener("click", e => {
