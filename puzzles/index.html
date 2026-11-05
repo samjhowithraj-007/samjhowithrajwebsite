@@ -3,40 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dada Puzzles · Dimaag Dada jigsaw</title>
-<meta name="description" content="Free jigsaw puzzles with Dimaag Dada, Arshita, Ayansh, Botu, Gullak Bhai and Udhaar Uncle. A new free puzzle every week. Works offline.">
-<meta name="theme-color" content="#3b2a6b">
+<title>Dada World · Play, Club, Learn, Shop</title>
+<meta name="description" content="Dada World by Dimaag Dada: free jigsaw puzzles every day, the Dada Club, Learn with Dada and the Dada Shop. Works offline.">
+<meta name="theme-color" content="#0f181b">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/icon-192.png">
-<meta property="og:title" content="Dada Puzzles: free Dimaag Dada jigsaws">
+<meta property="og:title" content="Dada World: play free, stay for more">
 <meta property="og:image" content="https://www.techsamjhoraj.com/puzzles/scenes/mystery-house-sm.webp">
 <style>
-:root{--bg:#f7f3ea;--card:#ffffff;--ink:#1d1a16;--muted:#6b645a;--line:rgba(0,0,0,.12);--accent:#6b4fd8;--on-accent:#fff;--gold:#f5b544;--free:#2f7a57;--club:#6b4fd8;--tray:rgba(0,0,0,.05)}
-@media (prefers-color-scheme:dark){:root{--bg:#14121c;--card:#1f1c2b;--ink:#f3efe6;--muted:#a59fb3;--line:rgba(255,255,255,.14);--accent:#9d86ff;--on-accent:#14121c;--free:#4fd8a0;--club:#b3a2ff;--tray:rgba(255,255,255,.06)}}
+:root{--bg:#0f181b;--panel:#142125;--card:#192a2f;--card2:#1f3439;--line:#2a3f44;--ink:#f7f3ea;--muted:#9fb4b6;--cyan:#19e6e6;--pink:#ea4cf7;--amber:#ffb904;--ok:#3ddc84;--accent:#19e6e6;--on-accent:#062022;--gold:#ffb904;--tray:rgba(255,255,255,.06);
+  --disp:"Trebuchet MS","Avenir Next",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;background:radial-gradient(900px 500px at 10% -10%,#183a3f 0,transparent 60%),radial-gradient(700px 500px at 100% 100%,#2a1838 0,transparent 55%),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.5 var(--body);-webkit-tap-highlight-color:transparent}
 a{color:inherit}
-button{font:inherit;color:inherit;cursor:pointer}
-.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
-.top .brand{display:flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;font-size:18px}.top .brand img{width:32px;height:32px;border-radius:8px}
+button,select{font:inherit;color:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+h1,h2,h3{font-family:var(--disp);margin:0;line-height:1.1;text-wrap:balance}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));background:rgba(15,24,27,.96);border-bottom:1px solid var(--line)}
+.top .brand{display:flex;align-items:center;gap:10px;text-decoration:none}.top .brand img{width:38px;height:38px;border-radius:11px}
+.top .nm{font:800 19px/1 var(--disp)}.top .nm small{display:block;font:600 11px var(--body);color:var(--muted);margin-top:2px}
 .top .sp{flex:1}
-.ib{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 10px;font-size:14px}
-main{max-width:1000px;margin:0 auto;padding:16px}
-.week{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-decoration:none;margin-bottom:18px}
-.week img{width:45%;height:auto;max-width:300px;border-radius:10px;aspect-ratio:3/2;object-fit:cover}
-.week .tag{display:inline-block;background:var(--gold);color:#3a2604;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}
-.week h2{margin:6px 0 4px;font-size:20px}.week p{margin:0;color:var(--muted);font-size:14px}
-h3.sec{margin:8px 0 10px;font-size:16px;color:var(--muted);font-weight:600}
+.ib{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 11px;font-size:13px;font-weight:700;text-decoration:none}
+select.ib{padding-right:6px}
+main{max-width:1000px;margin:0 auto;padding:16px 16px 110px}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(4,1fr);max-width:1000px;margin:0 auto;padding:6px 8px;padding-bottom:max(10px,env(safe-area-inset-bottom));background:rgba(11,17,19,.96);border-top:1px solid var(--line)}
+.tabs a{color:var(--muted);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:3px;font:700 11px var(--body);padding:6px 0;border-radius:14px}
+.tabs svg{width:22px;height:22px}
+.tabs a[aria-current=page]{color:var(--ink)}.tabs a[aria-current=page] svg{color:var(--cyan);filter:drop-shadow(0 0 8px rgba(25,230,230,.6))}
+.hero{position:relative;border-radius:22px;overflow:hidden;min-height:200px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;background:#10262a;text-decoration:none;margin-bottom:16px}
+.hero>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,rgba(11,17,19,.92))}
+.hero>*:not(img.bg){position:relative;z-index:1}
+.hero>img.dada{position:absolute;right:-4px;bottom:0;height:min(88%,230px);width:auto;z-index:1}
+.hero h2{font-size:28px;max-width:62%}.hero p{margin:0;color:#c8d6d7;font-size:14px;max-width:60%}
+.eyebrow{font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.cta{align-self:flex-start;border:0;border-radius:12px;padding:10px 16px;font:800 14px var(--body);background:linear-gradient(90deg,var(--cyan),#7cf5c4);color:#062022;box-shadow:0 6px 20px rgba(25,230,230,.3);text-decoration:none;display:inline-block}
+.cta.off{background:var(--card2);color:var(--muted);box-shadow:none}
+.streak{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:12px;margin-bottom:16px}
+.streak .n{font:800 28px var(--disp);color:var(--amber)}.streak p{margin:0;font-size:12px;color:var(--muted)}
+.dots{display:flex;gap:4px}.dots i{width:10px;height:10px;border-radius:3px;background:var(--line)}.dots i.on{background:var(--amber)}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 10px}.sec h3{font-size:19px}.sec span{font-size:12px;color:var(--muted);font-weight:700}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-.sc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;display:block;position:relative}
-.sc img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
-.sc .meta{padding:8px 10px;font-size:14px;display:flex;justify-content:space-between;gap:6px;align-items:center}
+.sc,.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;display:block;position:relative}
+.sc img,.tile img,.thumb img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.sc .meta,.tile .meta{padding:8px 10px;font-size:14px;display:flex;justify-content:space-between;gap:6px;align-items:center}
 .sc .stars{color:var(--gold);letter-spacing:1px;font-size:13px;white-space:nowrap}
-.sc .badge{position:absolute;left:8px;top:8px;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--free);color:#fff}
-.sc.lock img{filter:grayscale(.5) brightness(.8)}.sc.lock .badge{background:#5b3fc4}
-.clubcta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 8px;padding:14px 16px;border-radius:16px;background:#5b3fc4;color:#fff;text-decoration:none;font-weight:600}
-.foot{color:var(--muted);font-size:13px;text-align:center;margin:24px 0 8px}
+.badge{position:absolute;left:8px;top:8px;font:800 10px var(--body);letter-spacing:.04em;border-radius:999px;padding:3px 8px;background:var(--ok);color:#052012}
+.badge.club{background:var(--amber);color:#1b1406}.badge.new{background:var(--pink);color:#fff}.badge.soon{background:#3a4c50;color:#e8f0f0}
+.sc.lock img{filter:grayscale(.5) brightness(.8)}
+.tile small{display:block;color:var(--muted);font-size:12px;padding:0 10px 10px;margin-top:-4px}
+.gx{aspect-ratio:4/3;display:grid;place-items:center;font:800 22px var(--disp);color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:3px;margin:0 0 14px;max-width:420px}
+.seg button{border:0;border-radius:9px;padding:8px;background:transparent;color:var(--muted);font:700 13px var(--body)}.seg button[aria-pressed=true]{background:var(--card2);color:var(--ink)}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.tier{border-radius:20px;padding:16px;background:var(--panel);border:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.tier.best{background:linear-gradient(160deg,#2b1640,#14272b);border:1.5px solid var(--pink);box-shadow:0 10px 30px rgba(234,76,247,.18)}
+.tier .top2{display:flex;justify-content:space-between;align-items:center}.tier h3{font-size:20px}
+.ribbon{font:800 10px var(--body);letter-spacing:.06em;background:var(--pink);color:#fff;border-radius:999px;padding:4px 9px}
+.big{font:800 30px/1 var(--disp);font-variant-numeric:tabular-nums}.big small{font:600 12px var(--body);color:var(--muted)}
+.tier ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px;color:#d6e2e2}
+.tier li{display:flex;gap:8px}.tier li::before{content:"";flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' stroke='%23052012' stroke-width='2' fill='none'/%3E%3C/svg%3E") center/12px no-repeat}
+.course{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center;margin-bottom:12px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px}
+.course .gx{aspect-ratio:1;border-radius:12px;font-size:16px}.course p{margin:2px 0 6px;font-size:13px;color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 14px;padding:0 16px}.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);border-radius:999px;padding:7px 13px;font:700 13px var(--body);color:var(--muted);background:var(--panel)}.chip[aria-pressed=true]{background:var(--ink);color:#0b1113;border-color:var(--ink)}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.prod{display:flex;flex-direction:column;gap:6px;min-width:0}.prod .thumb{position:relative;border-radius:16px;overflow:hidden;background:var(--card2)}
+.prod b{font-size:14px}.prod small{color:var(--muted);font-size:12px}.prod .row{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.price{font:800 15px var(--body);font-variant-numeric:tabular-nums}.was{color:var(--muted);text-decoration:line-through;font-size:12px;margin-left:4px;font-weight:600}
+.add{width:34px;height:34px;border-radius:10px;border:0;background:var(--cyan);color:#062022;font:800 20px/1 var(--body)}.add[aria-pressed=true]{background:var(--ok)}
+.cartbar{position:sticky;bottom:84px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;margin-top:16px;border-radius:16px;background:var(--ink);color:#0b1113;font:700 14px var(--body);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.cartbar button{border:0;border-radius:10px;padding:9px 14px;background:#0b1113;color:var(--ink);font:800 14px var(--body)}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin:26px 0 8px;line-height:1.8}.foot a{margin:0 4px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--muted);margin:12px 0}
 .bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;margin:4px 0 12px}
 .lvs{display:flex;gap:6px}.lv{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px}.lv[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .stat{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}.stat b{color:var(--ink)}
@@ -44,65 +85,164 @@ h3.sec{margin:8px 0 10px;font-size:16px;color:var(--muted);font-weight:600}
 .board{position:absolute;left:0;top:0;outline:2px dashed var(--line);outline-offset:2px;border-radius:4px;overflow:hidden;background:var(--tray)}.ghost{width:100%;height:100%;display:block;opacity:.22}.ghost[hidden]{display:none}
 .tray{position:absolute;left:0;right:0;border:1px solid var(--line);border-radius:12px;background:var(--tray);color:var(--muted);font-size:12px;padding:4px 10px}
 .pc{position:absolute;touch-action:none;cursor:grab;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.pc.drag{cursor:grabbing;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}.pc.done{filter:none;pointer-events:none}
-.cheer{position:fixed;right:14px;bottom:18px;z-index:80;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 12px 6px 6px;font-weight:600;font-size:14px;transform:translateY(140%);transition:transform .3s}.cheer.on{transform:none}.cheer img{width:44px;height:auto}
+.cheer{position:fixed;right:14px;bottom:96px;z-index:80;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 12px 6px 6px;font-weight:600;font-size:14px;transform:translateY(calc(100% + 140px));visibility:hidden;transition:transform .3s,visibility 0s .3s}.cheer.on{transform:none;visibility:visible;transition:transform .3s}.cheer img{width:44px;height:auto}
 .win{display:flex;gap:14px;align-items:center;background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:14px;margin:0 0 14px}.win[hidden]{display:none}.win img{width:84px;flex:none}.win h2{margin:0 0 4px;font-size:20px}.win p{margin:0 0 8px;color:var(--muted)}
-.btns{display:flex;flex-wrap:wrap;gap:8px}.btn{display:inline-block;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 14px;font-size:14px;text-decoration:none}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
-.club{max-width:440px;margin:10px auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}
-.club img{width:110px}.club h2{margin:6px 0 2px}.club ul{list-style:none;padding:0;margin:14px 0;text-align:left}.club li{padding:4px 0}.club li::before{content:"✓ ";color:var(--free);font-weight:700}
-.plan{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0}.plan.best{border:2px solid var(--accent)}
-.gate input{font:inherit;width:90px;padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-align:center}
-.err{color:#d0453a;font-size:14px;min-height:1.2em}
-.soon{background:var(--tray);border-radius:12px;padding:10px;font-size:14px;color:var(--muted);margin:12px 0}
-@media (max-width:560px){.week{flex-direction:column;align-items:stretch}.week img{width:100%;max-width:none}.win{flex-direction:column;text-align:center}.btns{justify-content:center}}
+.btns{display:flex;flex-wrap:wrap;gap:8px}.btn{display:inline-block;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 14px;font-size:14px;text-decoration:none}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
+.sheet{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)}.sheet[hidden]{display:none}
+.pay{background:#fff;color:#18202a;border-radius:22px 22px 0 0;padding:16px 16px 22px;padding-bottom:max(22px,env(safe-area-inset-bottom));display:grid;gap:12px;max-width:520px;width:100%;margin:0 auto}
+.pay .head{display:flex;align-items:center;gap:10px}.pay .head img{width:36px;height:36px;border-radius:9px}
+.pay h3{font:700 16px var(--body);color:#18202a}.pay .amt{margin-left:auto;font:800 18px var(--body);font-variant-numeric:tabular-nums}
+.pay .x{border:0;background:#eef1f5;border-radius:50%;width:30px;height:30px;color:#18202a;font-weight:800}
+.pay p{margin:0;font-size:14px;color:#3b4654}.pay input{font:inherit;width:100px;padding:9px;border-radius:10px;border:1px solid #cfd6df;background:#fff;color:#18202a;text-align:center}
+.pay .go{border:0;border-radius:12px;padding:13px;background:#3395ff;color:#fff;font:800 15px var(--body);text-align:center;text-decoration:none;display:block}.pay .go.alt{background:#eef1f5;color:#18202a}
+.pay .err{color:#c0392b;font-size:13px;min-height:1.2em}.pay .tm{font:700 11px ui-monospace,Consolas,monospace;color:#b45309;letter-spacing:.06em}
+@media (max-width:560px){.hero h2{font-size:24px}.win{flex-direction:column;text-align:center}.btns{justify-content:center}.hero>img.dada{height:min(78%,200px)}}
 @media (prefers-reduced-motion:reduce){.cheer{transition:none}}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="#/"><img src="img/icon-192.png" alt="" width="32" height="32">Dada Puzzles</a><span class="sp"></span><button class="ib" id="snd" aria-label="Sound on or off">🔊</button><a class="ib" href="#/club">Club</a></header>
+<header class="top"><a class="brand" href="#/"><img src="img/icon-96.webp" alt="" width="38" height="38"><span class="nm">Dada World<small>Play · Club · Learn · Shop</small></span></a><span class="sp"></span>
+<select class="ib" id="cur" aria-label="Currency"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option><option value="AED">AED</option></select>
+<button class="ib" id="snd" aria-label="Sound on or off">🔊</button></header>
 <main id="app"></main>
+<nav class="tabs" aria-label="Sections" id="tabs">
+<a href="#/" data-t="play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 4h7v4a2 2 0 1 0 0 4v8H4zM13 4h7v7h-4a2 2 0 1 1 0 4h4v5h-7"/></svg>Play</a>
+<a href="#/club" data-t="club"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg>Club</a>
+<a href="#/learn" data-t="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5zM6 10v5c3 3 9 3 12 0v-5"/></svg>Learn</a>
+<a href="#/shop" data-t="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 7h16l-1.5 12h-13zM9 7a3 3 0 0 1 6 0"/></svg>Shop</a></nav>
 <div class="cheer" id="cheer" aria-live="polite"><img src="img/gullak-happy.webp" alt=""><span id="cheert">Shabaash!</span></div>
+<div class="sheet" id="sheet" hidden></div>
 <script>
-// Dada Puzzles (Tech Samjho Raj, 5 Nov 2026). Free scenes + one free "puzzle of the week"; Club scenes are locked until payments are switched on.
+// Dada World (Tech Samjho Raj). Phase 1, 5 Nov 2026: Play (jigsaws, daily puzzle, streak), Club, Learn, Shop, 5 currencies, Razorpay Checkout in TEST MODE.
 // Add a scene: put scenes/<id>.webp (about 1536x1050) and scenes/<id>-sm.webp (480 wide) in place, add a line to SCENES, bump sw.js VERSION.
+const CONFIG = {
+  RZP_KEY: "",   // Razorpay TEST key id only (rzp_test_...). Empty = checkout shows "payments open soon". NEVER put a live key or any secret here.
+  WHATSAPP: "https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28",
+  SAMPLE_PRICES: true   // the prices below are samples until Raj sets real ones; the test-mode banner shows while this is true
+};
 const SCENES = [
-  { id: "mystery-house", title: "Mystery House", w: 1533, h: 1050, free: true, about: "Dada, Arshita and Ayansh hunt for the treasure chest while Udhaar Uncle sneaks down the stairs." },
+  { id: "mystery-house", title: "Mystery House", w: 1533, h: 1050, free: true, about: "Dada, Anna and Chiklu hunt for the treasure chest while Udhaar Uncle sneaks down the stairs." },
   { id: "school-trip", title: "School Trip to the Zoo", w: 1536, h: 1147, free: true, about: "Elephants, a peacock and naughty monkeys. Botu takes photos and Udhaar Uncle hides behind the balloons." },
   { id: "train-journey", title: "The Train Journey", w: 1536, h: 1147, free: true, about: "A painted express train crosses the valley. Dada reads the map while Udhaar Uncle plays ticket checker." },
   { id: "diwali-market", title: "Diwali Market", w: 1536, h: 1147, free: false, about: "Diyas, rangoli, ladoos and fireworks. Gullak Bhai is full of coins and Udhaar Uncle has a stall." },
-  { id: "cricket-ground", title: "Cricket Ground", w: 1536, h: 1147, free: false, about: "Ayansh bats, Arshita bowls, Dada is the umpire and Botu keeps wicket." },
+  { id: "cricket-ground", title: "Cricket Ground", w: 1536, h: 1147, free: false, about: "Chiklu bats, Anna bowls, Dada is the umpire and Botu keeps wicket." },
   { id: "space-lab", title: "Botu's Space Lab", w: 1536, h: 1147, free: false, about: "Planets, robot arms and a big window to space. Udhaar Uncle is stuck in a bubble." },
 ];
 const LEVELS = [["Easy", 4, 3], ["Medium", 6, 4], ["Hard", 8, 6]];
 const WEEK0 = Date.UTC(2026, 10, 9);   // Monday 9 Nov 2026: the weekly free puzzle starts rotating through the Club scenes
+// Hand-set price tables (SAMPLE prices from the approved mockup). A currency with no number means "not sold there yet".
+const PRICE = {
+  pack:  { INR: 49,  USD: .99,  EUR: .99,  GBP: .89,  AED: 3.99 },
+  book:  { INR: 199, USD: 4.99, EUR: 4.49, GBP: 3.99, AED: 17.99 },
+  comic: { INR: 99,  USD: 2.49, EUR: 2.29, GBP: 1.99, AED: 8.99 },
+  pencil:{ INR: 149 },
+  play:  { INR: 99,  USD: 2.99, EUR: 2.79, GBP: 2.49, AED: 9.99 },
+  pro:   { INR: 249, USD: 5.99, EUR: 5.49, GBP: 4.99, AED: 21.99 },
+  fam:   { INR: 399, USD: 8.99, EUR: 7.99, GBP: 7.49, AED: 32.99 },
+  course:{ INR: 499, USD: 9.99, EUR: 8.99, GBP: 7.99, AED: 36.99 }
+};
+const SYM = { INR: "₹", USD: "$", EUR: "€", GBP: "£", AED: "AED " };
+const PRODUCTS = [
+  { k: "pack", cat: "Digital", img: "img/ludo.webp", imgS: "scenes/mystery-house-sm.webp", t: "Club scene pack", s: "5 jigsaws · digital", badge: "new" },
+  { k: "book", cat: "Books", img: "img/puzzle-book.webp", t: "Dada Puzzle Book 1", s: "100 puzzles · print + PDF", was: 1 },
+  { k: "comic", cat: "Comics", img: "img/comics-trail.webp", t: "Dada Comics #1", s: "The Puzzle Trail · Anna & Chiklu", badge: "new" },
+  { k: "pencil", cat: "Stationery", img: "img/stationery.webp", t: "Dada pencil set", s: "Ships in India only" }
+];
 const app = document.getElementById("app");
+const $ = id => document.getElementById(id);
 const store = { get(k, d) { try { const v = localStorage.getItem("dp-" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem("dp-" + k, JSON.stringify(v)); } catch (e) {} } };
-let stars = store.get("stars", {}), best = store.get("best", {}), sound = store.get("sound", true), G = null;
+let stars = store.get("stars", {}), best = store.get("best", {}), sound = store.get("sound", true), G = null, yearly = false, cart = store.get("cart", []), shopCat = "All";
 const club = () => store.get("club", false);
+function guessCur(){ let c = "INR"; try { const r = ((navigator.language || "").split("-")[1] || "").toUpperCase();
+  if (r === "US") c = "USD"; else if (r === "GB") c = "GBP"; else if (r === "AE") c = "AED";
+  else if (["DE","FR","IT","ES","NL","IE","PT","AT","BE","FI","GR"].includes(r)) c = "EUR"; } catch (e) {} return c; }
+let cur = store.get("cur", null); if (!SYM[cur]) cur = guessCur();
+const val = k => PRICE[k][cur];
+const money = v => SYM[cur] + (cur === "INR" ? Math.round(v) : v.toFixed(2));
+const fmtP = k => val(k) == null ? "India only" : money(val(k));
+function dayKey(d){ d = d || new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 function weekly(){ const c = SCENES.filter(s => !s.free); if (!c.length) return null; const w = Math.max(0, Math.floor((Date.now() - WEEK0) / 6048e5)); return c[w % c.length]; }
-function open(s){ return s.free || club() || (weekly() && weekly().id === s.id); }
+function daily(){ const d = new Date(); return SCENES[Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5) % SCENES.length]; }
+function open(s){ return s.free || club() || (weekly() && weekly().id === s.id) || daily().id === s.id; }
 function fmt(s){ s = Math.floor(s); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
 function starTxt(id){ const n = stars[id] || 0; return "★".repeat(n) + "☆".repeat(3 - n); }
 function esc(t){ return String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+// streak: one solved puzzle a day keeps it going
+function streakInfo(){ const S = store.get("streak", { last: "", n: 0, days: [] }), t = dayKey(), y = dayKey(new Date(Date.now() - 864e5));
+  const n = S.last === t || S.last === y ? S.n : 0; return { n, today: S.last === t, days: S.days || [] }; }
+function markSolved(){ const S = store.get("streak", { last: "", n: 0, days: [] }), t = dayKey(), y = dayKey(new Date(Date.now() - 864e5));
+  if (S.last === t) return; S.n = S.last === y ? S.n + 1 : 1; S.last = t; S.days = [...(S.days || []), t].slice(-14); store.set("streak", S); }
 
-function gallery(){
-  const wk = weekly() || SCENES[0];
-  const card = s => { const o = open(s), tag = s.free ? "Free" : (wk.id === s.id ? "Free this week" : "🔒 Club");
-    return `<a class="sc${o ? "" : " lock"}" href="${o ? "#/play/" + s.id : "#/club"}"><img src="scenes/${s.id}-sm.webp" alt="${esc(s.title)}" loading="lazy" width="480" height="320"><span class="badge">${tag}</span><div class="meta"><span>${esc(s.title)}</span><span class="stars" aria-label="${stars[s.id] || 0} of 3 stars">${starTxt(s.id)}</span></div></a>`; };
-  return `<a class="week" href="#/play/${wk.id}"><img src="scenes/${wk.id}-sm.webp" alt="" width="480" height="320"><div><span class="tag">${wk.free ? "Start here" : "Free this week"}</span><h2>${esc(wk.title)}</h2><p>${esc(wk.about)}</p></div></a>
-  <h3 class="sec">All puzzles</h3><div class="grid">${SCENES.map(card).join("")}</div>
-  ${club() ? "" : `<a class="clubcta" href="#/club"><span>Dada Puzzle Club: every puzzle, new ones every week</span><span>→</span></a>`}
-  <p class="foot">Made by <a href="https://www.techsamjhoraj.com/#puzzles">Tech Samjho Raj</a> · <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada on YouTube</a> · No ads, no tracking</p>`;
+const TILE = (img, title, sub, badge) => `<div class="tile"><div style="position:relative">${img}${badge || ""}</div><div class="meta"><b>${title}</b></div><small>${sub}</small></div>`;
+const GX = (t, a, b, badge) => `<div class="tile"><div class="gx" style="background:linear-gradient(135deg,${a},${b});position:relative">${t}${badge || ""}</div><div class="meta"><b>${t}</b></div><small>Coming soon</small></div>`;
+const BADGE = { free: '<span class="badge">FREE</span>', club: '<span class="badge club">CLUB</span>', neu: '<span class="badge new">NEW</span>', soon: '<span class="badge soon">COMING SOON</span>' };
+
+function playTab(){
+  const d = daily(), wk = weekly() || SCENES[0], st = streakInfo(), t = dayKey(), days = [...Array(7)].map((_, i) => dayKey(new Date(Date.now() - (6 - i) * 864e5)));
+  const card = s => { const o = open(s), tag = s.free ? "Free" : (wk.id === s.id ? "Free this week" : (d.id === s.id ? "Free today" : "🔒 Club"));
+    return `<a class="sc${o ? "" : " lock"}" href="${o ? "#/play/" + s.id : "#/club"}"><img src="scenes/${s.id}-sm.webp" alt="${esc(s.title)}" loading="lazy" width="480" height="320"><span class="badge${s.free || o ? "" : " club"}">${tag}</span><div class="meta"><span>${esc(s.title)}</span><span class="stars" aria-label="${stars[s.id] || 0} of 3 stars">${starTxt(s.id)}</span></div></a>`; };
+  return `<a class="hero" href="#/play/${d.id}"><img class="bg" src="scenes/${d.id}-sm.webp" alt=""><img class="dada" src="img/dada.webp" alt="Dimaag Dada" width="360" height="623"><span class="eyebrow">Aaj ka puzzle · free</span><h2>${esc(d.title)}</h2><p>Kitne second mein?</p><span class="cta">Play now</span></a>
+  <div class="streak"><span class="n">${st.n}🔥</span><div><b style="font-size:14px">Day streak</b><p>${st.today ? "Shabaash! Aaj ka puzzle ho gaya." : "Ek puzzle solve karo, streak chalti rahegi!"}</p></div><div class="dots" aria-hidden="true">${days.map(x => `<i${st.days.includes(x) ? ' class="on"' : ""}></i>`).join("")}</div></div>
+  <div class="sec"><h3>Jigsaws</h3><span>${SCENES.length} scenes</span></div><div class="grid">${SCENES.map(card).join("")}</div>
+  <div class="sec"><h3>Board games</h3><span>Coming soon</span></div>
+  <div class="grid">${TILE('<img src="img/ludo.webp" alt="" loading="lazy" width="512" height="382">', "Dada Ludo", "2–4 players", BADGE.soon)}${TILE('<img src="img/snakes-sums.webp" alt="" loading="lazy" width="512" height="382">', "Snakes &amp; Sums", "Maths board game", BADGE.soon)}${GX("Botu Chess", "#7a5cff", "#ea4cf7", BADGE.soon)}</div>
+  ${club() ? "" : `<div class="sec"><h3>Want every puzzle?</h3><a class="ib" href="#/club">See Dada Club →</a></div>`}`;
 }
+function tierCard(n, k, list, best){
+  const v = val(k) * (yearly ? 10 : 1);
+  return `<div class="tier${best ? " best" : ""}"><div class="top2"><h3>${n}</h3>${best ? '<span class="ribbon">MOST POPULAR</span>' : ""}</div><div class="big">${money(v)} <small>/ ${yearly ? "year" : "month"}</small></div><ul>${list.map(x => `<li>${x}</li>`).join("")}</ul>
+  <button class="cta" type="button" data-pay="${(Math.round(v * 100))}" data-what="${n} · ${yearly ? "yearly" : "monthly"}">Join ${n}</button></div>`;
+}
+function clubTab(){
+  return `<div class="hero" style="min-height:170px;background:linear-gradient(160deg,#2b1640,#10262a)"><img class="dada" src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="110" height="190" style="height:86%"><span class="eyebrow">Dada Club</span><h2>Sab games. Naye puzzles har mahine.</h2><p>Cancel any time</p></div>
+  <div class="seg" role="group" aria-label="Billing"><button type="button" data-bill="m" aria-pressed="${!yearly}">Monthly</button><button type="button" data-bill="y" aria-pressed="${yearly}">Yearly · 2 months free</button></div>
+  <div class="tiers">${tierCard("Club Play", "play", ["All jigsaws + board games", "New scenes every month", "No ads"])}${tierCard("Club Pro", "pro", ["Everything in Club Play", "All Learn with Dada classes (coming soon)", "Printable workbooks (coming soon)", "10% off in the Shop"], 1)}${tierCard("Family", "fam", ["Club Pro for up to 4 kids", "Separate profiles + progress"])}</div>
+  <p class="foot" style="margin-top:14px">Free plan: 3 scenes, 1 daily puzzle, 1 free Club puzzle every week.</p>${testNote()}`;
+}
+function learnTab(){
+  const C = [["Reasoning for exams", "SSC · Bank · IT placement aptitude · 20 lessons", "#19e6e6", "#3ddc84"], ["Vedic maths tricks", "Fast mental maths · 12 lessons", "#ffb904", "#ff7a59"], ["Puzzle solving for kids", "Age 8–14 · 15 lessons", "#ea4cf7", "#ffb904"]];
+  return `<div class="hero" style="min-height:190px"><img class="bg" src="img/learn.webp" alt="" style="opacity:.85"><span class="eyebrow">Learn with Dada</span><h2>Dimaag tez karo</h2><p>Video classes + practice puzzles</p></div>
+  <div class="sec"><h3>Courses</h3><span>Coming soon</span></div>
+  ${C.map(([t, d, a, b]) => `<div class="course"><div class="gx" style="background:linear-gradient(135deg,${a},${b})">Dada</div><div style="min-width:0"><b style="font-size:15px">${t}</b><p>${d}</p><a class="cta off" style="padding:6px 12px;font-size:12px" href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Tell me when it opens</a></div></div>`).join("")}
+  <p class="foot">Classes arrive on the <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada channel</a> first, then here.</p>`;
+}
+function shopTab(){
+  const cats = ["All", "Digital", "Books", "Comics", "Stationery", "Games"], inCart = k => cart.includes(k);
+  const list = PRODUCTS.filter(p => shopCat === "All" || p.cat === shopCat);
+  const items = cart.filter(k => val(k) != null), total = items.reduce((a, k) => a + val(k), 0);
+  return `<div class="hero" style="min-height:200px"><img class="bg" src="img/puzzle-book.webp" alt="" style="opacity:.85"><span class="eyebrow">Dada Shop · launch offer</span><h2>Puzzle Book 1 is here</h2><p>100 puzzles · print + PDF</p>${val("book") == null ? "" : `<button class="cta" type="button" data-buynow="book">Buy ${fmtP("book")}</button>`}</div>
+  <div class="chips" role="group" aria-label="Category">${cats.map(c => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === shopCat}">${c}</button>`).join("")}</div>
+  <div class="prods">${list.length ? list.map(p => `<div class="prod"><div class="thumb"><img src="${p.imgS || p.img}" alt="" loading="lazy" width="480" height="360" style="aspect-ratio:${p.k === "comic" ? "3/4" : "4/3"}">${p.badge ? BADGE[p.badge === "new" ? "neu" : p.badge] : ""}</div><b>${p.t}</b><small>${p.s}</small>
+    <div class="row"><span class="price">${fmtP(p.k)}${p.was && val(p.k) != null ? `<span class="was">${money(val(p.k) * 1.3)}</span>` : ""}</span>${val(p.k) == null ? '<small>Coming abroad</small>' : `<button class="add" type="button" data-add="${p.k}" aria-pressed="${inCart(p.k)}" aria-label="${inCart(p.k) ? "Remove" : "Add"} ${p.t}">${inCart(p.k) ? "✓" : "+"}</button>`}</div></div>`).join("") : '<p class="note">Board games are coming soon.</p>'}</div>
+  ${items.length ? `<div class="cartbar"><span>${items.length} item${items.length > 1 ? "s" : ""} · ${money(total)}</span><button type="button" data-pay="${Math.round(total * 100)}" data-what="${items.map(k => PRODUCTS.find(p => p.k === k).t).join(" + ")}">Checkout</button></div>` : ""}${testNote()}`;
+}
+function testNote(){ return CONFIG.SAMPLE_PRICES ? `<p class="note">Test mode: prices are samples and no real money is taken yet.</p>` : ""; }
+function footer(){ return `<p class="foot"><a href="privacy.html">Privacy</a><br>Made by <a href="https://www.techsamjhoraj.com/#puzzles">Tech Samjho Raj</a> · <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada on YouTube</a> · No ads, no tracking</p>`; }
 
-function clubPage(){
+// ---- checkout: parent gate, then Razorpay Checkout (TEST key only) ----
+function sheet(html){ const s = $("sheet"); s.innerHTML = html; s.hidden = false; const x = $("sx"); if (x) x.onclick = () => s.hidden = true; }
+const head = (what, amount) => `<div class="head"><img src="img/icon-96.webp" alt="" width="36" height="36"><div><h3>Dada World</h3><small style="color:#6b7686;font-size:12px">${esc(what)}</small></div><span class="amt">${amount}</span><button class="x" type="button" id="sx" aria-label="Close">×</button></div>`;
+function parentGate(what, minor){
   const a = 2 + Math.floor(Math.random() * 8), b = 3 + Math.floor(Math.random() * 7);
-  return `<div class="club"><img src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="110" height="190"><h2>Dada Puzzle Club</h2><p style="color:var(--muted);margin:0">New puzzles every week</p>
-  <ul><li>Every puzzle, Easy to Hard</li><li>Festival packs: Diwali, Holi, cricket</li><li>No ads, ever</li><li>Works offline</li></ul>
-  <div id="gate" class="gate"><p><b>Grown-ups only.</b> What is ${a} × ${b}?</p><input id="gatein" inputmode="numeric" autocomplete="off" aria-label="Answer"> <button class="btn pri" id="gatego" data-a="${a * b}">Continue</button><div class="err" id="gateerr"></div></div>
-  <div id="plans" hidden><div class="plan best"><span>Yearly</span><b>₹399</b></div><div class="plan"><span>Monthly</span><b>₹49</b></div>
-  <div class="soon">The Club opens soon. Until then every free puzzle stays free, and one Club puzzle is free each week.</div>
-  <div class="btns" style="justify-content:center"><a class="btn pri" href="https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28" target="_blank" rel="noopener">Tell me when it opens (WhatsApp)</a><a class="btn" href="#/">Back to puzzles</a></div></div></div>`;
+  sheet(`<div class="pay" role="dialog" aria-label="Grown-ups only">${head(what, money(minor / 100))}<p><b>Grown-ups only.</b> What is ${a} × ${b}?</p><div><input id="gatein" inputmode="numeric" autocomplete="off" aria-label="Answer"> <button class="go" style="display:inline-block;padding:10px 18px" type="button" id="gatego">Continue</button></div><div class="err" id="gateerr"></div></div>`);
+  $("gatego").onclick = () => { const v = $("gatein").value.trim();
+    if (!v) { $("gateerr").textContent = "Enter the answer first."; return; }
+    if (+v !== a * b) { $("gateerr").textContent = "Not quite. Ask a grown-up to help."; return; }
+    startPay(what, minor); };
+}
+function loadRzp(){ return new Promise((res, rej) => { if (window.Razorpay) return res(); const s = document.createElement("script"); s.src = "https://checkout.razorpay.com/v1/checkout.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+function rzpOptions(what, minor){
+  const o = { key: CONFIG.RZP_KEY, amount: minor, currency: cur, name: "Dada World", description: what, image: new URL("img/icon-192.png", location.href).href,
+    theme: { color: "#19e6e6" }, modal: { ondismiss: () => { $("sheet").hidden = true; } },
+    handler: r => { sheet(`<div class="pay" role="dialog">${head("Payment received", money(minor / 100))}<p><b>Thank you!</b> Test payment id: ${esc(r.razorpay_payment_id || "")}</p><p>This is test mode, so nothing is unlocked and no money moved. Real orders will be checked on our server first.</p><button class="go" type="button" id="sx2">Back to Dada World</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; } };
+  if (cur === "INR") o.config = { display: { blocks: { upi: { name: "Pay with UPI", instruments: [{ method: "upi" }] } }, sequence: ["block.upi"], preferences: { show_default_blocks: true } } };   // UPI first for India
+  return o;   // other currencies: cards (and PayPal, once switched on in the Razorpay dashboard) are shown by Checkout itself
+}
+function startPay(what, minor){
+  if (!CONFIG.RZP_KEY) { sheet(`<div class="pay" role="dialog">${head(what, money(minor / 100))}<p class="tm">TEST MODE · NOT CONNECTED</p><p><b>Payments open soon.</b> Dada World is still being built, and no money is taken yet. Join the WhatsApp channel to hear when it opens.</p><a class="go" href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Tell me when it opens (WhatsApp)</a><button class="go alt" type="button" id="sx2">Close</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; return; }
+  loadRzp().then(() => { $("sheet").hidden = true; new window.Razorpay(rzpOptions(what, minor)).open(); })
+    .catch(() => sheet(`<div class="pay" role="dialog">${head(what, money(minor / 100))}<p>Could not load the payment window. Check your internet and try again.</p><button class="go alt" type="button" id="sx2">Close</button></div>`));
 }
 
 function playPage(s){
@@ -199,39 +339,44 @@ function cheer(t){ const c = document.getElementById("cheer"); document.getEleme
 function tick(){ const t = document.getElementById("t"); if (!t) { if (G) clearInterval(G.timer); return; }
   t.textContent = fmt(G.t0 ? ((G.tEnd || Date.now()) - G.t0) / 1000 : 0); document.getElementById("n").textContent = G.placed + "/" + G.pieces.length; }
 function win(){
-  G.tEnd = Date.now(); clearInterval(G.timer); tick(); winSound();
+  G.tEnd = Date.now(); clearInterval(G.timer); tick(); winSound(); markSolved();
   const secs = (G.tEnd - G.t0) / 1000, key = G.s.id + ":" + G.lv, prev = best[key], rec = !prev || secs < prev;
   if (rec) { best[key] = secs; store.set("best", best); }
   if ((stars[G.s.id] || 0) < G.lv + 1) { stars[G.s.id] = G.lv + 1; store.set("stars", stars); }
   const nxt = LEVELS[G.lv + 1], w = document.getElementById("win");
   w.innerHTML = `<img src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="84" height="145"><div><h2>Shabaash! Solved in ${fmt(secs)}</h2>
-    <p>${starTxt(G.s.id)} · ${rec ? "Your best time on " + LEVELS[G.lv][0] + "." : "Your best: " + fmt(prev) + "."}</p>
+    <p>${starTxt(G.s.id)} · ${rec ? "Your best time on " + LEVELS[G.lv][0] + "." : "Your best: " + fmt(prev) + "."} · Streak ${streakInfo().n}🔥</p>
     <div class="btns">${nxt ? `<button class="btn pri lv" data-lv="${G.lv + 1}">Try ${nxt[0]} · ${nxt[1] * nxt[2]} pieces</button>` : `<a class="btn pri" href="#/">Next puzzle</a>`}<a class="btn" href="#/">All puzzles</a><a class="btn" href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dada's daily puzzle</a></div></div>`;
   w.hidden = false; w.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
+function setTab(t){ document.querySelectorAll("#tabs a").forEach(a => a.dataset.t === t ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")); }
 function render(){
   const h = location.hash.replace(/^#\/?/, ""), [a, id] = h.split("/");
-  if (G) clearInterval(G.timer); G = null;
+  if (G) clearInterval(G.timer); G = null; $("sheet").hidden = true;
   if (a === "play") { const s = SCENES.find(x => x.id === id);
     if (!s) { location.hash = "#/"; return; } if (!open(s)) { location.hash = "#/club"; return; }
-    document.title = s.title + " · Dada Puzzles"; app.innerHTML = playPage(s); startGame(s, store.get("lv", 0)); }
-  else if (a === "club") { document.title = "Dada Puzzle Club"; app.innerHTML = clubPage(); }
-  else { document.title = "Dada Puzzles · Dimaag Dada jigsaw"; app.innerHTML = gallery(); }
+    document.title = s.title + " · Dada World"; app.innerHTML = playPage(s); setTab("play"); startGame(s, store.get("lv", 0)); }
+  else if (a === "club") { document.title = "Dada Club · Dada World"; app.innerHTML = clubTab() + footer(); setTab("club"); }
+  else if (a === "learn") { document.title = "Learn with Dada · Dada World"; app.innerHTML = learnTab() + footer(); setTab("learn"); }
+  else if (a === "shop") { document.title = "Dada Shop · Dada World"; app.innerHTML = shopTab() + footer(); setTab("shop"); }
+  else { document.title = "Dada World · Play, Club, Learn, Shop"; app.innerHTML = playTab() + footer(); setTab("play"); }
   scrollTo(0, 0);
 }
 app.addEventListener("click", e => {
-  const b = e.target.closest(".lv"); if (b && G) { store.set("lv", +b.dataset.lv); startGame(G.s, +b.dataset.lv); document.getElementById("area").scrollIntoView({ behavior: "smooth", block: "start" }); }
-  if (e.target.closest("#shuf") && G) startGame(G.s, G.lv);
-  const go = e.target.closest("#gatego");
-  if (go) { const v = document.getElementById("gatein").value.trim();
-    if (!v) { document.getElementById("gateerr").textContent = "Enter the answer first."; return; }
-    if (+v !== +go.dataset.a) { document.getElementById("gateerr").textContent = "Not quite. Ask a grown-up to help."; return; }
-    document.getElementById("gate").hidden = true; document.getElementById("plans").hidden = false; }
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.classList.contains("lv") && G) { store.set("lv", +b.dataset.lv); startGame(G.s, +b.dataset.lv); document.getElementById("area").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  if (b.id === "shuf" && G) { startGame(G.s, G.lv); return; }
+  if (b.dataset.bill) { yearly = b.dataset.bill === "y"; render(); return; }
+  if (b.dataset.cat) { shopCat = b.dataset.cat; const y = scrollY; render(); scrollTo(0, y); return; }
+  if (b.dataset.add) { const k = b.dataset.add; cart = cart.includes(k) ? cart.filter(x => x !== k) : [...cart, k]; store.set("cart", cart); const y = scrollY; render(); scrollTo(0, y); return; }
+  if (b.dataset.buynow) { const k = b.dataset.buynow; parentGate(PRODUCTS.find(p => p.k === k).t, Math.round(val(k) * 100)); return; }
+  if (b.dataset.pay) parentGate(b.dataset.what, +b.dataset.pay);
 });
-app.addEventListener("input", e => { if (e.target.id === "gatein") document.getElementById("gateerr").textContent = ""; });
 app.addEventListener("change", e => { if (e.target.id === "gh") { const g = document.querySelector(".ghost"); if (g) g.hidden = !e.target.checked; } });
-const sb = document.getElementById("snd"); sb.textContent = sound ? "🔊" : "🔇";
+$("sheet").addEventListener("click", e => { if (e.target.id === "sheet") $("sheet").hidden = true; });
+$("cur").value = cur; $("cur").onchange = e => { cur = e.target.value; store.set("cur", cur); $("sheet").hidden = true; if (!G) render(); };
+const sb = $("snd"); sb.textContent = sound ? "🔊" : "🔇";
 sb.onclick = () => { sound = !sound; store.set("sound", sound); sb.textContent = sound ? "🔊" : "🔇"; };
 let rz = 0; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (G && G.BW !== avail()) layout(); }, 200); });
 addEventListener("hashchange", render); render();
