@@ -1,5 +1,5 @@
 // Offline support for Dada Puzzles (/puzzles/). Bump VERSION whenever a scene is added or a file here changes.
-const VERSION = "p2";
+const VERSION = "p3";
 const CACHE = "dada-puzzles-" + VERSION;
 const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/icon-192.png", "img/icon-512.png", "img/dada-thumbs.webp", "img/gullak-happy.webp",
   "scenes/mystery-house.webp", "scenes/mystery-house-sm.webp",

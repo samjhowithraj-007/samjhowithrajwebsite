@@ -1601,16 +1601,23 @@ const JIGSAW = { img: "img/jigsaw/mystery-house.webp", w: 1533, h: 1050, title: 
   levels: [["Easy", 4, 3], ["Medium", 6, 4], ["Hard", 8, 6]] };
 let JZ = null;
 let ac = null, jzSound = true; try { jzSound = localStorage.getItem("jzsnd") !== "0"; } catch (e) {}
-function actx(){ ac = ac || new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === "suspended") ac.resume(); return ac; }
-function snapSound(){ if (!jzSound) return; try { const a = actx(), t = a.currentTime;   // wooden "tok": a short filtered click + a low thump
-  const n = a.createBuffer(1, Math.floor(a.sampleRate * .05), a.sampleRate), d = n.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 4);
-  const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(); s.buffer = n; f.type = "bandpass"; f.frequency.value = 1800; f.Q.value = 1.2; g.gain.value = .9; s.connect(f).connect(g).connect(a.destination); s.start(t);
-  const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(110, t + .08); og.gain.setValueAtTime(.4, t); og.gain.exponentialRampToValueAtTime(.001, t + .1); o.connect(og).connect(a.destination); o.start(t); o.stop(t + .11);
+const SFX = {};
+function wavUrl(sec, fn){ const sr = 44100, n = Math.floor(sr * sec), x = new Float32Array(n); for (let i = 0; i < n; i++) x[i] = fn(i / sr);
+  let pk = 0; for (let i = 0; i < n; i++) pk = Math.max(pk, Math.abs(x[i])); const k = pk ? .95 / pk : 1;
+  const b = new DataView(new ArrayBuffer(44 + n * 2)), w = (o, s) => { for (let i = 0; i < s.length; i++) b.setUint8(o + i, s.charCodeAt(i)); };
+  w(0, "RIFF"); b.setUint32(4, 36 + n * 2, true); w(8, "WAVEfmt "); b.setUint32(16, 16, true); b.setUint16(20, 1, true); b.setUint16(22, 1, true); b.setUint32(24, sr, true); b.setUint32(28, sr * 2, true); b.setUint16(32, 2, true); b.setUint16(34, 16, true); w(36, "data"); b.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++) b.setInt16(44 + i * 2, Math.max(-1, Math.min(1, x[i] * k)) * 32767, true);
+  return URL.createObjectURL(new Blob([b], { type: "audio/wav" })); }
+function actx(){ if (SFX.snap) return; try {
+  const tri = (f, t) => 2 / Math.PI * Math.asin(Math.sin(2 * Math.PI * f * t)), rn = [...Array(4096)].map(() => Math.random() * 2 - 1);
+  SFX.snap = wavUrl(.12, t => rn[Math.floor(t * 44100) % 4096] * Math.exp(-t * 90) * .7 + Math.sin(2 * Math.PI * (260 - 900 * t) * t) * Math.exp(-t * 35));   // wooden "tok"
+  const notes = [523.25, 659.25, 783.99, 1046.5], sp = [...Array(10)].map((_, k) => [.55 + k * .07, 1500 + Math.random() * 1600]);
+  SFX.win = wavUrl(1.7, t => { let v = 0; notes.forEach((f, i) => { const s = t - i * .13; if (s > 0) v += tri(f, s) * Math.min(1, s / .02) * Math.exp(-s * (i === 3 ? 3 : 10)); });
+    sp.forEach(([s0, f]) => { const s = t - s0; if (s > 0 && s < .15) v += Math.sin(2 * Math.PI * f * s) * .35 * Math.exp(-s * 25); }); return v; });   // rising "ta-da" + sparkles
 } catch (e) {} }
-function winSound(){ if (!jzSound) return; try { const a = actx(), t = a.currentTime;   // rising "ta-da" (C E G C) + sparkles
-  [523.25, 659.25, 783.99, 1046.5].forEach((fq, i) => { const o = a.createOscillator(), g = a.createGain(), st = t + i * .13; o.type = "triangle"; o.frequency.value = fq; g.gain.setValueAtTime(0, st); g.gain.linearRampToValueAtTime(.25, st + .02); g.gain.exponentialRampToValueAtTime(.001, st + (i === 3 ? 1 : .3)); o.connect(g).connect(a.destination); o.start(st); o.stop(st + 1.05); });
-  for (let k = 0; k < 10; k++) { const o = a.createOscillator(), g = a.createGain(), st = t + .55 + k * .07; o.type = "sine"; o.frequency.value = 1500 + Math.random() * 1600; g.gain.setValueAtTime(.08, st); g.gain.exponentialRampToValueAtTime(.001, st + .15); o.connect(g).connect(a.destination); o.start(st); o.stop(st + .16); }
-} catch (e) {} }
+function sfx(k){ if (!jzSound) return; actx(); if (!SFX[k]) return; try { const a = new Audio(SFX[k]); a.volume = 1; const p = a.play(); if (p) p.catch(() => {}); } catch (e) {} }
+function snapSound(){ sfx("snap"); }
+function winSound(){ sfx("win"); }
 function jigsawPage(){
   const lv = JIGSAW.levels.map(([n, c, r], i) => `<button class="btn jzlv" data-lv="${i}">${n} · ${c * r} pieces</button>`).join("");
   return `<p class="jzback"><a href="#puzzles">← Dimaag Dada</a></p>
