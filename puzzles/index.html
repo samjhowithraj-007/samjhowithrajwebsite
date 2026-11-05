@@ -145,14 +145,14 @@ const SYM = { INR: "₹", USD: "$", EUR: "€", GBP: "£", AED: "AED " };
 const PRODUCTS = [
   { k: "pack", cat: "Digital", img: "img/ludo.webp", imgS: "scenes/mystery-house-sm.webp", t: "Club scene pack", s: "5 jigsaws · digital", badge: "new" },
   { k: "book", cat: "Books", img: "img/puzzle-book.webp", t: "Dada Puzzle Book 1", s: "100 puzzles · print + PDF", was: 1 },
-  { k: "comic", cat: "Comics", img: "img/comics-trail.webp", t: "Dada Comics #1 (print + PDF)", s: "The Puzzle Trail · free to read in the app", badge: "new" },
+  { k: "comic", cat: "Comics", img: "img/comics-trail.webp", t: "Dada Comics #1 · free to read in the app", s: "The Puzzle Trail · Anna & Chiklu", badge: "new", free: "comics.html" },
   { k: "pencil", cat: "Stationery", img: "img/stationery.webp", t: "Dada pencil set", s: "Ships in India only" }
 ];
 const app = document.getElementById("app");
 const $ = id => document.getElementById(id);
 const store = { get(k, d) { try { const v = localStorage.getItem("dp-" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem("dp-" + k, JSON.stringify(v)); } catch (e) {} } };
-let stars = store.get("stars", {}), best = store.get("best", {}), sound = store.get("sound", true), G = null, yearly = false, cart = store.get("cart", []), shopCat = "All";
+let stars = store.get("stars", {}), best = store.get("best", {}), sound = store.get("sound", true), G = null, yearly = false, cart = store.get("cart", []).filter(k => k !== "comic"), shopCat = "All";   // the comic is free, never in the cart
 const club = () => store.get("club", false);
 function guessCur(){ let c = "INR"; try { const r = ((navigator.language || "").split("-")[1] || "").toUpperCase();
   if (r === "US") c = "USD"; else if (r === "GB") c = "GBP"; else if (r === "AE") c = "AED";
@@ -212,11 +212,11 @@ function learnTab(){
 function shopTab(){
   const cats = ["All", "Digital", "Books", "Comics", "Stationery", "Games"], inCart = k => cart.includes(k);
   const list = PRODUCTS.filter(p => shopCat === "All" || p.cat === shopCat);
-  const items = cart.filter(k => val(k) != null), total = items.reduce((a, k) => a + val(k), 0);
+  const items = cart.filter(k => val(k) != null && !PRODUCTS.find(p => p.k === k).free), total = items.reduce((a, k) => a + val(k), 0);
   return `<div class="hero" style="min-height:200px"><img class="bg" src="img/puzzle-book.webp" alt="" style="opacity:.85"><span class="eyebrow">Dada Shop · launch offer</span><h2>Puzzle Book 1 is here</h2><p>100 puzzles · print + PDF</p>${val("book") == null ? "" : `<button class="cta" type="button" data-buynow="book">Buy ${fmtP("book")}</button>`}</div>
   <div class="chips" role="group" aria-label="Category">${cats.map(c => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === shopCat}">${c}</button>`).join("")}</div>
   <div class="prods">${list.length ? list.map(p => `<div class="prod"><div class="thumb"><img src="${p.imgS || p.img}" alt="" loading="lazy" width="480" height="360" style="aspect-ratio:${p.k === "comic" ? "3/4" : "4/3"}">${p.badge ? BADGE[p.badge === "new" ? "neu" : p.badge] : ""}</div><b>${p.t}</b><small>${p.s}</small>
-    <div class="row"><span class="price">${fmtP(p.k)}${p.was && val(p.k) != null ? `<span class="was">${money(val(p.k) * 1.3)}</span>` : ""}</span>${val(p.k) == null ? '<small>Coming abroad</small>' : `<button class="add" type="button" data-add="${p.k}" aria-pressed="${inCart(p.k)}" aria-label="${inCart(p.k) ? "Remove" : "Add"} ${p.t}">${inCart(p.k) ? "✓" : "+"}</button>`}</div></div>`).join("") : '<p class="note">Board games are coming soon.</p>'}</div>
+    <div class="row">${p.free ? `<span class="price">Free</span><a class="cta" style="padding:7px 12px;font-size:13px" href="${p.free}">Read now</a>` : `<span class="price">${fmtP(p.k)}${p.was && val(p.k) != null ? `<span class="was">${money(val(p.k) * 1.3)}</span>` : ""}</span>${val(p.k) == null ? '<small>Coming abroad</small>' : `<button class="add" type="button" data-add="${p.k}" aria-pressed="${inCart(p.k)}" aria-label="${inCart(p.k) ? "Remove" : "Add"} ${p.t}">${inCart(p.k) ? "✓" : "+"}</button>`}`}</div></div>`).join("") : '<p class="note">Board games are coming soon.</p>'}</div>
   ${items.length ? `<div class="cartbar"><span>${items.length} item${items.length > 1 ? "s" : ""} · ${money(total)}</span><button type="button" data-pay="${Math.round(total * 100)}" data-what="${items.map(k => PRODUCTS.find(p => p.k === k).t).join(" + ")}">Checkout</button></div>` : ""}${testNote()}`;
 }
 function testNote(){ return CONFIG.SAMPLE_PRICES ? `<p class="note">Test mode: prices are samples and no real money is taken yet.</p>` : ""; }
