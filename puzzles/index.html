@@ -161,7 +161,7 @@ function down(e){
   G.pieces.forEach(p => { if (p.done) return; const lx = px - p.x + pad, ly = py - p.y + pad;
     if (lx < 0 || ly < 0 || lx > pw + 2 * pad || ly > ph + 2 * pad) return;
     if (p.g.isPointInPath(p.path, lx * dpr, ly * dpr) && (!hit || (p.zi || 2) > (hit.zi || 2))) hit = p; });
-  if (!hit) return; e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {}
+  if (!hit) return; if (sound) try { actx(); } catch (x) {} e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {}
   hit.zi = ++G.z; hit.el.style.zIndex = hit.zi; hit.el.classList.add("drag"); G.drag = { p: hit, dx: px - hit.x, dy: py - hit.y };
   if (!G.t0) { G.t0 = Date.now(); G.timer = setInterval(tick, 1000); }
 }
@@ -173,19 +173,27 @@ function move(e){
 function up(){
   const d = G && G.drag; if (!d) return; G.drag = null; const p = d.p; p.el.classList.remove("drag");
   if (Math.hypot(p.x - p.c * G.pw, p.y - p.r * G.ph) < Math.min(G.pw, G.ph) * .3) {
-    p.done = true; p.el.classList.add("done"); G.placed++; place(p); tick(); click();
+    p.done = true; p.el.classList.add("done"); G.placed++; place(p); tick(); snapSound();
     if (G.placed === G.pieces.length) win(); else if (G.placed % 5 === 0) cheer(["Shabaash!", "Badhiya!", "Waah, kya baat!", "Chalte raho!"][G.placed / 5 % 4]);
   }
 }
 let ac = null;
-function click(f){ if (!sound) return; try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); const o = ac.createOscillator(), g = ac.createGain();
-  o.frequency.value = f || 660; g.gain.setValueAtTime(.12, ac.currentTime); g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + .12); o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime + .13); } catch (e) {} }
+function actx(){ ac = ac || new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === "suspended") ac.resume(); return ac; }
+function snapSound(){ if (!sound) return; try { const a = actx(), t = a.currentTime;   // wooden "tok": a short filtered click + a low thump
+  const n = a.createBuffer(1, Math.floor(a.sampleRate * .05), a.sampleRate), d = n.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 4);
+  const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(); s.buffer = n; f.type = "bandpass"; f.frequency.value = 1800; f.Q.value = 1.2; g.gain.value = .9; s.connect(f).connect(g).connect(a.destination); s.start(t);
+  const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(110, t + .08); og.gain.setValueAtTime(.4, t); og.gain.exponentialRampToValueAtTime(.001, t + .1); o.connect(og).connect(a.destination); o.start(t); o.stop(t + .11);
+} catch (e) {} }
+function winSound(){ if (!sound) return; try { const a = actx(), t = a.currentTime;   // rising "ta-da" (C E G C) + sparkles
+  [523.25, 659.25, 783.99, 1046.5].forEach((fq, i) => { const o = a.createOscillator(), g = a.createGain(), st = t + i * .13; o.type = "triangle"; o.frequency.value = fq; g.gain.setValueAtTime(0, st); g.gain.linearRampToValueAtTime(.25, st + .02); g.gain.exponentialRampToValueAtTime(.001, st + (i === 3 ? 1 : .3)); o.connect(g).connect(a.destination); o.start(st); o.stop(st + 1.05); });
+  for (let k = 0; k < 10; k++) { const o = a.createOscillator(), g = a.createGain(), st = t + .55 + k * .07; o.type = "sine"; o.frequency.value = 1500 + Math.random() * 1600; g.gain.setValueAtTime(.08, st); g.gain.exponentialRampToValueAtTime(.001, st + .15); o.connect(g).connect(a.destination); o.start(st); o.stop(st + .16); }
+} catch (e) {} }
 let ct = 0;
 function cheer(t){ const c = document.getElementById("cheer"); document.getElementById("cheert").textContent = t; c.classList.add("on"); clearTimeout(ct); ct = setTimeout(() => c.classList.remove("on"), 1800); }
 function tick(){ const t = document.getElementById("t"); if (!t) { if (G) clearInterval(G.timer); return; }
   t.textContent = fmt(G.t0 ? ((G.tEnd || Date.now()) - G.t0) / 1000 : 0); document.getElementById("n").textContent = G.placed + "/" + G.pieces.length; }
 function win(){
-  G.tEnd = Date.now(); clearInterval(G.timer); tick(); [660, 880, 1100].forEach((f, i) => setTimeout(() => click(f), i * 140));
+  G.tEnd = Date.now(); clearInterval(G.timer); tick(); winSound();
   const secs = (G.tEnd - G.t0) / 1000, key = G.s.id + ":" + G.lv, prev = best[key], rec = !prev || secs < prev;
   if (rec) { best[key] = secs; store.set("best", best); }
   if ((stars[G.s.id] || 0) < G.lv + 1) { stars[G.s.id] = G.lv + 1; store.set("stars", stars); }

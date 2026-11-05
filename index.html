@@ -877,7 +877,7 @@ while True:
             print(replies[word])`), output:"Aap: Masala chai ka MENU dikhao\nMasala, Adrak!\nAap: Price kya hai bhaiya?\nRs 20\nAap: menu aur price\nMasala, Adrak!\nRs 20",
       practice:["Press Run: the Input box already has the three sentences. Then try \"bhaiya menu please\".","Add \"timing\": \"Subah 7 - raat 10\" and ask \"shop ki timing kya hai?\"","Type \"kaise ho?\". Why is the bot quiet?"],
       takeaway:"Small word on the left, big sentence on the right. Next: Part 6, a new reply every time." },
-    { id:"chatbot-6", title:"A new reply every time: random.choice", videoSoon:"Short coming soon",
+    { id:"chatbot-6", title:"A new reply every time: random.choice", videoSoon:"Watch the Short on YouTube (link below)", yt:"https://youtube.com/shorts/Tmaz1GwQ-PY",
       concept:["The Part 5 bot gives the same reply every time. \"menu\" always gets \"Masala, Adrak!\". After three questions, boring!",
         "Give each question a <b>list</b> of replies. Then <code>random.choice(list)</code> pulls one at random, like picking a slip from a box.",
         "Add <code>import random</code> at the top. Press Run again and again: you get a new reply, and the same one can come back, because it is random."],
@@ -1600,6 +1600,17 @@ function puzzlesPage(){
 const JIGSAW = { img: "img/jigsaw/mystery-house.webp", w: 1533, h: 1050, title: "Dimaag Dada's Mystery House",
   levels: [["Easy", 4, 3], ["Medium", 6, 4], ["Hard", 8, 6]] };
 let JZ = null;
+let ac = null, jzSound = true; try { jzSound = localStorage.getItem("jzsnd") !== "0"; } catch (e) {}
+function actx(){ ac = ac || new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === "suspended") ac.resume(); return ac; }
+function snapSound(){ if (!jzSound) return; try { const a = actx(), t = a.currentTime;   // wooden "tok": a short filtered click + a low thump
+  const n = a.createBuffer(1, Math.floor(a.sampleRate * .05), a.sampleRate), d = n.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 4);
+  const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(); s.buffer = n; f.type = "bandpass"; f.frequency.value = 1800; f.Q.value = 1.2; g.gain.value = .9; s.connect(f).connect(g).connect(a.destination); s.start(t);
+  const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(110, t + .08); og.gain.setValueAtTime(.4, t); og.gain.exponentialRampToValueAtTime(.001, t + .1); o.connect(og).connect(a.destination); o.start(t); o.stop(t + .11);
+} catch (e) {} }
+function winSound(){ if (!jzSound) return; try { const a = actx(), t = a.currentTime;   // rising "ta-da" (C E G C) + sparkles
+  [523.25, 659.25, 783.99, 1046.5].forEach((fq, i) => { const o = a.createOscillator(), g = a.createGain(), st = t + i * .13; o.type = "triangle"; o.frequency.value = fq; g.gain.setValueAtTime(0, st); g.gain.linearRampToValueAtTime(.25, st + .02); g.gain.exponentialRampToValueAtTime(.001, st + (i === 3 ? 1 : .3)); o.connect(g).connect(a.destination); o.start(st); o.stop(st + 1.05); });
+  for (let k = 0; k < 10; k++) { const o = a.createOscillator(), g = a.createGain(), st = t + .55 + k * .07; o.type = "sine"; o.frequency.value = 1500 + Math.random() * 1600; g.gain.setValueAtTime(.08, st); g.gain.exponentialRampToValueAtTime(.001, st + .15); o.connect(g).connect(a.destination); o.start(st); o.stop(st + .16); }
+} catch (e) {} }
 function jigsawPage(){
   const lv = JIGSAW.levels.map(([n, c, r], i) => `<button class="btn jzlv" data-lv="${i}">${n} · ${c * r} pieces</button>`).join("");
   return `<p class="jzback"><a href="#puzzles">← Dimaag Dada</a></p>
@@ -1607,7 +1618,7 @@ function jigsawPage(){
   <p class="lead">Dada, Arshita and Ayansh are hunting for the treasure chest, with Botu, Gullak Bhai and sneaky Udhaar Uncle on the stairs. Drag the pieces from the tray onto the board. A piece clicks in when it is in the right place.</p>
   <p><a class="btn jzsm" href="puzzles/">🧩 6 puzzles in the free Dada Puzzles app →</a></p>
   <div class="jzbar"><div class="jzlvs" role="group" aria-label="Difficulty">${lv}</div>
-    <div class="jzstat"><span>⏱ <b id="jzt">0:00</b></span><span><b id="jzn">0</b> placed</span><label><input type="checkbox" id="jzghost" checked> Show picture</label><button class="btn jzsm" id="jznew">Shuffle</button></div></div>
+    <div class="jzstat"><span>⏱ <b id="jzt">0:00</b></span><span><b id="jzn">0</b> placed</span><label><input type="checkbox" id="jzghost" checked> Show picture</label><button class="btn jzsm" id="jzsnd" aria-label="Sound on or off">${jzSound ? "🔊" : "🔇"}</button><button class="btn jzsm" id="jznew">Shuffle</button></div></div>
   <div id="jzwin" class="jzwin" hidden></div>
   <div id="jz" class="jzarea" aria-label="Jigsaw board and piece tray"></div>`;
 }
@@ -1670,7 +1681,7 @@ function jzDown(e){
     if (lx < 0 || ly < 0 || lx > pw + 2 * pad || ly > ph + 2 * pad) return;
     if (p.g.isPointInPath(p.path, lx * dpr, ly * dpr) && (!hit || (p.zi || 2) > (hit.zi || 2))) hit = p;
   });
-  if (!hit) return;
+  if (!hit) return; if (jzSound) try { actx(); } catch (x) {}
   e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {}
   hit.zi = ++JZ.z; hit.el.style.zIndex = hit.zi; hit.el.classList.add("drag");
   JZ.drag = { p: hit, dx: px - hit.x, dy: py - hit.y };
@@ -1685,7 +1696,7 @@ function jzMove(e){
 function jzUp(){
   const d = JZ && JZ.drag; if (!d) return; JZ.drag = null; const p = d.p; p.el.classList.remove("drag");
   if (Math.hypot(p.x - p.c * JZ.pw, p.y - p.r * JZ.ph) < Math.min(JZ.pw, JZ.ph) * .3) {
-    p.done = true; p.el.classList.add("done"); JZ.placed++; jzPlace(p); jzTick();
+    p.done = true; p.el.classList.add("done"); JZ.placed++; jzPlace(p); jzTick(); snapSound();
     if (JZ.placed === JZ.pieces.length) jzWin();
   }
 }
@@ -1695,7 +1706,7 @@ function jzTick(){
   document.getElementById("jzn").textContent = JZ.placed + "/" + JZ.pieces.length;
 }
 function jzWin(){
-  JZ.tEnd = Date.now(); clearInterval(JZ.timer); jzTick();
+  JZ.tEnd = Date.now(); clearInterval(JZ.timer); jzTick(); winSound();
   const secs = (JZ.tEnd - JZ.t0) / 1000, k = JZ.lv, prev = JZ.best[k], rec = !prev || secs < prev, nxt = JIGSAW.levels[k + 1];
   if (rec) { JZ.best[k] = secs; try { localStorage.setItem("jzbest", JSON.stringify(JZ.best)); } catch (e) {} }
   const w = document.getElementById("jzwin");
@@ -1708,6 +1719,7 @@ app.addEventListener("click", e => {
   const b = e.target.closest(".jzlv");
   if (b) { try { localStorage.setItem("jzlv", b.dataset.lv); } catch (x) {} startJigsaw(+b.dataset.lv); document.getElementById("jz").scrollIntoView({ behavior: "smooth", block: "start" }); }
   if (e.target.closest("#jznew")) startJigsaw(JZ ? JZ.lv : 0);
+  const sb = e.target.closest("#jzsnd"); if (sb) { jzSound = !jzSound; sb.textContent = jzSound ? "🔊" : "🔇"; try { localStorage.setItem("jzsnd", jzSound ? "1" : "0"); } catch (x) {} }
 });
 app.addEventListener("change", e => { if (e.target.id === "jzghost") { const g = document.querySelector(".jzghost"); if (g) g.hidden = !e.target.checked; } });
 let jzRz = 0;
