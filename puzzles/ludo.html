@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dada Ludo · Dada World</title>
+<meta name="description" content="Play Dada Ludo free: 2 to 4 players, pass the phone or play against Dada. Works offline.">
+<meta name="theme-color" content="#0f181b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="img/icon-192.png">
+<style>
+:root{--bg:#0f181b;--card:#192a2f;--line:#2a3f44;--ink:#f7f3ea;--muted:#9fb4b6;--cyan:#19e6e6;--amber:#ffb904;
+--r:#ff5a5f;--g:#3ddc84;--y:#ffb904;--b:#3aa0ff;--disp:"Trebuchet MS","Avenir Next",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:radial-gradient(900px 500px at 10% -10%,#183a3f 0,transparent 60%),var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+button,select{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:560px;margin:0 auto;padding:12px 16px 32px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.top a{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:13px}
+h1{font:800 22px/1 var(--disp);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.setup label{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.setup select{background:#0f181b;border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:-2px}
+.go{display:block;width:100%;margin-top:14px;border:0;border-radius:14px;padding:13px;background:var(--cyan);color:#062022;font-weight:800;font-size:17px}
+.board{position:relative;width:100%;aspect-ratio:1;display:grid;grid-template:repeat(15,1fr)/repeat(15,1fr);background:#f4efe3;border-radius:14px;overflow:hidden;border:3px solid #2a3f44}
+.c{border:.5px solid #cfc6b2}
+.yard{border-radius:0;display:grid;place-items:center}
+.yard i{width:62%;height:62%;background:#fffaf0;border-radius:18%;display:block}
+.star::after{content:"★";display:grid;place-items:center;height:100%;color:#9a8f78;font-size:clamp(9px,2.6vw,15px)}
+.ctr{grid-area:7/7/10/10;background:conic-gradient(from 45deg,var(--g) 0 25%,var(--y) 0 50%,var(--b) 0 75%,var(--r) 0);display:grid;place-items:center}
+.ctr img{width:70%;border-radius:50%;border:2px solid #fff}
+.tok{position:absolute;width:calc(100%/15*.8);aspect-ratio:1;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 4px #0006;transition:left .18s,top .18s;transform:translate(-50%,-50%);padding:0;z-index:2}
+.tok.can::after{content:"";position:absolute;inset:-12px;border-radius:50%}
+.tok.can{animation:pulse .8s infinite alternate;z-index:3;outline:3px solid #111}
+@keyframes pulse{to{transform:translate(-50%,-50%) scale(1.18)}}
+.bar{display:flex;align-items:center;gap:12px;margin-top:12px}
+.die{width:64px;height:64px;border-radius:14px;border:0;background:#fff;color:#111;font:800 34px/1 var(--disp);box-shadow:0 4px 0 #0005}
+.die:disabled{opacity:.55}
+.msg{flex:1;font-weight:700}
+.msg small{display:block;color:var(--muted);font-weight:500}
+.rules{margin-top:14px;color:var(--muted);font-size:14px}
+.rules b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.tok{transition:none}.tok.can::after{content:"";position:absolute;inset:-12px;border-radius:50%}
+.tok.can{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="./">← Play</a><h1>Dada Ludo</h1></div>
+  <div id="setup" class="card setup">
+    <p style="margin-top:0">Pick who plays each colour. Pass the phone, or let Dada and the kids play the other colours.</p>
+    <div id="seats"></div>
+    <button class="go" id="start" type="button">Start game</button>
+  </div>
+  <div id="game" hidden>
+    <div class="board" id="board"></div>
+    <div class="bar"><button class="die" id="die" type="button" aria-label="Roll the dice">🎲</button><div class="msg" id="msg"></div></div>
+    <div class="rules"><b>Rules:</b> Roll a 6 to bring a piece out. A 6 gives you another roll. Land on someone to send them home (and roll again). Stars and start squares are safe. Get all 4 pieces to the centre to win.</div>
+  </div>
+</div>
+<script>
+const COL = [{k:"r",n:"Red",c:"#ff5a5f"},{k:"g",n:"Green",c:"#3ddc84"},{k:"y",n:"Yellow",c:"#ffb904"},{k:"b",n:"Blue",c:"#3aa0ff"}];
+const BOTS = ["Dada", "Anna", "Chiklu", "Botu"];
+// 52-cell track, clockwise from Red's start
+const T = [];
+const seg = (r0, c0, r1, c1) => { const n = Math.max(Math.abs(r1 - r0), Math.abs(c1 - c0)), dr = Math.sign(r1 - r0), dc = Math.sign(c1 - c0); for (let i = 0; i <= n; i++) T.push([r0 + dr * i, c0 + dc * i]); };
+seg(6,1,6,5); seg(5,6,0,6); seg(0,7,0,8); seg(1,8,5,8); seg(6,9,6,14); seg(7,14,8,14); seg(8,13,8,9); seg(9,8,14,8); seg(14,7,14,6); seg(13,6,9,6); seg(8,5,8,0); seg(7,0,6,0);
+const START = [0, 13, 26, 39], SAFE = new Set([0, 8, 13, 21, 26, 34, 39, 47]);
+const HOME = [[7,1],[1,7],[7,13],[13,7]], HDIR = [[0,1],[1,0],[0,-1],[-1,0]];
+const YARD = [[1.5,1.5],[1.5,10.5],[10.5,10.5],[10.5,1.5]];
+const $ = id => document.getElementById(id);
+let players = [], turn = 0, roll = 0, busy = false;
+
+// setup
+$("seats").innerHTML = COL.map((c, i) => `<label><span><span class="dot" style="background:${c.c}"></span>${c.n}</span><select id="s${i}"><option value="h">Player</option><option value="bot"${i ? " selected" : ""}>${BOTS[i]} (computer)</option><option value="off">Not playing</option></select></label>`).join("");
+$("s0").value = "h"; $("s2").value = "h";
+$("start").onclick = () => {
+  players = COL.map((c, i) => ({ ...c, i, who: $("s" + i).value, bot: BOTS[i], p: [-1, -1, -1, -1] })).filter(p => p.who !== "off");
+  if (players.length < 2) { alert("Pick at least 2 colours."); return; }
+  $("setup").hidden = true; $("game").hidden = false; drawBoard(); draw(); next(0);
+};
+
+function drawBoard() {
+  const b = $("board"), cell = (r, c, cls = "", bg = "") => `<div class="c ${cls}" style="grid-area:${r + 1}/${c + 1};${bg ? "background:" + bg : ""}"></div>`;
+  let h = "";
+  [[0,0,0],[0,9,1],[9,9,2],[9,0,3]].forEach(([r, c, k]) => h += `<div class="yard" style="grid-area:${r + 1}/${c + 1}/${r + 7}/${c + 7};background:${COL[k].c}"><i></i></div>`);
+  T.forEach(([r, c], i) => { const s = START.indexOf(i); h += cell(r, c, SAFE.has(i) && s < 0 ? "star" : "", s >= 0 ? COL[s].c : ""); });
+  HOME.forEach(([r, c], k) => { for (let j = 0; j < 5; j++) h += cell(r + HDIR[k][0] * j, c + HDIR[k][1] * j, "", COL[k].c); });
+  h += `<div class="ctr"><img src="img/dada.webp" alt="Dada"></div>`;
+  b.innerHTML = h + '<div id="toks"></div>';
+}
+// position of piece -> [row, col] in cells (centre)
+function pos(pl, j) {
+  const v = pl.p[j], k = pl.i;
+  if (v < 0) { const [r, c] = YARD[k]; return [r + (j >> 1) * 3 + 0.5, c + (j & 1) * 3 + 0.5]; }
+  if (v <= 50) { const [r, c] = T[(START[k] + v) % 52]; return [r + .5, c + .5]; }
+  if (v <= 55) { const s = v - 51, [r, c] = HOME[k]; return [r + HDIR[k][0] * s + .5, c + HDIR[k][1] * s + .5]; }
+  const off = [[-.6,-.6],[-.6,.6],[.6,.6],[.6,-.6]][j]; return [7.5 + HDIR[k][0] * .9 + off[0] * .3, 7.5 + HDIR[k][1] * .9 + off[1] * .3];
+}
+function draw(movable = []) {
+  let h = "";
+  players.forEach(pl => pl.p.forEach((v, j) => {
+    const [r, c] = pos(pl, j), same = players.flatMap(q => q.p.map((w, m) => ({ q, m }))).filter(o => { const [a, b] = pos(o.q, o.m); return a === r && b === c; });
+    const n = same.findIndex(o => o.q === pl && o.m === j), sh = same.length > 1 ? (n - (same.length - 1) / 2) * 0.22 : 0;
+    const can = pl === players[turn] && movable.includes(j);
+    h += `<button class="tok${can ? " can" : ""}" type="button" data-j="${j}" ${can ? "" : "tabindex=-1"} aria-label="${pl.n} piece ${j + 1}" style="background:${pl.c};left:${(c + sh) / 15 * 100}%;top:${(r + sh) / 15 * 100}%"></button>`;
+  }));
+  $("toks").innerHTML = h;
+  $("toks").querySelectorAll(".tok.can").forEach(t => t.onclick = () => move(+t.dataset.j));
+}
+const name = pl => pl.who === "bot" ? pl.bot : pl.n;
+const legal = (pl, d) => pl.p.map((v, j) => (v < 0 ? d === 6 : v < 56 && v + d <= 56) ? j : -1).filter(j => j >= 0);
+function say(a, b = "") { $("msg").innerHTML = a + (b ? `<small>${b}</small>` : ""); }
+
+function next(t) {
+  turn = t; roll = 0; const pl = players[turn];
+  $("die").textContent = "🎲"; $("die").style.background = pl.c; draw();
+  if (pl.who === "bot") { $("die").disabled = true; say(`${name(pl)} is rolling…`); setTimeout(doRoll, 700); }
+  else { $("die").disabled = false; say(`${pl.n}'s turn`, "Tap the dice"); }
+}
+$("die").onclick = () => { if (!busy && !roll) doRoll(); };
+function doRoll() {
+  const pl = players[turn]; roll = 1 + Math.floor(Math.random() * 6);
+  $("die").textContent = "⚀⚁⚂⚃⚄⚅"[roll - 1]; $("die").disabled = true;
+  const m = legal(pl, roll);
+  if (!m.length) { say(`${name(pl)} rolled ${roll}`, "No move. Next player."); setTimeout(() => next((turn + 1) % players.length), 1000); return; }
+  if (pl.who === "bot") { say(`${name(pl)} rolled ${roll}`); setTimeout(() => move(pick(pl, m)), 650); return; }
+  if (m.length === 1 || new Set(m.map(j => pl.p[j])).size === 1) { say(`You rolled ${roll}`); setTimeout(() => move(m[0]), 450); return; }
+  say(`You rolled ${roll}`, "Tap a glowing piece"); draw(m);
+}
+const cellOf = (pl, v) => v >= 0 && v <= 50 ? (START[pl.i] + v) % 52 : -1;
+function victims(pl, v) {
+  const c = cellOf(pl, v); if (c < 0 || SAFE.has(c)) return [];
+  const out = []; players.forEach(q => q !== pl && q.p.forEach((w, m) => cellOf(q, w) === c && out.push([q, m]))); return out;
+}
+function pick(pl, m) {
+  const score = j => { const v = pl.p[j], nv = v < 0 ? 0 : v + roll; let s = nv;
+    if (victims(pl, nv).length) s += 200; if (nv === 56) s += 150; if (v < 0) s += 100;
+    if (SAFE.has(cellOf(pl, nv)) || nv > 50) s += 40; return s; };
+  return m.sort((a, b) => score(b) - score(a))[0];
+}
+function move(j) {
+  if (busy) return; busy = true;
+  const pl = players[turn], from = pl.p[j], to = from < 0 ? 0 : from + roll;
+  const steps = from < 0 ? [0] : Array.from({ length: roll }, (_, i) => from + i + 1);
+  let i = 0;
+  const step = () => {
+    pl.p[j] = steps[i++]; draw();
+    if (i < steps.length) return setTimeout(step, 170);
+    let extra = roll === 6, note = "";
+    const hit = victims(pl, to);
+    hit.forEach(([q, m]) => q.p[m] = -1);
+    if (hit.length) { extra = true; note = `Sent ${hit.map(([q]) => name(q)).join(" and ")} home!`; }
+    if (to === 56) { extra = true; note = "Piece reached home!"; }
+    draw(); busy = false;
+    if (pl.p.every(v => v === 56)) { say(`🏆 ${name(pl)} wins!`, "Dada says: well played!"); $("die").disabled = false; $("die").textContent = "↻"; $("die").onclick = () => location.reload(); return; }
+    if (note) say(note, extra ? "Roll again" : "");
+    setTimeout(() => next(extra ? turn : (turn + 1) % players.length), note ? 900 : 350);
+  };
+  step();
+}
+</script>
+</body>
+</html>

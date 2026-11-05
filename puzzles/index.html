@@ -185,8 +185,8 @@ function playTab(){
   return `<a class="hero" href="#/play/${d.id}"><img class="bg" src="scenes/${d.id}-sm.webp" alt=""><img class="dada" src="img/dada.webp" alt="Dimaag Dada" width="360" height="623"><span class="eyebrow">Aaj ka puzzle · free</span><h2>${esc(d.title)}</h2><p>Kitne second mein?</p><span class="cta">Play now</span></a>
   <div class="streak"><span class="n">${st.n}🔥</span><div><b style="font-size:14px">Day streak</b><p>${st.today ? "Shabaash! Aaj ka puzzle ho gaya." : "Ek puzzle solve karo, streak chalti rahegi!"}</p></div><div class="dots" aria-hidden="true">${days.map(x => `<i${st.days.includes(x) ? ' class="on"' : ""}></i>`).join("")}</div></div>
   <div class="sec"><h3>Jigsaws</h3><span>${SCENES.length} scenes</span></div><div class="grid">${SCENES.map(card).join("")}</div>
-  <div class="sec"><h3>Board games</h3><span>Coming soon</span></div>
-  <div class="grid">${TILE('<img src="img/ludo.webp" alt="" loading="lazy" width="512" height="382">', "Dada Ludo", "2–4 players", BADGE.soon)}${TILE('<img src="img/snakes-sums.webp" alt="" loading="lazy" width="512" height="382">', "Snakes &amp; Sums", "Maths board game", BADGE.soon)}${GX("Botu Chess", "#7a5cff", "#ea4cf7", BADGE.soon)}</div>
+  <div class="sec"><h3>Board games</h3><span>New: Ludo</span></div>
+  <div class="grid"><a href="ludo.html" style="text-decoration:none">${TILE('<img src="img/ludo.webp" alt="" loading="lazy" width="512" height="382">', "Dada Ludo", "2–4 players · play now", BADGE.free)}</a>${TILE('<img src="img/snakes-sums.webp" alt="" loading="lazy" width="512" height="382">', "Snakes &amp; Sums", "Maths board game", BADGE.soon)}${GX("Botu Chess", "#7a5cff", "#ea4cf7", BADGE.soon)}</div>
   ${club() ? "" : `<div class="sec"><h3>Want every puzzle?</h3><a class="ib" href="#/club">See Dada Club →</a></div>`}`;
 }
 function tierCard(n, k, list, best){
