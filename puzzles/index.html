@@ -145,7 +145,7 @@ const SYM = { INR: "₹", USD: "$", EUR: "€", GBP: "£", AED: "AED " };
 const PRODUCTS = [
   { k: "pack", cat: "Digital", img: "img/ludo.webp", imgS: "scenes/mystery-house-sm.webp", t: "Club scene pack", s: "5 jigsaws · digital", badge: "new" },
   { k: "book", cat: "Books", img: "img/puzzle-book.webp", t: "Dada Puzzle Book 1", s: "100 puzzles · print + PDF", was: 1 },
-  { k: "comic", cat: "Comics", img: "img/comics-trail.webp", t: "Dada Comics #1", s: "The Puzzle Trail · Anna & Chiklu", badge: "new" },
+  { k: "comic", cat: "Comics", img: "img/comics-trail.webp", t: "Dada Comics #1 (print + PDF)", s: "The Puzzle Trail · free to read in the app", badge: "new" },
   { k: "pencil", cat: "Stationery", img: "img/stationery.webp", t: "Dada pencil set", s: "Ships in India only" }
 ];
 const app = document.getElementById("app");
@@ -185,6 +185,8 @@ function playTab(){
   return `<a class="hero" href="#/play/${d.id}"><img class="bg" src="scenes/${d.id}-sm.webp" alt=""><img class="dada" src="img/dada.webp" alt="Dimaag Dada" width="360" height="623"><span class="eyebrow">Aaj ka puzzle · free</span><h2>${esc(d.title)}</h2><p>Kitne second mein?</p><span class="cta">Play now</span></a>
   <div class="streak"><span class="n">${st.n}🔥</span><div><b style="font-size:14px">Day streak</b><p>${st.today ? "Shabaash! Aaj ka puzzle ho gaya." : "Ek puzzle solve karo, streak chalti rahegi!"}</p></div><div class="dots" aria-hidden="true">${days.map(x => `<i${st.days.includes(x) ? ' class="on"' : ""}></i>`).join("")}</div></div>
   <div class="sec"><h3>Jigsaws</h3><span>${SCENES.length} scenes</span></div><div class="grid">${SCENES.map(card).join("")}</div>
+  <div class="sec"><h3>Dada Comics</h3><span>New: read free</span></div>
+  <div class="grid"><a href="comics.html" style="text-decoration:none">${TILE('<img src="img/comic/trail-1-cover.webp" alt="" loading="lazy" width="512" height="382" style="object-fit:cover;aspect-ratio:512/382">', "The Puzzle Trail", "Episode 1 · solve clues to turn pages", BADGE.free)}</a></div>
   <div class="sec"><h3>Board games</h3><span>New: Botu Chess</span></div>
   <div class="grid"><a href="ludo.html" style="text-decoration:none">${TILE('<img src="img/ludo.webp" alt="" loading="lazy" width="512" height="382">', "Dada Ludo", "2–4 players · play now", BADGE.free)}</a><a href="snakes-sums.html" style="text-decoration:none">${TILE('<img src="img/snakes-sums.webp" alt="" loading="lazy" width="512" height="382">', "Snakes &amp; Sums", "Maths board game · play now", BADGE.free)}</a><a href="chess.html" style="text-decoration:none">${TILE('<img src="img/chess.webp" alt="" loading="lazy" width="512" height="286" style="object-fit:cover;aspect-ratio:512/382">', "Botu Chess", "Play Botu or a friend · play now", BADGE.free)}</a></div>
   ${club() ? "" : `<div class="sec"><h3>Want every puzzle?</h3><a class="ib" href="#/club">See Dada Club →</a></div>`}`;
