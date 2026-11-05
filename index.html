@@ -803,7 +803,7 @@ for i in range(1, 4):
   ]}]
 },
 {
-  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 5 parts live",
+  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 6 parts live",
   cover: "media/chatbot-1.jpg",
   blurb: "Build your own chatbot with Python. Start with a simple rule-based bot and grow it into a Claude-powered bot, a web app and an AI agent.",
   modules: [
@@ -871,7 +871,24 @@ while True:
             print(replies[word])`), output:"Aap: Masala chai ka MENU dikhao\nMasala, Adrak!\nAap: Price kya hai bhaiya?\nRs 20\nAap: menu aur price\nMasala, Adrak!\nRs 20",
       practice:["Press Run: the Input box already has the three sentences. Then try \"bhaiya menu please\".","Add \"timing\": \"Subah 7 - raat 10\" and ask \"shop ki timing kya hai?\"","Type \"kaise ho?\". Why is the bot quiet?"],
       takeaway:"Small word on the left, big sentence on the right. Next: Part 6, a new reply every time." },
-    ...["A new reply every time (random)","The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
+    { id:"chatbot-6", title:"A new reply every time: random.choice", videoSoon:"Short coming soon",
+      concept:["The Part 5 bot gives the same reply every time. \"menu\" always gets \"Masala, Adrak!\". After three questions, boring!",
+        "Give each question a <b>list</b> of replies. Then <code>random.choice(list)</code> pulls one at random, like picking a slip from a box.",
+        "Add <code>import random</code> at the top. Press Run again and again: you get a new reply, and the same one can come back, because it is random."],
+      list:["The dictionary value is now a list: <code>\"menu\": [\"Masala, Adrak!\", \"Aaj special: Elaichi chai!\", \"Kadak masala try karo!\"]</code>.",
+        "<code>random.choice(replies[word])</code> picks one item from that list.",
+        "Same question twice can give the same reply. That is normal for random."],
+      code:PY(`import random
+replies = {"menu": ["Masala, Adrak!", "Aaj special: Elaichi chai!", "Kadak masala try karo!"],
+           "price": ["Rs 20", "Sirf 20 rupaye!", "Bees rupaye, bhaiya!"]}
+while True:
+    msg = input("Aap: ").lower().strip()
+    for word in replies:
+        if word in msg:
+            print(random.choice(replies[word]))`), output:"Aap: menu\nAaj special: Elaichi chai!\nAap: menu\nMasala, Adrak!\nAap: price\nSirf 20 rupaye!",
+      practice:["Press Run again and again. Do you always get the same replies?","Add a fourth reply to the \"menu\" list.","Add \"timing\": [\"Subah 7 - raat 10\", \"Sunday bhi khula hai!\"] and ask for the timing."],
+      takeaway:"A list of replies plus random.choice: the bot never gets boring. Next: Part 7, the bot remembers your name." },
+    ...["The bot remembers your name","Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
   { title: "Season 2 · Give the bot an AI brain (Claude API)", lessons:
     ["When rules aren't enough","What is an API?","Keep your secret key safe","Your first AI conversation","Give the bot a personality","AI forgets! (chat history)","The AI chat loop","Give the AI the menu (tools)","Save money and avoid errors","Season finale: the AI Chai Bot is ready!"].map(soon) },
   { title: "Season 3 · Bot superpowers", lessons:
@@ -1242,7 +1259,8 @@ function bookBox(id){
 const RUNNABLE = ["python", "chatbot", "agentic"];   // every Python lesson, incl. future AI / LLM / agentic courses
 const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masala\nband",
   "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye", "chatbot-4": "  MENU \nPrice\nmenu",
-  "chatbot-5": "Masala chai ka MENU dikhao\nPrice kya hai bhaiya?\nmenu aur price" };
+  "chatbot-5": "Masala chai ka MENU dikhao\nPrice kya hai bhaiya?\nmenu aur price",
+  "chatbot-6": "menu\nmenu\nprice\nprice" };
 const FILES_FOR = { "python-12": { "bill.txt": "Total: Rs 50" } };   // created only if the file is not there yet
 const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
 const PYRUN = (() => {
