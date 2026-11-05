@@ -386,6 +386,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
 .bookcard .pr s{opacity:1;color:#6b4a00}
 .dadabar{display:flex;align-items:center;justify-content:space-between;gap:14px 20px;flex-wrap:wrap;padding:14px 18px;margin:0 0 22px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(120deg,rgba(15,58,42,.55),rgba(47,122,87,.25))}
+/* Dimaag Dada jigsaw (5 Nov 2026) */
+.jzcard{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:18px;align-items:center;padding:14px;margin:0 0 26px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;color:inherit}.jzcard img{width:100%;height:auto;border-radius:10px;display:block}.jzcard h3{margin:4px 0 6px}.jzcard p{margin:0 0 8px;color:var(--muted)}.jzcard .go{font-weight:700;color:var(--accent)}.jzcard:hover{border-color:var(--accent)}@media (max-width:600px){.jzcard{grid-template-columns:1fr}}
+.jzback{margin:0 0 6px}.jzbar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin:16px 0}.jzlvs{display:flex;gap:8px;flex-wrap:wrap}.jzlv,.jzsm{padding:8px 14px}.jzlv[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}.jzstat{display:flex;gap:6px 14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-variant-numeric:tabular-nums}.jzstat b{color:var(--ink)}
+.jzarea{position:relative;margin:0 auto 24px;user-select:none;-webkit-user-select:none}.jzboard{position:absolute;left:0;top:0;outline:2px dashed var(--line);outline-offset:2px;border-radius:4px;overflow:hidden;background:rgba(127,127,127,.06)}.jzghost{width:100%;height:100%;opacity:.22;display:block}.jzghost[hidden]{display:none}.jztray{position:absolute;left:0;right:0;border:1px solid var(--line);border-radius:12px;background:rgba(127,127,127,.07);color:var(--muted);font-size:13px;padding:4px 10px;box-sizing:border-box}
+.jzp{position:absolute;touch-action:none;cursor:grab;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.jzp.drag{cursor:grabbing;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}.jzp.done{filter:none;pointer-events:none}
+.jzwin{display:flex;gap:16px;align-items:center;padding:16px;margin:0 0 16px;border:1px solid var(--accent);border-radius:14px;background:var(--gold)}.jzwin[hidden]{display:none}.jzwin img{width:96px;height:auto;flex:none}.jzwin h3{margin:0 0 4px}.jzwin p{margin:0}@media (max-width:560px){.jzwin{flex-direction:column;text-align:center}}
 .dbrand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
 .dbrand img{width:56px;height:56px;border-radius:50%;flex:none}
 .dbrand .wm{display:block;font-family:"Sora",var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff}
@@ -530,7 +536,7 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
   <div class="fabout"><a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
     <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
   <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
-  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Dimaag Dada · Reasoning Samjho</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
+  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Dimaag Dada · Reasoning Samjho</a><a href="#jigsaw">Dimaag Dada jigsaw</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
   <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="mailto:samjhowithraj@gmail.com">Contact</a><a href="#privacy">Privacy</a></nav>
 </div><div class="wrap fchan"><h4>Our channels</h4><div class="chans" data-channels></div></div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
 <dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
@@ -1569,6 +1575,7 @@ function puzzlesPage(){
   const p = Z.launchOn ? `<s>₹${Z.price}</s> <b>₹${Z.launch}</b> <span class="chip next">Launch offer · ends ${Z.launchEndsLabel}</span><div class="both">Both editions: <s>₹${Z.bundle}</s> <b>₹${Z.bundleLaunch}</b></div>`
                        : `<b>₹${Z.price}</b><div class="both">Both editions: <b>₹${Z.bundle}</b></div>`;
   return `<div class="dadabar"><a class="dbrand" href="#puzzles"><img src="img/dada-badge-128.png" alt="" width="56" height="56"><span><span class="wm"><span class="d">Dimaag</span> Dada</span><small>Roz 1 exam puzzle · SSC, Bank, Railway, CAT</small></span></a><div class="social">${DADA_SOCIAL.map(x => `<a class="ico" href="${x.url}" target="_blank" rel="noopener" aria-label="${x.name}" title="${x.name}" style="--sb:${x.color}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[x.icon]}</svg></a>`).join("")}</div></div>
+  <a class="jzcard" href="#jigsaw"><img src="img/jigsaw/mystery-house-sm.webp" alt="Dimaag Dada, Arshita, Ayansh, Botu, Gullak Bhai and Udhaar Uncle on a treasure hunt in a big house" width="560" height="384" loading="lazy"><div><div class="eyebrow">New · Free online jigsaw</div><h3>Dimaag Dada's Mystery House</h3><p>Dada, Arshita, Ayansh, Botu, Gullak Bhai and sneaky Udhaar Uncle in one big treasure hunt. 12, 24 or 48 pieces, on phone or laptop.</p><span class="go">Play the jigsaw →</span></div></a>
   <section class="bookhero">
     <div class="bookcov"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596"></div>
     <div><div class="eyebrow">Dimaag Dada · Reasoning Samjho</div><h2>${Z.title}: ${Z.sub}</h2>
@@ -1589,6 +1596,121 @@ function puzzlesPage(){
       <div><a href="notes/puzzles-1-en-preview.pdf" target="_blank" rel="noopener">English</a> · <a href="notes/puzzles-1-hi-preview.pdf" target="_blank" rel="noopener">Hinglish</a></div></div></div></section>
   ${any ? "" : signup("Get one email the day Reasoning Samjho is out, with the launch price.", "", true)}`;
 }
+// ---------- Dimaag Dada jigsaw (5 Nov 2026): drag pieces from the tray; a piece clicks in when it is in the right place ----------
+const JIGSAW = { img: "img/jigsaw/mystery-house.webp", w: 1533, h: 1050, title: "Dimaag Dada's Mystery House",
+  levels: [["Easy", 4, 3], ["Medium", 6, 4], ["Hard", 8, 6]] };
+let JZ = null;
+function jigsawPage(){
+  const lv = JIGSAW.levels.map(([n, c, r], i) => `<button class="btn jzlv" data-lv="${i}">${n} · ${c * r} pieces</button>`).join("");
+  return `<p class="jzback"><a href="#puzzles">← Dimaag Dada</a></p>
+  <div class="eyebrow">Dimaag Dada · Free online jigsaw</div><h2>${JIGSAW.title}</h2>
+  <p class="lead">Dada, Arshita and Ayansh are hunting for the treasure chest, with Botu, Gullak Bhai and sneaky Udhaar Uncle on the stairs. Drag the pieces from the tray onto the board. A piece clicks in when it is in the right place.</p>
+  <div class="jzbar"><div class="jzlvs" role="group" aria-label="Difficulty">${lv}</div>
+    <div class="jzstat"><span>⏱ <b id="jzt">0:00</b></span><span><b id="jzn">0</b> placed</span><label><input type="checkbox" id="jzghost" checked> Show picture</label><button class="btn jzsm" id="jznew">Shuffle</button></div></div>
+  <div id="jzwin" class="jzwin" hidden></div>
+  <div id="jz" class="jzarea" aria-label="Jigsaw board and piece tray"></div>`;
+}
+function jzAvail(){ const el = document.getElementById("jz").parentElement, cs = getComputedStyle(el); return Math.floor(Math.min(el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), 980)); }
+function jzFmt(s){ s = Math.floor(s); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function jzPath(w, h, s){
+  const P = new Path2D(); P.moveTo(0, 0);
+  const e = (ax, ay, bx, by, k) => {
+    if (!k) { P.lineTo(bx, by); return; }
+    const dx = bx - ax, dy = by - ay, nx = dy * k, ny = -dx * k, q = (t, u) => [ax + dx * t - nx * u, ay + dy * t - ny * u];
+    P.lineTo(...q(.36, 0)); P.bezierCurveTo(...q(.42, 0), ...q(.30, .24), ...q(.5, .24)); P.bezierCurveTo(...q(.70, .24), ...q(.58, 0), ...q(.64, 0)); P.lineTo(bx, by);
+  };
+  e(0, 0, w, 0, s[0]); e(w, 0, w, h, s[1]); e(w, h, 0, h, s[2]); e(0, h, 0, 0, s[3]); P.closePath(); return P;
+}
+function startJigsaw(lv){
+  const area = document.getElementById("jz"); if (!area) return;
+  if (JZ) clearInterval(JZ.timer);
+  let best = {}; try { best = JSON.parse(localStorage.getItem("jzbest") || "{}"); } catch (e) {}
+  if (lv == null) { lv = 0; try { lv = +(localStorage.getItem("jzlv") || 0) || 0; } catch (e) {} }
+  const [, cols, rows] = JIGSAW.levels[lv], rnd = () => Math.random() < .5 ? 1 : -1;
+  const H = [...Array(rows - 1)].map(() => [...Array(cols)].map(rnd)), V = [...Array(rows)].map(() => [...Array(cols - 1)].map(rnd)), pieces = [];
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++)
+    pieces.push({ r, c, s: [r ? -H[r - 1][c] : 0, c < cols - 1 ? V[r][c] : 0, r < rows - 1 ? H[r][c] : 0, c ? -V[r][c - 1] : 0], fx: Math.random(), fy: Math.random(), done: false });
+  JZ = { lv, cols, rows, pieces, placed: 0, z: 10, t0: 0, tEnd: 0, timer: 0, best, img: new Image() };
+  document.querySelectorAll(".jzlv").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.lv === lv)));
+  const w = document.getElementById("jzwin"); if (w) w.hidden = true;
+  area.onpointerdown = jzDown; area.onpointermove = jzMove; area.onpointerup = area.onpointercancel = jzUp;
+  JZ.img.onload = () => { jzLayout(); jzTick(); }; JZ.img.src = JIGSAW.img;
+}
+function jzLayout(){
+  const area = document.getElementById("jz"); if (!area || !JZ || !JZ.img.complete) return;
+  const { cols, rows } = JZ, BW = jzAvail(), BH = BW * JIGSAW.h / JIGSAW.w, pw = BW / cols, ph = BH / rows;
+  const pad = Math.ceil(Math.max(pw, ph) * .3), tray = Math.max(BH * (cols * rows > 24 ? 1 : .75), ph * 2.6), dpr = Math.min(devicePixelRatio || 1, 2);
+  Object.assign(JZ, { BW, BH, pw, ph, pad, tray, dpr, drag: null });
+  area.style.width = BW + "px"; area.style.height = (BH + 16 + tray) + "px";
+  const ghost = document.getElementById("jzghost");
+  area.innerHTML = `<div class="jzboard" style="width:${BW}px;height:${BH}px"><img class="jzghost" src="${JIGSAW.img}" alt=""${ghost && !ghost.checked ? " hidden" : ""}></div><div class="jztray" style="top:${BH + 16}px;height:${tray}px">Pieces</div>`;
+  JZ.pieces.forEach(p => {
+    const cv = document.createElement("canvas"), W = pw + 2 * pad, Hh = ph + 2 * pad;
+    cv.width = Math.ceil(W * dpr); cv.height = Math.ceil(Hh * dpr); cv.style.width = W + "px"; cv.style.height = Hh + "px"; cv.className = "jzp" + (p.done ? " done" : "");
+    const g = cv.getContext("2d"), path = jzPath(pw, ph, p.s);
+    g.scale(dpr, dpr); g.translate(pad, pad);
+    g.save(); g.clip(path); g.drawImage(JZ.img, -p.c * pw, -p.r * ph, BW, BH); g.restore();
+    g.lineWidth = 1.2; g.strokeStyle = "rgba(255,255,255,.6)"; g.stroke(path);
+    Object.assign(p, { el: cv, g, path }); jzPlace(p); area.appendChild(cv);
+  });
+}
+function jzPlace(p){
+  const { pw, ph, pad, BW, BH, tray } = JZ;
+  p.x = p.done ? p.c * pw : p.ux != null ? p.ux * BW : p.fx * (BW - pw);
+  p.y = p.done ? p.r * ph : p.uy != null ? p.uy * BW : BH + 16 + 18 + p.fy * (tray - ph - 22);
+  p.el.style.left = (p.x - pad) + "px"; p.el.style.top = (p.y - pad) + "px"; p.el.style.zIndex = p.done ? 1 : (p.zi || 2);
+}
+function jzXY(e){ const R = document.getElementById("jz").getBoundingClientRect(); return [e.clientX - R.left, e.clientY - R.top]; }
+function jzDown(e){
+  if (!JZ || !JZ.pw) return;
+  const [px, py] = jzXY(e), { pad, pw, ph, dpr } = JZ; let hit = null;
+  JZ.pieces.forEach(p => {
+    if (p.done) return; const lx = px - p.x + pad, ly = py - p.y + pad;
+    if (lx < 0 || ly < 0 || lx > pw + 2 * pad || ly > ph + 2 * pad) return;
+    if (p.g.isPointInPath(p.path, lx * dpr, ly * dpr) && (!hit || (p.zi || 2) > (hit.zi || 2))) hit = p;
+  });
+  if (!hit) return;
+  e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {}
+  hit.zi = ++JZ.z; hit.el.style.zIndex = hit.zi; hit.el.classList.add("drag");
+  JZ.drag = { p: hit, dx: px - hit.x, dy: py - hit.y };
+  if (!JZ.t0) { JZ.t0 = Date.now(); JZ.timer = setInterval(jzTick, 1000); }
+}
+function jzMove(e){
+  const d = JZ && JZ.drag; if (!d) return; e.preventDefault();
+  const [px, py] = jzXY(e), area = document.getElementById("jz");
+  const x = Math.max(-JZ.pw / 2, Math.min(JZ.BW - JZ.pw / 2, px - d.dx)), y = Math.max(-JZ.ph / 2, Math.min(area.clientHeight - JZ.ph / 2, py - d.dy));
+  d.p.ux = x / JZ.BW; d.p.uy = y / JZ.BW; jzPlace(d.p);
+}
+function jzUp(){
+  const d = JZ && JZ.drag; if (!d) return; JZ.drag = null; const p = d.p; p.el.classList.remove("drag");
+  if (Math.hypot(p.x - p.c * JZ.pw, p.y - p.r * JZ.ph) < Math.min(JZ.pw, JZ.ph) * .3) {
+    p.done = true; p.el.classList.add("done"); JZ.placed++; jzPlace(p); jzTick();
+    if (JZ.placed === JZ.pieces.length) jzWin();
+  }
+}
+function jzTick(){
+  const t = document.getElementById("jzt"); if (!t) { if (JZ) clearInterval(JZ.timer); return; }
+  t.textContent = jzFmt(JZ.t0 ? ((JZ.tEnd || Date.now()) - JZ.t0) / 1000 : 0);
+  document.getElementById("jzn").textContent = JZ.placed + "/" + JZ.pieces.length;
+}
+function jzWin(){
+  JZ.tEnd = Date.now(); clearInterval(JZ.timer); jzTick();
+  const secs = (JZ.tEnd - JZ.t0) / 1000, k = JZ.lv, prev = JZ.best[k], rec = !prev || secs < prev, nxt = JIGSAW.levels[k + 1];
+  if (rec) { JZ.best[k] = secs; try { localStorage.setItem("jzbest", JSON.stringify(JZ.best)); } catch (e) {} }
+  const w = document.getElementById("jzwin");
+  w.innerHTML = `<img src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="96" height="140"><div><h3>Shabaash! Solved in ${jzFmt(secs)}</h3>
+    <p>${rec ? "That's your best time on " + JIGSAW.levels[k][0] + "." : "Your best on " + JIGSAW.levels[k][0] + ": " + jzFmt(prev) + "."} Dada has a new reasoning puzzle for you every day.</p>
+    <div class="buyrow">${nxt ? `<button class="btn jzlv" data-lv="${k + 1}">Try ${nxt[0]} · ${nxt[1] * nxt[2]} pieces</button>` : `<button class="btn jzlv" data-lv="${k}">Play again</button>`}<a class="btn" href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Roz 1 puzzle on YouTube</a><a class="btn" href="https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28" target="_blank" rel="noopener">WhatsApp channel</a></div></div>`;
+  w.hidden = false; w.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+app.addEventListener("click", e => {
+  const b = e.target.closest(".jzlv");
+  if (b) { try { localStorage.setItem("jzlv", b.dataset.lv); } catch (x) {} startJigsaw(+b.dataset.lv); document.getElementById("jz").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  if (e.target.closest("#jznew")) startJigsaw(JZ ? JZ.lv : 0);
+});
+app.addEventListener("change", e => { if (e.target.id === "jzghost") { const g = document.querySelector(".jzghost"); if (g) g.hidden = !e.target.checked; } });
+let jzRz = 0;
+addEventListener("resize", () => { clearTimeout(jzRz); jzRz = setTimeout(() => { if (document.getElementById("jz") && JZ && JZ.BW !== jzAvail()) jzLayout(); }, 200); });
 function render(){
   const h = (location.hash || "#classroom").slice(1);
   const [c, l] = find(h);
@@ -1599,6 +1721,7 @@ function render(){
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
   else if (h === "puzzles") { app.innerHTML = puzzlesPage(); tab = "puzzles"; }
+  else if (h === "jigsaw") { app.innerHTML = jigsawPage(); tab = "puzzles"; setTimeout(() => startJigsaw()); }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
@@ -1607,7 +1730,7 @@ function render(){
   else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "puzzles" ? "Dimaag Dada · Reasoning Samjho · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "jigsaw" ? "Dimaag Dada's Mystery House jigsaw · Tech Samjho Raj" : h === "puzzles" ? "Dimaag Dada · Reasoning Samjho · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
