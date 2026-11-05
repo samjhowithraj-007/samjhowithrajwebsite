@@ -220,7 +220,7 @@ function shopTab(){
   ${items.length ? `<div class="cartbar"><span>${items.length} item${items.length > 1 ? "s" : ""} · ${money(total)}</span><button type="button" data-pay="${Math.round(total * 100)}" data-what="${items.map(k => PRODUCTS.find(p => p.k === k).t).join(" + ")}">Checkout</button></div>` : ""}${testNote()}`;
 }
 function testNote(){ return CONFIG.SAMPLE_PRICES ? `<p class="note">Test mode: prices are samples and no real money is taken yet.</p>` : ""; }
-function footer(){ return `<p class="foot"><a href="privacy.html">Privacy</a><br>Made by <a href="https://www.techsamjhoraj.com/#puzzles">Tech Samjho Raj</a> · <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada on YouTube</a> · No ads, no tracking</p>`; }
+function footer(){ return `<p class="foot"><a href="terms.html">Terms</a> · <a href="refund.html">Refunds</a> · <a href="shipping.html">Shipping</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a><br>Made by <a href="https://www.techsamjhoraj.com/#puzzles">Tech Samjho Raj</a> · <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada on YouTube</a> · No ads, no tracking</p>`; }
 
 // ---- checkout: parent gate, then Razorpay Checkout (TEST key only) ----
 function sheet(html){ const s = $("sheet"); s.innerHTML = html; s.hidden = false; const x = $("sx"); if (x) x.onclick = () => s.hidden = true; }
