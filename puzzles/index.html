@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dada Puzzles · Dimaag Dada jigsaw</title>
+<meta name="description" content="Free jigsaw puzzles with Dimaag Dada, Arshita, Ayansh, Botu, Gullak Bhai and Udhaar Uncle. A new free puzzle every week. Works offline.">
+<meta name="theme-color" content="#3b2a6b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta property="og:title" content="Dada Puzzles: free Dimaag Dada jigsaws">
+<meta property="og:image" content="https://www.techsamjhoraj.com/puzzles/scenes/mystery-house-sm.webp">
+<style>
+:root{--bg:#f7f3ea;--card:#ffffff;--ink:#1d1a16;--muted:#6b645a;--line:rgba(0,0,0,.12);--accent:#6b4fd8;--on-accent:#fff;--gold:#f5b544;--free:#2f7a57;--club:#6b4fd8;--tray:rgba(0,0,0,.05)}
+@media (prefers-color-scheme:dark){:root{--bg:#14121c;--card:#1f1c2b;--ink:#f3efe6;--muted:#a59fb3;--line:rgba(255,255,255,.14);--accent:#9d86ff;--on-accent:#14121c;--free:#4fd8a0;--club:#b3a2ff;--tray:rgba(255,255,255,.06)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .brand{display:flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;font-size:18px}.top .brand img{width:32px;height:32px;border-radius:8px}
+.top .sp{flex:1}
+.ib{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 10px;font-size:14px}
+main{max-width:1000px;margin:0 auto;padding:16px}
+.week{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-decoration:none;margin-bottom:18px}
+.week img{width:45%;height:auto;max-width:300px;border-radius:10px;aspect-ratio:3/2;object-fit:cover}
+.week .tag{display:inline-block;background:var(--gold);color:#3a2604;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}
+.week h2{margin:6px 0 4px;font-size:20px}.week p{margin:0;color:var(--muted);font-size:14px}
+h3.sec{margin:8px 0 10px;font-size:16px;color:var(--muted);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;display:block;position:relative}
+.sc img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
+.sc .meta{padding:8px 10px;font-size:14px;display:flex;justify-content:space-between;gap:6px;align-items:center}
+.sc .stars{color:var(--gold);letter-spacing:1px;font-size:13px;white-space:nowrap}
+.sc .badge{position:absolute;left:8px;top:8px;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--free);color:#fff}
+.sc.lock img{filter:grayscale(.5) brightness(.8)}.sc.lock .badge{background:#5b3fc4}
+.clubcta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 8px;padding:14px 16px;border-radius:16px;background:#5b3fc4;color:#fff;text-decoration:none;font-weight:600}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin:24px 0 8px}
+.bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;margin:4px 0 12px}
+.lvs{display:flex;gap:6px}.lv{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px}.lv[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.stat{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}.stat b{color:var(--ink)}
+.area{position:relative;margin:0 auto;user-select:none;-webkit-user-select:none}
+.board{position:absolute;left:0;top:0;outline:2px dashed var(--line);outline-offset:2px;border-radius:4px;overflow:hidden;background:var(--tray)}.ghost{width:100%;height:100%;display:block;opacity:.22}.ghost[hidden]{display:none}
+.tray{position:absolute;left:0;right:0;border:1px solid var(--line);border-radius:12px;background:var(--tray);color:var(--muted);font-size:12px;padding:4px 10px}
+.pc{position:absolute;touch-action:none;cursor:grab;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.pc.drag{cursor:grabbing;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}.pc.done{filter:none;pointer-events:none}
+.cheer{position:fixed;right:14px;bottom:18px;z-index:80;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 12px 6px 6px;font-weight:600;font-size:14px;transform:translateY(140%);transition:transform .3s}.cheer.on{transform:none}.cheer img{width:44px;height:auto}
+.win{display:flex;gap:14px;align-items:center;background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:14px;margin:0 0 14px}.win[hidden]{display:none}.win img{width:84px;flex:none}.win h2{margin:0 0 4px;font-size:20px}.win p{margin:0 0 8px;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}.btn{display:inline-block;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 14px;font-size:14px;text-decoration:none}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.club{max-width:440px;margin:10px auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}
+.club img{width:110px}.club h2{margin:6px 0 2px}.club ul{list-style:none;padding:0;margin:14px 0;text-align:left}.club li{padding:4px 0}.club li::before{content:"✓ ";color:var(--free);font-weight:700}
+.plan{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0}.plan.best{border:2px solid var(--accent)}
+.gate input{font:inherit;width:90px;padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-align:center}
+.err{color:#d0453a;font-size:14px;min-height:1.2em}
+.soon{background:var(--tray);border-radius:12px;padding:10px;font-size:14px;color:var(--muted);margin:12px 0}
+@media (max-width:560px){.week{flex-direction:column;align-items:stretch}.week img{width:100%;max-width:none}.win{flex-direction:column;text-align:center}.btns{justify-content:center}}
+@media (prefers-reduced-motion:reduce){.cheer{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="#/"><img src="img/icon-192.png" alt="" width="32" height="32">Dada Puzzles</a><span class="sp"></span><button class="ib" id="snd" aria-label="Sound on or off">🔊</button><a class="ib" href="#/club">Club</a></header>
+<main id="app"></main>
+<div class="cheer" id="cheer" aria-live="polite"><img src="img/gullak-happy.webp" alt=""><span id="cheert">Shabaash!</span></div>
+<script>
+// Dada Puzzles (Tech Samjho Raj, 5 Nov 2026). Free scenes + one free "puzzle of the week"; Club scenes are locked until payments are switched on.
+// Add a scene: put scenes/<id>.webp (about 1536x1050) and scenes/<id>-sm.webp (480 wide) in place, add a line to SCENES, bump sw.js VERSION.
+const SCENES = [
+  { id: "mystery-house", title: "Mystery House", w: 1533, h: 1050, free: true, about: "Dada, Arshita and Ayansh hunt for the treasure chest while Udhaar Uncle sneaks down the stairs." },
+  { id: "school-trip", title: "School Trip to the Zoo", w: 1536, h: 1147, free: true, about: "Elephants, a peacock and naughty monkeys. Botu takes photos and Udhaar Uncle hides behind the balloons." },
+  { id: "train-journey", title: "The Train Journey", w: 1536, h: 1147, free: true, about: "A painted express train crosses the valley. Dada reads the map while Udhaar Uncle plays ticket checker." },
+  { id: "diwali-market", title: "Diwali Market", w: 1536, h: 1147, free: false, about: "Diyas, rangoli, ladoos and fireworks. Gullak Bhai is full of coins and Udhaar Uncle has a stall." },
+  { id: "cricket-ground", title: "Cricket Ground", w: 1536, h: 1147, free: false, about: "Ayansh bats, Arshita bowls, Dada is the umpire and Botu keeps wicket." },
+  { id: "space-lab", title: "Botu's Space Lab", w: 1536, h: 1147, free: false, about: "Planets, robot arms and a big window to space. Udhaar Uncle is stuck in a bubble." },
+];
+const LEVELS = [["Easy", 4, 3], ["Medium", 6, 4], ["Hard", 8, 6]];
+const WEEK0 = Date.UTC(2026, 10, 9);   // Monday 9 Nov 2026: the weekly free puzzle starts rotating through the Club scenes
+const app = document.getElementById("app");
+const store = { get(k, d) { try { const v = localStorage.getItem("dp-" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("dp-" + k, JSON.stringify(v)); } catch (e) {} } };
+let stars = store.get("stars", {}), best = store.get("best", {}), sound = store.get("sound", true), G = null;
+const club = () => store.get("club", false);
+function weekly(){ const c = SCENES.filter(s => !s.free); if (!c.length) return null; const w = Math.max(0, Math.floor((Date.now() - WEEK0) / 6048e5)); return c[w % c.length]; }
+function open(s){ return s.free || club() || (weekly() && weekly().id === s.id); }
+function fmt(s){ s = Math.floor(s); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function starTxt(id){ const n = stars[id] || 0; return "★".repeat(n) + "☆".repeat(3 - n); }
+function esc(t){ return String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+
+function gallery(){
+  const wk = weekly() || SCENES[0];
+  const card = s => { const o = open(s), tag = s.free ? "Free" : (wk.id === s.id ? "Free this week" : "🔒 Club");
+    return `<a class="sc${o ? "" : " lock"}" href="${o ? "#/play/" + s.id : "#/club"}"><img src="scenes/${s.id}-sm.webp" alt="${esc(s.title)}" loading="lazy" width="480" height="320"><span class="badge">${tag}</span><div class="meta"><span>${esc(s.title)}</span><span class="stars" aria-label="${stars[s.id] || 0} of 3 stars">${starTxt(s.id)}</span></div></a>`; };
+  return `<a class="week" href="#/play/${wk.id}"><img src="scenes/${wk.id}-sm.webp" alt="" width="480" height="320"><div><span class="tag">${wk.free ? "Start here" : "Free this week"}</span><h2>${esc(wk.title)}</h2><p>${esc(wk.about)}</p></div></a>
+  <h3 class="sec">All puzzles</h3><div class="grid">${SCENES.map(card).join("")}</div>
+  ${club() ? "" : `<a class="clubcta" href="#/club"><span>Dada Puzzle Club: every puzzle, new ones every week</span><span>→</span></a>`}
+  <p class="foot">Made by <a href="https://www.techsamjhoraj.com/#puzzles">Tech Samjho Raj</a> · <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada on YouTube</a> · No ads, no tracking</p>`;
+}
+
+function clubPage(){
+  const a = 2 + Math.floor(Math.random() * 8), b = 3 + Math.floor(Math.random() * 7);
+  return `<div class="club"><img src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="110" height="190"><h2>Dada Puzzle Club</h2><p style="color:var(--muted);margin:0">New puzzles every week</p>
+  <ul><li>Every puzzle, Easy to Hard</li><li>Festival packs: Diwali, Holi, cricket</li><li>No ads, ever</li><li>Works offline</li></ul>
+  <div id="gate" class="gate"><p><b>Grown-ups only.</b> What is ${a} × ${b}?</p><input id="gatein" inputmode="numeric" autocomplete="off" aria-label="Answer"> <button class="btn pri" id="gatego" data-a="${a * b}">Continue</button><div class="err" id="gateerr"></div></div>
+  <div id="plans" hidden><div class="plan best"><span>Yearly</span><b>₹399</b></div><div class="plan"><span>Monthly</span><b>₹49</b></div>
+  <div class="soon">The Club opens soon. Until then every free puzzle stays free, and one Club puzzle is free each week.</div>
+  <div class="btns" style="justify-content:center"><a class="btn pri" href="https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28" target="_blank" rel="noopener">Tell me when it opens (WhatsApp)</a><a class="btn" href="#/">Back to puzzles</a></div></div></div>`;
+}
+
+function playPage(s){
+  const lv = store.get("lv", 0);
+  return `<div class="bar"><a class="ib" href="#/">← Puzzles</a><div class="lvs" role="group" aria-label="Difficulty">${LEVELS.map(([n, c, r], i) => `<button class="lv" data-lv="${i}" aria-pressed="${i === lv}">${n} ${c * r}</button>`).join("")}</div>
+  <div class="stat"><span>⏱ <b id="t">0:00</b></span><span><b id="n">0</b></span><label><input type="checkbox" id="gh" checked> Picture</label><button class="ib" id="shuf">Shuffle</button></div></div>
+  <div class="win" id="win" hidden></div><div class="area" id="area" aria-label="${esc(s.title)} jigsaw: board and piece tray"></div>`;
+}
+
+function piecePath(w, h, s){
+  const P = new Path2D(); P.moveTo(0, 0);
+  const e = (ax, ay, bx, by, k) => { if (!k) { P.lineTo(bx, by); return; }
+    const dx = bx - ax, dy = by - ay, nx = dy * k, ny = -dx * k, q = (t, u) => [ax + dx * t - nx * u, ay + dy * t - ny * u];
+    P.lineTo(...q(.36, 0)); P.bezierCurveTo(...q(.42, 0), ...q(.30, .24), ...q(.5, .24)); P.bezierCurveTo(...q(.70, .24), ...q(.58, 0), ...q(.64, 0)); P.lineTo(bx, by); };
+  e(0, 0, w, 0, s[0]); e(w, 0, w, h, s[1]); e(w, h, 0, h, s[2]); e(0, h, 0, 0, s[3]); P.closePath(); return P;
+}
+function startGame(s, lv){
+  if (G) clearInterval(G.timer);
+  const [, cols, rows] = LEVELS[lv], rnd = () => Math.random() < .5 ? 1 : -1;
+  const H = [...Array(rows - 1)].map(() => [...Array(cols)].map(rnd)), V = [...Array(rows)].map(() => [...Array(cols - 1)].map(rnd)), pieces = [];
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++)
+    pieces.push({ r, c, s: [r ? -H[r - 1][c] : 0, c < cols - 1 ? V[r][c] : 0, r < rows - 1 ? H[r][c] : 0, c ? -V[r][c - 1] : 0], fx: Math.random(), fy: Math.random(), done: false });
+  G = { s, lv, cols, rows, pieces, placed: 0, z: 10, t0: 0, tEnd: 0, timer: 0, img: new Image() };
+  document.querySelectorAll(".lv").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.lv === lv)));
+  document.getElementById("win").hidden = true;
+  const area = document.getElementById("area"); area.onpointerdown = down; area.onpointermove = move; area.onpointerup = area.onpointercancel = up;
+  G.img.onload = () => { layout(); tick(); }; G.img.src = "scenes/" + s.id + ".webp";
+}
+function avail(){ const m = app, cs = getComputedStyle(m); return Math.floor(Math.min(m.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), 980)); }
+function layout(){
+  const area = document.getElementById("area"); if (!area || !G || !G.img.complete) return;
+  const { cols, rows, s } = G, BW = avail(), BH = BW * s.h / s.w, pw = BW / cols, ph = BH / rows;
+  const pad = Math.ceil(Math.max(pw, ph) * .3), tray = Math.max(BH * (cols * rows > 24 ? 1 : .75), ph * 2.6), dpr = Math.min(devicePixelRatio || 1, 2);
+  Object.assign(G, { BW, BH, pw, ph, pad, tray, dpr, drag: null });
+  area.style.width = BW + "px"; area.style.height = (BH + 16 + tray) + "px";
+  const gh = document.getElementById("gh");
+  area.innerHTML = `<div class="board" style="width:${BW}px;height:${BH}px"><img class="ghost" src="scenes/${s.id}.webp" alt=""${gh && !gh.checked ? " hidden" : ""}></div><div class="tray" style="top:${BH + 16}px;height:${tray}px">Pieces</div>`;
+  G.pieces.forEach(p => {
+    const cv = document.createElement("canvas"), W = pw + 2 * pad, Hh = ph + 2 * pad;
+    cv.width = Math.ceil(W * dpr); cv.height = Math.ceil(Hh * dpr); cv.style.width = W + "px"; cv.style.height = Hh + "px"; cv.className = "pc" + (p.done ? " done" : "");
+    const g = cv.getContext("2d"), path = piecePath(pw, ph, p.s);
+    g.scale(dpr, dpr); g.translate(pad, pad); g.save(); g.clip(path); g.drawImage(G.img, -p.c * pw, -p.r * ph, BW, BH); g.restore();
+    g.lineWidth = 1.2; g.strokeStyle = "rgba(255,255,255,.6)"; g.stroke(path);
+    Object.assign(p, { el: cv, g, path }); place(p); area.appendChild(cv);
+  });
+}
+function place(p){
+  const { pw, ph, pad, BW, BH, tray } = G;
+  p.x = p.done ? p.c * pw : p.ux != null ? p.ux * BW : p.fx * (BW - pw);
+  p.y = p.done ? p.r * ph : p.uy != null ? p.uy * BW : BH + 34 + p.fy * (tray - ph - 22);
+  p.el.style.left = (p.x - pad) + "px"; p.el.style.top = (p.y - pad) + "px"; p.el.style.zIndex = p.done ? 1 : (p.zi || 2);
+}
+function xy(e){ const R = document.getElementById("area").getBoundingClientRect(); return [e.clientX - R.left, e.clientY - R.top]; }
+function down(e){
+  if (!G || !G.pw) return; const [px, py] = xy(e), { pad, pw, ph, dpr } = G; let hit = null;
+  G.pieces.forEach(p => { if (p.done) return; const lx = px - p.x + pad, ly = py - p.y + pad;
+    if (lx < 0 || ly < 0 || lx > pw + 2 * pad || ly > ph + 2 * pad) return;
+    if (p.g.isPointInPath(p.path, lx * dpr, ly * dpr) && (!hit || (p.zi || 2) > (hit.zi || 2))) hit = p; });
+  if (!hit) return; e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {}
+  hit.zi = ++G.z; hit.el.style.zIndex = hit.zi; hit.el.classList.add("drag"); G.drag = { p: hit, dx: px - hit.x, dy: py - hit.y };
+  if (!G.t0) { G.t0 = Date.now(); G.timer = setInterval(tick, 1000); }
+}
+function move(e){
+  const d = G && G.drag; if (!d) return; e.preventDefault(); const [px, py] = xy(e), area = document.getElementById("area");
+  const x = Math.max(-G.pw / 2, Math.min(G.BW - G.pw / 2, px - d.dx)), y = Math.max(-G.ph / 2, Math.min(area.clientHeight - G.ph / 2, py - d.dy));
+  d.p.ux = x / G.BW; d.p.uy = y / G.BW; place(d.p);
+}
+function up(){
+  const d = G && G.drag; if (!d) return; G.drag = null; const p = d.p; p.el.classList.remove("drag");
+  if (Math.hypot(p.x - p.c * G.pw, p.y - p.r * G.ph) < Math.min(G.pw, G.ph) * .3) {
+    p.done = true; p.el.classList.add("done"); G.placed++; place(p); tick(); click();
+    if (G.placed === G.pieces.length) win(); else if (G.placed % 5 === 0) cheer(["Shabaash!", "Badhiya!", "Waah, kya baat!", "Chalte raho!"][G.placed / 5 % 4]);
+  }
+}
+let ac = null;
+function click(f){ if (!sound) return; try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); const o = ac.createOscillator(), g = ac.createGain();
+  o.frequency.value = f || 660; g.gain.setValueAtTime(.12, ac.currentTime); g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + .12); o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime + .13); } catch (e) {} }
+let ct = 0;
+function cheer(t){ const c = document.getElementById("cheer"); document.getElementById("cheert").textContent = t; c.classList.add("on"); clearTimeout(ct); ct = setTimeout(() => c.classList.remove("on"), 1800); }
+function tick(){ const t = document.getElementById("t"); if (!t) { if (G) clearInterval(G.timer); return; }
+  t.textContent = fmt(G.t0 ? ((G.tEnd || Date.now()) - G.t0) / 1000 : 0); document.getElementById("n").textContent = G.placed + "/" + G.pieces.length; }
+function win(){
+  G.tEnd = Date.now(); clearInterval(G.timer); tick(); [660, 880, 1100].forEach((f, i) => setTimeout(() => click(f), i * 140));
+  const secs = (G.tEnd - G.t0) / 1000, key = G.s.id + ":" + G.lv, prev = best[key], rec = !prev || secs < prev;
+  if (rec) { best[key] = secs; store.set("best", best); }
+  if ((stars[G.s.id] || 0) < G.lv + 1) { stars[G.s.id] = G.lv + 1; store.set("stars", stars); }
+  const nxt = LEVELS[G.lv + 1], w = document.getElementById("win");
+  w.innerHTML = `<img src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="84" height="145"><div><h2>Shabaash! Solved in ${fmt(secs)}</h2>
+    <p>${starTxt(G.s.id)} · ${rec ? "Your best time on " + LEVELS[G.lv][0] + "." : "Your best: " + fmt(prev) + "."}</p>
+    <div class="btns">${nxt ? `<button class="btn pri lv" data-lv="${G.lv + 1}">Try ${nxt[0]} · ${nxt[1] * nxt[2]} pieces</button>` : `<a class="btn pri" href="#/">Next puzzle</a>`}<a class="btn" href="#/">All puzzles</a><a class="btn" href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dada's daily puzzle</a></div></div>`;
+  w.hidden = false; w.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function render(){
+  const h = location.hash.replace(/^#\/?/, ""), [a, id] = h.split("/");
+  if (G) clearInterval(G.timer); G = null;
+  if (a === "play") { const s = SCENES.find(x => x.id === id);
+    if (!s) { location.hash = "#/"; return; } if (!open(s)) { location.hash = "#/club"; return; }
+    document.title = s.title + " · Dada Puzzles"; app.innerHTML = playPage(s); startGame(s, store.get("lv", 0)); }
+  else if (a === "club") { document.title = "Dada Puzzle Club"; app.innerHTML = clubPage(); }
+  else { document.title = "Dada Puzzles · Dimaag Dada jigsaw"; app.innerHTML = gallery(); }
+  scrollTo(0, 0);
+}
+app.addEventListener("click", e => {
+  const b = e.target.closest(".lv"); if (b && G) { store.set("lv", +b.dataset.lv); startGame(G.s, +b.dataset.lv); document.getElementById("area").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  if (e.target.closest("#shuf") && G) startGame(G.s, G.lv);
+  const go = e.target.closest("#gatego");
+  if (go) { const v = document.getElementById("gatein").value.trim();
+    if (!v) { document.getElementById("gateerr").textContent = "Enter the answer first."; return; }
+    if (+v !== +go.dataset.a) { document.getElementById("gateerr").textContent = "Not quite. Ask a grown-up to help."; return; }
+    document.getElementById("gate").hidden = true; document.getElementById("plans").hidden = false; }
+});
+app.addEventListener("input", e => { if (e.target.id === "gatein") document.getElementById("gateerr").textContent = ""; });
+app.addEventListener("change", e => { if (e.target.id === "gh") { const g = document.querySelector(".ghost"); if (g) g.hidden = !e.target.checked; } });
+const sb = document.getElementById("snd"); sb.textContent = sound ? "🔊" : "🔇";
+sb.onclick = () => { sound = !sound; store.set("sound", sound); sb.textContent = sound ? "🔊" : "🔇"; };
+let rz = 0; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (G && G.BW !== avail()) layout(); }, 200); });
+addEventListener("hashchange", render); render();
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+</script>
+</body>
+</html>
