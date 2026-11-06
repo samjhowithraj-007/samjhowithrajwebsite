@@ -1,5 +1,5 @@
 // Offline support for Dada World (/puzzles/). Bump VERSION whenever a scene is added or a file here changes.
-const VERSION = "p16";
+const VERSION = "p17";
 const CACHE = "dada-puzzles-" + VERSION;
 const PRECACHE = ["./", "index.html", "ludo.html", "snakes-sums.html", "chess.html", "comics.html", "img/comic/trail-1-cover.webp", "img/comic/trail-1-p1.webp", "img/comic/trail-1-p2.webp", "img/comic/trail-1-p3.webp", "img/comic/trail-1-p4.webp", "img/comic/trail-1-p5.webp", "img/comic/trail-1-p6.webp", "img/chess.webp", "img/chess-frame.webp", "img/botu.webp", "img/snakes-board.webp", "manifest.webmanifest", "img/icon-96.webp", "img/icon-192.png", "img/icon-512.png", "img/dada.webp", "img/dada-thumbs.webp", "img/gullak-happy.webp",
   "img/ludo.webp", "img/snakes-sums.webp", "img/learn.webp", "img/puzzle-book.webp", "img/stationery.webp", "img/comics-trail.webp",

@@ -116,7 +116,8 @@ main{max-width:1000px;margin:0 auto;padding:16px 16px 110px}
 // Dada World (Tech Samjho Raj). Phase 1, 5 Nov 2026: Play (jigsaws, daily puzzle, streak), Club, Learn, Shop, 5 currencies, Razorpay Checkout in TEST MODE.
 // Add a scene: put scenes/<id>.webp (about 1536x1050) and scenes/<id>-sm.webp (480 wide) in place, add a line to SCENES, bump sw.js VERSION.
 const CONFIG = {
-  RZP_KEY: "rzp_test_Tww90vr2V3wukg",   // Razorpay TEST key id only (rzp_test_...). Empty = checkout shows "payments open soon". NEVER put a live key or any secret here.
+  RZP_KEY: "rzp_test_TwyZf7SbbV7hkU",   // Razorpay TEST key id only (rzp_test_...). Empty = checkout shows "payments open soon". NEVER put a live key or any secret here.
+  PAY_API: "https://dada-pay.techsamjhoraj.workers.dev",   // payments-check worker URL (https://dada-pay.<name>.workers.dev). Empty = browser-only test mode, nothing is verified.
   WHATSAPP: "https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28",
   SAMPLE_PRICES: true   // the prices below are samples until Raj sets real ones; the test-mode banner shows while this is true
 };
@@ -202,7 +203,7 @@ function readTab(){
 function tierCard(n, k, list, best){
   const v = val(k) * (yearly ? 10 : 1);
   return `<div class="tier${best ? " best" : ""}"><div class="top2"><h3>${n}</h3>${best ? '<span class="ribbon">MOST POPULAR</span>' : ""}</div><div class="big">${money(v)} <small>/ ${yearly ? "year" : "month"}</small></div><ul>${list.map(x => `<li>${x}</li>`).join("")}</ul>
-  <button class="cta" type="button" data-pay="${(Math.round(v * 100))}" data-what="${n} · ${yearly ? "yearly" : "monthly"}">Join ${n}</button></div>`;
+  <button class="cta" type="button" data-pay="${(Math.round(v * 100))}" data-items="${k}:${yearly ? "y" : "m"}" data-what="${n} · ${yearly ? "yearly" : "monthly"}">Join ${n}</button></div>`;
 }
 function clubTab(){
   return `<div class="hero" style="min-height:170px;background:linear-gradient(160deg,#2b1640,#10262a)"><img class="dada" src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="110" height="190" style="height:86%"><span class="eyebrow">Dada Club</span><h2>Sab games. Naye puzzles har mahine.</h2><p>Cancel any time</p></div>
@@ -225,7 +226,7 @@ function shopTab(){
   <div class="chips" role="group" aria-label="Category">${cats.map(c => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === shopCat}">${c}</button>`).join("")}</div>
   <div class="prods">${list.length ? list.map(p => `<div class="prod"><div class="thumb"><img src="${p.imgS || p.img}" alt="" loading="lazy" width="480" height="360" style="aspect-ratio:${p.k === "comic" ? "3/4" : "4/3"}">${p.badge ? BADGE[p.badge === "new" ? "neu" : p.badge] : ""}</div><b>${p.t}</b><small>${p.s}</small>
     <div class="row">${p.soon ? `<span class="price">Soon</span><a class="cta" style="padding:7px 12px;font-size:13px" href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Notify me</a>` : p.free ? `<span class="price">Free</span><a class="cta" style="padding:7px 12px;font-size:13px" href="${p.free}">Read now</a>` : `<span class="price">${fmtP(p.k)}${p.was && val(p.k) != null ? `<span class="was">${money(val(p.k) * 1.3)}</span>` : ""}</span>${val(p.k) == null ? '<small>Coming abroad</small>' : `<button class="add" type="button" data-add="${p.k}" aria-pressed="${inCart(p.k)}" aria-label="${inCart(p.k) ? "Remove" : "Add"} ${p.t}">${inCart(p.k) ? "✓" : "+"}</button>`}`}</div></div>`).join("") : '<p class="note">Board games are coming soon.</p>'}</div>
-  ${items.length ? `<div class="cartbar"><span>${items.length} item${items.length > 1 ? "s" : ""} · ${money(total)}</span><button type="button" data-pay="${Math.round(total * 100)}" data-what="${items.map(k => PRODUCTS.find(p => p.k === k).t).join(" + ")}">Checkout</button></div>` : ""}${testNote()}`;
+  ${items.length ? `<div class="cartbar"><span>${items.length} item${items.length > 1 ? "s" : ""} · ${money(total)}</span><button type="button" data-pay="${Math.round(total * 100)}" data-items="${items.join(",")}" data-what="${items.map(k => PRODUCTS.find(p => p.k === k).t).join(" + ")}">Checkout</button></div>` : ""}${testNote()}`;
 }
 function testNote(){ return CONFIG.SAMPLE_PRICES ? `<p class="note">Test mode: prices are samples and no real money is taken yet.</p>` : ""; }
 function footer(){ return `<p class="foot"><a href="terms.html">Terms</a> · <a href="refund.html">Refunds</a> · <a href="shipping.html">Shipping</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a><br>Made by <a href="https://www.techsamjhoraj.com/#puzzles">Tech Samjho Raj</a> · <a href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Dimaag Dada on YouTube</a> · No ads, no tracking</p>`; }
@@ -242,16 +243,32 @@ function parentGate(what, minor){
     startPay(what, minor); };
 }
 function loadRzp(){ return new Promise((res, rej) => { if (window.Razorpay) return res(); const s = document.createElement("script"); s.src = "https://checkout.razorpay.com/v1/checkout.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
-let failed = null;
+let failed = null, payItems = [];
 function rzpOptions(what, minor){
   const o = { key: CONFIG.RZP_KEY, amount: minor, currency: cur, name: "Dada World", description: what, image: new URL("img/icon-192.png", location.href).href,
-    theme: { color: "#19e6e6" }, modal: { ondismiss: () => { const f = failed; failed = null; sheet(`<div class="pay" role="dialog">${head(f ? "Payment did not go through" : "Payment cancelled", money(minor / 100))}<p><b>${f ? "Nothing was charged." : "No money moved."}</b> ${f ? esc(f) + " Try again or use another method." : "You can try again any time."}</p><p class="note">Test mode: no real money is taken yet.</p><button class="go" type="button" id="sx2">Back to Dada World</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; } },
+    theme: { color: "#19e6e6" }, modal: { ondismiss: () => { const f = failed; failed = null; sheet(`<div class="pay" role="dialog">${head(f ? "Payment did not go through" : "Payment cancelled", money(minor / 100))}<p><b>${f ? "Nothing was charged." : "No money moved."}</b> ${f ? esc(f) + " Try again or use another method." : "You can try again any time."}</p>${/^rzp_test_/.test(CONFIG.RZP_KEY) ? `<p class="note">Test mode: no real money is taken yet.</p>` : ""}<button class="go" type="button" id="sx2">Back to Dada World</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; } },
     handler: r => { failed = null; sheet(`<div class="pay" role="dialog">${head("Payment received", money(minor / 100))}<p><b>Thank you!</b> Test payment id: ${esc(r.razorpay_payment_id || "")}</p><p>This is test mode, so nothing is unlocked and no money moved. Real orders will be checked on our server first.</p><button class="go" type="button" id="sx2">Back to Dada World</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; } };
   if (cur === "INR") o.config = { display: { blocks: { upi: { name: "Pay with UPI", instruments: [{ method: "upi" }] } }, sequence: ["block.upi"], preferences: { show_default_blocks: true } } };   // UPI first for India
   return o;   // other currencies: cards (and PayPal, once switched on in the Razorpay dashboard) are shown by Checkout itself
 }
+async function api(path, body){ const r = await fetch(CONFIG.PAY_API + path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || "server error"); return j; }
+function payMsg(what, amt, title, html){ sheet(`<div class="pay" role="dialog">${head(title, amt)}${html}<button class="go" type="button" id="sx2">Back to Dada World</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; }
+async function payVerified(what, minor){
+  const items = payItems.slice();
+  try {
+    await loadRzp();
+    const o = await api("/order", { items, cur });   // the server sets the price, not this page
+    const opt = rzpOptions(what, o.amount); opt.key = o.key; opt.order_id = o.order_id; opt.amount = o.amount; opt.currency = o.currency;
+    opt.handler = async r => { failed = null; payMsg(what, money(o.amount / 100), "Checking payment…", "<p>One moment, we are confirming with Razorpay.</p>");
+      try { const v = await api("/verify", { order_id: r.razorpay_order_id, payment_id: r.razorpay_payment_id, signature: r.razorpay_signature });
+        cart = cart.filter(k => !items.includes(k)); store.set("cart", cart); if (!G) render(); payMsg(what, money(o.amount / 100), "Payment confirmed", `<p><b>Thank you!</b> Payment id: ${esc(v.payment_id)}</p><p>Keep this id. ${/^rzp_test_/.test(o.key) ? "This is test mode, so no money moved." : "Your order is on its way."}</p>`);
+      } catch (e) { payMsg(what, money(o.amount / 100), "Could not confirm payment", `<p>If money left your account, write to us with id ${esc(r.razorpay_payment_id)} and we will fix it.</p><p><a href="contact.html">Contact</a></p>`); } };
+    $("sheet").hidden = true; const rz = new window.Razorpay(opt); rz.on("payment.failed", e => { failed = (e && e.error && e.error.description) || "The bank declined it."; }); rz.open();
+  } catch (e) { payMsg(what, money(minor / 100), "Payment window did not open", `<p>${esc(e.message || "Check your internet and try again.")}</p>`); }
+}
 function startPay(what, minor){ failed = null;
   if (!CONFIG.RZP_KEY) { sheet(`<div class="pay" role="dialog">${head(what, money(minor / 100))}<p class="tm">TEST MODE · NOT CONNECTED</p><p><b>Payments open soon.</b> Dada World is still being built, and no money is taken yet. Join the WhatsApp channel to hear when it opens.</p><a class="go" href="${CONFIG.WHATSAPP}" target="_blank" rel="noopener">Tell me when it opens (WhatsApp)</a><button class="go alt" type="button" id="sx2">Close</button></div>`); $("sx2").onclick = () => $("sheet").hidden = true; return; }
+  if (CONFIG.PAY_API) return payVerified(what, minor);
   loadRzp().then(() => { $("sheet").hidden = true; const rz = new window.Razorpay(rzpOptions(what, minor)); rz.on("payment.failed", e => { failed = (e && e.error && e.error.description) || "The bank declined it."; }); rz.open(); })
     .catch(() => sheet(`<div class="pay" role="dialog">${head(what, money(minor / 100))}<p>Could not load the payment window. Check your internet and try again.</p><button class="go alt" type="button" id="sx2">Close</button></div>`));
 }
@@ -381,8 +398,8 @@ app.addEventListener("click", e => {
   if (b.dataset.bill) { yearly = b.dataset.bill === "y"; render(); return; }
   if (b.dataset.cat) { shopCat = b.dataset.cat; const y = scrollY; render(); scrollTo(0, y); return; }
   if (b.dataset.add) { const k = b.dataset.add; cart = cart.includes(k) ? cart.filter(x => x !== k) : [...cart, k]; store.set("cart", cart); const y = scrollY; render(); scrollTo(0, y); return; }
-  if (b.dataset.buynow) { const k = b.dataset.buynow; parentGate(PRODUCTS.find(p => p.k === k).t, Math.round(val(k) * 100)); return; }
-  if (b.dataset.pay) parentGate(b.dataset.what, +b.dataset.pay);
+  if (b.dataset.buynow) { const k = b.dataset.buynow; payItems = [k]; parentGate(PRODUCTS.find(p => p.k === k).t, Math.round(val(k) * 100)); return; }
+  if (b.dataset.pay) { payItems = (b.dataset.items || "").split(",").filter(Boolean); } if (b.dataset.pay) parentGate(b.dataset.what, +b.dataset.pay);
 });
 app.addEventListener("change", e => { if (e.target.id === "gh") { const g = document.querySelector(".ghost"); if (g) g.hidden = !e.target.checked; } });
 $("sheet").addEventListener("click", e => { if (e.target.id === "sheet") $("sheet").hidden = true; });
