@@ -12,3 +12,4 @@ self.addEventListener("fetch", e => {
   if (r.mode === "navigate") { e.respondWith(fetch(r).then(res => { const c = res.clone(); caches.open(CACHE).then(x => x.put(r, c)); return res; }).catch(() => caches.match(r).then(m => m || caches.match("./")))); return; }
   e.respondWith(caches.match(r).then(m => { const net = fetch(r).then(res => { if (res.ok) { const c = res.clone(); caches.open(CACHE).then(x => x.put(r, c)); } return res; }).catch(() => m); return m || net; }));
 });
+// p17 republished after a GitHub Pages timeout (no code change)
