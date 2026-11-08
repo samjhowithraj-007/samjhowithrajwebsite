@@ -1466,14 +1466,14 @@ function playground(){
 // Action URL of the Brevo sign-up form (Marketing → Forms → Tech lessons sign-up → Share → Simple HTML). Double opt-in is on.
 // Leave it empty to hide the sign-up box everywhere.
 const SIGNUP = { action: "https://b84d134c.sibforms.com/serve/MUIFAGa0d6bBzbwnGhlK4X2SAd35dgQhWQswONpSFeBU3WaVY9BqB6d7ioEN2scVEvMNomanThGiZng32Tuo7Bz8byhjCmmby6aawAqTnrsI-snxBQYuWWFxGBNK9Ozya8R3Q269ICrI03TrQCyPIvgqN_WQHAO1_GxNwrCxauoN--NtwRGPEbCEYb_6sXgCsiUhuY0g5mcL4Cf6oQ==" };
-// Diwali offer: subscribers get a PRIVATE extra-10% book code + a free cheat sheet by email from Raj (never shown here).
+// DIWALI.on only decides whether the book page shows a sign-up box (it stops on 8 Nov 2026). The box text is evergreen; the offer lives in the top banner. Never show a code on the page.
 const DIWALI = { ends: "2026-11-09T00:00:00+05:30" };
 DIWALI.on = Date.now() < Date.parse(DIWALI.ends);
-function signup(lead, extraCls, plain){   // plain = skip the Diwali offer text (pages about other products)
+function signup(lead, extraCls, plain){   // plain = use the page's own lead text (pages about other products)
   if (!SIGNUP.action) return "";
-  const dw = DIWALI.on && !plain;
-  const head = dw ? "&#129684; Diwali gift: extra 10% off the book" : "Get new lessons by email";
-  const sub = dw ? `Sign up and Raj emails you a <b>private Diwali code</b> (extra 10% off <a href="#book">Python with Chai</a>) and a <b>free Python cheat sheet</b>, before Diwali (8 Nov). Plus new lessons. Tip: our emails sometimes land in Promotions or Spam. Learning with a friend? Send them this page too.` : lead;
+  const ev = !plain;   // evergreen text on every box except the single-product pages (no time-limited offer or code in the box)
+  const head = ev ? "&#128233; Get new lessons + book offers by email" : "Get new lessons by email";
+  const sub = ev ? "Sign up and Raj emails you new lessons, course updates and subscriber-only book discounts. No spam; unsubscribe any time." : lead;
   return `<section class="signup${extraCls ? " " + extraCls : ""}"><div><h3>${head}</h3><p>${sub}</p></div>
     <form class="signup-form" novalidate><input type="email" name="email" required placeholder="you@example.com" aria-label="Your email address" autocomplete="email">
       <button class="btn primary" type="submit">Notify me</button><a class="btn jbtn wa" href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">Join on WhatsApp</a><a class="btn jbtn tg" href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Join on Telegram</a>
