@@ -339,16 +339,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .annc button{background:none;border:0;color:#fff;font-size:20px;line-height:1;cursor:pointer;padding:2px 6px;opacity:.85}
 .bookcard{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;background:linear-gradient(135deg,#2a1260,#5b1a8f 55%,#c2185b);color:#fff;border-radius:16px;padding:20px;margin:30px 0 10px;text-decoration:none;position:relative;overflow:hidden}
 .bookcard img{width:150px;height:auto;border-radius:8px;box-shadow:0 12px 26px rgba(0,0,0,.35);transform:rotate(-3deg)}
+.bookcard .duo{display:flex;align-items:center;width:150px}.bookcard .duo img{width:76px;height:auto;border-radius:6px;box-shadow:0 10px 22px rgba(0,0,0,.4);transform:rotate(-4deg)}.bookcard .duo img+img{margin-left:-2px;transform:rotate(4deg);position:relative}
 .bookcard .eyebrow{color:#ffd166}.bookcard h2{margin:4px 0 6px;color:#fff}.bookcard p{margin:0 0 12px;opacity:.92}
 .bookcard .pr{display:inline-block;background:#ffd166;color:#2a1260;font-weight:800;border-radius:10px;padding:6px 14px;margin-right:10px}.bookcard .pr s{opacity:.6;font-weight:600;margin-right:6px}
 .bookcard .go{font-weight:700;text-decoration:underline}
-@media (max-width:560px){.bookcard{grid-template-columns:96px minmax(0,1fr);gap:14px;padding:16px}.bookcard img{width:96px}}
+@media (max-width:560px){.bookcard{grid-template-columns:96px minmax(0,1fr);gap:14px;padding:16px}.bookcard img{width:96px}.bookcard .duo{width:96px}.bookcard .duo img{width:49px}.bookcard .duo img+img{margin-left:-2px}}
 /* ---------- book page ---------- */
 .bookhero{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px;align-items:start;margin-top:10px}
 @media (max-width:760px){.bookhero{grid-template-columns:1fr}.bookcov{max-width:320px}}
 .bookcov{position:relative}
 .bookcov img{width:100%;height:auto;border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.28);display:block}
 .bookcov img.mock{box-shadow:none;border-radius:16px}
+.bookcov.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.bookcov.two figure{margin:0}.bookcov.two figcaption{text-align:center;font-size:12.5px;font-weight:700;margin-top:6px;color:var(--muted)}
+@media (max-width:760px){.bookcov{max-width:360px}}
+.bookcov.two .chotu-bob{bottom:30px;right:-8px;width:64px;height:64px}
 .chotu-bob{position:absolute;right:-18px;bottom:-22px;width:110px;height:110px;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
 @media (prefers-reduced-motion:reduce){.chotu-bob{animation:none}}
@@ -369,8 +373,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .toc3 ol{padding-left:1.4em;margin:6px 0}.toc3 li{margin:.2em 0}
 .bookfaq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0}
 .bookfaq summary{cursor:pointer;font-weight:600}
-.bookbox{display:grid;grid-template-columns:70px minmax(0,1fr);gap:14px;align-items:center;background:var(--gold);border-radius:12px;padding:12px;margin-top:18px;text-decoration:none;color:inherit}
-.bookbox img{width:70px;border-radius:4px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.bookbox{display:grid;grid-template-columns:86px minmax(0,1fr);gap:14px;align-items:center;background:var(--gold);border-radius:12px;padding:12px;margin-top:18px;text-decoration:none;color:inherit}
+.bookbox .duo2{display:flex;align-items:center;width:86px}.bookbox .duo2 img{width:43px;height:auto;border-radius:4px;box-shadow:0 4px 10px rgba(0,0,0,.25)}.bookbox .duo2 img+img{margin-left:0;position:relative}
 .bookbox .pl{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;color:var(--muted)}
 .bookbox p{margin:2px 0 4px;color:var(--muted);font-size:14.5px}.bookbox .go{font-weight:700;font-size:14px;text-decoration:underline}
 .tab .new{font-size:10px;background:var(--accent);color:var(--on-accent);border-radius:6px;padding:1px 5px;margin-left:4px;vertical-align:2px}
@@ -405,7 +409,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:8px}
 .item{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;color:inherit;text-decoration:none}
 .item .art{height:170px;border-radius:10px;display:grid;place-items:center;font-size:46px;overflow:hidden;background:linear-gradient(135deg,var(--gold),var(--green-soft))}
-.item .art img{height:146px;width:auto;box-shadow:0 10px 24px rgba(0,0,0,.35);border-radius:4px;transform:rotate(-3deg)}
+.item .art .duo3{display:flex;align-items:center}.item .art img{height:130px;width:auto;box-shadow:0 10px 24px rgba(0,0,0,.35);border-radius:4px;transform:rotate(-3deg)}.item .art .duo3 img+img{margin-left:-4px;transform:rotate(3deg);position:relative}
 .item h3{font-size:18px}.item p{margin:0;color:var(--muted);font-size:14.5px;flex:1}
 .item .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .item .tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--gold);color:var(--accent)}
@@ -1218,7 +1222,7 @@ const BOOK = {
          hi: "https://samjhowithraj.gumroad.com/l/python-with-chai-hinglish",
          both: "https://samjhowithraj.gumroad.com/l/python-with-chai-both" },
   cover: { en: "media/book-cover-en.jpg", hi: "media/book-cover-hi.jpg" },   // en = the Tech Edition cover since 8 Nov 2026
-  mockup: "media/book-mockup-tech.webp",
+  mockup: "media/book-mockup-tech.webp", mockupHi: "media/book-mockup-hi.webp",   // both editions shown since 8 Nov 2026
   chapters: [[1, "basic", "Hello, Python!", "Hello, Python!"], [2, "basic", "Variables and data types", "Variables aur data types"], [3, "basic", "Strings: playing with text", "Strings: text se khelo"], [4, "basic", "Numbers, maths and input()", "Numbers, maths aur input()"], [5, "basic", "Decisions: if, elif, else", "Faisle: if, elif, else"], [6, "basic", "Loops: do it again and again", "Loops: baar baar karo"], [7, "basic", "Lists: many items, one box", "Lists: kai items, ek dabba"], [8, "basic", "Tuples and sets", "Tuples aur sets"], [9, "basic", "Dictionaries: the menu card", "Dictionaries: menu card"], [10, "basic", "Functions: write once, use forever", "Functions: ek baar likho, hamesha use karo"], [11, "inter", "Errors and debugging", "Errors aur debugging"], [12, "inter", "Files, CSV and JSON", "Files, CSV aur JSON"], [13, "inter", "Modules and the standard library", "Modules aur standard library"], [14, "inter", "Classes and objects", "Classes aur objects"], [15, "inter", "OOP: inheritance and magic methods", "OOP: inheritance aur magic methods"], [16, "inter", "Comprehensions, lambda and sorting", "Comprehensions, lambda aur sorting"], [17, "inter", "Iterators and generators", "Iterators aur generators"], [18, "inter", "collections and itertools", "collections aur itertools"], [19, "inter", "Recursion, scope and closures", "Recursion, scope aur closures"], [20, "inter", "Project: the Chai Shop app", "Project: Chai Shop app"], [21, "expert", "Decorators", "Decorators"], [22, "expert", "Context managers", "Context managers"], [23, "expert", "Type hints and dataclasses", "Type hints aur dataclasses"], [24, "expert", "Testing with pytest", "pytest se testing"], [25, "expert", "Packages, venv and pip", "Packages, venv aur pip"], [26, "expert", "Logging and command-line apps", "Logging aur command-line apps"], [27, "expert", "Threads and processes", "Threads aur processes"], [28, "expert", "asyncio: async and await", "asyncio: async aur await"], [29, "expert", "Web APIs, JSON and regex", "Web APIs, JSON aur regex"], [30, "expert", "Performance, and the expert capstone", "Performance, aur expert capstone"]],
   previews: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 30],
 };
@@ -1228,6 +1232,8 @@ const BOOK_FOR_LESSON = { "python-1":1, "python-2":10, "python-3":5, "python-4":
   "python-9":11, "python-10":6, "python-11":12, "python-12":12, "python-13":13, "python-14":3, "python-15":6, "python-16":10,
   "python-17":8, "python-18":13, "python-19":14, "python-20":30 };
 const CHOTU = '<svg class="chotu-bob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M78 34q-10-12 0-24M100 30q-10-12 0-24M122 34q-10-12 0-24" fill="none" stroke="#2b2a33" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M150 82q34 0 32 30t-36 28" fill="none" stroke="#2b2a33" stroke-width="9" stroke-linecap="round"/><path d="M44 52h112l-12 104q-2 14-16 14H72q-14 0-16-14z" fill="#fffaf0" stroke="#2b2a33" stroke-width="6" stroke-linejoin="round"/><path d="M47 54h106l-2 14H49z" fill="#d98b3a"/><path d="M44 52h112" stroke="#2b2a33" stroke-width="6" stroke-linecap="round"/><path d="M53 140h94" stroke="#f4c26b" stroke-width="7"/><ellipse cx="70" cy="114" rx="9" ry="6" fill="#ffb3b3"/><ellipse cx="130" cy="114" rx="9" ry="6" fill="#ffb3b3"/><path d="M84 170v14h-10M116 170v14h10" fill="none" stroke="#2b2a33" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="82" cy="98" rx="7" ry="9" fill="#2b2a33"/><ellipse cx="118" cy="98" rx="7" ry="9" fill="#2b2a33"/><circle cx="84" cy="95" r="2.6" fill="#fff"/><circle cx="120" cy="95" r="2.6" fill="#fff"/><path d="M84 118q16 22 32 0z" fill="#c0392b" stroke="#2b2a33" stroke-width="4" stroke-linejoin="round"/><path d="M46 104q-22 4-26 24" fill="none" stroke="#2b2a33" stroke-width="7" stroke-linecap="round"/><circle cx="20" cy="130" r="7" fill="#fffaf0" stroke="#2b2a33" stroke-width="5"/><path d="M152 96q22-12 24-40" fill="none" stroke="#2b2a33" stroke-width="7" stroke-linecap="round"/><circle cx="176" cy="52" r="8" fill="#fffaf0" stroke="#2b2a33" stroke-width="5"/><path d="M188 40l8-6M190 54h10M162 36l-4-8" stroke="#2b2a33" stroke-width="3" stroke-linecap="round"/></svg>';
+// the two covers, English (Tech Edition) first, side by side; cls = css class of the wrapper
+const bookDuo = (cls, alt) => `<span class="${cls}"><img src="${BOOK.cover.en}" alt="${alt ? "Python with Chai, Tech Edition (English): book cover" : ""}" loading="lazy" width="420" height="630"><img src="${BOOK.cover.hi}" alt="${alt ? "Python with Chai, Hinglish Edition: book cover" : ""}" loading="lazy" width="420" height="630"></span>`;
 const bookTitle = n => (BOOK.chapters.find(c => c[0] === n) || [n, "", ""])[2];
 const preview = (n, lang) => `notes/book-ch${n}-${lang}-preview.pdf`;
 function buyBtn(key, label, price){
@@ -1242,8 +1248,8 @@ function bookPage(){
   const toc = Object.keys(lv).map(k => `<div><h3>${lv[k]}</h3><ol start="${BOOK.chapters.find(c => c[1] === k)[0]}">${BOOK.chapters.filter(c => c[1] === k).map(c => `<li>${c[2]}</li>`).join("")}</ol></div>`).join("");
   const anyBuy = BOOK.buy.en || BOOK.buy.hi || BOOK.buy.both;
   return `<section class="bookhero">
-    <div class="bookcov"><img class="mock" src="${BOOK.mockup}" alt="Python with Chai, Tech Edition: 3D view of the navy book with a chai glass and a snake of steam on the cover" width="560" height="700">${CHOTU}</div>
-    <div><div class="eyebrow">New book · Tech Edition · by ${BOOK.author}</div><h2>${BOOK.title}: ${BOOK.sub}</h2>
+    <div class="bookcov two"><figure><img class="mock" src="${BOOK.mockup}" alt="Python with Chai, Tech Edition (English): 3D view of the navy book with a chai glass and a snake of steam on the cover" width="560" height="700"><figcaption>English · Tech Edition</figcaption></figure><figure><img class="mock" src="${BOOK.mockupHi}" alt="Python with Chai, Hinglish Edition: 3D view of the navy book, same cover with Khud Python likho" width="560" height="700"><figcaption>Hinglish Edition</figcaption></figure>${CHOTU}</div>
+    <div><div class="eyebrow">New book · English + Hinglish · by ${BOOK.author}</div><h2>${BOOK.title}: ${BOOK.sub}</h2>
       <p class="lead">Learn Python the chai way: one cup, one chapter. 30 illustrated chapters take you from <code>print()</code> to decorators, asyncio and a real capstone project, with Chotu the chai-cup buddy on every page.</p>
       <ul class="ticks">
         <li>30 chapters · 300+ illustrated pages · Basic → Intermediate → Expert</li>
@@ -1278,7 +1284,7 @@ function dadaCard(){   // Dimaag Dada home card (25 Oct): the puzzle brand, easy
 }
 function bookCard(){
   const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
-  return `<a class="bookcard" href="#book"><img src="${BOOK.cover.en}" alt="Python with Chai book cover" loading="lazy" width="420" height="630">
+  return `<a class="bookcard" href="#book">${bookDuo("duo", true)}
     <div><div class="eyebrow">New book by ${BOOK.author}</div><h2>${BOOK.title}: ${BOOK.sub}</h2>
     <p>Everything from these lessons and much more: 30 illustrated chapters, 120+ examples, mistakes, practice and answers. English and Hinglish editions.</p>
     <span class="pr">${now}</span><span class="go">Read a free preview →</span></div></a>`;
@@ -1291,7 +1297,7 @@ function bookCard(){
 })();
 function bookBox(id){
   const n = BOOK_FOR_LESSON[id]; if (!n) return "";
-  return `<a class="bookbox" href="#book"><img src="${BOOK.cover.en}" alt="" loading="lazy"><div><span class="pl">In the book</span>
+  return `<a class="bookbox" href="#book">${bookDuo("duo2", false)}<div><span class="pl">In the book</span>
     <b>Chapter ${n}: ${bookTitle(n)}</b><p>Go deeper with more examples, common mistakes and practice. Free 4-page preview inside.</p><span class="go">See the book →</span></div></a>`;
 }
 // ---------- live Python: Pyodide in a Web Worker (lazy-loaded on the first Run, never blocks the page) ----------
@@ -1513,7 +1519,7 @@ function shop(){
   return `<div class="page-head"><div><div class="eyebrow">Shop</div><h1>Learn more, <em>support the channel.</em></h1>
     <p class="lead">Everything here is made by Raj. Every purchase helps keep the lessons on this site free.</p></div></div>
   <div class="shop">
-    <a class="item" href="#book"><div class="art"><img src="${BOOK.cover.en}" alt="" width="420" height="596" loading="lazy"></div>
+    <a class="item" href="#book"><div class="art">${bookDuo("duo3", false)}</div>
       <div class="row"><span class="tag">E-book</span><span class="tag">English + Hinglish</span></div><h3>${BOOK.title}: ${BOOK.sub}</h3>
       <p>30 illustrated chapters, 120+ examples, mistakes, practice and answers. PDF + EPUB.</p>
       <div class="row"><span class="price">${now}</span><span class="btn">Free preview →</span></div></a>
