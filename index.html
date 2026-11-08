@@ -274,6 +274,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .legal h2{font-size:22px;margin:26px 0 6px}
 .legal p,.legal li{color:var(--muted);font-size:15.5px}
 .legal ul{padding-left:20px}
+.legalnav{margin-top:30px;font-size:14px;color:var(--muted)}.legalnav a{margin-right:2px}
 .cb-fab{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:99px;border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);background:#11161c;color:#fff;font:700 14px var(--body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .cb-fab span{font-size:20px;line-height:1}
 .cb-fab[aria-expanded="true"]{display:none}
@@ -542,7 +543,7 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
     <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
   <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
   <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Dimaag Dada · Reasoning Samjho</a><a href="#jigsaw">Dimaag Dada jigsaw</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
-  <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="mailto:samjhowithraj@gmail.com">Contact</a><a href="#privacy">Privacy</a></nav>
+  <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="#terms">Terms</a><a href="#refund">Refunds</a><a href="#shipping">Shipping and delivery</a><a href="#privacy">Privacy</a></nav>
 </div><div class="wrap fchan"><h4>Our channels</h4><div class="chans" data-channels></div></div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
 <dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
 <dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><p class="ih-join">Prefer chat updates? Join the <a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">WhatsApp channel</a> or <a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Telegram</a>.</p><button class="btn" type="button" data-close>Got it</button></dialog>
@@ -1485,8 +1486,61 @@ document.addEventListener("submit", async e => {
     f.outerHTML = `<p class="ok">Almost done! Check your email and click the confirm link. Meanwhile, join us on <a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Telegram</a>. It comes from Brevo (our email service), so look in your Inbox, the <b>Promotions</b> tab and the <b>Spam</b> folder.${DIWALI.on ? " Your Diwali code and the cheat sheet will arrive the same way before 8 Nov: if you can't find them, check Promotions and Spam." : ""}</p>`; }
   catch (err) { btn.disabled = false; btn.textContent = "Notify me"; note.textContent = "Couldn't connect. Check your internet and try again."; }
 });
+function legalNav(){ return `<p class="legalnav"><a href="#terms">Terms</a> · <a href="#refund">Refunds</a> · <a href="#shipping">Shipping and delivery</a> · <a href="#contact">Contact</a> · <a href="#privacy">Privacy</a></p>`; }
+const UPDATED = "8 November 2026";
+function terms(){
+  return `<article class="legal"><div class="eyebrow">Terms</div><h1>Terms of use</h1><p>Last updated ${UPDATED}.</p>
+    <h2>Who we are</h2><p>Tech Samjho Raj (techsamjhoraj.com) is run by Pragya Raj, Plot 37, Sector 12, Bharat Ekta Ltd, Bandhgora, Bokaro, Jharkhand 827012, India. Brand name: Samjho with Raj. See the <a href="#contact">contact page</a>.</p>
+    <h2>Free lessons</h2><p>The lessons, notes, the Python Playground and the free chapter previews are free to use for your own learning. You do not need an account.</p>
+    <h2>Paid products</h2><ul>
+      <li>We sell digital products: the <a href="#book">Python with Chai</a> book (PDF + EPUB, English, Hinglish or both), the <a href="#puzzles">Reasoning Samjho</a> puzzle book and the 50 AI Prompts pack. Prices are shown in rupees on the product page. Taxes are included where the law requires.</li>
+      <li>Payment is taken by our payment partners (today Gumroad, and Razorpay once it is switched on). They handle your card, UPI or bank details; we never see or store them.</li>
+      <li>Workshops for colleges and companies are agreed by email. Price, dates and terms are confirmed in writing before any payment.</li>
+      <li>The Live Cohort is a waitlist for now. No payment is taken until the dates and the price are published.</li></ul>
+    <h2>How you may use what you buy</h2><p>A purchase gives you one personal copy for your own learning, on your own devices. Please do not share the files, upload them anywhere or resell them. Python is a trademark of the Python Software Foundation; our books are not affiliated with or endorsed by it.</p>
+    <h2>Links to other sites</h2><p>Some book links go to Amazon India and may be affiliate links; the page says when they are, and we earn a small commission at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</p>
+    <h2>Our responsibility</h2><p>We check every example by running it, but lessons are for learning and come without a promise of results, such as a job or a salary. We are not responsible for loss that comes from using the material in a way we did not intend. Nothing here limits your rights under Indian consumer law.</p>
+    <h2>Refunds, delivery and privacy</h2><p>See <a href="#refund">Refunds</a>, <a href="#shipping">Shipping and delivery</a> and <a href="#privacy">Privacy</a>.</p>
+    <h2>Changes and law</h2><p>We may update these terms and will show the date at the top. These terms follow the laws of India, and disputes are handled in Bokaro, Jharkhand.</p>${legalNav()}</article>`;
+}
+function refund(){
+  return `<article class="legal"><div class="eyebrow">Refunds</div><h1>Refunds and cancellation</h1><p>Last updated ${UPDATED}.</p>
+    <h2>Digital products (books, puzzle book, AI prompts pack)</h2><ul>
+      <li>If the download does not arrive, does not open, or is not what the page described, write to us within 7 days of buying. We will fix it or refund you.</li>
+      <li>Because a download cannot be taken back, we do not refund when you simply change your mind after downloading.</li>
+      <li>If you were charged twice by mistake, write to us and we will refund the extra charge.</li></ul>
+    <h2>Workshops</h2><p>The booking terms are agreed in writing before you pay. If we cancel a workshop, you get back everything you paid for it.</p>
+    <h2>Live Cohort</h2><p>Nothing is charged while it is a waitlist. Cancellation terms will be shown on the page before you pay.</p>
+    <h2>How refunds are paid</h2><p>A refund goes back to the original payment method through the payment partner. Banks usually show it within 5 to 7 working days; for international cards it can take up to 10 working days.</p>
+    <h2>How to ask</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span> with your name, the email you used to buy, the product and what went wrong. We reply within 2 working days.</p>
+    <p>Physical items sold in the Dimaag Dada World shop follow the <a href="puzzles/refund.html">Dada World refund page</a>.</p>${legalNav()}</article>`;
+}
+function shipping(){
+  return `<article class="legal"><div class="eyebrow">Delivery</div><h1>Shipping and delivery</h1><p>Last updated ${UPDATED}.</p>
+    <h2>Everything here is digital</h2><p>The Python with Chai book, the Reasoning Samjho puzzle book and the 50 AI Prompts pack are digital downloads. Nothing is posted to you, so there is no shipping charge and no waiting for a parcel.</p>
+    <h2>How you get it</h2><ul>
+      <li>Right after payment, the download page opens and a receipt with the download link is emailed to you.</li>
+      <li>The book comes as PDF + EPUB in the edition you chose (English, Hinglish or both).</li>
+      <li>If nothing arrives within 1 hour, check your spam folder, then <a href="#contact">write to us</a> and we will send it again.</li></ul>
+    <h2>Workshops and the Live Cohort</h2><p>Workshops are delivered live, online or at your venue, on the dates agreed in writing. The Live Cohort dates will be published on its page.</p>
+    <h2>Books on Amazon</h2><p>Books recommended on this site are sold and shipped by Amazon India, under Amazon's own delivery terms, not by us.</p>
+    <p>Printed items sold in the Dimaag Dada World shop follow the <a href="puzzles/shipping.html">Dada World shipping page</a>.</p>${legalNav()}</article>`;
+}
+function contact(){
+  return `<article class="legal"><div class="eyebrow">Contact</div><h1>Contact us</h1>
+    <h2>Write to us</h2><ul>
+      <li>Email: <a href="mailto:samjhowithraj@gmail.com">samjhowithraj@gmail.com</a> (we reply within 2 working days)</li>
+      <li>Phone: <a href="tel:+919431738161">+91 94317 38161</a></li>
+      <li>WhatsApp channel (news only, no chat): <a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">Tech Samjho Raj</a> · Telegram: <a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">t.me/techsamjhoraj</a></li></ul>
+    <h2>Business details</h2><ul>
+      <li>Business name: Pragya Raj (brand: Samjho with Raj, Tech Samjho Raj)</li>
+      <li>Address: Plot 37, Sector 12, Bharat Ekta Ltd, Bandhgora, Bokaro, Jharkhand 827012, India</li></ul>
+    <h2>Videos and other sites</h2><ul>
+      <li><a href="https://www.youtube.com/@SamjhowithRaj" target="_blank" rel="noopener">Tech Samjho Raj on YouTube</a></li>
+      <li><a href="puzzles/">Dimaag Dada World</a> · <a href="https://www.paisasamjhoraj.com">Paisa Samjho Raj</a></li></ul>${legalNav()}</article>`;
+}
 function privacy(){
-  return `<article class="legal"><div class="eyebrow">Privacy</div><h1>Your privacy</h1><p>Last updated 18 October 2026.</p>
+  return `<article class="legal"><div class="eyebrow">Privacy</div><h1>Your privacy</h1><p>Last updated 8 November 2026.</p>
     <h2>No account needed</h2><p>Every lesson${PAISA ? ", calculator and the Money Planner" : ""} is open to everyone. You never need to sign up to learn here.</p>
     <h2>What stays on your device</h2><p>${PAISA ? "Lesson progress, and your Money Planner inputs if you tick “Remember”, are" : "Lesson progress is"} saved in your own browser (local storage). It is never sent to us or anyone else. Clearing this site's data in your browser removes it.</p>
     <h2>Email updates (only if you sign up)</h2><ul>
@@ -1496,9 +1550,10 @@ function privacy(){
       <li>Our emails may record whether they were opened or a link was clicked, so we learn which lessons are useful.</li>
       <li>Every email has an unsubscribe link. To have your address deleted completely, write to <span class="mail">samjhowithraj@gmail.com</span>.</li></ul>
     <h2>Workshop enquiries and the cohort waitlist</h2><p>If you send a workshop enquiry or join the Live Cohort waitlist, we use your details only to reply or to tell you when the cohort opens. They are kept with Brevo, like the email updates, and never sold or shared. Until those forms are connected, they open your own email app instead and nothing is stored here.</p>
+    <h2>If you buy something</h2><p>Payments are taken by our payment partners (today Gumroad, and Razorpay once it is switched on). Your card, UPI or bank details go straight to them and we never see or store them. We receive your name, email and what you bought, to send the download and to answer questions. See <a href="#terms">Terms</a>, <a href="#refund">Refunds</a> and <a href="#shipping">Shipping and delivery</a>.</p>
     <h2>Featured spots and book links</h2><p>The “Featured” card and the book list are plain links chosen by Raj, not an ad network, so they don't track you. Paid sponsors are always labelled “Sponsored”. Book links go to Amazon India and may be affiliate links (the page says when they are); Amazon's own privacy policy applies once you are there.</p>
     <h2>No tracking on this site</h2><p>No analytics, advertising or tracking cookies. The site is hosted on GitHub Pages; GitHub may keep basic technical logs (such as IP addresses) to run and protect its service. Links to YouTube, Instagram, Facebook and X follow those sites' own policies.</p>
-    <h2>Questions</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span>.</p></article>`;
+    <h2>Questions</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span> or see the <a href="#contact">contact page</a>.</p>${legalNav()}</article>`;
 }
 
 // ---------- Earning: Shop, Workshops, Live Cohort ----------
@@ -1787,10 +1842,14 @@ function render(){
   else if (h === "community") { app.innerHTML = community(); tab = h; }
   else if (h === "about") { app.innerHTML = about(); tab = h; }
   else if (h === "privacy") { app.innerHTML = privacy(); tab = h; }
+  else if (h === "terms") { app.innerHTML = terms(); tab = h; }
+  else if (h === "refund") { app.innerHTML = refund(); tab = h; }
+  else if (h === "shipping") { app.innerHTML = shipping(); tab = h; }
+  else if (h === "contact") { app.innerHTML = contact(); tab = h; }
   else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
-  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "jigsaw" ? "Dimaag Dada's Mystery House jigsaw · Tech Samjho Raj" : h === "puzzles" ? "Dimaag Dada · Reasoning Samjho · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
+  document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "terms" ? "Terms · Tech Samjho Raj" : tab === "refund" ? "Refunds · Tech Samjho Raj" : tab === "shipping" ? "Shipping and delivery · Tech Samjho Raj" : tab === "contact" ? "Contact · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "jigsaw" ? "Dimaag Dada's Mystery House jigsaw · Tech Samjho Raj" : h === "puzzles" ? "Dimaag Dada · Reasoning Samjho · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Tech Samjho Raj Classroom";
 }
 
 app.addEventListener("click", e => {
@@ -1848,7 +1907,7 @@ const CMDK = (() => {
   const e = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
   const PAGES = [["#classroom", "Classroom", "All courses and your progress", "🏠"], ["#playground", "Python Playground", "Run Python in your browser", "▶"],
     ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#puzzles", "Dimaag Dada · Reasoning Samjho", "192 reasoning puzzles for SSC, Bank, CAT…", "🧩"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
-    ["#about", "About Raj", "Who teaches here", "👋"], ["#community", "Community", "Ask a question, share your project", "💬"], ["#privacy", "Privacy", "What this site stores (almost nothing)", "🔒"]];
+    ["#about", "About Raj", "Who teaches here", "👋"], ["#community", "Community", "Ask a question, share your project", "💬"], ["#privacy", "Privacy", "What this site stores (almost nothing)", "🔒"], ["#terms", "Terms of use", "Paid products, licence, law", "📜"], ["#refund", "Refunds and cancellation", "Digital products and workshops", "↩️"], ["#shipping", "Shipping and delivery", "Everything is a digital download", "📦"], ["#contact", "Contact us", "Email, phone, business details", "✉️"]];
   const LESSONS = COURSES.flatMap(c => live(c).map((l, i) => [`#${l.id}`, l.title, `${c.title} · Lesson ${i + 1}`, "📄"]));
   let items = [], sel = 0, seq = 0;
   const norm = s => s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9 ]/g, " ");

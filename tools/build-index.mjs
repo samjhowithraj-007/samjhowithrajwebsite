@@ -32,7 +32,7 @@ ctx.window = ctx.self = ctx.globalThis = ctx;
 vm.createContext(ctx);
 vm.runInContext(script + `
 ;signup = () => ""; promo = () => ""; bookBox = () => ""; bookCard = () => "";
-globalThis.__site = { PUZZLES, puzzlesPage, PROMPTS, COURSES, BOOK, classroom, upcoming, community, about, privacy, playground, bookPage, books, shop, workshops };`, ctx, { filename: "index.html" });
+globalThis.__site = { PUZZLES, puzzlesPage, PROMPTS, COURSES, BOOK, classroom, upcoming, community, about, privacy, terms, refund, shipping, contact, playground, bookPage, books, shop, workshops };`, ctx, { filename: "index.html" });
 const S = ctx.__site;
 
 // ---- helpers ----
@@ -128,6 +128,10 @@ page("puzzles", "Dimaag Dada · Reasoning Samjho", "#puzzles", S.puzzlesPage());
 page("community", "Community", "#community", S.community());
 page("about", "About Raj", "#about", S.about());
 page("privacy", "Privacy", "#privacy", S.privacy());
+page("terms", "Terms of use", "#terms", S.terms());
+page("refund", "Refunds and cancellation", "#refund", S.refund());
+page("shipping", "Shipping and delivery", "#shipping", S.shipping());
+page("contact", "Contact us", "#contact", S.contact());
 
 // drop duplicates (same text twice), keep ids unique
 const seen = new Set(), ids = new Set();
