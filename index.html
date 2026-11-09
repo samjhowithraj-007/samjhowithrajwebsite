@@ -816,7 +816,7 @@ for i in range(1, 4):
   ]}]
 },
 {
-  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 7 parts live",
+  id: "chatbot", title: "AI + Python: Build a Chai Chatbot", tag: "50 lessons · 8 parts live",
   cover: "media/chatbot-1.jpg",
   blurb: "Build your own chatbot with Python. Start with a simple rule-based bot and grow it into a Claude-powered bot, a web app and an AI agent.",
   modules: [
@@ -923,7 +923,24 @@ while True:
             print(f"{naam} bhai, {random.choice(replies[word])}")`), output:"Aapka naam? Raj\nNamaste Raj! Aaj kaun si chai?\nRaj: menu batao\nRaj bhai, Masala, Adrak!\nRaj: price kya hai\nRaj bhai, Sirf 20 rupaye!\nRaj: bye\nPhir aana, Raj bhai!",
       practice:["Press Run: the Input box has a name on the first line. Change the first line to your own name and run again.","Change <code>bhai</code> to <code>ji</code> in the replies.","Add a second box, <code>shehar = input(\"Aap kahan se ho? \")</code>, and print it in the greeting."],
       takeaway:"input() listens, a variable remembers, an f-string speaks the name. Next: Part 8, adding up an order." },
-    ...["Add orders to a cart","The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
+    { id:"chatbot-8", title:"Bill jodo: int + maths", videoSoon:"Short coming soon",
+      concept:["3 chai and 2 samosa: how much is the bill? Today the bot adds it up for you.",
+        "First write the prices in variables: <code>chai_price = 10</code> and <code>samosa_price = 15</code>.",
+        "There is one catch. <code>input()</code> always gives you <b>text</b>, even if you type 3. You cannot multiply the text \"3\".",
+        "Wrap it in <code>int()</code>: <code>int(input(\"Kitni chai? \"))</code>. Now it is a real number, and Python can do the maths."],
+      list:["<code>chai * chai_price + samosa * samosa_price</code>: multiply first, then add.",
+        "3 chai × 10 = 30, and 2 samosa × 15 = 30. The bill is 60 rupees.",
+        "<code>int()</code> turns the text \"3\" into the number 3. <code>int(\"abc\")</code> cannot, and the program stops with an error (Part 9 fixes that)."],
+      code:PY(`chai_price = 10
+samosa_price = 15
+naam = input("Aapka naam? ").strip().title()
+chai = int(input("Kitni chai? "))
+samosa = int(input("Kitne samosa? "))
+bill = chai * chai_price + samosa * samosa_price
+print(f"{naam} bhai, aapka bill {bill} rupaye!")`), output:"Aapka naam? Raj\nKitni chai? 3\nKitne samosa? 2\nRaj bhai, aapka bill 60 rupaye!",
+      practice:["Press Run: the Input box has your name, 3 chai and 2 samosa. Change the numbers and run again.","Add a third item: <code>vada_price = 12</code> and ask \"Kitne vada?\". Add it to the bill.","Type <code>abc</code> instead of a number and press Run. What error do you see? (Part 9 fixes it.)"],
+      takeaway:"input() gives text, int() turns it into a number. Next: Part 9, what if someone types abc?" },
+    ...["The bot writes the bill","Clean up the code (def reply)"].map(soon) ]},
   { title: "Season 2 · Give the bot an AI brain (Claude API)", lessons:
     ["When rules aren't enough","What is an API?","Keep your secret key safe","Your first AI conversation","Give the bot a personality","AI forgets! (chat history)","The AI chat loop","Give the AI the menu (tools)","Save money and avoid errors","Season finale: the AI Chai Bot is ready!"].map(soon) },
   { title: "Season 3 · Bot superpowers", lessons:
@@ -935,7 +952,7 @@ while True:
   ]
 },
 {
-  id: "agentic", title: "Agentic AI with Bunty", tag: "Season 1 · 5 episodes live",
+  id: "agentic", title: "Agentic AI with Bunty", tag: "Season 1 · 6 episodes live",
   playlist: "https://www.youtube.com/playlist?list=PLFXyjVk2qV6A",   // "Agentic AI 🤖: Bunty ki kahani (Season 1)"
   cover: "media/agentic-1.jpg", wide: true,
   blurb: "AI agents without the jargon. Bunty, the AI intern at Samjho Pvt Ltd, learns one new idea in every episode.",
@@ -979,7 +996,16 @@ while True:
         "Step 3: decoration. Check: the decorator is not coming! Bunty changes the plan and orders balloons online."],
       practice:["Take a big job (a school trip, a family dinner). Break it into 3 small steps.","For each step, write how you will check it is done.","Pick one step that could fail. What is your Plan B?"],
       takeaway:"A good agent breaks a big goal into steps, and re-plans when it needs to. Next: Part 6, Memory." },
-    ...["Memory","Hallucination","Reflection","Permission","Recap"].map(soon) ]},
+    { id:"agentic-6", title:"Memory: write it down, read it next time", videoSoon:"Short coming soon",
+      concept:["Last time Bunty planned Mummy's birthday party. A week later Raj said: \"Bunty, order the cake.\" Bunty asked: \"Sir, which cake?\"",
+        "Raj had told him last time: Mummy loves chocolate cake. But Bunty forgot, because he had no <b>memory</b>. Every task started from zero.",
+        "So Raj gave Bunty a <b>diary</b>. Now Bunty writes down the important facts, and reads the diary before the next task."],
+      list:["Write: \"Mummy likes chocolate cake. Balloons can be ordered online.\"",
+        "Next time, before starting, Bunty reads the diary.",
+        "Result: \"Sir, chocolate cake ordered! And the balloons online too.\""],
+      practice:["Think of a helper (an app, a friend, an assistant). What one thing should it remember about you?","Write 3 lines for Bunty's diary about a party you plan every year.","What should Bunty NOT write in the diary? (Think: passwords, private things.)"],
+      takeaway:"An agent's memory: write the important things down, and read them next time. Next: Part 7, Bunty gets helpers." },
+    ...["Hallucination","Reflection","Permission","Recap"].map(soon) ]},
   { title: "Coming seasons", lessons:
     ["Season 2 · Bunty's brain (LLMs, prompts, tokens, RAG)","Season 3 · Bunty's tools (APIs, MCP, browser)","Season 4 · Bunty's team (multi-agent)","Season 5 · Keeping Bunty in check (safety)","Season 6 · Build your own Bunty (hands-on)"].map(soon) }
   ]
@@ -1311,7 +1337,8 @@ const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masa
   "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye", "chatbot-4": "  MENU \nPrice\nmenu",
   "chatbot-5": "Masala chai ka MENU dikhao\nPrice kya hai bhaiya?\nmenu aur price",
   "chatbot-6": "menu\nmenu\nprice\nprice",
-  "chatbot-7": "Raj\nmenu batao\nprice kya hai\nbye" };
+  "chatbot-7": "Raj\nmenu batao\nprice kya hai\nbye",
+  "chatbot-8": "Raj\n3\n2" };
 const FILES_FOR = { "python-12": { "bill.txt": "Total: Rs 50" } };   // created only if the file is not there yet
 const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
 const PYRUN = (() => {
