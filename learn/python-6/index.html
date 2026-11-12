@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dictionaries: the chai menu card | Python with Chai lesson 6</title>
+<meta name="description" content="A dictionary stores pairs of keys and values: an item's name and its price. Give it a key, get the value back: menu[&quot;Masala&quot;] gives 20. Adding an item…">
+<link rel="canonical" href="https://www.techsamjhoraj.com/learn/python-6/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tech Samjho Raj">
+<meta property="og:title" content="Dictionaries: the chai menu card | Python with Chai lesson 6">
+<meta property="og:description" content="A dictionary stores pairs of keys and values: an item's name and its price. Give it a key, get the value back: menu[&quot;Masala&quot;] gives 20. Adding an item…">
+<meta property="og:url" content="https://www.techsamjhoraj.com/learn/python-6/">
+<meta property="og:image" content="https://www.techsamjhoraj.com/img/og-card.jpg">
+<meta property="og:image:alt" content="Tech Samjho Raj logo: Raj's drawn portrait and the words Free Python + AI lessons">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1020">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://www.techsamjhoraj.com/learn/python-6/#lesson","name":"Dictionaries: the chai menu card","description":"A dictionary stores pairs of keys and values: an item's name and its price. Give it a key, get the value back: menu[\"Masala\"] gives 20. Adding an item…","url":"https://www.techsamjhoraj.com/learn/python-6/","learningResourceType":"lesson","educationalLevel":"Beginner","inLanguage":"en","publisher":{"@id":"https://www.techsamjhoraj.com/#org"},"author":{"@type":"Person","name":"Raj"},"isPartOf":{"@type":"Course","name":"Python with Chai","url":"https://www.techsamjhoraj.com/python/","provider":{"@id":"https://www.techsamjhoraj.com/#org"}}},{"@type":"Organization","@id":"https://www.techsamjhoraj.com/#org","name":"Tech Samjho Raj","url":"https://www.techsamjhoraj.com/"},{"@type":"VideoObject","name":"Dictionaries: the chai menu card (Python with Chai, lesson 6)","description":"A dictionary stores pairs of keys and values: an item's name and its price.","thumbnailUrl":"https://www.techsamjhoraj.com/media/python-6.jpg","uploadDate":"2026-10-14T18:09:04+02:00","contentUrl":"https://www.techsamjhoraj.com/media/python-6.mp4","inLanguage":"hi-Latn"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.techsamjhoraj.com/"},{"@type":"ListItem","position":2,"name":"Python with Chai","item":"https://www.techsamjhoraj.com/python/"},{"@type":"ListItem","position":3,"name":"Dictionaries: the chai menu card","item":"https://www.techsamjhoraj.com/learn/python-6/"}]}</script>
+<style>:root{--bg:#0b1020;--card:#141b33;--fg:#e9edf9;--mut:#a9b3d1;--line:#27325a;--gold:#f5b544;--cy:#43e0d2;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--cy)}header,main,footer{max-width:820px;margin:0 auto;padding:0 18px}
+header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-top:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+header .logo{font:800 20px system-ui;color:var(--fg);text-decoration:none}header .logo span{color:var(--gold)}
+header nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px}
+main{padding-top:26px;padding-bottom:30px}h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:.2em 0 .4em}h2{font-size:24px;margin:1.6em 0 .4em}h3{font-size:19px;margin:1.2em 0 .3em}
+p,li{color:#d4daf0}.crumb{font-size:14px;color:var(--mut)}.lead{font-size:19px;color:var(--fg)}
+.cta{display:inline-block;background:var(--gold);color:#241a00;font-weight:800;text-decoration:none;padding:12px 20px;border-radius:12px;margin:8px 10px 8px 0}.cta.alt{background:transparent;color:var(--cy);border:2px solid var(--cy)}
+pre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;overflow-x:auto;font:14.5px/1.55 ui-monospace,Consolas,monospace;color:#dffcf7}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:12px 0}
+ul.lessons{padding-left:20px}ul.lessons li{margin:4px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:10px 0}summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid var(--line);padding-top:18px;padding-bottom:36px;font-size:14.5px;color:var(--mut)}footer a{margin-right:12px}
+img{max-width:100%;height:auto;border-radius:12px}</style>
+</head>
+<body>
+<header><a class="logo" href="/"><span>Tech</span> Samjho Raj</a>
+<nav aria-label="Site"><a href="/python/">Python</a><a href="/chatbot/">Chatbot</a><a href="/agentic-ai/">AI agents</a><a href="/python-book/">Book</a><a href="/puzzles/">Dada World</a><a href="/hinglish/">Hinglish</a><a href="/hi/">हिंदी</a></nav></header>
+<main>
+<p class="crumb"><a href="/">Home</a> › <a href="/python/">Python with Chai</a> › Lesson 6</p>
+<h1>Dictionaries: the chai menu card</h1>
+<p class="lead">Python with Chai, lesson 6 of 20. A short Hinglish video, simple English notes and code you can run, free.</p>
+<p><a class="cta" href="/#python-6">Open the interactive lesson with Run button</a></p>
+<h2>The idea</h2>
+<p>A <b>dictionary</b> stores pairs of keys and values: an item's name and its price.</p>
+<p>Give it a key, get the value back: <code>menu["Masala"]</code> gives 20.</p>
+<p>Adding an item and changing a price both use <code>menu[key] = value</code>.</p>
+<h2>The code</h2>
+<pre><code>menu = {&quot;Masala&quot;: 20, &quot;Adrak&quot;: 15, &quot;Elaichi&quot;: 25}
+
+print(menu[&quot;Masala&quot;])
+menu[&quot;Tulsi&quot;] = 30     # new item
+menu[&quot;Adrak&quot;] = 18     # price changed
+print(menu)</code></pre>
+<p>Output:</p>
+<pre>20
+{'Masala': 20, 'Adrak': 18, 'Elaichi': 25, 'Tulsi': 30}</pre>
+<h2>Try it yourself</h2>
+<ul><li>Build a menu for your own shop with 5 items.</li><li>Use <code>for naam in menu:</code> to print each item and its price.</li></ul>
+<h2>Remember</h2>
+<p>A dictionary lets you look things up by name.</p>
+<p>← <a href="/learn/python-5/">for loops: try every flavour</a> · <a href="/learn/python-7/">Mini project: the chai bill</a> →</p>
+<p>All lessons: <a href="/python/">Python with Chai</a></p>
+</main>
+<footer><p>© 2026 Tech Samjho Raj · Free Python and AI lessons · No tracking, no cookies</p>
+<p><a href="/#terms">Terms</a><a href="/#refund">Refunds</a><a href="/#shipping">Shipping and delivery</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy</a></p>
+<p><a href="https://www.youtube.com/@SamjhowithRaj">YouTube</a><a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y">WhatsApp</a><a href="https://t.me/techsamjhoraj">Telegram</a></p></footer>
+</body>
+</html>

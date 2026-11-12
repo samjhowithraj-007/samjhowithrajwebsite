@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bill jodo: int + maths | Chai Chatbot lesson 8 | Tech Samjho Raj</title>
+<meta name="description" content="3 chai and 2 samosa: how much is the bill? Today the bot adds it up for you. First write the prices in variables: chai_price = 10 and samosa_price = 15…">
+<link rel="canonical" href="https://www.techsamjhoraj.com/learn/chatbot-8/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tech Samjho Raj">
+<meta property="og:title" content="Bill jodo: int + maths | Chai Chatbot lesson 8 | Tech Samjho Raj">
+<meta property="og:description" content="3 chai and 2 samosa: how much is the bill? Today the bot adds it up for you. First write the prices in variables: chai_price = 10 and samosa_price = 15…">
+<meta property="og:url" content="https://www.techsamjhoraj.com/learn/chatbot-8/">
+<meta property="og:image" content="https://www.techsamjhoraj.com/img/og-card.jpg">
+<meta property="og:image:alt" content="Tech Samjho Raj logo: Raj's drawn portrait and the words Free Python + AI lessons">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1020">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://www.techsamjhoraj.com/learn/chatbot-8/#lesson","name":"Bill jodo: int + maths","description":"3 chai and 2 samosa: how much is the bill? Today the bot adds it up for you. First write the prices in variables: chai_price = 10 and samosa_price = 15…","url":"https://www.techsamjhoraj.com/learn/chatbot-8/","learningResourceType":"lesson","educationalLevel":"Beginner","inLanguage":"en","publisher":{"@id":"https://www.techsamjhoraj.com/#org"},"author":{"@type":"Person","name":"Raj"},"isPartOf":{"@type":"Course","name":"AI + Python: Build a Chai Chatbot","url":"https://www.techsamjhoraj.com/chatbot/","provider":{"@id":"https://www.techsamjhoraj.com/#org"}}},{"@type":"Organization","@id":"https://www.techsamjhoraj.com/#org","name":"Tech Samjho Raj","url":"https://www.techsamjhoraj.com/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.techsamjhoraj.com/"},{"@type":"ListItem","position":2,"name":"AI + Python: Build a Chai Chatbot","item":"https://www.techsamjhoraj.com/chatbot/"},{"@type":"ListItem","position":3,"name":"Bill jodo: int + maths","item":"https://www.techsamjhoraj.com/learn/chatbot-8/"}]}</script>
+<style>:root{--bg:#0b1020;--card:#141b33;--fg:#e9edf9;--mut:#a9b3d1;--line:#27325a;--gold:#f5b544;--cy:#43e0d2;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--cy)}header,main,footer{max-width:820px;margin:0 auto;padding:0 18px}
+header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-top:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+header .logo{font:800 20px system-ui;color:var(--fg);text-decoration:none}header .logo span{color:var(--gold)}
+header nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px}
+main{padding-top:26px;padding-bottom:30px}h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:.2em 0 .4em}h2{font-size:24px;margin:1.6em 0 .4em}h3{font-size:19px;margin:1.2em 0 .3em}
+p,li{color:#d4daf0}.crumb{font-size:14px;color:var(--mut)}.lead{font-size:19px;color:var(--fg)}
+.cta{display:inline-block;background:var(--gold);color:#241a00;font-weight:800;text-decoration:none;padding:12px 20px;border-radius:12px;margin:8px 10px 8px 0}.cta.alt{background:transparent;color:var(--cy);border:2px solid var(--cy)}
+pre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;overflow-x:auto;font:14.5px/1.55 ui-monospace,Consolas,monospace;color:#dffcf7}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:12px 0}
+ul.lessons{padding-left:20px}ul.lessons li{margin:4px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:10px 0}summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid var(--line);padding-top:18px;padding-bottom:36px;font-size:14.5px;color:var(--mut)}footer a{margin-right:12px}
+img{max-width:100%;height:auto;border-radius:12px}</style>
+</head>
+<body>
+<header><a class="logo" href="/"><span>Tech</span> Samjho Raj</a>
+<nav aria-label="Site"><a href="/python/">Python</a><a href="/chatbot/">Chatbot</a><a href="/agentic-ai/">AI agents</a><a href="/python-book/">Book</a><a href="/puzzles/">Dada World</a><a href="/hinglish/">Hinglish</a><a href="/hi/">हिंदी</a></nav></header>
+<main>
+<p class="crumb"><a href="/">Home</a> › <a href="/chatbot/">AI + Python: Build a Chai Chatbot</a> › Lesson 8</p>
+<h1>Bill jodo: int + maths</h1>
+<p class="lead">AI + Python: Build a Chai Chatbot, lesson 8 of 8. simple English notes and code you can run, free.</p>
+<p><a class="cta" href="/#chatbot-8">Open the interactive lesson with Run button</a></p>
+<h2>The idea</h2>
+<p>3 chai and 2 samosa: how much is the bill? Today the bot adds it up for you.</p>
+<p>First write the prices in variables: <code>chai_price = 10</code> and <code>samosa_price = 15</code>.</p>
+<p>There is one catch. <code>input()</code> always gives you <b>text</b>, even if you type 3. You cannot multiply the text "3".</p>
+<p>Wrap it in <code>int()</code>: <code>int(input("Kitni chai? "))</code>. Now it is a real number, and Python can do the maths.</p>
+<ul><li><code>chai * chai_price + samosa * samosa_price</code>: multiply first, then add.</li><li>3 chai × 10 = 30, and 2 samosa × 15 = 30. The bill is 60 rupees.</li><li><code>int()</code> turns the text "3" into the number 3. <code>int("abc")</code> cannot, and the program stops with an error (Part 9 fixes that).</li></ul>
+<h2>The code</h2>
+<pre><code>chai_price = 10
+samosa_price = 15
+naam = input(&quot;Aapka naam? &quot;).strip().title()
+chai = int(input(&quot;Kitni chai? &quot;))
+samosa = int(input(&quot;Kitne samosa? &quot;))
+bill = chai * chai_price + samosa * samosa_price
+print(f&quot;{naam} bhai, aapka bill {bill} rupaye!&quot;)</code></pre>
+<p>Output:</p>
+<pre>Aapka naam? Raj
+Kitni chai? 3
+Kitne samosa? 2
+Raj bhai, aapka bill 60 rupaye!</pre>
+<h2>Try it yourself</h2>
+<ul><li>Press Run: the Input box has your name, 3 chai and 2 samosa. Change the numbers and run again.</li><li>Add a third item: <code>vada_price = 12</code> and ask "Kitne vada?". Add it to the bill.</li><li>Type <code>abc</code> instead of a number and press Run. What error do you see? (Part 9 fixes it.)</li></ul>
+<h2>Remember</h2>
+<p>input() gives text, int() turns it into a number. Next: Part 9, what if someone types abc?</p>
+<p>← <a href="/learn/chatbot-7/">Remember the name: input + variable</a></p>
+<p>All lessons: <a href="/chatbot/">AI + Python: Build a Chai Chatbot</a></p>
+</main>
+<footer><p>© 2026 Tech Samjho Raj · Free Python and AI lessons · No tracking, no cookies</p>
+<p><a href="/#terms">Terms</a><a href="/#refund">Refunds</a><a href="/#shipping">Shipping and delivery</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy</a></p>
+<p><a href="https://www.youtube.com/@SamjhowithRaj">YouTube</a><a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y">WhatsApp</a><a href="https://t.me/techsamjhoraj">Telegram</a></p></footer>
+</body>
+</html>
