@@ -87,7 +87,7 @@ ${jsonld.map(ld).join("\n")}
 </head>
 <body>
 <header><a class="logo" href="/"><span>Tech</span> Samjho Raj</a>
-<nav aria-label="Site"><a href="/python/">Python</a><a href="/chatbot/">Chatbot</a><a href="/agentic-ai/">AI agents</a><a href="/python-book/">Book</a><a href="https://www.dimaagdada.com/world/">Dada World</a><a href="/hinglish/">Hinglish</a><a href="/hi/">हिंदी</a></nav></header>
+<nav aria-label="Site"><a href="/python/">Python</a><a href="/chatbot/">Chatbot</a><a href="/agentic-ai/">AI agents</a><a href="/python-book/">Book</a><a href="https://www.dimaagdada.com/#play">Dada World</a><a href="/hinglish/">Hinglish</a><a href="/hi/">हिंदी</a></nav></header>
 <main>
 ${h}
 </main>
@@ -237,7 +237,7 @@ const LANG = {
       ["Python book Hinglish mein kahan milegi?", `<a href="/python-book/">Python with Chai book</a> English aur Hinglish dono edition mein hai. Pehle free chapter preview padh sakte hain.`],
       ["Chatbot kaise banaye Python mein?", `<a href="${bot.url}">Chai chatbot ke lessons</a> dekhein: if-else se shuru karke dictionary, input(), random replies aur bill banana, sab step by step.`],
       ["Agentic AI kya hai?", `AI agent aisa AI hai jo sirf jawab nahi deta, kaam poora karta hai. Woh goal samajhta hai, tools use karta hai, aur sochna, karna, check karna ka loop tab tak chalata hai jab tak kaam ho na jaye. <a href="${ag.url}">Bunty ke episodes</a> mein yeh aasan kahaniyon se samjhaya hai.`],
-      ["Exam ke reasoning puzzles kahan milenge?", `<a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> mein 192 original puzzles aur 3 mock tests hain, aur <a href="https://www.dimaagdada.com/world/">Dada World</a> mein roz ek free puzzle.`],
+      ["Exam ke reasoning puzzles kahan milenge?", `<a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> mein 192 original puzzles aur 3 mock tests hain, aur <a href="https://www.dimaagdada.com/#play">Dada World</a> mein roz ek free puzzle.`],
     ],
   },
   hi: {
@@ -254,7 +254,7 @@ const LANG = {
       ["क्या सब कुछ मुफ़्त है?", "हाँ। सभी लेसन, नोट्स और Python Playground बिना साइन-अप के मुफ़्त हैं। सिर्फ़ किताबें पेड हैं।"],
       ["Python की किताब हिंग्लिश में कहाँ मिलेगी?", `<a href="/python-book/">Python with Chai किताब</a> अंग्रेज़ी और हिंग्लिश दोनों संस्करणों में है। पहले मुफ़्त चैप्टर प्रीव्यू पढ़ सकते हैं।`],
       ["एजेंटिक AI क्या है?", `AI एजेंट ऐसा AI है जो सिर्फ़ जवाब नहीं देता, काम पूरा करता है। वह लक्ष्य समझता है, टूल इस्तेमाल करता है, और सोचो-करो-जाँचो का लूप तब तक चलाता है जब तक काम पूरा न हो जाए। <a href="${ag.url}">बंटी के एपिसोड</a> में यह आसान कहानियों से समझाया गया है।`],
-      ["परीक्षा के रीज़निंग पज़ल कहाँ मिलेंगे?", `<a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> में 192 मौलिक पज़ल और 3 मॉक टेस्ट हैं, और <a href="https://www.dimaagdada.com/world/">Dada World</a> में रोज़ एक मुफ़्त पज़ल।`],
+      ["परीक्षा के रीज़निंग पज़ल कहाँ मिलेंगे?", `<a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> में 192 मौलिक पज़ल और 3 मॉक टेस्ट हैं, और <a href="https://www.dimaagdada.com/#play">Dada World</a> में रोज़ एक मुफ़्त पज़ल।`],
     ],
   },
 };
@@ -288,7 +288,7 @@ ${all.map(u => `  <url><loc>${SITE}${u.loc}</loc><lastmod>${u.lastmod}</lastmod>
   const intro = "Learn Python and AI in Hinglish, free. Tech Samjho Raj has short videos in Hinglish, simple English notes and code you can run right in your browser, with no sign-up and nothing to install. Start with Python with Chai (" + courses[0].lessons.length + " lessons), then build your own chatbot step by step, and finally learn what agentic AI is with Bunty the AI intern. Raj is a technology architect with 20 years of experience, and every lesson uses easy chai-shop examples. Prefer a book? Python with Chai comes in English and Hinglish editions with free chapter previews. Kids and exam students can play free reasoning puzzles in Dada World.";
   const blk = `<!--seo-home-start--><div class="seo-home"><h1>Learn Python and AI in Hinglish, free</h1><p>${intro}</p>` +
     courses.map(c => `<h2><a href="${c.url}">${esc(c.title)}</a></h2><ul>${c.lessons.map(l => `<li><a href="${lessonUrl(l.id)}">${esc(l.title)}</a></li>`).join("")}</ul>`).join("") +
-    `<p><a href="/python-book/">Python with Chai book</a> · <a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> · <a href="https://www.dimaagdada.com/world/">Dada World</a> · <a href="/hinglish/">Hinglish</a> · <a href="/hi/">हिंदी</a></p></div><!--seo-home-end-->`;
+    `<p><a href="/python-book/">Python with Chai book</a> · <a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> · <a href="https://www.dimaagdada.com/#play">Dada World</a> · <a href="/hinglish/">Hinglish</a> · <a href="/hi/">हिंदी</a></p></div><!--seo-home-end-->`;
   const f = path.join(ROOT, "index.html"); let h = fs.readFileSync(f, "utf8");
   const a = h.indexOf("<!--seo-home-start-->"), b = h.indexOf("<!--seo-home-end-->");
   if (a < 0 || b < 0) throw new Error("index.html has no seo-home markers");

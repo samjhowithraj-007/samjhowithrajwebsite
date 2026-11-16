@@ -18,7 +18,9 @@ const TOOLS = [
  {id:"ml", t:"Machine learning", img:"T12", live:1},
  {id:"rag", t:"RAG & LLM apps", img:"T09", live:1},
  {id:"sys", t:"System design", img:"T16", live:1},
- {id:"sec", t:"Cyber security", img:"T17", live:1}
+ {id:"sec", t:"Cyber security", img:"T17", live:1},
+ {id:"mcp", t:"MCP tool calls", img:"T14", live:1},
+ {id:"llm", t:"LLM prompt workbench", img:"T19", live:1}
 ];
 const SOON = [["Java","T07"],["Linux shell","T18"],["Docker","T15"],["Azure","T10"],["Databricks","T11"],["Machine learning","T12"],["RAG & LLM apps","T09"],["System design","T16"],["Cyber security","T17"]];
 
@@ -49,7 +51,7 @@ function show(app){
   tabs.forEach(b => b.setAttribute("aria-selected", b.dataset.t === id));
   const tool = TOOLS.find(x=>x.id===id);
   if (id === "py"){ panel.innerHTML = `<div class="rt-card"><h2>Python</h2><p>Real Python 3.12 with numpy and pandas, running in your browser (Pyodide).</p><a class="btn primary" href="#playground">Open the Python playground →</a></div>`; return; }
-  ({js:jsTool, sql:sqlTool, api:apiTool, dsa:dsaTool, vec:vecTool, git:gitTool, java:javaTool, linux:linuxTool, docker:dockerTool, azure:azureTool, dbx:dbxTool, ml:mlTool, rag:ragTool, sys:sysTool, sec:secTool})[id](panel);
+  ({js:jsTool, sql:sqlTool, api:apiTool, dsa:dsaTool, vec:vecTool, git:gitTool, java:javaTool, linux:linuxTool, docker:dockerTool, azure:azureTool, dbx:dbxTool, ml:mlTool, rag:ragTool, sys:sysTool, sec:secTool, mcp:mcpTool, llm:llmTool})[id](panel);
   try{ history.replaceState(null,"","#tools"); }catch(e){}
  }
  tabs.forEach(b => b.addEventListener("click", () => open(b.dataset.t)));
@@ -357,6 +359,48 @@ function secTool(p){
  p.querySelector("#sc3").oninput=b64; b64();
 }
 
-window.RDTOOLS = { show };
+/* ---- MCP: tool-call simulator (rule-based, no AI model) ---- */
+function mcpTool(p){
+ const CITY = {delhi:[31,"Sunny"],mumbai:[29,"Humid"],pune:[26,"Cloudy"],bengaluru:[24,"Light rain"],chennai:[32,"Hot"]};
+ const EV = {today:["10:00 Team stand-up","16:30 Dentist"],tomorrow:["09:00 Train to Pune","14:00 Project review"]};
+ const FX = {usd:{inr:83.5},inr:{usd:0.012}};
+ p.innerHTML=`<div class="rt-card"><h2>MCP: how an agent calls a tool</h2>${note("An MCP server offers tools. The AI client lists them, picks one, calls it with inputs, and uses the result. This is a classroom simulation with simple keyword matching, not a real model or server.")}
+ <div class="rt-az"><div class="rt-azr"><b>get_weather</b><span>city</span><i>tool</i></div><div class="rt-azr"><b>get_events</b><span>day</span><i>tool</i></div><div class="rt-azr"><b>convert_currency</b><span>amount, from, to</span><i>tool</i></div></div>
+ <div class="rt-row"><input id="mcq" class="rt-in" value="What is the weather in Pune?" aria-label="Ask the agent"><button class="btn primary" id="mcb">Ask</button></div>
+ <div class="rt-opts"><button class="btn" data-q="What is on my calendar tomorrow?">Calendar</button><button class="btn" data-q="Convert 200 usd to inr">Currency</button><button class="btn" data-q="Tell me a joke">No matching tool</button></div><div id="mco"></div></div>`;
+ const o=p.querySelector("#mco"), q=p.querySelector("#mcq");
+ function step(n,t,body){ return `<div class="rt-rag"><b>${n}. ${t}</b><pre class="rt-out" style="margin:8px 0 0">${esc(body)}</pre></div>`; }
+ function go(){
+  const s=q.value.toLowerCase(); let name=null,args={},res=null,ans="";
+  if(/weather|rain|temperature|hot|cold/.test(s)){ const c=Object.keys(CITY).find(k=>s.includes(k)); if(c){ name="get_weather"; args={city:c}; res={temp_c:CITY[c][0],sky:CITY[c][1]}; ans=`In ${c[0].toUpperCase()+c.slice(1)} it is ${res.temp_c} °C and ${res.sky.toLowerCase()}.`; } }
+  else if(/calendar|meeting|events|schedule|plan/.test(s)){ const d=s.includes("tomorrow")?"tomorrow":"today"; name="get_events"; args={day:d}; res={events:EV[d]}; ans=`${d[0].toUpperCase()+d.slice(1)} you have: ${EV[d].join("; ")}.`; }
+  else if(/convert|usd|inr|dollar|rupee/.test(s)){ const m=s.match(/(\d+(?:\.\d+)?)/); const from=/usd|dollar/.test(s)&&/(to|in)\s*(inr|rupee)/.test(s)?"usd":(/inr|rupee/.test(s)&&/(to|in)\s*(usd|dollar)/.test(s)?"inr":null); if(m&&from){ const to=from==="usd"?"inr":"usd"; name="convert_currency"; args={amount:+m[1],from,to}; res={result:+(m[1]*FX[from][to]).toFixed(2)}; ans=`${m[1]} ${from.toUpperCase()} is about ${res.result} ${to.toUpperCase()} (demo rate).`; } }
+  o.innerHTML = step(1,"Client asks the server: what tools do you have?","tools/list -> [get_weather, get_events, convert_currency]")
+   + (name ? step(2,"Model chooses a tool and fills the inputs","tools/call "+name+"\n"+JSON.stringify(args,null,2)) + step(3,"Server runs the tool and returns data",JSON.stringify(res,null,2)) + step(4,"Agent answers in plain language",ans)
+            : step(2,"Model decides no tool fits","No call is made. The agent answers from its own knowledge or says it cannot help with that."));
+ }
+ p.querySelector("#mcb").onclick=go; q.addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });
+ p.querySelectorAll(".rt-opts .btn").forEach(b=>b.onclick=()=>{ q.value=b.dataset.q; go(); }); go();
+}
+
+/* ---- LLM engineering: prompt and token workbench (estimates only) ---- */
+function llmTool(p){
+ p.innerHTML=`<div class="rt-card"><h2>LLM prompt workbench</h2>${note("Build a prompt the way you would send it to a model, and see a rough size and cost estimate. Tokens are estimated at about 4 characters each; real counts depend on the model.")}
+ <label class="rt-l">System instruction <input id="lms" class="rt-in" value="You are a helpful tutor. Reply in 2 short sentences."></label>
+ <label class="rt-l">User message <textarea id="lmu" class="rt-ed" rows="3">What is a Python list?</textarea></label>
+ <label class="rt-l"><input type="checkbox" id="lmj"> Ask for a JSON answer (structured output)</label>
+ <div class="rt-sl"><label>Expected reply length (tokens) <input id="lmo" type="number" value="80"></label><label>Price per 1M input tokens (USD) <input id="lmp" type="number" value="1" step="0.1"></label><label>Price per 1M output tokens (USD) <input id="lmq" type="number" value="4" step="0.1"></label></div>
+ <h3>Messages sent</h3><pre class="rt-out" id="lmm"></pre><div id="lmr" class="rt-az-out"></div></div>`;
+ const g=id=>p.querySelector("#"+id);
+ function upd(){
+  const sys=g("lms").value, user=g("lmu").value+(g("lmj").checked?'\nReturn only JSON: {"answer": "...", "confidence": "high|medium|low"}':"");
+  g("lmm").textContent=JSON.stringify([{role:"system",content:sys},{role:"user",content:user}],null,2);
+  const tin=Math.ceil((sys.length+user.length)/4)+8, tout=+g("lmo").value||0, cost=(tin*(+g("lmp").value||0)+tout*(+g("lmq").value||0))/1e6;
+  g("lmr").innerHTML=[["Input tokens (estimate)",tin],["Output tokens (your guess)",tout],["Cost of one call",`$${cost.toFixed(6)}`],["Cost of 10,000 calls",`$${(cost*10000).toFixed(2)}`]].map(([a,b])=>`<div class="rt-azr"><b>${a}</b><span></span><i>${b}</i></div>`).join("");
+ }
+ p.querySelectorAll("input,textarea").forEach(i=>i.oninput=upd); upd();
+}
+
+window.RDTOOLS = { show, mount: (id, el) => { const f = ({js:jsTool, sql:sqlTool, api:apiTool, dsa:dsaTool, vec:vecTool, git:gitTool, java:javaTool, linux:linuxTool, docker:dockerTool, azure:azureTool, dbx:dbxTool, ml:mlTool, rag:ragTool, sys:sysTool, sec:secTool, mcp:mcpTool, llm:llmTool})[id]; if (f) f(el); return !!f; } };
 if (location.hash === "#tools") window.dispatchEvent(new HashChangeEvent("hashchange"));
 })();
