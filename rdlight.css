@@ -219,3 +219,4 @@ body:has(.pl){background:#fff}
 /* no sideways scroll on phones: full-bleed bands extend past the screen, so clip them (DM check, 17 Nov) */
 html,body{overflow-x:clip}
 #app{overflow-x:clip}
+.nw-reg{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}.nw-rb{border:2px solid #4338ca;background:#fff;color:#4338ca;border-radius:99px;padding:9px 18px;font:800 15px inherit;font-family:inherit;cursor:pointer}.nw-rb[aria-pressed="true"]{background:#fbbf24;border-color:#fbbf24;color:#1c1d1f}

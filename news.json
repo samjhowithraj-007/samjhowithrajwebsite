@@ -1,11 +1,12 @@
 {
- "updated": "2026-11-16T23:53:11.937Z",
+ "updated": "2026-11-16T23:55:40.401Z",
  "items": [
   {
    "title": "Hacker behind 2022 GTA VI leaks pleads guilty",
    "link": "https://www.theverge.com/games/1035087/gta-vi-leaks-2022-hacker-pleads-guilty-arion-kurtaj",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T23:35:58.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/ULTIMATE_EDITION_01_de9b57.jpg?quality=90&strip=all&crop=0,0,100,100",
    "summary": "Arion Kurtaj, a member of the Lapsus$ cybercrime group who leaked 90 videos of Grand Theft Auto VI in 2022 and hacked other big companies, pleaded guilty on Monday, according to the UK's…"
@@ -15,15 +16,27 @@
    "link": "https://techcrunch.com/2026/11/16/cybersecurity-ai-startup-corma-reaches-1b-valuation-in-about-3-months/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T23:32:32.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/10/Networked-AI-swarm-with-glowing-nodes.png?resize=1200,600",
    "summary": "Three months since introducing its product, AI cybersecurity startup Corba has raised an $125 million Series A at a $1 billion valuation led by NEA."
+  },
+  {
+   "title": "How to put your iPad in recovery mode (with and without a home button)",
+   "link": "https://www.engadget.com/2315100/how-to-put-ipad-in-recovery-mode/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T23:30:00.000Z",
+   "image": "https://www.engadget.com/img/gallery/how-to-put-your-ipad-in-recovery-mode-with-and-without-a-home-button/l-intro-1794505141.jpg",
+   "summary": "A failed update or too many wrong passcodes can leave your iPad unusable. Find out how recovery mode works and when it's worth trying as a last resort."
   },
   {
    "title": "The AI start-ups fixing India's broken roads and messy land records",
    "link": "https://www.bbc.co.uk/news/articles/c820vnln2lzpo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T23:25:53.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/886f/live/a4a715f0-c892-11f1-b0a4-81e564f1cfaa.jpg",
    "summary": "From legal-tech to healthcare, dozens of Indian AI start-ups are solving uniquely Indian challenges."
@@ -33,6 +46,7 @@
    "link": "https://www.theverge.com/tech/1035027/tech-leaders-nvidia-jensen-huang-theories",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T23:17:34.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2299645290.jpg?quality=90&strip=all&crop=0,0,100,100",
    "summary": "Jensen Huang's stunning resignation from Nvidia after more than 33 years has sent shockwaves throughout the tech industry. Now prominent figures are calling for Huang's reinstatement, and…"
@@ -42,24 +56,47 @@
    "link": "https://www.bbc.co.uk/news/articles/c6wy4xv2mxglo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T23:12:24.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ce1a/live/7c81aa70-e211-11f1-a541-6d0c391a4254.jpg",
    "summary": "Attorney General Rob Bonta alleges OpenAI misled and endangered the public"
+  },
+  {
+   "title": "The charging mistakes that could ruin your Nintendo Switch's battery",
+   "link": "https://www.engadget.com/2314944/nintendo-switch-charging-mistakes-ruin-battery/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T23:00:00.000Z",
+   "image": "https://www.engadget.com/img/gallery/the-charging-mistakes-that-could-ruin-your-nintendo-switchs-battery/l-intro-1794501086.jpg",
+   "summary": "To avoid turning your Nintendo Switch into just another stationary console, there are a few common and easy-to-overlook charging mistakes you'll want to avoid"
   },
   {
    "title": "United Airlines system outage disrupts departures just days after the big ground stop",
    "link": "https://www.theverge.com/transportation/1035025/united-airlines-outage-down-departures",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T22:54:59.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2304760092.jpg?quality=90&strip=all&crop=0,0,100,100",
    "summary": "Less than a week after an issue with air traffic control communications and radar caused the FAA to halt takeoffs nationwide, United Airlines departing flights are being disrupted by an…"
+  },
+  {
+   "title": "United Airlines has fixed issue that caused 'widespread system outage'",
+   "link": "https://www.engadget.com/2318613/united-airlines-is-experiencing-a-widespread-system-outage/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T22:38:43.000Z",
+   "image": "https://www.engadget.com/img/gallery/united-airlines-is-experiencing-a-widespread-system-outage/l-intro-1794871027.jpg",
+   "summary": "United is apparently experiencing a major outage just days after a nationwide ground stop halted thousands of flights."
   },
   {
    "title": "Nvidia dismisses 'Bring Jensen Back' campaign as Trump backs effort to reinstate ex CEO",
    "link": "https://www.bbc.co.uk/news/articles/cry49plv8v3go?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T22:21:27.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/78e4/live/4bc24280-e1d2-11f1-b8c8-67fa35f5afdb.jpg",
    "summary": "A number of tech figures have backed an effort asking the AI chip giant to give Jensen Huang his job back."
@@ -69,8 +106,9 @@
    "link": "https://techcrunch.com/2026/11/16/cyber-giant-infoblox-confirms-security-incident-after-hackers-access-company-information/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T22:12:31.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2024/02/connectwise-flaw-huntress-security.jpg?resize=1200,800",
    "summary": "The cybersecurity and automation giant said it's working with outside investigators to understand the scale of the breach."
   },
   {
@@ -78,8 +116,9 @@
    "link": "https://techcrunch.com/2026/11/16/all-the-questions-nvidia-should-answer-on-tuesday-but-probably-wont/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T22:03:02.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2020/05/GettyImages-1147839035.jpg?resize=1200,800",
    "summary": "Nvidia interim CEO and longtime CFO Colette Kress is about to have one of the biggest days of her career on Tuesday when the company reports its third-quarter results. Given the turmoil…"
   },
   {
@@ -87,6 +126,7 @@
    "link": "https://www.wired.com/story/jpmorganchase-bank-outage-oh-come-on/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T21:45:45.000Z",
    "image": "https://media.wired.com/photos/6afb6caffd92a97bc81f1ed9/master/pass/Security_YesYourBankIsHavinganOutage_v1-ezgif.com-video-to-gif-converter.gif",
    "summary": "Amid hundreds of reports of US banks experiencing outages, JPMorganChase says a technical “issue” with its “on-premise hardware systems” may be causing “slowness” with transactions at…"
@@ -96,6 +136,7 @@
    "link": "https://inc42.com/buzz/india-nine-other-nations-sign-declaration-to-secure-ai-supply-chains/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T21:44:01.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/11/ftr-19.jpg",
    "summary": "India and nine other nations have signed a joint declaration to safeguard supply chains and infrastructure that are central to…"
@@ -105,6 +146,7 @@
    "link": "https://www.theverge.com/entertainment/1033466/hulu-disney-plus-get-huge-looksmaxxing-to-death",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T21:41:57.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/184084_bk_press_still_1.579.1.jpg?quality=90&strip=all&crop=10.051873779297,10.653583930772,89.948126220703,89.346416069228",
    "summary": "Before Clavicular and other manosphere streamers were introducing young guys to the concept of breaking their facial bones to become more attractive, there was an older generation of…"
@@ -114,6 +156,7 @@
    "link": "https://www.space.com/space-exploration/on-this-day-in-space-november-16-2026",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T21:34:36.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/fsUicFVD4jgiZ2EbS7pCQK-1920-80.jpg",
    "summary": "On this day in space! Nov. 16, 1974: The giant Arecibo Observatory in Puerto Rico broadcasts humanity's 1st interstellar message"
@@ -123,6 +166,7 @@
    "link": "https://www.bugmenot.com/",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T21:32:17.000Z",
    "image": "",
    "summary": "Article URL: https://www.bugmenot.com/ Comments URL: https://news.ycombinator.com/item?id=50523601 Points: 207 # Comments: 106"
@@ -132,24 +176,57 @@
    "link": "https://www.space.com/space-exploration/launches-spacecraft/relive-starships-historic-flight-15-with-our-best-photos-from-launch-and-mechazilla-tower-catch",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T21:26:29.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/YttcVYXYfcRTqnR6tXAC2B-1920-80.jpg",
    "summary": "See the most epic photos from SpaceX's Starship Flight 15 test flight and historic launch tower catch."
+  },
+  {
+   "title": "The iPhone Duo gets face unlock with the latest iOS 27 beta.",
+   "link": "https://www.engadget.com/2318489/iphone-duo-gets-face-unlock-with-the-latest-ios-27-beta/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T21:17:24.000Z",
+   "image": "https://www.engadget.com/img/gallery/the-iphone-duo-gets-face-unlock-with-the-latest-ios-27-beta/l-intro-1794863293.jpg",
+   "summary": "You won't need to wait for TouchID on your $2,000 foldable."
   },
   {
    "title": "Apple reveals new Mac security controls as AI agents raise privacy risks",
    "link": "https://techcrunch.com/2026/11/16/apple-reveals-new-mac-security-controls-as-ai-agents-raise-privacy-risks/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T21:01:02.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2024/11/CMC_8152.jpg?resize=1200,800",
    "summary": "Following an October announcement, Apple has detailed new permission controls, warnings, and transparency features coming to macOS 27.3 to address risks posed by AI agents and other apps."
+  },
+  {
+   "title": "Every Xbox console generation sorted by release date",
+   "link": "https://www.engadget.com/2314891/every-xbox-console-generation-sorted-release-date/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T21:00:00.000Z",
+   "image": "https://www.engadget.com/img/gallery/every-xbox-console-generation-sorted-by-release-date/l-intro-1794499952.jpg",
+   "summary": "Microsoft debuted the Xbox in 2001, and there's quite a lot to look back on from the quarter-century since the company got into gaming."
+  },
+  {
+   "title": "Customers at major banks report difficulty accessing accounts online",
+   "link": "https://www.engadget.com/2318431/customers-at-major-banks-report-difficulty-accessing-accounts-online/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T20:49:32.000Z",
+   "image": "https://www.engadget.com/img/gallery/customers-at-major-banks-report-difficulty-accessing-accounts-online/l-intro-1794862115.jpg",
+   "summary": "Representatives from the companies say this is a technical problem and not a cyberattack."
   },
   {
    "title": "California sues OpenAI over rogue AI hacking incidents",
    "link": "https://www.theverge.com/ai-artificial-intelligence/1034815/california-openai-hugging-face-lawsuit",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T20:46:01.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/STK155_OPEN_AI_4_CVirginia_D.png?quality=90&strip=all&crop=0,0,100,100",
    "summary": "California is suing OpenAI after its AI agents broke out of their testing environment and hacked other companies, including Hugging Face. In a lawsuit filed Monday, Attorney General Rob…"
@@ -159,8 +236,9 @@
    "link": "https://www.cs.cmu.edu/learn/",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T20:43:36.000Z",
-   "image": "",
+   "image": "https://www.cs.cmu.edu/site-images/gates_web.jpg",
    "summary": "Article URL: https://www.cs.cmu.edu/learn/ Comments URL: https://news.ycombinator.com/item?id=50522980 Points: 394 # Comments: 74"
   },
   {
@@ -168,6 +246,7 @@
    "link": "https://www.theverge.com/ai-artificial-intelligence/1034787/sam-altman-ram-shortage-semafor",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T20:41:28.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/04/gettyimages-1778705436.jpg?quality=90&strip=all&crop=0,0,100,100",
    "summary": "OpenAI CEO Sam Altman is once again addressing his controversial comments on PC RAM purchases. \"I want to be clear, I want people to have a lot of RAM, I think everybody should be able to…"
@@ -177,6 +256,7 @@
    "link": "https://arstechnica.com/tech-policy/2026/11/shareholders-sue-intel-its-ceo-and-cfo-after-stock-drops-28-6-percent-in-one-day/",
    "source": "Ars Technica",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-16T20:37:47.000Z",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2231573847-1024x648.jpg",
    "summary": "The PC sales slump \"more than offset” AI boom gains, shareholders say."
@@ -186,6 +266,7 @@
    "link": "https://www.theverge.com/gadgets/1034339/sony-black-friday-game-sale-2026-deals",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T20:36:14.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/EA-Sports-FC-27.png?quality=90&strip=all&crop=0,0,100,100",
    "summary": "Black Friday is approaching, and some companies are already rolling out the discounts ahead of the big day. If you’re hunting for PlayStation 5 accessories, we’ve already rounded up some of…"
@@ -195,6 +276,7 @@
    "link": "https://www.theverge.com/science/1034694/nuclear-energy-constellation-earnings-data-centers-democrats",
    "source": "The Verge",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T20:29:37.000Z",
    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/gettyimages-2227026671.jpg?quality=90&strip=all&crop=0,0,100,100",
    "summary": "Constellation Energy - America's largest operator of nuclear power plants - does not share Wall Street's concerns that the Democrats will slow down data center development. On the company's…"
@@ -204,6 +286,7 @@
    "link": "https://inc42.com/buzz/bombay-shaving-companys-parent-forays-into-wellness-with-re-eyes-gym-launches/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T20:24:08.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/11/BSC-FTR.jpg",
    "summary": "Visage Lines Personal Care Pvt Ltd, the parent entity of D2C grooming startup Bombay Shaving Company, has forayed into the…"
@@ -213,6 +296,7 @@
    "link": "https://blog.startifact.com/posts/how-rust-changed-me/",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T20:16:50.000Z",
    "image": "",
    "summary": "Article URL: https://blog.startifact.com/posts/how-rust-changed-me/ Comments URL: https://news.ycombinator.com/item?id=50522563 Points: 150 # Comments: 82"
@@ -222,8 +306,9 @@
    "link": "https://techcrunch.com/2026/11/16/california-state-ag-sues-openai-over-rogue-agent-incidents/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T20:07:13.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/11/1920px-Rob_Bonta_at_Central_Bay_Operations_and_Maintenance_Facility_opening_December_2018.jpeg?resize=1200,981",
    "summary": "The California lawsuit represents one of the first attempts to hold an AI lab legally accountable for a rogue agent incident."
   },
   {
@@ -231,15 +316,27 @@
    "link": "https://www.space.com/space-exploration/launches-spacecraft/elon-musk-says-spacexs-starship-already-the-largest-rocket-on-earth-will-get-even-bigger-with-next-gen-v4-model",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T20:04:22.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/3Fkrm7hcfY8Smci3nzStBA-1920-80.jpg",
    "summary": "Just a day after SpaceX caught the upper stage of its Starship megarocket back at the launch pad for the first time ever, Elon Musk told us that the spacecraft will get even bigger."
+  },
+  {
+   "title": "Outlook outage: On Microsoft and dangers of centralising digital systems",
+   "link": "https://www.thehindu.com/opinion/editorial/outlook-outage-the-hindu-editorial-on-microsoft-and-dangers-of-centralising-systems/article71708179.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T20:00:40.000Z",
+   "image": "https://www.thehindu.com/static/content/images/20260921062859/editorialLeadImg.jpg",
+   "summary": "The dangers of centralising the internet’s architecture are now clear"
   },
   {
    "title": "Best Early Black Friday Espresso Machine Deals (2026)",
    "link": "https://www.wired.com/story/early-black-friday-coffee-espresso-deals-11-16-2026/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T20:00:00.000Z",
    "image": "https://media.wired.com/photos/6afb4cc16a1af442b6a49972/master/pass/Update--Best-Early-Black-Friday-Espresso-Machine-Deals.jpg",
    "summary": "Impress your Thanksgiving guests with a cappuccino. These early deals on WIRED-tested favorites leave you time to practice."
@@ -249,17 +346,39 @@
    "link": "https://techcrunch.com/2026/11/16/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T19:53:00.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/11/uber-breach-2288234319.jpg?resize=1200,820",
    "summary": "The ride-sharing giant said driver's license information stored by AI cloud company Fireworks AI was stolen during a security incident."
+  },
+  {
+   "title": "California sues OpenAI after that Hugging Face rogue hacking incident",
+   "link": "https://www.engadget.com/2318268/california-sues-openai-after-hugging-face-rogue-hacking-incident/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T19:52:24.000Z",
+   "image": "https://www.engadget.com/img/gallery/california-sues-openai-after-that-hugging-face-rogue-hacking-incident/l-intro-1794858677.jpg",
+   "summary": "State AG Rob Bonta has accused the company of making AI agents \"without the safeguards and monitoring necessary to adequately protect\" users."
+  },
+  {
+   "title": "Which Google Pixel phone is most similar to the Galaxy S26+?",
+   "link": "https://www.engadget.com/2314824/google-pixel-phone-most-similar-to-galaxy-s26-plus/",
+   "source": "Engadget",
+   "topic": "Gadgets",
+   "region": "World",
+   "date": "2026-11-16T19:30:00.000Z",
+   "image": "https://www.engadget.com/img/gallery/which-google-pixel-phone-is-most-similar-to-the-galaxy-s26/l-intro-1794486626.jpg",
+   "summary": "Trying to choose between the Google Pixel 11 Pro and Samsung Galaxy S26+? We break down the specs, cameras and prices to help find the best one for you."
   },
   {
    "title": "Apple adds ‘face unlock’ to the iPhone Duo, but it’s not Face ID",
    "link": "https://techcrunch.com/2026/11/16/apple-adds-face-unlock-to-the-iphone-duo-but-its-not-face-id/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T19:26:55.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/09/iPhone-duo.jpeg?resize=1200,675",
    "summary": "Apple's latest iOS 27.3 developer beta introduces a limited face unlock feature for the iPhone Duo, alongside other improvements."
   },
   {
@@ -267,8 +386,9 @@
    "link": "https://techcrunch.com/2026/11/16/trump-says-ex-nvidia-ceo-jensen-huangs-affair-with-an-alleged-chinese-spy-did-not-threaten-national-security/",
    "source": "TechCrunch",
    "topic": "Startups & business",
+   "region": "World",
    "date": "2026-11-16T19:12:02.000Z",
-   "image": "",
+   "image": "https://techcrunch.com/wp-content/uploads/2026/10/GettyImages-2297572109.jpg?w=1024",
    "summary": "Trump contradicted his own government's intelligence officials, who reportedly concluded that Alice Huang is a Chinese spy."
   },
   {
@@ -276,6 +396,7 @@
    "link": "https://www.space.com/space-exploration/voyager/what-exactly-is-a-light-day-heres-what-voyager-1s-latest-milestone-means-for-the-interstellar-probe",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T19:00:00.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/V2VwaZ35KwrhuT5CZCWXhR-1920-80.jpg",
    "summary": "Voyager 1 is approaching a distance of one light-day from Earth, a milestone that highlights the enormous distances involved in deep-space exploration."
@@ -285,6 +406,7 @@
    "link": "https://inc42.com/buzz/dreamteam-bags-53-mn-to-disrupt-the-crm-space-with-ai/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T18:50:27.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/11/dreamteam-funding-featured.png",
    "summary": "AI-native customer relationship management (CRM) platform Dreamteam, cofounded by former Freshworks executives, has emerged out of stealth mode. The startup…"
@@ -294,8 +416,9 @@
    "link": "https://www.technologyreview.com/2026/11/16/1148624/the-open-source-movement-wants-jensen-huang-back/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-16T18:38:47.000Z",
-   "image": "",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/11/AP26289708196110.jpg?resize=1200,600",
    "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. On Friday, a petition to reinstate Jensen Huang as…"
   },
   {
@@ -303,6 +426,7 @@
    "link": "https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T18:31:30.000Z",
    "image": "",
    "summary": "Article URL: https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda Comments URL: https://news.ycombinator.com/item?id=50521045 Points: 680 #…"
@@ -312,6 +436,7 @@
    "link": "https://www.wired.com/story/iphone-duo-is-getting-a-limited-version-of-face-id/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T18:26:26.000Z",
    "image": "https://media.wired.com/photos/6ada893690bbef8397f3e8ae/master/pass/DSC_9451.jpg",
    "summary": "Originally launching only with Touch ID, Apple’s folding phone now borrows a feature from the new HomeView and can recognize your mug, but it’s likely not as secure as Face ID."
@@ -321,17 +446,29 @@
    "link": "https://www.space.com/space-exploration/artemis/maybe-the-scariest-thing-ive-heard-in-my-life-artemis-ii-astronaut-victor-glover-reveals-his-toughest-challenge-before-flying-to-the-moon",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T18:00:00.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/BUmVWRPLd5qnr8PFhBmTw-1920-80.jpg",
    "summary": "For Artemis II astronaut Victor Glover, one of the hardest parts of traveling to the moon happened before he even left Earth."
+  },
+  {
+   "title": "Trump says ‘would not mind’ Huang being reinstated at Nvidia",
+   "link": "https://www.thehindu.com/news/international/trump-says-would-not-mind-huang-being-reinstated-at-nvidia/article71709259.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T17:49:15.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/2mpu4a/article71709271.ece/alternates/LANDSCAPE_1200/2026-11-16T162329Z_2005700223_RC27ZNAB2UCN_RTRMADP_3_USA-TRUMP-NVIDIA.JPG",
+   "summary": "Trump said Jensen Huang ‘learned a big lesson’ and he ‘would certainly not mind’ if he was reinstated, while adding that there’s a ‘big group of people that would like him to return’"
   },
   {
    "title": "Grazing sheep in fields with solar arrays",
    "link": "https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T17:27:46.000Z",
-   "image": "",
+   "image": "https://news.cornell.edu/sites/default/files/styles/story_thumbnail_lg/public/2026-10/2026_1407_aer_009-n.jpg?itok=01dhmnjw",
    "summary": "Article URL: https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains Comments URL: https://news.ycombinator.com/item?id=50520182 Points:…"
   },
   {
@@ -339,6 +476,7 @@
    "link": "https://www.space.com/stargazing/meteor-showers/the-leonid-meteor-shower-peaks-nov-17-18-heres-what-you-need-to-know",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T17:00:00.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/NAsZfCfCmdo4HYro9w4Qfb-1920-80.jpg",
    "summary": "The Leonid meteor shower peaks overnight on Nov. 17-18, sending shooting stars racing across the night sky from the direction of the constellation Leo."
@@ -348,6 +486,7 @@
    "link": "https://www.wired.com/story/instagram-is-bringing-amazon-affiliate-links-directly-to-reels-and-posts/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T17:00:00.000Z",
    "image": "https://media.wired.com/photos/6af7ae201244c1a16020acc3/master/pass/Instagram-Users-Can-Expect-Avalanche-on-Amazon-Affiliate-Posts-Gear.jpg",
    "summary": "The Meta-owned social media platform now lets creators attach up to 30 affiliate links per Reel to make money from Amazon more easily."
@@ -357,6 +496,7 @@
    "link": "https://burntsushi.net/jiff/",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T16:53:39.000Z",
    "image": "",
    "summary": "Article URL: https://burntsushi.net/jiff/ Comments URL: https://news.ycombinator.com/item?id=50519744 Points: 281 # Comments: 65"
@@ -366,6 +506,7 @@
    "link": "https://www.wired.com/story/ao3-is-back-this-is-not-a-drill/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T16:40:33.000Z",
    "image": "https://media.wired.com/photos/6afb1b61fd92a97bc81f1a8d/master/pass/111626-AO3%20Back%20Online.jpg",
    "summary": "Following a weeks-long shutdown, the home to over 18 million works of fan fiction is back online, with some limitations."
@@ -375,8 +516,9 @@
    "link": "https://trmnl.com/blog/introducing-frame",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T16:23:22.000Z",
-   "image": "",
+   "image": "https://trmnl-public.s3.us-east-2.amazonaws.com/zzswly4kqlbg9cqf982toa8anyeg",
    "summary": "Article URL: https://trmnl.com/blog/introducing-frame Comments URL: https://news.ycombinator.com/item?id=50519354 Points: 264 # Comments: 176"
   },
   {
@@ -384,6 +526,7 @@
    "link": "https://inc42.com/features/oil-cools-but-d2c-brands-see-no-way-out-of-price-hikes/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T16:20:51.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/11/D2C-Input-cost-Feature-ftr.jpg",
    "summary": "Direct-to-consumer (D2C) startups have been facing mounting cost pressures since the US-Iran conflict drove up global crude prices, making it…"
@@ -393,6 +536,7 @@
    "link": "https://www.wired.com/story/the-big-interview-podcast-lauren-goode-jensen-huang/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T16:12:51.000Z",
    "image": "https://media.wired.com/photos/6af78c75239676948e926fc2/master/pass/Big-Interview-UV-Solo-Katie-Lauren-Business.jpg",
    "summary": "After a shocking downfall, Nvidia’s CEO is out of a job. WIRED’s Lauren Goode explains what that means for the world’s most critical chip company, the AI industry, and Jensen Huang himself."
@@ -402,6 +546,7 @@
    "link": "https://www.technologyreview.com/2026/11/16/1148565/building-trustworthy-ai-by-fencing-it-in-not-predicting-it/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-16T16:04:28.000Z",
    "image": "https://wp.technologyreview.com/wp-content/uploads/2026/11/BA5098150_Post-NEXUS_MIT_1920x1080.jpg?w=840",
    "summary": "In October this year, OpenAI disclosed that two of its AI agents had switched off the systems built to monitor them. One muted its own safety alerts after misreading an instruction not to…"
@@ -411,6 +556,7 @@
    "link": "https://www.space.com/space-exploration/satellites/could-there-be-an-ancient-alien-satellite-in-earths-orbit-how-the-black-knight-conspiracy-theory-has-survived-for-over-100-years",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T16:00:00.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/of5F852CDzKzs3wwHFrPxR-1920-80.jpg",
    "summary": "The legend of the Black Knight satellite offers an example of how a collection of unconnected events and speculative interpretations can accumulate into a single conspiracy theory over…"
@@ -420,6 +566,7 @@
    "link": "https://www.wired.com/story/data-centers-use-more-electricity-than-michigan/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T16:00:00.000Z",
    "image": "https://media.wired.com/photos/6af711ad797722e005ec2bb9/master/pass/111326-Michigan%20400%20Data%20Centers.jpg",
    "summary": "New Harvard research shows that data-center power demand is outstripping states—and that doesn’t even include facilities with off-grid gas plants."
@@ -429,6 +576,7 @@
    "link": "https://inc42.com/buzz/fractal-eyes-ai-acquisitions-ahead-of-enterprise-ai-scale-up/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T15:34:00.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/fractal-ftr-1.jpg",
    "summary": "Fractal Analytics is evaluating acquisitions across healthcare, agentic AI and AI engineering as it looks to strengthen its capabilities ahead…"
@@ -438,8 +586,9 @@
    "link": "https://www.infoq.com/news/2026/11/java-news-roundup-nov09-2026/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T15:25:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/news/2026/11/java-news-roundup-nov09-2026/en/headerimage/java-news-roundup-image-1794842460564.jpg",
    "summary": "<img src=\"https://res.infoq.com/news/2026/11/java-news-roundup-nov09-2026/en/headerimage/java-news-roundup-image-1794842460564.jpg\"/><p>This week's Java roundup for November 9th, 2026,…"
   },
   {
@@ -447,6 +596,7 @@
    "link": "https://www.space.com/astronomy/comets/euclid-discovers-its-1st-comet-space-photo-of-the-day-for-nov-16-2026",
    "source": "Space.com",
    "topic": "Science & space",
+   "region": "World",
    "date": "2026-11-16T15:00:00.000Z",
    "image": "https://cdn.mos.cms.futurecdn.net/f9ETjaXCDDnRXBGg7qwLYK-1920-80.jpg",
    "summary": "The new observatory managed to catch this comet whirling between the orbits of Jupiter and Saturn."
@@ -456,8 +606,9 @@
    "link": "https://www.infoq.com/news/2026/11/uber-legal-redlining-agent/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T14:37:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/news/2026/11/uber-legal-redlining-agent/en/card_header_image/generatedCard-1792903461277.jpg",
    "summary": "<img src=\"https://www.infoq.com/styles/static/images/logo/logo_bigger.jpg\"/><p>Uber’s Legal Redlining Agent reviews contract changes in Microsoft Word using RAG, historical lawyer feedback,…"
   },
   {
@@ -465,6 +616,7 @@
    "link": "https://inc42.com/buzz/cert-in-flags-fresh-vulnerabilities-in-emudhras-embridge-tool/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T14:33:24.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/11/Cyberattack-ft.png",
    "summary": "CERT-In (Indian Computer Emergency Response Team) has now flagged new security flaws in eMudhra’s digital signature utility unit, emBridge, weeks…"
@@ -474,15 +626,47 @@
    "link": "https://inc42.com/buzz/karnataka-halts-green-sm-taxi-licensing-to-protect-local-interest/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T14:24:09.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/Green-SM-ftr.jpg",
    "summary": "The Karnataka government has reportedly halted the registration of new taxis operated by Vingroup-backed Green SM days after clearing its…"
+  },
+  {
+   "title": "Samsung Galaxy S27 Series Leaked Lens Protectors Suggest Redesigned Camera Islands",
+   "link": "https://www.gadgets360.com/mobiles/news/samsung-galaxy-s27-series-leaked-lens-protectors-suggest-two-different-rear-camera-designs-12334492",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T14:08:55.000Z",
+   "image": "https://i.gadgets360cdn.com/large/samsung_galaxy_s26_ultra_gadgets360_1772027749391.jpg",
+   "summary": "Images of camera lens protectors offer clues about the rear design of Samsung’s upcoming flagship phones. The standard Galaxy S27 and S27+ are tipped to retain three vertically arranged…"
+  },
+  {
+   "title": "Oppo Watch 5 Launched With 3,000 Nits Brightness, Up to 10 Days of Battery Life: Price, Features",
+   "link": "https://www.gadgets360.com/wearables/news/oppo-watch-5-price-launch-availability-specifications-features-12334307",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T14:07:26.000Z",
+   "image": "https://i.gadgets360cdn.com/large/oppo_watch_5_oppo_1794834130927.jpg",
+   "summary": "The Oppo Watch 5 comes with a 351mAh battery that is claimed to deliver up to 10 days of use in its long battery life mode. It also offers NFC payments, Bluetooth 5.2 connectivity and…"
+  },
+  {
+   "title": "JPMorgan and DBS Bring 24/7 Tokenised Dollar Payments to US-Singapore Corridor",
+   "link": "https://www.gadgets360.com/cryptocurrency/news/jpmorgan-and-dbs-bring-24-7-tokenised-dollar-payments-to-us-singapore-corridor-crypto-tokenisation-crypto-transfers-regulations-12334109",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T14:05:31.000Z",
+   "image": "https://i.gadgets360cdn.com/large/jpmorgan_dbs_introduced_tokenised_payments_mariiaberezovsky_unsplash_main_1794832656468.png",
+   "summary": "JPMorgan’s Kinexys and DBS have launched a service allowing institutional clients to transfer tokenised US dollar deposits between Singapore and the US around the clock. The integration…"
   },
   {
    "title": "Can Robots Bring Stroke Surgery to Remote Hospitals?",
    "link": "https://spectrum.ieee.org/telesurgery-stroke",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-16T14:00:02.000Z",
    "image": "https://spectrum.ieee.org/media-library/remedy-robotics-n1-prototype-console-lower-left-sits-ready-to-guide-a-catheter-through-blood-vessels-using-a-ct-scan-overlai.jpg?id=68671534&width=980",
    "summary": "I am practicing brain surgery on a patient lying 6 meters away, out of my sight and reach. I press a foot pedal, activating the controller in my hand, and carefully steer a thin flexible…"
@@ -492,6 +676,7 @@
    "link": "https://thehackernews.com/2026/11/google-finds-hackers-using-ai-agents-to.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T14:00:00.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpEBmKLWFpEn8sSoJLtj1ZR7FPMd8GxxKN2v4IzyBkydma_g4gXzaWEEkK5CTPwidrBPw6QPdoByiEC14ufVP2pvezWKtH_dmqHttARDKzDOopkw0vzUdTYZubCh9Qy76nlmVSbhtTSvDOuT1c70E4TVPw8T4hUhMdR-saHjQPW1S9IZNmg2_RfsMsmJLb/s1600/google.jpg",
    "summary": "Google on Monday revealed that adversarial use of artificial intelligence (AI) by threat actors has gone beyond manual prompting to deploying autonomous multi-agent offensive frameworks…"
@@ -501,6 +686,7 @@
    "link": "http://groundworkcollaborative.org/news/amazons-decoy-deals-groundwork-investigation-reveals-nearly-1-in-3-black-friday-and-cyber-monday-deals-advertised-by-amazon-offered-no-savings-to-shoppers-nearly-1-in-10-w/",
    "source": "Hacker News (top)",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T13:39:07.000Z",
    "image": "",
    "summary": "Article URL:…"
@@ -510,6 +696,7 @@
    "link": "https://www.bbc.co.uk/news/articles/cq99exy89dngo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T13:34:22.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/30e7/live/e63476a0-e1ee-11f1-99b6-a35a62fa4264.jpg",
    "summary": "21-year-old Arion Kurtaj pleaded guilty to the Rockstar Games hack and others he carried out when he was a teenager."
@@ -519,6 +706,7 @@
    "link": "https://thehackernews.com/2026/11/weekly-recap-n-able-0-days-windows-0.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T13:27:20.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMhM3PBYlJasSU7OztYuQsJDnDRFYwqV1-X9Nt1mTlAhFe0YQXSr0XrdCfo47u2DGAE8qSNw32LuPlMxoeTOBjakeXiHpHjFSXw7rsy8FdCldY2E6MuX9uKGM2McoGsaXUGDY2MYBsRAGXUDMGqzkT4wWlEezGDQho_f7d6MYNG2HAeW9FKeldRJrh0kj3/s1600/recaps.jpg",
    "summary": "A default password opened doors it never should have. A trusted update delivered malware. Even a security feature became a way to break in. Different stories, same problem: the things meant…"
@@ -528,6 +716,7 @@
    "link": "https://www.technologyreview.com/2026/11/16/1148599/the-download-testing-tech-promises-cognitive-immortality-quest/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-16T13:10:00.000Z",
    "image": "https://wp.technologyreview.com/wp-content/uploads/2025/09/0924f.png?fit=2128,1196",
    "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Are we there yet? Six technologies that promised to…"
@@ -537,8 +726,9 @@
    "link": "https://www.technologyreview.com/2026/11/16/1146070/building-ai-that-can-work-across-the-enterprise/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-16T13:00:00.000Z",
-   "image": "",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/10/MITTRInfosysSAP-social-card.png?resize=1200,600",
    "summary": "For years, enterprises have approached AI as a series of discrete experiments. Now, as AI agents begin to move into the workflows that run the business, that model is starting to look…"
   },
   {
@@ -546,6 +736,7 @@
    "link": "https://thehackernews.com/2026/11/six-unpatched-danfoss-refrigeration.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T12:34:21.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_1GngZ38pRRizZTrhUgdWx49U1Dk8N_Y1Wkfll2kXIjAeYMmX2R69d6OBvA9k-zb6rnYbNOZyouN9yj59QIlT8XxiTzmmhLTmwmEdU2bqiGc_XoSMlvKKN1qZtH3o73YN1miGEhR4vkDniji2WkWOHjSPPIn69ysWKPkFzr504FsViG2NQYxPDkD7sgw/s1600/flaws.jpg",
    "summary": "Six flaws in Danfoss AK-SM800A refrigeration controllers could let a remote attacker take over a controller without logging in, Dutch security consultancy Midnight Blue said earlier this…"
@@ -555,6 +746,7 @@
    "link": "https://thehackernews.com/2026/11/retadup-worm-resurfaces-7-years-after.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T12:33:18.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxRuwbdQU-KyBsSrFlIZp4oczr_tJu53WrfB3nM6QYrO7kFgGAZO1NMSi7mziUOUaTrzq5C4KzCJqvYOf0Ry19ypJac-9mBYzYiqiTNl462i1uYo7DF9aAHxiVU_IOaByH3NtNlrF0hUhZtpItADKJauPVzWrz8r6YOQEHQrt_YiAmPba4CIOsSjZA2Wy_/s1600/hacker-code.jpg",
    "summary": "Cybersecurity researchers have disclosed details of a new variant of CoffeeLoader, a malware designed to deliver additional payloads to infected machines. \"On launch, the NSIS-based…"
@@ -564,8 +756,9 @@
    "link": "https://www.medianama.com/2026/11/223-paytm-wallet-rbis-payments-bank/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T12:26:48.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2018/03/Paytm-money-e1520403891838.jpeg.jpeg",
    "summary": "The RBI has granted Paytm in-principle approval to revive its wallet business, but the company must complete cybersecurity audits and meet regulatory conditions before resuming operations.…"
   },
   {
@@ -573,35 +766,129 @@
    "link": "https://www.infoq.com/news/2026/11/airbnb-castle/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T12:25:00.000Z",
-   "image": "",
+   "image": "https://cdn.infoq.com/statics_s1_20261112091217/styles/static/images/logo/logo-big.jpg",
    "summary": "<img src=\"https://www.infoq.com/styles/static/images/logo/logo_bigger.jpg\"/><p>Airbnb researchers have introduced CASTLE, a framework designed to address the cold-start problem in natural…"
+  },
+  {
+   "title": "Oppo Reno 17 Pro With Dimensity 8550 Super Chip Launched Alongside Reno 17: Price, Specifications",
+   "link": "https://www.gadgets360.com/mobiles/news/oppo-reno-17-pro-price-launch-sale-features-specifications-12333939",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T12:21:42.000Z",
+   "image": "https://i.gadgets360cdn.com/large/oppo_reno_17_series_1794831566827.jpg",
+   "summary": "The Oppo Reno 17 series was launched in China on Monday. The latest lineup comprises two models — Oppo Reno 17 and Reno 17 Pro. Both models feature dedicated chips for touch response and…"
+  },
+  {
+   "title": "Oppo Pad Air 6 Launched With 12.1-Inch Display and 10,050mAh Battery: Price, Specifications",
+   "link": "https://www.gadgets360.com/tablets/news/oppo-pad-air-6-price-launch-sale-date-specifications-features-12333886",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T12:12:43.000Z",
+   "image": "https://i.gadgets360cdn.com/large/oppo_pad_air_6_main_1794829872213.png",
+   "summary": "Oppo Pad Air 6 has been launched in China as the latest addition to the company's tablet lineup. It is offered in Encounter Blue and Starlight Silver (translated from Chinese) colour…"
   },
   {
    "title": "Best Digital Photo Frames (2026): Aura, Skylight, Amazon",
    "link": "https://www.wired.com/story/best-digital-photo-frames/",
    "source": "Wired",
    "topic": "Gadgets",
+   "region": "World",
    "date": "2026-11-16T12:01:00.000Z",
    "image": "https://media.wired.com/photos/6af7e6c419af9e663f54144d/master/pass/My-Favorite-Home-Gadget-Is-Still-a-Digital-Photo-Frame.jpg",
    "summary": "There are more digital photo frames than ever these days. After years of testing, these are the ones I’d buy."
+  },
+  {
+   "title": "Bitcoin Mining Rewards Stolen After Hackers Hijack Mining Operations",
+   "link": "https://www.gadgets360.com/cryptocurrency/news/bitcoin-mining-rewards-stolen-after-hackers-hijack-mining-operations-crypto-frauds-scams-hacks-exploits-12333885",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:55:58.000Z",
+   "image": "https://i.gadgets360cdn.com/large/bitcoin_mining_rewards_stolen_shubhamdhage_unsplash_main_1794830182405.png",
+   "summary": "Luxor Mining Services will compensate customers affected by an attack that redirected their computing resources through its Commander software. Around a dozen accounts were affected, and…"
+  },
+  {
+   "title": "Xiaomi Reportedly Raises Redmi Smartphone Prices in India by Up to Rs 4,000",
+   "link": "https://www.gadgets360.com/mobiles/news/xiaomi-raises-redmi-smartphone-prices-in-india-by-up-to-rs-4000-12333871",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:55:18.000Z",
+   "image": "https://i.gadgets360cdn.com/large/redmi_note_17_main_big_gadgets_360_1786449067996.jpg",
+   "summary": "Xiaomi has revised the prices of 19 Redmi smartphone variants in India, with the changes taking effect on November 16. According to a recent report, the increases range from Rs. 1,000 to…"
   },
   {
    "title": "Fake Allahabad HC Order Row: DoT Orders Unblocking Of 95 Websites",
    "link": "https://inc42.com/buzz/fake-allahabad-hc-order-row-dot-orders-unblocking-of-95-websites/",
    "source": "Inc42",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T11:53:22.000Z",
    "image": "https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2025/02/High-Court-min-2.jpg",
    "summary": "The Department of Telecommunications (DoT) has directed internet service providers (ISPs) to immediately unblock 95 websites and domains that were…"
+  },
+  {
+   "title": "5 lessons from Here, There and Everywhere by Sudha Murty",
+   "link": "https://yourstory.com/2026/11/lessons-sudha-murty",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:50:00.000Z",
+   "image": "https://images.yourstory.com/cs/2/ba6b0930e8cd11edbf1c2f9de7fdeb77/SHERLOCKHOLMES-2026-11-13T010109-1794511893328.png",
+   "summary": "Discover five meaningful lessons from Here, There and Everywhere by Sudha Murty on kindness, humility, relationships, gratitude, and simple living."
+  },
+  {
+   "title": "Air purifier maintenance: How to clean pre-filters, HEPA filters, and dust sensors",
+   "link": "https://indianexpress.com/article/technology/tech-news-technology/air-purifier-maintenance-filter-cleaning-tips-10965367/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:24:36.000Z",
+   "image": "https://images.indianexpress.com/2026/11/Tech-featured-image40.jpg",
+   "summary": ""
+  },
+  {
+   "title": "Pixel Drop Secretly Adds WhatsApp Message Notification HiLight Support to PIxel 11 Pro Series",
+   "link": "https://www.gadgets360.com/mobiles/news/pixel-11-pro-highlight-allows-whatsapp-messages-notifications-pixel-drop-12333464",
+   "source": "Gadgets 360",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:18:53.000Z",
+   "image": "https://i.gadgets360cdn.com/large/google_pixel_11_pro_fold_design_gadgets_360_1793192307903.jpg",
+   "summary": "Google announced a new HiLight hardware feature with the launch of its Pixel 11 Pro series. The feature which works like a traditional LED notification light has not been received very well…"
+  },
+  {
+   "title": "5 lessons from The Life That's Waiting by Brianna Wiest",
+   "link": "https://yourstory.com/2026/11/lessons-brianna-wiest",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:15:55.000Z",
+   "image": "https://images.yourstory.com/cs/2/ba6b0930e8cd11edbf1c2f9de7fdeb77/SHERLOCKHOLMES-2026-11-13T011201-1794512545766.png",
+   "summary": "Discover five meaningful lessons from The Life That's Waiting by Brianna Wiest on self-discovery, emotional healing, happiness, and personal growth."
+  },
+  {
+   "title": "Fractal in talks with up to 25 AI startups for acquisitions, CEO says",
+   "link": "https://economictimes.indiatimes.com/tech/artificial-intelligence/fractal-in-talks-with-up-to-25-ai-startups-for-acquisitions-ceo-says/articleshow/135886057.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T11:10:39.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-1179193,resizemode-75,msid-135886057/tech/artificial-intelligence/fractal-in-talks-with-up-to-25-ai-startups-for-acquisitions-ceo-says.jpg",
+   "summary": "Enterprise AI firm Fractal Analytics is actively talking to 20 to 25 startups to potentially acquire them, its CEO told Reuters, as it seeks to deepen its vertical-specific capabilities and…"
   },
   {
    "title": "Karnataka HC refuses to quash case against Razorpay directors over alleged KYC, monitoring, and merchant onboarding lapses",
    "link": "https://www.medianama.com/2026/11/223-karnataka-hc-razorpay-kyc-merchant-onboarding-lapses/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T11:08:10.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2020/10/Razorpay-Website.png.png",
    "summary": "The Karnataka High Court has refused to quash SFIO proceedings against Razorpay directors Harshil Mathur and Shashank Kumar over alleged lapses in merchant onboarding, KYC checks and due…"
   },
   {
@@ -609,6 +896,7 @@
    "link": "https://event.on24.com/wcc/mr/7058967/655F0A675F5C3415546D597247025DA8?utm_source=evident122&utm_medium=IEEE&utm_campaign=series1",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-16T11:00:03.000Z",
    "image": "https://assets.rbl.ms/68617442/origin.png",
    "summary": "In advanced semiconductor manufacturing, small defects can have a large effect on yield. Thin film deposition tools must stay stable and qualified. Process drift must be caught early. When…"
@@ -618,8 +906,9 @@
    "link": "https://www.infoq.com/articles/utility-governed-autonomous-intelligence-ai/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T11:00:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/articles/utility-governed-autonomous-intelligence-ai/en/headerimage/utility-governed-autonomous-intelligence-ai-header-1793368487796.jpg",
    "summary": "<img src=\"https://res.infoq.com/articles/utility-governed-autonomous-intelligence-ai/en/headerimage/utility-governed-autonomous-intelligence-ai-header-1793368487796.jpg\"/><p>The article…"
   },
   {
@@ -627,17 +916,29 @@
    "link": "https://www.infoq.com/podcasts/company-closer-digital-sovereignty/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T11:00:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/podcasts/company-closer-digital-sovereignty/en/card_header_image/twitter-card-1794318137932.jpg",
    "summary": "<img src=\"https://res.infoq.com/podcasts/company-closer-digital-sovereignty/en/smallimage/infoq-podcast-500-1794318137932.jpg\"/><p>In this episode, Christopher \"CRob\" Robinson, CTO of…"
+  },
+  {
+   "title": "Jordan blocks Telegram app over national security concerns",
+   "link": "https://www.thehindu.com/sci-tech/technology/jordan-blocks-telegram-app-over-national-security-concerns/article71707574.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T10:41:50.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/8kbbyu/article71707601.ece/alternates/LANDSCAPE_1200/2026-08-04T035545Z_1194001971_RC2UWLAL7PHC_RTRMADP_3_APPLE-TELEGRAM.JPG",
+   "summary": "The decision comes after a ⁠rare deadly church attack last month killed nine people and prompted airstrikes on neighbouring Syria that ​Jordan said ‌killed 20 Islamic State militants"
   },
   {
    "title": "AWS Open-Sources Emulator for Local Testing of 200+ Services by Coding Agents",
    "link": "https://www.infoq.com/news/2026/11/aws-emulator-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T10:40:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/news/2026/11/aws-emulator-agents/en/headerimage/generatedHeaderImage-1794516406278.jpg",
    "summary": "<img src=\"https://res.infoq.com/news/2026/11/aws-emulator-agents/en/headerimage/generatedHeaderImage-1794516406278.jpg\"/><p>AWS Emulator is a generally available local HTTPS endpoint,…"
   },
   {
@@ -645,60 +946,207 @@
    "link": "https://www.infoq.com/news/2026/11/github-pull-requests-rebuild/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T10:32:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/news/2026/11/github-pull-requests-rebuild/en/headerimage/generatedHeaderImage-1794747791339.jpg",
    "summary": "<img src=\"https://res.infoq.com/news/2026/11/github-pull-requests-rebuild/en/headerimage/generatedHeaderImage-1794747791339.jpg\"/><p>GitHub engineers rebuilt the diff view in the Copilot…"
+  },
+  {
+   "title": "IBM investing $3 billion annually in India, plans $10 billion global quantum push: CEO",
+   "link": "https://economictimes.indiatimes.com/tech/technology/ibm-investing-3-billion-annually-in-india-plans-10-billion-global-quantum-push-ceo/articleshow/135884070.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T10:30:25.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-62102,resizemode-75,msid-135884070/tech/technology/ibm-investing-3-billion-annually-in-india-plans-10-billion-global-quantum-push-ceo.jpg",
+   "summary": "AI could displace 10-20% of jobs over the next decade, with the business process outsourcing (BPO) industry likely to face some of the biggest reductions in employment, Krishna said,…"
+  },
+  {
+   "title": "UK regulator orders tougher action on child abuse material ahead of next year's social media ban",
+   "link": "https://www.thehindu.com/sci-tech/technology/uk-regulator-orders-tougher-action-on-child-abuse-material-ahead-of-next-years-social-media-ban/article71707526.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T10:28:33.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/jur51k/article71707555.ece/alternates/LANDSCAPE_1200/2026-10-05T152115Z_676591373_RC2OPJAGVIS7_RTRMADP_3_BRITAIN-COURT-META-TIKTOK-OFCOM.JPG",
+   "summary": "It will ​also require them ‌to expand the use of technology to detect and remove known illegal images, and in some cases, deploy ‌automated tools to identify previously ​unknown content"
   },
   {
    "title": "NPCI launches MDR-funded scheme to further UPI adoption among small merchants: Why it matters",
    "link": "https://www.medianama.com/2026/11/223-npci-upi-mdr-vyapaar-saksham-scheme/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T10:17:01.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2025/02/UPI.jpg",
    "summary": "NPCI has earmarked 30% of the scheme's funds for onboarding new small merchants and 50% for increasing UPI transactions. The post NPCI launches MDR-funded scheme to further UPI adoption…"
+  },
+  {
+   "title": "Chip tensions loom over Trump-Xi summit, as US and China push AI safety steps",
+   "link": "https://www.thehindu.com/sci-tech/technology/chip-tensions-loom-over-trump-xi-summit-as-us-and-china-push-ai-safety-steps/article71707485.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T10:12:50.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/ohog4p/article71707513.ece/alternates/LANDSCAPE_1200/2026-11-16T050017Z_1961959179_RC2BPNARGS9W_RTRMADP_3_APEC-SUMMIT-TRUMP.JPG",
+   "summary": "The meeting on Thursday comes days after Nvidia co-founder Jensen Huang, who starred at the US-China summit in Busan a year ago promoting chip sales, resigned following reports of an affair…"
   },
   {
    "title": "28 Zero-Day Findings in Under Two Days. Is Robotics Security Keeping Pace?",
    "link": "https://spectrum.ieee.org/zero-day-robotics-vulnerabilities-vicone-security",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-16T10:00:01.000Z",
    "image": "https://spectrum.ieee.org/media-library/humanoid-and-dog-robots-watch-a-massive-swirling-storm-over-a-modern-city-walkway.jpg?id=68562173&width=980",
    "summary": "This article is brought to you by VicOne . VicOne identified an initial set of 28 zero-day findings in less than two days using AI-assisted research across software and tools supporting the…"
+  },
+  {
+   "title": "Apple could debut first-ever smart glasses in June 2027: What we know so far",
+   "link": "https://indianexpress.com/article/technology/tech-news-technology/apple-debut-first-smart-glasses-in-june-2027-report-10965255/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T09:49:54.000Z",
+   "image": "https://images.indianexpress.com/2026/04/Tech-Daily-14.jpg",
+   "summary": ""
   },
   {
    "title": "Companies can now apply to become consent managers under the DPDP Act. Who will approve them?",
    "link": "https://www.medianama.com/2026/11/223-companies-consent-managers-dpdp-act/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T09:43:28.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2025/06/consent-management.jpg",
    "summary": "MeitY Secretary launched the application portal for the companies to register as consent managers under DPDP Act and the press release said the Board \"will assess the applications against…"
+  },
+  {
+   "title": "From funding with own college fees to 1,000+ beds: how oho Living won Tier-2",
+   "link": "https://yourstory.com/2026/11/oho-living-tier-2-managed-rental-housing-startup-founder-story",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T09:40:19.000Z",
+   "image": "https://images.yourstory.com/cs/2/1a70b4f0170611edbdd8b5d28d859895/UntitledDesign47-1794821792349.jpg",
+   "summary": "oho Living, a Tier-2 managed rental startup, grew revenue 25x after its worst year and now runs 1,032 beds across six cities."
   },
   {
    "title": "SANSAR Linux Cryptomining Malware Uses Modified NVIDIA Library to Hide GPU Activity",
    "link": "https://thehackernews.com/2026/11/sansar-linux-cryptomining-malware-uses.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T09:32:57.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmpR04waLSDZNCb2048kfy5iSlIXa_Ek3PI5qLRaBksxvyI9k_8Z6bwl6Og4Mc-AGqmHcpL7YlYVd48895FJtKlOoaqgi658-H3FZTxdjf_w32w5eJYzm_BUdXlH7M7Vb40uPUI73CDbXtQCdZAEkFruSBXvc0_B84hCQ-em0ZQk2uTIIHxRdGCxQ6bx1C/s1600/nv.jpg",
    "summary": "A financially motivated threat activity cluster tracked as REF3364 has been attributed to a Linux-focused cryptocurrency mining operation that tampers with the readings used to detect high…"
+  },
+  {
+   "title": "Beyond payments: Where venture capital will flow across Indian fintech over the next 24 months",
+   "link": "https://yourstory.com/2026/11/where-venture-capital-will-flow-across-indian-fintech-over-next-24-months",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T09:20:56.000Z",
+   "image": "https://images.yourstory.com/cs/2/07f6d7f0ed8e11ed819979969b4b51e2/rossb4-1771403746138.png",
+   "summary": "India's fintech decade was built on distribution. The next one will be built on infrastructure, advice and intelligence—and capital is already repricing accordingly."
   },
   {
    "title": "AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field",
    "link": "https://www.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
    "source": "InfoQ",
    "topic": "Cloud & software",
+   "region": "World",
    "date": "2026-11-16T09:07:00.000Z",
-   "image": "",
+   "image": "https://res.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/en/headerimage/generatedHeaderImage-1794301940782.jpg",
    "summary": "<img src=\"https://res.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/en/headerimage/generatedHeaderImage-1794301940782.jpg\"/><p>AWS has launched Nitro Sandboxes, running each opted-in EKS…"
+  },
+  {
+   "title": "Mphasis says clients boost cybersecurity spending as AI-driven threats rise",
+   "link": "https://economictimes.indiatimes.com/tech/information-tech/mphasis-says-clients-boost-cybersecurity-spending-as-ai-driven-threats-rise/articleshow/135878211.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T08:13:37.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-36138,resizemode-75,msid-135878211/tech/information-tech/mphasis-says-clients-boost-cybersecurity-spending-as-ai-driven-threats-rise.jpg",
+   "summary": "Banks and insurers are leading the increase in cybersecurity spending, aided by larger technology budgets and regulatory requirements, while retailers and consumer firms are also stepping…"
+  },
+  {
+   "title": "SK Hynix to spend $1 billion over five years to support chip suppliers",
+   "link": "https://economictimes.indiatimes.com/tech/technology/sk-hynix-to-spend-1-billion-over-five-years-to-support-chip-suppliers/articleshow/135878099.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T08:10:49.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-1812458,resizemode-75,msid-135878099/tech/technology/sk-hynix-to-spend-1-billion-over-five-years-to-support-chip-suppliers.jpg",
+   "summary": "South Korea's SK Hynix said on Monday it plans to spend 1.4 trillion won ($1.05 billion) over the next five years to support domestic suppliers of semiconductor materials, parts and…"
+  },
+  {
+   "title": "Jordan blocks Telegram app over national security concerns",
+   "link": "https://economictimes.indiatimes.com/tech/technology/jordan-blocks-telegram-app-over-national-security-concerns/articleshow/135878049.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T08:07:41.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-1075837,resizemode-75,msid-135878049/tech/technology/jordan-blocks-telegram-app-over-national-security-concerns.jpg",
+   "summary": "Jordanian authorities said on Monday that they will block the Telegram social media app in the kingdom over national security concerns."
+  },
+  {
+   "title": "Why Italy hit Meta with record €805 million fine | Explained",
+   "link": "https://www.thehindu.com/sci-tech/technology/why-italy-hit-meta-with-record-805-million-fine-explained/article71707103.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T08:04:59.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/5eqqre/article71707138.ece/alternates/LANDSCAPE_1200/2025-07-30T151953Z_869428237_RC291W9F4D6N_RTRMADP_3_META-PLATFORMS-RESULTS.JPG",
+   "summary": "Italy’s data protection authority conducted a technical analysis after it received a complaint from a consumer protection forum, which said that the platform accessed “unpublished files…"
+  },
+  {
+   "title": "Intel sued by shareholders following 29% stock plunge",
+   "link": "https://economictimes.indiatimes.com/tech/technology/intel-sued-by-shareholders-following-29-stock-plunge/articleshow/135877856.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T08:00:48.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-1975409,resizemode-75,msid-135877856/tech/technology/intel-sued-by-shareholders-following-29-stock-plunge.jpg",
+   "summary": "Intel has been sued by shareholders who accused the US chipmaker of defrauding them by concealing the impact of a prolonged slowdown in personal computer sales that caused its stock price…"
+  },
+  {
+   "title": "Europe hunts for Palantir alternatives as militaries seek to limit US dependence",
+   "link": "https://economictimes.indiatimes.com/tech/technology/europe-hunts-for-palantir-alternatives-as-militaries-seek-to-limit-us-dependence/articleshow/135877776.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T07:58:49.000Z",
+   "image": "https://img.etimg.com/thumb/width-1200,height-900,imgsize-6203528,resizemode-75,msid-135877776/tech/technology/europe-hunts-for-palantir-alternatives-as-militaries-seek-to-limit-us-dependence.jpg",
+   "summary": "Last week, Germany's Helsing unveiled military intelligence software called Clarity. It is part of a broader market for AI-powered systems designed to accelerate military decision-making by…"
+  },
+  {
+   "title": "Indonesian police raided Nvidia partner Megaspeed's local unit in early 2026 on US request: report",
+   "link": "https://economictimes.indiatimes.com/tech/technology/indonesian-police-raided-nvidia-partner-megaspeeds-local-unit-in-early-2026-on-us-request-report/articleshow/135877651.cms",
+   "source": "Economic Times Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T07:56:26.000Z",
+   "image": "https://img.etimg.com/photo/42031747.cms",
+   "summary": "Megaspeed has been under scrutiny over suspicions it helped Chinese companies obtain advanced Nvidia chips subject to Washington's export restrictions, but there has been no public finding…"
+  },
+  {
+   "title": "The Indian crypto investor is changing. Is the industry keeping up?",
+   "link": "https://yourstory.com/2026/11/the-indian-crypto-investor-is-changing-is-the-industry-keeping-up",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T07:39:55.000Z",
+   "image": "https://images.yourstory.com/cs/121/19c095909df611ec900713db340225f3/Imagegzy5-1664519556936.jpg",
+   "summary": "As India's crypto investor base expands beyond metros and attracts younger, first-time investors, exchanges must look beyond onboarding to education, security and transparency. The piece…"
   },
   {
    "title": "Amazon Uncovers AI Agent Campaign Targeting LiteLLM, Dify, and Other Apps for API Keys",
    "link": "https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T07:34:21.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigoyCtEKcD7TM_5vDkKiZYFdk_l4-js7HNuvMXzZbVqUbEgq1nnD2vEZgZ0kL9CdmOkITC0Rbd-ebTkSX-R4NPKwWZXzUD6zS0g9nEfnlXw3njm3oW2Se97qbT7lIfZEL56X3IIaZAildTni9-zQJu5sa4Lhvi_mVlbTeZFyFtezOMHJ_bDhJWfG7KQ8eh/s1600/amazon.jpg",
    "summary": "Attackers' AI agents have been hunting for weak spots in internet-exposed AI apps such as LiteLLM, One API, and Dify to steal the AI provider keys stored inside, according to the agents'…"
@@ -708,17 +1156,39 @@
    "link": "https://www.medianama.com/2026/11/223-dot-clarifies-sim-binding-24-hour-checks/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T07:15:14.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2018/10/sim-cards-cc.jpg-scaled-1.jpg",
    "summary": "The DoT has reportedly clarified that messaging apps must check for users' SIM cards every 24 hours. The November 2025 directions did not specify how frequently these checks must take…"
+  },
+  {
+   "title": "11,000 applied, 10 made the cut: Meet the UAE-India Start-up Series finalists",
+   "link": "https://yourstory.com/2026/11/uae-india-startup-series-2-0-top-10-finalists-bengaluru",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T07:09:39.000Z",
+   "image": "https://images.yourstory.com/cs/2/1a70b4f0170611edbdd8b5d28d859895/UntitledDesign46-1794811905186.jpg",
+   "summary": "Ten Indian start-ups, picked from 11,000 applicants, pitch in Bengaluru on 18 November for a spot in Hub71’s Abu Dhabi programmes."
+  },
+  {
+   "title": "How Nvidia’s export-banned Blackwell chips are showing up in Chinese AI models",
+   "link": "https://indianexpress.com/article/technology/artificial-intelligence/nvidia-banned-gpus-training-chinese-ai-models-key-findings-10964970/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T07:04:41.000Z",
+   "image": "https://images.indianexpress.com/2025/01/Nvidia_99756f.jpg",
+   "summary": ""
   },
   {
    "title": "RBI fines MobiKwik Rs 9 lakh over non-compliance with wallet transfer limit, delayed fraud reporting",
    "link": "https://www.medianama.com/2026/11/223-rbi-fines-mobikwik-non-compliance-wallet-transfer/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T07:03:34.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2022/07/RBI-India-recurring-payments-1000x600-1.jpeg",
    "summary": "The RBI has imposed a Rs 9 lakh penalty on MobiKwik for allowing fund transfers beyond prescribed limits to non-registered beneficiaries and failing to report certain frauds within the…"
   },
   {
@@ -726,6 +1196,7 @@
    "link": "https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-16T06:53:34.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAvzoKykaMIpa6xx92YudipfUoEQnSkrE6p2CiWEVra5izr5GfuNQGOnfRuF0XV99v1IPRFe2Q6BF27UEq3BnWFS5onw97dt3hvszilQDANdtRdYi0_hTDOrKQvuwGn1mY_m-QTabV3jwWCNwXs_OizK2GLF3Eks5HJj5I7kbmA2IztruSBVjq5WOcxEM-/s1600/log4shell.jpg",
    "summary": "An investigation into suspicious activity within a Russian software developer's network has uncovered a months-long compromise of its development infrastructure and a software code-signing…"
@@ -735,24 +1206,67 @@
    "link": "https://www.medianama.com/2026/11/223-sebi-ai-disclosure-human-oversight-rules/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T06:34:59.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2020/10/logo-sebi-indianstockmarketguide.jpg.jpg",
    "summary": "SEBI's upcoming AI guidelines will build on its 2025 consultation paper, which proposed disclosure, testing and accountability requirements. The post SEBI will make market firms disclose AI…"
+  },
+  {
+   "title": "Ola Electric hands the keys to dealers. What led to this shift in gears?",
+   "link": "https://yourstory.com/2026/11/ola-electric-hands-keys-to-dealers-what-led-to-this-shift",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T06:29:33.000Z",
+   "image": "https://images.yourstory.com/cs/2/11718bd02d6d11e9aa979329348d4c3e/Ola-1744005769542.jpg",
+   "summary": "For long, Ola Electric ran its own showrooms and sold directly to customers. Now it is shifting to a dealer-led model with plans to have 700 dealer outlets by March 2027. What prompted this…"
   },
   {
    "title": "EaseMyTrip Q2: Loss narrows to Rs 57 lakh as revenue surges 34%",
    "link": "https://www.medianama.com/2026/11/223-easemytrip-loss-narrows-revenue-surges/",
    "source": "MediaNama",
    "topic": "India tech",
+   "region": "India",
    "date": "2026-11-16T06:24:37.000Z",
-   "image": "",
+   "image": "https://www.medianama.com/wp-content/uploads/2025/08/EaseMytrip.png",
    "summary": "EaseMyTrip narrowed its Q2 FY27 net loss by 98% to Rs 56.5 lakh, while revenue rose 34% to Rs 158 crore, driven by strong growth in its hotels and holiday packages business. The post…"
+  },
+  {
+   "title": "How flexible workspaces are changing the way companies think about offices",
+   "link": "https://yourstory.com/2026/11/how-flexible-workspaces-are-changing-the-way-companies-think-about-offices",
+   "source": "YourStory",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T06:08:23.000Z",
+   "image": "https://images.yourstory.com/cs/2/21ccd920843c11ec88170b5512a0f9d5/65A132511-1794808880801.jpg",
+   "summary": "At TechSparks 2026, Manish Khedia of The Executive Centre discussed how businesses are moving beyond traditional office layouts and long-term leases to focus on flexibility, collaboration,…"
+  },
+  {
+   "title": "Rocket from Boeing-Lockheed firm fails mid-flight, destroys payload of Amazon satellites",
+   "link": "https://indianexpress.com/article/technology/science/rocket-from-boeing-lockheed-firm-fails-mid-flight-destroys-payload-of-amazon-satellites-10964766/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T04:15:46.000Z",
+   "image": "https://images.indianexpress.com/2026/11/Tech-featured-image39.jpg",
+   "summary": ""
+  },
+  {
+   "title": "Intel sued by shareholders following 29% stock plunge",
+   "link": "https://indianexpress.com/article/technology/tech-news-technology/intel-sued-by-shareholders-following-29-stock-plunge-10964763/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-16T04:08:50.000Z",
+   "image": "https://images.indianexpress.com/2023/12/Intel-AI-chip-20231215.jpg",
+   "summary": ""
   },
   {
    "title": "Intel sued by investors after PC sales slump hits share price",
    "link": "https://www.bbc.co.uk/news/articles/cw62p42p288do?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T03:04:01.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b9b3/live/33bc54f0-e1a5-11f1-8433-4325183b3814.jpg",
    "summary": "A proposed class action claims the firm hid the impact of slowing PC sales from shareholders."
@@ -762,6 +1276,7 @@
    "link": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-16T01:47:57.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fa43/live/e2a9a870-e10d-11f1-93e1-3b657b665bcf.jpg",
    "summary": "The Nvidia scandal has raised questions over whether advanced AI chips ended up in China, despite US restrictions."
@@ -771,24 +1286,77 @@
    "link": "https://www.bbc.co.uk/news/articles/ckvg2ezvpe08o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-15T13:37:45.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/32ab/live/d67148b0-e0ef-11f1-97b9-9110abfffc70.png",
    "summary": "Han Won-seok, 34, confessed to using a hidden camera and AI to get a near-perfect mark on the significant test."
+  },
+  {
+   "title": "What is Megaspeed International, the firm under scanner over Nvidia CEO Jensen Huang affair",
+   "link": "https://www.thehindu.com/sci-tech/technology/jensen-huang-nvidia-ceo-alice-huang-what-is-megaspeed-international/article71685258.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-15T13:29:48.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/bvjadl/article71681951.ece/alternates/LANDSCAPE_1200/2026-10-19T181225Z_1947160221_RC2H6OA4B07J_RTRMADP_3_GERMANY-POLITICS-MERZ-NVIDIA.JPG",
+   "summary": "Megaspeed International has come under the scanner after Nvidia CEO Jensen Huang’s alleged affair with Alice Huang, a woman accused of being a Chinese spy."
+  },
+  {
+   "title": "Binance hack reveals crypto's uphill battle against hackers",
+   "link": "https://www.thehindu.com/sci-tech/technology/binance-hack-reveals-cryptos-uphill-battle-against-hackers/article71692230.ece",
+   "source": "The Hindu Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-15T13:27:17.000Z",
+   "image": "https://th-i.thgim.com/public/incoming/ounzo3/article71692232.ece/alternates/LANDSCAPE_1200/2026-11-11T100008Z_829659335_RC2Z40AMA08W_RTRMADP_3_FINTECH-CRYPTO-CRYPTO-CYBERSECURITY.JPG",
+   "summary": "Cryptocurrency exchanges present unusually attractive targets because hackers can identify wallets holding enormous sums of readily transferable digital assets ⁠and, in some cases, the…"
   },
   {
    "title": "Italy Fines Meta €805 Million Over Facebook's Android Gallery Access Without Explicit Consent",
    "link": "https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html",
    "source": "The Hacker News",
    "topic": "Cybersecurity",
+   "region": "World",
    "date": "2026-11-15T11:27:31.000Z",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdTCjpbsG3Dp62JM1KZqfSvZpuBnxwaCxXsplW3dAt2b4Ym0KAWPfxkHf4DT-02VK3jJESLmgasdE6D36qGegWu7dk9YSLN4DZxRVsgrM9lIEXXHUvQ0VzaZ1_gFqpjtA4cP3rlt82g5WnK2sXNZHJd5F_rEk4VSTGnMKOuXziSM1R85Vqhway3lajwTA/s1600/facebook-fine.jpg",
    "summary": "Meta was fined €805 million in Italy yesterday over a Facebook for Android feature that suggests photos and videos from users' phone galleries for them to post. The Garante, Italy's data…"
+  },
+  {
+   "title": "EU leaders seek to tackle challenges at first ever AI summit",
+   "link": "https://indianexpress.com/article/technology/tech-news-technology/eu-leaders-seek-to-tackle-challenges-at-first-ever-ai-summit-10964017/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-15T09:47:41.000Z",
+   "image": "https://images.indianexpress.com/2025/12/artificial-intelligence_20251221191044.jpg",
+   "summary": ""
+  },
+  {
+   "title": "Tesla invites select customers to buy Cybercab for personal use",
+   "link": "https://indianexpress.com/article/technology/tech-news-technology/tesla-invites-select-customers-to-buy-cybercab-for-personal-use-10963999/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-15T09:41:36.000Z",
+   "image": "https://images.indianexpress.com/2024/10/Tech-feature-images24.jpg",
+   "summary": ""
+  },
+  {
+   "title": "Italy fines Meta $887 million over Android users’ data access",
+   "link": "https://indianexpress.com/article/technology/tech-news-technology/italy-fines-meta-887-million-over-android-users-data-access-10963990/",
+   "source": "Indian Express Tech",
+   "topic": "India tech",
+   "region": "India",
+   "date": "2026-11-15T09:30:27.000Z",
+   "image": "https://images.indianexpress.com/2026/10/META-File-photo_20261019075041_20261021210051.jpg",
+   "summary": ""
   },
   {
    "title": "Italy fines Meta €805m over accessing users' photos",
    "link": "https://www.bbc.co.uk/news/articles/cwn83gxemk35o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Technology",
    "topic": "Big Tech",
+   "region": "World",
    "date": "2026-11-14T18:28:06.000Z",
    "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d6be/live/f51842e0-e041-11f1-88e1-eb4e155225b3.jpg",
    "summary": "The social media giant is accused of not informing 20 million users it had access to their photos."
@@ -798,6 +1366,7 @@
    "link": "https://spectrum.ieee.org/microcredentials-trustworthy-ai",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-13T19:00:03.000Z",
    "image": "https://spectrum.ieee.org/media-library/conceptual-illustration-of-planet-earth-surrounded-by-educational-objects-such-as-a-microscope-beaker-and-textbook.jpg?id=68675346&width=980",
    "summary": "Engineering teams are moving at breakneck speed to integrate artificial intelligence, but they are running into a formidable new barrier: compliance issues. Translating high-level AI ethics…"
@@ -807,6 +1376,7 @@
    "link": "https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/",
    "source": "Ars Technica",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-13T16:26:32.000Z",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/GettyImages-1237693734-1152x648-1783631068.jpg",
    "summary": "\"SignDrop\" exploit lets local users gain all-powerful System rights."
@@ -816,6 +1386,7 @@
    "link": "https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-13T13:10:00.000Z",
    "image": "https://wp.technologyreview.com/wp-content/uploads/2026/06/mars2026-kvitsoy4.jpg?w=840",
    "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Silicon Valley claims to know the future. So why…"
@@ -825,6 +1396,7 @@
    "link": "https://content.knowledgehub.wiley.com/engineering-overhead-electric-lines-for-ice-wind-and-freezing-rain/",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-13T11:00:02.000Z",
    "image": "https://assets.rbl.ms/68604378/origin.png",
    "summary": "This White Paper explains how ice, wind and vegetation load overhead distribution lines at the same time. It shows engineers how to assess the complete line and compare resilience options.…"
@@ -834,8 +1406,9 @@
    "link": "https://www.technologyreview.com/2026/11/13/1148474/more-autonomy-fewer-ndas-volunteers-have-new-requests-for-brain-implant-trials/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-13T10:00:00.000Z",
-   "image": "",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/11/Ian_0010.jpg?resize=1200,600",
    "summary": "Scientists have been working on ways to decode brain activity for decades. Teams have developed brain implants that can be used to control robotic limbs and computers, and even to “speak.”…"
   },
   {
@@ -843,8 +1416,9 @@
    "link": "https://www.technologyreview.com/2026/11/13/1148498/silicon-valley-claims-to-know-the-future-so-why-did-it-get-the-midterms-so-wrong/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-13T10:00:00.000Z",
-   "image": "",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/11/GettyImages-2297757667.jpg?resize=1200,600",
    "summary": "The self-styled visionaries of Silicon Valley, leaders like OpenAI chief executive Sam Altman and SpaceX boss Elon Musk, have built careers claiming to see the future. Long-term vision is…"
   },
   {
@@ -852,8 +1426,9 @@
    "link": "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
    "source": "MIT Technology Review",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-12T20:16:24.000Z",
-   "image": "",
+   "image": "https://wp.technologyreview.com/wp-content/uploads/2026/11/foster-huang2a.jpg?resize=1200,600",
    "summary": "Representatives from Nvidia told Illinois representative Bill Foster that it would be technically possible to implement the anti-smuggling measures called for in the Chip Security Act,…"
   },
   {
@@ -861,6 +1436,7 @@
    "link": "https://spectrum.ieee.org/innomotics-electric-motors-drive-systems",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-11T11:00:02.000Z",
    "image": "https://spectrum.ieee.org/media-library/graphic-of-an-electric-motor-with-bold-text-reading-160-years.jpg?id=68515186&width=980",
    "summary": "This article is brought to you by Innomotics . In the annals of industrial history, few innovations have demonstrated such remarkable staying power as the dynamo-electric principle.…"
@@ -870,6 +1446,7 @@
    "link": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
    "source": "Ars Technica",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-10T21:12:59.000Z",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/11/grok-plugin-marketplace-1152x648.webp",
    "summary": "Researcher finds 35,000 Grok Build apps wide open to anyone who looked for them."
@@ -879,6 +1456,7 @@
    "link": "https://spectrum.ieee.org/speech-processing-pioneer-in-memoriam",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-10T19:00:02.000Z",
    "image": "https://spectrum.ieee.org/media-library/portrait-of-an-indian-man-with-grey-hair-wearing-a-suit-jacket-and-tie.jpg?id=68639762&width=980",
    "summary": "Bishnu Saroop Atal Acoustics and signal processing pioneer Life Fellow, 93; died 19 August Atal was an acoustics and signal processing researcher at Bell Labs in Murray Hill, N.J., and…"
@@ -888,6 +1466,7 @@
    "link": "https://content.knowledgehub.wiley.com/shifting-reliability-left-guided-virtual-validation-for-electronics-shock-and-drop-testing/",
    "source": "IEEE Spectrum",
    "topic": "Chips & hardware",
+   "region": "World",
    "date": "2026-11-10T11:00:02.000Z",
    "image": "https://assets.rbl.ms/27151246/origin.png",
    "summary": "Learn how guided virtual shock and drop analysis helps engineering teams identify reliability risks before physical testing, reduce qualification iterations, optimize packaging designs, and…"
@@ -897,6 +1476,7 @@
    "link": "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
    "source": "Ars Technica",
    "topic": "AI",
+   "region": "World",
    "date": "2026-11-09T19:41:34.000Z",
    "image": "https://cdn.arstechnica.net/wp-content/uploads/2023/07/exploit-vulnerability-security.jpg",
    "summary": "\"*sshole\" poses a serious threat to Internet security."

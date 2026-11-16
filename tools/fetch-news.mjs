@@ -18,7 +18,14 @@ const FEEDS = [
   ["India tech", "MediaNama", "https://www.medianama.com/feed/"],
   ["India tech", "Inc42", "https://inc42.com/feed/"],
   ["Science & space", "Space.com", "https://www.space.com/feeds/all"],
-  ["Gadgets", "Wired", "https://www.wired.com/feed/rss"]
+  ["Gadgets", "Wired", "https://www.wired.com/feed/rss"],
+  ["Gadgets", "Engadget", "https://www.engadget.com/rss.xml"],
+  ["India tech", "Economic Times Tech", "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms"],
+  ["India tech", "The Hindu Tech", "https://www.thehindu.com/sci-tech/technology/feeder/default.rss"],
+  ["India tech", "Indian Express Tech", "https://indianexpress.com/section/technology/feed/"],
+  ["India tech", "Gadgets 360", "https://feeds.feedburner.com/gadgets360-latest"],
+  ["India tech", "YourStory", "https://yourstory.com/feed"],
+  ["India tech", "Mint Technology", "https://www.livemint.com/rss/technology"]
 ];
 const UA = { "User-Agent": "Mozilla/5.0 (compatible; TechSamjhoRajNewsBot/1.0; +https://www.techsamjhoraj.com)" };
 const clean = s => String(s || "").replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#x([0-9a-f]+);/gi, (m, h) => String.fromCodePoint(parseInt(h, 16))).replace(/&#(\d+);/g, (m, d) => String.fromCodePoint(+d)).replace(/\s+/g, " ").trim();
@@ -35,12 +42,19 @@ for (const [topic, source, url] of FEEDS) {
       const sum = clean(tag(it, "description") || tag(it, "summary") || tag(it, "content:encoded")).slice(0, 190);
       const im = (it.match(/<media:(?:content|thumbnail)[^>]+url="([^"]+)"/i) || it.match(/<enclosure[^>]+url="([^"]+\.(?:jpe?g|png|webp)[^"]*)"[^>]*>/i) || it.match(/<img[^>]+src=["']([^"']+)["']/i) || it.match(/&lt;img[^&]+src=&quot;([^&]+)&quot;/i) || [])[1] || "";
       const image = /^https:\/\//.test(im) ? im.replace(/&amp;|&#0*38;/g, "&") : "";
-      if (title && link && date && !isNaN(date)) out.push({ title, link, source, topic, date: date.toISOString(), image, summary: sum.length >= 190 ? sum.replace(/\s+\S*$/, "") + "…" : sum });
+      if (title && link && date && !isNaN(date)) out.push({ title, link, source, topic, region: topic === "India tech" ? "India" : "World", date: date.toISOString(), image, summary: sum.length >= 190 ? sum.replace(/\s+\S*$/, "") + "…" : sum });
     }
   } catch (e) { console.error("feed failed:", source, e.message); }
 }
 const seen = new Set(), now = Date.now();
-const news = out.filter(n => now - Date.parse(n.date) < 10 * 864e5 && !seen.has(n.link) && seen.add(n.link)).sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 120);
+const news = out.filter(n => now - Date.parse(n.date) < 10 * 864e5 && !seen.has(n.link) && seen.add(n.link)).sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 170);
+// For stories whose feed has no picture, read the real picture (og:image) from the article page itself.
+async function ogImage(url){ try { const c = new AbortController(), t = setTimeout(() => c.abort(), 9000); const r = await fetch(url, { headers: UA, signal: c.signal, redirect: "follow" }); const h = (await r.text()).slice(0, 200000); clearTimeout(t);
+  const m = h.match(/<meta[^>]+(?:property|name)=["'](?:og:image|twitter:image)["'][^>]+content=["']([^"']+)["']/i) || h.match(/<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["'](?:og:image|twitter:image)["']/i);
+  const u = m ? m[1].replace(/&amp;|&#0*38;/g, "&") : ""; return /^https:\/\//.test(u) ? u : ""; } catch (e) { return ""; } }
+const todo = news.filter(n => !n.image).slice(0, 60);
+for (let i = 0; i < todo.length; i += 8) await Promise.all(todo.slice(i, i + 8).map(async n => { n.image = await ogImage(n.link); }));
+console.log("pictures:", news.filter(n => n.image).length + "/" + news.length);
 if (news.length >= 10) { fs.writeFileSync(path.join(ROOT, "news.json"), JSON.stringify({ updated: new Date().toISOString(), items: news }, null, 1)); console.log("news.json:", news.length, "items"); }
 else console.error("too few news items (" + news.length + "), keeping the old news.json");
 // Tech Samjho Raj channel videos

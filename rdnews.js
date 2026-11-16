@@ -2,7 +2,7 @@
 (function(){
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let DATA = null, VIDS = null;
-const load = () => DATA ? Promise.resolve() : Promise.all([fetch("news.json").then(r => r.json()).catch(() => ({ items: [] })), fetch("news-videos.json").then(r => r.json()).catch(() => ({ videos: [] }))]).then(([n, v]) => { DATA = n; VIDS = v; });
+const load = () => DATA ? Promise.resolve() : Promise.all([fetch("news.json", { cache: "no-store" }).then(r => r.json()).catch(() => ({ items: [] })), fetch("news-videos.json", { cache: "no-store" }).then(r => r.json()).catch(() => ({ videos: [] }))]).then(([n, v]) => { DATA = n; VIDS = v; });
 function ago(iso){ const m = Math.max(1, Math.round((Date.now() - Date.parse(iso)) / 6e4)); return m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : Math.round(m / 1440) + " d ago"; }
 const TOPICS = ["AI", "Big Tech", "Startups & business", "Chips & hardware", "Cloud & software", "Cybersecurity", "India tech", "Science & space", "Gadgets"];
 const EMO = { "AI": "🤖", "Big Tech": "🏢", "Startups & business": "🚀", "Chips & hardware": "🔌", "Cloud & software": "☁️", "Cybersecurity": "🔐", "India tech": "🇮🇳", "Science & space": "🛰️", "Gadgets": "📱" };
@@ -14,14 +14,19 @@ function vids(){
  <div class="nw-vg"><div class="nw-lead"><div class="nw-frame" id="nw-frame"><iframe src="https://www.youtube-nocookie.com/embed/${lead.id}?rel=0" title="${esc(lead.title)}" loading="lazy" allowfullscreen></iframe></div><h3 id="nw-vt">${esc(lead.title)}</h3></div>
  <div class="nw-vl">${list.map((v, i) => `<button type="button" class="nw-vi${i === 0 ? " on" : ""}" data-vid="${v.id}" data-vt="${esc(v.title)}"><img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy" width="168" height="94"><span>${esc(v.title)}</span></button>`).join("")}</div></div></section>`;
 }
-function show(app, topic){
+function mix(a){ const w = a.filter(n => n.region !== "India"), i = a.filter(n => n.region === "India"), o = []; for (let k = 0; k < Math.max(w.length, i.length); k++) { if (w[k]) o.push(w[k]); if (i[k]) o.push(i[k]); } return o.length ? o : a; }
+function show(app, topic, region){
  app.innerHTML = `<div class="nw"><section class="nw-band"><h1>Tech news</h1><p>The latest in technology from around the world: AI, big tech, chips, cloud, cybersecurity, startups, India tech, space and gadgets. Updated every morning from public news sources; each headline links to the original story.</p><small id="nw-up"></small></section><div class="nw-body"><p class="ml-empty">Loading the latest headlines…</p></div></div>`;
  load().then(() => {
-  const items = DATA.items || [], topics = ["All", ...TOPICS.filter(t => items.some(n => n.topic === t))];
-  topic = topic || "All"; const list = items.filter(n => topic === "All" || n.topic === topic);
+  const raw = DATA.items || [], items = mix(raw), topics = ["All", ...TOPICS.filter(t => items.some(n => n.topic === t))];
+  topic = topic || "All"; region = region || "All";
+  const inRegion = items.filter(n => region === "All" || n.region === region);
+  const topicsR = ["All", ...TOPICS.filter(t => inRegion.some(n => n.topic === t))];
+  const list = inRegion.filter(n => topic === "All" || n.topic === topic);
   app.querySelector("#nw-up").textContent = DATA.updated ? "Last updated " + ago(DATA.updated) : "";
-  app.querySelector(".nw-body").innerHTML = `<div class="ud-tabs nw-tabs">${topics.map(t => `<button class="ud-tab" data-nt="${esc(t)}" aria-selected="${t === topic}">${esc(t)}</button>`).join("")}</div>${vids()}<h2 class="nw-h">${topic === "All" ? "Top stories" : esc(topic)}</h2>${list.length ? `<div class="nw-g">${list.slice(0, 18).map(card).join("")}</div>${list.length > 18 ? `<p class="nw-more"><button class="btn" type="button" id="nw-more">Show more stories</button></p>` : ""}` : "<p class='ml-empty'>No stories right now. Check back soon.</p>"}`;
-  app.querySelectorAll("[data-nt]").forEach(b => b.addEventListener("click", () => show(app, b.dataset.nt)));
+  app.querySelector(".nw-body").innerHTML = `<div class="nw-reg">${["All", "World", "India"].map(r => `<button type="button" class="nw-rb" data-nr="${r}" aria-pressed="${r === region}">${r === "All" ? "🌐 All news" : r === "World" ? "🌍 Around the world" : "🇮🇳 India"}</button>`).join("")}</div><div class="ud-tabs nw-tabs">${topicsR.map(t => `<button class="ud-tab" data-nt="${esc(t)}" aria-selected="${t === topic}">${esc(t)}</button>`).join("")}</div>${vids()}<h2 class="nw-h">${topic === "All" ? (region === "India" ? "Top stories from India" : region === "World" ? "Top stories from around the world" : "Top stories") : esc(topic)}</h2>${list.length ? `<div class="nw-g">${list.slice(0, 18).map(card).join("")}</div>${list.length > 18 ? `<p class="nw-more"><button class="btn" type="button" id="nw-more">Show more stories</button></p>` : ""}` : "<p class='ml-empty'>No stories right now. Check back soon.</p>"}`;
+  app.querySelectorAll("[data-nt]").forEach(b => b.addEventListener("click", () => show(app, b.dataset.nt, region)));
+  app.querySelectorAll("[data-nr]").forEach(b => b.addEventListener("click", () => show(app, "All", b.dataset.nr)));
   const mb = app.querySelector("#nw-more"); if (mb) mb.addEventListener("click", () => { app.querySelector(".nw-g").insertAdjacentHTML("beforeend", list.slice(18, 60).map(card).join("")); mb.remove(); });
   app.querySelectorAll(".nw-vi").forEach(b => b.addEventListener("click", () => { app.querySelector("#nw-frame").innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.vid}?rel=0&autoplay=1" title="${esc(b.dataset.vt)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; app.querySelector("#nw-vt").textContent = b.dataset.vt; app.querySelectorAll(".nw-vi").forEach(x => x.classList.toggle("on", x === b)); }));
  });
@@ -29,7 +34,7 @@ function show(app, topic){
 }
 function row(){
  const h = document.getElementById("ud-newsrow"); if (!h || h.dataset.f) return; h.dataset.f = 1;
- load().then(() => { const it = (DATA.items || []).slice(0, 3); if (!it.length) { h.remove(); return; }
+ load().then(() => { const all = (DATA.items || []).filter(n => n.image), it = all.filter(n => n.region !== "India").slice(0, 2).concat(all.filter(n => n.region === "India").slice(0, 1)); if (!it.length) { h.remove(); return; }
   h.innerHTML = `<h2>Tech news today</h2><p class="ud-secsub">What is happening in technology around the world, with sources.</p><div class="nw-g">${it.map(card).join("")}</div><p class="ud-more"><a href="#news">See all tech news and Raj's news videos →</a></p>`; });
 }
 new MutationObserver(row).observe(document.body, { childList: true, subtree: true }); row();
