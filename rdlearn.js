@@ -171,7 +171,7 @@ function show(app, id){
  document.title = `${T[id].t}: learning guide · Tech Samjho Raj`;
  const tl = app.querySelector("[data-topics]"); if(tl) tl.addEventListener("click", e => { e.preventDefault(); location.hash = "#classroom"; setTimeout(() => { const g = document.getElementById("rd-topics"); if(g) g.scrollIntoView(); }, 300); });
  const holder = app.querySelector("#rl-tool"), d = T[id];
- if (holder && window.RDTOOLS && d.tool) {
+ if (holder && window.RDTOOLS && typeof RDTOOLS.mount === "function" && d.tool) {
   RDTOOLS.mount(d.tool, holder);
   const pre = { javascript: "#jscode", sql: "#sqcode" }[d.ex.lang === "javascript" ? "javascript" : d.ex.lang === "sql" ? "sql" : ""];
   if (pre) { const ta = holder.querySelector(pre); if (ta) { ta.value = d.ex.code; ta.rows = Math.max(ta.rows, Math.min(14, d.ex.code.split("\n").length + 1)); } }

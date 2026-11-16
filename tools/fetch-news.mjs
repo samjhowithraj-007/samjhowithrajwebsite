@@ -21,7 +21,7 @@ const FEEDS = [
   ["Gadgets", "Wired", "https://www.wired.com/feed/rss"]
 ];
 const UA = { "User-Agent": "Mozilla/5.0 (compatible; TechSamjhoRajNewsBot/1.0; +https://www.techsamjhoraj.com)" };
-const clean = s => String(s || "").replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/\s+/g, " ").trim();
+const clean = s => String(s || "").replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#x([0-9a-f]+);/gi, (m, h) => String.fromCodePoint(parseInt(h, 16))).replace(/&#(\d+);/g, (m, d) => String.fromCodePoint(+d)).replace(/\s+/g, " ").trim();
 const tag = (x, t) => { const m = x.match(new RegExp("<" + t + "[^>]*>([\\s\\S]*?)</" + t + ">", "i")); return m ? m[1] : ""; };
 async function get(url){ const c = new AbortController(), t = setTimeout(() => c.abort(), 15000); try { const r = await fetch(url, { headers: UA, signal: c.signal }); if (!r.ok) throw new Error(r.status); return await r.text(); } finally { clearTimeout(t); } }
 const out = [];
@@ -33,7 +33,9 @@ for (const [topic, source, url] of FEEDS) {
       const title = clean(tag(it, "title")); let link = clean(tag(it, "link")) || (it.match(/<link[^>]+href="([^"]+)"/i) || [])[1] || "";
       const d = clean(tag(it, "pubDate") || tag(it, "published") || tag(it, "updated") || tag(it, "dc:date")); const date = d ? new Date(d) : null;
       const sum = clean(tag(it, "description") || tag(it, "summary") || tag(it, "content:encoded")).slice(0, 190);
-      if (title && link && date && !isNaN(date)) out.push({ title, link, source, topic, date: date.toISOString(), summary: sum.length >= 190 ? sum.replace(/\s+\S*$/, "") + "…" : sum });
+      const im = (it.match(/<media:(?:content|thumbnail)[^>]+url="([^"]+)"/i) || it.match(/<enclosure[^>]+url="([^"]+\.(?:jpe?g|png|webp)[^"]*)"[^>]*>/i) || it.match(/<img[^>]+src=["']([^"']+)["']/i) || it.match(/&lt;img[^&]+src=&quot;([^&]+)&quot;/i) || [])[1] || "";
+      const image = /^https:\/\//.test(im) ? im.replace(/&amp;|&#0*38;/g, "&") : "";
+      if (title && link && date && !isNaN(date)) out.push({ title, link, source, topic, date: date.toISOString(), image, summary: sum.length >= 190 ? sum.replace(/\s+\S*$/, "") + "…" : sum });
     }
   } catch (e) { console.error("feed failed:", source, e.message); }
 }

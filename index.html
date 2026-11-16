@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal9"><script src="rdhome.js?v=17"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=5"></script><script defer src="rdlearn.js?v=3"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=2"></script>
+<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal11"><script src="rdhome.js?v=17"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=3"></script>
 <script>try{if(localStorage.getItem("swr-theme")!=="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
@@ -513,7 +513,6 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
 </style>
 </head>
 <body>
-<div class="annc" id="annc" hidden><a href="#book">☕ <b>New book: Python with Chai</b>, Basic → Expert · <s>₹499</s> ₹399 launch · <u>Free preview →</u></a><button type="button" aria-label="Hide this message" id="annc-x">×</button></div>
 <header>
   <div class="wrap bar">
     <a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
@@ -1228,14 +1227,14 @@ function books(){
 }
 // ---------- The book: Python with Chai (paid PDF; free 4-page teasers only) ----------
 // BOOK.buy = the Gumroad product links WITHOUT a code (empty = "Coming soon"). While the launch runs, buyBtn() adds
-// "/LAUNCH" (Gumroad code: Rs 100 off, expires 15 Nov 2026), so after that date the site switches back by itself.
+// Launch offer ended 15 Nov 2026: the site shows regular prices only.
 // Never put the private discount code on this site.
 // Never upload the full book PDF to this site: only the *-preview.pdf teasers live in notes/.
 const BOOK = {
   title: "Python with Chai", sub: "From Basic to Expert", author: "Raj",
   cred: "AI expert · Azure & Claude certified AI architect · 20 years in tech",
-  price: 499, launch: 399, bundle: 799, bundleLaunch: 699,   // 8 Nov 2026: regular 499 / 799 both; LAUNCH code = Rs 100 off, ends 15 Nov 23:59 IST (Gumroad checked)
-  launchCode: "LAUNCH", launchEnds: "2026-11-16T00:00:00+05:30", launchEndsLabel: "15 Nov",
+  price: 499, launch: 399, bundle: 799, bundleLaunch: 699,   // 8 Nov 2026: regular 499 / 799 both; launch offer ended 15 Nov
+  launchEnds: "2026-11-16T00:00:00+05:30", launchEndsLabel: "15 Nov",
   buy: { en: "https://samjhowithraj.gumroad.com/l/python-with-chai-en",
          hi: "https://samjhowithraj.gumroad.com/l/python-with-chai-hinglish",
          both: "https://samjhowithraj.gumroad.com/l/python-with-chai-both" },
@@ -1244,7 +1243,7 @@ const BOOK = {
   chapters: [[1, "basic", "Hello, Python!", "Hello, Python!"], [2, "basic", "Variables and data types", "Variables aur data types"], [3, "basic", "Strings: playing with text", "Strings: text se khelo"], [4, "basic", "Numbers, maths and input()", "Numbers, maths aur input()"], [5, "basic", "Decisions: if, elif, else", "Faisle: if, elif, else"], [6, "basic", "Loops: do it again and again", "Loops: baar baar karo"], [7, "basic", "Lists: many items, one box", "Lists: kai items, ek dabba"], [8, "basic", "Tuples and sets", "Tuples aur sets"], [9, "basic", "Dictionaries: the menu card", "Dictionaries: menu card"], [10, "basic", "Functions: write once, use forever", "Functions: ek baar likho, hamesha use karo"], [11, "inter", "Errors and debugging", "Errors aur debugging"], [12, "inter", "Files, CSV and JSON", "Files, CSV aur JSON"], [13, "inter", "Modules and the standard library", "Modules aur standard library"], [14, "inter", "Classes and objects", "Classes aur objects"], [15, "inter", "OOP: inheritance and magic methods", "OOP: inheritance aur magic methods"], [16, "inter", "Comprehensions, lambda and sorting", "Comprehensions, lambda aur sorting"], [17, "inter", "Iterators and generators", "Iterators aur generators"], [18, "inter", "collections and itertools", "collections aur itertools"], [19, "inter", "Recursion, scope and closures", "Recursion, scope aur closures"], [20, "inter", "Project: the Chai Shop app", "Project: Chai Shop app"], [21, "expert", "Decorators", "Decorators"], [22, "expert", "Context managers", "Context managers"], [23, "expert", "Type hints and dataclasses", "Type hints aur dataclasses"], [24, "expert", "Testing with pytest", "pytest se testing"], [25, "expert", "Packages, venv and pip", "Packages, venv aur pip"], [26, "expert", "Logging and command-line apps", "Logging aur command-line apps"], [27, "expert", "Threads and processes", "Threads aur processes"], [28, "expert", "asyncio: async and await", "asyncio: async aur await"], [29, "expert", "Web APIs, JSON and regex", "Web APIs, JSON aur regex"], [30, "expert", "Performance, and the expert capstone", "Performance, aur expert capstone"]],
   previews: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 30],
 };
-BOOK.launchOn = Date.now() < Date.parse(BOOK.launchEnds);
+BOOK.launchOn = false;   // launch offer ended 15 Nov 2026; regular prices only (no launch code on the site)
 // Gumroad checks out in US dollars and adds 18% GST for India buyers (Payments session, 8 Nov 2026; one edition measured live, the rest calculated). Same numbers as the ads.
 BOOK.usd = { launch: ["5.02", "8.77"], regular: ["6.27", "10.03"] };
 // Which book chapter goes deeper on each video lesson (lesson pages show a small "In the book" box).
@@ -1257,7 +1256,7 @@ const bookDuo = (cls, alt) => `<span class="${cls}"><img src="${BOOK.cover.en}" 
 const bookTitle = n => (BOOK.chapters.find(c => c[0] === n) || [n, "", ""])[2];
 const preview = (n, lang) => `notes/book-ch${n}-${lang}-preview.pdf`;
 function buyBtn(key, label, price){
-  const url = BOOK.buy[key] && (BOOK.launchOn ? BOOK.buy[key].replace(/\/$/, "") + "/" + BOOK.launchCode : BOOK.buy[key]);
+  const url = BOOK.buy[key] && BOOK.buy[key];
   return url ? `<a class="btn primary" href="${url}" target="_blank" rel="noopener">${label} · ₹${price}</a>`
              : `<span class="btn" aria-disabled="true">${label} · Coming soon</span>`;
 }
@@ -1309,12 +1308,6 @@ function bookCard(){
     <p>Everything from these lessons and much more: 30 illustrated chapters, 120+ examples, mistakes, practice and answers. English and Hinglish editions.</p>
     <span class="pr">${now}</span><span class="go">Read a free preview →</span></div></a>`;
 }
-(function annc(){
-  const bar = document.getElementById("annc"), KEY = "annc-book-1";
-  let off = false; try { off = localStorage.getItem(KEY) === "1"; } catch (e) {}
-  if (!off && BOOK.launchOn) bar.hidden = false;
-  document.getElementById("annc-x").addEventListener("click", () => { bar.hidden = true; try { localStorage.setItem(KEY, "1"); } catch (e) {} });
-})();
 function bookBox(id){
   const n = BOOK_FOR_LESSON[id]; if (!n) return "";
   return `<a class="bookbox" href="#book">${bookDuo("duo2", false)}<div><span class="pl">In the book</span>
@@ -1581,7 +1574,7 @@ function privacy(){
 // While an action is empty, the form opens the visitor's email app with the details filled in instead, so no enquiry is lost.
 const WORKSHOP_FORM = { action: "" };   // Brevo form "Workshop enquiry" → list "Workshop enquiries" (FIRSTNAME, ORG, TOPIC, DATE, MESSAGE)
 const COHORT_FORM = { action: "" };     // Brevo form "Live cohort waitlist" → list "Cohort waitlist" (email only)
-const PROMPTS = { link: "https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", price: 149 };   // Gumroad (live 20 Oct). No /LAUNCH code: that is only for the Python with Chai books. Empty link = "Coming soon".
+const PROMPTS = { link: "https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", price: 149 };   // Gumroad (live 20 Oct). No discount code. Empty link = "Coming soon".
 const RAJ_MAIL = "samjhowithraj@gmail.com";
 function cohortBox(){
   return `<section class="signup cohort" id="cohort"><div><h3>🚀 Python + AI Live Cohort</h3><p>A small live online batch with Raj, from Python basics to your own AI chatbot. Join the waitlist to hear first when the dates and details are announced.</p></div>
