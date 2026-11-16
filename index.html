@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=21"><link rel="stylesheet" href="rdhome.css?v=16"><script src="rdhome.js?v=12"></script><script defer src="rdbar.js?v=8"></script><script defer src="rdtools.js?v=5"></script><script defer src="rddada.js?v=8"></script>
+<link rel="stylesheet" href="redesign.css?v=22"><link rel="stylesheet" href="rdhome.css?v=16"><script src="rdhome.js?v=13"></script><script defer src="rdbar.js?v=9"></script><script defer src="rdtools.js?v=5"></script>
 <script>try{if(localStorage.getItem("swr-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
 <meta name="theme-color" content="#050b17">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
@@ -397,19 +397,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .book .go{font-weight:700;font-size:13.5px;margin-top:6px;text-decoration:underline;text-underline-offset:3px}
 .books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
 .bookcard .pr s{opacity:1;color:#6b4a00}
-.dadabar{display:flex;align-items:center;justify-content:space-between;gap:14px 20px;flex-wrap:wrap;padding:14px 18px;margin:0 0 22px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(120deg,rgba(15,58,42,.55),rgba(47,122,87,.25))}
-/* Dimaag Dada jigsaw (5 Nov 2026) */
-.jzcard{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:18px;align-items:center;padding:14px;margin:0 0 26px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;color:inherit}.jzcard img{width:100%;height:auto;border-radius:10px;display:block}.jzcard h3{margin:4px 0 6px}.jzcard p{margin:0 0 8px;color:var(--muted)}.jzcard .go{font-weight:700;color:var(--accent)}.jzcard:hover{border-color:var(--accent)}@media (max-width:600px){.jzcard{grid-template-columns:1fr}}
-.jzback{margin:0 0 6px}.jzbar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin:16px 0}.jzlvs{display:flex;gap:8px;flex-wrap:wrap}.jzlv,.jzsm{padding:8px 14px}.jzlv[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}.jzstat{display:flex;gap:6px 14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-variant-numeric:tabular-nums}.jzstat b{color:var(--ink)}
-.jzarea{position:relative;margin:0 auto 24px;user-select:none;-webkit-user-select:none}.jzboard{position:absolute;left:0;top:0;outline:2px dashed var(--line);outline-offset:2px;border-radius:4px;overflow:hidden;background:rgba(127,127,127,.06)}.jzghost{width:100%;height:100%;opacity:.22;display:block}.jzghost[hidden]{display:none}.jztray{position:absolute;left:0;right:0;border:1px solid var(--line);border-radius:12px;background:rgba(127,127,127,.07);color:var(--muted);font-size:13px;padding:4px 10px;box-sizing:border-box}
-.jzp{position:absolute;touch-action:none;cursor:grab;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.jzp.drag{cursor:grabbing;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}.jzp.done{filter:none;pointer-events:none}
-.jzwin{display:flex;gap:16px;align-items:center;padding:16px;margin:0 0 16px;border:1px solid var(--accent);border-radius:14px;background:var(--gold)}.jzwin[hidden]{display:none}.jzwin img{width:96px;height:auto;flex:none}.jzwin h3{margin:0 0 4px}.jzwin p{margin:0}@media (max-width:560px){.jzwin{flex-direction:column;text-align:center}}
-.dbrand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.dbrand img{width:56px;height:56px;border-radius:50%;flex:none}
-.dbrand .wm{display:block;font-family:"Sora",var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff}
-.dbrand .d{color:#f5a623}.dbrand small{display:block;color:var(--muted);font-size:13.5px}
-:root[data-theme="light"] .dbrand .wm{color:#121a2e}:root[data-theme="light"] .dbrand .d{color:#b35c00}
-.dadabar .social a.ico{width:42px;height:42px}.dadabar .social a.ico svg{width:20px;height:20px}
 .signup form .jbtn{padding:11px 14px;font-size:14px;font-weight:700;color:#fff;border:0}.signup form .jbtn.wa{background:#1fa855}.signup form .jbtn.tg{background:#229ed9}.ih-join{font-size:14px}
 .bookcard.dada{background:linear-gradient(135deg,#0f3a2a,#1d5a41 55%,#2f7a57)}.bookcard.dada .eyebrow{color:#ffd166}
 /* ---------- Shop, Workshops, Live Cohort ---------- */
@@ -535,7 +522,6 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
   <nav class="wrap tabs" aria-label="Sections">
     <a class="tab" href="#classroom" data-tab="classroom">Classroom</a>
     <a class="tab" href="#shop" data-tab="shop">Shop<span class="new">New</span></a>
-    <a class="tab" href="#puzzles" data-tab="puzzles">Dimaag Dada</a>
     <a class="tab" href="#playground" data-tab="playground">Playground</a>
     <a class="tab" href="#upcoming" data-tab="upcoming">Upcoming</a>
     <a class="tab" href="#workshops" data-tab="workshops">Workshops</a>
@@ -543,12 +529,12 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
     <a class="tab" href="#about" data-tab="about">About</a>
   </nav>
 </header>
-<main class="wrap" id="app"><!--seo-home-start--><div class="seo-home"><h1>Learn Python and AI in Hinglish, free</h1><p>Learn Python and AI in Hinglish, free. Tech Samjho Raj has short videos in Hinglish, simple English notes and code you can run right in your browser, with no sign-up and nothing to install. Start with Python with Chai (20 lessons), then build your own chatbot step by step, and finally learn what agentic AI is with Bunty the AI intern. Raj is a technology architect with 20 years of experience, and every lesson uses easy chai-shop examples. Prefer a book? Python with Chai comes in English and Hinglish editions with free chapter previews. Kids and exam students can play free reasoning puzzles in Dada World.</p><h2><a href="/python/">Python with Chai</a></h2><ul><li><a href="/learn/python-1/">Chai is a Python program</a></li><li><a href="/learn/python-2/">Run a function</a></li><li><a href="/learn/python-3/">if-else: how much sugar?</a></li><li><a href="/learn/python-4/">Lists: all the flavours in one place</a></li><li><a href="/learn/python-5/">for loops: try every flavour</a></li><li><a href="/learn/python-6/">Dictionaries: the chai menu card</a></li><li><a href="/learn/python-7/">Mini project: the chai bill</a></li><li><a href="/learn/python-8/">input: ask the customer</a></li><li><a href="/learn/python-9/">try-except: explain, don't crash</a></li><li><a href="/learn/python-10/">while True: keep the shop open</a></li><li><a href="/learn/python-11/">Files: save the bill</a></li><li><a href="/learn/python-12/">Files: read the bill back</a></li><li><a href="/learn/python-13/">Modules: the lucky chai</a></li><li><a href="/learn/python-14/">f-strings: a neat bill</a></li><li><a href="/learn/python-15/">range(): 10 cups at once</a></li><li><a href="/learn/python-16/">Default values: less sugar</a></li><li><a href="/learn/python-17/">Sets: how many customers?</a></li><li><a href="/learn/python-18/">datetime: shop timing</a></li><li><a href="/learn/python-19/">Classes: the chai shop</a></li><li><a href="/learn/python-20/">Finale: you know Python!</a></li></ul><h2><a href="/chatbot/">AI + Python: Build a Chai Chatbot</a></h2><ul><li><a href="/learn/chatbot-1/">Build a chai chatbot!</a></li><li><a href="/learn/chatbot-2/">Teach the bot to reply (if-else)</a></li><li><a href="/learn/chatbot-3/">50 if-elses? Use a dictionary</a></li><li><a href="/learn/chatbot-4/">&quot;MENU&quot; or &quot;menu&quot;? .lower() + .strip()</a></li><li><a href="/learn/chatbot-5/">Understand whole sentences: the in word</a></li><li><a href="/learn/chatbot-6/">A new reply every time: random.choice</a></li><li><a href="/learn/chatbot-7/">Remember the name: input + variable</a></li><li><a href="/learn/chatbot-8/">Bill jodo: int + maths</a></li></ul><h2><a href="/agentic-ai/">Agentic AI with Bunty</a></h2><ul><li><a href="/learn/agentic-1/">Chatbot vs agent</a></li><li><a href="/learn/agentic-2/">Goal: tell Bunty what &quot;done&quot; looks like</a></li><li><a href="/learn/agentic-3/">Tools: Bunty's hands</a></li><li><a href="/learn/agentic-4/">The agent loop: think, act, check</a></li><li><a href="/learn/agentic-5/">Planning: big goal, small steps</a></li><li><a href="/learn/agentic-6/">Memory: write it down, read it next time</a></li></ul><p><a href="/python-book/">Python with Chai book</a> · <a href="/reasoning-puzzles/">Reasoning Samjho</a> · <a href="/puzzles/">Dada World</a> · <a href="/hinglish/">Hinglish</a> · <a href="/hi/">हिंदी</a></p></div><!--seo-home-end--></main>
+<main class="wrap" id="app"><!--seo-home-start--><div class="seo-home"><h1>Learn Python and AI in Hinglish, free</h1><p>Learn Python and AI in Hinglish, free. Tech Samjho Raj has short videos in Hinglish, simple English notes and code you can run right in your browser, with no sign-up and nothing to install. Start with Python with Chai (20 lessons), then build your own chatbot step by step, and finally learn what agentic AI is with Bunty the AI intern. Raj is a technology architect with 20 years of experience, and every lesson uses easy chai-shop examples. Prefer a book? Python with Chai comes in English and Hinglish editions with free chapter previews. Kids and exam students can play free reasoning puzzles in Dada World.</p><h2><a href="/python/">Python with Chai</a></h2><ul><li><a href="/learn/python-1/">Chai is a Python program</a></li><li><a href="/learn/python-2/">Run a function</a></li><li><a href="/learn/python-3/">if-else: how much sugar?</a></li><li><a href="/learn/python-4/">Lists: all the flavours in one place</a></li><li><a href="/learn/python-5/">for loops: try every flavour</a></li><li><a href="/learn/python-6/">Dictionaries: the chai menu card</a></li><li><a href="/learn/python-7/">Mini project: the chai bill</a></li><li><a href="/learn/python-8/">input: ask the customer</a></li><li><a href="/learn/python-9/">try-except: explain, don't crash</a></li><li><a href="/learn/python-10/">while True: keep the shop open</a></li><li><a href="/learn/python-11/">Files: save the bill</a></li><li><a href="/learn/python-12/">Files: read the bill back</a></li><li><a href="/learn/python-13/">Modules: the lucky chai</a></li><li><a href="/learn/python-14/">f-strings: a neat bill</a></li><li><a href="/learn/python-15/">range(): 10 cups at once</a></li><li><a href="/learn/python-16/">Default values: less sugar</a></li><li><a href="/learn/python-17/">Sets: how many customers?</a></li><li><a href="/learn/python-18/">datetime: shop timing</a></li><li><a href="/learn/python-19/">Classes: the chai shop</a></li><li><a href="/learn/python-20/">Finale: you know Python!</a></li></ul><h2><a href="/chatbot/">AI + Python: Build a Chai Chatbot</a></h2><ul><li><a href="/learn/chatbot-1/">Build a chai chatbot!</a></li><li><a href="/learn/chatbot-2/">Teach the bot to reply (if-else)</a></li><li><a href="/learn/chatbot-3/">50 if-elses? Use a dictionary</a></li><li><a href="/learn/chatbot-4/">&quot;MENU&quot; or &quot;menu&quot;? .lower() + .strip()</a></li><li><a href="/learn/chatbot-5/">Understand whole sentences: the in word</a></li><li><a href="/learn/chatbot-6/">A new reply every time: random.choice</a></li><li><a href="/learn/chatbot-7/">Remember the name: input + variable</a></li><li><a href="/learn/chatbot-8/">Bill jodo: int + maths</a></li></ul><h2><a href="/agentic-ai/">Agentic AI with Bunty</a></h2><ul><li><a href="/learn/agentic-1/">Chatbot vs agent</a></li><li><a href="/learn/agentic-2/">Goal: tell Bunty what &quot;done&quot; looks like</a></li><li><a href="/learn/agentic-3/">Tools: Bunty's hands</a></li><li><a href="/learn/agentic-4/">The agent loop: think, act, check</a></li><li><a href="/learn/agentic-5/">Planning: big goal, small steps</a></li><li><a href="/learn/agentic-6/">Memory: write it down, read it next time</a></li></ul><p><a href="/python-book/">Python with Chai book</a> · <a href="https://www.dimaagdada.com/reasoning-puzzles/">Reasoning Samjho</a> · <a href="https://www.dimaagdada.com/world/">Dada World</a> · <a href="/hinglish/">Hinglish</a> · <a href="/hi/">हिंदी</a></p></div><!--seo-home-end--></main>
 <footer><div class="wrap fgrid">
   <div class="fabout"><a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
     <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
   <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
-  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="#puzzles">Dimaag Dada · Reasoning Samjho</a><a href="#jigsaw">Dimaag Dada jigsaw</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
+  <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="https://www.dimaagdada.com/" rel="noopener">Dimaag Dada ↗</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
   <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="#terms">Terms</a><a href="#refund">Refunds</a><a href="#shipping">Shipping and delivery</a><a href="#privacy">Privacy</a></nav>
 </div><div class="wrap fchan"><h4>Our channels</h4><div class="chans" data-channels></div></div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
 <dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
@@ -1039,7 +1025,6 @@ const SOCIAL = [
 // Our YouTube channels (20 Oct 2026). Handles confirmed 20 Oct: @DimaagDada, @PaisaSamjhoRaj (UC IDs kept in sameAs).
 const CHANNELS = [
   { name: "Tech Samjho Raj", what: "Python, AI and agents", url: "https://www.youtube.com/@SamjhowithRaj" },
-  { name: "Dimaag Dada", what: "Roz 1 exam puzzle (SSC, Bank, Railway, CAT)", url: "https://www.youtube.com/@DimaagDada", ig: "https://www.instagram.com/dimaagdada/", fb: "https://www.facebook.com/dimaagdada" },
   { name: "Paisa Samjho Raj", what: "Money for families", url: "https://www.youtube.com/@PaisaSamjhoRaj" },
 ];
 function fillChannels(){ document.querySelectorAll("[data-channels]").forEach(el => {
@@ -1311,12 +1296,11 @@ function bookPage(){
     <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
   ${anyBuy && !DIWALI.on ? "" : signup("Get one email when the book is available, with the launch price.")}`;
 }
-function dadaCard(){   // Dimaag Dada home card (25 Oct): the puzzle brand, easy to find
-  const Z = PUZZLES, now = Z.launchOn ? `<s>₹${Z.price}</s>₹${Z.launch}` : `₹${Z.price}`;
-  return `<a class="bookcard dada" href="#puzzles"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" loading="lazy" width="420" height="596"><img class="dada3d" src="img/dada-3d.webp" alt="Dimaag Dada, the 3D puzzle teacher" loading="lazy" width="208" height="360">
-    <div><div class="eyebrow">Dimaag Dada · Roz 1 puzzle</div><h2>${Z.title}: ${Z.sub}</h2>
-    <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements. English and Hinglish.</p>
-    <span class="pr">${now}</span><span class="go">Free Chapter 1 →</span></div></a>`;
+function dadaCard(){   // Dimaag Dada has its own website (16 Nov 2026)
+  return `<a class="bookcard dada" href="https://www.dimaagdada.com/" target="_blank" rel="noopener"><img class="dada3d" src="img/dada-3d.webp" alt="Dimaag Dada" loading="lazy" width="208" height="360">
+    <div><div class="eyebrow">Dimaag Dada</div><h2>Now on its own website</h2>
+    <p>Daily puzzles, the free jigsaw, Dada World games and the Reasoning Samjho book are now on dimaagdada.com.</p>
+    <span class="go">Visit dimaagdada.com →</span></div></a>`;
 }
 function bookCard(){
   const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
@@ -1529,7 +1513,7 @@ function terms(){
     <h2>Who we are</h2><p>Tech Samjho Raj (techsamjhoraj.com) is run by Pragya Raj, Plot 37, Sector 12, Bharat Ekta Ltd, Bandhgora, Bokaro, Jharkhand 827012, India. Brand name: Samjho with Raj. See the <a href="#contact">contact page</a>.</p>
     <h2>Free lessons</h2><p>The lessons, notes, the Python Playground and the free chapter previews are free to use for your own learning. You do not need an account.</p>
     <h2>Paid products</h2><ul>
-      <li>We sell digital products: the <a href="#book">Python with Chai</a> book (PDF + EPUB, English, Hinglish or both), the <a href="#puzzles">Reasoning Samjho</a> puzzle book and the 50 AI Prompts pack. Prices are shown in rupees on the product page. Taxes are included where the law requires.</li>
+      <li>We sell digital products: the <a href="#book">Python with Chai</a> book (PDF + EPUB, English, Hinglish or both), the <a href="https://www.dimaagdada.com/reasoning-puzzles/" rel="noopener">Reasoning Samjho</a> puzzle book and the 50 AI Prompts pack. Prices are shown in rupees on the product page. Taxes are included where the law requires.</li>
       <li>Payment is taken by our payment partners (today Gumroad, and Razorpay once it is switched on). They handle your card, UPI or bank details; we never see or store them.</li>
       <li>Workshops for colleges and companies are agreed by email. Price, dates and terms are confirmed in writing before any payment.</li>
       <li>The Live Cohort is a waitlist for now. No payment is taken until the dates and the price are published.</li></ul>
@@ -1549,7 +1533,7 @@ function refund(){
     <h2>Live Cohort</h2><p>Nothing is charged while it is a waitlist. Cancellation terms will be shown on the page before you pay.</p>
     <h2>How refunds are paid</h2><p>A refund goes back to the original payment method through the payment partner. Banks usually show it within 5 to 7 working days; for international cards it can take up to 10 working days.</p>
     <h2>How to ask</h2><p>Write to <span class="mail">samjhowithraj@gmail.com</span> with your name, the email you used to buy, the product and what went wrong. We reply within 2 working days.</p>
-    <p>Physical items sold in the Dimaag Dada World shop follow the <a href="puzzles/refund.html">Dada World refund page</a>.</p>${legalNav()}</article>`;
+    <p>Physical items sold in the Dimaag Dada World shop follow the <a href="https://www.dimaagdada.com/world/refund.html">Dada World refund page</a>.</p>${legalNav()}</article>`;
 }
 function shipping(){
   return `<article class="legal"><div class="eyebrow">Delivery</div><h1>Shipping and delivery</h1><p>Last updated ${UPDATED}.</p>
@@ -1560,7 +1544,7 @@ function shipping(){
       <li>If nothing arrives within 1 hour, check your spam folder, then <a href="#contact">write to us</a> and we will send it again.</li></ul>
     <h2>Workshops and the Live Cohort</h2><p>Workshops are delivered live, online or at your venue, on the dates agreed in writing. The Live Cohort dates will be published on its page.</p>
     <h2>Books on Amazon</h2><p>Books recommended on this site are sold and shipped by Amazon India, under Amazon's own delivery terms, not by us.</p>
-    <p>Printed items sold in the Dimaag Dada World shop follow the <a href="puzzles/shipping.html">Dada World shipping page</a>.</p>${legalNav()}</article>`;
+    <p>Printed items sold in the Dimaag Dada World shop follow the <a href="https://www.dimaagdada.com/world/shipping.html">Dada World shipping page</a>.</p>${legalNav()}</article>`;
 }
 function contact(){
   return `<article class="legal"><div class="eyebrow">Contact</div><h1>Contact us</h1>
@@ -1573,7 +1557,7 @@ function contact(){
       <li>Address: Plot 37, Sector 12, Bharat Ekta Ltd, Bandhgora, Bokaro, Jharkhand 827012, India</li></ul>
     <h2>Videos and other sites</h2><ul>
       <li><a href="https://www.youtube.com/@SamjhowithRaj" target="_blank" rel="noopener">Tech Samjho Raj on YouTube</a></li>
-      <li><a href="puzzles/">Dimaag Dada World</a> · <a href="https://www.paisasamjhoraj.com">Paisa Samjho Raj</a></li></ul>${legalNav()}</article>`;
+      <li><a href="https://www.dimaagdada.com/world/" rel="noopener">Dimaag Dada World</a> · <a href="https://www.paisasamjhoraj.com">Paisa Samjho Raj</a></li></ul>${legalNav()}</article>`;
 }
 function privacy(){
   return `<article class="legal"><div class="eyebrow">Privacy</div><h1>Your privacy</h1><p>Last updated 8 November 2026.</p>
@@ -1614,10 +1598,10 @@ function shop(){
       <div class="row"><span class="tag">E-book</span><span class="tag">English + Hinglish</span></div><h3>${BOOK.title}: ${BOOK.sub}</h3>
       <p>30 illustrated chapters, 120+ examples, mistakes, practice and answers. PDF + EPUB.</p>
       <div class="row"><span class="price">${now}</span><span class="btn">Free preview →</span></div></a>
-    <a class="item" href="#puzzles"><div class="art"><img src="${PUZZLES.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596" loading="lazy"></div>
-      <div class="row"><span class="tag">E-book</span><span class="tag">${PUZZLES.buy.en ? "English + Hinglish" : "Coming soon"}</span></div><h3>${PUZZLES.title}: ${PUZZLES.sub}</h3>
-      <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements.</p>
-      <div class="row"><span class="price">${PUZZLES.launchOn ? `<s>₹${PUZZLES.price}</s>₹${PUZZLES.launch}` : `₹${PUZZLES.price}`}</span><span class="btn">Free Chapter 1 →</span></div></a>
+    <a class="item" href="https://www.dimaagdada.com/reasoning-puzzles/" target="_blank" rel="noopener"><div class="art"><img src="media/puzzles-cover-en.jpg" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596" loading="lazy"></div>
+      <div class="row"><span class="tag">E-book</span><span class="tag">On dimaagdada.com</span></div><h3>Reasoning Samjho: Puzzle se Selection tak</h3>
+      <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements. Now sold on Dimaag Dada's own website.</p>
+      <div class="row"><span class="btn">See it on dimaagdada.com →</span></div></a>
     <div class="item"><div class="art"><img src="media/prompts-thumb.jpg" alt="50 AI Prompts for Jobs + Study: English and Hinglish book covers" width="400" height="400" loading="lazy" style="transform:none;border-radius:10px"></div>
       <div class="row"><span class="tag">Prompt pack</span><span class="tag">English + Hinglish</span></div><h3>50 AI Prompts for Jobs + Study</h3>
       <p>${PROMPTS.link ? "Ready-to-use AI prompts for your job search and your studies, by Raj. Both editions (English and Hinglish PDFs) in one download." : "Ready-to-use AI prompts from Raj. Details and price are coming soon."}</p>
@@ -1675,193 +1659,6 @@ document.addEventListener("submit", async e => {
     f.outerHTML = `<p class="ok">${wf ? "Thank you! Raj will reply by email within a few days." : "You're on the list! Check your email and click the confirm link (look in Promotions and Spam too)."}</p>`; }
   catch (err) { btn.disabled = false; btn.textContent = label; note.textContent = "Couldn't connect. Check your internet and try again."; }
 });
-// ---------- Book 2: Reasoning Samjho (Dimaag Dada; paid PDF + EPUB, free Chapter 1 teasers only) ----------
-// PUZZLES.buy = Gumroad links WITHOUT a code (empty = "Coming soon"). Until launchEnds, the buttons add "/" + launchCode
-// automatically, like the Python with Chai book. Never print the code itself on the page, and never publish the full book.
-// Dimaag Dada's own channels (brand bar at the top of #puzzles, 25 Oct)
-const DADA_SOCIAL = [
-  { name: "Dimaag Dada on YouTube: roz 1 puzzle", icon: "youtube", color: "#ff0000", url: "https://www.youtube.com/@DimaagDada" },
-  { name: "Dimaag Dada on Instagram (@dimaagdada)", icon: "instagram", color: "#e1306c", url: "https://www.instagram.com/dimaagdada/" },
-  { name: "Dimaag Dada on Facebook", icon: "facebook", color: "#1877f2", url: "https://www.facebook.com/dimaagdada" },
-  { name: "Dimaag Dada WhatsApp channel", icon: "whatsapp", color: "#25d366", url: "https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28" },
-  { name: "Dimaag Dada on Telegram", icon: "telegram", color: "#26a5e4", url: "https://t.me/dimaagdada" },
-];
-const PUZZLES = {
-  title: "Reasoning Samjho", sub: "Puzzle se Selection tak",
-  price: 299, launch: 275, bundle: 399, bundleLaunch: 367,   // launch = DADA 8% off (Gumroad rounds 299*0.92, 399*0.92)
-  launchCode: "DADA", launchEnds: "2026-11-30T19:00:00+05:30", launchEndsLabel: "30 Nov",   // Gumroad expires DADA 30 Nov 19:17 IST; stop a bit earlier
-  codeLive: true,    // Payments confirmed DADA = 8% off on all 3 products (20 Oct)
-  buy: { en: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-en",
-         hi: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-hinglish",
-         both: "https://samjhowithraj.gumroad.com/l/reasoning-samjho-both" },
-  cover: "media/puzzles-cover-en.jpg",
-};
-PUZZLES.launchOn = PUZZLES.codeLive && Date.now() < Date.parse(PUZZLES.launchEnds);
-function pzBuy(key, label, price){
-  const u = PUZZLES.buy[key] && (PUZZLES.launchOn ? PUZZLES.buy[key].replace(/\/$/, "") + "/" + PUZZLES.launchCode : PUZZLES.buy[key]);
-  return u ? `<a class="btn primary" href="${u}" target="_blank" rel="noopener">${label} · ₹${price}</a>` : `<span class="btn" aria-disabled="true">${label} · Coming soon</span>`;
-}
-function puzzlesPage(){
-  const Z = PUZZLES, now = Z.launchOn ? Z.launch : Z.price, any = Z.buy.en || Z.buy.hi || Z.buy.both;
-  const p = Z.launchOn ? `<s>₹${Z.price}</s> <b>₹${Z.launch}</b> <span class="chip next">Launch offer · ends ${Z.launchEndsLabel}</span><div class="both">Both editions: <s>₹${Z.bundle}</s> <b>₹${Z.bundleLaunch}</b></div>`
-                       : `<b>₹${Z.price}</b><div class="both">Both editions: <b>₹${Z.bundle}</b></div>`;
-  return `<div class="dadabar"><a class="dbrand" href="#puzzles"><img src="img/dada-badge-128.png" alt="" width="56" height="56"><span><span class="wm"><span class="d">Dimaag</span> Dada</span><small>Roz 1 exam puzzle · SSC, Bank, Railway, CAT</small></span></a><div class="social">${DADA_SOCIAL.map(x => `<a class="ico" href="${x.url}" target="_blank" rel="noopener" aria-label="${x.name}" title="${x.name}" style="--sb:${x.color}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[x.icon]}</svg></a>`).join("")}</div></div>
-  <a class="jzcard" href="#jigsaw"><img src="img/jigsaw/mystery-house-sm.webp" alt="Dimaag Dada, Anna, Chiklu, Botu, Gullak Bhai and Udhaar Uncle on a treasure hunt in a big house" width="560" height="384" loading="lazy"><div><div class="eyebrow">New · Free online jigsaw</div><h3>Dimaag Dada's Mystery House</h3><p>Dada, Anna, Chiklu, Botu, Gullak Bhai and sneaky Udhaar Uncle in one big treasure hunt. 12, 24 or 48 pieces, on phone or laptop.</p><span class="go">Play the jigsaw →</span></div></a>
-  <section class="bookhero">
-    <div class="bookcov"><img src="${Z.cover}" alt="Reasoning Samjho book cover: Dimaag Dada at a green chalkboard" width="420" height="596"></div>
-    <div><div class="eyebrow">Dimaag Dada · Reasoning Samjho</div><h2>${Z.title}: ${Z.sub}</h2>
-      <p class="lead">Reasoning for competitive exams, taught by Dimaag Dada in his tuition class: draw it, place the surest clue first, and let the paper think for you.</p>
-      <ul class="ticks">
-        <li>192 original reasoning puzzles, from easy to hard</li>
-        <li>For SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placement tests</li>
-        <li>3 mock tests; every answer checked</li>
-        <li>Two editions: <b>English</b> and <b>Hinglish</b>, PDF + EPUB</li></ul>
-      <p class="author">by <b>Raj</b> · ${BOOK.cred}</p>
-      <div class="pricebox has-dada"><img class="mascot dada" src="img/dada-3d.webp" alt="Dimaag Dada giving a thumbs up" width="208" height="360"><div class="price">${p}</div>
-        <div class="buyrow">${pzBuy("en", "English edition", now)}${pzBuy("hi", "Hinglish edition", now)}${pzBuy("both", "Both editions", Z.launchOn ? Z.bundleLaunch : Z.bundle)}</div>
-        <small>${any ? "Instant PDF + EPUB download after payment." : "Coming soon. Leave your email below to hear the day it's out, at the launch price."}</small></div>
-    </div></section>
-  <section class="bookprev"><div class="eyebrow">Free preview</div><h2>Chapter 1: Seating Arrangement</h2>
-    <p class="lead">The chapter's title page, Dada's class story and a peek at what's inside. Every bank and SSC paper has a seating set.</p>
-    <div class="pgrid"><div class="pcard"><b>Chapter 1</b><span>Seating Arrangement</span>
-      <div><a href="notes/puzzles-1-en-preview.pdf" target="_blank" rel="noopener">English</a> · <a href="notes/puzzles-1-hi-preview.pdf" target="_blank" rel="noopener">Hinglish</a></div></div></div></section>
-  ${any ? "" : signup("Get one email the day Reasoning Samjho is out, with the launch price.", "", true)}`;
-}
-// ---------- Dimaag Dada jigsaw (5 Nov 2026): drag pieces from the tray; a piece clicks in when it is in the right place ----------
-const JIGSAW = { img: "img/jigsaw/mystery-house.webp", w: 1533, h: 1050, title: "Dimaag Dada's Mystery House",
-  levels: [["Easy", 4, 3], ["Medium", 6, 4], ["Hard", 8, 6]] };
-let JZ = null;
-let ac = null, jzSound = true; try { jzSound = localStorage.getItem("jzsnd") !== "0"; } catch (e) {}
-const SFX = {};
-function wavUrl(sec, fn){ const sr = 44100, n = Math.floor(sr * sec), x = new Float32Array(n); for (let i = 0; i < n; i++) x[i] = fn(i / sr);
-  let pk = 0; for (let i = 0; i < n; i++) pk = Math.max(pk, Math.abs(x[i])); const k = pk ? .95 / pk : 1;
-  const b = new DataView(new ArrayBuffer(44 + n * 2)), w = (o, s) => { for (let i = 0; i < s.length; i++) b.setUint8(o + i, s.charCodeAt(i)); };
-  w(0, "RIFF"); b.setUint32(4, 36 + n * 2, true); w(8, "WAVEfmt "); b.setUint32(16, 16, true); b.setUint16(20, 1, true); b.setUint16(22, 1, true); b.setUint32(24, sr, true); b.setUint32(28, sr * 2, true); b.setUint16(32, 2, true); b.setUint16(34, 16, true); w(36, "data"); b.setUint32(40, n * 2, true);
-  for (let i = 0; i < n; i++) b.setInt16(44 + i * 2, Math.max(-1, Math.min(1, x[i] * k)) * 32767, true);
-  return URL.createObjectURL(new Blob([b], { type: "audio/wav" })); }
-function actx(){ if (SFX.snap) return; try {
-  const tri = (f, t) => 2 / Math.PI * Math.asin(Math.sin(2 * Math.PI * f * t)), rn = [...Array(4096)].map(() => Math.random() * 2 - 1);
-  SFX.snap = wavUrl(.12, t => rn[Math.floor(t * 44100) % 4096] * Math.exp(-t * 90) * .7 + Math.sin(2 * Math.PI * (260 - 900 * t) * t) * Math.exp(-t * 35));   // wooden "tok"
-  const notes = [523.25, 659.25, 783.99, 1046.5], sp = [...Array(10)].map((_, k) => [.55 + k * .07, 1500 + Math.random() * 1600]);
-  SFX.win = wavUrl(1.7, t => { let v = 0; notes.forEach((f, i) => { const s = t - i * .13; if (s > 0) v += tri(f, s) * Math.min(1, s / .02) * Math.exp(-s * (i === 3 ? 3 : 10)); });
-    sp.forEach(([s0, f]) => { const s = t - s0; if (s > 0 && s < .15) v += Math.sin(2 * Math.PI * f * s) * .35 * Math.exp(-s * 25); }); return v; });   // rising "ta-da" + sparkles
-} catch (e) {} }
-function sfx(k){ if (!jzSound) return; actx(); if (!SFX[k]) return; try { const a = new Audio(SFX[k]); a.volume = 1; const p = a.play(); if (p) p.catch(() => {}); } catch (e) {} }
-function snapSound(){ sfx("snap"); }
-function winSound(){ sfx("win"); }
-function jigsawPage(){
-  const lv = JIGSAW.levels.map(([n, c, r], i) => `<button class="btn jzlv" data-lv="${i}">${n} · ${c * r} pieces</button>`).join("");
-  return `<p class="jzback"><a href="#puzzles">← Dimaag Dada</a></p>
-  <div class="eyebrow">Dimaag Dada · Free online jigsaw</div><h2>${JIGSAW.title}</h2>
-  <p class="lead">Dada, Anna and Chiklu are hunting for the treasure chest, with Botu, Gullak Bhai and sneaky Udhaar Uncle on the stairs. Drag the pieces from the tray onto the board. A piece clicks in when it is in the right place.</p>
-  <p><a class="btn jzsm" href="puzzles/">🧩 6 puzzles in the free Dada Puzzles app →</a></p>
-  <div class="jzbar"><div class="jzlvs" role="group" aria-label="Difficulty">${lv}</div>
-    <div class="jzstat"><span>⏱ <b id="jzt">0:00</b></span><span><b id="jzn">0</b> placed</span><label><input type="checkbox" id="jzghost" checked> Show picture</label><button class="btn jzsm" id="jzsnd" aria-label="Sound on or off">${jzSound ? "🔊" : "🔇"}</button><button class="btn jzsm" id="jznew">Shuffle</button></div></div>
-  <div id="jzwin" class="jzwin" hidden></div>
-  <div id="jz" class="jzarea" aria-label="Jigsaw board and piece tray"></div>`;
-}
-function jzAvail(){ const el = document.getElementById("jz").parentElement, cs = getComputedStyle(el); return Math.floor(Math.min(el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), 980)); }
-function jzFmt(s){ s = Math.floor(s); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
-function jzPath(w, h, s){
-  const P = new Path2D(); P.moveTo(0, 0);
-  const e = (ax, ay, bx, by, k) => {
-    if (!k) { P.lineTo(bx, by); return; }
-    const dx = bx - ax, dy = by - ay, nx = dy * k, ny = -dx * k, q = (t, u) => [ax + dx * t - nx * u, ay + dy * t - ny * u];
-    P.lineTo(...q(.36, 0)); P.bezierCurveTo(...q(.42, 0), ...q(.30, .24), ...q(.5, .24)); P.bezierCurveTo(...q(.70, .24), ...q(.58, 0), ...q(.64, 0)); P.lineTo(bx, by);
-  };
-  e(0, 0, w, 0, s[0]); e(w, 0, w, h, s[1]); e(w, h, 0, h, s[2]); e(0, h, 0, 0, s[3]); P.closePath(); return P;
-}
-function startJigsaw(lv){
-  const area = document.getElementById("jz"); if (!area) return;
-  if (JZ) clearInterval(JZ.timer);
-  let best = {}; try { best = JSON.parse(localStorage.getItem("jzbest") || "{}"); } catch (e) {}
-  if (lv == null) { lv = 0; try { lv = +(localStorage.getItem("jzlv") || 0) || 0; } catch (e) {} }
-  const [, cols, rows] = JIGSAW.levels[lv], rnd = () => Math.random() < .5 ? 1 : -1;
-  const H = [...Array(rows - 1)].map(() => [...Array(cols)].map(rnd)), V = [...Array(rows)].map(() => [...Array(cols - 1)].map(rnd)), pieces = [];
-  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++)
-    pieces.push({ r, c, s: [r ? -H[r - 1][c] : 0, c < cols - 1 ? V[r][c] : 0, r < rows - 1 ? H[r][c] : 0, c ? -V[r][c - 1] : 0], fx: Math.random(), fy: Math.random(), done: false });
-  JZ = { lv, cols, rows, pieces, placed: 0, z: 10, t0: 0, tEnd: 0, timer: 0, best, img: new Image() };
-  document.querySelectorAll(".jzlv").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.lv === lv)));
-  const w = document.getElementById("jzwin"); if (w) w.hidden = true;
-  area.onpointerdown = jzDown; area.onpointermove = jzMove; area.onpointerup = area.onpointercancel = jzUp;
-  JZ.img.onload = () => { jzLayout(); jzTick(); }; JZ.img.src = JIGSAW.img;
-}
-function jzLayout(){
-  const area = document.getElementById("jz"); if (!area || !JZ || !JZ.img.complete) return;
-  const { cols, rows } = JZ, BW = jzAvail(), BH = BW * JIGSAW.h / JIGSAW.w, pw = BW / cols, ph = BH / rows;
-  const pad = Math.ceil(Math.max(pw, ph) * .3), tray = Math.max(BH * (cols * rows > 24 ? 1 : .75), ph * 2.6), dpr = Math.min(devicePixelRatio || 1, 2);
-  Object.assign(JZ, { BW, BH, pw, ph, pad, tray, dpr, drag: null });
-  area.style.width = BW + "px"; area.style.height = (BH + 16 + tray) + "px";
-  const ghost = document.getElementById("jzghost");
-  area.innerHTML = `<div class="jzboard" style="width:${BW}px;height:${BH}px"><img class="jzghost" src="${JIGSAW.img}" alt=""${ghost && !ghost.checked ? " hidden" : ""}></div><div class="jztray" style="top:${BH + 16}px;height:${tray}px">Pieces</div>`;
-  JZ.pieces.forEach(p => {
-    const cv = document.createElement("canvas"), W = pw + 2 * pad, Hh = ph + 2 * pad;
-    cv.width = Math.ceil(W * dpr); cv.height = Math.ceil(Hh * dpr); cv.style.width = W + "px"; cv.style.height = Hh + "px"; cv.className = "jzp" + (p.done ? " done" : "");
-    const g = cv.getContext("2d"), path = jzPath(pw, ph, p.s);
-    g.scale(dpr, dpr); g.translate(pad, pad);
-    g.save(); g.clip(path); g.drawImage(JZ.img, -p.c * pw, -p.r * ph, BW, BH); g.restore();
-    g.lineWidth = 1.2; g.strokeStyle = "rgba(255,255,255,.6)"; g.stroke(path);
-    Object.assign(p, { el: cv, g, path }); jzPlace(p); area.appendChild(cv);
-  });
-}
-function jzPlace(p){
-  const { pw, ph, pad, BW, BH, tray } = JZ;
-  p.x = p.done ? p.c * pw : p.ux != null ? p.ux * BW : p.fx * (BW - pw);
-  p.y = p.done ? p.r * ph : p.uy != null ? p.uy * BW : BH + 16 + 18 + p.fy * (tray - ph - 22);
-  p.el.style.left = (p.x - pad) + "px"; p.el.style.top = (p.y - pad) + "px"; p.el.style.zIndex = p.done ? 1 : (p.zi || 2);
-}
-function jzXY(e){ const R = document.getElementById("jz").getBoundingClientRect(); return [e.clientX - R.left, e.clientY - R.top]; }
-function jzDown(e){
-  if (!JZ || !JZ.pw) return;
-  const [px, py] = jzXY(e), { pad, pw, ph, dpr } = JZ; let hit = null;
-  JZ.pieces.forEach(p => {
-    if (p.done) return; const lx = px - p.x + pad, ly = py - p.y + pad;
-    if (lx < 0 || ly < 0 || lx > pw + 2 * pad || ly > ph + 2 * pad) return;
-    if (p.g.isPointInPath(p.path, lx * dpr, ly * dpr) && (!hit || (p.zi || 2) > (hit.zi || 2))) hit = p;
-  });
-  if (!hit) return; if (jzSound) try { actx(); } catch (x) {}
-  e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {}
-  hit.zi = ++JZ.z; hit.el.style.zIndex = hit.zi; hit.el.classList.add("drag");
-  JZ.drag = { p: hit, dx: px - hit.x, dy: py - hit.y };
-  if (!JZ.t0) { JZ.t0 = Date.now(); JZ.timer = setInterval(jzTick, 1000); }
-}
-function jzMove(e){
-  const d = JZ && JZ.drag; if (!d) return; e.preventDefault();
-  const [px, py] = jzXY(e), area = document.getElementById("jz");
-  const x = Math.max(-JZ.pw / 2, Math.min(JZ.BW - JZ.pw / 2, px - d.dx)), y = Math.max(-JZ.ph / 2, Math.min(area.clientHeight - JZ.ph / 2, py - d.dy));
-  d.p.ux = x / JZ.BW; d.p.uy = y / JZ.BW; jzPlace(d.p);
-}
-function jzUp(){
-  const d = JZ && JZ.drag; if (!d) return; JZ.drag = null; const p = d.p; p.el.classList.remove("drag");
-  if (Math.hypot(p.x - p.c * JZ.pw, p.y - p.r * JZ.ph) < Math.min(JZ.pw, JZ.ph) * .3) {
-    p.done = true; p.el.classList.add("done"); JZ.placed++; jzPlace(p); jzTick(); snapSound();
-    if (JZ.placed === JZ.pieces.length) jzWin();
-  }
-}
-function jzTick(){
-  const t = document.getElementById("jzt"); if (!t) { if (JZ) clearInterval(JZ.timer); return; }
-  t.textContent = jzFmt(JZ.t0 ? ((JZ.tEnd || Date.now()) - JZ.t0) / 1000 : 0);
-  document.getElementById("jzn").textContent = JZ.placed + "/" + JZ.pieces.length;
-}
-function jzWin(){
-  JZ.tEnd = Date.now(); clearInterval(JZ.timer); jzTick(); winSound();
-  const secs = (JZ.tEnd - JZ.t0) / 1000, k = JZ.lv, prev = JZ.best[k], rec = !prev || secs < prev, nxt = JIGSAW.levels[k + 1];
-  if (rec) { JZ.best[k] = secs; try { localStorage.setItem("jzbest", JSON.stringify(JZ.best)); } catch (e) {} }
-  const w = document.getElementById("jzwin");
-  w.innerHTML = `<img src="img/dada-thumbs.webp" alt="Dimaag Dada giving a thumbs up" width="96" height="140"><div><h3>Shabaash! Solved in ${jzFmt(secs)}</h3>
-    <p>${rec ? "That's your best time on " + JIGSAW.levels[k][0] + "." : "Your best on " + JIGSAW.levels[k][0] + ": " + jzFmt(prev) + "."} Dada has a new reasoning puzzle for you every day.</p>
-    <div class="buyrow">${nxt ? `<button class="btn jzlv" data-lv="${k + 1}">Try ${nxt[0]} · ${nxt[1] * nxt[2]} pieces</button>` : `<button class="btn jzlv" data-lv="${k}">Play again</button>`}<a class="btn" href="https://www.youtube.com/@DimaagDada" target="_blank" rel="noopener">Roz 1 puzzle on YouTube</a><a class="btn" href="https://whatsapp.com/channel/0029VbE8BVH9RZAONaXhOl28" target="_blank" rel="noopener">WhatsApp channel</a></div></div>`;
-  w.hidden = false; w.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-app.addEventListener("click", e => {
-  const b = e.target.closest(".jzlv");
-  if (b) { try { localStorage.setItem("jzlv", b.dataset.lv); } catch (x) {} startJigsaw(+b.dataset.lv); document.getElementById("jz").scrollIntoView({ behavior: "smooth", block: "start" }); }
-  if (e.target.closest("#jznew")) startJigsaw(JZ ? JZ.lv : 0);
-  const sb = e.target.closest("#jzsnd"); if (sb) { jzSound = !jzSound; sb.textContent = jzSound ? "🔊" : "🔇"; try { localStorage.setItem("jzsnd", jzSound ? "1" : "0"); } catch (x) {} }
-});
-app.addEventListener("change", e => { if (e.target.id === "jzghost") { const g = document.querySelector(".jzghost"); if (g) g.hidden = !e.target.checked; } });
-let jzRz = 0;
-addEventListener("resize", () => { clearTimeout(jzRz); jzRz = setTimeout(() => { if (document.getElementById("jz") && JZ && JZ.BW !== jzAvail()) jzLayout(); }, 200); });
 function render(){
   const h = (location.hash || "#classroom").slice(1);
   const [c, l] = find(h);
@@ -1871,8 +1668,7 @@ function render(){
   else if (h === "book") { app.innerHTML = bookPage(); tab = "shop"; }
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
-  else if (h === "puzzles") { app.innerHTML = puzzlesPage(); tab = "puzzles"; }
-  else if (h === "jigsaw") { app.innerHTML = jigsawPage(); tab = "puzzles"; setTimeout(() => startJigsaw()); }
+  else if (h === "puzzles" || h === "jigsaw") { location.replace("https://www.dimaagdada.com/" + (h === "jigsaw" ? "#jigsaw" : "#books")); return; }
   else if (h === "tools" && window.RDTOOLS) { RDTOOLS.show(app); tab = h; document.title = "Tools · Tech Samjho Raj"; }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
@@ -1945,7 +1741,7 @@ const CMDK = (() => {
   const dlg = document.getElementById("cmdk"), q = document.getElementById("cmdk-q"), list = document.getElementById("cmdk-list");
   const e = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
   const PAGES = [["#classroom", "Classroom", "All courses and your progress", "🏠"], ["#playground", "Python Playground", "Run Python in your browser", "▶"],
-    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#puzzles", "Dimaag Dada · Reasoning Samjho", "192 reasoning puzzles for SSC, Bank, CAT…", "🧩"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
+    ["#book", "Python with Chai (book)", "30 chapters, free previews", "📘"], ["#shop", "Shop", "Books and packs by Raj", "🛍"], ["#workshops", "Workshops", "AI workshops for colleges and companies", "🎤"], ["#upcoming", "Upcoming lessons", "What comes next in each course", "🗓"],
     ["#about", "About Raj", "Who teaches here", "👋"], ["#community", "Community", "Ask a question, share your project", "💬"], ["#privacy", "Privacy", "What this site stores (almost nothing)", "🔒"], ["#terms", "Terms of use", "Paid products, licence, law", "📜"], ["#refund", "Refunds and cancellation", "Digital products and workshops", "↩️"], ["#shipping", "Shipping and delivery", "Everything is a digital download", "📦"], ["#contact", "Contact us", "Email, phone, business details", "✉️"]];
   const LESSONS = COURSES.flatMap(c => live(c).map((l, i) => [`#${l.id}`, l.title, `${c.title} · Lesson ${i + 1}`, "📄"]));
   let items = [], sel = 0, seq = 0;

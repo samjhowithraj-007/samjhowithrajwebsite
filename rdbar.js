@@ -1,6 +1,6 @@
 (function(){
  function sw(){document.querySelectorAll(".brand img,.install img,#installBtn img,button img[src*='badge']").forEach(function(i){if(/badge|icon-/.test(i.getAttribute("src")||""))i.src="img/rd/botu.png"});}
- var items=[["#classroom","🏠","Home"],["#python-1","📚","Learn"],["#tools","🛠️","Tools"],["#shop","📖","Books"],["#puzzles","🧠","Dada"]];
+ var items=[["#classroom","🏠","Home"],["#python-1","📚","Learn"],["#tools","🛠️","Tools"],["#shop","📖","Books"],["#community","👥","Community"]];
  var bar=document.createElement("nav");bar.id="rdbar";
  bar.innerHTML=items.map(function(x){return '<a href="'+x[0]+'" data-h="'+x[0]+'"><b>'+x[1]+'</b>'+x[2]+'</a>'}).join("");
  document.body.appendChild(bar);
@@ -23,8 +23,7 @@
   {i:"🛠️",t:"Tools",tools:1,menu:[["Python playground","#playground","playground","T01"],["JavaScript","#tools","js","T08"],["SQL","#tools","sql","T05"],["API tester","#tools","api","T14"],["DSA visualiser","#tools","dsa","T04"],["Vector search","#tools","vec","T06"],["Git practice","#tools","git","T13"],["Java","#tools","java","T07"],["Linux shell","#tools","linux","T18"],["Docker","#tools","docker","T15"],["Azure","#tools","azure","T10"],["Databricks","#tools","dbx","T11"],["Machine learning","#tools","ml","T12"],["RAG & LLM apps","#tools","rag","T09"],["System design","#tools","sys","T16"],["Cyber security","#tools","sec","T17"]]},
   {i:"📖",t:"Books",h:"#shop",k:"shop",badge:"New"},
   {i:"👥",t:"Community",menu:[["Community","#community","community"],["Workshops","#workshops","workshops"],["Live cohort waitlist","#cohort","cohort"]]},
-  {i:"👤",t:"About",h:"#about",k:"about"},
-  {i:"🧠",t:"Dimaag Dada",h:"#puzzles",k:"puzzles"}];
+  {i:"👤",t:"About",h:"#about",k:"about"}];
  function build(){
   var nav=document.querySelector("header .tabs"); if(!nav||nav.dataset.rd)return; nav.dataset.rd=1;
   nav.innerHTML=G.map(function(g){
