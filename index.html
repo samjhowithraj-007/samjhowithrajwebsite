@@ -30,9 +30,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="redesign.css?v=21"><link rel="stylesheet" href="rdhome.css?v=16"><script src="rdhome.js?v=12"></script><script defer src="rdbar.js?v=8"></script><script defer src="rdtools.js?v=5"></script><script defer src="rddada.js?v=8"></script>
 <script>try{if(localStorage.getItem("swr-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
-<meta name="theme-color" content="#0b1020">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#050b17">
+<link rel="apple-touch-icon" href="img/botu-apple-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tech Samjho">
@@ -1872,6 +1873,7 @@ function render(){
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
   else if (h === "puzzles") { app.innerHTML = puzzlesPage(); tab = "puzzles"; }
   else if (h === "jigsaw") { app.innerHTML = jigsawPage(); tab = "puzzles"; setTimeout(() => startJigsaw()); }
+  else if (h === "tools" && window.RDTOOLS) { RDTOOLS.show(app); tab = h; document.title = "Tools · Tech Samjho Raj"; }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
   else if (h === "upcoming") { app.innerHTML = upcoming(); tab = h; }
   else if (h === "community") { app.innerHTML = community(); tab = h; }
@@ -1881,7 +1883,9 @@ function render(){
   else if (h === "refund") { app.innerHTML = refund(); tab = h; }
   else if (h === "shipping") { app.innerHTML = shipping(); tab = h; }
   else if (h === "contact") { app.innerHTML = contact(); tab = h; }
+  else if (window.RDHOME) { app.innerHTML = window.RDHOME; }
   else { app.innerHTML = classroom(); setTimeout(() => typeof startTerm === "function" && startTerm()); }
+  document.body.classList.toggle("rd-home", !!document.querySelector(".rdh"));
   document.querySelectorAll(".tab").forEach(t => t.dataset.tab === tab ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current"));
   fillSocial();
   document.title = c ? `${l.title} · Tech Samjho Raj` : tab === "privacy" ? "Privacy · Tech Samjho Raj" : tab === "terms" ? "Terms · Tech Samjho Raj" : tab === "refund" ? "Refunds · Tech Samjho Raj" : tab === "shipping" ? "Shipping and delivery · Tech Samjho Raj" : tab === "contact" ? "Contact · Tech Samjho Raj" : h === "book" ? "Python with Chai (book) · Tech Samjho Raj" : tab === "playground" ? "Python Playground · Tech Samjho Raj" : h === "shop" ? "Shop · Tech Samjho Raj" : h === "jigsaw" ? "Dimaag Dada's Mystery House jigsaw · Tech Samjho Raj" : h === "puzzles" ? "Dimaag Dada · Reasoning Samjho · Tech Samjho Raj" : tab === "workshops" ? "AI workshops for colleges and companies · Tech Samjho Raj" : "Learn Python in Hindi: Free Lessons and AI Books | Tech Samjho Raj";
