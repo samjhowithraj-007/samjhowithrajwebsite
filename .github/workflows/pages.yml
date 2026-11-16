@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths-ignore: ["README.md", "IMPROVEMENTS.md", "archive/**", "tools/**"]
+  schedule:
+    - cron: "30 1 * * *"
   workflow_dispatch:
 
 permissions:
@@ -24,8 +26,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Refresh tech news (daily; keeps the committed news.json if feeds fail)
+        continue-on-error: true
+        run: node tools/fetch-news.mjs
       - name: Collect site files
-        run: mkdir site && cp -r index.html CNAME manifest.webmanifest sw.js redesign.css rdhome.css rdhome.js rdbar.js rdtools.js rdlearn.js robots.txt sitemap.xml site-index.json googleef50f6b23d7dfe9f.html img media notes puzzles learn python chatbot agentic-ai python-book reasoning-puzzles hi hinglish site/
+        run: mkdir site && cp -r index.html CNAME manifest.webmanifest sw.js redesign.css rdlight.css rdhome.css rdhome.js rdbar.js rdtools.js rdlearn.js rdauth.js rdplayer.js rdnews.js news.json news-videos.json robots.txt sitemap.xml site-index.json googleef50f6b23d7dfe9f.html img media notes puzzles learn python chatbot agentic-ai python-book reasoning-puzzles hi hinglish site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

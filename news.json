@@ -1,0 +1,805 @@
+{
+ "updated": "2026-11-16T23:25:48.917Z",
+ "items": [
+  {
+   "title": "Tech leaders are convinced that Jensen Huang’s exit was a plot against him",
+   "link": "https://www.theverge.com/tech/1035027/tech-leaders-nvidia-jensen-huang-theories",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T23:17:34.000Z",
+   "summary": "Jensen Huang's stunning resignation from Nvidia after more than 33 years has sent shockwaves throughout the tech industry. Now prominent figures are calling for Huang's reinstatement, and…"
+  },
+  {
+   "title": "California sues OpenAI over Hugging Face attack",
+   "link": "https://www.bbc.co.uk/news/articles/c6wy4xv2mxglo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-16T23:12:24.000Z",
+   "summary": "Attorney General Rob Bonta alleges OpenAI misled and endangered the public"
+  },
+  {
+   "title": "United Airlines system outage disrupts departures just days after the big ground stop",
+   "link": "https://www.theverge.com/transportation/1035025/united-airlines-outage-down-departures",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T22:54:59.000Z",
+   "summary": "Less than a week after an issue with air traffic control communications and radar caused the FAA to halt takeoffs nationwide, United Airlines departing flights are being disrupted by an…"
+  },
+  {
+   "title": "Nvidia dismisses 'Bring Jensen Back' campaign as Trump backs effort to reinstate ex CEO",
+   "link": "https://www.bbc.co.uk/news/articles/cry49plv8v3go?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-16T22:21:27.000Z",
+   "summary": "A number of tech figures have backed an effort asking the AI chip giant to give Jensen Huang his job back."
+  },
+  {
+   "title": "Cyber giant Infoblox confirms security incident after hackers access &#8216;company information'",
+   "link": "https://techcrunch.com/2026/11/16/cyber-giant-infoblox-confirms-security-incident-after-hackers-access-company-information/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T22:12:31.000Z",
+   "summary": "The cybersecurity and automation giant said it's working with outside investigators to understand the scale of the breach."
+  },
+  {
+   "title": "All the questions Nvidia should answer on Tuesday — but probably won’t",
+   "link": "https://techcrunch.com/2026/11/16/all-the-questions-nvidia-should-answer-on-tuesday-but-probably-wont/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T22:03:02.000Z",
+   "summary": "Nvidia interim CEO and long-time CFO Colette Kress is about to have one of the biggest days of her career on Tuesday when the company reports its third quarter results. Given the turmoil…"
+  },
+  {
+   "title": "The Bank Outage May Have Nothing to Do With Your Bank",
+   "link": "https://www.wired.com/story/jpmorganchase-bank-outage-oh-come-on/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T21:45:45.000Z",
+   "summary": "Amid hundreds of reports of US banks experiencing outages, JPMorganChase says a technical “issue” with its “on-premise hardware systems” may be causing “slowness” with transactions at…"
+  },
+  {
+   "title": "India &#038; Nine Other Nations Sign Joint Declaration To Safeguard AI Supply Chains",
+   "link": "https://inc42.com/buzz/india-nine-other-nations-sign-declaration-to-secure-ai-supply-chains/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T21:44:01.000Z",
+   "summary": "India and nine other nations have signed a joint declaration to safeguard supply chains and infrastructure that are central to&#8230;"
+  },
+  {
+   "title": "In Get Huge, the manosphere is here to make friends — with deadly consequences",
+   "link": "https://www.theverge.com/entertainment/1033466/hulu-disney-plus-get-huge-looksmaxxing-to-death",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T21:41:57.000Z",
+   "summary": "Before Clavicular and other manosphere streamers were introducing young guys to the concept of breaking their facial bones to become more attractive, there was an older generation of…"
+  },
+  {
+   "title": "On this day in space! Nov. 16, 1974: The giant Arecibo Observatory in Puerto Rico broadcasts humanity's 1st interstellar message",
+   "link": "https://www.space.com/space-exploration/on-this-day-in-space-november-16-2026",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T21:34:36.000Z",
+   "summary": "On this day in space! Nov. 16, 1974: The giant Arecibo Observatory in Puerto Rico broadcasts humanity's 1st interstellar message"
+  },
+  {
+   "title": "BugMeNot Has Closed",
+   "link": "https://www.bugmenot.com/",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T21:32:17.000Z",
+   "summary": "Article URL: https://www.bugmenot.com/ Comments URL: https://news.ycombinator.com/item?id=50523601 Points: 171 # Comments: 89"
+  },
+  {
+   "title": "Relive Starship’s historic Flight 15 with our best photos from launch and ‘Mechazilla’ tower catch",
+   "link": "https://www.space.com/space-exploration/launches-spacecraft/relive-starships-historic-flight-15-with-our-best-photos-from-launch-and-mechazilla-tower-catch",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T21:26:29.000Z",
+   "summary": "See the most epic photos from SpaceX's Starship Flight 15 test flight and historic launch tower catch."
+  },
+  {
+   "title": "Apple reveals new Mac security controls as AI agents raise privacy risks",
+   "link": "https://techcrunch.com/2026/11/16/apple-reveals-new-mac-security-controls-as-ai-agents-raise-privacy-risks/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T21:01:02.000Z",
+   "summary": "Following an October announcement, Apple has detailed new permission controls, warnings, and transparency features coming to macOS 27.3 to address risks posed by AI agents and other apps."
+  },
+  {
+   "title": "California sues OpenAI over rogue AI hacking incidents",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1034815/california-openai-hugging-face-lawsuit",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T20:46:01.000Z",
+   "summary": "California is suing OpenAI after its AI agents broke out of their testing environment and hacked other companies, including Hugging Face. In a lawsuit filed Monday, Attorney General Rob…"
+  },
+  {
+   "title": "Carnegie Mellon is putting computer science courses on YouTube for free",
+   "link": "https://www.cs.cmu.edu/learn/",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T20:43:36.000Z",
+   "summary": "Article URL: https://www.cs.cmu.edu/learn/ Comments URL: https://news.ycombinator.com/item?id=50522980 Points: 284 # Comments: 54"
+  },
+  {
+   "title": "Sam Altman says he wants everyone ‘to have a lot of RAM’",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1034787/sam-altman-ram-shortage-semafor",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T20:41:28.000Z",
+   "summary": "OpenAI CEO Sam Altman is once again addressing his controversial comments on PC RAM purchases. \"I want to be clear, I want people to have a lot of RAM, I think everybody should be able to…"
+  },
+  {
+   "title": "Shareholders sue Intel, its CEO, and CFO after stock drops 28.6 percent in one day",
+   "link": "https://arstechnica.com/tech-policy/2026/11/shareholders-sue-intel-its-ceo-and-cfo-after-stock-drops-28-6-percent-in-one-day/",
+   "source": "Ars Technica",
+   "topic": "AI",
+   "date": "2026-11-16T20:37:47.000Z",
+   "summary": "The PC sales slump \"more than offset” AI boom gains, shareholders say."
+  },
+  {
+   "title": "Some of our favorite PlayStation games are steeply discounted for Black Friday",
+   "link": "https://www.theverge.com/gadgets/1034339/sony-black-friday-game-sale-2026-deals",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T20:36:14.000Z",
+   "summary": "Black Friday is approaching, and some companies are already rolling out the discounts ahead of the big day. If you’re hunting for PlayStation 5 accessories, we’ve already rounded up some of…"
+  },
+  {
+   "title": "Big Nuclear isn’t worried about the Democrats stopping data centers",
+   "link": "https://www.theverge.com/science/1034694/nuclear-energy-constellation-earnings-data-centers-democrats",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T20:29:37.000Z",
+   "summary": "Constellation Energy - America's largest operator of nuclear power plants - does not share Wall Street's concerns that the Democrats will slow down data center development. On the company's…"
+  },
+  {
+   "title": "US data centers now burn more electricity than a midsized country",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1034668/data-centers-electricity-climate-pollution-study-harvard",
+   "source": "The Verge",
+   "topic": "Big Tech",
+   "date": "2026-11-16T20:27:58.000Z",
+   "summary": "Fossil fuels are still the biggest source of electricity for hyperscale data centers in the US, a new paper published in the journal Nature Sustainability shows. They likely burn through…"
+  },
+  {
+   "title": "Bombay Shaving Company’s Parent Forays Into Wellness With rE, Eyes Gym Launches",
+   "link": "https://inc42.com/buzz/bombay-shaving-companys-parent-forays-into-wellness-with-re-eyes-gym-launches/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T20:24:08.000Z",
+   "summary": "Visage Lines Personal Care Pvt Ltd, the parent entity of D2C grooming startup Bombay Shaving Company, has forayed into the&#8230;"
+  },
+  {
+   "title": "California state AG sues OpenAI over rogue agent incidents",
+   "link": "https://techcrunch.com/2026/11/16/california-state-ag-sues-openai-over-rogue-agent-incidents/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T20:07:13.000Z",
+   "summary": "The California lawsuit represents one of the first attempts to hold an AI lab legally accountable for a rogue agent incident"
+  },
+  {
+   "title": "Elon Musk says SpaceX’s Starship, already the largest rocket on Earth, will get even bigger with next-gen V4 model",
+   "link": "https://www.space.com/space-exploration/launches-spacecraft/elon-musk-says-spacexs-starship-already-the-largest-rocket-on-earth-will-get-even-bigger-with-next-gen-v4-model",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T20:04:22.000Z",
+   "summary": "Just a day after SpaceX caught the upper stage of its Starship megarocket back at the launch pad for the first time ever, Elon Musk told us that the spacecraft will get even bigger."
+  },
+  {
+   "title": "Best Early Black Friday Espresso Machine Deals (2026)",
+   "link": "https://www.wired.com/story/early-black-friday-coffee-espresso-deals-11-16-2026/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T20:00:00.000Z",
+   "summary": "Impress your Thanksgiving guests with a cappuccino. These early deals on WIRED-tested favorites leave you time to practice."
+  },
+  {
+   "title": "Uber says hackers stole information on close to 150,000 driver's licenses during data breach",
+   "link": "https://techcrunch.com/2026/11/16/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T19:53:00.000Z",
+   "summary": "The ride-sharing giant said driver's license information stored by AI cloud company Fireworks AI was stolen during a security incident."
+  },
+  {
+   "title": "Apple adds &#8216;face unlock' to the iPhone Duo, but it's not Face ID",
+   "link": "https://techcrunch.com/2026/11/16/apple-adds-face-unlock-to-the-iphone-duo-but-its-not-face-id/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T19:26:55.000Z",
+   "summary": "Apple's latest iOS 27.3 developer beta introduces a limited face unlock feature for the iPhone Duo, alongside other improvements."
+  },
+  {
+   "title": "Trump says ex-Nvidia CEO Jensen Huang's affair with an alleged Chinese spy did not threaten national security",
+   "link": "https://techcrunch.com/2026/11/16/trump-says-ex-nvidia-ceo-jensen-huangs-affair-with-an-alleged-chinese-spy-did-not-threaten-national-security/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T19:12:02.000Z",
+   "summary": "Trump contradicted his own government's intelligence officials, who reportedly concluded that Alice Huang is a Chinese spy."
+  },
+  {
+   "title": "What exactly is a light-day? Here's what Voyager 1's latest milestone means for the interstellar probe",
+   "link": "https://www.space.com/space-exploration/voyager/what-exactly-is-a-light-day-heres-what-voyager-1s-latest-milestone-means-for-the-interstellar-probe",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T19:00:00.000Z",
+   "summary": "Voyager 1 is approaching a distance of one light-day from Earth, a milestone that highlights the enormous distances involved in deep-space exploration."
+  },
+  {
+   "title": "Island is a new screen-time app that turns staying off your phone into a game",
+   "link": "https://techcrunch.com/2026/11/16/island-is-a-new-screen-time-app-that-turns-staying-off-your-phone-into-a-game/",
+   "source": "TechCrunch",
+   "topic": "Startups & business",
+   "date": "2026-11-16T18:54:18.000Z",
+   "summary": "YC-backed Island turns screen time goals into a farming game, rewarding users with new crops, animals, and more when they stick to their limits."
+  },
+  {
+   "title": "Dreamteam Bags $53 Mn To Disrupt The CRM Space With AI",
+   "link": "https://inc42.com/buzz/dreamteam-bags-53-mn-to-disrupt-the-crm-space-with-ai/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T18:50:27.000Z",
+   "summary": "AI-native customer relationship management (CRM) platform Dreamteam, cofounded by former Freshworks executives, has emerged out of stealth mode. The startup&#8230;"
+  },
+  {
+   "title": "The open-source movement wants Jensen Huang back",
+   "link": "https://www.technologyreview.com/2026/11/16/1148624/the-open-source-movement-wants-jensen-huang-back/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-16T18:38:47.000Z",
+   "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. On Friday, a petition to reinstate Jensen Huang as…"
+  },
+  {
+   "title": "Technical issue at JPMorgan Chase triggers online banking delays for US banks",
+   "link": "https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T18:31:30.000Z",
+   "summary": "Article URL: https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda Comments URL: https://news.ycombinator.com/item?id=50521045 Points: 667 #…"
+  },
+  {
+   "title": "The iPhone Duo Is Getting a Limited Version of Face ID",
+   "link": "https://www.wired.com/story/iphone-duo-is-getting-a-limited-version-of-face-id/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T18:26:26.000Z",
+   "summary": "Originally launching only with Touch ID, Apple’s folding phone now borrows a feature from the new HomeView and can recognize your mug, but it’s likely not as secure as Face ID."
+  },
+  {
+   "title": "Software is breaking down at a systemic level",
+   "link": "https://www.breck-mckye.com/blog/2026/11/software-is-breaking-down-at-a-systemic-level/",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T18:17:17.000Z",
+   "summary": "Article URL: https://www.breck-mckye.com/blog/2026/11/software-is-breaking-down-at-a-systemic-level/ Comments URL: https://news.ycombinator.com/item?id=50520866 Points: 317 # Comments: 196"
+  },
+  {
+   "title": "'Maybe the scariest thing I've heard in my life': Artemis II astronaut Victor Glover reveals his toughest challenge before flying to the moon",
+   "link": "https://www.space.com/space-exploration/artemis/maybe-the-scariest-thing-ive-heard-in-my-life-artemis-ii-astronaut-victor-glover-reveals-his-toughest-challenge-before-flying-to-the-moon",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T18:00:00.000Z",
+   "summary": "For Artemis II astronaut Victor Glover, one of the hardest parts of traveling to the moon happened before he even left Earth."
+  },
+  {
+   "title": "Grazing sheep in fields with solar arrays",
+   "link": "https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T17:27:46.000Z",
+   "summary": "Article URL: https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains Comments URL: https://news.ycombinator.com/item?id=50520182 Points:…"
+  },
+  {
+   "title": "The Leonid meteor shower peaks Nov. 17-18! Here's what you need to know",
+   "link": "https://www.space.com/stargazing/meteor-showers/the-leonid-meteor-shower-peaks-nov-17-18-heres-what-you-need-to-know",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T17:00:00.000Z",
+   "summary": "The Leonid meteor shower peaks overnight on Nov. 17-18, sending shooting stars racing across the night sky from the direction of the constellation Leo."
+  },
+  {
+   "title": "Instagram Is Bringing Amazon Affiliate Links Directly to Reels and Posts",
+   "link": "https://www.wired.com/story/instagram-is-bringing-amazon-affiliate-links-directly-to-reels-and-posts/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T17:00:00.000Z",
+   "summary": "The Meta-owned social media platform now lets creators attach up to 30 affiliate links per Reel to make money from Amazon more easily."
+  },
+  {
+   "title": "Jiff 1.0: A datetime library for Rust",
+   "link": "https://burntsushi.net/jiff/",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T16:53:39.000Z",
+   "summary": "Article URL: https://burntsushi.net/jiff/ Comments URL: https://news.ycombinator.com/item?id=50519744 Points: 273 # Comments: 62"
+  },
+  {
+   "title": "AO3 Is Back. This Is Not a Drill",
+   "link": "https://www.wired.com/story/ao3-is-back-this-is-not-a-drill/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T16:40:33.000Z",
+   "summary": "Following a weeks-long shutdown, the home to over 18 million works of fan fiction is back online, with some limitations."
+  },
+  {
+   "title": "Frame – 31.5\" color ePaper display",
+   "link": "https://trmnl.com/blog/introducing-frame",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T16:23:22.000Z",
+   "summary": "Article URL: https://trmnl.com/blog/introducing-frame Comments URL: https://news.ycombinator.com/item?id=50519354 Points: 251 # Comments: 166"
+  },
+  {
+   "title": "Oil Cools, But D2C Brands See No Way Out Of Price Hikes",
+   "link": "https://inc42.com/features/oil-cools-but-d2c-brands-see-no-way-out-of-price-hikes/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T16:20:51.000Z",
+   "summary": "Direct-to-consumer (D2C) startups have been facing mounting cost pressures since the US-Iran conflict drove up global crude prices, making it&#8230;"
+  },
+  {
+   "title": "Jensen Huang Is Gone. Now What?",
+   "link": "https://www.wired.com/story/the-big-interview-podcast-lauren-goode-jensen-huang/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T16:12:51.000Z",
+   "summary": "After a shocking downfall, Nvidia’s CEO is out of a job. WIRED’s Lauren Goode explains what that means for the world’s most critical chip company, the AI industry, and Jensen Huang himself."
+  },
+  {
+   "title": "Building trustworthy AI by fencing it in, not predicting it",
+   "link": "https://www.technologyreview.com/2026/11/16/1148565/building-trustworthy-ai-by-fencing-it-in-not-predicting-it/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-16T16:04:28.000Z",
+   "summary": "In October this year, OpenAI disclosed that two of its AI agents had switched off the systems built to monitor them. One muted its own safety alerts after misreading an instruction not to…"
+  },
+  {
+   "title": "Could there be an ancient alien satellite in Earth's orbit? How the 'Black Knight' conspiracy theory has survived for over 100 years",
+   "link": "https://www.space.com/space-exploration/satellites/could-there-be-an-ancient-alien-satellite-in-earths-orbit-how-the-black-knight-conspiracy-theory-has-survived-for-over-100-years",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T16:00:00.000Z",
+   "summary": "The legend of the Black Knight satellite offers an example of how a collection of unconnected events and speculative interpretations can accumulate into a single conspiracy theory over…"
+  },
+  {
+   "title": "Just 400 US Data Centers Use More Electricity Than Michigan",
+   "link": "https://www.wired.com/story/data-centers-use-more-electricity-than-michigan/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T16:00:00.000Z",
+   "summary": "New Harvard research shows that data-center power demand is outstripping states—and that doesn’t even include facilities with off-grid gas plants."
+  },
+  {
+   "title": "Fractal Eyes AI Acquisitions Ahead Of Enterprise AI Scale-Up",
+   "link": "https://inc42.com/buzz/fractal-eyes-ai-acquisitions-ahead-of-enterprise-ai-scale-up/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T15:34:00.000Z",
+   "summary": "Fractal Analytics is evaluating acquisitions across healthcare, agentic AI and AI engineering as it looks to strengthen its capabilities ahead&#8230;"
+  },
+  {
+   "title": "Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J",
+   "link": "https://www.infoq.com/news/2026/11/java-news-roundup-nov09-2026/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T15:25:00.000Z",
+   "summary": "<img src=\"https://res.infoq.com/news/2026/11/java-news-roundup-nov09-2026/en/headerimage/java-news-roundup-image-1794842460564.jpg\"/><p>This week's Java roundup for November 9th, 2026,…"
+  },
+  {
+   "title": "Nvidia was in trouble before the Jensen Huang mess",
+   "link": "https://www.wired.com/story/nvidia-was-already-in-trouble-before-the-jensen-huang-mess/",
+   "source": "Hacker News (top)",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T15:24:09.000Z",
+   "summary": "Article URL: https://www.wired.com/story/nvidia-was-already-in-trouble-before-the-jensen-huang-mess/ Comments URL: https://news.ycombinator.com/item?id=50518567 Points: 240 # Comments: 223"
+  },
+  {
+   "title": "Euclid space telescope discovers its 1st comet | Space photo of the day for Nov. 16, 2026",
+   "link": "https://www.space.com/astronomy/comets/euclid-discovers-its-1st-comet-space-photo-of-the-day-for-nov-16-2026",
+   "source": "Space.com",
+   "topic": "Science & space",
+   "date": "2026-11-16T15:00:00.000Z",
+   "summary": "The new observatory managed to catch this comet whirling between the orbits of Jupiter and Saturn."
+  },
+  {
+   "title": "Uber’s Legal AI Agent Cuts Contract Review Time by 20% with Rules and RAG",
+   "link": "https://www.infoq.com/news/2026/11/uber-legal-redlining-agent/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T14:37:00.000Z",
+   "summary": "<img src=\"https://www.infoq.com/styles/static/images/logo/logo_bigger.jpg\"/><p>Uber’s Legal Redlining Agent reviews contract changes in Microsoft Word using RAG, historical lawyer feedback,…"
+  },
+  {
+   "title": "CERT-In Flags Fresh Vulnerabilities In eMudhra's emBridge Tool",
+   "link": "https://inc42.com/buzz/cert-in-flags-fresh-vulnerabilities-in-emudhras-embridge-tool/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T14:33:24.000Z",
+   "summary": "CERT-In (Indian Computer Emergency Response Team) has now flagged new security flaws in eMudhra's digital signature utility unit, emBridge, weeks&#8230;"
+  },
+  {
+   "title": "Karnataka Halts Green SM Taxi Licensing To Protect Local Interest",
+   "link": "https://inc42.com/buzz/karnataka-halts-green-sm-taxi-licensing-to-protect-local-interest/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T14:24:09.000Z",
+   "summary": "The Karnataka government has reportedly halted the registration of new taxis operated by Vingroup-backed Green SM days after clearing its&#8230;"
+  },
+  {
+   "title": "Can Robots Bring Stroke Surgery to Remote Hospitals?",
+   "link": "https://spectrum.ieee.org/telesurgery-stroke",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-16T14:00:02.000Z",
+   "summary": "I am practicing brain surgery on a patient lying 6 meters away, out of my sight and reach. I press a foot pedal, activating the controller in my hand, and carefully steer a thin flexible…"
+  },
+  {
+   "title": "Google Finds Hackers Using AI Agents to Build and Run Exploits From Software Patches",
+   "link": "https://thehackernews.com/2026/11/google-finds-hackers-using-ai-agents-to.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T14:00:00.000Z",
+   "summary": "Google on Monday revealed that adversarial use of artificial intelligence (AI) by threat actors has gone beyond manual prompting to deploying autonomous multi-agent offensive frameworks…"
+  },
+  {
+   "title": "GTA 6 hacker pleads guilty after release from secure hospital",
+   "link": "https://www.bbc.co.uk/news/articles/cq99exy89dngo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-16T13:34:22.000Z",
+   "summary": "21-year-old Arion Kurtaj pleaded guilty to the Rockstar Games hack and others he carried out when he was a teenager."
+  },
+  {
+   "title": "⚡ Weekly Recap: N-able 0-Days, Windows 0-Days, Chrome 0-Days, Fridge 0-Days, and More Bad Days",
+   "link": "https://thehackernews.com/2026/11/weekly-recap-n-able-0-days-windows-0.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T13:27:20.000Z",
+   "summary": "A default password opened doors it never should have. A trusted update delivered malware. Even a security feature became a way to break in. Different stories, same problem: the things meant…"
+  },
+  {
+   "title": "The Download: testing tech promises and searching for cognitive immortality",
+   "link": "https://www.technologyreview.com/2026/11/16/1148599/the-download-testing-tech-promises-cognitive-immortality-quest/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-16T13:10:00.000Z",
+   "summary": "This is today's edition of The Download, our weekday newsletter that provides a daily dose of what's going on in the world of technology. Are we there yet? Six technologies that promised to…"
+  },
+  {
+   "title": "Building AI that can work across the enterprise",
+   "link": "https://www.technologyreview.com/2026/11/16/1146070/building-ai-that-can-work-across-the-enterprise/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-16T13:00:00.000Z",
+   "summary": "For years, enterprises have approached AI as a series of discrete experiments. Now, as AI agents begin to move into the workflows that run the business, that model is starting to look…"
+  },
+  {
+   "title": "Six Unpatched Danfoss Refrigeration Controller Flaws Could Allow Remote Takeover Without Login",
+   "link": "https://thehackernews.com/2026/11/six-unpatched-danfoss-refrigeration.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T12:34:21.000Z",
+   "summary": "Six flaws in Danfoss AK-SM800A refrigeration controllers could let a remote attacker take over a controller without logging in, Dutch security consultancy Midnight Blue said earlier this…"
+  },
+  {
+   "title": "Retadup Worm Resurfaces 7 Years After Takedown to Spread CoffeeLoader Malware",
+   "link": "https://thehackernews.com/2026/11/retadup-worm-resurfaces-7-years-after.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T12:33:18.000Z",
+   "summary": "Cybersecurity researchers have disclosed details of a new variant of CoffeeLoader, a malware designed to deliver additional payloads to infected machines. \"On launch, the NSIS-based…"
+  },
+  {
+   "title": "Paytm wallet comeback: What RBI's initial nod means and why it clamped down on Paytm Payments Bank",
+   "link": "https://www.medianama.com/2026/11/223-paytm-wallet-rbis-payments-bank/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T12:26:48.000Z",
+   "summary": "The RBI has granted Paytm in-principle approval to revive its wallet business, but the company must complete cybersecurity audits and meet regulatory conditions before resuming operations.…"
+  },
+  {
+   "title": "Airbnb Introduces CASTLE for Training Natural Language Search Models with Synthetic Data",
+   "link": "https://www.infoq.com/news/2026/11/airbnb-castle/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T12:25:00.000Z",
+   "summary": "<img src=\"https://www.infoq.com/styles/static/images/logo/logo_bigger.jpg\"/><p>Airbnb researchers have introduced CASTLE, a framework designed to address the cold-start problem in natural…"
+  },
+  {
+   "title": "Best Digital Photo Frames (2026): Aura, Skylight, Amazon",
+   "link": "https://www.wired.com/story/best-digital-photo-frames/",
+   "source": "Wired",
+   "topic": "Gadgets",
+   "date": "2026-11-16T12:01:00.000Z",
+   "summary": "There are more digital photo frames than ever these days. After years of testing, these are the ones I’d buy."
+  },
+  {
+   "title": "Fake Allahabad HC Order Row: DoT Orders Unblocking Of 95 Websites",
+   "link": "https://inc42.com/buzz/fake-allahabad-hc-order-row-dot-orders-unblocking-of-95-websites/",
+   "source": "Inc42",
+   "topic": "India tech",
+   "date": "2026-11-16T11:53:22.000Z",
+   "summary": "The Department of Telecommunications (DoT) has directed internet service providers (ISPs) to immediately unblock 95 websites and domains that were&#8230;"
+  },
+  {
+   "title": "Karnataka HC refuses to quash case against Razorpay directors over alleged KYC, monitoring, and merchant onboarding lapses",
+   "link": "https://www.medianama.com/2026/11/223-karnataka-hc-razorpay-kyc-merchant-onboarding-lapses/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T11:08:10.000Z",
+   "summary": "The Karnataka High Court has refused to quash SFIO proceedings against Razorpay directors Harshil Mathur and Shashank Kumar over alleged lapses in merchant onboarding, KYC checks and due…"
+  },
+  {
+   "title": "Advanced Metrology for Defect Detection, Tool Health, and Semiconductor Yield Enhancement",
+   "link": "https://event.on24.com/wcc/mr/7058967/655F0A675F5C3415546D597247025DA8?utm_source=evident122&utm_medium=IEEE&utm_campaign=series1",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-16T11:00:03.000Z",
+   "summary": "In advanced semiconductor manufacturing, small defects can have a large effect on yield. Thin film deposition tools must stay stable and qualified. Process drift must be caught early. When…"
+  },
+  {
+   "title": "Article: Governed Autonomous Intelligence for Mission-Critical Utility",
+   "link": "https://www.infoq.com/articles/utility-governed-autonomous-intelligence-ai/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T11:00:00.000Z",
+   "summary": "<img src=\"https://res.infoq.com/articles/utility-governed-autonomous-intelligence-ai/en/headerimage/utility-governed-autonomous-intelligence-ai-header-1793368487796.jpg\"/><p>The article…"
+  },
+  {
+   "title": "Podcast: Getting CRA Compliant Hardens the Code and Gets Your Company Closer to Digital Sovereignty",
+   "link": "https://www.infoq.com/podcasts/company-closer-digital-sovereignty/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T11:00:00.000Z",
+   "summary": "<img src=\"https://res.infoq.com/podcasts/company-closer-digital-sovereignty/en/smallimage/infoq-podcast-500-1794318137932.jpg\"/><p>In this episode, Christopher \"CRob\" Robinson, CTO of…"
+  },
+  {
+   "title": "AWS Open-Sources Emulator for Local Testing of 200+ Services by Coding Agents",
+   "link": "https://www.infoq.com/news/2026/11/aws-emulator-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T10:40:00.000Z",
+   "summary": "<img src=\"https://res.infoq.com/news/2026/11/aws-emulator-agents/en/headerimage/generatedHeaderImage-1794516406278.jpg\"/><p>AWS Emulator is a generally available local HTTPS endpoint,…"
+  },
+  {
+   "title": "GitHub Rebuilds the Copilot App's Diff Surface to Open Million-Line Pull Requests Without Jank",
+   "link": "https://www.infoq.com/news/2026/11/github-pull-requests-rebuild/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T10:32:00.000Z",
+   "summary": "<img src=\"https://res.infoq.com/news/2026/11/github-pull-requests-rebuild/en/headerimage/generatedHeaderImage-1794747791339.jpg\"/><p>GitHub engineers rebuilt the diff view in the Copilot…"
+  },
+  {
+   "title": "NPCI launches MDR-funded scheme to further UPI adoption among small merchants: Why it matters",
+   "link": "https://www.medianama.com/2026/11/223-npci-upi-mdr-vyapaar-saksham-scheme/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T10:17:01.000Z",
+   "summary": "NPCI has earmarked 30% of the scheme's funds for onboarding new small merchants and 50% for increasing UPI transactions. The post NPCI launches MDR-funded scheme to further UPI adoption…"
+  },
+  {
+   "title": "28 Zero-Day Findings in Under Two Days. Is Robotics Security Keeping Pace?",
+   "link": "https://spectrum.ieee.org/zero-day-robotics-vulnerabilities-vicone-security",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-16T10:00:01.000Z",
+   "summary": "This article is brought to you by VicOne . VicOne identified an initial set of 28 zero-day findings in less than two days using AI-assisted research across software and tools supporting the…"
+  },
+  {
+   "title": "Companies can now apply to become consent managers under the DPDP Act. Who will approve them?",
+   "link": "https://www.medianama.com/2026/11/223-companies-consent-managers-dpdp-act/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T09:43:28.000Z",
+   "summary": "MeitY Secretary launched the application portal for the companies to register as consent managers under DPDP Act and the press release said the Board \"will assess the applications against…"
+  },
+  {
+   "title": "SANSAR Linux Cryptomining Malware Uses Modified NVIDIA Library to Hide GPU Activity",
+   "link": "https://thehackernews.com/2026/11/sansar-linux-cryptomining-malware-uses.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T09:32:57.000Z",
+   "summary": "A financially motivated threat activity cluster tracked as REF3364 has been attributed to a Linux-focused cryptocurrency mining operation that tampers with the readings used to detect high…"
+  },
+  {
+   "title": "AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field",
+   "link": "https://www.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+   "source": "InfoQ",
+   "topic": "Cloud & software",
+   "date": "2026-11-16T09:07:00.000Z",
+   "summary": "<img src=\"https://res.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/en/headerimage/generatedHeaderImage-1794301940782.jpg\"/><p>AWS has launched Nitro Sandboxes, running each opted-in EKS…"
+  },
+  {
+   "title": "Amazon Uncovers AI Agent Campaign Targeting LiteLLM, Dify, and Other Apps for API Keys",
+   "link": "https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T07:34:21.000Z",
+   "summary": "Attackers' AI agents have been hunting for weak spots in internet-exposed AI apps such as LiteLLM, One API, and Dify to steal the AI provider keys stored inside, according to the agents'…"
+  },
+  {
+   "title": "Exclusive: DoT clarifies ‘continuous’ SIM binding: Messaging apps must verify SIM cards every 24 hours",
+   "link": "https://www.medianama.com/2026/11/223-dot-clarifies-sim-binding-24-hour-checks/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T07:15:14.000Z",
+   "summary": "The DoT has reportedly clarified that messaging apps must check for users' SIM cards every 24 hours. The November 2025 directions did not specify how frequently these checks must take…"
+  },
+  {
+   "title": "RBI fines MobiKwik Rs 9 lakh over non-compliance with wallet transfer limit, delayed fraud reporting",
+   "link": "https://www.medianama.com/2026/11/223-rbi-fines-mobikwik-non-compliance-wallet-transfer/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T07:03:34.000Z",
+   "summary": "The RBI has imposed a Rs 9 lakh penalty on MobiKwik for allowing fund transfers beyond prescribed limits to non-registered beneficiaries and failing to report certain frauds within the…"
+  },
+  {
+   "title": "BO Team Exploits Log4Shell in VMware vCenter, Compromises Russian Firm's Code-Signing Server",
+   "link": "https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-16T06:53:34.000Z",
+   "summary": "An investigation into suspicious activity within a Russian software developer's network has uncovered a months-long compromise of its development infrastructure and a software code-signing…"
+  },
+  {
+   "title": "SEBI will make market firms disclose AI use and keep humans in the loop, chairman says",
+   "link": "https://www.medianama.com/2026/11/223-sebi-ai-disclosure-human-oversight-rules/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T06:34:59.000Z",
+   "summary": "SEBI's upcoming AI guidelines will build on its 2025 consultation paper, which proposed disclosure, testing and accountability requirements. The post SEBI will make market firms disclose AI…"
+  },
+  {
+   "title": "EaseMyTrip Q2: Loss narrows to Rs 57 lakh as revenue surges 34%",
+   "link": "https://www.medianama.com/2026/11/223-easemytrip-loss-narrows-revenue-surges/",
+   "source": "MediaNama",
+   "topic": "India tech",
+   "date": "2026-11-16T06:24:37.000Z",
+   "summary": "EaseMyTrip narrowed its Q2 FY27 net loss by 98% to Rs 56.5 lakh, while revenue rose 34% to Rs 158 crore, driven by strong growth in its hotels and holiday packages business. The post…"
+  },
+  {
+   "title": "Intel sued by investors after PC sales slump hits share price",
+   "link": "https://www.bbc.co.uk/news/articles/cw62p42p288do?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-16T03:04:01.000Z",
+   "summary": "A proposed class action claims the firm hid the impact of slowing PC sales from shareholders."
+  },
+  {
+   "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says",
+   "link": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-16T01:47:57.000Z",
+   "summary": "The Nvidia scandal has raised questions over whether advanced AI chips ended up in China, despite US restrictions."
+  },
+  {
+   "title": "South Korea's top scorer in tax accountancy exam admits cheating",
+   "link": "https://www.bbc.co.uk/news/articles/ckvg2ezvpe08o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-15T13:37:45.000Z",
+   "summary": "Han Won-seok, 34, confessed to using a hidden camera and AI to get a near-perfect mark on the significant test."
+  },
+  {
+   "title": "Italy Fines Meta €805 Million Over Facebook's Android Gallery Access Without Explicit Consent",
+   "link": "https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html",
+   "source": "The Hacker News",
+   "topic": "Cybersecurity",
+   "date": "2026-11-15T11:27:31.000Z",
+   "summary": "Meta was fined €805 million in Italy yesterday over a Facebook for Android feature that suggests photos and videos from users' phone galleries for them to post. The Garante, Italy's data…"
+  },
+  {
+   "title": "Italy fines Meta €805m over accessing users' photos",
+   "link": "https://www.bbc.co.uk/news/articles/cwn83gxemk35o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-14T18:28:06.000Z",
+   "summary": "The social media giant is accused of not informing 20 million users it had access to their photos."
+  },
+  {
+   "title": "Microsoft says services fully restored after day-long global outage",
+   "link": "https://www.bbc.co.uk/news/articles/c6rrg51rkz09o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Technology",
+   "topic": "Big Tech",
+   "date": "2026-11-14T06:42:27.000Z",
+   "summary": "Efforts to address the underlying problem with Outlook, Teams and Copilot are complete, the tech firm says."
+  },
+  {
+   "title": "How Microcredentials Can Help Engineers Build Trustworthy AI",
+   "link": "https://spectrum.ieee.org/microcredentials-trustworthy-ai",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-13T19:00:03.000Z",
+   "summary": "Engineering teams are moving at breakneck speed to integrate artificial intelligence, but they are running into a formidable new barrier: compliance issues. Translating high-level AI ethics…"
+  },
+  {
+   "title": "Windows 0-day dropped by disgruntled researcher hands hackers System rights",
+   "link": "https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/",
+   "source": "Ars Technica",
+   "topic": "AI",
+   "date": "2026-11-13T16:26:32.000Z",
+   "summary": "\"SignDrop\" exploit lets local users gain all-powerful System rights."
+  },
+  {
+   "title": "The Download: Silicon Valley’s blind spot and Nvidia’s chip-tracking plan",
+   "link": "https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-13T13:10:00.000Z",
+   "summary": "This is today's edition of The Download, our weekday newsletter that provides a daily dose of what's going on in the world of technology. Silicon Valley claims to know the future. So why…"
+  },
+  {
+   "title": "Engineer Overhead Lines to Withstand Ice, Wind and FreezingRain",
+   "link": "https://content.knowledgehub.wiley.com/engineering-overhead-electric-lines-for-ice-wind-and-freezing-rain/",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-13T11:00:02.000Z",
+   "summary": "This White Paper explains how ice, wind and vegetation load overhead distribution lines at the same time. It shows engineers how to assess the complete line and compare resilience options.…"
+  },
+  {
+   "title": "More autonomy, fewer NDAs: Volunteers have new requests for brain implant trials",
+   "link": "https://www.technologyreview.com/2026/11/13/1148474/more-autonomy-fewer-ndas-volunteers-have-new-requests-for-brain-implant-trials/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-13T10:00:00.000Z",
+   "summary": "Scientists have been working on ways to decode brain activity for decades. Teams have developed brain implants that can be used to control robotic limbs and computers, and even to “speak.”…"
+  },
+  {
+   "title": "Silicon Valley claims to know the future. So why did it get the midterms so wrong?",
+   "link": "https://www.technologyreview.com/2026/11/13/1148498/silicon-valley-claims-to-know-the-future-so-why-did-it-get-the-midterms-so-wrong/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-13T10:00:00.000Z",
+   "summary": "The self-styled visionaries of Silicon Valley, leaders like OpenAI chief executive Sam Altman and SpaceX boss Elon Musk, have built careers claiming to see the future. Long-term vision is…"
+  },
+  {
+   "title": "Nvidia privately confirmed it could track chips to fight smuggling, even as industry publicly questioned feasibility",
+   "link": "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
+   "source": "MIT Technology Review",
+   "topic": "AI",
+   "date": "2026-11-12T20:16:24.000Z",
+   "summary": "Representatives from Nvidia told Illinois representative Bill Foster that it would be technically possible to implement the anti-smuggling measures called for in the Chip Security Act,…"
+  },
+  {
+   "title": "The Dynamo-Electric Principle: 160 Years of Powering Industry",
+   "link": "https://spectrum.ieee.org/innomotics-electric-motors-drive-systems",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-11T11:00:02.000Z",
+   "summary": "This article is brought to you by Innomotics . In the annals of industrial history, few innovations have demonstrated such remarkable staying power as the dynamo-electric principle.…"
+  },
+  {
+   "title": "Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
+   "link": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
+   "source": "Ars Technica",
+   "topic": "AI",
+   "date": "2026-11-10T21:12:59.000Z",
+   "summary": "Researcher finds 35,000 Grok Build apps wide open to anyone who looked for them."
+  },
+  {
+   "title": "Speech Processing Pioneer Bishnu Saroop Atal Dies at 93",
+   "link": "https://spectrum.ieee.org/speech-processing-pioneer-in-memoriam",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-10T19:00:02.000Z",
+   "summary": "Bishnu Saroop Atal Acoustics and signal processing pioneer Life Fellow, 93; died 19 August Atal was an acoustics and signal processing researcher at Bell Labs in Murray Hill, N.J., and…"
+  },
+  {
+   "title": "Catch Electronics Shock and Drop Failures Before Hardware Is Built",
+   "link": "https://content.knowledgehub.wiley.com/shifting-reliability-left-guided-virtual-validation-for-electronics-shock-and-drop-testing/",
+   "source": "IEEE Spectrum",
+   "topic": "Chips & hardware",
+   "date": "2026-11-10T11:00:02.000Z",
+   "summary": "Learn how guided virtual shock and drop analysis helps engineering teams identify reliability risks before physical testing, reduce qualification iterations, optimize packaging designs, and…"
+  },
+  {
+   "title": "Vulnerability that lets hackers SSH into Linux devices is under active exploitation",
+   "link": "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
+   "source": "Ars Technica",
+   "topic": "AI",
+   "date": "2026-11-09T19:41:34.000Z",
+   "summary": "\"*sshole\" poses a serious threat to Internet security."
+  }
+ ]
+}

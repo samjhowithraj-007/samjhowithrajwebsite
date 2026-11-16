@@ -30,9 +30,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=24"><link rel="stylesheet" href="rdhome.css?v=16"><script src="rdhome.js?v=14"></script><script defer src="rdbar.js?v=10"></script><script defer src="rdtools.js?v=5"></script><script defer src="rdlearn.js?v=1"></script>
-<script>try{if(localStorage.getItem("swr-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
-<meta name="theme-color" content="#050b17">
+<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal9"><script src="rdhome.js?v=17"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=5"></script><script defer src="rdlearn.js?v=3"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=2"></script>
+<script>try{if(localStorage.getItem("swr-theme")!=="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+<meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -536,7 +536,7 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
   <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
   <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="https://www.dimaagdada.com/" rel="noopener">Dimaag Dada ↗</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
   <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="#terms">Terms</a><a href="#refund">Refunds</a><a href="#shipping">Shipping and delivery</a><a href="#privacy">Privacy</a></nav>
-</div><div class="wrap fchan"><h4>Our channels</h4><div class="chans" data-channels></div></div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
+</div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
 <dialog class="cmdk" id="cmdk" aria-label="Search the site"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" type="search" autocomplete="off" placeholder="Search lessons, or ask Raj anything…" aria-label="Search" aria-controls="cmdk-list"><kbd>Esc</kbd></div><ul class="cmdk-list" id="cmdk-list" role="listbox"></ul><div class="cmdk-foot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span>Tip: press / anywhere</span></div></dialog>
 <dialog class="install-help" id="install-help" aria-labelledby="ih-title"><h3 id="ih-title">Install the app</h3><div class="ih-body"></div><p class="ih-join">Prefer chat updates? Join the <a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">WhatsApp channel</a> or <a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Telegram</a>.</p><button class="btn" type="button" data-close>Got it</button></dialog>
 
@@ -1614,7 +1614,7 @@ function shop(){
       <p>Learn live with Raj in a small online batch. Join the waitlist below.</p><div class="row"><span class="btn">Join the waitlist ↓</span></div></a>
   </div>
   ${cohortBox()}
-  <p class="disc" style="margin-top:18px">Payments for the books and the prompt pack are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>`;
+  <p class="disc" style="margin-top:18px">Payments for the books and the prompt pack are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>${books()}`;
 }
 function workshops(){
   return `<div class="page-head"><div><div class="eyebrow">Workshops</div><h1>AI workshops for <em>colleges and companies</em></h1>
@@ -1669,6 +1669,9 @@ function render(){
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
   else if (h === "puzzles" || h === "jigsaw") { location.replace("https://www.dimaagdada.com/" + (h === "jigsaw" ? "#jigsaw" : "#books")); return; }
+  else if ((h === "login" || h === "signup") && window.RDAUTH) { RDAUTH.login(app, h); tab = "classroom"; }
+  else if (h === "news" && window.RDNEWS) { RDNEWS.show(app); tab = "news"; }
+  else if (h === "my-learning" && window.RDAUTH) { RDAUTH.page(app); tab = "classroom"; }
   else if (h.indexOf("learn-") === 0 && window.RDLEARN) { if (!RDLEARN.show(app, h.slice(6))) return; tab = "classroom"; }
   else if (h === "tools" && window.RDTOOLS) { RDTOOLS.show(app); tab = h; document.title = "Tools · Tech Samjho Raj"; }
   else if (h === "playground") { app.innerHTML = playground(); tab = h; }
