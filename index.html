@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=22"><link rel="stylesheet" href="rdhome.css?v=16"><script src="rdhome.js?v=13"></script><script defer src="rdbar.js?v=9"></script><script defer src="rdtools.js?v=5"></script>
+<link rel="stylesheet" href="redesign.css?v=23"><link rel="stylesheet" href="rdhome.css?v=16"><script src="rdhome.js?v=13"></script><script defer src="rdbar.js?v=9"></script><script defer src="rdtools.js?v=5"></script>
 <script>try{if(localStorage.getItem("swr-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
 <meta name="theme-color" content="#050b17">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
@@ -1736,7 +1736,7 @@ document.getElementById("theme").addEventListener("click", () => {
   if (light) document.documentElement.dataset.theme = "light"; else delete document.documentElement.dataset.theme;
   try { localStorage.setItem("swr-theme", light ? "light" : "dark"); } catch (e) {}
 });
-// ---------- command palette (Ctrl K or /): lessons, pages, full-text search, and "Ask Raj" ----------
+// ---------- command palette (Ctrl K or /): lessons, pages, full-text search, and "Ask Botu" ----------
 const CMDK = (() => {
   const dlg = document.getElementById("cmdk"), q = document.getElementById("cmdk-q"), list = document.getElementById("cmdk-list");
   const e = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
@@ -1760,13 +1760,13 @@ const CMDK = (() => {
       let last = null; try { last = find(localStorage.getItem(LAST) || "")[1]; } catch (err) {}
       items = [{ grp: "Jump to" }, ...(last ? [{ href: "#" + last.id, t: "Continue: " + last.title, s: "Where you left off", ic: "⏯" }] : []),
         ...pick(PAGES.slice(0, 4)), { grp: "Courses" }, ...COURSES.map(c => ({ href: "#" + nextIn(c).id, t: c.title, s: `${live(c).length} lessons live`, ic: "🎓" })),
-        { grp: "Help" }, { ask: true, t: "Ask Raj", s: "Chat with the helper about any lesson", ic: "☕" }];
+        { grp: "Help" }, { ask: true, t: "Ask Botu", s: "Chat with the helper about any lesson", ic: "☕" }];
     } else {
       const quick = pick([...LESSONS, ...PAGES].filter(x => match(x[1] + " " + x[2], words))).slice(0, 6);
       items = [...(quick.length ? [{ grp: "Lessons and pages" }, ...quick] : [])];
-      items.push({ grp: "Ask" }, { ask: true, t: `Ask Raj: “${text}”`, s: "Get an answer from this site's lessons", ic: "☕" });
+      items.push({ grp: "Ask" }, { ask: true, t: `Ask Botu: “${text}”`, s: "Get an answer from this site's lessons", ic: "☕" });
       paint();
-      try {                                                    // full-text matches from the Ask Raj index
+      try {                                                    // full-text matches from the Ask Botu index
         const { hits } = await SITE_SEARCH.search(text, 8); if (my !== seq) return;
         const seen = new Set(quick.map(x => x.href)), more = [];
         for (const h of hits) if (h.cover >= .5 && !seen.has(h.it.url)) { seen.add(h.it.url); more.push({ href: h.it.url, t: h.it.title.replace(/^.*? · /, ""), s: h.it.text.replace(/\s+/g, " ").slice(0, 140), ic: "🔎" }); }
@@ -1798,7 +1798,7 @@ const CMDK = (() => {
   });
   return { open };
 })();
-// ---------- Ask Raj, layer 2: search every page of this site ----------
+// ---------- Ask Botu, layer 2: search every page of this site ----------
 // site-index.json is built by tools/build-index.mjs before each push (every lesson, page, Upcoming list and book FAQ).
 // BM25 ranking + Hinglish synonyms + typo tolerance, all in this browser; nothing is sent anywhere.
 // Layer 3 (optional): ASK_WORKER = the Cloudflare Worker URL (repo ask-raj-worker). It sends the question and the top
@@ -1896,14 +1896,14 @@ async function siteAnswer(q){
     return { text: html + `\n<small>✨ AI answer from this site's lessons. Check the linked page to be sure.</small>`, chips: local.chips };
   } catch (err) { return local; } finally { clearTimeout(timer); }
 }
-// ---------- Ask Raj chat helper: layer 1 = hand-written replies (rule-based, runs only in this browser) ----------
+// ---------- Ask Botu chat helper: layer 1 = hand-written replies (rule-based, runs only in this browser) ----------
 // Same idea as the AI + Python course: a dictionary of keywords → replies, .lower(), and "in" checks. First match wins.
 function askRaj(BOT){
   const fab = document.createElement("button"), panel = document.createElement("section");
   fab.className = "cb-fab"; fab.type = "button"; fab.setAttribute("aria-expanded", "false"); fab.setAttribute("aria-controls", "cb-panel");
-  fab.innerHTML = '<span aria-hidden="true">☕</span><b>Ask Raj</b>'; fab.title = "Ask Raj: automated chat helper";
-  panel.className = "cb-panel"; panel.id = "cb-panel"; panel.hidden = true; panel.setAttribute("aria-label", "Ask Raj chat");
-  panel.innerHTML = `<div class="cb-head"><span class="cb-av" aria-hidden="true">☕</span><div><b>Ask Raj</b><small>Automated helper · ${BOT.tagline}</small></div><button class="cb-x" type="button" aria-label="Close chat">×</button></div>
+  fab.innerHTML = '<span aria-hidden="true">☕</span><b>Ask Botu</b>'; fab.title = "Ask Botu: automated chat helper";
+  panel.className = "cb-panel"; panel.id = "cb-panel"; panel.hidden = true; panel.setAttribute("aria-label", "Ask Botu chat");
+  panel.innerHTML = `<div class="cb-head"><span class="cb-av" aria-hidden="true"><img src="img/rd/botu.png" alt="" width="28" height="28"></span><div><b>Ask Botu</b><small>Automated helper · ${BOT.tagline}</small></div><button class="cb-x" type="button" aria-label="Close chat">×</button></div>
     <div class="cb-log" role="log" aria-live="polite"></div><div class="cb-chips"></div>
     <form class="cb-form"><input name="q" autocomplete="off" placeholder="Type a message…" aria-label="Message" maxlength="200"><button type="submit">Send</button></form>
     <div class="cb-foot">${BOT.foot}</div>`;
@@ -1952,7 +1952,7 @@ const ASK_RAJ = askRaj({
   foot: "Answers come from this site's own lessons and pages. Built like the bot in the AI + Python course.",
   first: ["order", "bill", "menu", "hi", "hello", "hey", "namaste", "thanks", "thank", "shukriya", "bye"],
   smart: siteAnswer,
-  hello: "Namaste! ☕ I'm Ask Raj, Raj's automated helper (not Raj himself).\nI run a tiny chai shop and I know every lesson on this site. Ask me anything about the lessons (\"what is a for loop?\", \"book ka price kya hai?\"), or order a chai.",
+  hello: "Namaste! ☕ I'm Ask Botu, Raj's automated helper (not Raj himself).\nI run a tiny chai shop and I know every lesson on this site. Ask me anything about the lessons (\"what is a for loop?\", \"book ka price kya hai?\"), or order a chai.",
   chips: ["menu", "order masala", "bill", "Where do I start?", "How are you built?", "Next lesson"],
   rules: [
     [["hi", "hello", "hey", "namaste", "hii", "helo"], { text: "Namaste! 🙏 Kya lenge? Type <b>menu</b> to see the chai, or ask about the lessons.", chips: ["menu", "Where do I start?"] }],

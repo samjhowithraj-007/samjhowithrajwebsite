@@ -1,4 +1,4 @@
-// Builds site-index.json: every lesson, page, Upcoming item and book FAQ as plain-text chunks for "Ask Raj".
+// Builds site-index.json: every lesson, page, Upcoming item and book FAQ as plain-text chunks for "Ask Botu".
 // Run before each push:  node tools/build-index.mjs
 // No packages needed. It runs the site's own <script> in a sandbox (with a do-nothing browser stub), then reads
 // COURSES straight from the data and renders the other pages with the site's own view functions.
@@ -108,8 +108,8 @@ add("page", "install-app", "Install the Tech Samjho Raj app", "#classroom",
   "Android (Chrome): tap Install. iPhone (Safari): tap the Share button at the bottom, then Add to Home Screen. " +
   "iPhone (Chrome): tap Share in the address bar, then Add to Home Screen. Opened from WhatsApp, Instagram or Facebook? Open the link in Chrome or Safari first. " +
   "Computer (Chrome or Edge): click the install icon in the address bar, or the Install app button. The app opens the same lessons, progress and Playground.");
-add("page", "ask-raj", "About Ask Raj (this helper)", "#chatbot-1",
-  "Ask Raj is an automated helper, not Raj himself. It answers from this site's own lessons and pages: it searches them in your browser " +
+add("page", "ask-raj", "About Ask Botu (this helper)", "#chatbot-1",
+  "Ask Botu is an automated helper, not Raj himself. It answers from this site's own lessons and pages: it searches them in your browser " +
   "(and, when switched on, asks an AI to write a short answer from the passages it found). It is built like the chatbot in the AI + Python course. " +
   "For questions about your own code, write to samjhowithraj@gmail.com.");
 
