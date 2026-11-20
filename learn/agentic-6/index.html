@@ -48,6 +48,45 @@ img{max-width:100%;height:auto;border-radius:14px}</style>
 <p>So Raj gave Bunty a <b>diary</b>. Now Bunty writes down the important facts, and reads the diary before the next task.</p>
 <ul><li>Write: "Mummy likes chocolate cake. Balloons can be ordered online."</li><li>Next time, before starting, Bunty reads the diary.</li><li>Result: "Sir, chocolate cake ordered! And the balloons online too."</li></ul>
 
+<h2>The code: Bunty's diary in Python</h2>
+<p>An agent's memory can be as simple as a file. Bunty reads <code>diary.json</code> before the task and writes new facts into it. Save this as <code>bunty_memory.py</code>:</p>
+<pre><code>import json, os
+
+DIARY = "diary.json"
+
+def read_diary():
+    # Before any task, Bunty reads his diary
+    if os.path.exists(DIARY):
+        with open(DIARY) as f:
+            return json.load(f)
+    return {}  # first day: the diary is empty
+
+def write_diary(diary, key, value):
+    # Bunty writes an important fact down
+    diary[key] = value
+    with open(DIARY, "w") as f:
+        json.dump(diary, f)
+
+def order_cake():
+    diary = read_diary()
+    if "mummy_cake" in diary:
+        print("Sir,", diary["mummy_cake"], "cake ordered!")
+    else:
+        print("Sir, which cake?")
+        write_diary(diary, "mummy_cake", "chocolate")
+        print("(Bunty writes: Mummy likes chocolate cake)")
+
+order_cake()</code></pre>
+<p>Run it two times: <code>python bunty_memory.py</code></p>
+<pre><code>--- first run (empty diary)
+Sir, which cake?
+(Bunty writes: Mummy likes chocolate cake)
+
+--- second run (diary is read first)
+Sir, chocolate cake ordered!</code></pre>
+<p>The program stopped after the first run, but <code>diary.json</code> stayed on disk: <code>{"mummy_cake": "chocolate"}</code>. That file is Bunty's memory. Real AI agents do the same thing with bigger "diaries" (files or databases), and they read them before every task.</p>
+<details><summary>Try it: change the code</summary><ul><li>Add a second fact: <code>write_diary(diary, "balloons", "order online")</code>, then print it on the next run.</li><li>Delete <code>diary.json</code> and run again. What does Bunty forget?</li></ul></details>
+
 <h2>Try it yourself</h2>
 <ul><li>Think of a helper (an app, a friend, an assistant). What one thing should it remember about you?</li><li>Write 3 lines for Bunty's diary about a party you plan every year.</li><li>What should Bunty NOT write in the diary? (Think: passwords, private things.)</li></ul>
 <h2>Remember</h2>
