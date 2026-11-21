@@ -46,8 +46,10 @@ for (const [topic, source, url] of FEEDS) {
     }
   } catch (e) { console.error("feed failed:", source, e.message); }
 }
+// Drop shopping/coupon/deal posts (not tech news).
+const SPAM = /coupon|promo code|discount code|voucher|\d+% off|\bdeals?\b(?! (with|to|between|worth))|black friday|cyber monday|prime day|gift guide|best .{0,30}\bto buy\b|where to buy|mint mobile|save up to|\bon sale\b|\bsales?\b.{0,10}(ends|starts)/i;
 const seen = new Set(), now = Date.now();
-const news = out.filter(n => now - Date.parse(n.date) < 10 * 864e5 && !seen.has(n.link) && seen.add(n.link)).sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 170);
+const news = out.filter(n => !SPAM.test(n.title) && !/coupon|promo-code|\/deals?[\/-]/i.test(n.link) && now - Date.parse(n.date) < 10 * 864e5 && !seen.has(n.link) && seen.add(n.link)).sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 170);
 // For stories whose feed has no picture, read the real picture (og:image) from the article page itself.
 async function ogImage(url){ try { const c = new AbortController(), t = setTimeout(() => c.abort(), 9000); const r = await fetch(url, { headers: UA, signal: c.signal, redirect: "follow" }); const h = (await r.text()).slice(0, 200000); clearTimeout(t);
   const m = h.match(/<meta[^>]+(?:property|name)=["'](?:og:image|twitter:image)["'][^>]+content=["']([^"']+)["']/i) || h.match(/<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["'](?:og:image|twitter:image)["']/i);

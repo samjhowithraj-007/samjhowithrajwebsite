@@ -227,3 +227,8 @@ html,body{overflow-x:clip}
 .nw-ca .nw-top,.nw-ca h3,.nw-ca p,.nw-ca .nw-m{margin-left:16px;margin-right:16px}.nw-ca .nw-top{margin-top:12px;margin-bottom:6px}.nw-ca .nw-m{margin-bottom:14px;margin-top:auto;padding-top:10px}
 :root[data-theme="light"] #app .nw-ca h3{margin-top:0;margin-bottom:0;font-size:17px;line-height:1.3;color:#1c1d1f}:root[data-theme="light"] #app .nw-ca p{margin-top:6px;margin-bottom:0;font-size:14px;color:#3d4247}
 .nw-take{display:flex;gap:18px;align-items:center;margin:20px 0;padding:18px 22px;border-radius:16px;background:linear-gradient(120deg,#fef3c7,#fde68a);border:2px solid #fbbf24}.nw-take img{flex:none}.nw-take h2{margin:0 0 6px}.nw-take p{margin:0 0 8px;color:#1c1d1f}
+
+/* code inside dark code boxes keeps the box colours; result tables inside dark output boxes use light text (20 Nov 2026) */
+pre code,pre.rl-code code,.rl-code code,.rt-out code{background:none!important;padding:0!important;color:inherit!important;font-size:inherit}
+:root[data-theme="light"] .rt-out .rt-t td{color:#d9f1f5;border-color:#4a4d50}
+:root[data-theme="light"] .rt-out .rt-t th{background:#2d3033;color:#7dd3fc;border-color:#4a4d50}
