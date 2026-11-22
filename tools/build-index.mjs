@@ -32,7 +32,7 @@ ctx.window = ctx.self = ctx.globalThis = ctx;
 vm.createContext(ctx);
 vm.runInContext(script + `
 ;signup = () => ""; promo = () => ""; bookBox = () => ""; bookCard = () => "";
-globalThis.__site = { PROMPTS, COURSES, BOOK, classroom, upcoming, community, about, privacy, terms, refund, shipping, contact, playground, bookPage, books, shop, workshops };`, ctx, { filename: "index.html" });
+globalThis.__site = { AIJOB, COURSES, BOOK, classroom, upcoming, community, about, privacy, terms, refund, shipping, contact, playground, bookPage, books, shop, workshops };`, ctx, { filename: "index.html" });
 const S = ctx.__site;
 
 // ---- helpers ----
@@ -100,9 +100,9 @@ add("book", "book-buy", "Python with Chai (book): price and how to buy", "#book"
   `The book ${B.title}: ${B.sub}, by ${B.author}. Price: ${rs(B.price)} per edition, ${rs(B.bundle)} for both editions (English + Hinglish). ` +
   (B.launchOn ? `Launch offer until ${B.launchEndsLabel}: ${rs(B.launch)} per edition, ${rs(B.bundleLaunch)} for both; the launch discount is applied automatically by the buy buttons. ` : "") +
   `Buy it on the Book page: the buy buttons open Gumroad; you get the PDF + EPUB download right after payment. Free preview chapters (English and Hinglish PDFs) are on the same page.`);
-if (S.PROMPTS && S.PROMPTS.link) add("book", "prompts-buy", "50 AI Prompts for Jobs + Study: price and how to buy", "#shop",
-  `The prompt pack "50 AI Prompts for Jobs + Study" by Raj: ready-to-use AI prompts for job search and studies, English and Hinglish PDFs in one download. ` +
-  `Price: ${rs(S.PROMPTS.price)}. Buy it in the Shop: the "Get the 50 prompts" button opens Gumroad, and the PDFs download right after payment.`);
+if (S.AIJOB && S.AIJOB.both) add("book", "aijob-buy", "AI Job Search: 50 AI prompts for jobs + study, price and free sample", "#shop",
+  `The book "AI Job Search" by Raj: 50 AI prompts for your job search and your studies, in English and Hinglish editions. ` +
+  `Price: ${rs(S.AIJOB.price)} per edition, ${rs(S.AIJOB.bundle)} for both. Free sample PDFs of both editions are in the Shop; the buy buttons open Gumroad and the PDF downloads right after payment.`);
 add("page", "install-app", "Install the Tech Samjho Raj app", "#classroom",
   "Install this site as an app (free, works offline): tap the Install app button at the top right of any page. " +
   "Android (Chrome): tap Install. iPhone (Safari): tap the Share button at the bottom, then Add to Home Screen. " +
