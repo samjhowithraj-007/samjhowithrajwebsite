@@ -396,6 +396,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .book small{color:var(--muted);font-size:13px}
 .book p{margin:0;color:var(--muted);font-size:14px;flex:1}
 .book .go{font-weight:700;font-size:13.5px;margin-top:6px;text-decoration:underline;text-underline-offset:3px}
+.aisamp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 2px}.aisamp a{display:block;text-decoration:none;color:inherit;font-size:12.5px;font-weight:700;text-align:center}.aisamp img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line);margin-bottom:4px}
 .books .disc{font-size:12.5px;color:var(--muted);margin-top:10px}
 .bookcard .pr s{opacity:1;color:#6b4a00}
 .signup form .jbtn{padding:11px 14px;font-size:14px;font-weight:700;color:#fff;border:0}.signup form .jbtn.wa{background:#1fa855}.signup form .jbtn.tg{background:#229ed9}.ih-join{font-size:14px}
@@ -1200,7 +1201,7 @@ function promo(here){
   return `<a class="promo" href="${p.link}"${rel}><img src="${p.image}" alt="${p.title}" loading="lazy"><div><span class="pl">${p.label}</span><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta}${ext ? " ↗" : " →"}</span></div></a>`;
 }
 const PROMOS = [
-  { label:"New from Raj", title:"50 AI Prompts for Jobs + Study", text:"Ready-to-use prompts for your job search and your studies, in English and Hinglish PDFs. ₹149.", image:"media/prompts-cover.jpg", link:"https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", cta:"Get the 50 prompts · ₹149" },
+  { label:"New from Raj", title:"AI Job Search", text:"50 AI prompts for jobs and study, in English and Hinglish editions. From ₹149.", image:"media/ai-job-search-cover.jpg", link:"https://samjhowithraj.gumroad.com/l/ai-job-search-bundle", cta:"Get the book" },
   { label:"From Raj", title:"New book: Python with Chai", text:"Basic to expert in 30 illustrated chapters, in English and Hinglish, with free chapter previews.", image:"media/book-promo.jpg", link:"#book", cta:"See the book" },
   { label:"From Raj", title:"New: AI + Python Part 3", text:"50 if-elses? Use a dictionary. Your chai bot gets an answer diary: one new question, one new line.", image:"media/chatbot-3.jpg", link:"#chatbot-3", cta:"Watch the lesson" },
   { label:"From Raj", title:"Plan your family's money", text:"Free money lessons, 7 calculators and a private family Money Planner on our sister site.", image:"https://i.ytimg.com/vi/GyPQ-RxBRi8/hqdefault.jpg", link:"https://www.paisasamjhoraj.com/#planner", cta:"Open paisasamjhoraj.com" },
@@ -1507,7 +1508,7 @@ function terms(){
     <h2>Who we are</h2><p>Tech Samjho Raj (techsamjhoraj.com) is run by Pragya Raj, Plot 37, Sector 12, Bharat Ekta Ltd, Bandhgora, Bokaro, Jharkhand 827012, India. Brand name: Samjho with Raj. See the <a href="#contact">contact page</a>.</p>
     <h2>Free lessons</h2><p>The lessons, notes, the Python Playground and the free chapter previews are free to use for your own learning. You do not need an account.</p>
     <h2>Paid products</h2><ul>
-      <li>We sell digital products: the <a href="#book">Python with Chai</a> book (PDF + EPUB, English, Hinglish or both), the <a href="https://www.dimaagdada.com/reasoning-puzzles/" rel="noopener">Reasoning Samjho</a> puzzle book and the 50 AI Prompts pack. Prices are shown in rupees on the product page. Taxes are included where the law requires.</li>
+      <li>We sell digital products: the <a href="#book">Python with Chai</a> book (PDF + EPUB, English, Hinglish or both), the <a href="https://www.dimaagdada.com/reasoning-puzzles/" rel="noopener">Reasoning Samjho</a> puzzle book and the AI Job Search book. Prices are shown in rupees on the product page. Taxes are included where the law requires.</li>
       <li>Payment is taken by our payment partners (today Gumroad, and Razorpay once it is switched on). They handle your card, UPI or bank details; we never see or store them.</li>
       <li>Workshops for colleges and companies are agreed by email. Price, dates and terms are confirmed in writing before any payment.</li>
       <li>The Live Cohort is a waitlist for now. No payment is taken until the dates and the price are published.</li></ul>
@@ -1531,7 +1532,7 @@ function refund(){
 }
 function shipping(){
   return `<article class="legal"><div class="eyebrow">Delivery</div><h1>Shipping and delivery</h1><p>Last updated ${UPDATED}.</p>
-    <h2>Everything here is digital</h2><p>The Python with Chai book, the Reasoning Samjho puzzle book and the 50 AI Prompts pack are digital downloads. Nothing is posted to you, so there is no shipping charge and no waiting for a parcel.</p>
+    <h2>Everything here is digital</h2><p>The Python with Chai book, the Reasoning Samjho puzzle book and the AI Job Search book are digital downloads. Nothing is posted to you, so there is no shipping charge and no waiting for a parcel.</p>
     <h2>How you get it</h2><ul>
       <li>Right after payment, the download page opens and a receipt with the download link is emailed to you.</li>
       <li>The book comes as PDF + EPUB in the edition you chose (English, Hinglish or both).</li>
@@ -1575,8 +1576,7 @@ function privacy(){
 // While an action is empty, the form opens the visitor's email app with the details filled in instead, so no enquiry is lost.
 const WORKSHOP_FORM = { action: "" };   // Brevo form "Workshop enquiry" → list "Workshop enquiries" (FIRSTNAME, ORG, TOPIC, DATE, MESSAGE)
 const COHORT_FORM = { action: "" };     // Brevo form "Live cohort waitlist" → list "Cohort waitlist" (email only)
-const AIJOB = { link: "", price: 0 };   // AI Job Search book (22 Nov 2026). Set link + price ONLY after the payments-gumroad session confirms the listings live; empty link = "Coming soon". Never upload the PDFs to this site.
-const PROMPTS = { link: "https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", price: 149 };   // Gumroad (live 20 Oct). No discount code. Empty link = "Coming soon".
+const AIJOB = { en: "https://samjhowithraj.gumroad.com/l/ai-job-search-en", hi: "https://samjhowithraj.gumroad.com/l/ai-job-search-hinglish", both: "https://samjhowithraj.gumroad.com/l/ai-job-search-bundle", price: 149, bundle: 249 };   // AI Job Search book (22 Nov 2026). Set link + price ONLY after the payments-gumroad session confirms the listings live; empty link = "Coming soon". Never upload the PDFs to this site.
 const RAJ_MAIL = "samjhowithraj@gmail.com";
 function cohortBox(){
   return `<section class="signup cohort" id="cohort"><div><h3>🚀 Python + AI Live Cohort</h3><p>A small live online batch with Raj, from Python basics to your own AI chatbot. Join the waitlist to hear first when the dates and details are announced.</p></div>
@@ -1600,11 +1600,8 @@ function shop(){
     <div class="item"><div class="art"><img src="media/ai-job-search-thumb.jpg" alt="AI Job Search by Raj: book cover with the Botu robot at a laptop" width="420" height="420" loading="lazy" style="transform:none;border-radius:10px"></div>
       <div class="row"><span class="tag">E-book</span><span class="tag">English + Hinglish</span></div><h3>AI Job Search</h3>
       <p>50 AI prompts for jobs and study, by Raj. Smarter tools, better opportunities, in English and Hinglish editions.</p>
-      <div class="row">${AIJOB.link ? `<span class="price">₹${AIJOB.price}</span><a class="btn primary" href="${AIJOB.link}" target="_blank" rel="noopener">Get the book · ₹${AIJOB.price}</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
-    <div class="item"><div class="art"><img src="media/prompts-thumb.jpg" alt="50 AI Prompts for Jobs + Study: English and Hinglish book covers" width="400" height="400" loading="lazy" style="transform:none;border-radius:10px"></div>
-      <div class="row"><span class="tag">Prompt pack</span><span class="tag">English + Hinglish</span></div><h3>50 AI Prompts for Jobs + Study</h3>
-      <p>${PROMPTS.link ? "Ready-to-use AI prompts for your job search and your studies, by Raj. Both editions (English and Hinglish PDFs) in one download." : "Ready-to-use AI prompts from Raj. Details and price are coming soon."}</p>
-      <div class="row">${PROMPTS.link ? `<span class="price">₹${PROMPTS.price}</span><a class="btn primary" href="${PROMPTS.link}" target="_blank" rel="noopener">Get the 50 prompts · ₹${PROMPTS.price}</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
+      <div class="aisamp"><a href="notes/ai-job-search-sample-en.pdf" target="_blank" rel="noopener"><img src="media/ai-job-search-en-p3.jpg" alt="Sample page from AI Job Search, English edition" width="990" height="765" loading="lazy">Free sample · English PDF</a><a href="notes/ai-job-search-sample-hi.pdf" target="_blank" rel="noopener"><img src="media/ai-job-search-hi-p3.jpg" alt="Sample page from AI Job Search, Hinglish edition" width="990" height="765" loading="lazy">Free sample · Hinglish PDF</a></div>
+      <div class="row"><span class="price">₹${AIJOB.price} each · ₹${AIJOB.bundle} both</span></div><div class="row"><a class="btn primary" href="${AIJOB.both}" target="_blank" rel="noopener">Both editions · ₹${AIJOB.bundle}</a><a class="btn" href="${AIJOB.en}" target="_blank" rel="noopener">English · ₹${AIJOB.price}</a><a class="btn" href="${AIJOB.hi}" target="_blank" rel="noopener">Hinglish · ₹${AIJOB.price}</a></div></div>
     <a class="item" href="#workshops"><div class="art" aria-hidden="true">🎤</div>
       <div class="row"><span class="tag">For colleges and companies</span></div><h3>AI workshops by Raj</h3>
       <p>AI for jobs, Python + AI and AI agents, as a talk or a hands-on session.</p><div class="row"><span class="btn">Plan a workshop →</span></div></a>
@@ -1613,7 +1610,7 @@ function shop(){
       <p>Learn live with Raj in a small online batch. Join the waitlist below.</p><div class="row"><span class="btn">Join the waitlist ↓</span></div></a>
   </div>
   ${cohortBox()}
-  <p class="disc" style="margin-top:18px">Payments for the books and the prompt pack are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>${books()}`;
+  <p class="disc" style="margin-top:18px">Payments for the books are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>${books()}`;
 }
 function workshops(){
   return `<div class="page-head"><div><div class="eyebrow">Workshops</div><h1>AI workshops for <em>colleges and companies</em></h1>
