@@ -48,6 +48,36 @@ img{max-width:100%;height:auto;border-radius:14px}</style>
 <p>On every step he ran the loop from Part 4: <b>think, act, check</b>. Then one step failed, and Bunty changed the plan.</p>
 <ul><li>Step 1: order the cake. Check: ordered? Yes.</li><li>Step 2: message the guests. Check: sent? Yes.</li><li>Step 3: decoration. Check: the decorator is not coming! Bunty changes the plan and orders balloons online.</li></ul>
 
+
+<h2>The code: A plan with a Plan B</h2>
+<p>Save this as <code>bunty_plan.py</code> and run it with <code>python bunty_plan.py</code>:</p>
+<pre><code># Planning: break a big goal into small steps, check each one, and re-plan when a step fails.
+def order_cake():      return True
+def message_guests():  return True
+def book_decorator():  return False          # the decorator is not coming!
+def balloons_online(): return True
+
+plan = [(&quot;Order the cake&quot;, order_cake), (&quot;Message the guests&quot;, message_guests), (&quot;Decoration&quot;, book_decorator)]
+plan_b = {&quot;Decoration&quot;: (&quot;Order balloons online&quot;, balloons_online)}
+
+print(&quot;Goal: Mummy&#x27;s birthday party on Sunday&quot;)
+for i, (name, do) in enumerate(plan, 1):
+    ok = do()                                  # act
+    print(f&quot;Step {i}: {name} -&gt; {&#x27;done&#x27; if ok else &#x27;FAILED&#x27;}&quot;)   # check
+    if not ok and name in plan_b:              # re-plan
+        new_name, new_do = plan_b[name]
+        print(f&quot;  Re-plan: {new_name} -&gt; {&#x27;done&#x27; if new_do() else &#x27;FAILED&#x27;}&quot;)
+print(&quot;Party ready!&quot;)</code></pre>
+<p>Output:</p>
+<pre><code>Goal: Mummy&#x27;s birthday party on Sunday
+Step 1: Order the cake -&gt; done
+Step 2: Message the guests -&gt; done
+Step 3: Decoration -&gt; FAILED
+  Re-plan: Order balloons online -&gt; done
+Party ready!</code></pre>
+<p>The plan is a list of small steps. Each step is done and checked. When the decoration step fails, Bunty switches to Plan B.</p>
+<details><summary>Try it: change the code</summary><ul><li>Make <code>order_cake()</code> return False and add a Plan B for it.</li><li>Add a fourth step, "Book the hall", with its own check.</li></ul></details>
+
 <h2>Try it yourself</h2>
 <ul><li>Take a big job (a school trip, a family dinner). Break it into 3 small steps.</li><li>For each step, write how you will check it is done.</li><li>Pick one step that could fail. What is your Plan B?</li></ul>
 <h2>Remember</h2>

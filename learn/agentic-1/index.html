@@ -49,6 +49,37 @@ img{max-width:100%;height:auto;border-radius:14px}</style>
 <p>An agent has three extra things:</p>
 <ul><li><b>Goal</b>: you give it a task, not a question.</li><li><b>Tools</b>: email, browser, calendar, so it can act in the world.</li><li><b>Loop</b>: act, check the result, decide the next step, until the job is done.</li></ul>
 
+
+<h2>The code: Chatbot vs agent in Python</h2>
+<p>Save this as <code>bunty_agent.py</code> and run it with <code>python bunty_agent.py</code>:</p>
+<pre><code># Bunty v1 (chatbot) only gives advice. Bunty v2 (agent) uses tools and does the job.
+calendar = {&quot;Mon 10:00&quot;: &quot;busy&quot;, &quot;Mon 11:00&quot;: &quot;free&quot;, &quot;Mon 12:00&quot;: &quot;busy&quot;}
+sent = []
+
+def send_email(to, text):           # a tool: it really changes something
+    sent.append((to, text))
+    return &quot;sent&quot;
+
+def chatbot(task):
+    return &quot;Sir, you could find a free slot and write an email like this...&quot;
+
+def agent(task):
+    slot = next(t for t, s in calendar.items() if s == &quot;free&quot;)   # use the calendar tool
+    send_email(&quot;client@example.com&quot;, f&quot;Meeting fixed: {slot}&quot;)   # use the email tool
+    calendar[slot] = &quot;busy&quot;
+    return f&quot;Sir, meeting fixed at {slot}. Email sent.&quot;
+
+task = &quot;Fix a meeting with the client&quot;
+print(&quot;Chatbot:&quot;, chatbot(task))
+print(&quot;Agent:  &quot;, agent(task))
+print(&quot;Emails sent:&quot;, sent)</code></pre>
+<p>Output:</p>
+<pre><code>Chatbot: Sir, you could find a free slot and write an email like this...
+Agent:   Sir, meeting fixed at Mon 11:00. Email sent.
+Emails sent: [(&#x27;client@example.com&#x27;, &#x27;Meeting fixed: Mon 11:00&#x27;)]</code></pre>
+<p>The chatbot function only returns advice. The agent function uses two tools (the calendar and <code>send_email</code>) and really finishes the job.</p>
+<details><summary>Try it: change the code</summary><ul><li>Change the calendar so no slot is free. What should the agent say then?</li><li>Add a third tool, <code>book_room()</code>, and make the agent use it too.</li></ul></details>
+
 <h2>Try it yourself</h2>
 <ul><li>Write down 3 of your daily tasks. For each one, what would a chatbot do, and what would an agent do?</li><li>Which tools would the agent need?</li></ul>
 <h2>Remember</h2>

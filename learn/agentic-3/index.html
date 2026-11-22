@@ -48,6 +48,37 @@ img{max-width:100%;height:auto;border-radius:14px}</style>
 <p><b>Tools</b> are the agent's hands: a weather app, a browser, email, a calendar, a calculator.</p>
 <ul><li>With a weather tool: "Will it rain in Patna tomorrow?"</li><li>Bunty runs the tool, reads the result: "Sir, 80% chance. Take an umbrella."</li></ul>
 
+
+<h2>The code: Tools are Python functions</h2>
+<p>Save this as <code>bunty_tools.py</code> and run it with <code>python bunty_tools.py</code>:</p>
+<pre><code># The LLM thinks, tools act. Here the &quot;tools&quot; are plain Python functions Bunty can call.
+def weather(city):                   # pretend weather API
+    data = {&quot;Patna&quot;: 80, &quot;Delhi&quot;: 10}
+    return data.get(city, 0)
+
+def bill(chai, samosa):             # pretend billing tool
+    return chai * 10 + samosa * 15
+
+TOOLS = {&quot;weather&quot;: weather, &quot;bill&quot;: bill}
+
+def bunty(question):
+    if &quot;rain&quot; in question:           # Bunty decides WHICH tool to use
+        chance = TOOLS[&quot;weather&quot;](&quot;Patna&quot;)
+        return f&quot;Sir, {chance}% chance of rain. Take an umbrella!&quot; if chance &gt; 50 else &quot;Sir, no rain.&quot;
+    if &quot;bill&quot; in question:
+        return f&quot;Sir, the bill is Rs {TOOLS[&#x27;bill&#x27;](3, 2)}.&quot;
+    return &quot;Sir, I don&#x27;t have a tool for that.&quot;
+
+print(bunty(&quot;Will it rain in Patna tomorrow?&quot;))
+print(bunty(&quot;What is the bill for 3 chai and 2 samose?&quot;))
+print(bunty(&quot;Book my Goa trip&quot;))</code></pre>
+<p>Output:</p>
+<pre><code>Sir, 80% chance of rain. Take an umbrella!
+Sir, the bill is Rs 60.
+Sir, I don&#x27;t have a tool for that.</code></pre>
+<p>Each tool is a plain function. Bunty decides which tool fits the question, calls it, and answers from the result. No tool, no answer.</p>
+<details><summary>Try it: change the code</summary><ul><li>Add Delhi to the question: <code>weather("Delhi")</code>. What does Bunty say now?</li><li>Add a new tool, <code>train_time(city)</code>, and a question that uses it.</li></ul></details>
+
 <h2>Try it yourself</h2>
 <ul><li>List 3 tools an agent would need to plan your weekend trip.</li><li>For each tool, write what it gives back to the agent.</li></ul>
 <h2>Remember</h2>

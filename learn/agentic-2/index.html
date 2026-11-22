@@ -48,6 +48,42 @@ img{max-width:100%;height:auto;border-radius:14px}</style>
 <p>An agent needs a clear goal: what to do, by when, and what "done" looks like. Then it knows when to stop.</p>
 <ul><li>Vague: "Increase sales."</li><li>Clear: "Email this week's 20 new leads, and give me the list of replies by Friday."</li></ul>
 
+
+<h2>The code: A goal with a finish line</h2>
+<p>Save this as <code>bunty_goal.py</code> and run it with <code>python bunty_goal.py</code>:</p>
+<pre><code># A goal tells the agent WHAT to do and what DONE looks like, so it knows when to stop.
+leads = [&quot;Asha&quot;, &quot;Ravi&quot;, &quot;Meena&quot;, &quot;John&quot;]
+replies = []
+
+def vague_goal():
+    return &quot;Increase sales&quot;          # no finish line: the agent can&#x27;t tell when it is done
+
+goal = {
+    &quot;what&quot;: &quot;email every new lead&quot;,
+    &quot;done&quot;: lambda: len(replies) == len(leads),   # the finish line, as a check
+}
+
+for name in leads:                   # the agent works until goal[&quot;done&quot;]() is True
+    if goal[&quot;done&quot;]():
+        break
+    replies.append(f&quot;{name}: email sent&quot;)
+
+print(&quot;Vague goal:&quot;, vague_goal(), &quot;-&gt; when is it done? Nobody knows.&quot;)
+print(&quot;Clear goal:&quot;, goal[&quot;what&quot;])
+for r in replies:
+    print(&quot; &quot;, r)
+print(&quot;Done?&quot;, goal[&quot;done&quot;]())</code></pre>
+<p>Output:</p>
+<pre><code>Vague goal: Increase sales -&gt; when is it done? Nobody knows.
+Clear goal: email every new lead
+  Asha: email sent
+  Ravi: email sent
+  Meena: email sent
+  John: email sent
+Done? True</code></pre>
+<p>The clear goal has a <code>done</code> check. The agent keeps working until <code>done()</code> is True, then stops. The vague goal has no check, so nobody knows when it is finished.</p>
+<details><summary>Try it: change the code</summary><ul><li>Add two more names to <code>leads</code>. Does the agent still stop at the right time?</li><li>Write a <code>done</code> check for: "get 3 replies by Friday".</li></ul></details>
+
 <h2>Try it yourself</h2>
 <ul><li>Take one vague task from your work ("improve the report") and rewrite it as a goal: what, by when, and what done looks like.</li><li>Ask: how would an agent know it has finished?</li></ul>
 <h2>Remember</h2>

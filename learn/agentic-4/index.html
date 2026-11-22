@@ -48,6 +48,35 @@ img{max-width:100%;height:auto;border-radius:14px}</style>
 <p>Bunty fixes the date and goes round again: think, act, check. Until the goal is done.</p>
 <ul><li>Try 1: search, check, wrong date. "Sir, the date was wrong. Trying again."</li><li>Try 2: search, check, correct: "Sir, tomorrow's 6 am flight. The cheapest!"</li></ul>
 
+
+<h2>The code: The agent loop in Python</h2>
+<p>Save this as <code>bunty_loop.py</code> and run it with <code>python bunty_loop.py</code>:</p>
+<pre><code># The agent loop: think -&gt; act -&gt; check, again and again until the goal is done.
+want = &quot;tomorrow&quot;
+tries = [{&quot;flight&quot;: &quot;6:00 am&quot;, &quot;date&quot;: &quot;day after tomorrow&quot;, &quot;price&quot;: 3200},   # first search: wrong date
+         {&quot;flight&quot;: &quot;6:00 am&quot;, &quot;date&quot;: &quot;tomorrow&quot;, &quot;price&quot;: 3500}]
+
+done, step = False, 0
+while not done and step &lt; 5:
+    step += 1
+    print(f&quot;Try {step} THINK: search for a flight for {want}&quot;)
+    result = tries[min(step - 1, len(tries) - 1)]          # ACT: use the flight-search tool
+    print(f&quot;Try {step} ACT:   found {result[&#x27;flight&#x27;]} on {result[&#x27;date&#x27;]}&quot;)
+    if result[&quot;date&quot;] == want:                              # CHECK the result
+        done = True
+        print(f&quot;Try {step} CHECK: correct! Sir, {result[&#x27;flight&#x27;]} tomorrow, Rs {result[&#x27;price&#x27;]}.&quot;)
+    else:
+        print(f&quot;Try {step} CHECK: wrong date. Trying again.&quot;)</code></pre>
+<p>Output:</p>
+<pre><code>Try 1 THINK: search for a flight for tomorrow
+Try 1 ACT:   found 6:00 am on day after tomorrow
+Try 1 CHECK: wrong date. Trying again.
+Try 2 THINK: search for a flight for tomorrow
+Try 2 ACT:   found 6:00 am on tomorrow
+Try 2 CHECK: correct! Sir, 6:00 am tomorrow, Rs 3500.</code></pre>
+<p>The <code>while</code> loop is the agent loop: think, act (search), check. The first result has the wrong date, so the check fails and Bunty goes round again.</p>
+<details><summary>Try it: change the code</summary><ul><li>Make both tries return the wrong date. What stops the loop from running forever?</li><li>Add a price check: only accept a flight under Rs 4000.</li></ul></details>
+
 <h2>Try it yourself</h2>
 <ul><li>Pick a task you do (booking a ticket, paying a bill). Write its think, act and check steps.</li><li>Write one thing the check step should catch, and what the agent should do then.</li></ul>
 <h2>Remember</h2>
