@@ -1575,6 +1575,7 @@ function privacy(){
 // While an action is empty, the form opens the visitor's email app with the details filled in instead, so no enquiry is lost.
 const WORKSHOP_FORM = { action: "" };   // Brevo form "Workshop enquiry" → list "Workshop enquiries" (FIRSTNAME, ORG, TOPIC, DATE, MESSAGE)
 const COHORT_FORM = { action: "" };     // Brevo form "Live cohort waitlist" → list "Cohort waitlist" (email only)
+const AIJOB = { link: "", price: 0 };   // AI Job Search book (22 Nov 2026). Set link + price ONLY after the payments-gumroad session confirms the listings live; empty link = "Coming soon". Never upload the PDFs to this site.
 const PROMPTS = { link: "https://samjhowithraj.gumroad.com/l/ai-prompts-jobs-study", price: 149 };   // Gumroad (live 20 Oct). No discount code. Empty link = "Coming soon".
 const RAJ_MAIL = "samjhowithraj@gmail.com";
 function cohortBox(){
@@ -1596,6 +1597,10 @@ function shop(){
       <div class="row"><span class="tag">E-book</span><span class="tag">On dimaagdada.com</span></div><h3>Reasoning Samjho: Puzzle se Selection tak</h3>
       <p>192 original reasoning puzzles and 3 mock tests for SSC, Bank, Railway, CSAT, CAT, CLAT, GATE and IT placements. Now sold on Dimaag Dada's own website.</p>
       <div class="row"><span class="btn">See it on dimaagdada.com →</span></div></a>
+    <div class="item"><div class="art"><img src="media/ai-job-search-thumb.jpg" alt="AI Job Search by Raj: book cover with the Botu robot at a laptop" width="420" height="420" loading="lazy" style="transform:none;border-radius:10px"></div>
+      <div class="row"><span class="tag">E-book</span><span class="tag">English + Hinglish</span></div><h3>AI Job Search</h3>
+      <p>50 AI prompts for jobs and study, by Raj. Smarter tools, better opportunities, in English and Hinglish editions.</p>
+      <div class="row">${AIJOB.link ? `<span class="price">₹${AIJOB.price}</span><a class="btn primary" href="${AIJOB.link}" target="_blank" rel="noopener">Get the book · ₹${AIJOB.price}</a>` : `<span class="btn" aria-disabled="true">Coming soon</span>`}</div></div>
     <div class="item"><div class="art"><img src="media/prompts-thumb.jpg" alt="50 AI Prompts for Jobs + Study: English and Hinglish book covers" width="400" height="400" loading="lazy" style="transform:none;border-radius:10px"></div>
       <div class="row"><span class="tag">Prompt pack</span><span class="tag">English + Hinglish</span></div><h3>50 AI Prompts for Jobs + Study</h3>
       <p>${PROMPTS.link ? "Ready-to-use AI prompts for your job search and your studies, by Raj. Both editions (English and Hinglish PDFs) in one download." : "Ready-to-use AI prompts from Raj. Details and price are coming soon."}</p>
