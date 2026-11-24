@@ -40,9 +40,10 @@ const RESUME_SCHEMA = {
     experience: { type: "array", items: { type: "object", properties: { role: STR, org: STR, dates: STR, bullets: STRS }, required: ["role","org","dates","bullets"], additionalProperties: false } },
     projects: { type: "array", items: { type: "object", properties: { name: STR, bullets: STRS }, required: ["name","bullets"], additionalProperties: false } },
     education: { type: "array", items: { type: "object", properties: { degree: STR, school: STR, year: STR }, required: ["degree","school","year"], additionalProperties: false } },
-    certifications: STRS, keywords_used: STRS, check_these: STRS
+    certifications: STRS, licences: STRS, languages: STRS, key_results: STRS, keywords_used: STRS, check_these: STRS,
+    cover_letter: { type: "object", properties: { salutation: STR, paragraphs: STRS, closing: STR }, required: ["salutation","paragraphs","closing"], additionalProperties: false }
   },
-  required: ["name","headline","summary","skills","experience","projects","education","certifications","keywords_used","check_these"],
+  required: ["name","headline","summary","skills","experience","projects","education","certifications","licences","languages","key_results","keywords_used","check_these","cover_letter"],
   additionalProperties: false
 };
 
@@ -65,6 +66,9 @@ Return the JSON object only. Rules:
 - name: copy the person's name if it is in the text, else "[Your name]". headline: a short line for this role. summary: 2 to 3 lines.
 - Phone numbers and emails were removed from the text on purpose: do not write them. The person adds them later.
 - experience: each with role, org, dates (use "[dates]" if unknown) and 2 to 4 short bullets starting with a strong verb. projects, education, certifications: only what the resume shows (empty arrays if none).
+- licences: licences, registrations and trade certificates the resume shows (name, number if shown, valid till if shown). Empty array if none. languages: languages the resume shows, with the level only if the resume says it. key_results: up to 3 short measurable results that the resume truly shows (numbers must come from the resume; empty array if none).
+- cover_letter: a letter for THIS job using only resume and cover-letter facts. salutation (use "Dear [Hiring manager]," if no name is known), 3 short paragraphs (why this role, the best 1 to 2 proven facts that match the job, a polite close; under 180 words in total), closing (e.g. "Yours sincerely,"). Use [placeholders] for company name or anything unknown. Do not claim skills the person does not show.
+- LEVEL (fresher, experienced, senior, gap, switcher), FAMILY and COUNTRY are given: for fresher, lead with education, projects and the goal; for gap, never invent a reason for the gap; for switcher, stress transferable facts. Do not add personal details like date of birth, photo, marital status or religion.
 - keywords_used: job keywords you used that the resume truly supports. check_these: short notes of what the person must check or fill in before sending (placeholders, anything unclear).
 - Do not promise a job or shortlist. No visa, legal or immigration advice.
 - Language: follow LANGUAGE. "hi" = simple Hinglish for summary and bullets (technical words in English); "en" = simple English.`;
@@ -219,8 +223,8 @@ export default {
       } else {
         const g = await gate(env, body, ip, origin); if (g) return g;
       }
-      const r = await claude(env, { max_tokens: 3500, system: SYSTEM_RESUME, output_config: { effort: "low", format: { type: "json_schema", schema: RESUME_SCHEMA } },
-        messages: [{ role: "user", content: `LANGUAGE: ${lang}\n<job>\n${job}\n</job>\n<resume>\n${resume}\n</resume>\n<cover>\n${cover}\n</cover>` }] });
+      const r = await claude(env, { max_tokens: 4500, system: SYSTEM_RESUME, output_config: { effort: "low", format: { type: "json_schema", schema: RESUME_SCHEMA } },
+        messages: [{ role: "user", content: `LANGUAGE: ${lang}\nLEVEL: ${String(body.level || "experienced").slice(0, 12)}\nFAMILY: ${String(body.family || "").slice(0, 8)}\nCOUNTRY: ${String(body.country || "IN").slice(0, 3)}\n<job>\n${job}\n</job>\n<resume>\n${resume}\n</resume>\n<cover>\n${cover}\n</cover>` }] });
       let out; if (!r.error) { try { out = JSON.parse(r.text); } catch { r.error = "bad answer"; r.status = 502; } }
       if (r.error) { if (lic) await env.RATE.put(lic.k, String(lic.used)); return json({ error: r.error }, r.status, origin); }   // give the build back on failure
       return json(out, 200, origin);

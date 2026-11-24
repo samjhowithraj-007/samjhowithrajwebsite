@@ -208,10 +208,19 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
       <div class="urlrow"><input type="text" id="licIn" placeholder="Paste your unlock key" autocomplete="off" aria-label="Unlock key"><button class="btn ghost" id="licSave" type="button">Use key</button></div><p class="note" id="licMsg"></p></div>
     <p class="note" id="freeBox">Free while we launch. A small daily limit applies.</p>
     <p class="note">Your pasted text is kept in this browser for 2 hours so login and payment never lose it. The "Clear" button removes it.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:8px 0">
+      <div><label for="tgtCountry">Target country</label><select id="tgtCountry"><option value="IN">India</option><option value="DE">Germany</option><option value="AE">UAE / Gulf</option><option value="UK">UK</option><option value="CA">Canada</option><option value="AU">Australia</option><option value="SG">Singapore</option><option value="US">USA</option></select></div>
+      <div><label for="lvl">Your level</label><select id="lvl"><option value="fresher">Fresher (0 to 1 year)</option><option value="experienced">Experienced (2 to 8 years)</option><option value="senior">Senior (9+ years)</option><option value="gap">Career gap</option><option value="switcher">Switching careers</option></select></div>
+      <div><label for="tplSel">Resume template</label><select id="tplSel"></select></div>
+      <div><label for="clSel">Cover letter style</label><select id="clSel"></select></div>
+    </div>
+    <p class="note" id="tplWhy" style="margin-top:0"></p>
     <div id="tsRb"></div>
     <div class="actions"><button class="btn sf" id="rbGo" type="button">Build my resume</button><span class="note">Prefer to learn the missing skills first? See the list above.</span></div>
     <p class="err" id="rbMsg" role="alert"></p>
     <div id="rbOut" class="hide">
+      <div class="actions" style="margin-top:0"><span class="seg" role="group" aria-label="Document"><button type="button" id="mRes" aria-pressed="true">Resume</button><button type="button" id="mCl" aria-pressed="false">Cover letter</button></span></div>
+      <div class="actions" style="margin-top:0"><span class="seg" role="group" aria-label="Resume view"><button type="button" id="vDes" aria-pressed="true">Designed</button><button type="button" id="vAts" aria-pressed="false">ATS-safe (plain)</button></span><span class="note">Use the ATS-safe version for online job portals. Switching template or view rebuilds the resume, so edit last.</span></div>
       <p class="note">Click inside the resume to edit. Add your phone, email and city at the top: they were removed on purpose for your privacy.</p>
       <div id="doc" contenteditable="true"></div>
       <div class="actions"><button class="btn" id="dlDoc" type="button">Download Word (.doc)</button><button class="btn ghost" id="dlPdf" type="button">Print / Save as PDF</button></div>
@@ -607,19 +616,47 @@ wireFile($("fileResume"),"resume");wireFile($("fileCl"),"cl");
 /* ---- learn step, injected between skill match and the rest of the pack ---- */
 var TECHRE=/python|sql|java|javascript|react|api|git|cloud|machine learning|data analysis|testing|excel|power bi|tableau|seo|photoshop|canva/i;
 function ytq(s){return "https://www.youtube.com/results?search_query="+encodeURIComponent(s+" tutorial for beginners Hindi")}
+/* Official learning pages and official YouTube channels (checked 24 Nov 2026). Raj's own lessons come first where they exist. */
+var MSL="https://learn.microsoft.com/training/browse/?terms=";
+var OFFICIAL=[
+ [/python/i,[["Python tutorial (python.org)","https://docs.python.org/3/tutorial/"]],null],
+ [/\bsql\b/i,[["Microsoft Learn: SQL","https://learn.microsoft.com/sql/"],["Microsoft Learn: SQL training paths",MSL+"sql"]],["Microsoft Developer on YouTube","https://www.youtube.com/@MicrosoftDeveloper"]],
+ [/excel/i,[["Microsoft Learn: Excel training","https://learn.microsoft.com/training/browse/?products=office-excel"],["Microsoft Support: Excel help","https://support.microsoft.com/excel"]],["Microsoft 365 on YouTube","https://www.youtube.com/@Microsoft365"]],
+ [/power bi/i,[["Microsoft Learn: Power BI","https://learn.microsoft.com/power-bi/"],["Microsoft Learn: Power BI training","https://learn.microsoft.com/training/powerplatform/power-bi"]],["Microsoft Power BI on YouTube","https://www.youtube.com/@MicrosoftPowerBI"]],
+ [/tableau/i,[["Tableau free training videos","https://www.tableau.com/learn/training"]],["Tableau on YouTube","https://www.youtube.com/@tableau"]],
+ [/data analysis/i,[["Microsoft Learn: Data Analyst path","https://learn.microsoft.com/credentials/certifications/data-analyst-associate/"],["Google Skillshop (free Google courses)","https://skillshop.withgoogle.com/"]],["Google Analytics on YouTube","https://www.youtube.com/@GoogleAnalytics"]],
+ [/machine learning|^ai\b/i,[["Anthropic: Learn (Claude)","https://www.anthropic.com/learn"],["Claude documentation","https://docs.claude.com/"],["Google Machine Learning Crash Course","https://developers.google.com/machine-learning/crash-course"]],["Anthropic on YouTube","https://www.youtube.com/@anthropic-ai"]],
+ [/cloud/i,[["Microsoft Learn: Azure","https://learn.microsoft.com/training/azure/"],["AWS Skill Builder","https://skillbuilder.aws/"],["Google Cloud Skills Boost","https://www.cloudskillsboost.google/"]],["Microsoft Azure on YouTube","https://www.youtube.com/@MicrosoftAzure"]],
+ [/^git/i,[["Git documentation","https://git-scm.com/doc"],["GitHub Skills (free hands-on)","https://skills.github.com/"]],["GitHub on YouTube","https://www.youtube.com/@GitHub"]],
+ [/javascript/i,[["MDN: Learn web development","https://developer.mozilla.org/docs/Learn"]],["Mozilla Developer on YouTube","https://www.youtube.com/@MozillaDeveloper"]],
+ [/react/i,[["React official docs: Learn","https://react.dev/learn"]],["React on YouTube","https://www.youtube.com/@reactjs"]],
+ [/\bapis?\b/i,[["Postman Learning Center","https://learning.postman.com/"]],["Postman on YouTube","https://www.youtube.com/@Postman"]],
+ [/\bseo\b/i,[["Google Search Central: SEO starter guide","https://developers.google.com/search/docs/fundamentals/seo-starter-guide"]],["Google Search Central on YouTube","https://www.youtube.com/@GoogleSearchCentral"]],
+ [/social media|marketing/i,[["Meta Blueprint (free)","https://www.facebook.com/business/learn"],["HubSpot Academy (free)","https://academy.hubspot.com/"],["Google Skillshop","https://skillshop.withgoogle.com/"]],null],
+ [/photoshop/i,[["Adobe Photoshop tutorials","https://helpx.adobe.com/photoshop/tutorials.html"]],["Adobe Creative Cloud on YouTube","https://www.youtube.com/@AdobeCreativeCloud"]],
+ [/video editing/i,[["Adobe Premiere Pro tutorials","https://helpx.adobe.com/premiere-pro/tutorials.html"]],["Adobe Creative Cloud on YouTube","https://www.youtube.com/@AdobeCreativeCloud"]],
+ [/canva/i,[["Canva Design School (free)","https://www.canva.com/designschool/"]],["Canva on YouTube","https://www.youtube.com/@Canva"]],
+ [/gst/i,[["GST portal: official tutorials","https://tutorial.gst.gov.in/"]],null],
+ [/tally|billing|accounting/i,[["Tally Solutions (official)","https://tallysolutions.com/"]],["Tally Solutions on YouTube","https://www.youtube.com/@TallySolutions"]],
+ [/word|typing|office/i,[["Microsoft Learn: Word training",MSL+"word"]],["Microsoft 365 on YouTube","https://www.youtube.com/@Microsoft365"]]
+];
 function resFor(s){var l=[];
   if(/python/i.test(s))l.push(["Free Python lessons (Tech Samjho Raj)","/learn/python-1/"]);
-  else if(/machine learning|^ai|cloud/i.test(s))l.push(["Free AI agent lessons (Tech Samjho Raj)","/learn/agentic-1/"]);
-  if(TECHRE.test(s))l.push(["AI Job Search book (prompts for jobs and study)","https://samjhowithraj.gumroad.com/l/ai-job-search-bundle"]);
+  else if(/machine learning|^ai\b|cloud/i.test(s))l.push(["Free AI agent lessons (Tech Samjho Raj)","/learn/agentic-1/"]);
+  var hit=null;for(var i=0;i<OFFICIAL.length;i++){if(OFFICIAL[i][0].test(s)){hit=OFFICIAL[i];break}}
+  if(hit){hit[1].forEach(function(x){l.push(["Official: "+x[0],x[1]])});if(hit[2])l.push(["Official YouTube: "+hit[2][0].replace(/ on YouTube$/,""),hit[2][1]])}
+  else if(TECHRE.test(s)){l.push(["Microsoft Learn: "+s,MSL+encodeURIComponent(s)])}
   else{l.push(["Skill India Digital Hub (free, government)","https://www.skillindiadigital.gov.in/"]);l.push(["SWAYAM free courses","https://swayam.gov.in/"])}
-  l.push(["YouTube search: "+s,ytq(s)]);return l}
+  if(TECHRE.test(s)||hit)l.push(["AI Job Search book (prompts for jobs and study)","https://samjhowithraj.gumroad.com/l/ai-job-search-bundle"]);
+  if(!hit)l.push(["YouTube search: "+s,ytq(s)]);
+  return l}
 function learnHTML(p){
   if(!p.gap.length)return "<h3>Learn first (optional)</h3><p class='note'>No missing skills found for this job. You can build your resume now.</p><p><button class='btn sf' type='button' data-go='rb'>Build my resume now</button></p>";
   return "<h3>Learn these first (optional)</h3><p class='note' style='margin:0 0 4px'>Learning even one of these makes your application stronger. If you do not want to wait, you can build your resume now. It will only use skills you already have.</p>"
    +p.gap.slice(0,6).map(function(sk){return "<div class='learnrow'><b>"+esc(sk)+"</b><br>"+resFor(sk).map(function(r){var ext=/^https?:/.test(r[1]);return "<a class='lk' href='"+r[1]+"'"+(ext?" target='_blank' rel='noopener'":"")+">"+esc(r[0])+"</a>"}).join("")+"</div>"}).join("")
    +"<p><button class='btn sf' type='button' data-go='rb'>Skip learning: build my resume now</button></p>"}
 var origRender=render;
-render=function(p){LAST=p;var h=origRender(p),key="<h3>"+T[LANG].lines+"</h3>",i=h.indexOf(key),b=learnHTML(p);$("rb").classList.remove("hide");if(PAY)setPay();else if(W)startRbTs();return i<0?h+b:h.slice(0,i)+b+h.slice(i)};
+render=function(p){LAST=p;try{if(!MANUAL){$("lvl").value=guessLevel($("resume").value)}autoTpl()}catch(e){}var h=origRender(p),key="<h3>"+T[LANG].lines+"</h3>",i=h.indexOf(key),b=learnHTML(p);$("rb").classList.remove("hide");if(PAY)setPay();else if(W)startRbTs();return i<0?h+b:h.slice(0,i)+b+h.slice(i)};
 document.addEventListener("click",function(e){var g=e.target.getAttribute&&e.target.getAttribute("data-go");if(g==="rb"){$("rb").scrollIntoView({behavior:"smooth"})}});
 var rbTs=false;function startRbTs(){if(rbTs)return;rbTs=true;mk("tsRb","rb")}
 
@@ -663,6 +700,92 @@ $("licSave").onclick=function(){LIC=$("licIn").value.trim();try{localStorage.set
 function rulesResume(p,res){var lines=res.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean).slice(0,30);
   return {name:"[Your name]",headline:p.role||"",summary:"Applying for "+(p.role||"this role")+(p.have.length?", with skills in "+p.have.slice(0,4).join(", "):"")+". [Add one line about your strongest result.]",skills:p.have,experience:[{role:"From your resume",org:"",dates:"",bullets:lines}],projects:[],education:[],certifications:[],keywords_used:p.have,
   check_these:["This basic version was made by simple rules: your own lines are kept as they are. The AI version rewrites them for the job.","Add your phone, email and city at the top."]}}
+
+/* ---- sector templates T1..T12 (from the template research of 24 Nov 2026) ---- */
+var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T10:"Formal Europe / Germany",T11:"Gulf-ready",T12:"India classic"};
+var FAMNAME={it:"Software / IT",data:"Data / Analytics",sales:"Sales / Marketing",fin:"Accounting / Finance",cs:"Customer support",health:"Healthcare",teach:"Teaching",trade:"Skilled trades",host:"Hospitality / Retail",log:"Driver / Logistics",design:"Design / Content",admin:"HR / Admin / Office"};
+var LV=["fresher","experienced","gap","switcher","senior"];
+var AUTO={it:["T3","T4","T6","T6","T4"],data:["T3","T4","T6","T6","T4"],sales:["T12?","T5","T6","T6","T5"],fin:["T12?","T7","T6","T6","T7"],cs:["T12?","T1","T6","T6","T1"],health:["T7","T7","T7","T6","T7"],teach:["T7","T7","T7","T6","T7"],trade:["T8","T8","T8","T6","T8"],host:["T8","T1","T6","T6","T5"],log:["T8","T8","T8","T6","T1"],design:["T3","T9","T6","T6","T9"],admin:["T12?","T1","T6","T6","T2"]};
+var GULFFAM={trade:1,log:1,host:1,health:1,cs:1};
+function pickTpl(fam,lv,country){var row=AUTO[fam]||AUTO.admin,t=row[Math.max(0,LV.indexOf(lv))]||"T1";if(t==="T12?")t=country==="IN"?"T12":"T1";
+  var why=(FAMNAME[fam]||"Your job type")+", "+({fresher:"fresher",experienced:"experienced",gap:"career gap",switcher:"career switch",senior:"senior"}[lv]||lv)+": "+TPL[t]+".";
+  if(country==="DE"){t="T10";why="Target Germany: the formal European layout with languages and place/date."}
+  else if(country==="AE"&&GULFFAM[fam]){t="T11";why="Target UAE / Gulf for this job type: the Gulf-ready layout with passport, visa and notice period."}
+  return {t:t,why:why}}
+function guessLevel(res){var m=res.match(/(\d{1,2})\s*\+?\s*(years?|yrs?)/gi)||[],mx=0;m.forEach(function(x){var n=parseInt(x,10);if(n>mx)mx=n});
+  if(mx>=9)return "senior";if(mx>=2)return "experienced";if(/fresher|intern|graduat|college|student|b\.?com|b\.?tech|bca|bsc|20(2[3-6])/i.test(res)||!/experience|worked|handled|managed/i.test(res))return "fresher";return "experienced"}
+var CURR=null,VIEW="des",MANUAL=false;
+var tplSel=$("tplSel");Object.keys(TPL).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k+". "+TPL[k];tplSel.appendChild(o)});
+function autoTpl(){if(!CLMANUAL)clSel.value=pickCl((LAST&&LAST.family)||"admin",$("lvl").value);var pk=pickTpl((LAST&&LAST.family)||"admin",$("lvl").value,$("tgtCountry").value);if(!MANUAL)tplSel.value=pk.t;$("tplWhy").textContent=MANUAL?"Template chosen by you. Suggested for you: "+pk.t+" ("+pk.why+")":"Chosen for you: "+pk.why+" Change it below if you prefer another."}
+function redraw(){if(CURR)renderDoc()}
+$("lvl").onchange=function(){MANUAL=false;CLMANUAL=false;autoTpl();redraw()};$("tgtCountry").onchange=function(){MANUAL=false;autoTpl();redraw()};
+tplSel.onchange=function(){MANUAL=true;autoTpl();redraw()};
+$("vDes").onclick=function(){VIEW="des";$("vDes").setAttribute("aria-pressed","true");$("vAts").setAttribute("aria-pressed","false");redraw()};
+$("vAts").onclick=function(){VIEW="ats";$("vAts").setAttribute("aria-pressed","true");$("vDes").setAttribute("aria-pressed","false");redraw()};
+function renderDoc(){var o={country:$("tgtCountry").value,level:$("lvl").value};if(CLMODE==="letter"){$("doc").innerHTML=buildLetter(VIEW==="ats"?"C2":clSel.value,CURR,o);return}var id=VIEW==="ats"?"T1":tplSel.value;$("doc").innerHTML=buildResume(id,CURR,o)}
+
+
+/* ---- cover letter styles C1..C4, chosen from job type and level (made in the same build, no extra cost) ---- */
+var CLS={C1:"Formal letter (block style)",C2:"Modern short letter",C3:"Fresher letter (why I want this job)",C4:"Achievement-led letter"};
+var clSel=$("clSel");Object.keys(CLS).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k+". "+CLS[k];clSel.appendChild(o)});
+function pickCl(fam,lv){if(lv==="fresher")return "C3";if(fam==="sales"||lv==="senior")return "C4";if(/^(health|teach|fin|trade|admin)$/.test(fam))return "C1";return "C2"}
+var CLMODE="res";
+function setDocMode(m){CLMODE=m;$("mRes").setAttribute("aria-pressed",m==="res");$("mCl").setAttribute("aria-pressed",m==="letter");redraw()}
+$("mRes").onclick=function(){setDocMode("res")};$("mCl").onclick=function(){setDocMode("letter")};
+clSel.onchange=function(){CLMANUAL=true;redraw()};
+var CLMANUAL=false;
+function letterData(r){var L=r&&r.cover_letter;if(L&&L.paragraphs&&L.paragraphs.length)return L;
+  var t=(LAST&&LAST.cover)||"";var ps=t.split(/\n\s*\n/).map(function(x){return x.trim()}).filter(Boolean);return {salutation:"Dear [Hiring manager],",paragraphs:ps.length?ps:["[Write why you want this job and what you offer, using facts from your resume.]"],closing:"Yours sincerely,"}}
+function buildLetter(id,r,o){
+  var L=letterData(r),nm=esc((r&&r.name)||"[Your name]"),role=esc((r&&r.headline)||"[Job title]");
+  var acc=id==="C4"?"#0E7C7B":"#1F3A5F",ff=id==="C1"?"Georgia,'Times New Roman',serif":"Arial,Helvetica,sans-serif",fs=id==="C1"?"11.5pt":"10.5pt";
+  var paras=(L.paragraphs||[]).map(function(x){return "<p style='margin:0 0 9px'>"+esc(x)+"</p>"}).join("");
+  var contact="[Phone] | [Email] | [City]";
+  var head=id==="C1"?"<div style='text-align:right'><b>"+nm+"</b><br>[Address line, City]<br>[Phone] | [Email]</div><p style='margin:14px 0 0'>[Date]</p><p style='margin:10px 0'>[Hiring manager name]<br>[Company name]<br>[Company city]</p>"
+    :"<div style='"+(id==="C2"?"border-left:5px solid "+acc+";padding-left:10px;":"")+"'><div style='font:700 18pt "+ff+";color:"+acc+"'>"+nm+"</div><div style='font-size:9.5pt;color:#444'>"+contact+"</div></div><p style='margin:14px 0 6px'>[Date]</p>";
+  var subj="<p style='margin:8px 0'><b>Subject: Application for "+role+"</b></p>";
+  var strip=id==="C4"&&r&&(r.key_results||[])[0]?"<p style='margin:0 0 10px;padding:6px 10px;border-left:4px solid "+acc+";background:#F1F8F8'><b>"+esc(r.key_results[0])+"</b></p>":"";
+  var fit=id==="C3"?"<p style='margin:0 0 9px;color:#444'>[Optional: add one line about your best project or college achievement that matches this job.]</p>":"";
+  return "<div style=\"font:"+fs+"/1.45 "+ff+";color:#111\">"+head+subj+"<p style='margin:8px 0'>"+esc(L.salutation||"Dear [Hiring manager],")+"</p>"+strip+paras+fit+"<p style='margin:12px 0 2px'>"+esc(L.closing||"Yours sincerely,")+"</p><p style='margin:0'><b>"+nm+"</b></p></div>"}
+
+var ORDER={T1:["sum","skl","exp","prj","edu","crt","lng"],T3:["sum","prj","edu","exp","skl","crt"],T4:["sum","skm","exp","prj","edu","crt"],T5:["sum","res","exp","skl","edu","crt"],T6:["sum","hyb","exp","edu","crt"],T7:["lic","sum","exp","crt","edu","skl"],T8:["lic","sum","skl","exp","edu"],T9:["sum","skl","exp","prj","edu"],T10:["sum","exp","edu","skl","lng","pl"],T11:["per","sum","skl","exp","edu","lng"],T12:["sum","edu","skl","exp","lng","dec"]};
+function buildResume(id,r,o){
+  r=r||{};var c={acc:"#1F3A5F",ff:"Arial,Helvetica,sans-serif",fs:"10.5pt",hf:"Arial,Helvetica,sans-serif"};
+  if(id==="T5")c.acc="#0E7C7B";if(id==="T9")c.acc="#6D28D9";if(id==="T8"){c.fs="11.5pt";c.acc="#111111"}
+  if(id==="T7"||id==="T10"){c.hf="Georgia,'Times New Roman',serif"}
+  var lv=o.level,fresh=lv==="fresher";
+  function A(x){return Array.isArray(x)?x.filter(Boolean):[]}
+  function H(t,inner,extra){return inner?"<h3 style=\"font:700 11pt "+c.hf+";letter-spacing:.06em;text-transform:uppercase;margin:13px 0 4px;padding-bottom:2px;border-bottom:1px solid #999;color:"+c.acc+"\">"+t+"</h3>"+inner+(extra||""):""}
+  function UL(a){a=A(a);return a.length?"<ul style='margin:0;padding-left:20px'>"+a.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>":""}
+  var gapLine=lv==="gap"?"<p style='margin:4px 0;color:#444'>[Career break, years: one honest line about the reason and what you did, such as a course or freelance work]</p>":"";
+  var S={
+   sum:function(){return H(id==="T3"||id==="T12"||fresh?"Objective":"Summary",r.summary?"<p style='margin:0'>"+esc(r.summary)+"</p>":"")},
+   skl:function(){var k=A(r.skills);return H("Skills",k.length?"<p style='margin:0'>"+k.map(esc).join(" · ")+"</p>":"")},
+   skm:function(){var k=A(r.skills);if(!k.length)return "";var a=k.slice(0,Math.ceil(k.length/2)),b=k.slice(Math.ceil(k.length/2));return H("Technical skills","<p style='margin:0'><b>Core:</b> "+a.map(esc).join(", ")+"</p>"+(b.length?"<p style='margin:2px 0 0'><b>Also:</b> "+b.map(esc).join(", ")+"</p>":""))},
+   exp:function(){var e=A(r.experience);return H(fresh?"Internships and experience":"Experience",gapLine+e.map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.role||"")+"</b>"+(x.org?", "+esc(x.org):"")+(x.dates?" <span style='color:#444'>("+esc(x.dates)+")</span>":"")+"</p>"+UL(x.bullets)}).join(""))},
+   prj:function(){var e=A(r.projects);return H(id==="T9"?"Selected work":"Projects",e.map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.name||"")+"</b></p>"+UL(x.bullets)}).join(""))},
+   hyb:function(){var e=A(r.projects),k=A(r.skills);return H("Relevant skills and projects",(k.length?"<p style='margin:0 0 4px'>"+k.map(esc).join(" · ")+"</p>":"")+e.map(function(x){return "<p style='margin:6px 0 2px'><b>"+esc(x.name||"")+"</b></p>"+UL(x.bullets)}).join(""))},
+   edu:function(){var e=A(r.education);return H("Education",e.map(function(x){return "<p style='margin:5px 0'><b>"+esc(x.degree||"")+"</b>"+(x.school?", "+esc(x.school):"")+(x.year?" ("+esc(x.year)+")":"")+"</p>"}).join(""))},
+   crt:function(){return H("Certifications",UL(r.certifications))},
+   lng:function(){var l=A(r.languages);return H("Languages",(l.length?"<p style='margin:0'>"+l.map(esc).join(" · ")+"</p>":"")+(o.country==="DE"?"<p style='margin:2px 0 0;color:#444'>[Add your level for each language: A2, B1, B2, C1, C2]</p>":""))},
+   res:function(){var k=A(r.key_results).slice(0,3);return k.length?"<table style='width:100%;border-collapse:collapse;margin:10px 0'><tr>"+k.map(function(x){return "<td style='border-left:4px solid "+c.acc+";padding:4px 10px;font-weight:700;vertical-align:top'>"+esc(x)+"</td>"}).join("")+"</tr></table>":""},
+   lic:function(){var l=A(r.licences);var inner=l.length?UL(l):"<p style='margin:0;color:#444'>[Add your licence or registration: name, number, issuing body, valid till]</p>";return H(id==="T8"?"Trade and licences":"Registration and licences","<div style='background:#EEF6F1;border:1px solid #cfe3d6;padding:6px 10px;margin-top:4px'>"+inner+"</div>")},
+   per:function(){return H("Personal details","<p style='margin:0'>Nationality: [your nationality] | Passport valid till: [date] | Visa status: [status] | Notice period: [days] | Driving licence: [yes/no, country]</p>")},
+   pl:function(){return "<p style='margin-top:18px'>[City], [Date]</p>"},
+   dec:function(){return o.country==="IN"?"<p style='margin-top:16px;font-size:9.5pt'>I hereby declare that the information given above is true to the best of my knowledge.<br>Place: [City] &nbsp;&nbsp; Date: [Date]</p>":""}
+  };
+  var photo=(id==="T10"||id==="T11"||(o.country==="DE"&&id!=="T1"))?"<div style='float:right;width:35mm;height:45mm;border:1px dashed #999;font-size:8pt;text-align:center;padding-top:16mm;color:#777'>Photo (optional)</div>":"";
+  var contact="[Phone] | [Email] | [City]"+(id==="T9"?" | [Portfolio link]":"")+((id==="T3"&&(r.projects||[]).length)?" | [GitHub link]":"");
+  var head=photo+"<div style='"+(id==="T9"?"border-left:5px solid "+c.acc+";padding-left:10px;":"")+"'><div style='font:"+(id==="T9"?"800 24pt":"700 20pt")+" "+c.hf+";color:"+c.acc+"'>"+esc(r.name||"[Your name]")+"</div><div style='margin:2px 0 3px'>"+esc(r.headline||"")+"</div><div style='font-size:9.5pt;color:#444'>"+contact+"</div></div>";
+  var wrap="<div style=\"font:"+c.fs+"/1.35 "+c.ff+";color:#111\">";
+  if(id==="T2"){
+    var side="<div style='font-size:9.5pt;color:#333'>[Phone]<br>[Email]<br>[City]</div>"+H("Skills",A(r.skills).length?"<div>"+A(r.skills).map(esc).join("<br>")+"</div>":"")+H("Languages",A(r.languages).map(esc).join("<br>"))+H("Certifications",UL(r.certifications))+(A(r.licences).length?H("Licences",UL(r.licences)):"");
+    var main="<div style='font:700 20pt "+c.hf+";color:"+c.acc+"'>"+esc(r.name||"[Your name]")+"</div><div style='margin-bottom:6px'>"+esc(r.headline||"")+"</div>"+S.sum()+S.exp()+S.prj()+S.edu();
+    return wrap+"<table style='width:100%;border-collapse:collapse'><tr><td style='width:30%;background:#F3F5F8;vertical-align:top;padding:10px'>"+side+"</td><td style='vertical-align:top;padding:10px 14px'>"+main+"</td></tr></table></div>"}
+  var body=(ORDER[id]||ORDER.T1).map(function(k){return S[k]()}).join("");
+  if(o.country==="AE"&&id!=="T11"&&id!=="T1")body=S.per()+body;
+  return wrap+head+body+"</div>"}
+
 function li(a){return (a||[]).filter(Boolean).map(function(x){return "<li>"+esc(x)+"</li>"}).join("")}
 function secH(t,inner){return inner?"<h3 style='font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #999;padding-bottom:2px;margin:14px 0 6px'>"+t+"</h3>"+inner:""}
 function resumeHTML(r){
@@ -679,18 +802,18 @@ $("rbGo").onclick=async function(){
   if(!job.trim()||!res.trim()){m.textContent="Paste the job post and your resume above first.";return}
   if(!LAST)LAST=rulesPack(job,res);
   var btn=this,r=null,note="";
-  if(W){var body={action:"resume",job:strip(job),resume:strip(res),cover:strip(cov),lang:LANG};
+  if(W){var body={action:"resume",job:strip(job),resume:strip(res),cover:strip(cov),lang:LANG,level:$("lvl").value,country:$("tgtCountry").value,family:(LAST&&LAST.family)||"",template:tplSel.value};
     if(PAY){if(!LIC){m.textContent="Buy and enter your unlock key first.";return}body.license=LIC}
     else if(SITEKEY){var t=useTok("rb");if(!t){m.textContent=WAITMSG;return}body.turnstile=t}
     btn.disabled=true;btn.textContent="Building...";
     try{r=await post(body)}catch(e){note=e.status===402?(e.message==="license used up"?"This key has no builds left. Buy a new key.":"This unlock key is not valid."):e.status===429?"Today's free limit is over. Here is the basic version instead.":"The AI service is not available right now. Here is the basic version instead. ("+String(e.message).slice(0,60)+")";if(e.status===402){btn.disabled=false;btn.textContent="Build my resume";dropKey(note);return}}
     btn.disabled=false;btn.textContent="Build my resume";if(PAY)checkLic()}
   if(!r){r=rulesResume(LAST,res);if(!note)note="AI is not available here, so this is the basic version."}
-  m.textContent=note;$("doc").innerHTML=resumeHTML(r);$("rbOut").classList.remove("hide");
+  m.textContent=note;CURR=r;renderDoc();CLMODE="res";$("mRes").setAttribute("aria-pressed","true");$("mCl").setAttribute("aria-pressed","false");$("rbOut").classList.remove("hide");
   var ck=(r.check_these||[]).concat(r.keywords_used&&r.keywords_used.length?["Job keywords used (supported by your resume): "+r.keywords_used.join(", ")]:[]);
   $("rbChecks").innerHTML=ck.length?"<h3>Check before you send</h3><ul>"+li(ck)+"</ul>":"";$("rbOut").scrollIntoView({behavior:"smooth"})};
 $("dlDoc").onclick=function(){var html="<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Resume</title></head><body style='font-family:Arial;font-size:11pt'>"+$("doc").innerHTML+"</body></html>";
-  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff",html],{type:"application/msword"}));a.download="resume.doc";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)};
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff",html],{type:"application/msword"}));a.download=(CLMODE==="letter"?"cover-letter":"resume")+".doc";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)};
 $("dlPdf").onclick=function(){window.print()};
 
 /* ---- Prompt Lab ---- */
