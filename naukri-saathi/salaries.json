@@ -1,0 +1,433 @@
+{
+ "updated": "2026-11-24",
+ "rates_date": "RBI reference rates 19 Nov 2026 for USD, EUR, GBP; AED via the fixed USD peg (3.6725); AUD from a mid-market rate 19 Nov 2026; CAD and SGD approximate cross rates (Nov 2026, not RBI)",
+ "rates": {
+  "AED": 25.42,
+  "GBP": 122.66,
+  "CAD": 66.7,
+  "EUR": 102.38,
+  "AUD": 62.67,
+  "SGD": 71.8,
+  "USD": 93.35
+ },
+ "sources": {
+  "IN": "Estimate from vendor salary surveys 2026 (job-portal and staffing salary guides); not government data",
+  "AE": "Estimate from recruiter salary guides 2026 (vendor surveys); UAE LFS 2024 median ~AED 10k/month for context",
+  "UK": "Estimate anchored on ONS ASHE 2025 (provisional) and NHS/teacher pay scales 2025-26",
+  "CA": "Estimate anchored on Job Bank wage data (Govt of Canada), latest year",
+  "DE": "Estimate anchored on Entgeltatlas (Bundesagentur fuer Arbeit) and Destatis earnings data",
+  "AU": "Estimate anchored on Jobs and Skills Australia occupation profiles / ABS earnings",
+  "SG": "Estimate anchored on MOM Occupational Wages 2025 (June 2025, excludes bonus)",
+  "US": "Estimate anchored on BLS Occupational Outlook Handbook, May 2024 medians"
+ },
+ "families": {
+  "it": {
+   "IN": [
+    350,
+    2000
+   ],
+   "AE": [
+    96,
+    300
+   ],
+   "UK": [
+    30,
+    70
+   ],
+   "CA": [
+    65,
+    130
+   ],
+   "DE": [
+    48,
+    80
+   ],
+   "AU": [
+    80,
+    150
+   ],
+   "SG": [
+    54,
+    120
+   ],
+   "US": [
+    80,
+    170
+   ]
+  },
+  "data": {
+   "IN": [
+    400,
+    2000
+   ],
+   "AE": [
+    120,
+    300
+   ],
+   "UK": [
+    28,
+    60
+   ],
+   "CA": [
+    60,
+    115
+   ],
+   "DE": [
+    45,
+    75
+   ],
+   "AU": [
+    75,
+    140
+   ],
+   "SG": [
+    54,
+    110
+   ],
+   "US": [
+    70,
+    160
+   ]
+  },
+  "sales": {
+   "IN": [
+    250,
+    1200
+   ],
+   "AE": [
+    72,
+    240
+   ],
+   "UK": [
+    24,
+    50
+   ],
+   "CA": [
+    45,
+    100
+   ],
+   "DE": [
+    38,
+    70
+   ],
+   "AU": [
+    60,
+    120
+   ],
+   "SG": [
+    42,
+    96
+   ],
+   "US": [
+    45,
+    120
+   ]
+  },
+  "fin": {
+   "IN": [
+    250,
+    1200
+   ],
+   "AE": [
+    72,
+    240
+   ],
+   "UK": [
+    26,
+    55
+   ],
+   "CA": [
+    55,
+    100
+   ],
+   "DE": [
+    40,
+    65
+   ],
+   "AU": [
+    65,
+    110
+   ],
+   "SG": [
+    42,
+    90
+   ],
+   "US": [
+    55,
+    120
+   ]
+  },
+  "cs": {
+   "IN": [
+    180,
+    500
+   ],
+   "AE": [
+    48,
+    120
+   ],
+   "UK": [
+    21,
+    30
+   ],
+   "CA": [
+    37,
+    55
+   ],
+   "DE": [
+    30,
+    42
+   ],
+   "AU": [
+    55,
+    75
+   ],
+   "SG": [
+    30,
+    48
+   ],
+   "US": [
+    32,
+    55
+   ]
+  },
+  "health": {
+   "IN": [
+    180,
+    600
+   ],
+   "AE": [
+    72,
+    180
+   ],
+   "UK": [
+    30,
+    52
+   ],
+   "CA": [
+    75,
+    110
+   ],
+   "DE": [
+    36,
+    55
+   ],
+   "AU": [
+    75,
+    110
+   ],
+   "SG": [
+    42,
+    72
+   ],
+   "US": [
+    70,
+    130
+   ]
+  },
+  "teach": {
+   "IN": [
+    180,
+    700
+   ],
+   "AE": [
+    60,
+    180
+   ],
+   "UK": [
+    32,
+    50
+   ],
+   "CA": [
+    55,
+    100
+   ],
+   "DE": [
+    45,
+    70
+   ],
+   "AU": [
+    75,
+    115
+   ],
+   "SG": [
+    42,
+    90
+   ],
+   "US": [
+    48,
+    90
+   ]
+  },
+  "trade": {
+   "IN": [
+    150,
+    450
+   ],
+   "AE": [
+    24,
+    84
+   ],
+   "UK": [
+    26,
+    42
+   ],
+   "CA": [
+    50,
+    90
+   ],
+   "DE": [
+    33,
+    52
+   ],
+   "AU": [
+    65,
+    110
+   ],
+   "SG": [
+    30,
+    54
+   ],
+   "US": [
+    45,
+    90
+   ]
+  },
+  "host": {
+   "IN": [
+    150,
+    450
+   ],
+   "AE": [
+    24,
+    72
+   ],
+   "UK": [
+    21,
+    30
+   ],
+   "CA": [
+    33,
+    45
+   ],
+   "DE": [
+    26,
+    36
+   ],
+   "AU": [
+    50,
+    70
+   ],
+   "SG": [
+    24,
+    36
+   ],
+   "US": [
+    28,
+    45
+   ]
+  },
+  "log": {
+   "IN": [
+    150,
+    400
+   ],
+   "AE": [
+    24,
+    60
+   ],
+   "UK": [
+    26,
+    42
+   ],
+   "CA": [
+    45,
+    75
+   ],
+   "DE": [
+    30,
+    42
+   ],
+   "AU": [
+    55,
+    85
+   ],
+   "SG": [
+    24,
+    40
+   ],
+   "US": [
+    40,
+    75
+   ]
+  },
+  "design": {
+   "IN": [
+    250,
+    1000
+   ],
+   "AE": [
+    72,
+    180
+   ],
+   "UK": [
+    25,
+    45
+   ],
+   "CA": [
+    45,
+    85
+   ],
+   "DE": [
+    35,
+    58
+   ],
+   "AU": [
+    60,
+    100
+   ],
+   "SG": [
+    40,
+    78
+   ],
+   "US": [
+    40,
+    95
+   ]
+  },
+  "admin": {
+   "IN": [
+    250,
+    1200
+   ],
+   "AE": [
+    60,
+    180
+   ],
+   "UK": [
+    24,
+    45
+   ],
+   "CA": [
+    45,
+    85
+   ],
+   "DE": [
+    35,
+    58
+   ],
+   "AU": [
+    60,
+    100
+   ],
+   "SG": [
+    40,
+    80
+   ],
+   "US": [
+    45,
+    100
+   ]
+  }
+ }
+}
