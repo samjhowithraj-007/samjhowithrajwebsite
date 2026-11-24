@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal14"><script src="rdhome.js?v=17"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=6"></script>
+<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal14"><link rel="stylesheet" href="rdbooks.css?v=1"><script src="rdhome.js?v=18"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=6"></script><script defer src="rdbooks.js?v=1"></script>
 <script>try{if(localStorage.getItem("swr-theme")!=="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
@@ -1283,7 +1283,7 @@ function bookPage(){
         ${anyBuy ? `<p class="usdnote">Checkout is in USD: one edition ≈ $${(BOOK.launchOn ? BOOK.usd.launch : BOOK.usd.regular)[0]}, both ≈ $${(BOOK.launchOn ? BOOK.usd.launch : BOOK.usd.regular)[1]} (incl. 18% GST for India). The exact amount follows the exchange rate.</p>` : ""}
         <small>${anyBuy ? "Instant PDF + EPUB download after payment." : "Payments open very soon. Leave your email below to get the launch price."}</small></div>
     </div></section>
-  <section class="bookprev"><div class="eyebrow">Free preview</div><h2>Peek inside before you buy</h2>
+  <section class="bookprev" id="bk-prev"><div class="eyebrow">Free preview</div><h2>Peek inside before you buy</h2>
     <p class="lead">Each preview shows a chapter's title page, its chai-shop story and a sneak peek of the rest.</p>
     <div class="pgrid">${BOOK.previews.map(n => `<div class="pcard"><b>Chapter ${n}</b><span>${bookTitle(n)}</span>
       <div><a href="${preview(n, "en")}" target="_blank" rel="noopener">English</a> · <a href="${preview(n, "hi")}" target="_blank" rel="noopener">Hinglish</a></div></div>`).join("")}</div></section>
@@ -1295,7 +1295,7 @@ function bookPage(){
     <details><summary>Do I need to know coding?</summary><p>No. Chapter 1 starts from installing Python. The expert chapters are there when you're ready.</p></details>
     <details><summary>Something wrong with my copy?</summary><p>Email <span class="mail">samjhowithraj@gmail.com</span> with your order number.</p></details>
     <p class="disc">Python is a trademark of the Python Software Foundation. This book is not affiliated with or endorsed by it.</p></section>
-  ${anyBuy && !DIWALI.on ? "" : signup("Get one email when the book is available, with the launch price.")}`;
+  ${anyBuy && !DIWALI.on ? "" : signup("Get one email when the book is available, with the launch price.")}${window.RDBOOKS && anyBuy ? `<div class="bk">${RDBOOKS.sticky({ price: "₹" + now, label: "Buy · English", href: BOOK.buy.en || BOOK.buy.both, preview: "#bk-prev", previewLabel: "Preview" })}</div>` : ""}`;
 }
 function dadaCard(){   // Dimaag Dada has its own website (16 Nov 2026)
   return `<a class="bookcard dada" href="https://www.dimaagdada.com/" target="_blank" rel="noopener"><img class="dada3d" src="img/dada-3d.webp" alt="Dimaag Dada" loading="lazy" width="208" height="360">
@@ -1584,7 +1584,16 @@ function cohortBox(){
       <button class="btn primary" type="submit">Join the waitlist</button>
       <small>Email only. One email when the dates are out. <a href="#privacy">Privacy</a></small></form></section>`;
 }
+function moreFromRaj(){
+  return `<div class="shop" style="margin-top:28px"><a class="item" href="#workshops"><div class="art" aria-hidden="true">🎤</div>
+      <div class="row"><span class="tag">For colleges and companies</span></div><h3>AI workshops by Raj</h3>
+      <p>AI for jobs, Python + AI and AI agents, as a talk or a hands-on session.</p><div class="row"><span class="btn">Plan a workshop →</span></div></a>
+    <a class="item" href="#cohort" data-cohort><div class="art" aria-hidden="true">🚀</div>
+      <div class="row"><span class="tag">Waitlist open</span></div><h3>Python + AI Live Cohort</h3>
+      <p>Learn live with Raj in a small online batch. Join the waitlist below.</p><div class="row"><span class="btn">Join the waitlist ↓</span></div></a></div>`;
+}
 function shop(){
+  if (window.RDBOOKS) return RDBOOKS.shop({ BOOK, AIJOB }) + moreFromRaj() + cohortBox() + `<p class="disc" style="margin-top:18px">Payments for the books are handled by Gumroad. If affiliate links are ever added here, they will always be clearly marked.</p>` + books();
   const now = BOOK.launchOn ? `<s>₹${BOOK.price}</s>₹${BOOK.launch}` : `₹${BOOK.price}`;
   return `<div class="page-head"><div><div class="eyebrow">Shop</div><h1>Learn more, <em>support the channel.</em></h1>
     <p class="lead">Everything here is made by Raj. Every purchase helps keep the lessons on this site free.</p></div></div>
@@ -1663,6 +1672,7 @@ function render(){
   if (c) { app.innerHTML = lessonView(c, l); try { localStorage.setItem(LAST, l.id); } catch (e) {} }
   else if (h === "tracker") { location.replace("https://www.paisasamjhoraj.com/#planner"); return; }
   else if (h === "book") { app.innerHTML = bookPage(); tab = "shop"; }
+  else if (h === "ai-job-search" && window.RDBOOKS) { app.innerHTML = RDBOOKS.aiPage({ AIJOB }); tab = "shop"; document.title = "AI Job Search: 50 AI prompts for jobs + study · Tech Samjho Raj"; }
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
   else if (h === "puzzles" || h === "jigsaw") { location.replace("https://www.dimaagdada.com/" + (h === "jigsaw" ? "#jigsaw" : "#books")); return; }

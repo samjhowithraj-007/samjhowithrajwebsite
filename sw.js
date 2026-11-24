@@ -1,7 +1,7 @@
 // Offline support for Tech Samjho Raj. Bump VERSION on any change to this file or the precache list.
-const VERSION = "v116";
+const VERSION = "v118";
 const CACHE = "samjhowithraj-" + VERSION;
-const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/badge-96.png", "img/favicon-32.png", "img/botu-192.png", "img/botu-512.png", "img/botu-apple-180.png", "img/botu-hello.webp", "redesign.css", "rdlight.css", "rdhome.css", "rdhome.js", "rdbar.js", "rdtools.js", "rdlearn.js", "rdauth.js", "rdplayer.js", "rdnews.js", "img/rd/botu.png"];
+const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/badge-96.png", "img/favicon-32.png", "img/botu-192.png", "img/botu-512.png", "img/botu-apple-180.png", "img/botu-hello.webp", "redesign.css", "rdlight.css", "rdhome.css", "rdhome.js", "rdbar.js", "rdtools.js", "rdlearn.js", "rdauth.js", "rdplayer.js", "rdnews.js", "rdbooks.js", "rdbooks.css", "img/rd/botu.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
