@@ -424,7 +424,7 @@ function loadTurnstile(){
 async function aiPack(job,resume){
   var r=await fetch(NS_CONFIG.workerUrl,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({job:strip(job),resume:strip(resume),lang:LANG,turnstile:tsToken})});
   if(r.status===429){var e=new Error("limit");e.limit=true;throw e}
-  if(!r.ok)throw new Error("worker "+r.status);
+  if(!r.ok){var tx="";try{tx=(await r.text()).slice(0,80)}catch(_){}throw new Error("worker "+r.status+" "+tx)}
   var d=await r.json();
   var fam=FAMILIES.some(function(f){return f.id===d.family})?d.family:guessFamily(job).id;
   return {role:d.role||roleOf(job)||T[LANG].thisRole,have:d.skills_have||[],gap:d.skills_gap||[],lines:d.resume_lines||[],cover:d.cover_note||"",qs:(d.questions||[]).slice(0,10),family:fam};
@@ -437,7 +437,7 @@ async function makePack(){
   if(NS_CONFIG.workerUrl){
     if(NS_CONFIG.turnstileSiteKey&&!tsToken){$("msg").textContent="Please complete the small check box first.";btn.disabled=false;btn.textContent=old;return}
     try{setMode("ai");pack=await aiPack(job,resume)}
-    catch(e){setMode("rules");$("msg").textContent=e.limit?"Today's free AI limit is over. Here is the simple demo version instead. Come back tomorrow for more.":"The AI service is not available right now. Here is the simple demo version instead.";pack=null}
+    catch(e){setMode("rules");$("msg").textContent=e.limit?"Today's free AI limit is over. Here is the simple demo version instead. Come back tomorrow for more.":"The AI service is not available right now. Here is the simple demo version instead. ("+String(e&&e.message||e).slice(0,100)+")";pack=null}
     try{if(window.turnstile&&tsWidget!==null){turnstile.reset(tsWidget);tsToken=""}}catch(e){}
   }
   if(!pack){pack=rulesPack(job,resume)}
