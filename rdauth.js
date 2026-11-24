@@ -45,7 +45,7 @@ async function sb(path, body){
  const r = await fetch(AUTH.supabaseUrl + "/auth/v1/" + path, { method: "POST", headers: { "Content-Type": "application/json", apikey: AUTH.anonKey }, body: JSON.stringify(body) });
  const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.msg || j.error_description || "Something went wrong. Please try again."); return j;
 }
-function finish(profile){ set(K_USER, Object.assign({}, user() || {}, profile)); render(); location.hash = "#my-learning"; }
+function finish(profile){ set(K_USER, Object.assign({}, user() || {}, profile)); render(); let back = ""; try { back = sessionStorage.getItem("rd-return") || ""; sessionStorage.removeItem("rd-return"); } catch (e) {} if (back === "/naukri-saathi/") { location.href = back; return; } location.hash = "#my-learning"; }
 function loginPage(app, mode){
  const u = user(), signup = mode === "signup";
  const ints = '<fieldset class="rd-fs"><legend>What do you want to learn?</legend><div class="rd-ints"><label><input type="checkbox" name="int" value="ai"><span>AI & ML</span></label><label><input type="checkbox" name="int" value="data"><span>Data & cloud</span></label><label><input type="checkbox" name="int" value="code"><span>Code</span></label><label><input type="checkbox" name="int" value="tools"><span>Dev tools</span></label></div></fieldset><label>I am a <select id="lg-goal"><option value="student">Student</option><option value="pro">Working professional</option><option value="switch">Career switcher</option><option value="curious">Just curious</option></select></label>';

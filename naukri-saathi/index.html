@@ -142,7 +142,7 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="/"><img src="/img/botu-192.png" alt="" width="36" height="36"><span><span>Tech</span> Samjho Raj</span></a>
-  <nav class="nav" aria-label="Site"><a href="/">Home</a><a href="/#shop">Books</a><a href="/#tools">Tools</a><a class="on" href="/naukri-saathi/" aria-current="page">Naukri Saathi</a><button id="theme" type="button" aria-label="Switch light and dark theme">🌙</button></nav>
+  <nav class="nav" aria-label="Site"><a href="/">Home</a><a href="/#shop">Books</a><a href="/#tools">Tools</a><a class="on" href="/naukri-saathi/" aria-current="page">Naukri Saathi</a><a id="acct" href="/#login">Log in</a><button id="theme" type="button" aria-label="Switch light and dark theme">🌙</button></nav>
 </div></header>
 
 <main class="wrap">
@@ -462,6 +462,11 @@ function setLang(l){LANG=l;$("l-hi").setAttribute("aria-pressed",l==="hi");$("l-
 $("l-hi").onclick=function(){setLang("hi")};$("l-en").onclick=function(){setLang("en")};
 $("theme").onclick=function(){var d=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=d;try{localStorage.setItem("swr-theme",d)}catch(e){}$("theme").textContent=d==="dark"?"☀️":"🌙"};
 $("theme").textContent=document.documentElement.dataset.theme==="dark"?"☀️":"🌙";
+
+/* ---- Account link: uses the same login as the rest of the site ---- */
+(function(){var a=$("acct");if(!a)return;var u=null;try{u=JSON.parse(localStorage.getItem("rd-user")||"null")}catch(e){}
+ if(u&&u.name){a.textContent="Hi, "+String(u.name).split(" ")[0];a.href="/#my-learning"}
+ else{a.addEventListener("click",function(){try{sessionStorage.setItem("rd-return","/naukri-saathi/")}catch(e){}})}})();
 
 /* ---- Tracker (localStorage only; page works without it) ---- */
 var TRK=[];
