@@ -207,6 +207,7 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
     <div id="payBox" class="hide"><p><b id="priceLine">Unlock key needed</b> <a class="btn sf" id="buyBtn" target="_blank" rel="noopener" href="#">Buy unlock key</a></p>
       <div class="urlrow"><input type="text" id="licIn" placeholder="Paste your unlock key" autocomplete="off" aria-label="Unlock key"><button class="btn ghost" id="licSave" type="button">Use key</button></div><p class="note" id="licMsg"></p></div>
     <p class="note" id="freeBox">Free while we launch. A small daily limit applies.</p>
+    <p class="note">Your pasted text is kept in this browser for 2 hours so login and payment never lose it. The "Clear" button removes it.</p>
     <div id="tsRb"></div>
     <div class="actions"><button class="btn sf" id="rbGo" type="button">Build my resume</button><span class="note">Prefer to learn the missing skills first? See the list above.</span></div>
     <p class="err" id="rbMsg" role="alert"></p>
@@ -319,6 +320,8 @@ var NS_CONFIG = {
   brevoAction: "",        // Brevo form URL for the list "Naukri Saathi waitlist" (empty = "waitlist opens soon")
   buyUrl: "https://test.checkout.dodopayments.com/buy/pdt_0NsfWQOIDHeOgGvuT9OzK?quantity=1",              // Dodo checkout link for the unlock key (empty = tailored resume is free during launch)
   priceText: "TEST MODE: Rs 49 for 3 tailored resumes (use test card 4242 4242 4242 4242)",          // e.g. "Rs 49 for 3 tailored resumes"
+  supabaseUrl: "https://vnktvgiordacnyxbwaae.supabase.co",   // same login project as the rest of the site (public values)
+  supabaseKey: "sb_publishable_e4fMGkoBfVsvvWudF9JTsQ_iWj-l8iT",
   salariesUrl: "salaries.json"   // sourced numbers from the Researcher; if missing, the labelled illustrative numbers below are used
 };
 
@@ -514,7 +517,7 @@ $("theme").textContent=document.documentElement.dataset.theme==="dark"?"☀️":
 (function(){
   try{var d=JSON.parse(sessionStorage.getItem("ns-draft")||"null");if(d){if(d.job&&!$("job").value)$("job").value=d.job;if(d.resume&&!$("resume").value)$("resume").value=d.resume;if(d.cl)$("cl").value=d.cl;sessionStorage.removeItem("ns-draft")}}catch(e){}
   try{var q=new URLSearchParams(location.search),k=(q.get("license_key")||"").split(",")[0].trim();
-    if(k&&/^[\w-]{8,100}$/.test(k)){localStorage.setItem("ns-license",k);var bn=$("payBanner");bn.textContent="Payment received. Your unlock key is saved on this device and was also sent to your email. Make your job pack, then build your resume.";bn.classList.remove("hide");history.replaceState(null,"",location.pathname)}
+    if(k&&/^[\w-]{8,100}$/.test(k)){localStorage.setItem("ns-license",k);window.__nsPaid=1;var bn=$("payBanner");bn.textContent="Payment received. Your key is saved on this device and was also emailed to you. Your text is back below. Click Build my resume.";bn.classList.remove("hide");history.replaceState(null,"",location.pathname)}
     else if(q.get("status")==="failed"){var b2=$("payBanner");b2.textContent="The payment did not go through. You were not charged. You can try again.";b2.classList.remove("hide");history.replaceState(null,"",location.pathname)}}catch(e){}
 })();
 
@@ -558,6 +561,13 @@ fetch(NS_CONFIG.salariesUrl,{cache:"no-cache"}).then(function(r){return r.ok?r.j
 }).catch(function(){});
 </script>
 
+<dialog id="nsLogin" style="max-width:420px;width:92%;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:18px">
+  <div style="text-align:right"><button class="btn ghost" id="nsLgX" type="button" aria-label="Close">✕</button></div>
+  <h2>Log in</h2>
+  <div id="nsLg1"><p class="note">We email you a one-time code. No password. Your pasted text stays on this page.</p><label for="nsLgE">Email</label><input type="email" id="nsLgE" autocomplete="email" placeholder="you@example.com"><div class="actions"><button class="btn" id="nsLgSend" type="button">Send code</button></div></div>
+  <div id="nsLg2" class="hide"><p class="note" id="nsLgSent"></p><label for="nsLgC">Code</label><input type="text" id="nsLgC" inputmode="numeric" autocomplete="one-time-code" maxlength="8"><div class="actions"><button class="btn" id="nsLgOk" type="button">Verify and log in</button></div></div>
+  <p class="err" id="nsLgErr" role="alert"></p>
+</dialog>
 <script>
 /* ===== Naukri Saathi v3: link + uploads, learn step, tailored resume, Prompt Lab, unlock key ===== */
 (function(){
@@ -615,15 +625,38 @@ var rbTs=false;function startRbTs(){if(rbTs)return;rbTs=true;mk("tsRb","rb")}
 
 /* ---- paid unlock (Dodo license key) ---- */
 function acctUser(){try{var u=JSON.parse(localStorage.getItem("rd-user")||"null");return u&&u.email?u:null}catch(e){return null}}
-function saveDraft(){try{sessionStorage.setItem("ns-draft",JSON.stringify({job:$("job").value,resume:$("resume").value,cl:$("cl").value}))}catch(e){}}
+/* ---- keep the pasted text for 2 hours on this device, so login, payment and other tabs never lose it ---- */
+var DK="ns-draft2";
+function saveDraft(){try{localStorage.setItem(DK,JSON.stringify({t:Date.now(),job:$("job").value,resume:$("resume").value,cl:$("cl").value}))}catch(e){}}
+var dTimer=null;["job","resume","cl"].forEach(function(id){$(id).addEventListener("input",function(){clearTimeout(dTimer);dTimer=setTimeout(saveDraft,500)})});
+$("clear").addEventListener("click",function(){try{localStorage.removeItem(DK)}catch(e){}});
+function restoreDraft(){try{var d=JSON.parse(localStorage.getItem(DK)||"null");if(!d||Date.now()-d.t>7200000){localStorage.removeItem(DK);return false}
+  var got=false;if(d.job&&!$("job").value){$("job").value=d.job;got=true}if(d.resume&&!$("resume").value){$("resume").value=d.resume;got=true}if(d.cl&&!$("cl").value)$("cl").value=d.cl;return got}catch(e){return false}}
+/* ---- small email-code login right on this page (same accounts as the rest of the site), so nothing is lost ---- */
+var SB=NS_CONFIG.supabaseUrl,SK=NS_CONFIG.supabaseKey;
+function sbPost(path,body){return fetch(SB+"/auth/v1/"+path,{method:"POST",headers:{"Content-Type":"application/json",apikey:SK},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok)throw new Error(j.msg||j.error_description||"Something went wrong. Please try again.");return j})})}
+function refreshAcct(){var a=$("acct"),u=acctUser();if(u){a.textContent="Hi, "+String(u.name||u.email).split(/[ @]/)[0];a.href="/#my-learning"}else{a.textContent="Log in";a.href="/#login"}if(PAY&&!$("rb").classList.contains("hide"))setPay()}
+function openLogin(){if(!SB||!SK||!$("nsLogin")){location.href="/#login";return}$("nsLg1").classList.remove("hide");$("nsLg2").classList.add("hide");$("nsLgErr").textContent="";var d=$("nsLogin");if(d.showModal)d.showModal();else d.setAttribute("open","")}
+$("acct").addEventListener("click",function(e){if(!acctUser()){e.preventDefault();openLogin()}});
+$("nsLgSend").onclick=async function(){var em=$("nsLgE").value.trim(),er=$("nsLgErr");er.textContent="";if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){er.textContent="Please enter a valid email.";return}
+  this.disabled=true;try{await sbPost("otp",{email:em,create_user:true});$("nsLg1").classList.add("hide");$("nsLg2").classList.remove("hide");$("nsLgSent").textContent="We sent a code to "+em+". Check Spam too.";$("nsLgC").focus()}catch(e){er.textContent=e.message}this.disabled=false};
+$("nsLgOk").onclick=async function(){var em=$("nsLgE").value.trim(),c=$("nsLgC").value.trim(),er=$("nsLgErr");er.textContent="";if(!/^[0-9]{6,8}$/.test(c)){er.textContent="Enter the code from your email.";return}
+  this.disabled=true;try{var j=await sbPost("verify",{type:"email",email:em,token:c});var old=null;try{old=JSON.parse(localStorage.getItem("rd-user")||"null")}catch(x){}
+    localStorage.setItem("rd-user",JSON.stringify(Object.assign({},old||{},{name:(old&&old.name)||em.split("@")[0],email:em})));localStorage.setItem("rd-session",JSON.stringify({at:j.access_token,exp:j.expires_at}));
+    $("nsLogin").close();refreshAcct()}catch(e){er.textContent=e.message}this.disabled=false};
+$("nsLgX").onclick=function(){$("nsLogin").close()};
 function setPay(){$("payBox").classList.remove("hide");$("freeBox").classList.add("hide");
   var u=acctUser(),b=$("buyBtn");
   if(u){b.textContent="Buy unlock key";b.removeAttribute("target");b.href=NS_CONFIG.buyUrl+"&email="+encodeURIComponent(u.email)+"&disableEmail=true&redirect_url="+encodeURIComponent("https://www.techsamjhoraj.com/naukri-saathi/");b.onclick=function(){saveDraft()};
     $("licMsg").textContent="Your key will be sent to "+u.email+" and saved here automatically after payment."}
-  else{b.textContent="Log in to buy";b.removeAttribute("target");b.href="/#login";b.onclick=function(){saveDraft();try{sessionStorage.setItem("rd-return","/naukri-saathi/")}catch(e){}};
+  else{b.textContent="Log in to buy";b.removeAttribute("target");b.href="#";b.onclick=function(e){e.preventDefault();saveDraft();openLogin()};
     $("licMsg").textContent="Log in first. Your key is tied to your verified email, so you never lose it."}
-$("priceLine").textContent=NS_CONFIG.priceText||"Unlock key needed";if(LIC){$("licIn").value=LIC;checkLic()}}
-async function checkLic(){var m=$("licMsg");if(!W)return;try{var d=await post({action:"license",license:LIC});m.textContent=d.valid?(d.left>0?"Key accepted. Builds left: "+d.left+".":"This key has no builds left. Buy a new key."):"This key is not valid. Check it and try again."}catch(e){m.textContent="Could not check the key right now."}}
+  $("priceLine").textContent=NS_CONFIG.priceText||"Unlock key needed";if(LIC){$("licIn").value=LIC;checkLic()}}
+function dropKey(msg){LIC="";try{localStorage.removeItem("ns-license")}catch(e){}$("licIn").value="";$("licMsg").textContent=msg}
+async function checkLic(){var m=$("licMsg");if(!W||!LIC)return;try{var d=await post({action:"license",license:LIC});
+  if(!d.valid)dropKey("That key is not valid, so I removed it. Buy a new key or paste a different one.");
+  else if(d.left<=0)dropKey("That key has no builds left, so I removed it. Buy a new key for 3 more resumes.");
+  else m.textContent="Key accepted. Builds left: "+d.left+"."}catch(e){m.textContent="Could not check the key right now."}}
 $("licSave").onclick=function(){LIC=$("licIn").value.trim();try{localStorage.setItem("ns-license",LIC)}catch(e){}checkLic()};
 
 /* ---- tailored resume ---- */
@@ -643,13 +676,14 @@ function resumeHTML(r){
   return h}
 $("rbGo").onclick=async function(){
   var m=$("rbMsg");m.textContent="";var job=$("job").value,res=$("resume").value,cov=$("cl").value;
-  if(!LAST||!job.trim()||!res.trim()){m.textContent="Please make your job pack first (paste the job post and your resume above).";return}
+  if(!job.trim()||!res.trim()){m.textContent="Paste the job post and your resume above first.";return}
+  if(!LAST)LAST=rulesPack(job,res);
   var btn=this,r=null,note="";
   if(W){var body={action:"resume",job:strip(job),resume:strip(res),cover:strip(cov),lang:LANG};
     if(PAY){if(!LIC){m.textContent="Buy and enter your unlock key first.";return}body.license=LIC}
     else if(SITEKEY){var t=useTok("rb");if(!t){m.textContent=WAITMSG;return}body.turnstile=t}
     btn.disabled=true;btn.textContent="Building...";
-    try{r=await post(body)}catch(e){note=e.status===402?(e.message==="license used up"?"This key has no builds left. Buy a new key.":"This unlock key is not valid."):e.status===429?"Today's free limit is over. Here is the basic version instead.":"The AI service is not available right now. Here is the basic version instead. ("+String(e.message).slice(0,60)+")";if(e.status===402){m.textContent=note;btn.disabled=false;btn.textContent="Build my resume";if(PAY)checkLic();return}}
+    try{r=await post(body)}catch(e){note=e.status===402?(e.message==="license used up"?"This key has no builds left. Buy a new key.":"This unlock key is not valid."):e.status===429?"Today's free limit is over. Here is the basic version instead.":"The AI service is not available right now. Here is the basic version instead. ("+String(e.message).slice(0,60)+")";if(e.status===402){btn.disabled=false;btn.textContent="Build my resume";dropKey(note);return}}
     btn.disabled=false;btn.textContent="Build my resume";if(PAY)checkLic()}
   if(!r){r=rulesResume(LAST,res);if(!note)note="AI is not available here, so this is the basic version."}
   m.textContent=note;$("doc").innerHTML=resumeHTML(r);$("rbOut").classList.remove("hide");
@@ -672,6 +706,10 @@ $("plGo").onclick=async function(){var m=$("plMsg");m.textContent="";var inp=$("
   try{var d=await post({action:"prompt",id:+$("plSel").value,input:strip(inp),lang:LANG,turnstile:t});$("plOut").textContent=d.text;$("plOut").classList.remove("hide");$("plCopy").classList.remove("hide")}
   catch(e){m.textContent=e.status===429?"Today's free limit is over. Come back tomorrow.":e.message==="bot check"?"The human check failed. Try again.":"The AI service is not available right now. Please try again later."}
   b.disabled=false;b.textContent="Run prompt"};
+/* restore pasted text; if the person already has a key (or came back from payment), show the build box straight away */
+(function(){var got=restoreDraft();var back=(location.search||"").indexOf("license_key")>-1||window.__nsPaid;
+  if(got||LIC||back){var ok=$("job").value.trim().length>20&&$("resume").value.trim().length>20;if(ok||LIC||back){$("rb").classList.remove("hide");if(PAY)setPay();else if(W)startRbTs();
+    if(back||window.__nsPaid){setTimeout(function(){$("rb").scrollIntoView({behavior:"smooth"})},400)}}}})();
 $("plCopy").onclick=function(){try{navigator.clipboard.writeText($("plOut").textContent);this.textContent="Copied";var b=this;setTimeout(function(){b.textContent="Copy answer"},1500)}catch(e){}};
 })();
 </script>
