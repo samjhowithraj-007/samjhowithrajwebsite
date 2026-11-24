@@ -20,7 +20,8 @@ const TOOLS = [
  {id:"sys", t:"System design", img:"T16", live:1},
  {id:"sec", t:"Cyber security", img:"T17", live:1},
  {id:"mcp", t:"MCP tool calls", img:"T14", live:1},
- {id:"llm", t:"LLM prompt workbench", img:"T19", live:1}
+ {id:"llm", t:"LLM prompt workbench", img:"T19", live:1},
+ {id:"ns", t:"Naukri Saathi", img:"T19", live:1}
 ];
 const SOON = [["Java","T07"],["Linux shell","T18"],["Docker","T15"],["Azure","T10"],["Databricks","T11"],["Machine learning","T12"],["RAG & LLM apps","T09"],["System design","T16"],["Cyber security","T17"]];
 
@@ -50,6 +51,7 @@ function show(app){
  function open(id){
   tabs.forEach(b => b.setAttribute("aria-selected", b.dataset.t === id));
   const tool = TOOLS.find(x=>x.id===id);
+  if (id === "ns"){ panel.innerHTML = `<div class="rt-card"><h2>Naukri Saathi: job-search helper</h2><p>Paste a job post and your resume to get a skill match, resume lines, a cover note, interview questions and a rough India vs abroad salary view. Free demo in Hinglish and English.</p><a class="btn primary" href="/naukri-saathi/">Open Naukri Saathi →</a></div>`; return; }
   if (id === "py"){ panel.innerHTML = `<div class="rt-card"><h2>Python</h2><p>Real Python 3.12 with numpy and pandas, running in your browser (Pyodide).</p><a class="btn primary" href="#playground">Open the Python playground →</a></div>`; return; }
   ({js:jsTool, sql:sqlTool, api:apiTool, dsa:dsaTool, vec:vecTool, git:gitTool, java:javaTool, linux:linuxTool, docker:dockerTool, azure:azureTool, dbx:dbxTool, ml:mlTool, rag:ragTool, sys:sysTool, sec:secTool, mcp:mcpTool, llm:llmTool})[id](panel);
   try{ history.replaceState(null,"","#tools"); }catch(e){}

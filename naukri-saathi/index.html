@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Naukri Saathi: free job-search helper in Hinglish | Tech Samjho Raj</title>
+<meta name="description" content="Paste a job post and see how AI can help with resume lines, a cover note and interview questions. Free demo, Hinglish and English. Salary table = estimates.">
+<link rel="canonical" href="https://www.techsamjhoraj.com/naukri-saathi/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tech Samjho Raj">
+<meta property="og:title" content="Naukri Saathi: free job-search helper in Hinglish | Tech Samjho Raj">
+<meta property="og:description" content="Paste a job post and see how AI can help with resume lines, a cover note and interview questions. Free demo, Hinglish and English. Salary table = estimates.">
+<meta property="og:url" content="https://www.techsamjhoraj.com/naukri-saathi/">
+<meta property="og:image" content="https://www.techsamjhoraj.com/naukri-saathi/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Naukri Saathi: free job-search helper in Hinglish">
+<meta name="twitter:description" content="Paste a job post and see how AI can help with resume lines, a cover note and interview questions. Free demo.">
+<meta name="twitter:image" content="https://www.techsamjhoraj.com/naukri-saathi/og.png">
+<meta name="theme-color" content="#4338ca">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96.png">
+<link rel="apple-touch-icon" href="/img/botu-apple-180.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Naukri Saathi","url":"https://www.techsamjhoraj.com/naukri-saathi/","applicationCategory":"EducationalApplication","operatingSystem":"Any","inLanguage":["en","hi-Latn"],"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"creator":{"@type":"Person","name":"Raj"}}</script>
+<script>try{var t=localStorage.getItem("swr-theme");document.documentElement.dataset.theme=(t==="dark")?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+<style>
+/* Same palette as the main site: light (indigo) by default, dark (cyan on navy) under the moon button. */
+:root{--paper:#f6f5fb;--card:#ffffff;--ink:#16181d;--muted:#56607a;--line:#dcdaf0;--accent:#4338ca;--on-accent:#fff;--soft:#eceafc;--ok:#157a43;--warn:#b3261e;--gold:#fbbf24;--field:#fff;color-scheme:light}
+:root[data-theme="dark"]{--paper:#050b17;--card:#0a1628;--ink:#e6edf7;--muted:#9fb0c9;--line:#1c4a5f;--accent:#25e0e6;--on-accent:#04101c;--soft:#0f2a3a;--ok:#7ddc9a;--warn:#ff8a80;--gold:#ffc65c;--field:#07101f;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left))}
+header.top{border-bottom:1px solid var(--line);background:var(--card)}
+header.top .wrap{display:flex;align-items:center;gap:12px;min-height:60px;flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:18px}
+.brand img{width:36px;height:36px;border-radius:10px}
+.brand span span{color:var(--accent)}
+.nav{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav a{padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px}
+.nav a.on{background:var(--soft);color:var(--accent)}
+.nav button{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:16px}
+main{padding:22px 0 56px}
+h1{font-size:clamp(26px,5vw,38px);line-height:1.2;margin:6px 0 8px}
+h2{font-size:22px;margin:0 0 6px;line-height:1.25}
+h3{font-size:17px;margin:18px 0 6px}
+.eyebrow{font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.lead{color:var(--muted);margin:0 0 14px;max-width:70ch}
+.badge{display:inline-block;background:var(--gold);color:#16181d;font-weight:800;font-size:12px;padding:3px 10px;border-radius:99px;vertical-align:middle;margin-left:6px}
+.badge.ai{background:var(--accent);color:var(--on-accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.note{color:var(--muted);font-size:14px}
+.warnbox{border-left:4px solid var(--gold);background:var(--soft);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14.5px}
+label{display:block;font-weight:700;margin:0 0 6px}
+textarea,input[type=email],select{width:100%;background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:16px}   /* 16px stops the iPhone zoom */
+textarea{min-height:160px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.row{grid-template-columns:1fr}}
+button.btn,a.btn{display:inline-block;background:var(--accent);color:var(--on-accent);border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;min-height:44px}
+button.ghost,a.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button[disabled]{opacity:.6;cursor:wait}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{background:transparent;color:var(--ink);border:0;padding:8px 12px;font:inherit;font-weight:700;cursor:pointer;min-height:40px}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px 4px 2px 0;font-size:14px}
+.tag.have{border-color:var(--ok);color:var(--ok)}
+.tag.gap{border-color:var(--warn);color:var(--warn)}
+.hide{display:none!important}
+pre.cover{white-space:pre-wrap;font:inherit;border:1px dashed var(--line);border-radius:10px;padding:12px;margin:6px 0 0;overflow-wrap:anywhere}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:8px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px;margin:6px 0;cursor:pointer;min-height:44px}
+.opt input{width:20px;height:20px;flex:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.facts b{display:block;font-size:15.5px}
+footer{border-top:1px solid var(--line);background:var(--card);padding:22px 0 90px;font-size:14px;color:var(--muted)}
+footer .links{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+footer .links a{text-decoration:none;font-weight:700;padding:8px 12px;border:1px solid var(--line);border-radius:10px;color:var(--ink)}
+.err{color:var(--warn);font-weight:600}
+
+:root{--saffron:var(--accent);--saffron-soft:var(--soft)}
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;margin:6px 0 10px}
+@media(max-width:720px){.hero{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:5px 12px;font-size:13.5px;font-weight:600}
+.btn.sf{background:var(--accent);color:var(--on-accent)}
+.mock{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(67,56,202,.12)}
+.mock .tagline{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--saffron);margin-bottom:8px}
+.meter{--p:0;width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--saffron) calc(var(--p)*1%),var(--soft) 0);display:grid;place-items:center;flex:none}
+.meter span{width:86px;height:86px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:800;font-size:24px}
+.scorebox{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.steps,.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.steps>div,.feat>div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 4px 14px rgba(67,56,202,.07);font-size:15px}
+.steps b.n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);margin-bottom:6px}
+.ic{font-size:24px;display:block}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:720px){.price{grid-template-columns:1fr}}
+.price>div{border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--card)}
+.price .pro{border-color:var(--saffron)}
+.price ul{padding-left:18px;margin:6px 0}
+details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0;background:var(--card)}
+summary{font-weight:700;cursor:pointer;min-height:24px}
+.trkform{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:center}
+@media(max-width:720px){.trkform{grid-template-columns:1fr}}
+.jobrow{display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px;border-bottom:1px solid var(--line);padding:8px 0;align-items:center}
+@media(max-width:720px){.jobrow{grid-template-columns:1fr}}
+input[type=text]{width:100%;background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:16px}
+.msgs pre.cover{margin-bottom:8px}
+.lk{display:inline-block;margin:2px 8px 2px 0}
+
+:root{--hd:var(--ink);--band:#14123f;--blob:#eceafc;--ring:var(--accent)}
+:root[data-theme="dark"]{--band:#0a1628;--blob:#0f2a3a}
+h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);font-weight:700}
+.hero2{text-align:center;margin:0 0 10px}
+.hero2 .lead{margin-left:auto;margin-right:auto}
+.hero2 .chips{justify-content:center}
+.illus{display:flex;justify-content:center;gap:10px;margin:0 0 6px}
+.illus svg{width:30%;max-width:190px;height:auto}
+.illus svg:nth-child(n+2){display:none}
+@media(min-width:640px){.illus svg:nth-child(n+2){display:block}}
+.ins{margin:10px 0}
+.insrow{display:flex;align-items:center;gap:18px;border-top:3px solid var(--ring);padding:18px 0}
+.insrow:nth-child(even){flex-direction:row-reverse}
+.insrow .tx{flex:1}
+.insrow h3{font:700 22px/1.2 Georgia,serif;letter-spacing:.04em;text-transform:uppercase;margin:0 0 6px;color:var(--hd)}
+.insrow p{margin:0 0 6px}
+.round{flex:none;width:130px;height:130px;border-radius:50%;border:4px solid var(--ring);background:var(--blob);display:grid;place-items:center;overflow:hidden}
+.round svg{width:84px;height:84px}
+@media(max-width:560px){.insrow,.insrow:nth-child(even){flex-direction:column;align-items:flex-start}}
+.bnft{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--soft);border-radius:18px;padding:18px;margin:14px 0}
+@media(max-width:720px){.bnft{grid-template-columns:1fr}}
+.bnft ul{padding-left:20px;margin:6px 0}
+.big{font:700 38px/1 Georgia,serif;color:var(--hd)}
+.cta{background:var(--band);color:#fff;border-top:3px solid #25e0e6;text-align:center;padding:34px 16px}
+.cta b{display:block;color:#25e0e6;letter-spacing:.03em;text-transform:uppercase;margin-bottom:12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><img src="/img/botu-192.png" alt="" width="36" height="36"><span><span>Tech</span> Samjho Raj</span></a>
+  <nav class="nav" aria-label="Site"><a href="/">Home</a><a href="/#shop">Books</a><a href="/#tools">Tools</a><a class="on" href="/naukri-saathi/" aria-current="page">Naukri Saathi</a><button id="theme" type="button" aria-label="Switch light and dark theme">🌙</button></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero2">
+    <div class="illus"><svg viewBox="0 0 200 140" aria-hidden="true"><ellipse cx="100" cy="68" rx="86" ry="58" fill="var(--blob)"/><rect x="62" y="88" width="76" height="8" rx="3" fill="#4a5f8a"/><rect x="74" y="60" width="52" height="30" rx="4" fill="#9db4d6"/><rect x="82" y="68" width="22" height="3" rx="1.5" fill="#fff"/><rect x="82" y="75" width="30" height="3" rx="1.5" fill="#fff"/><path d="M70 104c0-16 14-24 30-24s30 8 30 24v10H70z" fill="#25a8d4"/><circle cx="100" cy="46" r="15" fill="#e8b48a"/><path d="M84 44c0-14 10-20 18-20s16 6 14 20c-4-8-10-10-16-10s-12 3-16 10z" fill="#1f2540"/></svg><svg viewBox="0 0 200 140" aria-hidden="true"><ellipse cx="100" cy="68" rx="86" ry="58" fill="var(--blob)"/><rect x="62" y="88" width="76" height="8" rx="3" fill="#4a5f8a"/><rect x="74" y="60" width="52" height="30" rx="4" fill="#9db4d6"/><rect x="82" y="68" width="22" height="3" rx="1.5" fill="#fff"/><rect x="82" y="75" width="30" height="3" rx="1.5" fill="#fff"/><path d="M70 104c0-16 14-24 30-24s30 8 30 24v10H70z" fill="#4338ca"/><circle cx="100" cy="46" r="15" fill="#c68a5e"/><path d="M84 44c0-14 10-20 18-20s16 6 14 20c-4-8-10-10-16-10s-12 3-16 10z" fill="#14182c"/></svg><svg viewBox="0 0 200 140" aria-hidden="true"><ellipse cx="100" cy="68" rx="86" ry="58" fill="var(--blob)"/><rect x="62" y="88" width="76" height="8" rx="3" fill="#4a5f8a"/><rect x="74" y="60" width="52" height="30" rx="4" fill="#9db4d6"/><rect x="82" y="68" width="22" height="3" rx="1.5" fill="#fff"/><rect x="82" y="75" width="30" height="3" rx="1.5" fill="#fff"/><path d="M70 104c0-16 14-24 30-24s30 8 30 24v10H70z" fill="#4a6fa5"/><circle cx="100" cy="46" r="15" fill="#f0c4a0"/><path d="M84 44c0-14 10-20 18-20s16 6 14 20c-4-8-10-10-16-10s-12 3-16 10z" fill="#3a2a22"/></svg></div>
+    <div class="eyebrow">Free demo · by Raj</div>
+    <h1>Naukri Saathi: your job application helper <span class="badge" id="modeBadge">DEMO</span></h1>
+    <p class="lead">Paste a job post and your resume. See your match score and the skills you are missing, get resume lines, a cover note, HR and referral messages and 10 interview questions. For Indian job seekers, tech and non-tech, in Hinglish or English.</p>
+    <div class="chips"><span class="chip">✓ No login</span><span class="chip">✓ Resume stays in your browser (demo)</span><span class="chip">✓ No job guarantee</span><span class="chip">✓ Free to try</span></div>
+    <a class="btn sf" href="#h-input">Check free</a>
+  </div>
+
+  <div class="warnbox" id="modeNote"><b>This demo uses simple rules, not AI.</b> Everything stays in your browser: your resume text never leaves your phone or laptop. The real AI version comes only if enough people want it.</div>
+
+  <div class="facts">
+    <div><b>No job guarantee</b>This tool only helps you prepare. It cannot promise you a job or a shortlist.</div>
+    <div><b>No visa advice</b>Visa and work-permit rules differ by country. Check the official government site.</div>
+    <div><b>Salary = estimates</b>Rough numbers with a source and date, not a promise.</div>
+  </div>
+
+  <div class="steps">
+    <div><b class="n">1</b><br><b>Paste</b><br>Job post on one side, your resume on the other.</div>
+    <div><b class="n">2</b><br><b>Get your pack</b><br>Match score, skill gaps, resume lines, messages and questions.</div>
+    <div><b class="n">3</b><br><b>Send and track</b><br>Share to WhatsApp or Telegram, and track every application.</div>
+  </div>
+
+  <section class="card" aria-labelledby="h-input">
+    <h2 id="h-input">1. Your job post and resume</h2>
+    <p class="note" style="margin-top:0">Please do not paste phone numbers, addresses, Aadhaar, PAN or bank details. Remove them first.</p>
+    <div class="row">
+      <div><label for="job">Job post</label><textarea id="job" maxlength="6000" placeholder="Paste the job description here..."></textarea></div>
+      <div><label for="resume">Your resume</label><textarea id="resume" maxlength="6000" placeholder="Paste your resume text here..."></textarea></div>
+    </div>
+    <div class="actions">
+      <span class="seg" role="group" aria-label="Output language"><button type="button" id="l-hi" aria-pressed="true">Hinglish</button><button type="button" id="l-en" aria-pressed="false">English</button></span>
+      <button class="btn" id="go" type="button">Make my job pack</button>
+      <button class="btn ghost" id="sample" type="button">Fill a sample</button>
+      <button class="btn ghost" id="clear" type="button">Clear</button>
+    </div>
+    <div id="ts" class="hide" style="margin-top:10px"></div>
+    <p class="note" id="privacyLine" style="margin-bottom:0"></p>
+    <p class="err" id="msg" role="alert"></p>
+  </section>
+
+  <section id="out" class="card hide" aria-live="polite"></section>
+
+
+  <h2 style="margin-top:26px">What you get</h2>
+  <div class="feat">
+    <div><span class="ic">🎯</span><b>Match score + keyword gap</b><br>See how close your resume is to the job and which skills to add or learn.</div>
+    <div><span class="ic">🗂️</span><b>Application tracker</b><br>Company, role, status. Saved only on your device.</div>
+    <div><span class="ic">✉️</span><b>HR, referral and WhatsApp messages</b><br>Short messages you can edit and send.</div>
+    <div><span class="ic">📲</span><b>Send to WhatsApp or Telegram</b><br>Share your pack to yourself or a friend in one tap.</div>
+  </div>
+
+
+  <h2 class="serif" style="margin-top:26px">Job insights</h2>
+  <div class="ins">
+    <div class="insrow"><div class="tx"><h3>Preparation</h3><p>Your match score, the keyword gap, a cover note and 10 interview questions for the job you pasted. A rough keyword match, not a promise of a shortlist.</p><a href="#h-input">Check free →</a></div><div class="round"><svg viewBox="0 0 84 84" aria-hidden="true"><rect x="16" y="10" width="52" height="64" rx="8" fill="#fff" stroke="#4338ca" stroke-width="3"/><rect x="30" y="5" width="24" height="12" rx="5" fill="#25a8d4"/><path d="M26 34l6 6 11-12" fill="none" stroke="#157a43" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="26" y="50" width="32" height="4" rx="2" fill="#9db4d6"/><rect x="26" y="60" width="22" height="4" rx="2" fill="#9db4d6"/></svg></div></div>
+    <div class="insrow"><div class="tx"><h3>Networking</h3><p>Short HR, referral and WhatsApp messages you can edit, with one tap to send the pack to WhatsApp or Telegram. You send every message yourself; nothing is sent for you.</p></div><div class="round"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M10 14h40a6 6 0 016 6v20a6 6 0 01-6 6H28l-10 9v-9h-8a6 6 0 01-6-6V20a6 6 0 016-6z" fill="#fff" stroke="#4338ca" stroke-width="3"/><path d="M34 52h34a6 6 0 016 6v12a6 6 0 01-6 6h-6v8l-10-8H34a6 6 0 01-6-6V58a6 6 0 016-6z" fill="#25a8d4"/><circle cx="22" cy="30" r="3" fill="#4338ca"/><circle cx="32" cy="30" r="3" fill="#4338ca"/><circle cx="42" cy="30" r="3" fill="#4338ca"/></svg></div></div>
+    <div class="insrow"><div class="tx"><h3>Skills</h3><p>See which skills the job asks for that your resume does not show, then learn them with Raj's free lessons or the AI Job Search book. A rough INR salary view helps you compare, with estimates labelled as estimates.</p><a href="/learn/python-1/">Free Python lessons</a> · <a href="https://samjhowithraj.gumroad.com/l/ai-job-search-bundle" target="_blank" rel="noopener">AI Job Search book</a></div><div class="round"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M8 20c10-4 24-4 34 4v46c-10-8-24-8-34-4z" fill="#fff" stroke="#4338ca" stroke-width="3"/><path d="M76 20c-10-4-24-4-34 4v46c10-8 24-8 34-4z" fill="#fff" stroke="#4338ca" stroke-width="3"/><rect x="52" y="8" width="6" height="14" rx="2" fill="#25a8d4"/><rect x="61" y="3" width="6" height="19" rx="2" fill="#25a8d4"/><path d="M16 34h18M16 44h18M16 54h12" stroke="#9db4d6" stroke-width="3" stroke-linecap="round"/></svg></div></div>
+  </div>
+
+  <div class="bnft">
+    <div><h2 class="serif" style="margin-top:0">Key benefits</h2><ul><li>Match score and skill gap for each job</li><li>Quick resume lines and a cover note</li><li>Interview questions made for that job</li></ul></div>
+    <div><div class="big">10</div><p class="note" style="margin:4px 0 12px">interview questions in every pack</p><div class="big">8</div><p class="note" style="margin:4px 0 0">countries in the salary view, as estimates in INR</p></div>
+  </div>
+
+  <section class="card" id="tracker" aria-labelledby="h-trk">
+    <h2 id="h-trk">Application tracker</h2>
+    <p class="note" style="margin-top:0">Saved only in this browser on this device. Clearing site data removes it. Do not add personal IDs.</p>
+    <form id="trkForm" class="trkform" novalidate>
+      <input type="text" id="tc" placeholder="Company" maxlength="60" aria-label="Company">
+      <input type="text" id="tr" placeholder="Role" maxlength="60" aria-label="Role">
+      <select id="ts2" aria-label="Status"><option>Saved</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select>
+      <button class="btn" type="submit">Add</button>
+    </form>
+    <div id="trkList" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-price">
+    <h2 id="h-price">Free and Pro</h2>
+    <div class="price">
+      <div><b>Free (today)</b><ul><li>Demo pack, no login</li><li>Match score, skill gaps, messages, questions</li><li>Tracker on your device</li><li>When the AI version is on: a small daily limit per person, shown clearly</li></ul></div>
+      <div class="pro"><b>Pro (not live yet)</b><ul><li>Higher AI limits and longer resumes</li><li>Saved packs across devices</li><li>Price not final: planned about ₹99 per month or a ₹199 30-day sprint</li></ul><span class="note">Join the waitlist below to tell us what you would pay. Nothing is charged.</span></div>
+    </div>
+  </section>
+
+  <section id="wl" class="card hide" aria-labelledby="h-wl">
+    <h2 id="h-wl">3. Would you use the real version?</h2>
+    <div id="wlSoon" class="note">The waitlist opens soon. Follow the WhatsApp or Telegram channel below to hear first.</div>
+    <form id="wlForm" class="hide" novalidate>
+      <p class="note" style="margin-top:0">If this became a real tool, what would you do?</p>
+      <label class="opt"><input type="radio" name="price" value="free"> Only the free version</label>
+      <label class="opt"><input type="radio" name="price" value="99m"> ₹99 per month</label>
+      <label class="opt"><input type="radio" name="price" value="199s"> ₹199 one time (30-day sprint)</label>
+      <label class="opt"><input type="radio" name="price" value="book"> A free month with the book</label>
+      <p><label for="wemail">Email (to hear about the launch)</label><input id="wemail" type="email" autocomplete="email" placeholder="you@example.com"></p>
+      <label class="opt"><input type="checkbox" id="wagree"> I am 18 or older and I agree to get a launch email. I can unsubscribe any time.</label>
+      <p class="note">We save only your email, your price choice and your job type, only to tell you about the launch. If we do not build this tool, we delete the list. See the <a href="/#privacy">privacy note</a>. Never put resume text in this form.</p>
+      <button class="btn" id="wsub" type="submit">Join the waitlist</button> <span class="note" id="wthanks"></span>
+    </form>
+  </section>
+
+
+  <section class="card" aria-labelledby="h-faq">
+    <h2 id="h-faq">Questions</h2>
+    <details><summary>Will this get me a job?</summary><p class="note">No. It helps you prepare better applications. Nobody can promise a job or a shortlist.</p></details>
+    <details><summary>Is my resume stored?</summary><p class="note">In the demo it never leaves your browser. In AI mode it goes to the AI provider only to write your answer and we do not store it. See the privacy section.</p></details>
+    <details><summary>Does it apply to jobs for me?</summary><p class="note">No. It does not auto-apply or sit in your interview. You send your own applications.</p></details>
+    <details><summary>Are the salary numbers real?</summary><p class="note">They are estimates with a source and date, not promises. Until sourced data is added they are marked illustrative.</p></details>
+    <details><summary>What if I am missing skills?</summary><p class="note">Learn them step by step with the free <a href="/learn/python-1/">Python lessons</a> or the <a href="https://samjhowithraj.gumroad.com/l/ai-job-search-bundle" target="_blank" rel="noopener">AI Job Search book</a>.</p></details>
+  </section>
+
+  <section class="card">
+    <h2>Privacy, in plain words</h2>
+    <p class="note" id="privFull" style="margin:0"></p>
+  </section>
+</main>
+<div class="cta"><b>Start your job search with Naukri Saathi today</b><a class="btn sf" href="#h-input">Check free</a></div>
+
+<footer><div class="wrap">
+  <b style="color:var(--ink)">Get the full prompt book</b>
+  <p style="margin:6px 0">Want 50 ready-made AI prompts for jobs and study? <a href="https://samjhowithraj.gumroad.com/l/ai-job-search-bundle" target="_blank" rel="noopener">Get the AI Job Search book (₹249 for both editions)</a> or see the <a href="/#shop">Shop</a>.</p>
+  <div class="links"><a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y" target="_blank" rel="noopener">WhatsApp channel</a><a href="https://t.me/techsamjhoraj" target="_blank" rel="noopener">Telegram channel</a></div>
+  <p style="margin:6px 0">© 2026 Tech Samjho Raj · Naukri Saathi gives study help, not career, legal or visa advice. <a href="/#privacy">Privacy</a> · <a href="/#terms">Terms</a></p>
+</div></footer>
+
+<script>
+/* ---- Settings. Empty = that feature is off and the page falls back (Phase 2 items are filled in after Raj sets them up). ---- */
+var NS_CONFIG = {
+  workerUrl: "",          // https://naukri-saathi.<account>.workers.dev  (empty = rule-based demo only)
+  turnstileSiteKey: "",   // Cloudflare Turnstile SITE key (public). Empty = no bot check box
+  brevoAction: "",        // Brevo form URL for the list "Naukri Saathi waitlist" (empty = "waitlist opens soon")
+  salariesUrl: "salaries.json"   // sourced numbers from the Researcher; if missing, the labelled illustrative numbers below are used
+};
+
+/* ---- Skills (rule-based demo) ---- */
+var SKILLS=[["python","Python"],["sql","SQL"],["excel","Excel"],["power bi","Power BI"],["tableau","Tableau"],["communication","Communication"],["customer","Customer handling"],["sales","Sales"],["java","Java"],["javascript","JavaScript"],["react","React"],["machine learning","Machine learning"],["data analysis","Data analysis"],["accounting","Accounting"],["tally","Tally"],["gst","GST"],["marketing","Marketing"],["seo","SEO"],["team","Teamwork"],["leadership","Leadership"],["presentation","Presentation"],["english","English"],["api","APIs"],["git","Git"],["cloud","Cloud basics"],["testing","Testing"],["support","Support"],["customer service","Customer service"],["cash","Cash handling"],["inventory","Inventory"],["billing","Billing"],["typing","Typing"],["negotiation","Negotiation"],["hindi","Hindi"],["time management","Time management"],["delivery","Delivery / routes"],["warehouse","Warehouse"],["driving","Driving licence"],["patient","Patient care"],["nursing","Nursing"],["teaching","Teaching"],["lesson","Lesson planning"],["cooking","Cooking"],["housekeeping","Housekeeping"],["retail","Retail"],["electrical","Electrical work"],["welding","Welding"],["recruit","Recruitment"],["payroll","Payroll"],["content writing","Content writing"],["copywriting","Copywriting"],["photoshop","Photoshop"],["canva","Canva"],["video editing","Video editing"],["social media","Social media"]];
+
+/* ---- Role families and salary numbers.
+   ILLUSTRATIVE ONLY until salaries.json (sourced, dated) is published: rough yearly gross, local currency, in thousands. ---- */
+var COUNTRIES=[
+ {id:"IN",name:"India",cur:"INR",sym:"₹",rate:1,note:"Most openings; pay is lower but living costs are lower too. Metro vs small town differs a lot."},
+ {id:"AE",name:"UAE",cur:"AED",sym:"AED",rate:24,note:"Salary income tax is usually not charged; check rent and living costs separately."},
+ {id:"UK",name:"UK",cur:"GBP",sym:"GBP",rate:115,note:"Tax and rent are high; take-home is much lower than the gross number."},
+ {id:"CA",name:"Canada",cur:"CAD",sym:"CAD",rate:63,note:"Local experience is often asked for; starting pay can be lower."},
+ {id:"DE",name:"Germany",cur:"EUR",sym:"EUR",rate:100,note:"Many jobs need German; tax and social cuts are large."},
+ {id:"AU",name:"Australia",cur:"AUD",sym:"AUD",rate:57,note:"Good pay, but rent in big cities is very high."},
+ {id:"SG",name:"Singapore",cur:"SGD",sym:"SGD",rate:66,note:"Small, expensive market; competition is tough."},
+ {id:"US",name:"USA",cur:"USD",sym:"USD",rate:88,note:"Highest pay, but tax, health cost and rent are high too."}];
+var FAMILIES=[
+ {id:"it",name:"Software / IT",kw:["python","java","javascript","react","software","developer","devops","cloud","api"],s:{IN:[400,1800],AE:[120,240],UK:[30,55],CA:[60,100],DE:[45,70],AU:[70,110],SG:[50,90],US:[70,130]}},
+ {id:"data",name:"Data / Analytics",kw:["data analys","sql","power bi","tableau","analytics","machine learning"],s:{IN:[400,1500],AE:[100,200],UK:[28,50],CA:[55,90],DE:[42,65],AU:[65,100],SG:[48,85],US:[65,115]}},
+ {id:"sales",name:"Sales / Marketing",kw:["sales","marketing","seo","social media","business development","negotiation"],s:{IN:[300,1000],AE:[60,150],UK:[25,45],CA:[40,70],DE:[35,55],AU:[55,90],SG:[36,70],US:[45,85]}},
+ {id:"fin",name:"Accounting / Finance",kw:["accounting","tally","gst","audit","payroll","billing","finance"],s:{IN:[300,1000],AE:[70,160],UK:[28,48],CA:[45,75],DE:[38,60],AU:[60,95],SG:[40,75],US:[50,90]}},
+ {id:"cs",name:"Customer support / BPO",kw:["customer service","customer support","call centre","bpo","support"],s:{IN:[200,500],AE:[36,72],UK:[22,30],CA:[33,48],DE:[28,38],AU:[48,65],SG:[28,42],US:[32,48]}},
+ {id:"health",name:"Healthcare / Nursing",kw:["nursing","patient","hospital","medical","pharmacy"],s:{IN:[200,700],AE:[60,140],UK:[30,45],CA:[60,90],DE:[36,55],AU:[65,95],SG:[36,66],US:[65,95]}},
+ {id:"teach",name:"Teaching / Training",kw:["teaching","teacher","lesson","tutor","trainer"],s:{IN:[200,700],AE:[80,200],UK:[28,45],CA:[45,75],DE:[40,65],AU:[65,100],SG:[40,80],US:[45,70]}},
+ {id:"trade",name:"Skilled trades / Technician",kw:["electrical","welding","technician","plumber","mechanic","fitter"],s:{IN:[180,500],AE:[36,96],UK:[26,42],CA:[45,75],DE:[34,50],AU:[60,95],SG:[28,50],US:[42,75]}},
+ {id:"host",name:"Hospitality / Retail",kw:["hotel","housekeeping","cooking","chef","retail","cashier","store"],s:{IN:[180,450],AE:[30,60],UK:[22,30],CA:[30,42],DE:[26,36],AU:[45,60],SG:[24,36],US:[28,42]}},
+ {id:"log",name:"Driver / Logistics",kw:["driving","driver","delivery","warehouse","logistics","packaging"],s:{IN:[180,450],AE:[30,60],UK:[25,38],CA:[40,65],DE:[30,42],AU:[50,75],SG:[28,48],US:[38,62]}},
+ {id:"design",name:"Design / Content",kw:["design","photoshop","canva","video editing","content writing","copywriting","graphic"],s:{IN:[300,1000],AE:[70,160],UK:[26,45],CA:[42,70],DE:[36,55],AU:[58,90],SG:[38,70],US:[45,85]}},
+ {id:"admin",name:"HR / Admin / Office",kw:["recruit","hr ","admin","office","typing","receptionist","executive assistant"],s:{IN:[250,800],AE:[48,120],UK:[24,40],CA:[38,60],DE:[32,50],AU:[55,80],SG:[32,56],US:[38,62]}}];
+var SAL={updated:"24 Nov 2026",sourced:false,rateDate:"approximate, not live",sources:{}};   // replaced by salaries.json when it exists
+
+/* ---- Small helpers ---- */
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function has(t,k){return t.toLowerCase().indexOf(k)!==-1}
+var LANG="hi", CUR_JOB="", MODE="rules";
+function strip(t){   // remove phone numbers, emails and long ID-like numbers before anything could leave the page
+  return String(t).replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g,"[email removed]").replace(/(\+?\d[\d\s().-]{7,}\d)/g,"[number removed]");
+}
+var T={
+ hi:{have:"Job ko chahiye aur aapke resume mein hai:",gap:"Job ko chahiye, resume mein nahi dikha (likho ya seekho):",none:"koi nahi mila",
+  lines:"Resume lines (apne asli number se bharo)",cover:"Cover note",qs:"10 interview questions",salary:"India vs abroad: salary ka andaaza (INR mein)",
+  gen:["Apne baare mein 1 minute mein batao.","Is role mein kyun interest hai?","Ek mushkil situation jo aapne handle ki?","Ek galti jisse aapne seekha?","5 saal baad khud ko kahan dekhte ho?","Salary expectation kya hai aur kyun?","Team mein disagreement ho to kya karte ho?"],
+  qSkill:function(s){return s+" mein aapka sabse accha kaam kaun sa hai? Ek example do."},
+  lineHave:function(s){return "Maine "+s+" ka use karke [kaam / project ka naam] mein [result / number] haasil kiya."},
+  line0:"Apne sabse bade project ka ek line mein result likho: kya kiya, kitna, kitne din mein.",
+  line1:"Team ke saath [kaam] ko [X]% tez / saste mein poora kiya (apna asli number likho).",
+  seekh:"seekhne ki lagan",
+  cv:function(role,sk,gap){return "Namaste,\n\nMain "+role+" ke liye apply kar raha/rahi hun. Mere paas "+sk+" mein kaam ka anubhav hai"+(gap?", aur main "+gap+" jaldi seekhne ko taiyaar hun":"")+".\n\nMeri sabse badi taakat hai [ek asli example]. Mujhe vishwas hai ki main aapki team mein jaldi value de sakta/sakti hun.\n\nDhanyavaad,\n[Aapka naam]"},
+  hr:function(role,sk){return "Namaste, main "+role+" ke liye apply kar raha/rahi hun. "+sk+" mein mera anubhav hai. Kya main apna resume bhej sakta/sakti hun?\n\nDhanyavaad,\n[Aapka naam]"},
+  ref:function(role){return "Hi [Naam], main [Company] mein "+role+" ke liye apply karna chahta/chahti hun. Kya aap mere resume ko refer kar sakte hain? Main resume aur 2 line ka summary bhej dunga/dungi. Thanks!"},
+  wa:function(role){return "Hi, main "+role+" ke liye interested hun. Resume attach hai. Kab baat kar sakte hain?"},
+  hrT:"HR ko message",refT:"Referral ke liye message",waT:"WhatsApp par chhota message",scoreT:"Match score",noScore:"Job post mein pehchaane gaye skills kam hain, isliye score nahi bana.",learn:"Seekhne ke liye:",
+  thisRole:"is role",and:" aur ",foot:"Demo output simple rules se bana hai. Asli tool mein AI aapke resume ke hisaab se poori lines likhega."},
+ en:{have:"The job asks for this and your resume has it:",gap:"The job asks for this, but I could not see it in your resume (add it or learn it):",none:"none found",
+  lines:"Resume lines (fill in your real numbers)",cover:"Cover note",qs:"10 interview questions",salary:"India vs abroad: rough salary view (in INR)",
+  gen:["Tell me about yourself in one minute.","Why are you interested in this role?","Tell me about a difficult situation you handled.","Tell me about a mistake you learned from.","Where do you see yourself in 5 years?","What is your salary expectation and why?","What do you do when your team disagrees?"],
+  qSkill:function(s){return "What is your best work using "+s+"? Give one example."},
+  lineHave:function(s){return "I used "+s+" in [project or task name] to achieve [result / number]."},
+  line0:"Write the result of your biggest project in one line: what you did, how much, how fast.",
+  line1:"Finished [task] [X]% faster / cheaper with my team (use your real number).",
+  seekh:"a strong willingness to learn",
+  cv:function(role,sk,gap){return "Hello,\n\nI am applying for the "+role+" role. I have hands-on experience with "+sk+(gap?", and I am ready to learn "+gap+" quickly":"")+".\n\nMy biggest strength is [one real example]. I am confident I can add value to your team quickly.\n\nThank you,\n[Your name]"},
+  hr:function(role,sk){return "Hello, I am applying for the "+role+" role. I have experience with "+sk+". May I send my resume?\n\nThank you,\n[Your name]"},
+  ref:function(role){return "Hi [Name], I want to apply for the "+role+" role at [Company]. Could you refer my resume? I can send the resume and a 2-line summary. Thanks!"},
+  wa:function(role){return "Hi, I am interested in the "+role+" role. My resume is attached. When can we talk?"},
+  hrT:"Message to HR",refT:"Referral request",waT:"Short WhatsApp message",scoreT:"Match score",noScore:"Too few skills were recognised in the job post to give a score.",learn:"To learn:",
+  thisRole:"this role",and:" and ",foot:"This demo output is made with simple rules. The real tool would use AI to write full lines from your own resume."}
+};
+function pick(job,resume){var need=[],have=[],gap=[];SKILLS.forEach(function(s){if(has(job,s[0])){need.push(s[1]);(has(resume,s[0])?have:gap).push(s[1])}});return {need:need,have:have,gap:gap}}
+function roleOf(job){var f=(job.split(/\n/).filter(function(l){return l.trim()})[0]||"").trim();return f.length<80&&f?f:""}
+function guessFamily(job){var best=null,score=0,t=job.toLowerCase();FAMILIES.forEach(function(f){var n=0;f.kw.forEach(function(k){if(t.indexOf(k)!==-1)n++});if(n>score){score=n;best=f}});return best||FAMILIES[11]}
+function rulesPack(job,resume){
+  var t=T[LANG],m=pick(job,resume),role=roleOf(job)||t.thisRole,lines=[];
+  m.have.forEach(function(s){lines.push(t.lineHave(s))});if(!lines.length)lines.push(t.line0);lines.push(t.line1);
+  var sk=m.have.length?m.have.slice(0,3).join(", "):t.seekh,gap=m.gap.slice(0,2).join(t.and);
+  var qs=[];m.need.slice(0,5).forEach(function(s){qs.push(t.qSkill(s))});var gi=0;while(qs.length<10&&gi<t.gen.length)qs.push(t.gen[gi++]);
+  return {role:role,have:m.have,gap:m.gap,lines:lines,cover:t.cv(role,sk,gap),qs:qs.slice(0,10),family:guessFamily(job).id};
+}
+
+/* ---- Salary table ---- */
+function fmtINR(v){var l=v/100000;return (l>=10?Math.round(l):Math.round(l*10)/10)+" L"}
+function overviewHTML(famId){
+  var f=FAMILIES.filter(function(x){return x.id===famId})[0]||FAMILIES[0],inLo=f.s.IN[0]*1000,inHi=f.s.IN[1]*1000;
+  var rows=COUNTRIES.map(function(c){
+    var r=f.s[c.id],lo=r[0],hi=r[1],inrLo=lo*1000*(c.id==="IN"?1:c.rate),inrHi=hi*1000*(c.id==="IN"?1:c.rate);
+    var local=c.id==="IN"?"₹ "+fmtINR(lo*1000)+" - "+fmtINR(hi*1000):c.sym+" "+lo+"k - "+hi+"k";
+    var mult=c.id==="IN"?"-":(Math.round(((inrLo+inrHi)/2)/((inLo+inHi)/2)*10)/10)+"x India";
+    var src=SAL.sources[c.id]||"Illustrative, not sourced yet ("+SAL.updated+")";
+    return "<tr><td><b>"+c.name+"</b><br><span class='note'>"+esc(c.note)+"</span></td><td>"+local+"</td><td><b>₹ "+fmtINR(inrLo)+" - "+fmtINR(inrHi)+"</b><br><span class='note'>₹ "+fmtINR(inrLo/12)+" - "+fmtINR(inrHi/12)+" / month</span></td><td>"+mult+"</td><td class='note'>"+esc(src)+"</td></tr>";
+  }).join("");
+  return "<div class='tbl'><table><thead><tr><th>Country</th><th>Yearly pay (local)</th><th>In INR (year)</th><th>vs India</th><th>Source and date</th></tr></thead><tbody>"+rows+"</tbody></table></div>";
+}
+function salaryBlock(famId){
+  return "<h3>"+T[LANG].salary+"</h3><p class='note' style='margin:0 0 6px'><b>Estimates only, not a promise.</b> Pay depends on city, company, skill and experience. Numbers are yearly, before tax. Last updated: "+esc(SAL.updated)+". Exchange rates: "+esc(SAL.rateDate)+". Gross pay abroad is not take-home pay: rent and taxes are much higher abroad.</p>"
+   +(SAL.sourced?"":"<p class='note err' style='margin:0 0 6px'>These numbers are illustrative while sourced data is being added.</p>")
+   +"<p class='note' style='margin:0 0 6px'>Job type (auto-detected, you can change it): <select id='fam' style='width:auto;display:inline-block'>"+FAMILIES.map(function(f){return "<option value='"+f.id+"'"+(f.id===famId?" selected":"")+">"+f.name+"</option>"}).join("")+"</select></p><div id='ov'>"+overviewHTML(famId)+"</div>"
+   +"<p class='note'>Visa and work-permit rules are different in every country, and this page gives no visa information. Check the official government website. Names of companies are not shown; only role types.</p>";
+}
+function scoreOf(p){var n=p.have.length+p.gap.length;return n<2?null:Math.round(p.have.length/n*100)}
+function learnLinks(gap){
+  var l="<a class='lk' href='https://samjhowithraj.gumroad.com/l/ai-job-search-bundle' target='_blank' rel='noopener'>AI Job Search book</a>";
+  if(gap.some(function(g){return /python|sql|api|git|javascript|java|react/i.test(g)}))l="<a class='lk' href='/learn/python-1/'>Free Python lessons</a>"+l;
+  return l;
+}
+function packText(p){var t=T[LANG],sc=scoreOf(p),sk=p.have.length?p.have.slice(0,3).join(", "):t.seekh;
+  return "Naukri Saathi: "+p.role+"\n"+(sc===null?"":t.scoreT+": "+sc+"%\n")+"\n"+t.cover+":\n"+p.cover+"\n\n"+t.hrT+":\n"+t.hr(p.role,sk)+"\n\n"+t.qs+":\n"+p.qs.map(function(q,i){return (i+1)+". "+q}).join("\n");}
+function tags(a,c){return a.length?a.map(function(x){return "<span class='tag "+c+"'>"+esc(x)+"</span>"}).join(""):"<span class='note'>"+T[LANG].none+"</span>"}
+function render(p){
+  var t=T[LANG],h="<h2>2. Your job pack"+(p.role?": "+esc(p.role):"")+"</h2>";
+  var sc=scoreOf(p),sk=p.have.length?p.have.slice(0,3).join(", "):t.seekh;
+  h+="<h3>"+t.scoreT+"</h3>"+(sc===null?"<p class='note'>"+t.noScore+"</p>":"<div class='scorebox'><div class='meter' style='--p:"+sc+"'><span>"+sc+"%</span></div><p class='note' style='margin:0'>"+p.have.length+" of "+(p.have.length+p.gap.length)+" skills found in your resume. This is a rough keyword match, not a promise of a shortlist.</p></div>");
+  h+="<h3>Skill match</h3><p class='note' style='margin:0 0 4px'>"+t.have+"</p>"+tags(p.have,"have")+"<p class='note' style='margin:8px 0 4px'>"+t.gap+"</p>"+tags(p.gap,"gap")+(p.gap.length?"<p class='note' style='margin:8px 0 0'>"+t.learn+" "+learnLinks(p.gap)+"</p>":"");
+  h+="<h3>"+t.lines+"</h3><ul>"+p.lines.map(function(l){return "<li>"+esc(l)+"</li>"}).join("")+"</ul>";
+  h+="<h3>"+t.cover+"</h3><pre class='cover'>"+esc(p.cover)+"</pre>";
+  h+="<h3>"+t.qs+"</h3><ol>"+p.qs.map(function(q){return "<li>"+esc(q)+"</li>"}).join("")+"</ol>";
+  h+="<div class='msgs'><h3>"+t.hrT+"</h3><pre class='cover'>"+esc(t.hr(p.role,sk))+"</pre><h3>"+t.refT+"</h3><pre class='cover'>"+esc(t.ref(p.role))+"</pre><h3>"+t.waT+"</h3><pre class='cover'>"+esc(t.wa(p.role))+"</pre></div>";
+  h+="<div class='actions'><a class='btn sf' id='shWa' target='_blank' rel='noopener' href='#'>Send to WhatsApp</a><a class='btn ghost' id='shTg' target='_blank' rel='noopener' href='#'>Send to Telegram</a><button class='btn ghost' id='toTrk' type='button'>Save job to tracker</button></div><p class='note'>Sharing opens WhatsApp or Telegram with your pack text (no resume, no phone number). Read it and edit the [brackets] before you send. You choose who gets it.</p>";
+  h+=salaryBlock(p.family);
+  h+="<p class='note'>"+(MODE==="ai"?"Made by AI from your text. Always check it and use your real facts. It can make mistakes.":t.foot)+"</p>";
+  return h;
+}
+
+/* ---- Modes: AI (through the Worker) or rule-based fallback ---- */
+var tsToken="", tsWidget=null;
+function setMode(m){
+  MODE=m;
+  $("modeBadge").textContent=m==="ai"?"AI":"DEMO";$("modeBadge").className="badge"+(m==="ai"?" ai":"");
+  $("modeNote").innerHTML=m==="ai"
+   ?"<b>AI mode.</b> When you press the button, your text is sent to an AI provider (Anthropic's Claude) to make the answer. We do not store your resume, and phone numbers and emails are removed first."
+   :"<b>This demo uses simple rules, not AI.</b> Everything stays in your browser: your resume text never leaves your phone or laptop. The real AI version comes only if enough people want it.";
+  $("privacyLine").textContent=m==="ai"?"Your text goes to the AI provider only to make this answer. Not stored by us.":"Your resume stays in your browser. Nothing is sent anywhere.";
+  $("privFull").innerHTML=m==="ai"
+   ?"When you press the button, the job post and resume text (with phone numbers and emails removed) are sent through our small server to Anthropic's Claude, an AI service, only to write your answer. We do not save your text, and we do not use it to make a profile of you. Please do not paste ID numbers or addresses. A bot check from Cloudflare runs on this page. If you join the waitlist, we save only your email, price choice and job type (Brevo, our email service), only to tell you about the launch."
+   :"In this demo, your job post and resume are processed only inside your browser using simple rules. Nothing you type is sent to any server. If you join the waitlist (when it opens), we save only your email, price choice and job type with Brevo, our email service, only to tell you about the launch.";
+}
+function loadTurnstile(){
+  if(!NS_CONFIG.turnstileSiteKey||!NS_CONFIG.workerUrl)return;
+  var s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";s.async=true;
+  s.onload=function(){try{$("ts").classList.remove("hide");tsWidget=turnstile.render("#ts",{sitekey:NS_CONFIG.turnstileSiteKey,callback:function(t){tsToken=t},"expired-callback":function(){tsToken=""}})}catch(e){}};
+  document.head.appendChild(s);
+}
+async function aiPack(job,resume){
+  var r=await fetch(NS_CONFIG.workerUrl,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({job:strip(job),resume:strip(resume),lang:LANG,turnstile:tsToken})});
+  if(r.status===429){var e=new Error("limit");e.limit=true;throw e}
+  if(!r.ok)throw new Error("worker "+r.status);
+  var d=await r.json();
+  var fam=FAMILIES.some(function(f){return f.id===d.family})?d.family:guessFamily(job).id;
+  return {role:d.role||roleOf(job)||T[LANG].thisRole,have:d.skills_have||[],gap:d.skills_gap||[],lines:d.resume_lines||[],cover:d.cover_note||"",qs:(d.questions||[]).slice(0,10),family:fam};
+}
+async function makePack(){
+  var job=$("job").value,resume=$("resume").value;$("msg").textContent="";
+  if(!job.trim()||!resume.trim()){$("msg").textContent="Please paste both the job post and your resume.";return}
+  CUR_JOB=job;var btn=$("go");btn.disabled=true;var old=btn.textContent;btn.textContent="Working...";
+  var pack=null;
+  if(NS_CONFIG.workerUrl){
+    if(NS_CONFIG.turnstileSiteKey&&!tsToken){$("msg").textContent="Please complete the small check box first.";btn.disabled=false;btn.textContent=old;return}
+    try{setMode("ai");pack=await aiPack(job,resume)}
+    catch(e){setMode("rules");$("msg").textContent=e.limit?"Today's free AI limit is over. Here is the simple demo version instead. Come back tomorrow for more.":"The AI service is not available right now. Here is the simple demo version instead.";pack=null}
+    try{if(window.turnstile&&tsWidget!==null){turnstile.reset(tsWidget);tsToken=""}}catch(e){}
+  }
+  if(!pack){pack=rulesPack(job,resume)}
+  var o=$("out");o.innerHTML=render(pack);o.classList.remove("hide");
+  $("fam").onchange=function(){$("ov").innerHTML=overviewHTML(this.value)};
+  var pt=packText(pack).slice(0,1500);
+  $("shWa").href="https://wa.me/?text="+encodeURIComponent(pt);
+  $("shTg").href="https://t.me/share/url?url="+encodeURIComponent("https://www.techsamjhoraj.com/naukri-saathi/")+"&text="+encodeURIComponent(pt);
+  $("toTrk").onclick=function(){$("tr").value=(pack.role&&pack.role!==T[LANG].thisRole)?pack.role.slice(0,60):"";$("tracker").scrollIntoView({behavior:"smooth"});$("tc").focus()};
+  $("wl").classList.remove("hide");o.scrollIntoView({behavior:"smooth"});
+  btn.disabled=false;btn.textContent=old;
+}
+
+/* ---- Buttons ---- */
+$("go").onclick=makePack;
+$("sample").onclick=function(){
+  $("job").value="Junior Data Analyst\nWe need Python, SQL and Excel for data analysis. Good communication and teamwork. Power BI is a plus.";
+  $("resume").value="Rahul Sharma. BCom 2025. Projects: sales dashboard in Excel, small SQL database for a college event. Good English and team player.";
+};
+$("clear").onclick=function(){$("job").value="";$("resume").value="";$("out").classList.add("hide");$("wl").classList.add("hide");$("msg").textContent=""};
+function setLang(l){LANG=l;$("l-hi").setAttribute("aria-pressed",l==="hi");$("l-en").setAttribute("aria-pressed",l==="en")}
+$("l-hi").onclick=function(){setLang("hi")};$("l-en").onclick=function(){setLang("en")};
+$("theme").onclick=function(){var d=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=d;try{localStorage.setItem("swr-theme",d)}catch(e){}$("theme").textContent=d==="dark"?"☀️":"🌙"};
+$("theme").textContent=document.documentElement.dataset.theme==="dark"?"☀️":"🌙";
+
+/* ---- Tracker (localStorage only; page works without it) ---- */
+var TRK=[];
+function trkLoad(){try{TRK=JSON.parse(localStorage.getItem("ns-tracker")||"[]");if(!Array.isArray(TRK))TRK=[]}catch(e){TRK=[]}}
+function trkSave(){try{localStorage.setItem("ns-tracker",JSON.stringify(TRK))}catch(e){}}
+var STAT=["Saved","Applied","Interview","Offer","Rejected"];
+function trkDraw(){
+  var el=$("trkList");
+  if(!TRK.length){el.innerHTML="<p class='note'>No jobs yet. Add one above.</p>";return}
+  el.innerHTML=TRK.map(function(j,i){return "<div class='jobrow'><div><b>"+esc(j.c||"(company)")+"</b><br><span class='note'>"+esc(j.r||"(role)")+"</span></div><select data-i='"+i+"' aria-label='Status'>"+STAT.map(function(s){return "<option"+(s===j.s?" selected":"")+">"+s+"</option>"}).join("")+"</select><button class='btn ghost' type='button' data-d='"+i+"' aria-label='Remove'>✕</button></div>"}).join("");
+}
+$("trkList").addEventListener("change",function(e){var i=e.target.getAttribute("data-i");if(i!==null){TRK[+i].s=e.target.value;trkSave()}});
+$("trkList").addEventListener("click",function(e){var d=e.target.getAttribute("data-d");if(d!==null){TRK.splice(+d,1);trkSave();trkDraw()}});
+$("trkForm").addEventListener("submit",function(e){e.preventDefault();var c=$("tc").value.trim(),r=$("tr").value.trim();if(!c&&!r)return;TRK.unshift({c:c,r:r,s:$("ts2").value});trkSave();$("tc").value="";$("tr").value="";trkDraw()});
+trkLoad();trkDraw();
+
+/* ---- Waitlist (Brevo) ---- */
+if(NS_CONFIG.brevoAction){$("wlSoon").classList.add("hide");$("wlForm").classList.remove("hide")}
+$("wlForm").addEventListener("submit",async function(e){
+  e.preventDefault();var sel=document.querySelector("input[name=price]:checked"),em=$("wemail").value.trim(),th=$("wthanks");
+  if(!sel){th.textContent="Please choose one option.";return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){th.textContent="Please enter a valid email.";return}
+  if(!$("wagree").checked){th.textContent="Please tick the box to agree.";return}
+  var fam=$("fam")?$("fam").options[$("fam").selectedIndex].text:"";
+  var b=new FormData();b.append("EMAIL",em);b.append("PRICE_CHOICE",sel.value);b.append("JOB_ROLE",fam);b.append("email_address_check","");b.append("locale","en");b.append("html_type","simple");
+  $("wsub").disabled=true;
+  try{await fetch(NS_CONFIG.brevoAction,{method:"POST",body:b,mode:"no-cors"});$("wlForm").innerHTML="<p><b>Almost done!</b> Check your email and click the confirm link (look in Promotions and Spam too).</p>"}
+  catch(err){$("wsub").disabled=false;th.textContent="Could not connect. Please try again."}
+});
+
+/* ---- Start ---- */
+setMode("rules");
+if(NS_CONFIG.workerUrl){setMode("ai");loadTurnstile()}
+fetch(NS_CONFIG.salariesUrl,{cache:"no-cache"}).then(function(r){return r.ok?r.json():null}).then(function(d){
+  if(!d||!d.families)return;
+  FAMILIES.forEach(function(f){if(d.families[f.id])f.s=d.families[f.id]});
+  if(d.rates)COUNTRIES.forEach(function(c){if(d.rates[c.cur])c.rate=d.rates[c.cur]});
+  SAL={updated:d.updated||SAL.updated,sourced:true,rateDate:d.rates_date||"see source",sources:d.sources||{}};
+}).catch(function(){});
+</script>
+</body>
+</html>

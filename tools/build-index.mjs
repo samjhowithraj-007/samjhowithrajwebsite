@@ -103,6 +103,8 @@ add("book", "book-buy", "Python with Chai (book): price and how to buy", "#book"
 if (S.AIJOB && S.AIJOB.both) add("book", "aijob-buy", "AI Job Search: 50 AI prompts for jobs + study, price and free sample", "#shop",
   `The book "AI Job Search" by Raj: 50 AI prompts for your job search and your studies, in English and Hinglish editions. ` +
   `Price: ${rs(S.AIJOB.price)} per edition, ${rs(S.AIJOB.bundle)} for both. Free sample PDFs of both editions are in the Shop; the buy buttons open Gumroad and the PDF downloads right after payment.`);
+add("page", "naukri-saathi", "Naukri Saathi: free AI job-search helper", "/naukri-saathi/",
+  "Naukri Saathi is a free job-search helper by Raj. Paste a job post and your resume to get a skill match, resume lines, a cover note, 10 interview questions and a rough India vs abroad salary view (estimates only). Works in Hinglish and English.");
 add("page", "install-app", "Install the Tech Samjho Raj app", "#classroom",
   "Install this site as an app (free, works offline): tap the Install app button at the top right of any page. " +
   "Android (Chrome): tap Install. iPhone (Safari): tap the Share button at the bottom, then Add to Home Screen. " +

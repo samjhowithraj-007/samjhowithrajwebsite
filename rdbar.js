@@ -21,8 +21,9 @@
   {i:"🏠",t:"Home",h:"#classroom",k:"classroom"},
   {i:"📚",t:"Learn",menu:[["Python with Chai","#python-1","python"],["AI + Python chatbot","#chatbot-1","chatbot"],["Agentic AI with Botu","#agentic-1","agentic"],["Upcoming lessons","#upcoming","upcoming"]]},
   {i:"📰",t:"News",h:"#news",k:"news"},
-  {i:"🛠️",t:"Tools",tools:1,menu:[["Python playground","#playground","playground","T01"],["JavaScript","#tools","js","T08"],["SQL","#tools","sql","T05"],["API tester","#tools","api","T14"],["DSA visualiser","#tools","dsa","T04"],["Vector search","#tools","vec","T06"],["Git practice","#tools","git","T13"],["Java","#tools","java","T07"],["Linux shell","#tools","linux","T18"],["Docker","#tools","docker","T15"],["Azure","#tools","azure","T10"],["Databricks","#tools","dbx","T11"],["Machine learning","#tools","ml","T12"],["RAG & LLM apps","#tools","rag","T09"],["System design","#tools","sys","T16"],["Cyber security","#tools","sec","T17"],["MCP tool calls","#tools","mcp","T14"],["LLM prompt workbench","#tools","llm","T19"]]},
+  {i:"🛠️",t:"Tools",tools:1,menu:[["Python playground","#playground","playground","T01"],["JavaScript","#tools","js","T08"],["SQL","#tools","sql","T05"],["API tester","#tools","api","T14"],["DSA visualiser","#tools","dsa","T04"],["Vector search","#tools","vec","T06"],["Git practice","#tools","git","T13"],["Java","#tools","java","T07"],["Linux shell","#tools","linux","T18"],["Docker","#tools","docker","T15"],["Azure","#tools","azure","T10"],["Databricks","#tools","dbx","T11"],["Machine learning","#tools","ml","T12"],["RAG & LLM apps","#tools","rag","T09"],["System design","#tools","sys","T16"],["Cyber security","#tools","sec","T17"],["MCP tool calls","#tools","mcp","T14"],["LLM prompt workbench","#tools","llm","T19"],["Naukri Saathi (job helper)","/naukri-saathi/","naukri","T19"]]},
   {i:"📖",t:"Books",h:"#shop",k:"shop",badge:"New"},
+  {i:"💼",t:"Naukri Saathi",h:"/naukri-saathi/",k:"naukri",badge:"New"},
   {i:"👥",t:"Community",menu:[["Community","#community","community"],["Workshops","#workshops","workshops"],["Live cohort waitlist","#cohort","cohort"]]},
   {i:"👤",t:"About",h:"#about",k:"about"}];
  function build(){

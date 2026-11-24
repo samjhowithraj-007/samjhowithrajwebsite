@@ -1,0 +1,12 @@
+name = "naukri-saathi"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# Create the KV namespace once:  npx wrangler kv namespace create RATE   then paste its id here
+[[kv_namespaces]]
+binding = "RATE"
+id = "PASTE_KV_NAMESPACE_ID_HERE"
+
+[vars]
+PER_IP_PER_DAY = "5"
+GLOBAL_PER_DAY = "300"
