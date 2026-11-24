@@ -33,7 +33,7 @@ jobs:
         continue-on-error: true
         run: node tools/fetch-news.mjs
       - name: Collect site files
-        run: mkdir site && cp -r naukri-saathi index.html favicon.ico CNAME manifest.webmanifest sw.js redesign.css rdlight.css rdhome.css rdhome.js rdbar.js rdtools.js rdlearn.js rdauth.js rdplayer.js rdnews.js rdbooks.js cart.js rdbooks.css news.json news-take.json news-videos.json robots.txt sitemap.xml site-index.json googleef50f6b23d7dfe9f.html img media notes puzzles learn python chatbot agentic-ai python-book reasoning-puzzles hi hinglish site/
+        run: mkdir site && cp -r naukri-saathi index.html favicon.ico CNAME manifest.webmanifest sw.js redesign.css rdlight.css rdhome.css rdhome.js rdbar.js rdtools.js rdlearn.js rdauth.js rdplayer.js rdnews.js rdbooks.js rdbooks.css news.json news-take.json news-videos.json robots.txt sitemap.xml site-index.json googleef50f6b23d7dfe9f.html img media notes puzzles learn python chatbot agentic-ai python-book reasoning-puzzles hi hinglish site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
