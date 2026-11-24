@@ -189,7 +189,7 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
         <details style="margin-top:8px"><summary>Add a cover letter (optional)</summary><textarea id="cl" maxlength="6000" placeholder="Paste your cover letter here (optional)..." style="min-height:100px;margin-top:8px"></textarea><label class="fbtn">Upload cover letter<input type="file" id="fileCl" accept=".pdf,.docx,.txt" hidden></label></details></div>
     </div>
     <div class="actions">
-      <span class="seg" role="group" aria-label="Output language"><button type="button" id="l-hi" aria-pressed="true">Hinglish</button><button type="button" id="l-en" aria-pressed="false">English</button></span>
+      <span class="seg" role="group" aria-label="Output language"><button type="button" id="l-hi" aria-pressed="false">Hinglish</button><button type="button" id="l-en" aria-pressed="true">English</button></span>
       <button class="btn" id="go" type="button">Make my job pack</button>
       <button class="btn ghost" id="sample" type="button">Fill a sample</button>
       <button class="btn ghost" id="clear" type="button">Clear</button>
@@ -373,7 +373,7 @@ var SAL={updated:"24 Nov 2026",sourced:false,rateDate:"approximate, not live",so
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function has(t,k){return t.toLowerCase().indexOf(k)!==-1}
-var LANG="hi", CUR_JOB="", MODE="rules";
+var LANG="en", CUR_JOB="", MODE="rules";
 function strip(t){   // remove phone numbers, emails and long ID-like numbers before anything could leave the page
   return String(t).replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g,"[email removed]").replace(/(\+?\d[\d\s().-]{7,}\d)/g,"[number removed]");
 }
