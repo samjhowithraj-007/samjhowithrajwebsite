@@ -3,7 +3,7 @@
    nothing copied from other bookshops. Prices come from the site's BOOK and AIJOB constants. */
 (function(){
 const DODO_LIVE = false;   // set true only when the Dodo products + Naukri Saathi builds are live; until then the build lines say "coming with the new checkout"
-const CAREER_KIT_LIVE = false;   // set true only after the Delivery Manager says "approved: Career Kit"
+const CAREER_KIT_LIVE = true;   // set true only after the Delivery Manager says "approved: Career Kit"
 const KIT_LINE = CAREER_KIT_LIVE ? "Free Career Kit included: resume and cover letter starter templates (Word + PDF), filled examples and HR/LinkedIn message templates. Starter templates, not certified country formats; no job guarantee." : "";
 const CART_LIVE = false;   // set true only when the Dodo session says checkout is live (and cart.js is loaded by index.html) AND Raj says yes
 const MEDIA = "media/books/";
