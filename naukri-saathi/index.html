@@ -137,6 +137,14 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
 .big{font:700 38px/1 Georgia,serif;color:var(--hd)}
 .cta{background:var(--band);color:#fff;border-top:3px solid #25e0e6;text-align:center;padding:34px 16px}
 .cta b{display:block;color:#25e0e6;letter-spacing:.03em;text-transform:uppercase;margin-bottom:12px}
+
+.fbtn{display:inline-block;margin-top:8px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;min-height:44px;background:transparent;color:var(--ink)}
+.urlrow{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.urlrow input{flex:1;min-width:180px}
+#doc{background:#fff;color:#111;border:1px solid var(--line);border-radius:10px;padding:22px;font:14px/1.5 Arial,Helvetica,sans-serif;margin:10px 0}
+#doc h1,#doc h3{font-family:Arial,Helvetica,sans-serif;color:#111}
+.learnrow{border-top:1px solid var(--line);padding:8px 0}
+#plOut{white-space:pre-wrap}
+@media print{body *{visibility:hidden}#doc,#doc *{visibility:visible}#doc{position:absolute;left:0;top:0;width:100%;border:0;margin:0}}
 </style>
 </head>
 <body>
@@ -173,8 +181,11 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
     <h2 id="h-input">1. Your job post and resume</h2>
     <p class="note" style="margin-top:0">Please do not paste phone numbers, addresses, Aadhaar, PAN or bank details. Remove them first.</p>
     <div class="row">
-      <div><label for="job">Job post</label><textarea id="job" maxlength="6000" placeholder="Paste the job description here..."></textarea></div>
-      <div><label for="resume">Your resume</label><textarea id="resume" maxlength="6000" placeholder="Paste your resume text here..."></textarea></div>
+      <div><label for="job">Job post</label><textarea id="job" maxlength="6000" placeholder="Paste the job description here..."></textarea>
+        <div id="urlRow" class="hide"><div class="urlrow"><input type="text" id="jobUrl" placeholder="Or paste a job link (https://...)" inputmode="url" aria-label="Job link"><button class="btn ghost" id="jobUrlBtn" type="button">Read link</button></div><p class="note" id="urlMsg" style="margin:4px 0 0"></p></div></div>
+      <div><label for="resume">Your resume</label><textarea id="resume" maxlength="6000" placeholder="Paste your resume text here..."></textarea>
+        <label class="fbtn">Upload resume (PDF, DOCX or TXT)<input type="file" id="fileResume" accept=".pdf,.docx,.txt" hidden></label> <span class="note" id="fileMsg"></span>
+        <details style="margin-top:8px"><summary>Add a cover letter (optional)</summary><textarea id="cl" maxlength="6000" placeholder="Paste your cover letter here (optional)..." style="min-height:100px;margin-top:8px"></textarea><label class="fbtn">Upload cover letter<input type="file" id="fileCl" accept=".pdf,.docx,.txt" hidden></label></details></div>
     </div>
     <div class="actions">
       <span class="seg" role="group" aria-label="Output language"><button type="button" id="l-hi" aria-pressed="true">Hinglish</button><button type="button" id="l-en" aria-pressed="false">English</button></span>
@@ -188,6 +199,34 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
   </section>
 
   <section id="out" class="card hide" aria-live="polite"></section>
+
+  <section id="rb" class="card hide" aria-labelledby="h-rb">
+    <h2 id="h-rb">Build my tailored resume</h2>
+    <p class="note" style="margin-top:0">Made only from the facts in your resume. It never invents jobs, numbers or skills, and it will not add a skill you do not have. You can edit everything before you download.</p>
+    <div id="payBox" class="hide"><p><b id="priceLine">Unlock key needed</b> <a class="btn sf" id="buyBtn" target="_blank" rel="noopener" href="#">Buy unlock key</a></p>
+      <div class="urlrow"><input type="text" id="licIn" placeholder="Paste your unlock key" autocomplete="off" aria-label="Unlock key"><button class="btn ghost" id="licSave" type="button">Use key</button></div><p class="note" id="licMsg"></p></div>
+    <p class="note" id="freeBox">Free while we launch. A small daily limit applies.</p>
+    <div id="tsRb"></div>
+    <div class="actions"><button class="btn sf" id="rbGo" type="button">Build my resume</button><span class="note">Prefer to learn the missing skills first? See the list above.</span></div>
+    <p class="err" id="rbMsg" role="alert"></p>
+    <div id="rbOut" class="hide">
+      <p class="note">Click inside the resume to edit. Add your phone, email and city at the top: they were removed on purpose for your privacy.</p>
+      <div id="doc" contenteditable="true"></div>
+      <div class="actions"><button class="btn" id="dlDoc" type="button">Download Word (.doc)</button><button class="btn ghost" id="dlPdf" type="button">Print / Save as PDF</button></div>
+      <div id="rbChecks"></div>
+    </div>
+  </section>
+
+  <section id="lab" class="card" aria-labelledby="h-lab">
+    <h2 id="h-lab">Prompt Lab: run the book's 50 prompts here</h2>
+    <p class="note" style="margin-top:0">Pick a prompt from the <a href="https://samjhowithraj.gumroad.com/l/ai-job-search-bundle" target="_blank" rel="noopener">AI Job Search book</a>, type your own details, and get the answer here. The book explains how each prompt works and shows real replies. Free runs are limited each day and shared with the job pack.</p>
+    <label for="plSel">Prompt</label><select id="plSel"></select>
+    <label for="plIn" style="margin-top:10px">Your details</label><textarea id="plIn" maxlength="3000" style="min-height:110px"></textarea>
+    <div id="tsLab"></div>
+    <div class="actions"><button class="btn" id="plGo" type="button">Run prompt</button><button class="btn ghost hide" id="plCopy" type="button">Copy answer</button></div>
+    <p class="err" id="plMsg" role="alert"></p><pre class="cover hide" id="plOut"></pre>
+    <p class="note hide" id="plNoAI">Prompt Lab needs the AI service, which is not available right now.</p>
+  </section>
 
 
   <h2 style="margin-top:26px">What you get</h2>
@@ -277,6 +316,8 @@ var NS_CONFIG = {
   workerUrl: "https://naukri-saathi.techsamjhoraj.workers.dev",          // https://naukri-saathi.<account>.workers.dev  (empty = rule-based demo only)
   turnstileSiteKey: "0x4AAAAAAGRM4--Rnr57oFSt",   // Cloudflare Turnstile SITE key (public). Empty = no bot check box
   brevoAction: "",        // Brevo form URL for the list "Naukri Saathi waitlist" (empty = "waitlist opens soon")
+  buyUrl: "",              // Dodo checkout link for the unlock key (empty = tailored resume is free during launch)
+  priceText: "",          // e.g. "Rs 49 for 3 tailored resumes"
   salariesUrl: "salaries.json"   // sourced numbers from the Researcher; if missing, the labelled illustrative numbers below are used
 };
 
@@ -506,6 +547,116 @@ fetch(NS_CONFIG.salariesUrl,{cache:"no-cache"}).then(function(r){return r.ok?r.j
   if(d.rates)COUNTRIES.forEach(function(c){if(d.rates[c.cur])c.rate=d.rates[c.cur]});
   SAL={updated:d.updated||SAL.updated,sourced:true,rateDate:d.rates_date||"see source",sources:d.sources||{}};
 }).catch(function(){});
+</script>
+
+<script>
+/* ===== Naukri Saathi v3: link + uploads, learn step, tailored resume, Prompt Lab, unlock key ===== */
+(function(){
+var W=NS_CONFIG.workerUrl,SITEKEY=NS_CONFIG.turnstileSiteKey,PAY=!!NS_CONFIG.buyUrl,LAST=null,LIC="";
+try{LIC=localStorage.getItem("ns-license")||""}catch(e){}
+var PL=[[1, "Resume & Linkedin", "Turn duties into achievements", "Handled customer calls. Made daily sales reports. Trained new joiners."], [2, "Resume & Linkedin", "A 3-line resume summary", "B.Com fresher from Indore, good at Excel and Tally, did a 2-month internship in accounts, want a job as a juni"], [3, "Resume & Linkedin", "Match the resume to a job post", "Data analyst. Needs SQL, Excel, Power BI, communication, Python basics."], [4, "Resume & Linkedin", "LinkedIn headline ideas", "a final-year B.Tech student in computer science, interested in AI and web development, looking for internships"], [5, "Resume & Linkedin", "LinkedIn About section", "5 years in retail sales, now learning digital marketing, finished a Google ads course, want to move into marke"], [6, "Resume & Linkedin", "Explain a career gap", "2 years, 2022 to 2024, I took care of my sick father and did an online data course"], [7, "Resume & Linkedin", "Short cover letter", "Customer support executive at an online travel company"], [8, "Resume & Linkedin", "Projects section for freshers", "Made a college canteen ordering website with HTML, CSS and Python Flask. 200 students used it in a week."], [9, "Resume & Linkedin", "Skills list, sorted", "Excel, teamwork, MS Word, SQL, communication, Power BI, excel formulas, leadership, Canva"], [10, "Resume & Linkedin", "Check my resume like a recruiter", "I am hard working person looking for job in any field where I can grow and learn new things."], [11, "Interview Prep", "\"Tell me about yourself\"", "MBA in HR from Pune, 1 year as HR intern doing hiring, applying for HR executive"], [12, "Interview Prep", "Practice questions for my role", "Junior Python developer, fresher"], [13, "Interview Prep", "Mock interview, one question at a time", "bank customer service"], [14, "Interview Prep", "Answer with the STAR method", "Our shop's billing software crashed on Diwali. I wrote bills by hand in a notebook and entered them later. We "], [15, "Interview Prep", "Strengths and weaknesses", "I get nervous speaking in big meetings"], [16, "Interview Prep", "Salary question", "junior accountant job in Jaipur, 1 year experience"], [17, "Interview Prep", "Questions to ask the interviewer", "sales executive"], [18, "Interview Prep", "Explain a tech word simply", "API"], [19, "Interview Prep", "Thank-you email after the interview", "Interviewer: Ms. Mehta. Role: content writer. We talked about their new Hindi blog."], [20, "Interview Prep", "Group discussion points", "Should AI be used in school exams?"], [21, "Study Smarter", "Explain like I'm 12", "photosynthesis"], [22, "Study Smarter", "Make a 7-day study plan", "the Class 10 Science chapter on electricity"], [23, "Study Smarter", "Quiz me", "the Mughal Empire"], [24, "Study Smarter", "Summarise a long chapter", "The water cycle is the continuous movement of water on, above and below the surface of the Earth. Water evapor"], [25, "Study Smarter", "Memory trick", "the 8 planets in order from the Sun"], [26, "Study Smarter", "Check my answer like a teacher", "Why do we see lightning before we hear thunder?"], [27, "Study Smarter", "Solve step by step, with hints first", "A shopkeeper buys a phone for Rs 8,000 and sells it for Rs 9,200. What is the profit percentage?"], [28, "Study Smarter", "Flashcards", "basic Excel shortcuts"], [29, "Study Smarter", "Learn English with my own sentences", "Yesterday I have went to market and buyed two kilo tomato."], [30, "Study Smarter", "Compare two things in a table", "mitosis and meiosis"], [31, "Coding Help", "Explain this code line by line", "prices = {\"chai\": 20, \"samosa\": 15} total = sum(prices.values()) print(\"Total:\", total)"], [32, "Coding Help", "Fix my error", "age = input(\"Age: \") print(age + 5)"], [33, "Coding Help", "Write a small program", "asks for 3 marks and prints the average and the grade (A if 80+, B if 60+, else C)"], [34, "Coding Help", "Make my code cleaner", "if day == \"Sat\": print(\"Holiday\") elif day == \"Sun\": print(\"Holiday\") else: print(\"Work day\")"], [35, "Coding Help", "Write test cases", "checks if a number is even"], [36, "Coding Help", "Explain a concept with an analogy", "a Python list vs a dictionary"], [37, "Coding Help", "Write a SQL query", "orders(id, customer, amount, order_date)"], [38, "Coding Help", "Regex without the headache", "find all 10-digit Indian mobile numbers starting with 6, 7, 8 or 9 in a text"], [39, "Coding Help", "Plan a project before coding", "a to-do list app in Python for the terminal"], [40, "Coding Help", "Git commands I need", "save my changes, write a message, and push to GitHub"], [41, "Office Work", "Professional email from rough notes", "client meeting moved from Monday to Wednesday 3 pm, same Zoom link, please confirm, sorry for change"], [42, "Office Work", "Reply to an angry customer", "My order is 5 days late and nobody is answering my calls!!"], [43, "Office Work", "Meeting notes to action points", "Ravi will send the price list by Friday. Anita to call the vendor tomorrow. Everyone to update the sales sheet"], [44, "Office Work", "Excel formula help", "In column C, show \"Pass\" if the marks in column B are 40 or more, else \"Fail\". Row 2."], [45, "Office Work", "Leave application", "2 days, 14 and 15 Nov, sister's wedding in Lucknow, my work will be handled by Priya"], [46, "Office Work", "Make a WhatsApp update short", "Hi all so tomorrow the office will open at 11 instead of 9 because of the electricity work and please bring yo"], [47, "Office Work", "Presentation outline", "our shop's Diwali sales results"], [48, "Office Work", "Explain a report to my boss", "Sales: Aug Rs 4.2 lakh, Sep Rs 3.6 lakh, Oct Rs 5.1 lakh. Oct had the Diwali offer. Returns went up from 2% to"], [49, "Office Work", "Plan my day", "finish the GST report (2 hrs), 3 client calls, reply to emails, team meeting at 4 pm, update the stock sheet"], [50, "Office Work", "Write a job post", "a part-time cashier at a bakery in Pune, evening shift, Rs 12,000 a month"]];
+function post(body){return fetch(W,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok){var e=new Error((d&&d.error)||("worker "+r.status));e.status=r.status;throw e}return d})})}
+
+/* Turnstile widgets for the two new sections */
+var tok={rb:"",lab:""},wid={};
+function mk(id,key){if(!W||!SITEKEY)return;var t=setInterval(function(){if(!window.turnstile)return;clearInterval(t);try{wid[key]=turnstile.render("#"+id,{sitekey:SITEKEY,callback:function(x){tok[key]=x},"expired-callback":function(){tok[key]=""}})}catch(e){}},400)}
+function useTok(key){var x=tok[key];tok[key]="";try{if(window.turnstile&&wid[key]!==undefined)turnstile.reset(wid[key])}catch(e){}return x}
+var WAITMSG="Checking you are human. Wait a moment (or tick the box if it appears), then press the button again.";
+
+/* ---- job link + file uploads ---- */
+if(W){$("urlRow").classList.remove("hide")}
+$("jobUrlBtn").onclick=async function(){
+  var u=$("jobUrl").value.trim(),m=$("urlMsg");m.textContent="";if(!u){m.textContent="Paste a job link first.";return}
+  this.disabled=true;m.textContent="Reading the page...";
+  try{var d=await post({action:"job_url",url:u});$("job").value=d.text;m.textContent="Done. Check the text above and fix anything that looks wrong."}
+  catch(e){m.textContent=e.message==="blocked"?"Naukri, LinkedIn, Indeed and similar sites do not allow automatic reading. Please copy the job text and paste it above.":e.message==="bad link"?"This link cannot be used. Use a normal https link.":e.message==="no text"?"I could not find job text on that page (it may need JavaScript). Please paste the text instead.":e.status===429?"Too many links today. Please paste the text instead.":"Could not read that link. Please paste the text instead."}
+  this.disabled=false};
+function loadScript(src){return new Promise(function(res,rej){var s=document.createElement("script");s.src=src;s.onload=res;s.onerror=function(){rej(new Error("load"))};document.head.appendChild(s)})}
+async function fileText(f){
+  var n=f.name.toLowerCase();if(f.size>5000000)throw new Error("The file is over 5 MB.");
+  if(/\.txt$/.test(n))return f.text();
+  if(/\.docx$/.test(n)){await loadScript("https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js");return (await mammoth.extractRawText({arrayBuffer:await f.arrayBuffer()})).value}
+  if(/\.pdf$/.test(n)){await loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    var pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise,t="";for(var i=1;i<=Math.min(pdf.numPages,6);i++){var c=await (await pdf.getPage(i)).getTextContent();t+=c.items.map(function(x){return x.str}).join(" ")+"\n"}return t}
+  throw new Error("Please use a PDF, DOCX or TXT file.")}
+function wireFile(inp,target){inp.onchange=async function(){var f=inp.files[0];if(!f)return;var m=$("fileMsg");m.textContent="Reading "+f.name+"...";
+  try{var t=(await fileText(f)).replace(/[ \t]+/g," ").trim();if(t.length<30)throw new Error("I could not read text from this file (a scanned picture?). Please paste the text instead.");$(target).value=t;m.textContent="Read "+f.name+" in your browser."+(t.length>6000?" Only the first 6000 characters are used.":"")}
+  catch(e){m.textContent=e.message==="load"?"Could not load the file reader. Check your internet and try again.":e.message}
+  inp.value=""}}
+wireFile($("fileResume"),"resume");wireFile($("fileCl"),"cl");
+
+/* ---- learn step, injected between skill match and the rest of the pack ---- */
+var TECHRE=/python|sql|java|javascript|react|api|git|cloud|machine learning|data analysis|testing|excel|power bi|tableau|seo|photoshop|canva/i;
+function ytq(s){return "https://www.youtube.com/results?search_query="+encodeURIComponent(s+" tutorial for beginners Hindi")}
+function resFor(s){var l=[];
+  if(/python/i.test(s))l.push(["Free Python lessons (Tech Samjho Raj)","/learn/python-1/"]);
+  else if(/machine learning|^ai|cloud/i.test(s))l.push(["Free AI agent lessons (Tech Samjho Raj)","/learn/agentic-1/"]);
+  if(TECHRE.test(s))l.push(["AI Job Search book (prompts for jobs and study)","https://samjhowithraj.gumroad.com/l/ai-job-search-bundle"]);
+  else{l.push(["Skill India Digital Hub (free, government)","https://www.skillindiadigital.gov.in/"]);l.push(["SWAYAM free courses","https://swayam.gov.in/"])}
+  l.push(["YouTube search: "+s,ytq(s)]);return l}
+function learnHTML(p){
+  if(!p.gap.length)return "<h3>Learn first (optional)</h3><p class='note'>No missing skills found for this job. You can build your resume now.</p><p><button class='btn sf' type='button' data-go='rb'>Build my resume now</button></p>";
+  return "<h3>Learn these first (optional)</h3><p class='note' style='margin:0 0 4px'>Learning even one of these makes your application stronger. If you do not want to wait, you can build your resume now. It will only use skills you already have.</p>"
+   +p.gap.slice(0,6).map(function(sk){return "<div class='learnrow'><b>"+esc(sk)+"</b><br>"+resFor(sk).map(function(r){var ext=/^https?:/.test(r[1]);return "<a class='lk' href='"+r[1]+"'"+(ext?" target='_blank' rel='noopener'":"")+">"+esc(r[0])+"</a>"}).join("")+"</div>"}).join("")
+   +"<p><button class='btn sf' type='button' data-go='rb'>Skip learning: build my resume now</button></p>"}
+var origRender=render;
+render=function(p){LAST=p;var h=origRender(p),key="<h3>"+T[LANG].lines+"</h3>",i=h.indexOf(key),b=learnHTML(p);$("rb").classList.remove("hide");if(PAY)setPay();else if(W)startRbTs();return i<0?h+b:h.slice(0,i)+b+h.slice(i)};
+document.addEventListener("click",function(e){var g=e.target.getAttribute&&e.target.getAttribute("data-go");if(g==="rb"){$("rb").scrollIntoView({behavior:"smooth"})}});
+var rbTs=false;function startRbTs(){if(rbTs)return;rbTs=true;mk("tsRb","rb")}
+
+/* ---- paid unlock (Dodo license key) ---- */
+function setPay(){$("payBox").classList.remove("hide");$("freeBox").classList.add("hide");$("buyBtn").href=NS_CONFIG.buyUrl;$("priceLine").textContent=NS_CONFIG.priceText||"Unlock key needed";if(LIC){$("licIn").value=LIC;checkLic()}}
+async function checkLic(){var m=$("licMsg");if(!W)return;try{var d=await post({action:"license",license:LIC});m.textContent=d.valid?(d.left>0?"Key accepted. Builds left: "+d.left+".":"This key has no builds left. Buy a new key."):"This key is not valid. Check it and try again."}catch(e){m.textContent="Could not check the key right now."}}
+$("licSave").onclick=function(){LIC=$("licIn").value.trim();try{localStorage.setItem("ns-license",LIC)}catch(e){}checkLic()};
+
+/* ---- tailored resume ---- */
+function rulesResume(p,res){var lines=res.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean).slice(0,30);
+  return {name:"[Your name]",headline:p.role||"",summary:"Applying for "+(p.role||"this role")+(p.have.length?", with skills in "+p.have.slice(0,4).join(", "):"")+". [Add one line about your strongest result.]",skills:p.have,experience:[{role:"From your resume",org:"",dates:"",bullets:lines}],projects:[],education:[],certifications:[],keywords_used:p.have,
+  check_these:["This basic version was made by simple rules: your own lines are kept as they are. The AI version rewrites them for the job.","Add your phone, email and city at the top."]}}
+function li(a){return (a||[]).filter(Boolean).map(function(x){return "<li>"+esc(x)+"</li>"}).join("")}
+function secH(t,inner){return inner?"<h3 style='font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #999;padding-bottom:2px;margin:14px 0 6px'>"+t+"</h3>"+inner:""}
+function resumeHTML(r){
+  var h="<h1 style='font-size:22px;margin:0'>"+esc(r.name||"[Your name]")+"</h1><div style='margin:2px 0 4px'>"+esc(r.headline||"")+"</div><div style='font-size:12px;color:#444'>[Phone] | [Email] | [City]</div>";
+  h+=secH("Summary","<p style='margin:0'>"+esc(r.summary||"")+"</p>");
+  h+=secH("Skills",(r.skills&&r.skills.length)?"<p style='margin:0'>"+r.skills.map(esc).join(" · ")+"</p>":"");
+  h+=secH("Experience",(r.experience||[]).map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.role||"")+"</b>"+(x.org?", "+esc(x.org):"")+(x.dates?" <span style='color:#444'>("+esc(x.dates)+")</span>":"")+"</p><ul style='margin:0;padding-left:20px'>"+li(x.bullets)+"</ul>"}).join(""));
+  h+=secH("Projects",(r.projects||[]).map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.name||"")+"</b></p><ul style='margin:0;padding-left:20px'>"+li(x.bullets)+"</ul>"}).join(""));
+  h+=secH("Education",(r.education||[]).map(function(x){return "<p style='margin:6px 0'><b>"+esc(x.degree||"")+"</b>"+(x.school?", "+esc(x.school):"")+(x.year?" ("+esc(x.year)+")":"")+"</p>"}).join(""));
+  h+=secH("Certifications",(r.certifications&&r.certifications.length)?"<ul style='margin:0;padding-left:20px'>"+li(r.certifications)+"</ul>":"");
+  return h}
+$("rbGo").onclick=async function(){
+  var m=$("rbMsg");m.textContent="";var job=$("job").value,res=$("resume").value,cov=$("cl").value;
+  if(!LAST||!job.trim()||!res.trim()){m.textContent="Please make your job pack first (paste the job post and your resume above).";return}
+  var btn=this,r=null,note="";
+  if(W){var body={action:"resume",job:strip(job),resume:strip(res),cover:strip(cov),lang:LANG};
+    if(PAY){if(!LIC){m.textContent="Buy and enter your unlock key first.";return}body.license=LIC}
+    else if(SITEKEY){var t=useTok("rb");if(!t){m.textContent=WAITMSG;return}body.turnstile=t}
+    btn.disabled=true;btn.textContent="Building...";
+    try{r=await post(body)}catch(e){note=e.status===402?(e.message==="license used up"?"This key has no builds left. Buy a new key.":"This unlock key is not valid."):e.status===429?"Today's free limit is over. Here is the basic version instead.":"The AI service is not available right now. Here is the basic version instead. ("+String(e.message).slice(0,60)+")";if(e.status===402){m.textContent=note;btn.disabled=false;btn.textContent="Build my resume";if(PAY)checkLic();return}}
+    btn.disabled=false;btn.textContent="Build my resume";if(PAY)checkLic()}
+  if(!r){r=rulesResume(LAST,res);if(!note)note="AI is not available here, so this is the basic version."}
+  m.textContent=note;$("doc").innerHTML=resumeHTML(r);$("rbOut").classList.remove("hide");
+  var ck=(r.check_these||[]).concat(r.keywords_used&&r.keywords_used.length?["Job keywords used (supported by your resume): "+r.keywords_used.join(", ")]:[]);
+  $("rbChecks").innerHTML=ck.length?"<h3>Check before you send</h3><ul>"+li(ck)+"</ul>":"";$("rbOut").scrollIntoView({behavior:"smooth"})};
+$("dlDoc").onclick=function(){var html="<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Resume</title></head><body style='font-family:Arial;font-size:11pt'>"+$("doc").innerHTML+"</body></html>";
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff",html],{type:"application/msword"}));a.download="resume.doc";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)};
+$("dlPdf").onclick=function(){window.print()};
+
+/* ---- Prompt Lab ---- */
+(function(){var sel=$("plSel"),cats={};PL.forEach(function(x){(cats[x[1]]=cats[x[1]]||[]).push(x)});
+  Object.keys(cats).forEach(function(c){var g=document.createElement("optgroup");g.label=c;cats[c].forEach(function(x){var o=document.createElement("option");o.value=x[0];o.textContent=x[0]+". "+x[2];g.appendChild(o)});sel.appendChild(g)});
+  function hint(){var x=PL.filter(function(y){return String(y[0])===sel.value})[0];$("plIn").placeholder=x&&x[3]?"Example: "+x[3]:"Paste the text or details this prompt needs"}
+  sel.onchange=hint;hint()})();
+if(!W){$("plNoAI").classList.remove("hide");$("plGo").disabled=true}else mk("tsLab","lab");
+$("plGo").onclick=async function(){var m=$("plMsg");m.textContent="";var inp=$("plIn").value.trim();
+  if(inp.length<3){m.textContent="Type your details first.";return}
+  var t="";if(SITEKEY){t=useTok("lab");if(!t){m.textContent=WAITMSG;return}}
+  var b=this;b.disabled=true;b.textContent="Running...";
+  try{var d=await post({action:"prompt",id:+$("plSel").value,input:strip(inp),lang:LANG,turnstile:t});$("plOut").textContent=d.text;$("plOut").classList.remove("hide");$("plCopy").classList.remove("hide")}
+  catch(e){m.textContent=e.status===429?"Today's free limit is over. Come back tomorrow.":e.message==="bot check"?"The human check failed. Try again.":"The AI service is not available right now. Please try again later."}
+  b.disabled=false;b.textContent="Run prompt"};
+$("plCopy").onclick=function(){try{navigator.clipboard.writeText($("plOut").textContent);this.textContent="Copied";var b=this;setTimeout(function(){b.textContent="Copy answer"},1500)}catch(e){}};
+})();
 </script>
 </body>
 </html>

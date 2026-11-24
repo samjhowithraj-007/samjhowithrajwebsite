@@ -31,3 +31,8 @@ The website session puts them in `NS_CONFIG` in `naukri-saathi/index.html` and p
 
 ## Controls built in
 5 packs per IP per day, 300 per day for the whole site (spend guard), 6,000 characters per field, phone numbers and emails removed before sending, nothing stored, CORS only for techsamjhoraj.com, Cloudflare Turnstile bot check, and the page falls back to the rule-based demo if the Worker is down or the limit is reached.
+
+## Worker v2 and the book prompts (24 Nov 2026)
+`worker.js` in this public repo has an EMPTY prompt table on purpose: the 50 prompts of the AI Job Search book are paid content.
+The full Worker (prompts included) is kept privately at `C:\samjhowithraj\prompt\v2\job-search-book\worker-private\worker.js`. Paste THAT file into the Cloudflare dashboard. Never commit it.
+Dodo license keys: set `DODO_ON` = 1 (and `DODO_BASE` for test mode, `KEY_USES` builds per key) to make the tailored resume paid; leave unset for free launch mode.
