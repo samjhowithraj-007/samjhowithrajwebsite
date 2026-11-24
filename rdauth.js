@@ -39,7 +39,7 @@ function open(mode){
 /* ---- login page (Udemy-style, two steps: email, then a 6-digit code) ---- */
 /* Real email codes need an account service. Create a free Supabase project (Authentication > Email, enable "Email OTP"),
    then put its URL and public anon key here. Empty = local profile mode (name and email saved in this browser only). */
-const AUTH = { supabaseUrl: "", anonKey: "" };
+const AUTH = { supabaseUrl: "https://vnktvgiordacnyxbwaae.supabase.co", anonKey: "sb_publishable_e4fMGkoBfVsvvWudF9JTsQ_iWj-l8iT" };
 const live = () => !!(AUTH.supabaseUrl && AUTH.anonKey);
 async function sb(path, body){
  const r = await fetch(AUTH.supabaseUrl + "/auth/v1/" + path, { method: "POST", headers: { "Content-Type": "application/json", apikey: AUTH.anonKey }, body: JSON.stringify(body) });
@@ -65,7 +65,7 @@ function loginPage(app, mode){
   });
  }
  function step2(prof){
-  app.querySelector(".lg-form").innerHTML = `<h1>Check your inbox</h1><p class="lg-sent">Enter the 6-digit code we sent to <b>${esc(prof.email)}</b> to finish your login.</p><form id="lg-c"><label><input id="lg-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required placeholder="6-digit code" autocomplete="one-time-code"></label><button class="lg-btn" type="submit">Log in</button></form><p class="lg-alt">Didn't receive the code? <button type="button" class="lg-link" id="lg-re" disabled>Resend code in <span id="lg-t">30</span></button></p><p class="lg-err" id="lg-err" role="alert"></p>`;
+  app.querySelector(".lg-form").innerHTML = `<h1>Check your inbox</h1><p class="lg-sent">Enter the 6-digit code we sent to <b>${esc(prof.email)}</b> to finish your login.</p><form id="lg-c"><label><input id="lg-code" inputmode="numeric" pattern="[0-9]{6,8}" maxlength="8" required placeholder="6-digit code" autocomplete="one-time-code"></label><button class="lg-btn" type="submit">Log in</button></form><p class="lg-alt">Didn't receive the code? <button type="button" class="lg-link" id="lg-re" disabled>Resend code in <span id="lg-t">30</span></button></p><p class="lg-err" id="lg-err" role="alert"></p>`;
   let t = 30; const tm = setInterval(() => { t--; const s = app.querySelector("#lg-t"), b = app.querySelector("#lg-re"); if (!s) return clearInterval(tm); s.textContent = t; if (t <= 0) { clearInterval(tm); b.disabled = false; b.textContent = "Resend code"; } }, 1000);
   app.querySelector("#lg-re").addEventListener("click", async () => { try { await sb("otp", { email: prof.email, create_user: true }); app.querySelector("#lg-err").textContent = "A new code is on its way."; } catch (x) { app.querySelector("#lg-err").textContent = x.message; } });
   app.querySelector("#lg-c").addEventListener("submit", async e => {
