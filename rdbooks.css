@@ -97,3 +97,11 @@
 }
 @media (hover:hover) and (pointer:fine){.bk-card:hover .bk-stage img{transform:rotateY(-5deg) scale(1.02)}}
 @media (prefers-reduced-motion:reduce){.bk *,.bk-card,.bk-goal,.bk-bundle,.bk-stage img{transition:none!important}.bk-card:hover,.bk-goal:hover,.bk-bundle:hover{transform:none}.bk-card:hover .bk-stage img{transform:none}.bk-pages,.bk-row,.bk-tabs{scroll-behavior:auto}}
+
+/* compact store layout (Raj, 25 Nov): books first */
+.bk{gap:26px}.bk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.bk-hero{gap:8px;padding:0}.bk-hero h1{font-size:clamp(24px,3vw,30px)}.bk-hero .bk-lead{font-size:15px}
+.bk-chips li{font-size:12.5px;padding:4px 10px}
+.bk-stage{height:200px;padding:30px 14px 12px}.bk-stage>img:not(.bk-mascot){max-height:158px}
+@media (max-width:819px){.bk-hero .bk-chips{display:none}.bk-stage{height:170px}.bk-stage>img:not(.bk-mascot){max-height:120px}}
+.bk-stage>.bk-badge{top:auto;bottom:12px;right:auto;left:0;border-radius:0 99px 99px 0;padding:4px 12px 4px 10px;max-width:70%}

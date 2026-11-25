@@ -52,19 +52,11 @@ function shop(x){
   const pyBoth = B.bundle, pyWas = B.price * 2;
   const aiWas = A.price * 2;
   return `<div class="bk" id="bk-top">
-  <header class="bk-hero"><div class="bk-eyebrow">Books by Raj</div>
-    <h1>Illustrated books in Hinglish and English, <em>every example tested</em></h1>
-    <p class="bk-lead">Python, AI for jobs, exam reasoning and money basics, written the Samjho way: simple language, chai-shop examples, and a free preview before you buy.</p>
-    <div class="bk-btns"><a class="bk-btn pri" href="#bk-lib" data-bk-go="bk-lib">See all books</a><a class="bk-btn" href="#book">Read a free preview</a><a class="bk-btn" href="#bk-goals" data-bk-go="bk-goals">Which book is for me?</a></div>
+  <header class="bk-hero"><div><div class="bk-eyebrow">Books by Raj</div><h1>Our book store</h1></div>
+    <p class="bk-lead">Illustrated books in English and Hinglish, every example tested. Free preview before you buy.</p>
     <ul class="bk-chips"><li>Instant digital download</li><li>English &amp; Hinglish</li><li>Free previews</li><li>Secure checkout</li></ul></header>
-  <section id="bk-goals" aria-labelledby="bk-g"><h2 id="bk-g">What are you preparing for?</h2>
-    <div class="bk-router" style="margin-top:14px">
-      <a class="bk-goal" href="#bk-lib" data-bk-tab="tech"><span class="ic">🐍</span><b>Learn coding</b><span>Python with Chai, kids Python soon</span></a>
-      <a class="bk-goal" href="#bk-lib" data-bk-tab="jobs"><span class="ic">💼</span><b>Get a job</b><span>AI Job Search + Naukri Saathi</span></a>
-      <a class="bk-goal" href="#bk-lib" data-bk-tab="reasoning"><span class="ic">🧠</span><b>Exams &amp; reasoning</b><span>Reasoning Samjho by Dimaag Dada</span></a>
-      <a class="bk-goal" href="#bk-lib" data-bk-tab="money"><span class="ic">🐷</span><b>Money basics</b><span>Money Book 1 on the Paisa site</span></a></div></section>
-  <section id="bk-lib" aria-labelledby="bk-l"><h2 id="bk-l">The library</h2>
-    <div class="bk-tabs" role="tablist" aria-label="Filter books" style="margin:12px 0">${[["all","All"],["tech","Tech"],["jobs","Jobs"],["money","Money"],["reasoning","Reasoning"]].map((t, i) => `<button class="bk-tab" role="tab" data-tab="${t[0]}" aria-selected="${i === 0}">${t[1]}</button>`).join("")}</div>
+  <section id="bk-lib" aria-labelledby="bk-l"><h2 id="bk-l" class="bk-sr">The library</h2>
+    <div class="bk-tabs" role="tablist" aria-label="What are you preparing for?" style="margin:0 0 14px">${[["all","All books"],["tech","Learn coding"],["jobs","Get a job"],["reasoning","Exams &amp; reasoning"],["money","Money basics"]].map((t, i) => `<button class="bk-tab" role="tab" data-tab="${t[0]}" aria-selected="${i === 0}">${t[1]}</button>`).join("")}</div>
     <div class="bk-grid" id="bk-grid">${cards(B, A)}</div>
     <p class="bk-note" style="margin-top:12px">Prices are in rupees. AI Job Search prices show ₹ + tax (10% is added at checkout). Python with Chai is sold through Gumroad, which shows the final amount at checkout. AI Job Search helps you prepare and does not promise a job. Money Book 1 is education only, not financial advice.</p></section>
   <section aria-labelledby="bk-b"><h2 id="bk-b">Bundles</h2>
