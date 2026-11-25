@@ -6,10 +6,10 @@
   var WORKER = window.CART_WORKER || "https://naukri-saathi.techsamjhoraj.workers.dev", KEY = "ns-cart";   // CART_WORKER is only set on local test pages
   var PRODUCTS = window.CART_PRODUCTS = window.CART_PRODUCTS || [
     { id: "resume-pack", title: "Naukri Saathi resume pack (3 tailored resumes + cover letters)", price: 49, cover: "" },
-    { id: "book", title: "AI Job Search book (English or Hinglish) + 1 resume build", price: 149, cover: "" },
-    { id: "bundle", title: "Job-Ready bundle: AI Job Search book (both editions) + 5 resume builds", price: 249, cover: "" }
+    { id: "book", title: "AI Job Search book (English) + 1 resume build", price: 149, cover: "" },
+    { id: "bundle", title: "Job-Ready bundle: AI Job Search book + 5 resume builds", price: 249, cover: "" }
   ];
-  var ALIAS = { "book-en": "book", "book-hi": "book" };   // one Dodo product; the buyer picks the edition after payment
+  var ALIAS = { "book-en": "book" };   // the book is one Dodo product (English only)
   function norm(id) { id = String(id || ""); return ALIAS[id] || id; }
   function info(id) { id = norm(id); for (var i = 0; i < PRODUCTS.length; i++) if (PRODUCTS[i].id === id) return PRODUCTS[i]; return null; }
   function load() { try { var a = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(a) ? a.filter(function (x) { return info(x); }) : []; } catch (e) { return []; } }
@@ -35,11 +35,12 @@
       ".tsr-cart .pn{position:absolute;right:0;top:0;bottom:0;width:min(400px,100%);background:#fff;color:#111;padding:16px;overflow:auto;font:15px/1.45 system-ui,sans-serif;box-shadow:-4px 0 20px rgba(0,0,0,.25)}" +
       ".tsr-cart h2{margin:0 0 10px;font-size:18px}.tsr-cart .row{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;padding:10px 0;border-bottom:1px solid #e5e7eb}" +
       ".tsr-cart button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 12px;border:1px solid #c7d2fe;background:#fff}.tsr-cart .go{background:#4338ca;color:#fff;border-color:#4338ca;width:100%;margin-top:12px;padding:11px}.tsr-cart .go[disabled]{opacity:.6}" +
-      ".tsr-cart .note{font-size:13px;color:#555;margin:8px 0 0}.tsr-cart .x{border:0;background:none;color:#b91c1c;padding:2px 6px}";
+      ".tsr-cart .note{font-size:13px;color:#555;margin:8px 0 0}.tsr-cart .x{border:0;background:none;color:#b91c1c;padding:2px 6px}" +
+      ":root[data-theme=\"dark\"] .tsr-cart .pn{background:#161a22;color:#e8eaf0}:root[data-theme=\"dark\"] .tsr-cart .row{border-color:#2a3040}:root[data-theme=\"dark\"] .tsr-cart button{background:#1f2430;color:#e8eaf0;border-color:#3b4256}:root[data-theme=\"dark\"] .tsr-cart .go{background:#6366f1;border-color:#6366f1;color:#fff}:root[data-theme=\"dark\"] .tsr-cart .note{color:#aab0c0}:root[data-theme=\"dark\"] .tsr-cart .x{background:none;border:0;color:#f87171}:root[data-theme=\"dark\"] .tsr-cart [data-close]{color:#e8eaf0}";
     document.head.appendChild(st);
   }
   function ensure() {
-    if (box) return; css(); box = document.createElement("div"); box.className = "tsr-cart"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Your cart");
+    if (box) return; css(); box = document.createElement("div"); box.className = "tsr-cart"; box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Your cart");
     box.innerHTML = "<div class='bg'></div><div class='pn'></div>"; document.body.appendChild(box);
     box.querySelector(".bg").addEventListener("click", close);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
@@ -56,8 +57,8 @@
     };
   }
   function badge() { var n = items().length; [].forEach.call(document.querySelectorAll("[data-cart-count]"), function (el) { el.textContent = n ? String(n) : ""; el.setAttribute("data-n", String(n)); if (!/tsr-cart-badge/.test(el.className)) el.className += " tsr-cart-badge"; }); }
-  function open() { ensure(); render(); box.classList.add("on"); }
-  function close() { if (box) box.classList.remove("on"); }
+  var last; function open() { ensure(); render(); last = document.activeElement; box.classList.add("on"); var f = box.querySelector("[data-close]"); if (f) f.focus(); }
+  function close() { if (box) box.classList.remove("on"); try { if (last && last.focus) last.focus(); } catch (e) {} }
   function msg(t) { var m = document.getElementById("tsrCartMsg"); if (m) m.textContent = t; }
 
   function checkout(opts) {
