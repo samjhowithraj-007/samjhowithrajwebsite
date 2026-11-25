@@ -214,3 +214,5 @@ a.bk-btn.pri,button.bk-btn.pri{color:#fff!important}:root:not([data-theme="light
 .pp-th img{width:100%;height:100%;object-fit:contain;border-radius:8px;display:block}
 .pp-th[aria-selected="true"]{border-color:var(--bk-ind);box-shadow:0 0 0 2px var(--bk-ind-soft)}
 .pp-arrow:disabled{opacity:.35;cursor:default}
+
+.pp-how{margin:12px 0 0;padding-left:22px;display:grid;gap:8px}.pp-how li{padding-left:4px}
