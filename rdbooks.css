@@ -1,4 +1,4 @@
-/* Books section redesign (25 Nov 2026): one card design for every title. Indigo + saffron, rounded cards, no ratings or sales counts. */
+/* Books section (25 Nov 2026): one card design for every title. Indigo + saffron, rounded cards, no ratings or sales counts. */
 .bk{--bk-ind:#4338ca;--bk-ind-soft:#eef0ff;--bk-stage:#eef0ff;--bk-stage2:#fdf0d8;--bk-saf:#f59e0b;--bk-saf-ink:#3a2500;--bk-line:#dfe2f5;--bk-shadow:rgba(67,56,202,.16);--bk-card:#fff;--bk-ink:#1c1d1f;--bk-muted:#5c6168;--bk-ok:#12724a;display:grid;grid-template-columns:minmax(0,1fr);gap:36px;color:var(--bk-ink)}.bk>*{min-width:0}
 :root:not([data-theme="light"]) .bk{--bk-ind:#a3a9ff;--bk-ind-soft:rgba(139,147,255,.14);--bk-stage:rgba(139,147,255,.13);--bk-stage2:rgba(245,181,68,.13);--bk-saf:#f5b544;--bk-saf-ink:#1b1205;--bk-line:rgba(255,255,255,.12);--bk-shadow:rgba(0,0,0,.45);--bk-card:var(--solid,#121922);--bk-ink:var(--ink,#e9eef3);--bk-muted:var(--muted,#9aa8b5);--bk-ok:#6ee7a8}
 .bk h1,.bk h2,.bk h3{margin:0;line-height:1.2;text-wrap:balance}
@@ -105,3 +105,29 @@
 .bk-stage{height:200px;padding:30px 14px 12px}.bk-stage>img:not(.bk-mascot){max-height:158px}
 @media (max-width:819px){.bk-hero .bk-chips{display:none}.bk-stage{height:170px}.bk-stage>img:not(.bk-mascot){max-height:120px}}
 .bk-stage>.bk-badge{top:auto;bottom:12px;right:auto;left:0;border-radius:0 99px 99px 0;padding:4px 12px 4px 10px;max-width:70%}
+/* Store feel (Raj 25 Nov): big cover on a soft gradient stage, navy full-width button, heading + tabs on one row */
+.bk{--bk-navy:#1b1f4b}
+:root:not([data-theme="light"]) .bk{--bk-navy:#a3a9ff}
+.bk-libhead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.bk-libhead h2{font-size:clamp(21px,2.4vw,26px);margin-top:4px}
+.bk-libhead .bk-tabs{margin:0}
+.bk-card{border-width:1.2px}
+.bk-stage{height:auto;aspect-ratio:3/4;padding:34px 18px 0;align-items:end;background:linear-gradient(160deg,var(--bk-stage) 0%,var(--bk-stage) 55%,var(--bk-stage2) 100%)}
+.bk-stage.saf{background:linear-gradient(160deg,var(--bk-stage2),var(--bk-stage))}
+.bk-stage>img:not(.bk-mascot){max-height:100%;width:auto;max-width:100%;border-radius:6px 6px 0 0;align-self:end;box-shadow:0 10px 24px rgba(27,31,75,.18)}
+.bk-stage>img.mock{align-self:center;border-radius:0}
+.bk-stage .emo{align-self:center}
+.bk-stage>.bk-badge{bottom:auto;top:12px;left:auto;right:0;border-radius:99px 0 0 99px;padding:4px 10px 4px 12px}
+.bk-stage>.bk-mascot{bottom:8px;right:8px}
+.bk-body{padding:14px 16px 16px;gap:4px}
+.bk-body h3{font-size:17px;font-weight:700}.bk-meta{font-size:13px}
+.bk-price{padding-top:8px}
+.bk-btn.pri{background:var(--bk-navy);border-color:var(--bk-navy);color:#fff;border-radius:12px;min-height:44px;font-size:14px;font-weight:600}
+:root:not([data-theme="light"]) .bk-btn.pri{color:#10131f}
+.bk-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.bk-links .bk-link{font-size:13px;min-height:44px}
+.bk-bundle .bk-btn.pri,.bk-sticky .bk-btn.pri{background:var(--bk-saf);border-color:var(--bk-saf);color:var(--bk-saf-ink)}
+@media (max-width:819px){.bk-stage{aspect-ratio:3/4;padding:30px 10px 0}.bk-stage>img:not(.bk-mascot){max-height:100%}.bk-libhead{display:block}.bk-libhead .bk-tabs{margin-top:10px}}
+@media (min-width:640px) and (max-width:819px){.bk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.bk-badge{white-space:nowrap}@media (max-width:639px){.bk-stage>.bk-badge{top:auto;bottom:8px;right:auto;left:0;border-radius:0 99px 99px 0;padding:3px 10px 3px 8px;font-size:11px}.bk-stage>.bk-mascot{width:28px;height:28px}}
+a.bk-btn.pri,button.bk-btn.pri{color:#fff!important}:root:not([data-theme="light"]) a.bk-btn.pri,:root:not([data-theme="light"]) button.bk-btn.pri{color:#10131f!important}.bk-bundle a.bk-btn.pri,.bk-sticky a.bk-btn.pri{color:var(--bk-saf-ink)!important}

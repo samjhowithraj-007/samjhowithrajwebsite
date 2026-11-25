@@ -19,31 +19,36 @@ function card(c){
   const price = c.price
     ? `<div class="bk-price"><b>${rs(c.price)}</b>${c.was ? `<s>${rs(c.was)}</s><em>Save ${rs(c.was - c.price)}</em>` : ""}${c.priceNote ? `<span>${c.priceNote}</span>` : ""}</div>`
     : `<div class="bk-price"><span>${c.priceNote || ""}</span></div>`;
-  const btn = c.cartId ? `<a class="bk-btn pri" href="${c.buy}" data-bk-buy="${c.cartId}" rel="noopener">${esc(c.buyLabel)}</a>`
+  const canCart = c.cartId && CART_LIVE && window.Cart;
+  const btn = canCart ? `<button type="button" class="bk-btn pri" data-bk-cart="${c.cartId}">Add to cart</button>`
+    : c.cartId ? `<a class="bk-btn pri" href="${c.buy}" data-bk-buy="${c.cartId}" rel="noopener">${esc(c.buyLabel)}</a>`
     : c.buy ? `<a class="bk-btn pri" href="${c.buy}" target="_blank" rel="noopener">${esc(c.buyLabel)}</a>`
     : c.go ? `<a class="bk-btn pri" href="${c.go}"${ext}>${esc(c.goLabel)}</a>`
     : `<span class="bk-btn" aria-disabled="true">Coming soon</span>`;
-  const cartBtn = c.cartId && CART_LIVE && window.Cart ? `<button type="button" class="bk-btn" data-bk-cart="${c.cartId}">Add to cart</button>` : "";
+  const buyNow = canCart ? `<a class="bk-link" href="${c.buy}" data-bk-buy="${c.cartId}" rel="noopener">Buy now</a>` : "";
+  const prev = c.preview ? `<a class="bk-link" href="${c.preview}"${c.previewExt ? ' target="_blank" rel="noopener"' : ""}>${esc(c.previewLabel || "Free preview →")}</a>` : "";
+  const links = buyNow || prev ? `<div class="bk-links">${buyNow}${prev}</div>` : "";
   return `<article class="bk-card" data-cats="${c.cats.join(" ")}">
     <div class="bk-stage${c.saf ? " saf" : ""}"><span class="bk-pill">${esc(c.pill)}</span>${c.badge ? `<span class="bk-badge">${esc(c.badge)}</span>` : ""}${stage}${c.mascot ? `<img class="bk-mascot" src="${c.mascot}" alt="" width="34" height="34" loading="lazy">` : ""}</div>
-    <div class="bk-body"><h3><a href="${c.href}"${ext}>${esc(c.title)}</a></h3><p class="bk-meta">${c.meta}</p>${price}${btn}${cartBtn}${c.preview ? `<a class="bk-link" href="${c.preview}"${c.previewExt ? ' target="_blank" rel="noopener"' : ""}>${esc(c.previewLabel || "Free preview →")}</a>` : ""}</div></article>`;
+    <div class="bk-body"><h3><a href="${c.href}"${ext}>${esc(c.title)}</a></h3><p class="bk-meta">${c.meta}</p>${price}${btn}${links}</div></article>`;
 }
 
 function cards(B, A){
   const pyBuy = B.buy.en || "";
   return [
-    { cats:["tech"], title:"Python with Chai", pill:"English + Hinglish", cover:"media/book-mockup-tech.webp", mock:1, w:560, h:700, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
+    { cats:["tech"], title:"Python with Chai", pill:"EN + Hinglish", cover:"media/book-mockup-tech.webp", mock:1, w:560, h:700, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
       meta:"30 chapters · 300+ pages · PDF + EPUB · for beginners", price:B.price, priceNote:"per edition", href:"#book", buy:pyBuy, buyLabel:"Buy " + rs(B.price), preview:"#book", previewLabel:"Free preview →" },
-    { cats:["jobs","tech"], cartId:"book", title:"AI Job Search", pill:"English + Hinglish", badge:DODO_LIVE ? "Includes 1 resume build" : "New", cover:MEDIA + "aijob-cover.webp", w:420, h:420, alt:"AI Job Search by Raj: book cover with the Botu robot at a laptop", mascot:"img/botu-192.png",
+    { cats:["jobs","tech"], cartId:"book", title:"AI Job Search", pill:"EN + Hinglish", badge:DODO_LIVE ? "1 free resume build" : "New", cover:MEDIA + "aijob-cover.webp", w:420, h:420, alt:"AI Job Search by Raj: book cover with the Botu robot at a laptop", mascot:"img/botu-192.png",
       meta:"50 AI prompts for jobs and study · PDF · helps you prepare, no job guarantee" + (CAREER_KIT_LIVE ? " · <b>Free Career Kit included</b>" : ""), price:A.price, priceNote:"+ tax · English or Hinglish", href:"#ai-job-search", buy:A.en, buyLabel:"Buy now · " + rs(A.price), preview:"#ai-job-search", previewLabel:"Free sample + details →" },
     { cats:["jobs"], title:"Naukri Saathi", pill:"Tool", badge:"Free demo", saf:1, emoji:"📄", w:0, h:0, alt:"", mascot:"img/botu-192.png",
-      meta:"Paste a job post and your resume: skill match, resume lines, cover note and interview questions", priceNote:"Free to try. Paid resume packs: price not final yet", href:"/naukri-saathi/", go:"/naukri-saathi/", goLabel:"Try it free →" },
+      meta:"Paste a job post and your resume: skill match, resume lines, cover note and interview questions", priceNote:"Free to try. Resume pack ₹49 + tax", href:"/naukri-saathi/", go:"/naukri-saathi/", goLabel:"Try it free →" },
     { cats:["money"], title:"Money Book 1", pill:"3 languages", cover:MEDIA + "money-cover.webp", w:600, h:600, alt:"Money Book 1 by Raj: book cover", ext:1,
       meta:"English, Hinglish and Hindi · on the Paisa site · education only, not financial advice", priceNote:"See price on paisasamjhoraj.com", href:"https://www.paisasamjhoraj.com/", go:"https://www.paisasamjhoraj.com/", goLabel:"See it on the Paisa site ↗" },
     { cats:["reasoning"], title:"Reasoning Samjho", pill:"Exam reasoning", cover:MEDIA + "reasoning-cover.webp", w:420, h:596, alt:"Reasoning Samjho book cover: Dimaag Dada at a green chalkboard", ext:1, mascot:"img/dada-badge-128.png",
       meta:"192 puzzles + 3 mock tests · SSC, Bank, Railway, CSAT, CAT and more · on dimaagdada.com", priceNote:"See price on dimaagdada.com", href:"https://www.dimaagdada.com/reasoning-puzzles/", go:"https://www.dimaagdada.com/reasoning-puzzles/", goLabel:"See it on dimaagdada.com ↗", preview:"https://www.dimaagdada.com/notes/puzzles-1-en-preview.pdf", previewExt:1, previewLabel:"Free Chapter 1 →" },
-    { cats:["tech"], title:"Python for kids", pill:"Ages 10–15", badge:"Coming soon", saf:1, emoji:"🐍", w:0, h:0, alt:"", mascot:"img/botu-192.png",
-      meta:"A kids' Python series, in the same chai-shop style. Not on sale yet", priceNote:"Not released", href:"#shop" }
+    { cats:["tech","kids"], title:"Dabba Codes! Python for Young Explorers", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-dabba.webp", w:560, h:560, alt:"Dabba Codes! book cover with Dabba the tiffin robot", meta:"Kids' Python series · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["money","kids"], title:"Kauri's Pocket Money Adventure", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-kauri.webp", w:560, h:560, alt:"Kauri's Pocket Money Adventure book cover with Kauri the cowrie shell", meta:"Kids' money basics · Samjho Squad · education only, not financial advice", priceNote:"Not released", href:"#shop" },
+    { cats:["kids"], title:"Tikki's Wow World 2027", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-tikki.webp", w:560, h:560, alt:"Tikki's Wow World 2027 book cover with Tikki the satellite", meta:"Science and tech facts for kids · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" }
   ].map(card).join("");
 }
 
@@ -55,8 +60,8 @@ function shop(x){
   <header class="bk-hero"><div><div class="bk-eyebrow">Books by Raj</div><h1>Our book store</h1></div>
     <p class="bk-lead">Illustrated books in English and Hinglish, every example tested. Free preview before you buy.</p>
     <ul class="bk-chips"><li>Instant digital download</li><li>English &amp; Hinglish</li><li>Free previews</li><li>Secure checkout</li></ul></header>
-  <section id="bk-lib" aria-labelledby="bk-l"><h2 id="bk-l" class="bk-sr">The library</h2>
-    <div class="bk-tabs" role="tablist" aria-label="What are you preparing for?" style="margin:0 0 14px">${[["all","All books"],["tech","Learn coding"],["jobs","Get a job"],["reasoning","Exams &amp; reasoning"],["money","Money basics"]].map((t, i) => `<button class="bk-tab" role="tab" data-tab="${t[0]}" aria-selected="${i === 0}">${t[1]}</button>`).join("")}</div>
+  <section id="bk-lib" aria-labelledby="bk-l"><div class="bk-libhead"><div><div class="bk-eyebrow">The library</div><h2 id="bk-l">Every book, one shelf. Pick your path.</h2></div>
+    <div class="bk-tabs" role="tablist" aria-label="What are you preparing for?">${[["all","All books"],["tech","Learn coding"],["jobs","Get a job"],["reasoning","Exams &amp; reasoning"],["money","Money basics"],["kids","Kids"]].map((t, i) => `<button class="bk-tab" role="tab" data-tab="${t[0]}" aria-selected="${i === 0}">${t[1]}</button>`).join("")}</div></div>
     <div class="bk-grid" id="bk-grid">${cards(B, A)}</div>
     <p class="bk-note" style="margin-top:12px">Prices are in rupees. AI Job Search prices show ₹ + tax (10% is added at checkout). Python with Chai is sold through Gumroad, which shows the final amount at checkout. AI Job Search helps you prepare and does not promise a job. Money Book 1 is education only, not financial advice.</p></section>
   <section aria-labelledby="bk-b"><h2 id="bk-b">Bundles</h2>
