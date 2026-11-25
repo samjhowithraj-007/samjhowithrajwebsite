@@ -204,7 +204,7 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
   <section id="rb" class="card hide" aria-labelledby="h-rb">
     <h2 id="h-rb">Build my tailored resume</h2>
     <p class="note" style="margin-top:0">Made only from the facts in your resume. It never invents jobs, numbers or skills, and it will not add a skill you do not have. You can edit everything before you download.</p>
-    <div id="payBox" class="hide"><p><b id="priceLine">Unlock key needed</b> <a class="btn sf" id="buyBtn" target="_blank" rel="noopener" href="#">Buy unlock key</a></p>
+    <div id="payBox" class="hide"><p><b id="priceLine">Unlock key needed</b> <a class="btn sf" id="buyBtn" target="_blank" rel="noopener" href="#">Buy unlock key</a> <button class="btn ghost" id="cartBtn" type="button">Cart <span data-cart-count></span></button></p>
       <div class="urlrow"><input type="text" id="licIn" placeholder="Paste your unlock key" autocomplete="off" aria-label="Unlock key"><button class="btn ghost" id="licSave" type="button">Use key</button><button class="btn ghost" id="licDrop" type="button">Remove key</button></div><p class="note" id="licMsg"></p></div>
     <p class="note" id="freeBox">Free while we launch. A small daily limit applies.</p>
     <p class="note">Your pasted text is kept in this browser for 2 hours so login and payment never lose it. The "Clear" button removes it.</p>
@@ -327,6 +327,7 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
   <p style="margin:6px 0">© 2026 Tech Samjho Raj · Naukri Saathi gives study help, not career, legal or visa advice. <a href="/#privacy">Privacy</a> · <a href="/#terms">Terms</a></p>
 </div></footer>
 
+<script src="/cart.js"></script>
 <script>
 /* ---- Settings. Empty = that feature is off and the page falls back (Phase 2 items are filled in after Raj sets them up). ---- */
 var NS_CONFIG = {
@@ -531,8 +532,8 @@ $("theme").textContent=document.documentElement.dataset.theme==="dark"?"☀️":
 /* ---- After payment / login: restore the draft and pick up the license key from the Dodo redirect ---- */
 (function(){
   try{var d=JSON.parse(sessionStorage.getItem("ns-draft")||"null");if(d){if(d.job&&!$("job").value)$("job").value=d.job;if(d.resume&&!$("resume").value)$("resume").value=d.resume;if(d.cl)$("cl").value=d.cl;sessionStorage.removeItem("ns-draft")}}catch(e){}
-  try{var q=new URLSearchParams(location.search),k=(q.get("license_key")||"").split(",")[0].trim();
-    if(k&&/^[\w-]{8,100}$/.test(k)){sessionStorage.setItem("ns-license",k);window.__nsPaid=1;var bn=$("payBanner");bn.textContent="Payment received. Your key is saved on this device and was also emailed to you. Your text is back below. Click Build my resume.";bn.classList.remove("hide");history.replaceState(null,"",location.pathname)}
+  try{var q=new URLSearchParams(location.search),k=(q.get("license_key")||"").split(",").map(function(x){return x.trim()}).filter(Boolean).slice(0,5).join(",");
+    if(k&&/^[\w,-]{8,520}$/.test(k)){try{if(window.Cart)Cart.clear()}catch(e){}sessionStorage.setItem("ns-license",k);window.__nsPaid=1;var bn=$("payBanner");bn.textContent="Payment received. Your key is saved on this device and was also emailed to you. Your text is back below. Click Build my resume.";bn.classList.remove("hide");history.replaceState(null,"",location.pathname)}
     else if(q.get("status")==="failed"){var b2=$("payBanner");b2.textContent="The payment did not go through. You were not charged. You can try again.";b2.classList.remove("hide");history.replaceState(null,"",location.pathname)}}catch(e){}
 })();
 
@@ -690,16 +691,19 @@ $("nsLgOk").onclick=async function(){var em=$("nsLgE").value.trim(),c=$("nsLgC")
 $("nsLgX").onclick=function(){$("nsLogin").close()};
 function setPay(){$("payBox").classList.remove("hide");$("freeBox").classList.add("hide");
   var u=acctUser(),b=$("buyBtn");
-  if(u){b.textContent="Buy unlock key";b.removeAttribute("target");b.href=NS_CONFIG.buyUrl+"&email="+encodeURIComponent(u.email)+"&disableEmail=true&redirect_url="+encodeURIComponent("https://www.techsamjhoraj.com/naukri-saathi/");b.onclick=function(){saveDraft()};
+  $("cartBtn").onclick=function(){if(window.Cart)Cart.open()};
+  if(u){b.textContent=window.Cart?"Add to cart":"Buy unlock key";b.removeAttribute("target");b.href=NS_CONFIG.buyUrl+"&email="+encodeURIComponent(u.email)+"&disableEmail=true&redirect_url="+encodeURIComponent("https://www.techsamjhoraj.com/naukri-saathi/");b.onclick=function(e){saveDraft();if(window.Cart){e.preventDefault();Cart.add("resume-pack");Cart.open()}};
     $("licMsg").textContent="Your key will be sent to "+u.email+" and saved here automatically after payment."}
   else{b.textContent="Log in to buy";b.removeAttribute("target");b.href="#";b.onclick=function(e){e.preventDefault();saveDraft();openLogin()};
     $("licMsg").textContent="Log in first. Your key is tied to your verified email, so you never lose it."}
   $("priceLine").textContent=NS_CONFIG.priceText||"Unlock key needed";if(LIC){$("licIn").value=LIC;checkLic()}}
+window.addEventListener("cart:login",function(e){e.preventDefault();saveDraft();try{Cart.close()}catch(x){}openLogin()});
+window.addEventListener("cart:checkout",saveDraft);
 function dropKey(msg){LIC="";try{sessionStorage.removeItem("ns-license");localStorage.removeItem("ns-license")}catch(e){}$("licIn").value="";$("licMsg").textContent=msg}
 async function checkLic(){var m=$("licMsg");if(!W||!LIC)return;try{var d=await post({action:"license",license:LIC});
   if(!d.valid)dropKey("That key is not valid, so I removed it. Buy a new key or paste a different one.");
-  else if(d.left<=0)dropKey("That key has no builds left, so I removed it. Buy a new key for 3 more resumes.");
-  else m.textContent="Key accepted. Builds left: "+d.left+"."}catch(e){m.textContent="Could not check the key right now."}}
+  else if(d.left<=0)dropKey("That key has no builds left, so I removed it. Buy a new key for more resumes.");
+  else m.textContent="Key accepted. Builds left: "+d.left+(d.total?" of "+d.total:"")+". Each tailored resume with cover letter uses 1 build."}catch(e){m.textContent="Could not check the key right now."}}
 $("licSave").onclick=function(){LIC=$("licIn").value.trim();try{sessionStorage.setItem("ns-license",LIC)}catch(e){}checkLic()};
 $("licDrop").onclick=function(){dropKey("The key was removed from this browser. Paste it again whenever you need it.")};
 

@@ -4,12 +4,13 @@
 //   (none)/"match"   job + resume -> skills, resume lines, cover note, questions   (Turnstile + daily limits)
 //   "prompt"         run one of the 50 AI Job Search book prompts with the user's details (Turnstile + daily limits)
 //   "resume"         build a tailored resume (paid license key if DODO_ON=1, else Turnstile + daily limits)
+//   "checkout"       cart -> Dodo checkout session (needs secret DODO_API_KEY); returns {checkout_url}
 //   "job_url"        fetch the text of a public job page (per-IP limit; big job boards are blocked on purpose)
-//   "license"        check a Dodo license key and say how many builds are left
+//   "redeem"/"license"  check a paid key (Dodo, or old Gumroad) and turn it into builds in KV; says how many builds are left
 // Settings (Worker > Settings > Variables):
 //   ANTHROPIC_API_KEY (secret), TURNSTILE_SECRET (secret), RATE (KV binding)
 //   PER_IP_PER_DAY (default 5), GLOBAL_PER_DAY (default 300)
-//   DODO_ON ("1" = tailored resume needs a paid key), DODO_BASE (default https://live.dodopayments.com; test: https://test.dodopayments.com), KEY_USES (builds per key, default 3)
+//   DODO_ON ("1" = tailored resume needs a paid key), DODO_BASE (default https://live.dodopayments.com; test: https://test.dodopayments.com), KEY_USES (builds for a product not in DODO_BUILDS, default 3), DODO_BUILDS (JSON builds per Dodo product id), GUMROAD_BUILDS (JSON builds per Gumroad product id, optional)
 const MODEL = "claude-haiku-5-5";
 const ALLOWED = ["https://www.techsamjhoraj.com", "https://techsamjhoraj.com"];
 const MAX_CHARS = 6000;
@@ -111,18 +112,84 @@ async function gate(env, body, ip, origin) {
   if (!(await bump(env, "i:" + day + ":" + ip, perIp, 90000))) return json({ error: "limit" }, 429, origin);
   return null;
 }
-// Dodo Payments license key. validate is a public endpoint (no API key needed). Each key allows KEY_USES builds.
+// Credits. A paid key (Dodo, or an old Gumroad key) is checked with the seller's verify API, then turned into builds in KV under sha256(key).
+// DODO_BUILDS = JSON {"pdt_xxx":3,"pdt_book":1,"pdt_bundle":5} (builds per Dodo product). A product not listed gets KEY_USES (default 3).
+// GUMROAD_BUILDS = JSON {"<gumroad product id>":5} turns old Gumroad keys into builds. Empty = Gumroad keys are not accepted.
+function buildsFor(env, pid) {
+  let m = {}; try { m = JSON.parse(env.DODO_BUILDS || "{}"); } catch {}
+  const n = pid && Number.isInteger(m[pid]) ? m[pid] : parseInt(env.KEY_USES || "3", 10);
+  return Math.max(0, Math.min(n, 50));
+}
+async function checkKey(env, key) {
+  const base = env.DODO_BASE || "https://live.dodopayments.com";
+  try {
+    const v = await (await fetch(base + "/licenses/validate", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ license_key: key }) })).json();
+    if (v && v.valid) return { valid: true, src: "dodo", pid: String(v.product_id || v.productId || ""), builds: null };
+  } catch { return { valid: false, err: true }; }
+  let g = {}; try { g = JSON.parse(env.GUMROAD_BUILDS || "{}"); } catch {}
+  for (const pid of Object.keys(g)) {
+    try {
+      const r = await (await fetch("https://api.gumroad.com/v2/licenses/verify", { method: "POST", body: new URLSearchParams({ product_id: pid, license_key: key, increment_uses_count: "false" }) })).json();
+      const p = r && r.purchase;
+      if (r && r.success && p && !p.refunded && !p.chargebacked && !p.disputed) return { valid: true, src: "gumroad", pid, builds: Math.max(0, Math.min(parseInt(g[pid], 10) || 0, 50)) };
+    } catch {}
+  }
+  return { valid: false };
+}
+// Check the key, make the credits record on first sight (carrying over builds an old key already used), say how many builds are left.
 async function licenseState(env, key) {
   key = String(key || "").trim();
   if (!/^[\w-]{8,100}$/.test(key)) return { ok: false, why: "bad" };
-  const base = env.DODO_BASE || "https://live.dodopayments.com";
-  let v;
-  try { v = await (await fetch(base + "/licenses/validate", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ license_key: key }) })).json(); }
-  catch { return { ok: false, why: "err" }; }
-  if (!v || !v.valid) return { ok: false, why: "bad" };
-  const k = "l:" + (await sha(key)), cap = parseInt(env.KEY_USES || "3", 10);
-  const used = parseInt((await env.RATE.get(k)) || "0", 10);
-  return { ok: used < cap, why: used < cap ? "" : "used", k, used, left: Math.max(0, cap - used), cap };
+  const c = await checkKey(env, key);
+  if (!c.valid) return { ok: false, why: c.err ? "err" : "bad" };
+  const h = await sha(key), k = "c:" + h;
+  let rec = null; try { rec = JSON.parse((await env.RATE.get(k)) || "null"); } catch {}
+  if (!rec) {
+    if (c.src === "dodo" && !c.pid) {   // validate only says valid:true, so one activation (public, once per key) tells us which product the key belongs to
+      const base = env.DODO_BASE || "https://live.dodopayments.com";
+      try {
+        const a = await (await fetch(base + "/licenses/activate", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ license_key: key, name: "naukri-saathi" }) })).json();
+        c.pid = String((a && a.product && a.product.product_id) || "");
+      } catch { return { ok: false, why: "err" }; }
+      if (!c.pid) return { ok: false, why: "err" };
+    }
+    const legacy = parseInt((await env.RATE.get("l:" + h)) || "0", 10);
+    rec = { total: c.builds != null ? c.builds : buildsFor(env, c.pid), used: legacy, pid: c.pid, src: c.src };
+    await env.RATE.put(k, JSON.stringify(rec));
+  }
+  const left = Math.max(0, rec.total - rec.used);
+  return { ok: left > 0, why: left > 0 ? "" : "used", k, rec, left, total: rec.total, src: rec.src };
+}
+// A return link can carry several keys (comma separated). Builds add up; resume spends from the first key that still has builds.
+async function multiState(env, raw) {
+  const keys = [...new Set(String(raw || "").split(",").map(x => x.trim()).filter(Boolean))].slice(0, 5);
+  let first = null, left = 0, total = 0, any = false, err = false;
+  for (const k of keys) {
+    const s = await licenseState(env, k);
+    if (s.why === "err") err = true;
+    if (s.why === "bad" || s.why === "err") continue;
+    any = true; left += s.left; total += s.total;
+    if (!first && s.ok) first = s;
+  }
+  if (!any) return { ok: false, why: err ? "err" : "bad" };
+  return first ? { ...first, left, total } : { ok: false, why: "used", left: 0, total };
+}
+// Cart ids -> Dodo product ids (env CART_MAP JSON overrides, for Test Mode). Prices always come from Dodo, never from the browser.
+const CART = { "resume-pack": "pdt_0Nsfhn6O668Dyh0u4DfzT", "book": "pdt_0NsfqBgckSldyix31WYqk", "bundle": "pdt_0Nsfq752nERacUSGTvobA" };
+async function checkout(env, body, ip, origin) {
+  if (!env.DODO_API_KEY) return json({ error: "checkout off" }, 503, origin);
+  const day = new Date().toISOString().slice(0, 10);
+  if (!(await bump(env, "o:" + day + ":" + ip, 20, 90000))) return json({ error: "limit" }, 429, origin);
+  let map = CART; try { map = JSON.parse(env.CART_MAP || "null") || CART; } catch {}
+  let ids = [...new Set((Array.isArray(body.items) ? body.items : []).slice(0, 8).map(x => { x = String(x); return x === "book-en" || x === "book-hi" ? "book" : x; }))].filter(x => map[x]);
+  if (ids.includes("bundle")) ids = ids.filter(x => x !== "book");
+  if (!ids.length) return json({ error: "empty cart" }, 400, origin);
+  const email = String(body.email || "").trim(), ret = String(body.return_url || "");
+  const payload = { product_cart: ids.map(x => ({ product_id: map[x], quantity: 1 })), return_url: ret.startsWith("https://www.techsamjhoraj.com/") ? ret.slice(0, 300) : "https://www.techsamjhoraj.com/naukri-saathi/" };
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) && email.length < 120) payload.customer = { email };
+  let r; try { r = await fetch((env.DODO_BASE || "https://live.dodopayments.com") + "/checkouts", { method: "POST", headers: { "content-type": "application/json", "authorization": "Bearer " + env.DODO_API_KEY }, body: JSON.stringify(payload) }); } catch { return json({ error: "upstream" }, 502, origin); }
+  const d = await r.json().catch(() => ({}));
+  return d.checkout_url ? json({ checkout_url: d.checkout_url }, 200, origin) : json({ error: "upstream " + r.status }, 502, origin);
 }
 async function claude(env, payload) {
   let r;
@@ -189,10 +256,14 @@ export default {
     const lang = body.lang === "en" ? "en" : "hi";
     const action = String(body.action || "match");
 
-    if (action === "license") {
-      const s = await licenseState(env, body.license);
-      return json({ valid: s.why !== "bad" && s.why !== "err", left: s.left || 0, why: s.why || "" }, 200, origin);
+    if (action === "license" || action === "redeem") {
+      const ik = "r:" + new Date().toISOString().slice(0, 13) + ":" + ip;      // stop key guessing: 30 tries per IP per hour
+      if (!(await bump(env, ik, 30, 4000))) return json({ error: "limit" }, 429, origin);
+      const s = await multiState(env, body.license);
+      return json({ valid: s.why !== "bad" && s.why !== "err", left: s.left || 0, total: s.total || 0, why: s.why || "" }, 200, origin);
     }
+
+    if (action === "checkout") return checkout(env, body, ip, origin);
 
     if (action === "job_url") {
       const day = new Date().toISOString().slice(0, 10);
@@ -217,16 +288,16 @@ export default {
       const cover = strip(body.cover);
       let lic = null;
       if (env.DODO_ON === "1") {
-        lic = await licenseState(env, body.license);
+        lic = await multiState(env, body.license);
         if (!lic.ok) return json({ error: lic.why === "used" ? "license used up" : "license" }, 402, origin);
-        await env.RATE.put(lic.k, String(lic.used + 1));          // reserve one build
+        await env.RATE.put(lic.k, JSON.stringify({ ...lic.rec, used: lic.rec.used + 1 }));   // reserve one build
       } else {
         const g = await gate(env, body, ip, origin); if (g) return g;
       }
       const r = await claude(env, { max_tokens: 4500, system: SYSTEM_RESUME, output_config: { effort: "low", format: { type: "json_schema", schema: RESUME_SCHEMA } },
         messages: [{ role: "user", content: `LANGUAGE: ${lang}\nLEVEL: ${String(body.level || "experienced").slice(0, 12)}\nFAMILY: ${String(body.family || "").slice(0, 8)}\nCOUNTRY: ${String(body.country || "IN").slice(0, 3)}\n<job>\n${job}\n</job>\n<resume>\n${resume}\n</resume>\n<cover>\n${cover}\n</cover>` }] });
       let out; if (!r.error) { try { out = JSON.parse(r.text); } catch { r.error = "bad answer"; r.status = 502; } }
-      if (r.error) { if (lic) await env.RATE.put(lic.k, String(lic.used)); return json({ error: r.error }, r.status, origin); }   // give the build back on failure
+      if (r.error) { if (lic) await env.RATE.put(lic.k, JSON.stringify(lic.rec)); return json({ error: r.error }, r.status, origin); }   // give the build back on failure
       return json(out, 200, origin);
     }
 
