@@ -920,7 +920,7 @@ function rulesResume(p,res){var lines=res.split(/\n+/).map(function(x){return x.
   check_these:["This basic version was made by simple rules: your own lines are kept as they are. The AI version rewrites them for the job.","Add your phone, email and city at the top."]}}
 
 /* ---- sector templates T1..T12 (from the template research of 24 Nov 2026) ---- */
-var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T12:"India classic",T13:"UK CV",T14:"US / Canada resume",T15:"German Lebenslauf",T16:"Europass-style CV",T17:"Australia resume",T18:"Gulf trade, driver and hospitality one-pager",T19:"Gulf healthcare CV",T20:"Singapore resume",T21:"US federal resume",T22:"India government biodata",T23:"Hindi one-page (trades and drivers)",T24:"Student or intern",T25:"Academic CV",T26:"Executive (15+ years)",T27:"Saffron strip: two-column with a side rail",T28:"Milestone: one-column timeline",T29:"Impact band: results at the top",T30:"Fresh grad grid: education and top projects",T31:"Desk neat: ultra-minimal",T32:"Gulf pro card: mid-level office roles",T33:"Thread: clean timeline, hollow dots"};
+var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T12:"India classic",T13:"UK CV",T14:"US / Canada resume",T15:"German Lebenslauf",T16:"Europass-style CV",T17:"Australia resume",T18:"Gulf trade, driver and hospitality one-pager",T19:"Gulf healthcare CV",T20:"Singapore resume",T21:"US federal resume",T22:"India government biodata",T23:"Hindi one-page (trades and drivers)",T24:"Student or intern",T25:"Academic CV",T26:"Executive (15+ years)",T27:"Saffron strip: two-column with a side rail",T28:"Milestone: one-column timeline",T29:"Impact band: results at the top",T30:"Fresh grad grid: education and top projects",T31:"Desk neat: ultra-minimal",T32:"Gulf pro card: mid-level office roles",T33:"Thread: clean timeline, hollow dots",T34:"Thread Rail: timeline with a tinted side rail"};
 var FAMNAME={it:"Software / IT",data:"Data / Analytics",sales:"Sales / Marketing",fin:"Accounting / Finance",cs:"Customer support",health:"Healthcare",teach:"Teaching",trade:"Skilled trades",host:"Hospitality / Retail",log:"Driver / Logistics",design:"Design / Content",admin:"HR / Admin / Office"};
 var LV=["fresher","experienced","gap","switcher","senior"];
 var CNAME={IN:"India",AE:"UAE / Gulf",UK:"UK",CA:"Canada",DE:"Germany",AU:"Australia",SG:"Singapore",US:"USA"};
@@ -1017,6 +1017,7 @@ var CFG={base:{acc:"#1F3A5F",nc:"#1F3A5F",ff:AR,hf:AR,fs:"10.5pt",lh:"1.35",ns:"
   T31:{acc:"#111111",nc:"#111111",noTheme:true,ns:"19.5pt",hs:"9pt",lh:"1.55",mt:"20px",rule:".5px solid #bbb",sumT:"Profile"},
   T32:{acc:"#1F3A5F",nc:"#1F3A5F",rule:"2px solid #1F3A5F",ph:"opt",sumT:"Profile"},
   T33:{acc:"#4F46E5",nc:"#1F2433",ink:"#1F2433",ff:"Inter,Segoe UI,Arial,sans-serif",hf:"Inter,Segoe UI,Arial,sans-serif",fs:"10.5pt",lh:"1.45",ns:"24pt",hs:"9pt",up:true,rule:"1px solid #E3E5EE",dm:"thr",sumT:"Profile"}};
+CFG.T34=Object.assign({},CFG.T33);
 var SKINNABLE=["T3","T4","T5","T6","T7","T8","T9"],SKIN={UK:"T13",CA:"T14",US:"T14",DE:"T15",AU:"T17",SG:"T20"};
 var SKINEND={UK:["ref0"],AU:["ref","wr"],DE:["pl"]};
 var SKINKEYS=["acc","nc","ff","hf","rule","up","dm","hs","ns","ph","lh","sumT","wp","layout"];
@@ -1114,9 +1115,10 @@ function buildResume(id,r,o){
   else head="<div style='overflow:hidden'>"+photo+"<div style='"+(id==="T9"?"border-left:5px solid "+cfg.acc+";padding-left:10px;":id==="T32"?"border-left:5px solid "+cfg.acc+";background:#F3F6FA;padding:8px 10px;":"")+"'><div style='font:"+(id==="T9"?"800":"700")+" "+cfg.ns+" "+cfg.hf+";color:"+cfg.nc+"'>"+esc(r.name||"[Your name]")+"</div><div style='margin:2px 0 3px'>"+esc(r.headline||"")+"</div>"+(cfg.bigPhone?"<div style='font:700 16pt "+cfg.hf+";color:#111'>[Phone]</div><div style='font-size:10.5pt;color:#444'>[Email] | [City]</div>":"<div style='font-size:9.5pt;color:#444'>"+contact+"</div>")+(cfg.wp?"<div style='font-size:9.5pt;color:#444'>"+cfg.wp+"</div>":"")+"</div></div>";
   var wrap="<div style=\"font:"+cfg.fs+"/"+cfg.lh+" "+cfg.ff+";color:"+(cfg.ink||"#111")+"\">";
   function W2(k,x){return "<div data-s='"+k+"'>"+x+"</div>"}
-  if(id==="T2"||id==="T27"){
+  if(id==="T2"||id==="T27"||id==="T34"){
     var side="<div data-s='head' style='font-size:9.5pt;color:#333'>"+(r.contact&&String(r.contact).trim()?esc(r.contact):"[Phone]<br>[Email]<br>[City]")+"</div>"+W2("skl",H("Skills",A(r.skills).length?"<div>"+A(r.skills).map(esc).join("<br>")+"</div>":""))+W2("lng",H("Languages",A(r.languages).map(esc).join("<br>")))+W2("crt",H("Certifications",UL(r.certifications)))+(A(r.licences).length?H("Licences",UL(r.licences)):"");
     var main="<div data-s='head' style='font:700 20pt "+cfg.hf+";color:"+cfg.acc+"'>"+esc(r.name||"[Your name]")+"</div><div style='margin-bottom:6px'>"+esc(r.headline||"")+"</div>"+W2("sum",S.sum())+W2("exp",S.exp())+W2("prj",S.prj())+W2("edu",S.edu());
+    if(id==="T34")return wrap+"<table style='width:100%;border-collapse:collapse'><tr><td style='width:68%;vertical-align:top;padding:4px 14px 4px 0'>"+main.replace("color:"+cfg.acc,"color:"+cfg.nc)+"</td><td style='width:32%;background:#F4F4FC;vertical-align:top;padding:10px'>"+side+"</td></tr></table></div>";
     return wrap+"<table style='width:100%;border-collapse:collapse'><tr><td style='width:30%;background:"+(id==="T27"?"#EEF0FB":"#F3F5F8")+";vertical-align:top;padding:10px'>"+side+"</td><td style='vertical-align:top;padding:10px 14px'>"+main+"</td></tr></table></div>"}
   var ord=(ORDER[id]||ORDER.T1).slice();
   function ins(k,after){if(ord.indexOf(k)>=0)return;var i=after?ord.indexOf(after):-1;if(after&&i<0)i=ord.length-1;ord.splice(i+1,0,k)}
@@ -1217,6 +1219,7 @@ var GAL=[
  ["T24","Student or intern: education and projects first.",ALLC,"f","1",0,"fresher"],
  ["T25","Academic CV: research, publications, teaching, grants.",ALLC,"m s","1",0,"senior"],
  ["T26","Executive: career highlights first, older roles shortened.",ALLC,"s e","1",0,"senior"],
+ ["T34","New. The Thread timeline in a wide main column plus a pale side rail for contact, skills and languages. IT, data, mid-level.",ALLC,"f m s","2",0,"experienced"],
  ["T33","New. A clean timeline: dates in a gutter, a hairline with hollow dots, role then company. White page, quiet indigo.",ALLC,"f m s","1",0,"experienced"],
  ["T27","New. A tinted side rail with contact, skills and languages; saffron-underlined titles. IT, data, marketing.","IN AE UK US AU SG","f m s","2",0,"experienced"],
  ["T28","New. A thin timeline with dates on the left. For steady career growth or a switch.",ALLC,"m s","1",0,"experienced"],
@@ -1321,7 +1324,7 @@ function fa(l,p,v,k,ph){var val=k==="csv"?arr(v).join(", "):k==="str"?S1(v):arr(
 function secWrap(k,title,body,mov){return '<details class="ssec" data-sec="'+k+'"'+(ST.open[k]?" open":"")+'><summary>'+(mov?'<span class="grab" draggable="true" data-grab="'+k+'" title="Drag to reorder" aria-hidden="true">⠿</span>':"")+'<span class="hd">'+title+'</span>'+(mov?'<button type="button" class="mv" data-mv="'+k+':-1" aria-label="Move '+title+' up">↑</button><button type="button" class="mv" data-mv="'+k+':1" aria-label="Move '+title+' down">↓</button>':"")+'</summary><div class="bd">'+body+'</div></details>'}
 function items(key,list,fn,addLabel){return list.map(function(x,i){return '<div class="item">'+fn(x,i)+'<div class="actions" style="margin-top:6px"><button class="btn ghost" type="button" data-del="'+key+':'+i+'" style="padding:6px 10px;min-height:36px;font-size:13px">Remove this</button></div></div>'}).join("")+'<div class="actions"><button class="btn ghost" type="button" data-add="'+key+'">'+addLabel+'</button></div>'}
 function stBuildForm(){var r=ST.r,h="";
-  var fixed=(ST.tpl==="T2"||ST.tpl==="T27");
+  var fixed=(ST.tpl==="T2"||ST.tpl==="T27"||ST.tpl==="T34");
   h+='<p class="note" style="margin:6px 0">'+(fixed?"This two-column layout keeps a fixed section order. Pick another template to reorder.":"Reorder sections with the arrows or by dragging the dots.")+' Fill only what is true. Text in <b>[brackets]</b> is a reminder: the Score tab counts it.</p>';
   h+=secWrap("head","Name and contact",fi("Full name","name",r.name,"Your name")+fi("Headline (job title)","headline",r.headline)+fi("Contact line (stays on this device)","contact",r.contact,"Phone | email | city | LinkedIn"));
   var B={
@@ -1456,7 +1459,7 @@ $("stDoc").onclick=function(){var html="<html xmlns:o='urn:schemas-microsoft-com
 /* ---- tabs, selects, opening ---- */
 function stTab(t){ST.tab=t;document.querySelectorAll("#stTabs button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-tab")===t)});
   ["content","design","tailor","score"].forEach(function(k){$("p"+k.charAt(0).toUpperCase()+k.slice(1)).classList.toggle("hide",k!==t)});
-  if(t==="design")$("stOrdNote").textContent=(ST.tpl==="T2"||ST.tpl==="T27")?"This layout keeps a fixed section order.":"Section order: change it in the Content tab.";
+  if(t==="design")$("stOrdNote").textContent=(ST.tpl==="T2"||ST.tpl==="T27"||ST.tpl==="T34")?"This layout keeps a fixed section order.":"Section order: change it in the Content tab.";
   stRender()}
 $("stTabs").addEventListener("click",function(e){var b=e.target.closest("[data-tab]");if(b)stTab(b.getAttribute("data-tab"))});
 (function(){var t=$("stTpl");Object.keys(TPL).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k+". "+TPL[k];t.appendChild(o)});
