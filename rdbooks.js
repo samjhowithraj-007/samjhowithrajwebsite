@@ -12,7 +12,9 @@ const rs = n => "₹" + n;
 const BUILD_NOTE = DODO_LIVE ? "" : " (arrives with our new checkout)";
 
 function card(c){
-  const stage = c.cover
+  const stage = c.lang
+    ? `<span class="bk-lang" style="--lc:${c.lang[1]}" role="img" aria-label="${esc(c.title)} book cover (placeholder)"><b>${esc(c.lang[0])}</b><small>Samjho with Raj</small><i>Coming soon</i></span>`
+    : c.cover
     ? `<img${c.mock ? ' class="mock"' : ""} src="${c.cover}" alt="${esc(c.alt)}" width="${c.w}" height="${c.h}" loading="lazy" decoding="async">`
     : `<span class="emo" aria-hidden="true">${c.emoji}</span>`;
   const ext = c.ext ? ' target="_blank" rel="noopener"' : "";
@@ -46,6 +48,18 @@ function cards(B, A){
       meta:"English, Hinglish and Hindi · on the Paisa site · education only, not financial advice", priceNote:"See price on paisasamjhoraj.com", href:"https://www.paisasamjhoraj.com/", go:"https://www.paisasamjhoraj.com/", goLabel:"See it on the Paisa site ↗" },
     { cats:["reasoning"], title:"Reasoning Samjho", pill:"Exam reasoning", cover:MEDIA + "reasoning-cover.webp", w:420, h:596, alt:"Reasoning Samjho book cover: Dimaag Dada at a green chalkboard", ext:1, mascot:"img/dada-badge-128.png",
       meta:"192 puzzles + 3 mock tests · SSC, Bank, Railway, CSAT, CAT and more · on dimaagdada.com", priceNote:"See price on dimaagdada.com", href:"https://www.dimaagdada.com/reasoning-puzzles/", go:"https://www.dimaagdada.com/reasoning-puzzles/", goLabel:"See it on dimaagdada.com ↗", preview:"https://www.dimaagdada.com/notes/puzzles-1-en-preview.pdf", previewExt:1, previewLabel:"Free Chapter 1 →" },
+    { cats:["tech"], title:"JavaScript", pill:"Coding", badge:"Coming soon", lang:["JavaScript","#f2b01e"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"Java", pill:"Coding", badge:"Coming soon", lang:["Java","#f4966a"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"C", pill:"Coding", badge:"Coming soon", lang:["C","#7fb2ee"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"C++", pill:"Coding", badge:"Coming soon", lang:["C++","#8bbaf0"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"SQL", pill:"Coding", badge:"Coming soon", lang:["SQL","#52c9ab"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"HTML/CSS", pill:"Coding", badge:"Coming soon", lang:["HTML/CSS","#f58c80"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"Go", pill:"Coding", badge:"Coming soon", lang:["Go","#2bb3c9"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech"], title:"PHP", pill:"Coding", badge:"Coming soon", lang:["PHP","#aab4ef"], meta:"Programming book · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech","kids"], title:"Jugnu Learns to Glow", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-jugnu.webp", w:540, h:720, alt:"Jugnu Learns to Glow book cover with Jugnu the purple firefly", meta:"Machine learning for kids · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["tech","kids"], title:"Dabba Builds Games", pill:"Teens 13–18", badge:"Coming soon", cover:MEDIA + "kids-dabba-teens.webp", w:540, h:699, alt:"Dabba Builds Games book cover with Dabba the tiffin robot holding a game controller", meta:"Python game coding for teens · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" },
+    { cats:["money","kids"], title:"Kauri Levels Up", pill:"Teens 13–18", badge:"Coming soon", cover:MEDIA + "kids-kauri-teens.webp", w:540, h:720, alt:"Kauri Levels Up book cover with Kauri the cowrie shell climbing coin stacks", meta:"Money smarts for teens · Samjho Squad · education only, not financial advice", priceNote:"Not released", href:"#shop" },
+    { cats:["kids"], title:"Tikki's Future Files 2027", pill:"Teens 13–18", badge:"Coming soon", cover:MEDIA + "kids-tikki-teens.webp", w:540, h:699, alt:"Tikki's Future Files 2027 book cover with Tikki the satellite", meta:"Science and tech facts for teens · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" },
     { cats:["tech","kids"], title:"Dabba Codes! Python for Young Explorers", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-dabba.webp", w:560, h:560, alt:"Dabba Codes! book cover with Dabba the tiffin robot", meta:"Kids' Python series · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" },
     { cats:["money","kids"], title:"Kauri's Pocket Money Adventure", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-kauri.webp", w:560, h:560, alt:"Kauri's Pocket Money Adventure book cover with Kauri the cowrie shell", meta:"Kids' money basics · Samjho Squad · education only, not financial advice", priceNote:"Not released", href:"#shop" },
     { cats:["kids"], title:"Tikki's Wow World 2027", pill:"Ages 9–13", badge:"Coming soon", cover:MEDIA + "kids-tikki.webp", w:560, h:560, alt:"Tikki's Wow World 2027 book cover with Tikki the satellite", meta:"Science and tech facts for kids · Samjho Squad · not released yet", priceNote:"Not released", href:"#shop" }

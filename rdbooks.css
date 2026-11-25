@@ -131,3 +131,14 @@
 @media (min-width:640px) and (max-width:819px){.bk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .bk-badge{white-space:nowrap}@media (max-width:639px){.bk-stage>.bk-badge{top:auto;bottom:8px;right:auto;left:0;border-radius:0 99px 99px 0;padding:3px 10px 3px 8px;font-size:11px}.bk-stage>.bk-mascot{width:28px;height:28px}}
 a.bk-btn.pri,button.bk-btn.pri{color:#fff!important}:root:not([data-theme="light"]) a.bk-btn.pri,:root:not([data-theme="light"]) button.bk-btn.pri{color:#10131f!important}.bk-bundle a.bk-btn.pri,.bk-sticky a.bk-btn.pri{color:var(--bk-saf-ink)!important}
+
+/* placeholder cover for planned programming-language books (plain text, no logos); swap for a Canva cover via cover:"..." */
+.bk-lang{align-self:center;display:grid;gap:6px;align-content:center;justify-items:center;text-align:center;width:72%;aspect-ratio:3/4;padding:14px 8px;border-radius:6px;background:linear-gradient(165deg,#1b1f4b,#2c2f78);color:#fff;border-top:6px solid var(--lc);box-shadow:0 10px 24px rgba(27,31,75,.25)}
+.bk-lang b{font-size:clamp(20px,2.4vw,28px);line-height:1.1;color:var(--lc)}
+.bk-lang small{font-size:11px;opacity:.85}
+.bk-lang i{font-style:normal;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--lc);color:#1b1f4b}
+.bk-lang b{font-size:clamp(17px,2.2vw,26px);max-width:100%;overflow-wrap:anywhere}
+.bk-lang small{color:#fff!important;opacity:1}
+.bk-lang i{background:#fff!important;color:#1b1f4b!important;border:2px solid var(--lc)}
+.bk-lang b{color:var(--lc)!important}
+@media (max-width:639px){.bk-lang b{font-size:16px}}
