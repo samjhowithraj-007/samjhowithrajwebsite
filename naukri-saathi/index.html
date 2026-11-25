@@ -966,7 +966,7 @@ function renderDoc(){var o={country:$("tgtCountry").value,level:$("lvl").value,f
 
 
 /* ---- cover letter styles C1..C4, chosen from job type and level (made in the same build, no extra cost) ---- */
-var CLS={C1:"Formal letter (block style)",C2:"Modern short letter",C3:"Fresher letter (why I want this job)",C4:"Achievement-led letter",C5:"Thread header (matches T33)",C6:"Ledger header (matches T36)",C7:"Hinglish short note (matches T38)",C8:"Exec header (matches T37)"};
+var CLS={C1:"Formal letter (block style)",C2:"Modern short letter",C3:"Fresher letter (why I want this job)",C4:"Achievement-led letter",C5:"Thread header (matches T33)",C6:"Ledger header (matches T36)",C7:"Short plain note (matches T38)",C8:"Exec header (matches T37)"};
 var clSel=$("clSel");Object.keys(CLS).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k+". "+CLS[k];clSel.appendChild(o)});
 function pickCl(fam,lv){if(lv==="fresher")return "C3";if(fam==="sales"||lv==="senior")return "C4";if(/^(health|teach|fin|trade|admin)$/.test(fam))return "C1";return "C2"}
 var CLMODE="res";
@@ -979,7 +979,7 @@ function letterData(r){var L=r&&r.cover_letter;if(L&&L.paragraphs&&L.paragraphs.
 function buildLetter(id,r,o){
   var L=letterData(r),nm=esc((r&&r.name)||"[Your name]"),role=esc((r&&r.headline)||"[Job title]");
   var acc=(VIEW!=="ats"&&DTHEME[DES.col])||(id==="C4"?"#0E7C7B":"#1F3A5F"),ff=id==="C1"?"Georgia,'Times New Roman',serif":(id==="C6"||id==="C8")?GE:id==="C7"?HIF:"Arial,Helvetica,sans-serif",fs=id==="C1"?"11.5pt":id==="C7"?"11pt":"10.5pt";
-  if(id==="C7"&&/^\[Write why/.test((L.paragraphs||[""])[0])){L={salutation:"Namaste [Hiring manager] ji,",paragraphs:["[Main ___ post ke liye apply kar raha hoon.]","[Mere paas ___ saal ka ___ kaam ka anubhav hai. Maine ___ kiya hai.]","[Main jaldi join kar sakta hoon. Aap mujhe is number par call kar sakte hain.]"],closing:"Dhanyavaad,"}}
+  if(id==="C7"&&/^\[Write why/.test((L.paragraphs||[""])[0])){L={salutation:"Dear [Hiring manager],",paragraphs:["[I am applying for the ___ post.]","[I have ___ years of experience in ___. I have done ___.]","[I can join soon. You can call me on the number above.]"],closing:"Thank you,"}}
   var paras=(L.paragraphs||[]).map(function(x){return "<p style='margin:0 0 9px'>"+esc(x)+"</p>"}).join("");
   var contact="[Phone] | [Email] | [City]";
   var head=id==="C1"?"<div style='text-align:right'><b>"+nm+"</b><br>[Address line, City]<br>[Phone] | [Email]</div><p style='margin:14px 0 0'>[Date]</p><p style='margin:10px 0'>[Hiring manager name]<br>[Company name]<br>[Company city]</p>"

@@ -1,5 +1,5 @@
 // Offline support for Tech Samjho Raj. Bump VERSION on any change to this file or the precache list.
-const VERSION = "v147";
+const VERSION = "v148";
 const CACHE = "samjhowithraj-" + VERSION;
 const PRECACHE = ["./", "index.html", "manifest.webmanifest", "img/badge-96.png", "img/favicon-32.png", "img/botu-192.png", "img/botu-512.png", "img/botu-apple-180.png", "img/botu-hello.webp", "redesign.css", "rdlight.css", "rdhome.css", "rdhome.js", "rdbar.js", "rdtools.js", "rdlearn.js", "rdauth.js", "rdplayer.js", "rdnews.js", "rdbooks.js", "cart.js", "rdbooks.css", "img/rd/botu.png"];
 
