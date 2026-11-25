@@ -25,3 +25,8 @@ The ☕ **Ask Raj** button answers questions about this site in three layers:
 3. **Claude (optional):** if `ASK_WORKER` is set, the question and the ids of the top 4 passages go to the Cloudflare Worker in the `ask-raj-worker` repo. It answers only from those passages, using `claude-haiku-5-5`. If anything fails, layer 2's answer is shown.
 
 Nothing is stored about the visitor. See `ask-raj-worker/README.md` for the Worker's limits and cost.
+
+## Deploy rules for everyone who pushes (25 Nov 2026)
+1. Batch your changes into ONE push, then wait for the "Publish website" run to go green before the next push (runs now queue instead of cancelling each other).
+2. If a run fails, "Re-run failed jobs" ONCE. The workflow already retries the deploy step once by itself, so a manual re-run is rarely needed; never re-run the same run twice (it leaves duplicate artifacts).
+3. Never push empty "retry" commits; check the run page for the error first. Workflow changes need Raj's typed yes.

@@ -15,14 +15,11 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false   # queue runs; cancelling a running Pages deploy can leave it half-finished
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
@@ -37,5 +34,22 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
-      - id: deployment
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.retry.outputs.page_url || steps.first.outputs.page_url }}
+    steps:
+      - name: Let the new artifact register
+        run: sleep 15
+      - id: first
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - name: Wait before one retry
+        if: steps.first.outcome == 'failure'
+        run: sleep 60
+      - id: retry
+        if: steps.first.outcome == 'failure'
         uses: actions/deploy-pages@v4

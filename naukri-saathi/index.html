@@ -246,6 +246,8 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
 }
 /* resume paper is its own world: undo the page-wide table styles inside it */
 .gpage table,.spage table,#sprint table,#doc table{min-width:0}
+.gpage:has([data-pgbg=cream]),.spage:has([data-pgbg=cream]),#sprint:has([data-pgbg=cream]),#doc:has([data-pgbg=cream]){background:#FFFAF2!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.gpage:has([data-pgbg=ivory]),.spage:has([data-pgbg=ivory]),#sprint:has([data-pgbg=ivory]),#doc:has([data-pgbg=ivory]){background:#FFFDF8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gpage td,.gpage th,.spage td,.spage th,#sprint td,#sprint th,#doc td,#doc th{border-bottom:0}
 .gpage th,.spage th,#sprint th,#doc th{font-size:inherit;text-transform:none;letter-spacing:0;color:inherit}
 #sprint{display:none}
@@ -920,7 +922,7 @@ function rulesResume(p,res){var lines=res.split(/\n+/).map(function(x){return x.
   check_these:["This basic version was made by simple rules: your own lines are kept as they are. The AI version rewrites them for the job.","Add your phone, email and city at the top."]}}
 
 /* ---- sector templates T1..T12 (from the template research of 24 Nov 2026) ---- */
-var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T12:"India classic",T13:"UK CV",T14:"US / Canada resume",T15:"German Lebenslauf",T16:"Europass-style CV",T17:"Australia resume",T18:"Gulf trade, driver and hospitality one-pager",T19:"Gulf healthcare CV",T20:"Singapore resume",T21:"US federal resume",T22:"India government biodata",T23:"Hindi one-page (trades and drivers)",T24:"Student or intern",T25:"Academic CV",T26:"Executive (15+ years)",T27:"Saffron strip: two-column with a side rail",T28:"Milestone: one-column timeline",T29:"Impact band: results at the top",T30:"Fresh grad grid: education and top projects",T31:"Desk neat: ultra-minimal",T32:"Gulf pro card: mid-level office roles",T33:"Thread: clean timeline, hollow dots",T34:"Thread Rail: timeline with a tinted side rail",T35:"Gulf Thread: timeline, licence block, optional photo"};
+var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T12:"India classic",T13:"UK CV",T14:"US / Canada resume",T15:"German Lebenslauf",T16:"Europass-style CV",T17:"Australia resume",T18:"Gulf trade, driver and hospitality one-pager",T19:"Gulf healthcare CV",T20:"Singapore resume",T21:"US federal resume",T22:"India government biodata",T23:"Hindi one-page (trades and drivers)",T24:"Student or intern",T25:"Academic CV",T26:"Executive (15+ years)",T27:"Saffron strip: two-column with a side rail",T28:"Milestone: one-column timeline",T29:"Impact band: results at the top",T30:"Fresh grad grid: education and top projects",T31:"Desk neat: ultra-minimal",T32:"Gulf pro card: mid-level office roles",T33:"Thread: clean timeline, hollow dots",T34:"Thread Rail: timeline with a tinted side rail",T35:"Gulf Thread: timeline, licence block, optional photo",T36:"Cream Ledger: dates in a left gutter, centred name",T37:"Exec Thread: key results row, navy timeline, 2 pages",T38:"Bilingual Basic: Hindi + English titles, large type, 1 page"};
 var FAMNAME={it:"Software / IT",data:"Data / Analytics",sales:"Sales / Marketing",fin:"Accounting / Finance",cs:"Customer support",health:"Healthcare",teach:"Teaching",trade:"Skilled trades",host:"Hospitality / Retail",log:"Driver / Logistics",design:"Design / Content",admin:"HR / Admin / Office"};
 var LV=["fresher","experienced","gap","switcher","senior"];
 var CNAME={IN:"India",AE:"UAE / Gulf",UK:"UK",CA:"Canada",DE:"Germany",AU:"Australia",SG:"Singapore",US:"USA"};
@@ -964,7 +966,7 @@ function renderDoc(){var o={country:$("tgtCountry").value,level:$("lvl").value,f
 
 
 /* ---- cover letter styles C1..C4, chosen from job type and level (made in the same build, no extra cost) ---- */
-var CLS={C1:"Formal letter (block style)",C2:"Modern short letter",C3:"Fresher letter (why I want this job)",C4:"Achievement-led letter",C5:"Thread header (matches T33)"};
+var CLS={C1:"Formal letter (block style)",C2:"Modern short letter",C3:"Fresher letter (why I want this job)",C4:"Achievement-led letter",C5:"Thread header (matches T33)",C6:"Ledger header (matches T36)",C7:"Hinglish short note (matches T38)",C8:"Exec header (matches T37)"};
 var clSel=$("clSel");Object.keys(CLS).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k+". "+CLS[k];clSel.appendChild(o)});
 function pickCl(fam,lv){if(lv==="fresher")return "C3";if(fam==="sales"||lv==="senior")return "C4";if(/^(health|teach|fin|trade|admin)$/.test(fam))return "C1";return "C2"}
 var CLMODE="res";
@@ -976,11 +978,12 @@ function letterData(r){var L=r&&r.cover_letter;if(L&&L.paragraphs&&L.paragraphs.
   var t=(LAST&&LAST.cover)||"";var ps=t.split(/\n\s*\n/).map(function(x){return x.trim()}).filter(Boolean);return {salutation:"Dear [Hiring manager],",paragraphs:ps.length?ps:["[Write why you want this job and what you offer, using facts from your resume.]"],closing:"Yours sincerely,"}}
 function buildLetter(id,r,o){
   var L=letterData(r),nm=esc((r&&r.name)||"[Your name]"),role=esc((r&&r.headline)||"[Job title]");
-  var acc=(VIEW!=="ats"&&DTHEME[DES.col])||(id==="C4"?"#0E7C7B":"#1F3A5F"),ff=id==="C1"?"Georgia,'Times New Roman',serif":"Arial,Helvetica,sans-serif",fs=id==="C1"?"11.5pt":"10.5pt";
+  var acc=(VIEW!=="ats"&&DTHEME[DES.col])||(id==="C4"?"#0E7C7B":"#1F3A5F"),ff=id==="C1"?"Georgia,'Times New Roman',serif":(id==="C6"||id==="C8")?GE:id==="C7"?HIF:"Arial,Helvetica,sans-serif",fs=id==="C1"?"11.5pt":id==="C7"?"11pt":"10.5pt";
+  if(id==="C7"&&/^\[Write why/.test((L.paragraphs||[""])[0])){L={salutation:"Namaste [Hiring manager] ji,",paragraphs:["[Main ___ post ke liye apply kar raha hoon.]","[Mere paas ___ saal ka ___ kaam ka anubhav hai. Maine ___ kiya hai.]","[Main jaldi join kar sakta hoon. Aap mujhe is number par call kar sakte hain.]"],closing:"Dhanyavaad,"}}
   var paras=(L.paragraphs||[]).map(function(x){return "<p style='margin:0 0 9px'>"+esc(x)+"</p>"}).join("");
   var contact="[Phone] | [Email] | [City]";
   var head=id==="C1"?"<div style='text-align:right'><b>"+nm+"</b><br>[Address line, City]<br>[Phone] | [Email]</div><p style='margin:14px 0 0'>[Date]</p><p style='margin:10px 0'>[Hiring manager name]<br>[Company name]<br>[Company city]</p>"
-    :"<div style='"+(id==="C2"?"border-left:5px solid "+acc+";padding-left:10px;":id==="C5"?"border-bottom:1px solid #E3E5EE;padding-bottom:8px;":"")+"'><div style='font:700 18pt "+ff+";color:"+acc+"'>"+nm+"</div><div style='font-size:9.5pt;color:#444'>"+contact+"</div></div><p style='margin:14px 0 6px'>[Date]</p>";
+    :"<div style='"+(id==="C2"?"border-left:5px solid "+acc+";padding-left:10px;":id==="C5"?"border-bottom:1px solid #E3E5EE;padding-bottom:8px;":id==="C6"?"text-align:center;border-bottom:1px solid #CFC8B8;padding-bottom:8px;":id==="C8"?"border-bottom:2px solid #1F3A5F;padding-bottom:8px;":id==="C7"?"border-bottom:1px solid #1F3A5F;padding-bottom:8px;":"")+"'><div style='font:700 18pt "+ff+";color:"+acc+"'>"+nm+"</div><div style='font-size:9.5pt;color:#444'>"+contact+"</div></div><p style='margin:14px 0 6px'>[Date]</p>";
   var subj="<p style='margin:8px 0'><b>Subject: Application for "+role+"</b></p>";
   var strip=id==="C4"&&r&&(r.key_results||[])[0]?"<p style='margin:0 0 10px;padding:6px 10px;border-left:4px solid "+acc+";background:#fff'><b>"+esc(r.key_results[0])+"</b></p>":"";
   var fit=id==="C3"?"<p style='margin:0 0 9px;color:#444'>[Optional: add one line about your best project or college achievement that matches this job.]</p>":"";
@@ -990,7 +993,7 @@ var ORDER={T1:["sum","skl","exp","prj","edu","crt","lng"],T3:["sum","prj","edu",
   T13:["sum","exp","edu","skl","ref0"],T14:["sum","exp","skl","edu"],T15:["pd","sum","exp","edu","lng","skl","int","pl"],T16:["pi","sum","exp","edu","lng","skl"],T17:["sum","ksk","exp","edu","crt","ref","wr"],
   T18:["pg","lic","skl","exp","lng"],T19:["lgl","sum","exp","crt","edu","ref"],T20:["sum","exp","edu","skl","lng"],T21:["ctz","exp","edu","crt","skl"],T22:["bio","edu","exp","lng","dec"],
   T23:["exp","skl","lic","edu","lng"],T24:["sum","edu","prj","exp","skl","ach","clb"],T25:["edu","ri","exp","pub","conf","tch","grn","awd","ref"],T26:["sum","hl","exp","edu","brd"],
-  T28:["sum","exp","prj","edu","skl","crt","lng"],T29:["res","sum","exp","skl","edu","crt"],T30:["grid","sum","skt","exp","crt","lng"],T31:["sum","exp","edu","skl","prj","crt","lng"],T32:["pdn","sum","exp","edu","skl","lng","crt","ref0"],T33:["sum","exp","edu","skl","prj","crt","lng"],T35:["pdn","glic","sum","exp","edu","skl","lng","crt"]};
+  T28:["sum","exp","prj","edu","skl","crt","lng"],T29:["res","sum","exp","skl","edu","crt"],T30:["grid","sum","skt","exp","crt","lng"],T31:["sum","exp","edu","skl","prj","crt","lng"],T32:["pdn","sum","exp","edu","skl","lng","crt","ref0"],T33:["sum","exp","edu","skl","prj","crt","lng"],T35:["pdn","glic","sum","exp","edu","skl","lng","crt"],T36:["sum","exp","edu","skl","prj","crt","lng"],T37:["sum","res","exp","edu","skl","crt","lng"],T38:["exp","skl","lic","edu","lng"]};
 /* look of each template (inline styles only, so the Word export keeps it) */
 var AR="Arial,Helvetica,sans-serif",GE="Georgia,Times New Roman,serif",HIF="Noto Sans Devanagari,Nirmala UI,Mangal,Arial,sans-serif";
 var CFG={base:{acc:"#1F3A5F",nc:"#1F3A5F",ff:AR,hf:AR,fs:"10.5pt",lh:"1.35",ns:"20pt",hs:"11pt",rule:"1px solid #999",up:true,dm:"none",ph:""},
@@ -1019,9 +1022,13 @@ var CFG={base:{acc:"#1F3A5F",nc:"#1F3A5F",ff:AR,hf:AR,fs:"10.5pt",lh:"1.35",ns:"
   T33:{acc:"#4F46E5",nc:"#1F2433",ink:"#1F2433",ff:"Inter,Segoe UI,Arial,sans-serif",hf:"Inter,Segoe UI,Arial,sans-serif",fs:"10.5pt",lh:"1.45",ns:"24pt",hs:"9pt",up:true,rule:"1px solid #E3E5EE",dm:"thr",sumT:"Profile"}};
 CFG.T34=Object.assign({},CFG.T33);
 CFG.T35=Object.assign({},CFG.T33,{lvl:true,sumT:"Profile"});
+CFG.T36={acc:"#1F2A44",nc:"#1F2A44",ink:"#222222",ff:GE,hf:GE,fs:"10.5pt",lh:"1.45",ns:"22pt",hs:"9pt",up:true,rule:"1px solid #CFC8B8",dm:"led",sumT:"Profile"};
+CFG.T37={acc:"#1F3A5F",nc:"#1F3A5F",ink:"#222222",ff:GE,hf:GE,fs:"10.5pt",lh:"1.45",ns:"24pt",hs:"9pt",up:true,rule:"1px solid #D5D8E8",dm:"thr",orgFirst:true,bigSum:true,tlc:"#1F3A5F",sumT:"Profile"};
+CFG.T38={acc:"#1F3A5F",nc:"#1F3A5F",ink:"#111111",ff:HIF,hf:HIF,fs:"11pt",lh:"1.4",ns:"22pt",hs:"10pt",up:false,rule:"1px solid #1F3A5F",hi:true,hiMore:true,bigPhone:true,phCity:true};
 var SKINNABLE=["T3","T4","T5","T6","T7","T8","T9"],SKIN={UK:"T13",CA:"T14",US:"T14",DE:"T15",AU:"T17",SG:"T20"};
 var SKINEND={UK:["ref0"],AU:["ref","wr"],DE:["pl"]};
 var SKINKEYS=["acc","nc","ff","hf","rule","up","dm","hs","ns","ph","lh","sumT","wp","layout"];
+var HI2={"Summary":"परिचय (Summary)","Objective":"उद्देश्य (Objective)","Profile":"परिचय (Profile)","Projects":"प्रोजेक्ट (Projects)","Certifications":"सर्टिफिकेट (Certificates)"};
 var HI={"Experience":"काम का अनुभव (Experience)","Skills":"स्किल्स और मशीनें (Skills)","Education":"पढ़ाई (Education)","Languages":"भाषाएँ (Languages)","Trade and licences":"लाइसेंस (Licence)","Registration and licences":"लाइसेंस (Licence)","Internships and experience":"काम का अनुभव (Experience)"};
 var LICH={"UK:health":"[NMC PIN, OSCE / CBT status, NHS band, IELTS or OET score]","UK:teach":"[QTS number, DBS status]","AU:health":"[AHPRA registration number, valid till]","AU:trade":"[Trade licence or certificate number, state, valid till]","CA:health":"[NNAS and NCLEX status, provincial licence number, valid till]","CA:trade":"[Red Seal or provincial certificate of qualification: number, trade, hours]","US:health":"[State licence number, NCLEX status, clinical hours]","SG:teach":"[MOE registration or teaching qualification]","AE:teach":"[UAE teacher licence or attestation status; curriculum: IB / Cambridge / CBSE]"};
 function buildResume(id,r,o){
@@ -1038,24 +1045,25 @@ function buildResume(id,r,o){
     if(dz.ph==="off")cfg.ph="";else if(dz.ph==="on"&&!cfg.ph)cfg.ph="opt"}
   function A(x){return Array.isArray(x)?x.filter(Boolean):[]}
   function PH(t){return "<p style='margin:2px 0;color:#444'>"+t+"</p>"}
-  function H(t,inner,extra){if(!inner)return "";if(cfg.hi&&HI[t])t=HI[t];
+  function H(t,inner,extra){if(!inner)return "";if(cfg.hi&&HI[t])t=HI[t];else if(cfg.hiMore&&HI2[t])t=HI2[t];
     if(cfg.layout==="label")return "<table style='width:100%;border-collapse:collapse;margin-top:6px;border-top:1px solid #ccc'><tr><td style='width:26%;vertical-align:top;padding:6px 8px 6px 0;font-size:8.5pt;color:#666;text-transform:uppercase;letter-spacing:.06em'>"+t+"</td><td style='vertical-align:top;padding:6px 0'>"+inner+(extra||"")+"</td></tr></table>";
     return "<h3 style=\"font:700 "+cfg.hs+" "+cfg.hf+";"+(cfg.up?"letter-spacing:.06em;text-transform:uppercase;":"")+"margin:"+(cfg.mt||"13px")+" 0 4px;padding-bottom:2px;border-bottom:"+cfg.rule+";color:"+cfg.acc+"\">"+t+"</h3>"+inner+(extra||"")}
   function UL(a){a=A(a);return a.length?"<ul style='margin:0;padding-left:20px'>"+a.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>":""}
   function entry(head,dates,inner,mg){mg=mg||"8px 0 2px";
-    if(cfg.dm==="thr")return "<table style='width:100%;border-collapse:collapse'><tr><td style='width:22mm;vertical-align:top;text-align:right;padding:5px 8px 5px 0;font-size:9pt;color:#6B7186'>"+esc(dates||"")+"</td><td style='width:3mm;vertical-align:top;border-left:1px solid #D5D8E8;padding:0'><span style='display:inline-block;width:5px;height:5px;border:1px solid "+cfg.acc+";border-radius:50%;background:#fff;margin:9px 0 0 -4px'></span></td><td style='vertical-align:top;padding:5px 0 7px 8px'>"+head+inner+"</td></tr></table>";
+    if(cfg.dm==="led")return "<table style='width:100%;border-collapse:collapse'><tr><td style='width:26mm;vertical-align:top;text-align:left;padding:5px 10px 5px 0;font-size:9pt;color:#5B5648'>"+esc(dates||"")+"</td><td style='vertical-align:top;padding:5px 0 7px 0'>"+head+inner+"</td></tr></table>";
+    if(cfg.dm==="thr")return "<table style='width:100%;border-collapse:collapse'><tr><td style='width:22mm;vertical-align:top;text-align:right;padding:5px 8px 5px 0;font-size:9pt;color:#6B7186'>"+esc(dates||"")+"</td><td style='width:3mm;vertical-align:top;border-left:1px solid "+(cfg.tlc||"#D5D8E8")+";padding:0'><span style='display:inline-block;width:5px;height:5px;border:1px solid "+cfg.acc+";border-radius:50%;background:#fff;margin:9px 0 0 -4px'></span></td><td style='vertical-align:top;padding:5px 0 7px 8px'>"+head+inner+"</td></tr></table>";
     if(cfg.dm==="tl")return "<table style='width:100%;border-collapse:collapse'><tr><td style='width:26mm;vertical-align:top;text-align:right;padding:5px 8px 5px 0;font-size:9pt;color:#444'>"+esc(dates||"")+"</td><td style='width:3mm;vertical-align:top;border-left:2px solid "+cfg.acc+";padding:0'><span style='display:inline-block;width:9px;height:9px;border-radius:50%;background:"+cfg.acc+";margin:7px 0 0 -6px'></span></td><td style='vertical-align:top;padding:5px 0 5px 8px'>"+head+inner+"</td></tr></table>";
     if(cfg.dm==="col")return "<table style='width:100%;border-collapse:collapse'><tr><td style='width:32mm;vertical-align:top;padding:5px 8px 5px 0;color:"+cfg.acc+"'>"+esc(dates||"")+"</td><td style='vertical-align:top;padding:5px 0'>"+head+inner+"</td></tr></table>";
     if(cfg.dm==="right")return "<p style='margin:"+mg+"'>"+(dates?"<span style='float:right;color:#444'>"+esc(dates)+"</span>":"")+head+"</p>"+inner;
     return "<p style='margin:"+mg+"'>"+head+(dates?" <span style='color:#444'>("+esc(dates)+")</span>":"")+"</p>"+inner}
   var gapLine=lv==="gap"?PH("[Career break, years: one honest line about the reason and what you did, such as a course or freelance work]"):"";
   var S={
-   sum:function(){return H(cfg.sumT||(id==="T3"||id==="T12"||fresh?"Objective":"Summary"),r.summary?"<p style='margin:0'>"+esc(r.summary)+"</p>":"")},
+   sum:function(){return H(cfg.sumT||(id==="T3"||id==="T12"||fresh?"Objective":"Summary"),r.summary?"<p style='margin:0"+(cfg.bigSum?";font-size:12pt;line-height:1.5":"")+"'>"+esc(r.summary)+"</p>":"")},
    skl:function(){var k=A(r.skills);return H(cfg.sklT||"Skills",k.length?"<p style='margin:0'>"+k.map(esc).join(" · ")+"</p>":"")},
    skm:function(){var k=A(r.skills);if(!k.length)return "";var a=k.slice(0,Math.ceil(k.length/2)),b=k.slice(Math.ceil(k.length/2));return H("Technical skills","<p style='margin:0'><b>Core:</b> "+a.map(esc).join(", ")+"</p>"+(b.length?"<p style='margin:2px 0 0'><b>Also:</b> "+b.map(esc).join(", ")+"</p>":""))},
    ksk:function(){var k=A(r.skills).slice(0,12);if(!k.length)return "";var h=Math.ceil(k.length/2),col=function(a){return "<td style='width:50%;vertical-align:top'>"+UL(a)+"</td>"};return H("Key skills","<table style='width:100%;border-collapse:collapse'><tr>"+col(k.slice(0,h))+col(k.slice(h))+"</tr></table>")},
    exp:function(){var e=A(r.experience);
-    var lines=e.map(function(x,i){var hd=cfg.dm==="thr"?"<b style='font-size:11pt'>"+esc(x.role||"")+"</b>"+(x.org?"<br><span style='color:#6B7186'>"+esc(x.org)+"</span>":""):"<b>"+esc(x.role||"")+"</b>"+(x.org?", "+esc(x.org):"");
+    var lines=e.map(function(x,i){var hd=cfg.orgFirst?"<b style='font-size:11pt'>"+esc(x.org||x.role||"")+"</b>"+(x.org?"<br><span style='color:#444'>"+esc(x.role||"")+"</span>":""):(cfg.dm==="thr"||cfg.dm==="led")?"<b style='font-size:11pt'>"+esc(x.role||"")+"</b>"+(x.org?"<br><span style='color:#6B7186'>"+esc(x.org)+"</span>":""):"<b>"+esc(x.role||"")+"</b>"+(x.org?", "+esc(x.org):"");
       if(cfg.condense&&i>=3)return "<p style='margin:4px 0;color:#333'>"+hd+(x.dates?" ("+esc(x.dates)+")":"")+"</p>";
       var ex=id==="T21"?"<p style='margin:0 0 2px;font-size:9.5pt;color:#444'>Hours per week: [hours] | Series and grade: [if a federal job] | Supervisor: [name, optional]</p>":"";
       return entry(hd,x.dates,ex+UL(x.bullets))}).join("");
@@ -1079,6 +1087,7 @@ function buildResume(id,r,o){
     if(!f.length)return o.sample?H("Personal details",PH("Nationality: [your nationality] | Visa status: [status] | Notice period: [days]")):"";
     return H("Personal details","<p style='margin:0'>"+f.map(function(x){return x[0]+": "+esc(x[1])}).join(" | ")+"</p>")},
    res:function(){var k=A(r.key_results).slice(0,id==="T29"?4:3);
+    if(id==="T37"){if(!k.length)k=["[Result 1: number + what it was]","[Result 2]","[Result 3]"];return H("Key results","<table style='width:100%;border-collapse:collapse;margin:2px 0'><tr>"+k.map(function(x,i){return "<td style='width:33%;vertical-align:top;padding:2px 10px;font-weight:700;color:"+cfg.nc+(i?";border-left:1px solid #D5D8E8":"")+"'>"+esc(x)+"</td>"}).join("")+"</tr></table>")}
     if(id==="T29"){if(!k.length)k=["[Result 1]","[Result 2]","[Result 3]"];return "<table style='width:100%;border-collapse:separate;border-spacing:6px 0;margin:10px -6px'><tr>"+k.map(function(x){return "<td style='border:1px solid "+cfg.acc+";background:#fff;padding:6px 8px;font-weight:700;text-align:center;vertical-align:middle'>"+esc(x)+"</td>"}).join("")+"</tr></table>"}
     return k.length?"<table style='width:100%;border-collapse:collapse;margin:10px 0'><tr>"+k.map(function(x){return "<td style='border-left:4px solid "+cfg.acc+";padding:4px 10px;font-weight:700;vertical-align:top'>"+esc(x)+"</td>"}).join("")+"</tr></table>":""},
    lic:function(){var l=A(r.licences);var inner=l.length?UL(l):"<p style='margin:0;color:#444'>"+(LICH[ct+":"+fam]||"[Add your licence or registration: name, number, issuing body, valid till]")+"</p>";return H(id==="T8"||fam==="trade"?"Trade and licences":"Registration and licences","<div style='background:#FFFDF8;border:1px solid #E6DFCF;padding:6px 10px;margin-top:4px'>"+inner+"</div>")},
@@ -1115,10 +1124,11 @@ function buildResume(id,r,o){
   };
   var photo=cfg.ph?"<div style='float:right;width:35mm;height:45mm;border:1px dashed #999;font-size:8pt;text-align:center;padding-top:16mm;color:#777;box-sizing:border-box'>"+(cfg.ph==="opt"?"Photo (optional)":"Photo")+"</div>":"";
   var contact=(r.contact&&String(r.contact).trim())?esc(r.contact):"[Phone] | [Email] | [City]"+(id==="T9"?" | [Portfolio link]":"")+((id==="T3"&&(r.projects||[]).length)?" | [GitHub link]":"")+(id==="T24"?" | [LinkedIn] | [GitHub]":"");
+  var pcity=cfg.phCity?String(r.contact||"").split("|").map(function(x){return x.trim()}).filter(function(x){return x&&!/@|https?:|www\.|linkedin|github/i.test(x)}).join(" | "):"";
   var head;
   if(id==="T22")head="<div style='overflow:hidden'>"+photo+"<div style='text-align:center;font:700 16pt "+cfg.hf+"'>Biodata</div></div>";
-  else head="<div style='overflow:hidden'>"+photo+"<div style='"+(id==="T9"?"border-left:5px solid "+cfg.acc+";padding-left:10px;":id==="T32"?"border-left:5px solid "+cfg.acc+";background:#fff;padding:8px 10px;":"")+"'><div style='font:"+(id==="T9"?"800":"700")+" "+cfg.ns+" "+cfg.hf+";color:"+cfg.nc+"'>"+esc(r.name||"[Your name]")+"</div><div style='margin:2px 0 3px'>"+esc(r.headline||"")+"</div>"+(cfg.bigPhone?"<div style='font:700 16pt "+cfg.hf+";color:#111'>[Phone]</div><div style='font-size:10.5pt;color:#444'>[Email] | [City]</div>":"<div style='font-size:9.5pt;color:#444'>"+contact+"</div>")+(cfg.wp?"<div style='font-size:9.5pt;color:#444'>"+cfg.wp+"</div>":"")+"</div></div>";
-  var wrap="<div style=\"font:"+cfg.fs+"/"+cfg.lh+" "+cfg.ff+";color:"+(cfg.ink||"#111")+"\">";
+  else head="<div style='overflow:hidden'>"+photo+"<div style='"+(id==="T9"?"border-left:5px solid "+cfg.acc+";padding-left:10px;":id==="T32"?"border-left:5px solid "+cfg.acc+";background:#fff;padding:8px 10px;":id==="T36"?"text-align:center;border-bottom:1px solid #CFC8B8;padding-bottom:8px;margin-bottom:4px;":id==="T37"?"border-bottom:2px solid "+cfg.acc+";padding-bottom:8px;margin-bottom:4px;":"")+"'><div style='font:"+(id==="T9"?"800":"700")+" "+cfg.ns+" "+cfg.hf+";color:"+cfg.nc+"'>"+esc(r.name||"[Your name]")+"</div><div style='margin:2px 0 3px'>"+esc(r.headline||"")+"</div>"+(cfg.phCity?"<div style='font:700 16pt "+cfg.hf+";color:#111'>"+(pcity?esc(pcity):"[Phone]")+"</div>"+(pcity?"":"<div style='font-size:11pt;color:#444'>[City]</div>"):cfg.bigPhone?"<div style='font:700 16pt "+cfg.hf+";color:#111'>[Phone]</div><div style='font-size:10.5pt;color:#444'>[Email] | [City]</div>":"<div style='font-size:9.5pt;color:#444'>"+contact+"</div>")+(cfg.wp?"<div style='font-size:9.5pt;color:#444'>"+cfg.wp+"</div>":"")+"</div></div>";
+  var wrap="<div"+(id==="T36"?" data-pgbg='cream'":id==="T37"?" data-pgbg='ivory'":"")+" style=\"font:"+cfg.fs+"/"+cfg.lh+" "+cfg.ff+";color:"+(cfg.ink||"#111")+(id==="T36"?";background:#FFFAF2;-webkit-print-color-adjust:exact;print-color-adjust:exact":id==="T37"?";background:#FFFDF8;-webkit-print-color-adjust:exact;print-color-adjust:exact":"")+"\">";
   function W2(k,x){return "<div data-s='"+k+"'>"+x+"</div>"}
   if(id==="T2"||id==="T27"||id==="T34"){
     var side="<div data-s='head' style='font-size:9.5pt;color:#333'>"+(r.contact&&String(r.contact).trim()?esc(r.contact):"[Phone]<br>[Email]<br>[City]")+"</div>"+W2("skl",H("Skills",A(r.skills).length?"<div>"+A(r.skills).map(esc).join("<br>")+"</div>":""))+W2("lng",H("Languages",A(r.languages).map(esc).join("<br>")))+W2("crt",H("Certifications",UL(r.certifications)))+(A(r.licences).length?H("Licences",UL(r.licences)):"");
@@ -1225,6 +1235,9 @@ var GAL=[
  ["T24","Student or intern: education and projects first.",ALLC,"f","1",0,"fresher"],
  ["T25","Academic CV: research, publications, teaching, grants.",ALLC,"m s","1",0,"senior"],
  ["T26","Executive: career highlights first, older roles shortened.",ALLC,"s e","1",0,"senior"],
+ ["T38","New. Bilingual Basic: section titles in Hindi and English, 11 pt text, short bullets, phone and city only at the top, one page. For technicians, drivers and trades in India and the Gulf.","IN AE","f m","1",0,"experienced"],
+ ["T37","New. Exec Thread: ivory page, larger profile, a Key results row of three numbers, a navy timeline with company names in bold. Two pages. Type your own three key results. For leaders with 15+ years.",ALLC,"s","1",0,"experienced"],
+ ["T36","New. Cream Ledger: a very light cream page, dates in a fixed left gutter with no line, a centred name and thin rules. Quiet and formal. Accounts, admin, government, banking.",ALLC,"f m s","1",0,"experienced"],
  ["T35","New. Gulf Thread: timeline, a licence block (DHA, MOH, SCFHS style), languages with levels, personal details only if filled. Photo box off by default.","AE","f m s","1",0,"experienced"],
  ["T34","New. The Thread timeline in a wide main column plus a pale side rail for contact, skills and languages. IT, data, mid-level.",ALLC,"f m s","2",0,"experienced"],
  ["T33","New. A clean timeline: dates in a gutter, a hairline with hollow dots, role then company. White page, quiet indigo.",ALLC,"f m s","1",0,"experienced"],
