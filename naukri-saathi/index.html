@@ -1084,7 +1084,10 @@ function buildResume(id,r,o){
    lic:function(){var l=A(r.licences);var inner=l.length?UL(l):"<p style='margin:0;color:#444'>"+(LICH[ct+":"+fam]||"[Add your licence or registration: name, number, issuing body, valid till]")+"</p>";return H(id==="T8"||fam==="trade"?"Trade and licences":"Registration and licences","<div style='background:#EEF6F1;border:1px solid #cfe3d6;padding:6px 10px;margin-top:4px'>"+inner+"</div>")},
    lgl:function(){var l=A(r.licences);return H("Licence and registration","<div style='background:#EEF6F1;border:1px solid #cfe3d6;padding:6px 10px;margin-top:4px'><p style='margin:0;color:#444'>Licensing authority: [DHA / DOH / MOHAP]<br>Licence or eligibility letter no.: [number]<br>Dataflow status: [verified / in progress]<br>Valid till: [date]<br>BLS / ACLS valid till: [date]</p>"+UL(l)+"</div>")},
    glic:function(){var l=A(r.licences);return H("Licences and registration","<div style='border:1px solid #E3E5EE;padding:6px 10px;margin-top:4px'>"+(l.length?UL(l):"<p style='margin:0;color:#6B7186'>Licensing authority: [DHA / DOH / MOH / SCFHS]<br>Licence or eligibility letter no.: [number] | Valid till: [date]</p>")+"</div>")},
-   per:function(){return H("Personal details","<p style='margin:0'>Nationality: [your nationality] | Passport valid till: [date] | Visa status: [status] | Notice period: [days] | Driving licence: [yes/no, country]</p>")},
+   licp:function(){return H("Licences and registration",UL(r.licences))},
+   per:function(){var f=[["Nationality",r.nationality],["Visa status",r.visa],["Notice period",r.notice]].filter(function(x){return x[1]});
+    if(f.length)return H("Personal details","<p style='margin:0'>"+f.map(function(x){return x[0]+": "+esc(x[1])}).join(" | ")+"</p>");
+    return H("Personal details","<p style='margin:0'>Nationality: [your nationality] | Passport valid till: [date] | Visa status: [status] | Notice period: [days] | Driving licence: [yes/no, country]</p>")},
    pg:function(){return H("Personal details","<p style='margin:0;line-height:1.6'>Nationality: [your nationality]<br>Passport valid till: [date]<br>Visa status: [status]<br>Notice period: [days]<br>Driving licence: [yes/no, country, class]</p>")},
    pd:function(){return H("Personal details (Persönliche Daten)","<p style='margin:0'>Date and place of birth: [optional] | Nationality: [your nationality]</p>")},
    pi:function(){return H("Personal information","<p style='margin:0'>Nationality: [optional] | Website or LinkedIn: [link]</p>")},
@@ -1138,7 +1141,8 @@ function buildResume(id,r,o){
     var slots=[];ord.forEach(function(k,i){if(CANM[k])slots.push(i)});
     var keys=slots.map(function(i){return ord[i]}),want=o.order.filter(function(c){return keys.some(function(k){return CANM[k]===c})});
     slots.forEach(function(pos,i){if(want[i])ord[pos]=keys.filter(function(k){return CANM[k]===want[i]})[0]})}
-  var body=ord.map(function(k){return W2(CANM[k]||({hyb:"skl",grid:"edu",pdn:"pd",hl:"res",ach:"res",glic:"lic"})[k]||k,S[k]())}).join("");
+  if(id==="T1"&&A(r.licences).length&&ord.indexOf("licp")<0)ins("licp","sum");
+  var body=ord.map(function(k){return W2(CANM[k]||({hyb:"skl",grid:"edu",pdn:"pd",hl:"res",ach:"res",glic:"lic",licp:"lic"})[k]||k,S[k]())}).join("");
   if(ct==="AE"&&(id==="T1"||id==="T12"||skin))body=S.per()+body;
   return wrap+"<div data-s='head'>"+head+"</div>"+body+"</div>"}
 
