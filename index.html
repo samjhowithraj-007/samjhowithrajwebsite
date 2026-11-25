@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal14"><link rel="stylesheet" href="rdbooks.css?v=11"><script src="rdhome.js?v=20"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=6"></script><script defer src="cart.js?v=2"></script><script defer src="rdbooks.js?v=22"></script>
+<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal14"><link rel="stylesheet" href="rdbooks.css?v=17"><script src="rdhome.js?v=20"></script><script defer src="rdbar.js?v=11"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=2"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=6"></script><script defer src="cart.js?v=5"></script><script defer src="rdbooks.js?v=31"></script>
 <script>try{if(localStorage.getItem("swr-theme")!=="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
@@ -1672,6 +1672,7 @@ function render(){
   else if (h === "tracker") { location.replace("https://www.paisasamjhoraj.com/#planner"); return; }
   else if (h === "book") { app.innerHTML = bookPage(); tab = "shop"; }
   else if (h === "ai-job-search" && window.RDBOOKS) { app.innerHTML = RDBOOKS.aiPage({ AIJOB }); tab = "shop"; document.title = "AI Job Search: 50 AI prompts for jobs + study · Tech Samjho Raj"; }
+  else if (h.indexOf("p/") === 0 && window.RDBOOKS) { app.innerHTML = RDBOOKS.productPage({ BOOK, AIJOB }, h.slice(2)); tab = "shop"; window.scrollTo(0, 0); }
   else if (h === "shop" || h === "cohort") { app.innerHTML = shop(); tab = "shop"; if (h === "cohort") setTimeout(() => document.getElementById("cohort").scrollIntoView()); }
   else if (h === "workshops") { app.innerHTML = workshops(); tab = h; }
   else if (h === "puzzles" || h === "jigsaw") { location.replace("https://www.dimaagdada.com/" + (h === "jigsaw" ? "#jigsaw" : "#books")); return; }
