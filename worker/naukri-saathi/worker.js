@@ -91,10 +91,14 @@ function strip(t) {
     .replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g, "[email removed]")
     .replace(/(\+?\d[\d\s().-]{7,}\d)/g, "[number removed]");
 }
+// Free KV allows about 1,000 writes a day. If KV throws, answer 503 "busy" (with CORS) instead of a raw 1101 error.
+class KvBusy extends Error {}
+async function kvGet(env, k) { try { return await env.RATE.get(k); } catch { throw new KvBusy("busy"); } }
+async function kvPut(env, k, v, o) { try { return await env.RATE.put(k, v, o); } catch { throw new KvBusy("busy"); } }
 async function bump(env, key, limit, ttl) {
-  const n = parseInt((await env.RATE.get(key)) || "0", 10);
+  const n = parseInt((await kvGet(env, key)) || "0", 10);
   if (n >= limit) return false;
-  await env.RATE.put(key, String(n + 1), { expirationTtl: ttl });
+  await kvPut(env, key, String(n + 1), { expirationTtl: ttl });
   return true;
 }
 async function sha(s) {
@@ -143,7 +147,7 @@ async function licenseState(env, key) {
   const c = await checkKey(env, key);
   if (!c.valid) return { ok: false, why: c.err ? "err" : "bad" };
   const h = await sha(key), k = "c:" + h;
-  let rec = null; try { rec = JSON.parse((await env.RATE.get(k)) || "null"); } catch {}
+  let rec = null; try { rec = JSON.parse((await kvGet(env, k)) || "null"); } catch {}
   if (!rec) {
     if (c.src === "dodo" && !c.pid) {   // validate only says valid:true, so one activation (public, once per key) tells us which product the key belongs to
       const base = env.DODO_BASE || "https://live.dodopayments.com";
@@ -153,9 +157,9 @@ async function licenseState(env, key) {
       } catch { return { ok: false, why: "err" }; }
       if (!c.pid) return { ok: false, why: "err" };
     }
-    const legacy = parseInt((await env.RATE.get("l:" + h)) || "0", 10);
+    const legacy = parseInt((await kvGet(env, "l:" + h)) || "0", 10);
     rec = { total: c.builds != null ? c.builds : buildsFor(env, c.pid), used: legacy, pid: c.pid, src: c.src };
-    await env.RATE.put(k, JSON.stringify(rec));
+    await kvPut(env, k, JSON.stringify(rec));
   }
   const left = Math.max(0, rec.total - rec.used);
   return { ok: left > 0, why: left > 0 ? "" : "used", k, rec, left, total: rec.total, src: rec.src };
@@ -181,7 +185,7 @@ async function checkout(env, body, ip, origin) {
   const day = new Date().toISOString().slice(0, 10);
   if (!(await bump(env, "o:" + day + ":" + ip, 20, 90000))) return json({ error: "limit" }, 429, origin);
   let map = CART; try { map = JSON.parse(env.CART_MAP || "null") || CART; } catch {}
-  let ids = [...new Set((Array.isArray(body.items) ? body.items : []).slice(0, 8).map(x => { x = String(x); return x === "book-en" || x === "book-hi" ? "book" : x; }))].filter(x => map[x]);
+  let ids = [...new Set((Array.isArray(body.items) ? body.items : []).slice(0, 8).map(x => { x = String(x); return x === "book-en" ? "book" : x; }))].filter(x => map[x]);
   if (ids.includes("bundle")) ids = ids.filter(x => x !== "book");
   if (!ids.length) return json({ error: "empty cart" }, 400, origin);
   const email = String(body.email || "").trim(), ret = String(body.return_url || "");
@@ -246,6 +250,10 @@ async function fetchJob(raw) {
 
 export default {
   async fetch(req, env) {
+    try { return await this.run(req, env); }
+    catch (e) { if (e instanceof KvBusy) return json({ error: "busy" }, 503, req.headers.get("origin") || ""); throw e; }
+  },
+  async run(req, env) {
     const origin = req.headers.get("origin") || "";
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(origin) });
     if (req.method !== "POST") return json({ error: "method" }, 405, origin);
@@ -288,16 +296,18 @@ export default {
       const cover = strip(body.cover);
       let lic = null;
       if (env.DODO_ON === "1") {
+        const ik = "r:" + new Date().toISOString().slice(0, 13) + ":" + ip;      // same key-guess limit as the license check: 30 tries per IP per hour
+        if (!(await bump(env, ik, 30, 4000))) return json({ error: "limit" }, 429, origin);
         lic = await multiState(env, body.license);
         if (!lic.ok) return json({ error: lic.why === "used" ? "license used up" : "license" }, 402, origin);
-        await env.RATE.put(lic.k, JSON.stringify({ ...lic.rec, used: lic.rec.used + 1 }));   // reserve one build
+        await kvPut(env, lic.k, JSON.stringify({ ...lic.rec, used: lic.rec.used + 1 }));   // reserve one build
       } else {
         const g = await gate(env, body, ip, origin); if (g) return g;
       }
       const r = await claude(env, { max_tokens: 4500, system: SYSTEM_RESUME, output_config: { effort: "low", format: { type: "json_schema", schema: RESUME_SCHEMA } },
         messages: [{ role: "user", content: `LANGUAGE: ${lang}\nLEVEL: ${String(body.level || "experienced").slice(0, 12)}\nFAMILY: ${String(body.family || "").slice(0, 8)}\nCOUNTRY: ${String(body.country || "IN").slice(0, 3)}\n<job>\n${job}\n</job>\n<resume>\n${resume}\n</resume>\n<cover>\n${cover}\n</cover>` }] });
       let out; if (!r.error) { try { out = JSON.parse(r.text); } catch { r.error = "bad answer"; r.status = 502; } }
-      if (r.error) { if (lic) await env.RATE.put(lic.k, JSON.stringify(lic.rec)); return json({ error: r.error }, r.status, origin); }   // give the build back on failure
+      if (r.error) { if (lic) { try { await kvPut(env, lic.k, JSON.stringify(lic.rec)); } catch {} } return json({ error: r.error }, r.status, origin); }   // give the build back on failure
       return json(out, 200, origin);
     }
 
