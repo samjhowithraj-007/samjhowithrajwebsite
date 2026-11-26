@@ -7,6 +7,7 @@
   var PRODUCTS = window.CART_PRODUCTS = window.CART_PRODUCTS || [
     { id: "resume-pack", title: "Naukri Saathi resume pack (3 tailored resumes + cover letters)", price: 49, cover: "/img/botu-192.png" },
     { id: "book", title: "AI Job Search book (English) + 1 resume build", price: 149, cover: "/media/books/aijob-cover.webp?v=2" },
+    { id: "python-chai", title: "Python with Chai (PDF + EPUB, English)", price: 499, cover: "/media/books/python-with-chai-cover-a4.webp", ext: "https://samjhowithraj.gumroad.com/l/python-with-chai-en" },   // sold on Gumroad until it has a Dodo product
     { id: "bundle", title: "Job-Ready bundle: AI Job Search book + 5 resume builds", price: 249, cover: "/media/books/aijob-cover.webp?v=2" }
   ];
   var ALIAS = { "book-en": "book" };   // the book is one Dodo product (English only)
@@ -23,7 +24,10 @@
   function add(id) { id = norm(id); if (!info(id)) return false; var a = load(); if (a.indexOf(id) < 0) a.push(id); save(a); fire(); return true; }
   function remove(id) { id = norm(id); save(load().filter(function (x) { return x !== id; })); fire(); }
   function clear() { save([]); fire(); }
-  function total() { return items().reduce(function (s, id) { return s + info(id).price; }, 0); }
+  function dodoItems() { return items().filter(function (id) { return !info(id).ext; }); }
+  function extItems() { return items().filter(function (id) { return !!info(id).ext; }); }
+  function total() { return dodoItems().reduce(function (s, id) { return s + info(id).price; }, 0); }
+  function extTotal() { return extItems().reduce(function (s, id) { return s + info(id).price; }, 0); }
   function user() { try { var u = JSON.parse(localStorage.getItem("rd-user") || "null"); return u && u.email ? u : null; } catch (e) { return null; } }
 
   /* ---- small drawer + badge, only built when used ---- */
@@ -57,9 +61,9 @@
     var sv = 0; a.forEach(function (id) { var i = info(id); if (i.was) sv += i.was - i.price; });
     p.innerHTML = "<div class='hd'><h2>Cart</h2>" + (a.length ? "<span class='cnt'>" + a.length + "</span>" : "") + "<button type='button' class='xx' data-close aria-label='Close cart'>&times;</button></div>" +
       (a.length ? "<div class='strip'><b>Instant download</b> after payment &middot; ebooks, nothing is shipped</div><div class='items'>" +
-        a.map(function (id) { var i = info(id); return "<div class='row'>" + (i.cover ? "<img src='" + esc(i.cover) + "' alt='' width='64' height='64'>" : "<span></span>") + "<div><div class='tt'>" + esc(i.title) + "</div><button type='button' class='rm' data-rm='" + id + "'>Remove</button></div><div class='pr'>Rs " + i.price + (i.was ? "<s>Rs " + i.was + "</s>" : "") + "</div></div>"; }).join("") + "</div>" +
-        "<div class='sum'>" + (sv ? "<div class='ln sv'><span>Savings</span><span>-Rs " + sv + "</span></div>" : "") + "<div class='ln big'><span>Estimated total</span><span>Rs " + total() + "</span></div>" +
-        "<p class='note'>Plus tax. Have a coupon? Enter it on the secure Dodo Payments page, where the final amount is shown.</p>" +
+        a.map(function (id) { var i = info(id); return "<div class='row'>" + (i.cover ? "<img src='" + esc(i.cover) + "' alt='' width='64' height='64'>" : "<span></span>") + "<div><div class='tt'>" + esc(i.title) + (i.ext ? " <small>(Gumroad)</small>" : "") + "</div><button type='button' class='rm' data-rm='" + id + "'>Remove</button></div><div class='pr'>Rs " + i.price + (i.was ? "<s>Rs " + i.was + "</s>" : "") + "</div></div>"; }).join("") + "</div>" +
+        "<div class='sum'>" + (sv ? "<div class='ln sv'><span>Savings</span><span>-Rs " + sv + "</span></div>" : "") + (extItems().length ? "<div class='ln'><span>Paid on Gumroad (separate checkout)</span><span>Rs " + extTotal() + "</span></div>" : "") + (dodoItems().length ? "<div class='ln big'><span>Estimated total</span><span>Rs " + total() + "</span></div>" : "") +
+        (extItems().length ? "<p class='note'>Items marked Gumroad open their own secure checkout in a new tab.</p>" : "") + "<p class='note'>Plus tax. Have a coupon? Enter it on the secure Dodo Payments page, where the final amount is shown.</p>" +
         "<button type='button' class='go' data-go>Check out</button><p class='trust'>Secure payment by Dodo Payments</p><p class='note' id='tsrCartMsg' aria-live='polite'></p></div>"
         : "<div class='empty'><p>Your cart is empty.</p></div>");
     p.onclick = function (e) {
@@ -72,7 +76,9 @@
   function msg(t) { var m = document.getElementById("tsrCartMsg"); if (m) m.textContent = t; }
 
   function checkout(opts) {
-    opts = opts || {}; var a = items(); if (!a.length) { msg("Your cart is empty."); return Promise.resolve(false); }
+    opts = opts || {}; var all = items(); if (!all.length) { msg("Your cart is empty."); return Promise.resolve(false); }
+    var ex = extItems(), a = dodoItems();
+    if (ex.length) { ex.forEach(function (id) { try { window.open(info(id).ext, "_blank", "noopener"); } catch (e) {} }); if (!a.length) { ex.forEach(remove); return Promise.resolve(true); } ex.forEach(remove); }
     var u = user();
     if (!u) {   // log in first, so the key email is a verified one
       var ok = true; try { ok = window.dispatchEvent(new CustomEvent("cart:login", { cancelable: true })); } catch (e) {}

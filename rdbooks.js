@@ -39,7 +39,7 @@ function card(c){
 function cards(B, A){
   const pyBuy = B.buy.en || "";
   return [
-    { cats:["tech"], title:"Python with Chai", pill:"English", cover:MEDIA + "python-with-chai-cover-a4.webp", w:560, h:792, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
+    { cats:["tech"], cartId:"python-chai", title:"Python with Chai", pill:"English", cover:MEDIA + "python-with-chai-cover-a4.webp", w:560, h:792, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
       meta:"30 chapters · 300+ pages · PDF + EPUB · for beginners", price:B.price, priceNote:"", href:"#p/python-with-chai", buy:pyBuy, buyLabel:"Buy " + rs(B.price), preview:"#book", previewLabel:"Free preview →" },
     { cats:["tech"], title:"Python Libraries Made Easy", pill:"English", badge:"Coming soon", cover:MEDIA + "pylibs-cover.webp?v=2", w:560, h:792, alt:"Python Libraries Made Easy, book cover", mascot:"img/botu-192.png",
       meta:"19 libraries, one per chapter · 83 pages · free sample of 15 pages", href:"#p/python-libraries", price:299, priceNote:"+ tax", preview:"notes/python-libraries-made-easy-sample.pdf", previewExt:1, previewLabel:"Sample PDF →" },
@@ -140,8 +140,8 @@ function productData(x){
       desc:"50 copy-paste AI prompts that help you prepare for a job and study smarter. Every prompt comes with a real AI reply and a one-line tip on why it works.",
       more:"Resume and LinkedIn prompts, interview practice, the salary question and a 7-day study plan. You change the [brackets] and paste into any AI chat tool. It helps you prepare and does not promise a job.",
       pills:["50 prompts with real replies", "Instant PDF, 89 pages", "Free sample pages", "1 free Naukri Saathi resume build"], more_href:"#ai-job-search", more_label:"Full details and free sample →" },
-    "python-with-chai": { title:"Python with Chai: From Basic to Expert", eyebrow:"E-book · by Raj", pill:"English", cartId:"", price:B.price, buy:B.buy.en,
-      gallery:[["media/book-mockup-tech.webp?v=2", "Python with Chai book cover"], [MEDIA + "python-ch1-p2.webp", "Chapter 1 preview page"], [MEDIA + "python-ch3-p2.webp", "Chapter 3 preview page"]],
+    "python-with-chai": { title:"Python with Chai: From Basic to Expert", eyebrow:"E-book · by Raj", pill:"English", cartId:"python-chai", price:B.price, buy:B.buy.en,
+      gallery:[[MEDIA + "python-with-chai-cover-a4.webp", "Python with Chai book cover"], [MEDIA + "python-ch1-p2.webp", "Chapter 1 preview page"], [MEDIA + "python-ch3-p2.webp", "Chapter 3 preview page"]],
       desc:"30 illustrated chapters and 300+ pages that take you from print() to decorators and a real project, with chai-shop examples.",
       more:"120+ examples where every output was really run, common mistakes with real error messages, practice with answers, cheat sheets and an index. PDF + EPUB in every purchase.",
       pills:["30 chapters, 300+ pages", "Every output really run", "Free chapter previews", "PDF + EPUB"], more_href:"#book", more_label:"Free preview and details →", sold:"Sold on Gumroad" },
@@ -259,7 +259,7 @@ function productPage(x, slug){
 function ppSum(){
   const rows = [...document.querySelectorAll("[data-pp-pick]:checked")]; const el = document.getElementById("pp-sum"); if (!el) return;
   const ids = rows.map(r => r.dataset.ppPick), book = ids.indexOf("ai-job-search") >= 0, b = ids.indexOf("builds") >= 0;
-  let total = 0; if (book && b) total = 249; else { if (book) total = 149; if (b) total = 49; }
+  let total = 0; if (book && b) total = 249; else { if (book) total = 149; if (b) total = 49; } if (ids.indexOf("python-with-chai") >= 0) total += 499;
   el.textContent = ids.length ? `${ids.length} selected · ${rs(total)} + tax` : "Nothing selected";
 }
 function ppSync(t){ const i = Math.round(t.scrollLeft / Math.max(1, t.clientWidth)), n = t.children.length, c = document.getElementById("pp-count");
@@ -278,6 +278,7 @@ document.addEventListener("click", e => {
     if (!window.Cart) { if (m) m.textContent = "The cart is not available right now. Please reload the page."; return; }
     const book = ids.indexOf("ai-job-search") >= 0, b = ids.indexOf("builds") >= 0;
     if (book && b) Cart.add("bundle"); else { if (book) Cart.add("book"); if (b) Cart.add("resume-pack"); }
+    if (ids.indexOf("python-with-chai") >= 0) Cart.add("python-chai");
     Cart.open();
   }
 });

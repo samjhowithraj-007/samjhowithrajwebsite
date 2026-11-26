@@ -237,3 +237,4 @@ body:has(.bk) > header,body:has(.bk) header{position:static!important}
 .bk-stage{height:300px;padding:44px 12px 10px}
 .bk-stage>img:not(.bk-mascot){height:246px;max-height:246px}
 @media (max-width:639px){.bk-stage{height:236px;padding:62px 8px 8px}.bk-stage>img:not(.bk-mascot){height:166px;max-height:166px}}
+@media (max-width:760px){html body:has(.pp-bar) .cb-fab{bottom:calc(150px + env(safe-area-inset-bottom,0px))!important;z-index:50!important}}
