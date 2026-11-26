@@ -232,3 +232,4 @@ body:has(.bk) > header,body:has(.bk) header{position:static!important}
 @media (max-width:639px){.bk-stage>img:not(.bk-mascot){height:130px;max-height:130px}}
 @media (max-width:639px){.bk-stage{height:210px;padding:62px 10px 12px}.bk-stage>.bk-badge{top:42px;bottom:auto;left:0;right:auto}}
 .bk-links{min-height:44px}
+@media (max-width:760px){body:has(.pp-bar) .cb-fab{bottom:calc(150px + env(safe-area-inset-bottom,0px))}}

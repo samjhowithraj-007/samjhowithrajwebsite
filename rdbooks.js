@@ -42,9 +42,9 @@ function cards(B, A){
     { cats:["tech"], title:"Python with Chai", pill:"English", cover:MEDIA + "python-with-chai-cover-a4.webp", w:560, h:792, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
       meta:"30 chapters · 300+ pages · PDF + EPUB · for beginners", price:B.price, priceNote:"", href:"#p/python-with-chai", buy:pyBuy, buyLabel:"Buy " + rs(B.price), preview:"#book", previewLabel:"Free preview →" },
     { cats:["tech"], title:"Python Libraries Made Easy", pill:"English", badge:"Coming soon", cover:MEDIA + "pylibs-cover.webp", w:840, h:840, alt:"Python Libraries Made Easy, book cover", mascot:"img/botu-192.png",
-      meta:"19 libraries, one per chapter · 83 pages · free sample of 15 pages", href:"#p/python-libraries", tba:1, preview:"notes/python-libraries-made-easy-sample.pdf", previewExt:1, previewLabel:"Sample PDF →" },
+      meta:"19 libraries, one per chapter · 83 pages · free sample of 15 pages", href:"#p/python-libraries", price:299, priceNote:"+ tax", preview:"notes/python-libraries-made-easy-sample.pdf", previewExt:1, previewLabel:"Sample PDF →" },
     { cats:["tech"], title:"Build with AI: 100 Days to Job-Ready", pill:"English", badge:"Coming soon", cover:MEDIA + "build-with-ai-cover.webp?v=2", w:560, h:792, alt:"Build with AI: 100 Days to Job-Ready, book cover", mascot:"img/botu-192.png",
-      meta:"24 skills, day by day, with code you can run · free sample of 3 chapters", href:"#p/build-with-ai", tba:1, preview:"notes/build-with-ai-sample.pdf", previewExt:1, previewLabel:"Sample PDF →", preview2:"notes/ai100-sample-labs.zip", preview2Label:"Labs zip →" },
+      meta:"24 skills, day by day, with code you can run · free sample of 3 chapters", href:"#p/build-with-ai", price:599, priceNote:"+ tax", preview:"notes/build-with-ai-sample.pdf", previewExt:1, previewLabel:"Sample PDF →", preview2:"notes/ai100-sample-labs.zip", preview2Label:"Labs zip →" },
     { cats:["jobs","tech"], cartId:"book", title:"AI Job Search", pill:"English", badge:DODO_LIVE ? "1 free resume build" : "New", cover:MEDIA + "aijob-cover.webp?v=2", w:560, h:792, alt:"AI Job Search by Raj: book cover with the Botu robot at a laptop", mascot:"img/botu-192.png",
       meta:"50 AI prompts for jobs and study · PDF · helps you prepare, no job guarantee" + (CAREER_KIT_LIVE ? " · <b>Free Career Kit included</b>" : ""), price:A.price, priceNote:"+ tax", href:"#p/ai-job-search", buy:A.en, buyLabel:"Buy now · " + rs(A.price), preview:"#ai-job-search", previewLabel:"Free sample + details →" },
     { cats:["jobs"], title:"Naukri Saathi", pill:"Tool", badge:"Free demo", saf:1, emoji:"📄", w:0, h:0, alt:"", mascot:"img/botu-192.png",
@@ -145,10 +145,10 @@ function productData(x){
       desc:"30 illustrated chapters and 300+ pages that take you from print() to decorators and a real project, with chai-shop examples.",
       more:"120+ examples where every output was really run, common mistakes with real error messages, practice with answers, cheat sheets and an index. PDF + EPUB in every purchase.",
       pills:["30 chapters, 300+ pages", "Every output really run", "Free chapter previews", "PDF + EPUB"], more_href:"#book", more_label:"Free preview and details →", sold:"Sold on Gumroad" },
-    "python-libraries": { title:"Python Libraries Made Easy", eyebrow:"E-book · by Raj", pill:"English", badge:"Coming soon", soon:1, price:0,
+    "python-libraries": { title:"Python Libraries Made Easy", eyebrow:"E-book · by Raj", pill:"English", badge:"Coming soon", soon:1, price:299,
       gallery:[[MEDIA + "pylibs-cover.webp", "Python Libraries Made Easy book cover"], [MEDIA + "pylibs-numpy.webp", "NumPy sample page"], [MEDIA + "pylibs-pandas.webp", "pandas sample page"], [MEDIA + "pylibs-flask.webp", "Flask sample page"]],
       desc:"19 popular Python libraries explained step by step, with examples you can run.", more:"", pills:["19 libraries", "Runnable examples", "English edition"], more_href:"notes/python-libraries-made-easy-sample.pdf", more_label:"Free sample (PDF) →" },
-    "build-with-ai": { title:"Build with AI: 100 Days to Job-Ready", eyebrow:"E-book · by Raj", pill:"English", badge:"Coming soon", soon:1, price:0,
+    "build-with-ai": { title:"Build with AI: 100 Days to Job-Ready", eyebrow:"E-book · by Raj", pill:"English", badge:"Coming soon", soon:1, price:599,
       gallery:[[MEDIA + "build-with-ai-cover.webp?v=2", "Build with AI book cover"], [MEDIA + "bwa-p3.webp", "Sample page: what you will learn"], [MEDIA + "bwa-p4.webp", "Sample page: a lesson with code"], [MEDIA + "bwa-p5.webp", "Sample page: the real output"], [MEDIA + "bwa-p10.webp", "Sample page: quiz"]],
       desc:"24 skills, day by day, with code you can run. A free sample of 3 chapters is available.", more:"The sample labs run on your laptop with no API key.", pills:["24 skills, day by day", "Code you can run", "Free sample"],
       more_href:"notes/build-with-ai-sample.pdf", more_label:"Free sample (PDF) →" }
@@ -209,7 +209,7 @@ function productPage(x, slug){
   if (!d) return `<div class="bk"><p><a class="bk-link" href="#shop">← All books</a></p><h1>Book not found</h1></div>`;
   const imgs = d.gallery.map((g, i) => `<img src="${g[0]}" alt="${esc(g[1])}" ${i ? 'loading="lazy"' : ""} decoding="async">`).join("");
   const nav = d.gallery.length > 1 ? `<button type="button" class="pp-arrow l" data-pp-nav="-1" aria-label="Previous picture">‹</button><button type="button" class="pp-arrow r" data-pp-nav="1" aria-label="Next picture">›</button>` : "";
-  const price = d.soon ? `<div class="pp-price"><span class="pp-soon">Price announced at launch</span></div>` : `<div class="pp-price"><b>${rs(d.price)}</b><span>${d.cartId ? "+ tax" : ""}</span></div>`;
+  const price = d.soon ? `<div class="pp-price"><b>${rs(d.price)}</b><span>+ tax · coming soon</span></div>` : `<div class="pp-price"><b>${rs(d.price)}</b><span>${d.cartId ? "+ tax" : ""}</span></div>`;
   const extA = d.more_href && !d.more_href.startsWith("#") ? ' target="_blank" rel="noopener"' : "";
   const cta = d.soon ? `<a class="bk-btn" href="${d.more_href || "#shop"}"${extA}>${d.more_href ? esc(d.more_label) : "See all books"}</a>`
     : d.cartId ? `<button type="button" class="bk-btn pri" data-bk-cart="${d.cartId}">Add to cart</button>`
@@ -253,7 +253,7 @@ function productPage(x, slug){
   ${d.howto ? `<section aria-labelledby="pp-how"><h2 id="pp-how">How to test the code</h2><ol class="pp-how">${d.howto.map(t => `<li>${esc(t)}</li>`).join("")}</ol>${d.more_href ? `<p class="bk-btns" style="margin-top:12px"><a class="bk-btn" href="notes/ai100-sample-labs.zip">Free sample labs (zip) →</a><a class="bk-btn" href="${d.more_href}" target="_blank" rel="noopener">Free sample (PDF) →</a></p>` : ""}</section>` : ""}
   ${d.faq ? `<section class="bk-faq" aria-labelledby="pp-faq"><h2 id="pp-faq" style="margin-bottom:12px">Questions</h2>${d.faq.map(q => `<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join("")}</section>` : ""}
   <section aria-labelledby="pp-like"><h2 id="pp-like">You may also like</h2><div class="pp-like">${PP_ORDER.filter(k => k !== slug).map(k => `<a class="pp-lk" href="#p/${k}"><img src="${D[k].gallery[0][0]}" alt="" width="64" height="64" loading="lazy"><b>${esc(D[k].title.split(":")[0])}</b><span>${D[k].soon ? "Coming soon" : rs(D[k].price)}</span></a>`).join("")}</div></section>
-  <div class="pp-bar" role="region" aria-label="Buy"><img src="${d.gallery[0][0]}" alt="" width="44" height="44"><div class="t"><b>${esc(d.title.split(":")[0])}</b>${d.soon ? "" : `<span>${rs(d.price)}${d.cartId ? " + tax" : ""}</span>`}</div>${cta}</div>
+  <div class="pp-bar" role="region" aria-label="Buy"><img src="${d.gallery[0][0]}" alt="" width="44" height="44"><div class="t"><b>${esc(d.title.split(":")[0])}</b><span>${rs(d.price)}${d.cartId || d.soon ? " + tax" : ""}</span></div>${cta}</div>
   </div>`;
 }
 function ppSum(){
