@@ -304,3 +304,8 @@ body:has(.bk) > header,body:has(.bk) header{position:static!important}
 .cmb-body h3{font-size:22px}.cmb-list{color:var(--bk-muted);font-size:14.5px}.cmb-sep{font-size:13px;color:var(--bk-muted)}
 .cmb-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px}.cmb-price b{font-size:26px}.cmb-price b.tba{color:var(--bk-muted)}.cmb-price span{color:var(--bk-muted);font-size:13px}.cmb-price s{color:var(--bk-muted)}.cmb-price em{font-style:normal;color:#15803d;font-weight:700}
 @media (prefers-reduced-motion:reduce){.cmb-card{transition:none}.cmb-card:hover{transform:none}}
+/* Combo deals: warm peach-to-green art, set apart from the rest of the page */
+.cmb-art{background:linear-gradient(160deg,#fde6cf 0%,#f6efe6 45%,#d6efd0 100%)}
+:root:not([data-theme="light"]) .cmb-art{background:linear-gradient(160deg,rgba(245,181,68,.22),rgba(139,147,255,.10) 50%,rgba(74,190,120,.22))}
+.cmb-card{border-color:#ead9c4}.cmb-tag{background:#f1fbf4}
+.rv-box textarea,.rv-box input,.rv-box select{background:#fff!important;color:#14172b!important;border:1.5px solid #cfd3ea!important;box-shadow:none!important}.rv-box input[readonly]{background:#f3f4fb!important}
