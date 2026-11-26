@@ -4,7 +4,7 @@ const K_USER = "rd-user", K_SAVED = "rd-saved";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const get = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } };
 const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-const user = () => get(K_USER, null);
+const user = () => { const u = get(K_USER, null); if (u && !u.name) u.name = String(u.email || "").split("@")[0] || "friend"; return u; };   // a stored user with an email but no name must not crash the page
 const saved = () => get(K_SAVED, []);
 const initials = n => (n || "?").trim().split(/\s+/).slice(0, 2).map(w => w[0]).join("").toUpperCase();
 
@@ -156,11 +156,12 @@ function welcome(){
  let w = document.getElementById("ud-welcome");
  if (!u) { if (w) w.remove(); const rw = document.getElementById("ud-recwrap"); if (rw) rw.remove(); return; }
  if (w) return;
+ const nm = u.name || String(u.email || "").split("@")[0] || "friend";
  let last = null; try { const id = localStorage.getItem(typeof LAST !== "undefined" ? LAST : "swr-last"); COURSES.forEach(c => live(c).forEach(l => { if (l.id === id) last = { c, l }; })); } catch (e) {}
  w = document.createElement("section"); w.id = "ud-welcome"; w.className = "ud-welcome";
- w.innerHTML = `<span class="rd-av big">${esc(initials(u.name))}</span><div><h2>Welcome back, ${esc(u.name.split(" ")[0])}</h2><p>${last ? `Pick up where you left off: <a href="#${last.l.id}">${esc(last.l.title)}</a>` : "Pick a skill below and start learning."} · <a href="#my-learning">My learning</a></p></div>`;
+ w.innerHTML = `<span class="rd-av big">${esc(initials(nm))}</span><div><h2>Welcome back, ${esc(nm.split(" ")[0])}</h2><p>${last ? `Pick up where you left off: <a href="#${last.l.id}">${esc(last.l.title)}</a>` : "Pick a skill below and start learning."} · <a href="#my-learning">My learning</a></p></div>`;
  hero.parentNode.insertBefore(w, hero);
- const r = document.createElement("div"); r.id = "ud-recwrap"; r.innerHTML = picksHtml(4, "Recommended for you, " + esc(u.name.split(" ")[0]), "Picked from what you want to learn"); hero.parentNode.insertBefore(r, document.querySelector(".rdh .ud-stats") || hero.nextSibling);
+ const r = document.createElement("div"); r.id = "ud-recwrap"; r.innerHTML = picksHtml(4, "Recommended for you, " + esc(nm.split(" ")[0]), "Picked from what you want to learn"); hero.parentNode.insertBefore(r, document.querySelector(".rdh .ud-stats") || hero.nextSibling);
 }
 /* heart buttons on skill cards */
 function hearts(){
