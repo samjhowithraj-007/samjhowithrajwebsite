@@ -11,7 +11,7 @@
 (function(){
  function fill(){try{if(typeof fillSocial==="function"&&document.querySelector(".rdh [data-social]:empty"))fillSocial();}catch(e){}
   var r=document.querySelector("header .bar-right");
-  if(r&&!document.getElementById("rdlang")){var d=document.createElement("div");d.id="rdlang";d.className="rd-lang";d.innerHTML='<a class="on" href="./">English</a><a href="hinglish/">Hinglish</a><a href="hi/">हिंदी</a>';r.insertBefore(d,r.firstChild.nextSibling||null);}}
+  if(r&&!document.getElementById("rdlang")){var d=document.createElement("div");d.id="rdlang";d.className="rd-lang";d.innerHTML='<a class="on" href="./">English</a><span class="off" aria-disabled="true" title="Coming back soon">Hinglish</span><span class="off" aria-disabled="true" title="Coming back soon">हिंदी</span>';r.insertBefore(d,r.firstChild.nextSibling||null);}}
  new MutationObserver(fill).observe(document.body,{childList:true,subtree:true});setTimeout(fill,400);
 })();
 
