@@ -18,7 +18,7 @@ function card(c){
     ? `<img${c.mock ? ' class="mock"' : ""} src="${c.cover}" alt="${esc(c.alt)}" width="${c.w}" height="${c.h}" loading="lazy" decoding="async">`
     : `<span class="emo" aria-hidden="true">${c.emoji}</span>`;
   const ext = c.ext ? ' target="_blank" rel="noopener"' : "";
-  const price = c.price
+  const price = c.tba ? `<div class="bk-price"><b class="tba">₹ —</b><span>Price to be announced</span></div>` : c.price
     ? `<div class="bk-price"><b>${rs(c.price)}</b>${c.was ? `<s>${rs(c.was)}</s><em>Save ${rs(c.was - c.price)}</em>` : ""}${c.priceNote ? `<span>${c.priceNote}</span>` : ""}</div>`
     : `<div class="bk-price"><span>${c.priceNote || ""}</span></div>`;
   const canCart = c.cartId && CART_LIVE && window.Cart;
@@ -29,7 +29,8 @@ function card(c){
     : `<span class="bk-btn" aria-disabled="true">Coming soon</span>`;
   const buyNow = canCart ? `<a class="bk-link" href="${c.buy}" data-bk-buy="${c.cartId}" rel="noopener">Buy now</a>` : "";
   const prev = c.preview ? `<a class="bk-link" href="${c.preview}"${c.previewExt ? ' target="_blank" rel="noopener"' : ""}>${esc(c.previewLabel || "Free preview →")}</a>` : "";
-  const links = buyNow || prev ? `<div class="bk-links">${buyNow}${prev}</div>` : "";
+  const prev2 = c.preview2 ? `<a class="bk-link" href="${c.preview2}" target="_blank" rel="noopener">${esc(c.preview2Label || "More →")}</a>` : "";
+  const links = buyNow || prev ? `<div class="bk-links">${buyNow}${prev}${prev2}</div>` : "";
   return `<article class="bk-card" data-cats="${c.cats.join(" ")}">
     <div class="bk-stage${c.saf ? " saf" : ""}"><span class="bk-pill">${esc(c.pill)}</span>${c.badge ? `<span class="bk-badge">${esc(c.badge)}</span>` : ""}${stage}${c.mascot ? `<img class="bk-mascot" src="${c.mascot}" alt="" width="34" height="34" loading="lazy">` : ""}</div>
     <div class="bk-body"><h3><a href="${c.href}"${ext}>${esc(c.title)}</a></h3><p class="bk-meta">${c.meta}</p>${price}${btn}${links}</div></article>`;
@@ -38,13 +39,13 @@ function card(c){
 function cards(B, A){
   const pyBuy = B.buy.en || "";
   return [
-    { cats:["tech"], title:"Python with Chai", pill:"English", cover:"media/book-mockup-tech.webp", mock:1, w:560, h:700, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
+    { cats:["tech"], title:"Python with Chai", pill:"English", cover:MEDIA + "python-with-chai-cover-a4.webp", w:560, h:792, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
       meta:"30 chapters · 300+ pages · PDF + EPUB · for beginners", price:B.price, priceNote:"", href:"#p/python-with-chai", buy:pyBuy, buyLabel:"Buy " + rs(B.price), preview:"#book", previewLabel:"Free preview →" },
     { cats:["tech"], title:"Python Libraries Made Easy", pill:"English", badge:"Coming soon", cover:MEDIA + "pylibs-cover.webp", w:840, h:840, alt:"Python Libraries Made Easy, book cover", mascot:"img/botu-192.png",
-      meta:"19 libraries, one per chapter · 83 pages · free sample of 15 pages", priceNote:"Price announced at launch", href:"#p/python-libraries", go:"notes/python-libraries-made-easy-sample.pdf", goLabel:"Free sample (PDF) →", ext:1 },
+      meta:"19 libraries, one per chapter · 83 pages · free sample of 15 pages", href:"#p/python-libraries", tba:1, preview:"notes/python-libraries-made-easy-sample.pdf", previewExt:1, previewLabel:"Sample PDF →" },
     { cats:["tech"], title:"Build with AI: 100 Days to Job-Ready", pill:"English", badge:"Coming soon", cover:MEDIA + "build-with-ai-cover.webp?v=2", w:560, h:792, alt:"Build with AI: 100 Days to Job-Ready, book cover", mascot:"img/botu-192.png",
-      meta:"24 skills, day by day, with code you can run · free sample of 3 chapters", priceNote:"The sample labs run on your laptop with no API key.", href:"#p/build-with-ai", go:"notes/build-with-ai-sample.pdf", goLabel:"Free sample (PDF) →", ext:1, preview:"notes/ai100-sample-labs.zip", previewExt:1, previewLabel:"Free sample labs (zip) →" },
-    { cats:["jobs","tech"], cartId:"book", title:"AI Job Search", pill:"English", badge:DODO_LIVE ? "1 free resume build" : "New", cover:MEDIA + "aijob-cover.webp", w:420, h:420, alt:"AI Job Search by Raj: book cover with the Botu robot at a laptop", mascot:"img/botu-192.png",
+      meta:"24 skills, day by day, with code you can run · free sample of 3 chapters", href:"#p/build-with-ai", tba:1, preview:"notes/build-with-ai-sample.pdf", previewExt:1, previewLabel:"Sample PDF →", preview2:"notes/ai100-sample-labs.zip", preview2Label:"Labs zip →" },
+    { cats:["jobs","tech"], cartId:"book", title:"AI Job Search", pill:"English", badge:DODO_LIVE ? "1 free resume build" : "New", cover:MEDIA + "aijob-cover.webp?v=2", w:560, h:792, alt:"AI Job Search by Raj: book cover with the Botu robot at a laptop", mascot:"img/botu-192.png",
       meta:"50 AI prompts for jobs and study · PDF · helps you prepare, no job guarantee" + (CAREER_KIT_LIVE ? " · <b>Free Career Kit included</b>" : ""), price:A.price, priceNote:"+ tax", href:"#p/ai-job-search", buy:A.en, buyLabel:"Buy now · " + rs(A.price), preview:"#ai-job-search", previewLabel:"Free sample + details →" },
     { cats:["jobs"], title:"Naukri Saathi", pill:"Tool", badge:"Free demo", saf:1, emoji:"📄", w:0, h:0, alt:"", mascot:"img/botu-192.png",
       meta:"Paste a job post and your resume: skill match, resume lines, cover note and interview questions", priceNote:"Free to try. Resume pack ₹49 + tax", href:"/naukri-saathi/", go:"/naukri-saathi/", goLabel:"Try it free →" },
@@ -73,7 +74,7 @@ function shop(x){
       <p class="bk-lead">Chai-shop code, real AI prompts and step-by-step labs. Illustrated English ebooks that take you from your first program to a job-ready skill set. Free preview before you buy.</p>
       <div class="bk-btns"><a class="bk-btn pri" href="#bk-lib" data-bk-go="bk-lib">Shop all books →</a><a class="bk-btn" href="#p/ai-job-search">See inside a book</a></div>
       <ul class="hm-facts"><li><b>Instant</b> PDF download</li><li><b>Every example</b> tested</li><li><b>English</b> edition</li></ul></div>
-    <div class="hm-art" aria-hidden="true"><img class="a" src="${MEDIA}build-with-ai-cover.webp?v=2" alt="" width="420" height="325"><img class="b" src="media/book-mockup-tech.webp" alt="" width="280" height="350"><img class="c" src="${MEDIA}aijob-cover.webp" alt="" width="260" height="260"><span class="hm-chip">Python · AI · Jobs</span></div></div>
+    <div class="hm-art" aria-hidden="true"><img class="a" src="${MEDIA}build-with-ai-cover.webp?v=2" alt="" width="280" height="396"><img class="b" src="media/book-mockup-tech.webp?v=2" alt="" width="280" height="390"><img class="c" src="${MEDIA}aijob-cover.webp?v=2" alt="" width="280" height="396"><span class="hm-chip">Python · AI · Jobs</span></div></div>
   <section class="hm-trust" aria-label="Why buy here"><div><b>Instant download</b><span>Ebooks, nothing is shipped</span></div><div><b>Every example tested</b><span>Outputs come from running the code</span></div><div><b>Free previews</b><span>Read pages before you pay</span></div><div><b>Secure checkout</b><span>Payments by Dodo Payments</span></div></section>
   <section class="hm-goals" aria-labelledby="hm-g"><div class="bk-eyebrow">Pick a goal</div><h2 id="hm-g">What do you want to do?</h2>
     <div class="hm-gcards"><a class="hm-g" href="#bk-lib" data-bk-tab="tech"><b>Learn coding</b><span>Python from zero, libraries and building with AI.</span><i>Python · AI →</i></a><a class="hm-g" href="#bk-lib" data-bk-tab="jobs"><b>Get a job</b><span>Resume, cover letter and interview prompts, plus Naukri Saathi.</span><i>AI Job Search →</i></a><a class="hm-g" href="#bk-lib" data-bk-tab="kids"><b>Kids and teens</b><span>The Samjho Squad books, coming soon.</span><i>See the squad →</i></a></div></section>
@@ -83,7 +84,7 @@ function shop(x){
     <p class="bk-note" style="margin-top:12px">Prices are in rupees. AI Job Search prices show ₹ + tax (10% is added at checkout). Python with Chai is sold through Gumroad, which shows the final amount at checkout. AI Job Search helps you prepare and does not promise a job. Money books are on <a href="https://www.paisasamjhoraj.com/#books">our Paisa site</a>, and exam books are on <a href="https://www.dimaagdada.com/reasoning-puzzles/">Dimaag Dada</a>.</p></section>
   <section aria-labelledby="bk-b"><div class="bk-eyebrow">Sets</div><h2 id="bk-b">Books that work together</h2>
     <div class="bk-row" style="margin-top:14px;grid-template-columns:minmax(0,520px)">
-      <div class="bk-bundle"><span class="bk-badge">Best value</span><div class="bkim"><img src="${MEDIA}aijob-cover.webp" alt="" width="420" height="420" loading="lazy"></div><div class="tx"><h3>Job-Ready bundle</h3><p>AI Job Search book (English) + 5 resume builds on Naukri Saathi${DODO_LIVE ? "" : " (the builds arrive with our new checkout)"}${CAREER_KIT_LIVE ? ", plus the free Career Kit" : ""}. Helps you prepare; no job guarantee.</p><div class="pr"><b>${rs(A.bundle)}</b><span class="bk-note">+ tax</span></div><a class="bk-btn pri" href="#shop" data-bk-buy="bundle" rel="noopener">Buy now</a>${CART_LIVE && window.Cart ? `<button type="button" class="bk-btn" data-bk-cart="bundle">Add to cart</button>` : ""}</div></div></div></section>
+      <div class="bk-bundle"><span class="bk-badge">Best value</span><div class="bkim"><img src="${MEDIA}aijob-cover.webp?v=2" alt="" width="560" height="792" loading="lazy"></div><div class="tx"><h3>Job-Ready bundle</h3><p>AI Job Search book (English) + 5 resume builds on Naukri Saathi${DODO_LIVE ? "" : " (the builds arrive with our new checkout)"}${CAREER_KIT_LIVE ? ", plus the free Career Kit" : ""}. Helps you prepare; no job guarantee.</p><div class="pr"><b>${rs(A.bundle)}</b><span class="bk-note">+ tax</span></div><a class="bk-btn pri" href="#shop" data-bk-buy="bundle" rel="noopener">Buy now</a>${CART_LIVE && window.Cart ? `<button type="button" class="bk-btn" data-bk-cart="bundle">Add to cart</button>` : ""}</div></div></div></section>
   <section aria-labelledby="bk-i"><h2 id="bk-i">Real pages from our books</h2><p class="bk-lead" style="margin:6px 0 14px">Real pages from our own free previews. Swipe to see more.</p>
     <div class="bk-pages" role="list">
       <figure role="listitem"><img src="${MEDIA}aijob-en-p2.webp" alt="AI Job Search, English edition, sample page" width="640" height="495" loading="lazy"><figcaption>AI Job Search · English · sample page</figcaption></figure>
@@ -108,7 +109,7 @@ function aiPage(x){
   const pg = n => `<figure><img src="${MEDIA}aijob-en-p${n}.webp" alt="AI Job Search sample page ${n}" width="640" height="495" loading="lazy"><figcaption>Sample page ${n}</figcaption></figure>`;
   return `<div class="bk bk-has-sticky">
   <p><a class="bk-link" href="#shop">← All books</a></p>
-  <section class="bk-pagehero"><div class="bk-stage" style="border-radius:24px"><span class="bk-pill">English</span><span class="bk-badge">New</span><img src="${MEDIA}aijob-cover.webp" alt="AI Job Search by Raj: book cover with the Botu robot at a laptop" width="420" height="420" decoding="async"></div>
+  <section class="bk-pagehero"><div class="bk-stage" style="border-radius:24px"><span class="bk-pill">English</span><span class="bk-badge">New</span><img src="${MEDIA}aijob-cover.webp?v=2" alt="AI Job Search by Raj: book cover with the Botu robot at a laptop" width="420" height="420" decoding="async"></div>
     <div style="display:grid;gap:12px"><div class="bk-eyebrow">E-book · by Raj</div><h1>AI Job Search: 50 AI prompts for jobs + study</h1>
       <p class="bk-lead">50 copy-paste AI prompts that help you prepare for a job and study smarter. Every prompt comes with a real AI reply and a one-line tip on why it works. Just change the [brackets] and paste into ChatGPT, Gemini or any AI.</p>
       <div class="bk-price" style="padding:0"><b>${rs(A.price)}</b><span>+ tax · English edition</span></div>
@@ -135,12 +136,12 @@ function productData(x){
   const B = x.BOOK, A = x.AIJOB;
   return {
     "ai-job-search": { title:"AI Job Search: 50 AI prompts for jobs + study", eyebrow:"E-book · by Raj", pill:"English", badge:"New", cartId:"book", price:A.price, buy:A.en,
-      gallery:[[MEDIA + "aijob-cover.webp", "AI Job Search book cover"], [MEDIA + "aijob-en-p1.webp", "Sample page 1"], [MEDIA + "aijob-en-p2.webp", "Sample page 2"], [MEDIA + "aijob-en-p3.webp", "Sample page 3"]],
+      gallery:[[MEDIA + "aijob-cover.webp?v=2", "AI Job Search book cover"], [MEDIA + "aijob-en-p1.webp", "Sample page 1"], [MEDIA + "aijob-en-p2.webp", "Sample page 2"], [MEDIA + "aijob-en-p3.webp", "Sample page 3"]],
       desc:"50 copy-paste AI prompts that help you prepare for a job and study smarter. Every prompt comes with a real AI reply and a one-line tip on why it works.",
       more:"Resume and LinkedIn prompts, interview practice, the salary question and a 7-day study plan. You change the [brackets] and paste into any AI chat tool. It helps you prepare and does not promise a job.",
       pills:["50 prompts with real replies", "Instant PDF, 89 pages", "Free sample pages", "1 free Naukri Saathi resume build"], more_href:"#ai-job-search", more_label:"Full details and free sample →" },
     "python-with-chai": { title:"Python with Chai: From Basic to Expert", eyebrow:"E-book · by Raj", pill:"English", cartId:"", price:B.price, buy:B.buy.en,
-      gallery:[["media/book-mockup-tech.webp", "Python with Chai book cover"], [MEDIA + "python-ch1-p2.webp", "Chapter 1 preview page"], [MEDIA + "python-ch3-p2.webp", "Chapter 3 preview page"]],
+      gallery:[["media/book-mockup-tech.webp?v=2", "Python with Chai book cover"], [MEDIA + "python-ch1-p2.webp", "Chapter 1 preview page"], [MEDIA + "python-ch3-p2.webp", "Chapter 3 preview page"]],
       desc:"30 illustrated chapters and 300+ pages that take you from print() to decorators and a real project, with chai-shop examples.",
       more:"120+ examples where every output was really run, common mistakes with real error messages, practice with answers, cheat sheets and an index. PDF + EPUB in every purchase.",
       pills:["30 chapters, 300+ pages", "Every output really run", "Free chapter previews", "PDF + EPUB"], more_href:"#book", more_label:"Free preview and details →", sold:"Sold on Gumroad" },
@@ -174,7 +175,7 @@ function productExtra(x){
       details:[["Title","Python with Chai: From Basic to Expert"],["Language","English"],["Format","PDF + EPUB"],["Pages","300+"],["Chapters","30"],["Sold on","Gumroad"]],
       chapters:(B.chapters || []).map(c => [c[0], c[2]]),
       stats:[["30","chapters"],["300+","pages"],["120+","examples"]],
-      pages:[["media/book-mockup-tech.webp","Cover","Python with Chai, English edition"],[MEDIA + "python-ch1-p2.webp","Chapter 1","Hello, Python!"],[MEDIA + "python-ch3-p2.webp","Chapter 3","Strings: playing with text"]],
+      pages:[["media/book-mockup-tech.webp?v=2","Cover","Python with Chai, English edition"],[MEDIA + "python-ch1-p2.webp","Chapter 1","Hello, Python!"],[MEDIA + "python-ch3-p2.webp","Chapter 3","Strings: playing with text"]],
       faq:[["What format is the book?","PDF + EPUB, both included in every purchase. The PDF reads well on a phone, tablet or laptop; the EPUB is for Kindle, Kobo and phone readers."],["Do I need to know programming?","No. It starts from print() and builds up."],["Can I read a free preview first?","Yes. Every preview chapter shows the title page, a chapter and the practice section."],["Where do I pay?","Checkout is on Gumroad, which shows the final amount."]]
     },
     "python-libraries": {

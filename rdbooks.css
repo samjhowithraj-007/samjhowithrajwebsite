@@ -224,3 +224,11 @@ body:has(.bk) > header,body:has(.bk) header{position:static!important}
 
 .pp-labs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px}.pp-labs .bk-btn{justify-content:flex-start;text-align:left;min-height:48px;height:auto;padding:8px 14px}
 .pp-labs .bk-btn b{white-space:nowrap;margin-right:4px}
+.bk-bundle .bkim img{width:auto;height:auto;max-width:100%;max-height:94px;object-fit:contain}
+/* Store cards: same cover height, same slots in the same order */
+.bk-stage>img:not(.bk-mascot){height:184px;max-height:184px;width:auto;max-width:100%}
+.bk-price b.tba{color:var(--bk-muted);font-weight:700}
+.bk-card .bk-btn[aria-disabled="true"]{opacity:.7}
+@media (max-width:639px){.bk-stage>img:not(.bk-mascot){height:130px;max-height:130px}}
+@media (max-width:639px){.bk-stage{height:210px;padding:62px 10px 12px}.bk-stage>.bk-badge{top:42px;bottom:auto;left:0;right:auto}}
+.bk-links{min-height:44px}

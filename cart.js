@@ -6,8 +6,8 @@
   var WORKER = window.CART_WORKER || "https://naukri-saathi.techsamjhoraj.workers.dev", KEY = "ns-cart";   // CART_WORKER is only set on local test pages
   var PRODUCTS = window.CART_PRODUCTS = window.CART_PRODUCTS || [
     { id: "resume-pack", title: "Naukri Saathi resume pack (3 tailored resumes + cover letters)", price: 49, cover: "/img/botu-192.png" },
-    { id: "book", title: "AI Job Search book (English) + 1 resume build", price: 149, cover: "/media/books/aijob-cover.webp" },
-    { id: "bundle", title: "Job-Ready bundle: AI Job Search book + 5 resume builds", price: 249, cover: "/media/books/aijob-cover.webp" }
+    { id: "book", title: "AI Job Search book (English) + 1 resume build", price: 149, cover: "/media/books/aijob-cover.webp?v=2" },
+    { id: "bundle", title: "Job-Ready bundle: AI Job Search book + 5 resume builds", price: 249, cover: "/media/books/aijob-cover.webp?v=2" }
   ];
   var ALIAS = { "book-en": "book" };   // the book is one Dodo product (English only)
   function norm(id) { id = String(id || ""); return ALIAS[id] || id; }
