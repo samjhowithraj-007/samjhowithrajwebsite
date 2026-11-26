@@ -41,7 +41,7 @@ function cards(B, A){
   return [
     { cats:["tech"], title:"Python with Chai", pill:"English", cover:MEDIA + "python-with-chai-cover-a4.webp", w:560, h:792, alt:"Python with Chai: 3D view of the navy book with a chai glass on the cover", mascot:"img/botu-192.png",
       meta:"30 chapters · 300+ pages · PDF + EPUB · for beginners", price:B.price, priceNote:"", href:"#p/python-with-chai", buy:pyBuy, buyLabel:"Buy " + rs(B.price), preview:"#book", previewLabel:"Free preview →" },
-    { cats:["tech"], title:"Python Libraries Made Easy", pill:"English", badge:"Coming soon", cover:MEDIA + "pylibs-cover.webp", w:840, h:840, alt:"Python Libraries Made Easy, book cover", mascot:"img/botu-192.png",
+    { cats:["tech"], title:"Python Libraries Made Easy", pill:"English", badge:"Coming soon", cover:MEDIA + "pylibs-cover.webp?v=2", w:560, h:792, alt:"Python Libraries Made Easy, book cover", mascot:"img/botu-192.png",
       meta:"19 libraries, one per chapter · 83 pages · free sample of 15 pages", href:"#p/python-libraries", price:299, priceNote:"+ tax", preview:"notes/python-libraries-made-easy-sample.pdf", previewExt:1, previewLabel:"Sample PDF →" },
     { cats:["tech"], title:"Build with AI: 100 Days to Job-Ready", pill:"English", badge:"Coming soon", cover:MEDIA + "build-with-ai-cover.webp?v=2", w:560, h:792, alt:"Build with AI: 100 Days to Job-Ready, book cover", mascot:"img/botu-192.png",
       meta:"24 skills, day by day, with code you can run · free sample of 3 chapters", href:"#p/build-with-ai", price:599, priceNote:"+ tax", preview:"notes/build-with-ai-sample.pdf", previewExt:1, previewLabel:"Sample PDF →", preview2:"notes/ai100-sample-labs.zip", preview2Label:"Labs zip →" },
@@ -146,7 +146,7 @@ function productData(x){
       more:"120+ examples where every output was really run, common mistakes with real error messages, practice with answers, cheat sheets and an index. PDF + EPUB in every purchase.",
       pills:["30 chapters, 300+ pages", "Every output really run", "Free chapter previews", "PDF + EPUB"], more_href:"#book", more_label:"Free preview and details →", sold:"Sold on Gumroad" },
     "python-libraries": { title:"Python Libraries Made Easy", eyebrow:"E-book · by Raj", pill:"English", badge:"Coming soon", soon:1, price:299,
-      gallery:[[MEDIA + "pylibs-cover.webp", "Python Libraries Made Easy book cover"], [MEDIA + "pylibs-numpy.webp", "NumPy sample page"], [MEDIA + "pylibs-pandas.webp", "pandas sample page"], [MEDIA + "pylibs-flask.webp", "Flask sample page"]],
+      gallery:[[MEDIA + "pylibs-cover.webp?v=2", "Python Libraries Made Easy book cover"], [MEDIA + "pylibs-numpy.webp", "NumPy sample page"], [MEDIA + "pylibs-pandas.webp", "pandas sample page"], [MEDIA + "pylibs-flask.webp", "Flask sample page"]],
       desc:"19 popular Python libraries explained step by step, with examples you can run.", more:"", pills:["19 libraries", "Runnable examples", "English edition"], more_href:"notes/python-libraries-made-easy-sample.pdf", more_label:"Free sample (PDF) →" },
     "build-with-ai": { title:"Build with AI: 100 Days to Job-Ready", eyebrow:"E-book · by Raj", pill:"English", badge:"Coming soon", soon:1, price:599,
       gallery:[[MEDIA + "build-with-ai-cover.webp?v=2", "Build with AI book cover"], [MEDIA + "bwa-p3.webp", "Sample page: what you will learn"], [MEDIA + "bwa-p4.webp", "Sample page: a lesson with code"], [MEDIA + "bwa-p5.webp", "Sample page: the real output"], [MEDIA + "bwa-p10.webp", "Sample page: quiz"]],
