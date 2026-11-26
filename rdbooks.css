@@ -216,3 +216,11 @@ a.bk-btn.pri,button.bk-btn.pri{color:#fff!important}:root:not([data-theme="light
 .pp-arrow:disabled{opacity:.35;cursor:default}
 
 .pp-how{margin:12px 0 0;padding-left:22px;display:grid;gap:8px}.pp-how li{padding-left:4px}
+
+.bk .hm-hero,.bk header{position:static!important;top:auto!important;z-index:auto!important;background:none!important;border-bottom:0!important}
+
+/* Books pages: do not pin the two-row site header; it hides the books */
+body:has(.bk) > header,body:has(.bk) header{position:static!important}
+
+.pp-labs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px}.pp-labs .bk-btn{justify-content:flex-start;text-align:left;min-height:48px;height:auto;padding:8px 14px}
+.pp-labs .bk-btn b{white-space:nowrap;margin-right:4px}
