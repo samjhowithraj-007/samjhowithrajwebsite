@@ -233,3 +233,7 @@ body:has(.bk) > header,body:has(.bk) header{position:static!important}
 @media (max-width:639px){.bk-stage{height:210px;padding:62px 10px 12px}.bk-stage>.bk-badge{top:42px;bottom:auto;left:0;right:auto}}
 .bk-links{min-height:44px}
 @media (max-width:760px){body:has(.pp-bar) .cb-fab{bottom:calc(150px + env(safe-area-inset-bottom,0px))}}
+/* Bigger covers: fill the stage, little white space */
+.bk-stage{height:300px;padding:44px 12px 10px}
+.bk-stage>img:not(.bk-mascot){height:246px;max-height:246px}
+@media (max-width:639px){.bk-stage{height:236px;padding:62px 8px 8px}.bk-stage>img:not(.bk-mascot){height:166px;max-height:166px}}
