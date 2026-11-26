@@ -52,7 +52,11 @@ function loginPage(app, mode){
  const art = '<div class="lg-art"><div class="lg-ring"><img src="img/rd/botu.png" alt="Botu" width="300" height="475"><span class="ud-chip c1">Python</span><span class="ud-chip c2">AI agents</span><span class="ud-chip c3">SQL</span><span class="ud-chip c5">Git</span></div></div>';
  function step1(){
   const who = u && !signup ? `<span class="rd-av big">${esc(initials(u.name))}</span><h3>Welcome back, ${esc(u.name.split(" ")[0])}</h3>` : "";
-  app.querySelector(".lg-form").innerHTML = `<h1>${signup ? "Sign up and start learning" : "Log in to continue your learning journey"}</h1>${who}
+  if (!signup) {
+   app.querySelector(".lg-form").innerHTML = `<h1 class="lg-h">Sign in</h1><p class="lg-sub">${live() ? "Enter your email and we'll send you a verification code" : "Enter your email to continue. Your progress is saved in this browser."}</p>
+   <form id="lg-f" class="lg-compact"><div class="lg-eml"><label for="lg-e">Email</label><input id="lg-e" type="email" required maxlength="80" autocomplete="email" placeholder="you@example.com" value="${esc(u && u.email || "")}"><button class="lg-go" type="submit" aria-label="Continue"><span aria-hidden="true">&rarr;</span></button></div>
+   <p class="lg-terms">By continuing, you agree to our <a href="#terms">Terms of service</a>.</p><p id="lg-err" class="lg-err" role="alert"></p></form><p class="lg-priv"><a href="#privacy">Privacy policy</a></p>`;
+  } else app.querySelector(".lg-form").innerHTML = `<h1>Sign up and start learning</h1>${who}
    <form id="lg-f"><label>${signup ? "Your name" : ""}${signup ? '<input id="lg-n" required maxlength="40" autocomplete="name" placeholder="Your name">' : ""}</label>
    <label>Email<input id="lg-e" type="email" required maxlength="80" autocomplete="email" placeholder="you@example.com" value="${esc(u && u.email || "")}"></label>
    ${signup || !u ? ints : ""}<button class="lg-btn" type="submit">Continue</button><p class="lg-note">${live() ? "We'll email you a 6-digit code for a secure, passwordless log-in. No password to remember." : "Your profile and progress are saved in this browser. No password needed."}</p><p class="lg-alt">${signup ? 'Already have an account? <a href="#login">Log in</a>' : 'New here? <a href="#signup">Sign up</a>'}</p><p class="lg-err" id="lg-err" role="alert"></p></form>`;
@@ -60,8 +64,8 @@ function loginPage(app, mode){
    e.preventDefault(); const email = app.querySelector("#lg-e").value.trim(), n = (app.querySelector("#lg-n") || {}).value || (u && u.name) || email.split("@")[0];
    const prof = { name: n, email, ints: [...app.querySelectorAll("input[name=int]:checked")].map(x => x.value), goal: (app.querySelector("#lg-goal") || {}).value || (u && u.goal) || "student" };
    if (!live()) { finish(prof); return; }
-   const btn = app.querySelector(".lg-btn"); btn.disabled = true; btn.textContent = "Sending code…";
-   try { await sb("otp", { email, create_user: true }); step2(prof); } catch (x) { btn.disabled = false; btn.textContent = "Continue"; app.querySelector("#lg-err").textContent = x.message; }
+   const btn = app.querySelector(".lg-btn, .lg-go"); btn.disabled = true; if (btn.classList.contains("lg-btn")) btn.textContent = "Sending code…";
+   try { await sb("otp", { email, create_user: true }); step2(prof); } catch (x) { btn.disabled = false; if (btn.classList.contains("lg-btn")) btn.textContent = "Continue"; app.querySelector("#lg-err").textContent = x.message; }
   });
  }
  function step2(prof){
@@ -87,13 +91,13 @@ function render(){
  if (a.dataset.sig === sig) return; a.dataset.sig = sig;
  a.innerHTML = u
   ? `<button class="rd-av" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">${esc(initials(u.name))}</button><div class="rd-am" role="menu"><div class="rd-ah"><span class="rd-av big">${esc(initials(u.name))}</span><div><b>${esc(u.name)}</b><small>${esc(u.email || "Learner")}</small></div></div><a href="#my-learning" role="menuitem">My learning</a><a href="#my-learning" data-ml="saved" role="menuitem">Wishlist (${saved().length})</a><a href="#tools" role="menuitem">Practice tools</a><hr><button type="button" data-act="settings" role="menuitem">Account settings</button><button type="button" data-act="out" role="menuitem">Log out</button></div>`
-  : `<button class="rd-lg" type="button" data-act="login">Log in</button><button class="rd-su" type="button" data-act="signup">Sign up</button>`;
+  : `<button class="rd-aic" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><div class="rd-am rd-pop" role="menu"><h3>Account</h3><button class="pri" type="button" data-act="login">Sign in</button><div class="two"><a href="#my-learning">My learning</a><a href="#account">Profile</a></div><p><button type="button" data-act="signup">New here? Create an account</button></p></div>`;
  document.querySelectorAll(".rd-save-n").forEach(e => e.textContent = saved().length);
 }
 document.addEventListener("click", e => {
  const act = e.target.closest("[data-act]");
  if (act) { const k = act.dataset.act; if (k === "login" || k === "signup") { location.hash = "#" + k; } if (k === "settings") open(); if (k === "out") { try { localStorage.removeItem(K_USER); } catch (x) {} render(); if (location.hash === "#my-learning") route(); } }
- const av = e.target.closest(".rd-av:not(.big)"); const m = document.querySelector(".rd-am");
+ const av = e.target.closest(".rd-av:not(.big), .rd-aic"); const m = document.querySelector(".rd-am");
  if (av && m) { const o = m.classList.toggle("open"); av.setAttribute("aria-expanded", o); e.stopPropagation(); return; }
  if (m && !e.target.closest(".rd-am")) m.classList.remove("open");
  if (e.target.closest(".rd-am a")) m && m.classList.remove("open");
