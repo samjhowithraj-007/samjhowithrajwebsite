@@ -332,6 +332,12 @@ h1,h2.serif,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--hd);f
     </div>
   </section>
 
+  <section class="card" id="ai-tips" aria-labelledby="h-aitips">
+    <h2 id="h-aitips" class="serif">Resume tips for AI and ML jobs</h2>
+    <p class="note" style="margin-top:0">Plain advice in our own words. Only claim what is true for you. These are tips, not a promise of a shortlist.</p>
+    <details><summary>Show the 12 tips</summary><ol class="note" style="line-height:1.6;padding-left:22px"><li><b>One page for under 5 years, two pages at most for senior roles.</b> Use plain section names that ATS tools read: Summary, Skills, Experience, Projects, Education, Certifications.</li><li><b>Write a 2-line summary with no adjectives.</b> Role, years, your 2 strongest skills and 1 proof. Example: &quot;Python developer, 3 yrs; built RAG search over 40k support docs, cut answer time 35%.&quot;</li><li><b>Group skills the way job posts list them.</b> Languages, ML and GenAI (RAG, agents, evals), Frameworks, Data and vector stores, Infra. List only what you can talk about in an interview. The AI / GenAI Engineer layout does the grouping for you.</li><li><b>Use the job post's exact words when they are true for you.</b> ATS tools match terms, so write &quot;Retrieval-Augmented Generation (RAG)&quot; in full once, then RAG.</li><li><b>Every line = what you did + what you built + a number.</b> Use business numbers (time saved, cost cut, users, accuracy before and after), not a lone model score. &quot;AUC 0.91&quot; means little unless it says what improved.</li><li><b>Give projects proof.</b> A GitHub link with a README (problem, picture of the design, how to run, results) and a live demo link if you have one. Pin your best 3 or 4 repos.</li><li><b>Freshers and career switchers: projects before experience.</b> A real project with users or a measured result beats a course list. The Project-first fresher layout (T3) and the AI / GenAI Engineer layout have a proof link for every project.</li><li><b>Show how you tested it, not just how you built it.</b> Example: &quot;added a 150-question test set; correct answers rose from 72% to 88%&quot;. Indian AI job posts ask for evaluation and monitoring.</li><li><b>Show production touches.</b> An API, Docker, logging, cost per request, speed. These set an engineer apart from a notebook-only profile.</li><li><b>Certifications go low on the page,</b> and only the relevant ones (cloud ML, a recognised course). They never replace projects.</li><li><b>India details in the header line.</b> Add your city or &quot;open to relocate&quot;, and notice period if asked. No photo, age, religion or marital status for IT roles. Name the cities you are open to (Bangalore, Hyderabad, Pune, NCR, remote).</li><li><b>Keep it ATS-safe.</b> Single column, no tables or text boxes for key facts, standard fonts, a PDF with selectable text (not a picture), dates as MM/YYYY.</li></ol><p class="note"><a href="#gallery">See the AI / GenAI Engineer layout</a></p></details>
+  </section>
+
   <section class="cband" id="cformats" aria-labelledby="h-cf">
     <h2 id="h-cf" class="serif" style="color:#fff;margin:0 0 6px">Resume formats for the country you apply to</h2>
     <p style="margin:0 0 10px;color:#d7d9f5">Each country expects a different layout. Tap one to see its templates.</p>
@@ -550,7 +556,7 @@ var NS_CONFIG = {
 };
 
 /* ---- Skills (rule-based demo) ---- */
-var SKILLS=[["python","Python"],["sql","SQL"],["excel","Excel"],["power bi","Power BI"],["tableau","Tableau"],["communication","Communication"],["customer","Customer handling"],["sales","Sales"],["java","Java"],["javascript","JavaScript"],["react","React"],["machine learning","Machine learning"],["data analysis","Data analysis"],["accounting","Accounting"],["tally","Tally"],["gst","GST"],["marketing","Marketing"],["seo","SEO"],["team","Teamwork"],["leadership","Leadership"],["presentation","Presentation"],["english","English"],["api","APIs"],["git","Git"],["cloud","Cloud basics"],["testing","Testing"],["support","Support"],["customer service","Customer service"],["cash","Cash handling"],["inventory","Inventory"],["billing","Billing"],["typing","Typing"],["negotiation","Negotiation"],["hindi","Hindi"],["time management","Time management"],["delivery","Delivery / routes"],["warehouse","Warehouse"],["driving","Driving licence"],["patient","Patient care"],["nursing","Nursing"],["teaching","Teaching"],["lesson","Lesson planning"],["cooking","Cooking"],["housekeeping","Housekeeping"],["retail","Retail"],["electrical","Electrical work"],["welding","Welding"],["recruit","Recruitment"],["payroll","Payroll"],["content writing","Content writing"],["copywriting","Copywriting"],["photoshop","Photoshop"],["canva","Canva"],["video editing","Video editing"],["social media","Social media"]];
+var SKILLS=[["python","Python"],["sql","SQL"],["excel","Excel"],["power bi","Power BI"],["tableau","Tableau"],["communication","Communication"],["customer","Customer handling"],["sales","Sales"],["java","Java"],["javascript","JavaScript"],["react","React"],["machine learning","Machine learning"],["data analysis","Data analysis"],["accounting","Accounting"],["tally","Tally"],["gst","GST"],["marketing","Marketing"],["seo","SEO"],["team","Teamwork"],["leadership","Leadership"],["presentation","Presentation"],["english","English"],["api","APIs"],["git","Git"],["cloud","Cloud basics"],["testing","Testing"],["support","Support"],["customer service","Customer service"],["cash","Cash handling"],["inventory","Inventory"],["billing","Billing"],["typing","Typing"],["negotiation","Negotiation"],["hindi","Hindi"],["time management","Time management"],["delivery","Delivery / routes"],["warehouse","Warehouse"],["driving","Driving licence"],["patient","Patient care"],["nursing","Nursing"],["teaching","Teaching"],["lesson","Lesson planning"],["cooking","Cooking"],["housekeeping","Housekeeping"],["retail","Retail"],["electrical","Electrical work"],["welding","Welding"],["recruit","Recruitment"],["payroll","Payroll"],["content writing","Content writing"],["copywriting","Copywriting"],["photoshop","Photoshop"],["canva","Canva"],["video editing","Video editing"],["social media","Social media"],["re:\\bgen(erative)? ?ai\\b","Generative AI"],["re:\\bllms?\\b|large language model","LLMs"],["re:\\brag\\b|retrieval[- ]augmented","RAG"],["re:lang(chain|graph)","LangChain / LangGraph"],["re:vector (database|db|store)|\\bfaiss\\b|\\bchroma\\b|pinecone","Vector databases"],["prompt engineering","Prompt engineering"],["re:\\bevals?\\b|llm evaluation|evaluation (set|framework|metric)","LLM evaluation"],["re:\\b(ml|llm)ops\\b","MLOps"],["re:\\bdocker\\b","Docker"],["re:fastapi","FastAPI"],["re:pytorch|tensorflow","PyTorch / TensorFlow"],["re:scikit","scikit-learn"]];
 
 /* ---- Role families and salary numbers.
    ILLUSTRATIVE ONLY until salaries.json (sourced, dated) is published: rough yearly gross, local currency, in thousands. ---- */
@@ -581,7 +587,8 @@ var SAL={updated:"24 Nov 2026",sourced:false,rateDate:"approximate, not live",so
 /* ---- Small helpers ---- */
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function has(t,k){return t.toLowerCase().indexOf(k)!==-1}
+function has(t,k){t=String(t);if(k.slice(0,3)==="re:"){try{return new RegExp(k.slice(3),"i").test(t)}catch(e){return false}}return t.toLowerCase().indexOf(k)!==-1}
+function lit(t,h){var s=SKILLS.filter(function(x){return x[1]===h})[0];return s&&s[0].slice(0,3)==="re:"?has(t,s[0]):has(t,h.toLowerCase())}
 var LANG="en", CUR_JOB="", MODE="rules";
 function strip(t){   // remove phone numbers, emails and long ID-like numbers before anything could leave the page
   return String(t).replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g,"[email removed]").replace(/(\+?\d[\d\s().-]{7,}\d)/g,"[number removed]");
@@ -922,7 +929,7 @@ function rulesResume(p,res){var lines=res.split(/\n+/).map(function(x){return x.
   check_these:["This basic version was made by simple rules: your own lines are kept as they are. The AI version rewrites them for the job.","Add your phone, email and city at the top."]}}
 
 /* ---- sector templates T1..T12 (from the template research of 24 Nov 2026) ---- */
-var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T12:"India classic",T13:"UK CV",T14:"US / Canada resume",T15:"German Lebenslauf",T16:"Europass-style CV",T17:"Australia resume",T18:"Gulf trade, driver and hospitality one-pager",T19:"Gulf healthcare CV",T20:"Singapore resume",T21:"US federal resume",T22:"India government biodata",T23:"Hindi one-page (trades and drivers)",T24:"Student or intern",T25:"Academic CV",T26:"Executive (15+ years)",T27:"Saffron strip: two-column with a side rail",T28:"Milestone: one-column timeline",T29:"Impact band: results at the top",T30:"Fresh grad grid: education and top projects",T31:"Desk neat: ultra-minimal",T32:"Gulf pro card: mid-level office roles",T33:"Thread: clean timeline, hollow dots",T34:"Thread Rail: timeline with a tinted side rail",T35:"Gulf Thread: timeline, licence block, optional photo",T36:"Cream Ledger: dates in a left gutter, centred name",T37:"Exec Thread: key results row, navy timeline, 2 pages",T38:"Bilingual Basic: Hindi + English titles, large type, 1 page"};
+var TPL={T1:"Clean ATS one-column",T2:"Two-column sidebar",T3:"Project-first fresher",T4:"Skills-matrix technical",T5:"Achievement-led (sales)",T6:"Hybrid (career switch or gap)",T7:"Licence and certification first",T8:"Trade / licence-first compact",T9:"Creative with portfolio",T12:"India classic",T13:"UK CV",T14:"US / Canada resume",T15:"German Lebenslauf",T16:"Europass-style CV",T17:"Australia resume",T18:"Gulf trade, driver and hospitality one-pager",T19:"Gulf healthcare CV",T20:"Singapore resume",T21:"US federal resume",T22:"India government biodata",T23:"Hindi one-page (trades and drivers)",T24:"Student or intern",T25:"Academic CV",T26:"Executive (15+ years)",T27:"Saffron strip: two-column with a side rail",T28:"Milestone: one-column timeline",T29:"Impact band: results at the top",T30:"Fresh grad grid: education and top projects",T31:"Desk neat: ultra-minimal",T32:"Gulf pro card: mid-level office roles",T33:"Thread: clean timeline, hollow dots",T34:"Thread Rail: timeline with a tinted side rail",T35:"Gulf Thread: timeline, licence block, optional photo",T36:"Cream Ledger: dates in a left gutter, centred name",T37:"Exec Thread: key results row, navy timeline, 2 pages",T38:"Bilingual Basic: Hindi + English titles, large type, 1 page",T39:"AI / GenAI Engineer: grouped skills, projects with proof links"};
 var FAMNAME={it:"Software / IT",data:"Data / Analytics",sales:"Sales / Marketing",fin:"Accounting / Finance",cs:"Customer support",health:"Healthcare",teach:"Teaching",trade:"Skilled trades",host:"Hospitality / Retail",log:"Driver / Logistics",design:"Design / Content",admin:"HR / Admin / Office"};
 var LV=["fresher","experienced","gap","switcher","senior"];
 var CNAME={IN:"India",AE:"UAE / Gulf",UK:"UK",CA:"Canada",DE:"Germany",AU:"Australia",SG:"Singapore",US:"USA"};
@@ -993,7 +1000,7 @@ var ORDER={T1:["sum","skl","exp","prj","edu","crt","lng"],T3:["sum","prj","edu",
   T13:["sum","exp","edu","skl","ref0"],T14:["sum","exp","skl","edu"],T15:["pd","sum","exp","edu","lng","skl","int","pl"],T16:["pi","sum","exp","edu","lng","skl"],T17:["sum","ksk","exp","edu","crt","ref","wr"],
   T18:["pg","lic","skl","exp","lng"],T19:["lgl","sum","exp","crt","edu","ref"],T20:["sum","exp","edu","skl","lng"],T21:["ctz","exp","edu","crt","skl"],T22:["bio","edu","exp","lng","dec"],
   T23:["exp","skl","lic","edu","lng"],T24:["sum","edu","prj","exp","skl","ach","clb"],T25:["edu","ri","exp","pub","conf","tch","grn","awd","ref"],T26:["sum","hl","exp","edu","brd"],
-  T28:["sum","exp","prj","edu","skl","crt","lng"],T29:["res","sum","exp","skl","edu","crt"],T30:["grid","sum","skt","exp","crt","lng"],T31:["sum","exp","edu","skl","prj","crt","lng"],T32:["pdn","sum","exp","edu","skl","lng","crt","ref0"],T33:["sum","exp","edu","skl","prj","crt","lng"],T35:["pdn","glic","sum","exp","edu","skl","lng","crt"],T36:["sum","exp","edu","skl","prj","crt","lng"],T37:["sum","res","exp","edu","skl","crt","lng"],T38:["exp","skl","lic","edu","lng"]};
+  T28:["sum","exp","prj","edu","skl","crt","lng"],T29:["res","sum","exp","skl","edu","crt"],T30:["grid","sum","skt","exp","crt","lng"],T31:["sum","exp","edu","skl","prj","crt","lng"],T32:["pdn","sum","exp","edu","skl","lng","crt","ref0"],T33:["sum","exp","edu","skl","prj","crt","lng"],T35:["pdn","glic","sum","exp","edu","skl","lng","crt"],T36:["sum","exp","edu","skl","prj","crt","lng"],T37:["sum","res","exp","edu","skl","crt","lng"],T38:["exp","skl","lic","edu","lng"],T39:["sum","skg","prj","exp","edu","crt"]};
 /* look of each template (inline styles only, so the Word export keeps it) */
 var AR="Arial,Helvetica,sans-serif",GE="Georgia,Times New Roman,serif",HIF="Noto Sans Devanagari,Nirmala UI,Mangal,Arial,sans-serif";
 var CFG={base:{acc:"#1F3A5F",nc:"#1F3A5F",ff:AR,hf:AR,fs:"10.5pt",lh:"1.35",ns:"20pt",hs:"11pt",rule:"1px solid #999",up:true,dm:"none",ph:""},
@@ -1025,6 +1032,7 @@ CFG.T35=Object.assign({},CFG.T33,{lvl:true,sumT:"Profile"});
 CFG.T36={acc:"#1F2A44",nc:"#1F2A44",ink:"#222222",ff:GE,hf:GE,fs:"10.5pt",lh:"1.45",ns:"22pt",hs:"9pt",up:true,rule:"1px solid #CFC8B8",dm:"led",sumT:"Profile"};
 CFG.T37={acc:"#1F3A5F",nc:"#1F3A5F",ink:"#222222",ff:GE,hf:GE,fs:"10.5pt",lh:"1.45",ns:"24pt",hs:"9pt",up:true,rule:"1px solid #D5D8E8",dm:"thr",orgFirst:true,bigSum:true,tlc:"#1F3A5F",sumT:"Profile"};
 CFG.T38={acc:"#1F3A5F",nc:"#1F3A5F",ink:"#111111",ff:HIF,hf:HIF,fs:"11pt",lh:"1.4",ns:"22pt",hs:"10pt",up:false,rule:"1px solid #1F3A5F",hi:true,hiMore:true,bigPhone:true,phCity:true};
+CFG.T39={acc:"#3730A3",nc:"#1F2433",ink:"#1F2433",ff:"Inter,Segoe UI,Arial,sans-serif",hf:"Inter,Segoe UI,Arial,sans-serif",fs:"10.5pt",lh:"1.45",ns:"24pt",hs:"9pt",up:true,rule:"1px solid #D5D8E8",dm:"right",sumT:"Summary"};
 var SKINNABLE=["T3","T4","T5","T6","T7","T8","T9"],SKIN={UK:"T13",CA:"T14",US:"T14",DE:"T15",AU:"T17",SG:"T20"};
 var SKINEND={UK:["ref0"],AU:["ref","wr"],DE:["pl"]};
 var SKINKEYS=["acc","nc","ff","hf","rule","up","dm","hs","ns","ph","lh","sumT","wp","layout"];
@@ -1060,6 +1068,11 @@ function buildResume(id,r,o){
   var S={
    sum:function(){return H(cfg.sumT||(id==="T3"||id==="T12"||fresh?"Objective":"Summary"),r.summary?"<p style='margin:0"+(cfg.bigSum?";font-size:12pt;line-height:1.5":"")+"'>"+esc(r.summary)+"</p>":"")},
    skl:function(){var k=A(r.skills);return H(cfg.sklT||"Skills",k.length?"<p style='margin:0'>"+k.map(esc).join(" · ")+"</p>":"")},
+   skg:function(){var k=A(r.skills).filter(function(x){return String(x).indexOf("[")<0}),G=[["Infra and MLOps",/docker|kubernetes|\baws\b|azure|\bgcp\b|cloud|ci\/cd|\bgit\b|mlops|llmops|linux|terraform|airflow|mlflow/i],["Data and vector stores",/sql|postgres|mysql|mongo|vector|faiss|chroma|pinecone|redis|elastic|spark|bigquery|snowflake|database/i],["Frameworks",/lang(chain|graph)|fastapi|flask|django|react|streamlit|hugging|llamaindex|pandas|numpy|node/i],["ML and GenAI",/\bllms?\b|\brag\b|retrieval|prompt|gen(erative)? ?ai|machine learning|deep learning|\bnlp\b|agent|\bevals?\b|evaluation|fine.?tun|embedding|transformer|vision|scikit|pytorch|tensorflow|\bml\b/i],["Languages",/python|java|javascript|typescript|\bc\+\+|scala|\bgo\b|\br\b|bash|rust/i]],out={},oth=[];
+     k.forEach(function(x){var g=G.filter(function(y){return y[1].test(x)})[0];if(g)(out[g[0]]=out[g[0]]||[]).push(x);else oth.push(x)});
+     var order=["Languages","ML and GenAI","Frameworks","Data and vector stores","Infra and MLOps"],ph={"Languages":"Python, SQL","ML and GenAI":"RAG, evals, prompt engineering","Frameworks":"LangChain, FastAPI","Data and vector stores":"PostgreSQL, FAISS","Infra and MLOps":"Docker, AWS, CI/CD"};
+     if(!k.length)return H("Skills",order.map(function(g){return "<p style='margin:2px 0'><b>"+g+":</b> [e.g. "+ph[g]+"]</p>"}).join(""));
+     var rows=order.filter(function(g){return out[g]}).map(function(g){return "<p style='margin:2px 0'><b>"+g+":</b> "+out[g].map(esc).join(", ")+"</p>"});if(oth.length)rows.push("<p style='margin:2px 0'><b>Other:</b> "+oth.map(esc).join(", ")+"</p>");return H("Skills",rows.join(""))},
    skm:function(){var k=A(r.skills);if(!k.length)return "";var a=k.slice(0,Math.ceil(k.length/2)),b=k.slice(Math.ceil(k.length/2));return H("Technical skills","<p style='margin:0'><b>Core:</b> "+a.map(esc).join(", ")+"</p>"+(b.length?"<p style='margin:2px 0 0'><b>Also:</b> "+b.map(esc).join(", ")+"</p>":""))},
    ksk:function(){var k=A(r.skills).slice(0,12);if(!k.length)return "";var h=Math.ceil(k.length/2),col=function(a){return "<td style='width:50%;vertical-align:top'>"+UL(a)+"</td>"};return H("Key skills","<table style='width:100%;border-collapse:collapse'><tr>"+col(k.slice(0,h))+col(k.slice(h))+"</tr></table>")},
    exp:function(){var e=A(r.experience);
@@ -1068,7 +1081,7 @@ function buildResume(id,r,o){
       var ex=id==="T21"?"<p style='margin:0 0 2px;font-size:9.5pt;color:#444'>Hours per week: [hours] | Series and grade: [if a federal job] | Supervisor: [name, optional]</p>":"";
       return entry(hd,x.dates,ex+UL(x.bullets))}).join("");
     return H(cfg.expT||(fresh?"Internships and experience":"Experience"),gapLine+(cfg.expHint&&e.length?PH(cfg.expHint):"")+lines)},
-   prj:function(){var e=A(r.projects);return H(id==="T9"?"Selected work":"Projects",e.map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.name||"")+"</b></p>"+UL(x.bullets)}).join(""))},
+   prj:function(){var e=A(r.projects),pf=(id==="T3"||id==="T39");return H(id==="T9"?"Selected work":"Projects",e.map(function(x){var st=x.stack||(pf?"[Tech stack: Python, FastAPI, FAISS]":""),lk=x.link||(pf?"[GitHub or demo link]":"");return "<p style='margin:8px 0 2px'><b>"+esc(x.name||"")+"</b></p>"+(st?"<p style='margin:0 0 2px;color:#444;font-size:9.5pt'>Stack: "+esc(st)+"</p>":"")+(lk?"<p style='margin:0 0 2px;color:#444;font-size:9.5pt'>Link: "+esc(lk)+"</p>":"")+UL(x.bullets)}).join(""))},
    hyb:function(){var e=A(r.projects),k=A(r.skills);return H("Relevant skills and projects",(k.length?"<p style='margin:0 0 4px'>"+k.map(esc).join(" · ")+"</p>":"")+e.map(function(x){return "<p style='margin:6px 0 2px'><b>"+esc(x.name||"")+"</b></p>"+UL(x.bullets)}).join(""))},
    edu:function(){var e=A(r.education);
     if(cfg.eduTable){var td="border:1px solid #777;padding:3px 6px;vertical-align:top";return H("Education","<table style='width:100%;border-collapse:collapse;font-size:10pt'><tr style='background:#FAF7F0'><th style='"+td+";text-align:left'>Exam / degree</th><th style='"+td+";text-align:left'>Board / university</th><th style='"+td+"'>Year</th><th style='"+td+"'>%</th></tr>"+e.map(function(x){return "<tr><td style='"+td+"'>"+esc(x.degree||"")+"</td><td style='"+td+"'>"+esc(x.school||"")+"</td><td style='"+td+"'>"+esc(x.year||"")+"</td><td style='"+td+"'>[%]</td></tr>"}).join("")+"</table>")}
@@ -1123,7 +1136,7 @@ function buildResume(id,r,o){
    brd:function(){return H("Boards and leadership",PH("[Board seats, committees, leadership roles]"))}
   };
   var photo=cfg.ph?"<div style='float:right;width:35mm;height:45mm;border:1px dashed #999;font-size:8pt;text-align:center;padding-top:16mm;color:#777;box-sizing:border-box'>"+(cfg.ph==="opt"?"Photo (optional)":"Photo")+"</div>":"";
-  var contact=(r.contact&&String(r.contact).trim())?esc(r.contact):"[Phone] | [Email] | [City]"+(id==="T9"?" | [Portfolio link]":"")+((id==="T3"&&(r.projects||[]).length)?" | [GitHub link]":"")+(id==="T24"?" | [LinkedIn] | [GitHub]":"");
+  var contact=(r.contact&&String(r.contact).trim())?esc(r.contact):"[Phone] | [Email] | [City]"+(id==="T9"?" | [Portfolio link]":"")+((id==="T3"&&(r.projects||[]).length)?" | [GitHub link]":"")+(id==="T24"?" | [LinkedIn] | [GitHub]":"")+(id==="T39"?" | [GitHub] | [LinkedIn]":"");
   var pcity=cfg.phCity?String(r.contact||"").split("|").map(function(x){return x.trim()}).filter(function(x){return x&&!/@|https?:|www\.|linkedin|github/i.test(x)}).join(" | "):"";
   var head;
   if(id==="T22")head="<div style='overflow:hidden'>"+photo+"<div style='text-align:center;font:700 16pt "+cfg.hf+"'>Biodata</div></div>";
@@ -1144,7 +1157,7 @@ function buildResume(id,r,o){
     if(fam==="design"||(fresh&&id!=="T15"))ins("prj","exp");
     if(id==="T14"&&ct==="CA")ord.push("vol")}
   if(skin&&SKINEND[ct])SKINEND[ct].forEach(function(k){if(ord.indexOf(k)<0)ord.push(k)});
-  var CANM={sum:"sum",skl:"skl",skm:"skl",ksk:"skl",skt:"skl",exp:"exp",prj:"prj",edu:"edu",crt:"crt",lng:"lng"};
+  var CANM={sum:"sum",skg:"skl",skl:"skl",skm:"skl",ksk:"skl",skt:"skl",exp:"exp",prj:"prj",edu:"edu",crt:"crt",lng:"lng"};
   if(o.order){   /* Studio: the person's own section order, placed into the template's section slots; filled sections the template lacks are added */
     var DATA={sum:r.summary,skl:A(r.skills).length,exp:A(r.experience).length,prj:A(r.projects).length,edu:A(r.education).length,crt:A(r.certifications).length,lng:A(r.languages).length};
     o.order.forEach(function(c){if(DATA[c]&&!ord.some(function(k){return CANM[k]===c||(k==="hyb"&&(c==="prj"||c==="skl"))||(k==="grid"&&(c==="prj"||c==="edu"))}))ord.push(c)});
@@ -1163,7 +1176,7 @@ function resumeHTML(r){
   h+=secH("Summary","<p style='margin:0'>"+esc(r.summary||"")+"</p>");
   h+=secH("Skills",(r.skills&&r.skills.length)?"<p style='margin:0'>"+r.skills.map(esc).join(" · ")+"</p>":"");
   h+=secH("Experience",(r.experience||[]).map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.role||"")+"</b>"+(x.org?", "+esc(x.org):"")+(x.dates?" <span style='color:#444'>("+esc(x.dates)+")</span>":"")+"</p><ul style='margin:0;padding-left:20px'>"+li(x.bullets)+"</ul>"}).join(""));
-  h+=secH("Projects",(r.projects||[]).map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.name||"")+"</b></p><ul style='margin:0;padding-left:20px'>"+li(x.bullets)+"</ul>"}).join(""));
+  h+=secH("Projects",(r.projects||[]).map(function(x){return "<p style='margin:8px 0 2px'><b>"+esc(x.name||"")+"</b></p>"+(x.stack?"<p style='margin:0 0 2px'>Stack: "+esc(x.stack)+"</p>":"")+(x.link?"<p style='margin:0 0 2px'>Link: "+esc(x.link)+"</p>":"")+"<ul style='margin:0;padding-left:20px'>"+li(x.bullets)+"</ul>"}).join(""));
   h+=secH("Education",(r.education||[]).map(function(x){return "<p style='margin:6px 0'><b>"+esc(x.degree||"")+"</b>"+(x.school?", "+esc(x.school):"")+(x.year?" ("+esc(x.year)+")":"")+"</p>"}).join(""));
   h+=secH("Certifications",(r.certifications&&r.certifications.length)?"<ul style='margin:0;padding-left:20px'>"+li(r.certifications)+"</ul>":"");
   return h}
@@ -1235,6 +1248,7 @@ var GAL=[
  ["T24","Student or intern: education and projects first.",ALLC,"f","1",0,"fresher"],
  ["T25","Academic CV: research, publications, teaching, grants.",ALLC,"m s","1",0,"senior"],
  ["T26","Executive: career highlights first, older roles shortened.",ALLC,"s e","1",0,"senior"],
+ ["T39","New. AI / GenAI Engineer: one plain column, skills in five groups (languages, ML and GenAI, frameworks, data and vector stores, infra), projects with a stack line and a proof link. No tables, so it reads as clean ATS text.",ALLC,"f m","1",0,"experienced"],
  ["T38","New. Bilingual Basic: section titles in Hindi and English, 11 pt text, short bullets, phone and city only at the top, one page. For technicians, drivers and trades in India and the Gulf.","IN AE","f m","1",0,"experienced"],
  ["T37","New. Exec Thread: ivory page, larger profile, a Key results row of three numbers, a navy timeline with company names in bold. Two pages. Type your own three key results. For leaders with 15+ years.",ALLC,"s","1",0,"experienced"],
  ["T36","New. Cream Ledger: a very light cream page, dates in a fixed left gutter with no line, a centred name and thin rules. Quiet and formal. Accounts, admin, government, banking.",ALLC,"f m s","1",0,"experienced"],
@@ -1322,14 +1336,14 @@ function paid(){return !!LIC&&/^Key accepted/.test($("licMsg").textContent)}
 function norm(r){r=r||{};function L(a){return arr(a).map(S1).map(function(x){return x.trim()}).filter(Boolean)}
   return {name:S1(r.name),headline:S1(r.headline),contact:S1(r.contact),summary:S1(r.summary),skills:L(r.skills),
    experience:arr(r.experience).map(function(x){x=x||{};return {role:S1(x.role),org:S1(x.org),dates:S1(x.dates),bullets:L(x.bullets)}}),
-   projects:arr(r.projects).map(function(x){x=x||{};return {name:S1(x.name),bullets:L(x.bullets)}}),
+   projects:arr(r.projects).map(function(x){x=x||{};return {name:S1(x.name),stack:S1(x.stack).slice(0,160),link:S1(x.link).slice(0,200),bullets:L(x.bullets)}}),
    education:arr(r.education).map(function(x){x=x||{};return {degree:S1(x.degree),school:S1(x.school),year:S1(x.year)}}),
    certifications:L(r.certifications),languages:L(r.languages),licences:L(r.licences),key_results:L(r.key_results),nationality:S1(r.nationality),visa:S1(r.visa),notice:S1(r.notice)}}
 function setP(o,p,v){var a=p.split("."),i;for(i=0;i<a.length-1;i++){o=o[a[i]];if(o==null)return}o[a[a.length-1]]=v}
 function getP(o,p){var a=p.split("."),i;for(i=0;i<a.length;i++){if(o==null)return "";o=o[a[i]]}return o}
 function rText(r){var p=[r.name,r.headline,r.summary,arr(r.skills).join(", ")];
   arr(r.experience).forEach(function(x){p.push([x.role,x.org,x.dates].filter(Boolean).join(" "));arr(x.bullets).forEach(function(b){p.push("- "+b)})});
-  arr(r.projects).forEach(function(x){p.push(x.name);arr(x.bullets).forEach(function(b){p.push("- "+b)})});
+  arr(r.projects).forEach(function(x){p.push(x.name);if(x.stack)p.push("Stack: "+x.stack);if(x.link)p.push("Link: "+x.link);arr(x.bullets).forEach(function(b){p.push("- "+b)})});
   arr(r.education).forEach(function(x){p.push([x.degree,x.school,x.year].filter(Boolean).join(", "))});
   p.push(arr(r.certifications).join(", "),arr(r.languages).join(", "));return p.filter(Boolean).join("\n")}
 function allBullets(r){var b=[];arr(r.experience).forEach(function(x,i){arr(x.bullets).forEach(function(t,j){b.push({p:"experience."+i+".bullets."+j,t:t})})});arr(r.projects).forEach(function(x,i){arr(x.bullets).forEach(function(t,j){b.push({p:"projects."+i+".bullets."+j,t:t})})});return b}
@@ -1350,7 +1364,7 @@ function stBuildForm(){var r=ST.r,h="";
   var B={
    sum:fa("About you, 2 to 3 lines","summary",r.summary,"str"),
    exp:items("experience",r.experience,function(x,i){return fi("Job title","experience."+i+".role",x.role)+fi("Company, city","experience."+i+".org",x.org)+fi("Dates","experience."+i+".dates",x.dates)+fa("What you did (one line each)","experience."+i+".bullets",x.bullets,"lines")},"+ Add a job"),
-   prj:items("projects",r.projects,function(x,i){return fi("Project name","projects."+i+".name",x.name)+fa("What you built and the result (one line each)","projects."+i+".bullets",x.bullets,"lines")},"+ Add a project"),
+   prj:items("projects",r.projects,function(x,i){return fi("Project name","projects."+i+".name",x.name)+fi("Tech stack (one line, optional)","projects."+i+".stack",x.stack,"Python, FastAPI, FAISS")+fi("Proof link (GitHub or demo, optional)","projects."+i+".link",x.link,"github.com/you/project")+fa("What you built and the result (one line each)","projects."+i+".bullets",x.bullets,"lines")},"+ Add a project"),
    edu:items("education",r.education,function(x,i){return fi("Degree or exam","education."+i+".degree",x.degree)+fi("College or board","education."+i+".school",x.school)+fi("Year","education."+i+".year",x.year)},"+ Add education"),
    skl:fa("Skills, separated by commas","skills",r.skills,"csv","Excel (Advanced), SQL (Basic)")+'<p class="note" style="margin:4px 0 0">Show levels as words in brackets. We never use bars: they are vague and software cannot read them.</p>',
    crt:fa("Certificates, one per line","certifications",r.certifications,"lines"),
@@ -1367,7 +1381,7 @@ $("pContent").addEventListener("toggle",function(e){var d=e.target;if(d.getAttri
 function mvSec(k,dir){var i=ST.order.indexOf(k),j=i+dir;if(i<0||j<0||j>=ST.order.length)return;ST.order.splice(i,1);ST.order.splice(j,0,k);stBuildForm();stRender();stSaveSoon()}
 $("pContent").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var m=b.getAttribute("data-mv"),a=b.getAttribute("data-add"),d=b.getAttribute("data-del");
   if(m){e.preventDefault();var p=m.split(":");mvSec(p[0],+p[1])}
-  else if(a){ST.r[a].push(a==="experience"?{role:"",org:"",dates:"",bullets:[]}:a==="projects"?{name:"",bullets:[]}:{degree:"",school:"",year:""});ST.open[a==="experience"?"exp":a==="projects"?"prj":"edu"]=true;stBuildForm();stRender();stSaveSoon()}
+  else if(a){ST.r[a].push(a==="experience"?{role:"",org:"",dates:"",bullets:[]}:a==="projects"?{name:"",stack:"",link:"",bullets:[]}:{degree:"",school:"",year:""});ST.open[a==="experience"?"exp":a==="projects"?"prj":"edu"]=true;stBuildForm();stRender();stSaveSoon()}
   else if(d){var q=d.split(":");ST.r[q[0]].splice(+q[1],1);stBuildForm();stRender();stSaveSoon()}});
 var dragK="";
 $("pContent").addEventListener("dragstart",function(e){var g=e.target.closest&&e.target.closest("[data-grab]");if(!g)return;dragK=g.getAttribute("data-grab");try{e.dataTransfer.setData("text/plain",dragK);e.dataTransfer.effectAllowed="move"}catch(x){}});
@@ -1406,7 +1420,7 @@ $("spage").addEventListener("click",function(e){var d=e.target.closest(".fxd");i
 function noBr(x){return typeof x==="string"?x.indexOf("[")<0:true}
 function filledOnly(r){function nb2(v){return noBr(v)?v:""}
   return {name:nb2(r.name),headline:nb2(r.headline),contact:r.contact,summary:noBr(r.summary)?r.summary:"",skills:r.skills.filter(noBr),
-  experience:r.experience.map(function(x){return {role:nb2(x.role),org:nb2(x.org),dates:nb2(x.dates),bullets:x.bullets.filter(noBr)}}),projects:r.projects.map(function(x){return {name:nb2(x.name),bullets:x.bullets.filter(noBr)}}),
+  experience:r.experience.map(function(x){return {role:nb2(x.role),org:nb2(x.org),dates:nb2(x.dates),bullets:x.bullets.filter(noBr)}}),projects:r.projects.map(function(x){return {name:nb2(x.name),stack:nb2(x.stack),link:nb2(x.link),bullets:x.bullets.filter(noBr)}}),
   education:r.education.filter(function(x){return noBr(x.degree)&&noBr(x.school)&&noBr(x.year)&&(x.degree||x.school)}),certifications:r.certifications.filter(noBr),languages:r.languages.filter(noBr)}}
 function stScoreCalc(){var r0=ST.r,r=filledOnly(r0),txt=rText(r),ptxt=rText(r0),words=txt.split(/\s+/).filter(Boolean).length,B=allBullets(r),ck=[],sc=0;
   function add(w,ok,l,fix,sec){ck.push({ok:ok,l:l,fix:fix,sec:sec});if(ok)sc+=w}
@@ -1420,6 +1434,7 @@ function stScoreCalc(){var r0=ST.r,r=filledOnly(r0),txt=rText(r),ptxt=rText(r0),
   add(10,r.skills.length>=6,"6 or more skills listed","List skills you really have, one by one, with levels as words.","skl");
   add(10,r.education.length>0,"Education listed","Add your degree, college and year.","edu");
   add(5,words>=180&&words<=750,"Length 180 to 750 words","Aim for one clear page.","exp");
+  if(r.projects.length&&(ST.tpl==="T3"||ST.tpl==="T39"))add(0,r.projects.every(function(x){return x.link&&x.link.indexOf("[")<0}),"Every project has a proof link","Add a GitHub or demo link to each project. A real link is the best proof for IT and AI roles.","prj");
   add(10,ph===0,ph?ph+" [bracket] reminders still to fill":"No [bracket] reminders left","Replace each [bracket] with your real facts, or delete the line.","head");
   return {score:sc,ck:ck}}
 function stChip(){var s=stScoreCalc().score;$("stScore").textContent="Score "+s+"/100"}
@@ -1449,7 +1464,7 @@ $("stTr").onclick=function(){var job=$("stJob").value,msg=$("stTrMsg");ST.job=jo
   if(!r.summary||/^\s*\[/.test(r.summary)){var s="Applying for "+(role||"this role")+(m.have.length?", with skills in "+m.have.slice(0,4).join(", "):"")+". [Add one line about your strongest real result.]";chgAdd("About you: start from the job",r.summary,s,function(x){x.summary=s})}
   var cur=r.skills.slice(),front=cur.filter(function(s){return m.have.some(function(h){return has(s,keyOf(h))})}),rest=cur.filter(function(s){return front.indexOf(s)<0}),nu=front.concat(rest);
   if(front.length&&nu.join("|")!==cur.join("|"))chgAdd("Skills: job skills first",cur.join(", "),nu.join(", "),function(x){x.skills=nu});
-  var add=m.have.filter(function(h){return !cur.some(function(s){return has(s,keyOf(h))})&&has(txt,h.toLowerCase())});
+  var add=m.have.filter(function(h){return !cur.some(function(s){return has(s,keyOf(h))})&&lit(txt,h)});
   if(add.length)chgAdd("Skills: add what your resume already shows",cur.join(", "),cur.concat(add).join(", "),function(x){x.skills=x.skills.concat(add)});
   ST.gapHtml=m.gap.length?"<div class='chg'><b>The job asks for these, but your resume does not show them</b><p class='note' style='margin:4px 0'>Add one only if it is true. Otherwise learn it first.</p>"+tags(m.gap,"gap")+"<p class='note' style='margin:6px 0 0'>"+T[LANG].learn+" "+learnLinks(m.gap)+"</p></div>":"";
   msg.textContent=ST.chg.length?ST.chg.length+" suggested change"+(ST.chg.length>1?"s":"")+". These are simple rules, not AI.":"Nothing to change by simple rules. Your resume already lines up with this job post.";chgDraw(ST.gapHtml);stSaveSoon()};
