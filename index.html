@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;text=TechSamjoR&amp;display=swap">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal14"><link rel="stylesheet" href="rdbooks.css?v=44"><script src="rdhome.js?v=20"></script><script defer src="rdbar.js?v=12"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=4"></script><script defer src="rdplayer.js?v=1"></script><script defer src="rdnews.js?v=6"></script><script defer src="cart.js?v=17"></script><script defer src="rdbooks.js?v=60"></script>
+<link rel="stylesheet" href="redesign.css?v=1000"><link rel="stylesheet" href="rdhome.css?v=16"><link rel="stylesheet" href="rdlight.css?v=pal14"><link rel="stylesheet" href="rdbooks.css?v=44"><script src="rdhome.js?v=21"></script><script defer src="rdbar.js?v=13"></script><script defer src="rdtools.js?v=6"></script><script defer src="rdlearn.js?v=4"></script><script defer src="rdauth.js?v=4"></script><script defer src="rdplayer.js?v=2"></script><script defer src="rdnews.js?v=6"></script><script defer src="cart.js?v=17"></script><script defer src="rdbooks.js?v=60"></script>
 <script>try{if(localStorage.getItem("swr-theme")!=="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="img/botu-apple-180.png">
@@ -334,6 +334,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .stdin textarea{width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);color:var(--code-fg);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:8px 10px;font:14px/1.5 var(--mono)}
 .runout{border-top:1px dashed rgba(255,255,255,.14)}
 .runout pre{white-space:pre-wrap;word-break:break-word;color:var(--code-fg);min-height:1.6em;max-height:420px;overflow:auto}
+.runimgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:10px 12px 14px}.runimgs[hidden]{display:none}.runimgs figure{margin:0}.runimgs img{width:100%;height:auto;border-radius:10px;background:#000;display:block}.runimgs figcaption{font-size:12px;color:var(--code-com,#9aa);padding:4px 2px}
 .runout .e{color:#ff9c8c}.runout .i{color:var(--code-str)}.runout .n{color:var(--code-com)}
 .pghead{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:18px 0 12px}
 .pghead label{font-size:14px;color:var(--muted)}
@@ -534,7 +535,7 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
 <footer><div class="wrap fgrid">
   <div class="fabout"><a class="brand" href="#classroom"><img src="img/badge-96.png" alt="" width="40" height="40"><span class="wm"><span class="t">Tech</span> Samjho Raj</span></a>
     <p>Free Python and AI lessons: a short Hinglish video, simple English notes and code you can run in your browser.</p><div class="social" data-social></div></div>
-  <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#upcoming">Upcoming lessons</a></nav>
+  <nav aria-label="Courses"><h4>Courses</h4><a href="#python-1">Python with Chai</a><a href="#chatbot-1">AI + Python chatbot</a><a href="#agentic-1">Agentic AI with Bunty</a><a href="#codeart-1">Code art with Raj</a><a href="#upcoming">Upcoming lessons</a></nav>
   <nav aria-label="Tools"><h4>Tools</h4><a href="#playground">Python Playground</a><a href="#shop">Shop</a><a href="https://www.dimaagdada.com/" rel="noopener">Dimaag Dada ↗</a><a href="#workshops">Workshops</a><a href="#cohort">Live cohort waitlist</a><a href="https://www.paisasamjhoraj.com">Money lessons ↗</a></nav>
   <nav aria-label="Site"><h4>Site</h4><a href="#about">About Raj</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="#terms">Terms</a><a href="#refund">Refunds</a><a href="#shipping">Shipping and delivery</a><a href="#privacy">Privacy</a></nav>
 </div><div class="wrap fbottom"><span>© 2026 Tech Samjho Raj</span><span>Progress is saved only in this browser. No tracking, no cookies.</span></div></footer>
@@ -544,6 +545,8 @@ footer{background:color-mix(in srgb,var(--paper) 88%,transparent)}
 <script>
 // ---------- course content (notes from the videos) ----------
 const PY = (code) => code.trim();
+const CA_SUN = "# Sunflower from the golden angle (our own code, Pillow only). Vogel-style model: dot i sits at radius sqrt(i), angle i * ANGLE.\nimport math\nfrom PIL import Image, ImageDraw, ImageFilter, ImageChops\n\ndef sunflower(angle=137.50776, n=800, size=1080, name=\"sunflower\"):\n    dots = Image.new(\"RGB\", (size, size), \"black\")\n    d = ImageDraw.Draw(dots)\n    for i in range(1, n + 1):\n        r = math.sqrt(i) * size * 0.0175                       # distance grows slowly\n        a = math.radians(i * angle)                            # each dot turns by the same angle\n        x, y = size / 2 + r * math.cos(a), size / 2 + r * math.sin(a)\n        t = i / n\n        d.ellipse((x - 9, y - 9, x + 9, y + 9), fill=(255, int(150 + 80 * t), int(40 + 90 * t)))\n    glow = ImageChops.add(dots, dots.filter(ImageFilter.GaussianBlur(14)))   # soft glow\n    glow.save(f\"frames/{name}.png\")\n\nfor ang in (137.50776, 137.0, 138.0, 90.0):\n    sunflower(ang, name=f\"sunflower-{ang}\")";
+const CA_BF = "# Neon butterfly from ONE equation (our own code). Polar butterfly curve, T. H. Fay (1989):\n#   r = e^cos(t) - K*cos(4t) + sin(t/12)^5      <- K is the \"one number\" we will change\nimport math\nfrom PIL import Image, ImageDraw, ImageFilter, ImageChops\n\ndef butterfly(k=2, size=1080, name=\"butterfly\"):\n    sc = 0.105 if k <= 2 else 0.082                      # smaller scale so big wings still fit\n    pts = []\n    for i in range(0, 24000):\n        t = i * 12 * math.pi / 24000                      # t from 0 to 12*pi\n        r = math.exp(math.cos(t)) - k * math.cos(4 * t) + math.sin(t / 12) ** 5\n        pts.append((size / 2 + r * math.sin(t) * size * sc, size * 0.46 - r * math.cos(t) * size * sc))\n    glow = Image.new(\"RGB\", (size, size), \"black\")\n    ImageDraw.Draw(glow).line(pts, fill=(255, 40, 200), width=7)\n    neon = Image.new(\"RGB\", (size, size), \"black\")\n    for radius in (40, 18, 8):                            # layered blur = neon glow\n        neon = ImageChops.add(neon, glow.filter(ImageFilter.GaussianBlur(radius)))\n    ImageDraw.Draw(neon).line(pts, fill=(255, 230, 255), width=2)   # thin bright core\n    neon.save(f\"frames/{name}.png\")\n\nfor k in (2, 4, 0.5):\n    butterfly(k, name=f\"butterfly-K{k}\")";
 const COURSES = [
 {
   id: "python", title: "Python with Chai", tag: "20 lessons · complete",
@@ -1001,6 +1004,37 @@ print(f"{naam} bhai, aapka bill {bill} rupaye!")`), output:"Aapka naam? Raj\nKit
   { title: "Coming seasons", lessons:
     ["Season 2 · Bunty's brain (LLMs, prompts, tokens, RAG)","Season 3 · Bunty's tools (APIs, MCP, browser)","Season 4 · Bunty's team (multi-agent)","Season 5 · Keeping Bunty in check (safety)","Season 6 · Build your own Bunty (hands-on)"].map(soon) }
   ]
+},
+{
+  id: "codeart", title: "Code art with Raj", tag: "2 lessons live",
+  cover: "media/codeart.jpg", wide: true,
+  blurb: "Draw a sunflower and a neon butterfly with a few lines of Python. Run the code right here in your browser, change one number and see what happens. A book on code art is planned.",
+  modules: [
+  { title: "Season 1 · Pictures from numbers", lessons: [
+    { id:"codeart-1", title:"Sunflower ka secret: 137.5°", file:"sunflower.py", videoSoon:"Short coming soon",
+      concept:["Put dot number 1, then dot number 2, then dot number 3, and so on. Each new dot goes a little further from the centre and turns by the <b>same angle</b> from the dot before it. That is the whole recipe.",
+        "The only thing you choose is that angle. With <b>137.5°</b> (the golden angle) the dots spread out evenly and you get a sunflower-like head with spirals in it. With other angles the picture changes a lot.",
+        "<b>Careful:</b> this is a <b>model</b> of a sunflower head (the Vogel spiral), not the exact formula of a real flower. Real sunflowers are only roughly like it.",
+        "Press <b>▶ Run</b>. The code needs Pillow, and it loads on its own. It draws four pictures, one for each angle in the last two lines: 137.50776, 137.0, 138.0 and 90.0. Use <b>Edit code</b> to change them."],
+      list:["137.5° fills the head evenly, with spirals in both directions.","137.0° (half a degree less) gives wide spiral arms with gaps.","138.0° (half a degree more) gives rays with gaps.","90° puts every dot on 4 straight lines: a plus sign."],
+      code: CA_SUN,
+      figs:[["media/code-art/sunflower-137-5.webp","137.5°: the head fills evenly"],["media/code-art/sunflower-137-0.webp","137.0°: spiral arms with gaps"],["media/code-art/sunflower-138-0.webp","138.0°: rays with gaps"],["media/code-art/sunflower-90.webp","90°: a plus sign"]],
+      sources:[["Vogel spiral (Wolfram MathWorld)","https://mathworld.wolfram.com/VogelSpiral.html"],["Vogel, H. (1979), A better way to construct the sunflower head, Mathematical Biosciences 44(3-4):179-189","https://doi.org/10.1016/0025-5564(79)90080-4"],["Golden angle (Wikipedia)","https://en.wikipedia.org/wiki/Golden_angle"]],
+      practice:["Add more angles to the <code>for</code> line at the bottom, for example <code>(137.5, 137.6, 137.4)</code>. How different do they look?","Change <code>n=800</code> to 300, then 2000. What changes?","Try an angle of 120 or 72. What shape do you get? (Think: how many times does it fit in 360?)"],
+      takeaway:"One small number, the angle, decides the whole picture. Our quick test (humara test) on 800 dots also found the outer dots were most even at 137.5° and more crowded at 137° and 138°. That is our own test of this model, not a published result. Next: Lesson 2, Neon titli. A book on code art is planned: use the email box below to hear first." },
+    { id:"codeart-2", title:"Neon titli: ek equation", file:"butterfly.py", videoSoon:"Short coming soon",
+      concept:["There is a famous curve called the <b>butterfly curve</b>. Temple H. Fay found it in 1989. It is drawn from one equation in polar form: for every angle <code>t</code> the equation gives a distance <code>r</code> from the centre. Join all the points and a butterfly appears.",
+        "The classic equation is <code>r = e^cos(t) − 2·cos(4t) + sin⁵(t/12)</code>, with <code>t</code> going from 0 to 12π. Our code writes the \"2\" as a number called <b>K</b>, so you can change it.",
+        "<b>Careful:</b> K = 2 is the butterfly curve by Fay. The other K values (4, 1, 0.5, 0) are <b>our own experiments</b>, not Fay's curve.",
+        "Press <b>▶ Run</b> for K = 2, 4 and 0.5. This one is heavier (it blurs big pictures), so it can take a little while. To get all five pictures below, use <b>Edit code</b> and change the last <code>for</code> line to <code>for k in (2, 4, 1, 0.5, 0):</code>."],
+      list:["K = 2: the classic four-wing butterfly.","K = 4: our experiment: much larger wings that overlap.","K = 1: our experiment: smaller, heart-shaped wings.","K = 0.5: our experiment: the wings shrink into a closed shape with a notch.","K = 0: our experiment: no wings, only nested rings."],
+      code: CA_BF,
+      figs:[["media/code-art/butterfly-k2.webp","K = 2: the classic curve"],["media/code-art/butterfly-k4.webp","K = 4: our experiment"],["media/code-art/butterfly-k1.webp","K = 1: our experiment"],["media/code-art/butterfly-k0-5.webp","K = 0.5: our experiment"],["media/code-art/butterfly-k0.webp","K = 0: our experiment"]],
+      sources:[["Fay, T. H. (1989), The Butterfly Curve, American Mathematical Monthly 96(5):442-443","https://doi.org/10.2307/2325155"],["Butterfly curve (transcendental) (Wikipedia)","https://en.wikipedia.org/wiki/Butterfly_curve_(transcendental)"],["Butterfly Curve and Variations (Wolfram Demonstrations)","https://demonstrations.wolfram.com/ButterflyCurveAndVariations/"]],
+      practice:["Try K = 3, then K = 6. When do the wings start to overlap?","Change the 4 in <code>cos(4 * t)</code> to 3, then 5. What happens to the number of wings?","Change the pink colour <code>(255, 40, 200)</code> to blue or green for a different neon."],
+      takeaway:"A drawing can come from one equation. Change one number, K, and you get a different drawing. The sources say the sin⁵(t/12) part was added mainly to make the picture look nicer. A book on code art is planned: use the email box below to hear first." }
+  ]}
+  ]
 }];
 // Brand marks (single-path SVGs, 24x24) for the social links
 const ICONS = {
@@ -1070,7 +1104,7 @@ const app = document.getElementById("app");
 
 // "Continue where you left off": the last lesson opened, kept only in this browser
 const LAST = "swr-last";
-const LEVEL = { python: "Beginner", chatbot: "Beginner to intermediate", agentic: "Beginner" };
+const LEVEL = { python: "Beginner", chatbot: "Beginner to intermediate", agentic: "Beginner", codeart: "Beginner" };
 const started = c => live(c).some(l => done.has(l.id)) || (() => { try { const [lc] = find(localStorage.getItem(LAST) || ""); return lc === c; } catch (e) { return false; } })();
 const nextIn = c => live(c).find(l => !done.has(l.id)) || live(c)[0];
 function heroCta(){
@@ -1136,10 +1170,12 @@ function lessonView(c, l){
       : `<div class="placeholder"><div><b>${l.videoSoon || "Video coming soon"}</b>Until then, read the notes and run the code.</div></div>`}</div>
     ${l.yt || c.playlist ? `<p class="note" style="margin:0">${l.yt ? `▶ <a href="${l.yt}" target="_blank" rel="noopener">Watch this episode on YouTube</a>` : ""}${l.yt && c.playlist ? " · " : ""}${c.playlist ? `Every ${c.title} episode on <a href="${c.playlist}" target="_blank" rel="noopener">YouTube</a>` : ""}</p>` : ""}
     <section class="block"><h3>The idea</h3>${l.concept.map(p => `<p>${p}</p>`).join("")}${l.list ? `<ul>${l.list.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}</section>
-    ${l.code ? `<section class="codebox"${RUNNABLE.includes(c.id) ? ` data-run data-id="${l.id}" data-code="${encodeURIComponent(l.code)}"` : ""}><div class="file"><span>chai.py</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
+    ${l.code ? `<section class="codebox"${RUNNABLE.includes(c.id) ? ` data-run data-id="${l.id}" data-code="${encodeURIComponent(l.code)}"` : ""}><div class="file"><span>${l.file || "chai.py"}</span><button class="copy" type="button" data-code="${encodeURIComponent(l.code)}">Copy</button></div>
       <pre><code>${hl(l.code)}</code></pre>
       ${RUNNABLE.includes(c.id) ? runParts(l.code, false, l.id) : ""}
       ${l.output ? `<div class="out"><div class="file"><span>Output</span></div><pre>${esc(l.output)}</pre></div>` : ""}</section>` : ""}
+    ${l.figs ? `<section class="block"><h3>What the code draws</h3><div class="runimgs">${l.figs.map(f => `<figure><img src="${f[0]}" alt="${esc(f[1])}" width="320" height="320" loading="lazy"><figcaption>${esc(f[1])}</figcaption></figure>`).join("")}</div></section>` : ""}
+    ${l.sources ? `<section class="block"><h3>Sources</h3><ul>${l.sources.map(x => `<li><a href="${x[1]}" target="_blank" rel="noopener">${esc(x[0])}</a></li>`).join("")}</ul><p class="note" style="margin:0">The code and pictures here are our own.</p></section>` : ""}
     <section class="block try"><h3>Try it yourself</h3><ul>${l.practice.map(p => `<li>${p}</li>`).join("")}</ul></section>
     <section class="block takeaway"><h3>Remember</h3><p>${l.takeaway}</p></section>
     <div class="lesson-actions">
@@ -1315,7 +1351,7 @@ function bookBox(id){
     <b>Chapter ${n}: ${bookTitle(n)}</b><p>Go deeper with more examples, common mistakes and practice. Free 4-page preview inside.</p><span class="go">See the book →</span></div></a>`;
 }
 // ---------- live Python: Pyodide in a Web Worker (lazy-loaded on the first Run, never blocks the page) ----------
-const RUNNABLE = ["python", "chatbot", "agentic"];   // every Python lesson, incl. future AI / LLM / agentic courses
+const RUNNABLE = ["python", "chatbot", "agentic", "codeart"];   // every Python lesson, incl. future AI / LLM / agentic courses
 const STDIN_FOR = { "python-8": "Raj\n3", "python-9": "teen", "python-10": "Masala\nband",
   "chatbot-1": "menu\nkaise ho?\nbye", "chatbot-2": "menu\nprice\nkaise ho?\nbye", "chatbot-3": "menu\nprice\nkaise ho?\nbye", "chatbot-4": "  MENU \nPrice\nmenu",
   "chatbot-5": "Masala chai ka MENU dikhao\nPrice kya hai bhaiya?\nmenu aur price",
@@ -1336,6 +1372,8 @@ function clean(msg) {
 onmessage = async e => {
   await ready; const { code, stdin, files } = e.data;
   for (const [name, text] of Object.entries(files || {})) if (!py.FS.analyzePath(name).exists) py.FS.writeFile(name, text);
+  const wantImg = /frames\\//.test(code);
+  if (wantImg) { try { if (!py.FS.analyzePath("frames").exists) py.FS.mkdir("frames"); for (const f of py.FS.readdir("frames")) if (/\\.png$/.test(f)) py.FS.unlink("frames/" + f); } catch (x) {} }
   const lines = stdin ? stdin.replace(/\\r/g, "").split("\\n") : []; let k = 0;
   py.setStdout({ write: b => { postMessage({ t: "out", s: dec.decode(b, { stream: true }) }); return b.length; } });
   py.setStderr({ write: b => { postMessage({ t: "err", s: dec.decode(b, { stream: true }) }); return b.length; } });
@@ -1345,7 +1383,9 @@ onmessage = async e => {
     const ns = py.globals.get("dict")(); ns.set("__name__", "__main__");
     postMessage({ t: "start" });
     await py.runPythonAsync(code, { globals: ns });
-    ns.destroy(); postMessage({ t: "done" });
+    ns.destroy();
+    if (wantImg) { for (const f of py.FS.readdir("frames").sort()) if (/\\.png$/.test(f)) { const d = py.FS.readFile("frames/" + f); postMessage({ t: "img", name: f, data: d }, [d.buffer]); } }
+    postMessage({ t: "done" });
   } catch (err) { postMessage({ t: "error", s: clean(String(err && err.message || err)) }); }
 };`;
   let w = null, ready = null, cur = null;
@@ -1400,10 +1440,12 @@ async function runBox(box){
   const code = boxCode(box), sin = box.querySelector(".stdin textarea").value;
   out.hidden = false; pre.textContent = ""; runB.disabled = true; stopB.hidden = false;
   const add = (txt, cls) => { const sp = document.createElement("span"); if (cls) sp.className = cls; sp.textContent = txt; pre.appendChild(sp); pre.scrollTop = pre.scrollHeight; };
+  let gal = out.querySelector(".runimgs"); if (gal) gal.remove(); gal = document.createElement("div"); gal.className = "runimgs"; gal.hidden = true; out.appendChild(gal); let nimg = 0;
   const t0 = performance.now(); let ranOut = false;
   let kind = await PYRUN.run(code, sin, m => {
     if (m.t === "status") stat.textContent = m.s;
     else if (m.t === "out") add(m.s);
+    else if (m.t === "img") { nimg++; gal.hidden = false; const fg = document.createElement("figure"), im = document.createElement("img"), cp = document.createElement("figcaption"); im.src = URL.createObjectURL(new Blob([m.data], { type: "image/png" })); im.alt = "Picture made by your code: " + m.name; cp.textContent = m.name; fg.append(im, cp); gal.appendChild(fg); }
     else if (m.t === "in") add(m.s, "i");
     else if (m.t === "err") add(m.s, "e");
     else if (m.t === "error" && /EOFError/.test(m.s) && sin.trim() && (ranOut = true))   // a while-True chat loop used up the sample answers: a normal finish
@@ -1412,7 +1454,7 @@ async function runBox(box){
       if (/EOFError/.test(m.s)) add("\n\nTip: type the answers for input() in the Input box above, one per line.", "n"); }
     else if (m.t === "stopped") add((pre.textContent ? "\n" : "") + m.s, "e");
   }, FILES_FOR[box.dataset.id]);
-  if (!pre.textContent) add("(no output)", "n");
+  if (!pre.textContent && !nimg) add("(no output)", "n");
   if (ranOut && kind === "error") kind = "done";
   if (kind === "done" && !document.querySelector(".signup.after-run")) {
     const lead = "Liked running Python here? Get an email when the next lesson is out.";
@@ -1459,6 +1501,8 @@ const PG_EXAMPLES = [
   ["Class: a chai shop", 'class ChaiShop:\n    def __init__(self, name):\n        self.name = name\n        self.sold = 0\n\n    def sell(self, cups):\n        self.sold += cups\n\nshop = ChaiShop("Raju")\nshop.sell(3)\nshop.sell(2)\nprint(shop.name, "sold", shop.sold, "cups")'],
   ["Errors: try / except", 'cups = "two"\ntry:\n    print(int(cups) * 20)\nexcept ValueError:\n    print("Please type a number like 2")\n\nprint(10 / 0)   # this one is not caught: read the traceback!'],
   ["Infinite loop (try Stop)", 'n = 0\nwhile True:\n    n += 1\n    if n % 5_000_000 == 0:\n        print("still going…", n)'],
+  ["Sunflower art (Pillow, makes pictures)", CA_SUN],
+  ["Neon butterfly (Pillow, takes longer)", CA_BF],
   ["numpy (loads on demand)", 'import numpy as np\n\nsales = np.array([12, 18, 9, 22, 15])\nprint("Total:", sales.sum(), "| Average:", sales.mean())'],
 ];
 function playground(){
