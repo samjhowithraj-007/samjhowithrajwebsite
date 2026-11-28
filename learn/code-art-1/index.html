@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunflower ka secret: 137.5° | Code art with Raj</title>
+<meta name="description" content="Draw a sunflower head with 15 lines of Python (Pillow only), then change the angle: 137.5, 137, 138 and 90 degrees. Free notes, simple English.">
+<link rel="canonical" href="https://www.techsamjhoraj.com/learn/code-art-1/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tech Samjho Raj">
+<meta property="og:title" content="Sunflower ka secret: 137.5°">
+<meta property="og:description" content="Draw a sunflower head with 15 lines of Python (Pillow only), then change the angle: 137.5, 137, 138 and 90 degrees. Free notes, simple English.">
+<meta property="og:url" content="https://www.techsamjhoraj.com/learn/code-art-1/">
+<meta property="og:image" content="https://www.techsamjhoraj.com/media/code-art/sunflower-137-5.webp">
+<meta property="og:image:alt" content="Sunflower ka secret: 137.5°">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050b17">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://www.techsamjhoraj.com/learn/code-art-1/#lesson","name":"Sunflower ka secret: 137.5\u00b0","description":"Draw a sunflower head with 15 lines of Python (Pillow only), then change the angle: 137.5, 137, 138 and 90 degrees. Free notes, simple English.","url":"https://www.techsamjhoraj.com/learn/code-art-1/","learningResourceType":"lesson","educationalLevel":"Beginner","inLanguage":"en","publisher":{"@id":"https://www.techsamjhoraj.com/#org"},"author":{"@type":"Person","name":"Raj"}},{"@type":"Organization","@id":"https://www.techsamjhoraj.com/#org","name":"Tech Samjho Raj","url":"https://www.techsamjhoraj.com/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.techsamjhoraj.com/"},{"@type":"ListItem","position":2,"name":"Sunflower ka secret: 137.5\u00b0","item":"https://www.techsamjhoraj.com/learn/code-art-1/"}]}</script>
+<style>:root{--bg:#050b17;--card:#0a1628;--fg:#f4f8ff;--mut:#9fb4c8;--line:#1c6f86;--gold:#25e0e6;--cy:#25e0e6;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background-color:var(--bg);background-image:linear-gradient(rgba(37,224,230,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,224,230,.05) 1px,transparent 1px);background-size:46px 46px;color:var(--fg);font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+a{color:var(--cy)}header,main,footer{max-width:920px;margin:0 auto;padding:0 18px}
+header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-top:16px;padding-bottom:14px;border-bottom:1px solid #12404f}
+header .logo{font:800 21px "Segoe UI",system-ui;color:var(--fg);text-decoration:none;display:inline-flex;align-items:center;gap:10px}header .logo::before{content:"";width:40px;height:40px;background:url(/img/rd/botu.png) center/contain no-repeat}header .logo span{color:var(--cy)}
+header nav{display:flex;flex-wrap:wrap;gap:6px 8px;font-size:15px}header nav a{text-decoration:none;color:#d5e6f5;padding:6px 14px;border:1px solid transparent;border-radius:999px}header nav a:hover{border-color:var(--cy);color:var(--cy);box-shadow:0 0 14px rgba(37,224,230,.3)}
+main{padding-top:30px;padding-bottom:34px}h1{font-size:clamp(30px,5.4vw,46px);line-height:1.08;letter-spacing:-.035em;margin:.2em 0 .4em;font-weight:800}h2{font-size:25px;margin:1.6em 0 .4em;letter-spacing:-.02em}h3{font-size:19px;margin:1.2em 0 .3em}
+p,li{color:#c8dcee}.crumb{font-size:14px;color:var(--mut)}.lead{font-size:19px;color:var(--fg)}
+.cta{display:inline-block;background:#14d3dc;color:#04101c;font-weight:800;text-decoration:none;padding:13px 22px;border-radius:999px;margin:8px 10px 8px 0;box-shadow:0 0 22px rgba(20,211,220,.35)}.cta.alt{background:transparent;color:var(--cy);border:2px solid var(--cy);box-shadow:none}
+pre{background:#050f1e;border:1px solid #12404f;border-radius:14px;padding:14px;overflow-x:auto;font:14.5px/1.55 ui-monospace,Consolas,monospace;color:#b5f3ff}
+.card{background:rgba(8,20,38,.88);border:1.5px solid var(--line);border-radius:18px;padding:16px 20px;margin:12px 0;box-shadow:0 0 18px rgba(37,224,230,.08)}
+ul.lessons{padding-left:20px}ul.lessons li{margin:4px 0}
+details{background:rgba(8,20,38,.88);border:1.5px solid var(--line);border-radius:16px;padding:10px 18px;margin:10px 0}summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid #12404f;padding-top:18px;padding-bottom:36px;font-size:14.5px;color:var(--mut)}footer a{margin-right:12px}
+img{max-width:100%;height:auto;border-radius:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0}.grid figure{margin:0;background:rgba(8,20,38,.88);border:1.5px solid var(--line);border-radius:16px;padding:10px}.grid figcaption{font-size:15px;color:#c8dcee;padding:8px 4px 2px}.grid figcaption b{color:var(--fg)}
+.note{border-left:4px solid var(--cy);padding:6px 14px;background:rgba(8,20,38,.88);border-radius:0 12px 12px 0}
+ul.src li{margin:6px 0;word-break:break-word}</style>
+</head>
+<body>
+<header><a class="logo" href="/"><span>Tech</span> Samjho Raj</a>
+<nav aria-label="Site"><a href="/python/">Python</a><a href="/chatbot/">Chatbot</a><a href="/agentic-ai/">AI agents</a><a href="/python-book/">Book</a><a href="https://www.dimaagdada.com/#play">Dada World</a><a href="/hinglish/">Hinglish</a><a href="/hi/">हिंदी</a></nav></header>
+<main>
+<p class="crumb"><a href="/">Home</a> › Code art › Lesson 1</p>
+<h1>Sunflower ka secret: 137.5°</h1>
+<p class="lead">Code art with Raj, notes 1. Draw a sunflower head with 15 lines of Python, then break it on purpose. Free, simple English.</p>
+<h2>The idea</h2>
+<p>Put dot number 1, then dot number 2, then dot number 3, and so on. Each new dot goes a little further from the centre, and turns by the <b>same angle</b> from the dot before it. That is the whole recipe.</p>
+<p>The only thing you choose is that angle. With <b>137.5°</b> (the "golden angle") the dots spread out evenly and you get a sunflower-like head with spirals in it. With other angles, the picture changes a lot. Run it and see.</p>
+<p class="note"><b>Important:</b> this is a <b>model</b> of a sunflower head, not the exact formula of a real flower. Real sunflowers are only roughly like it. The model is called the Vogel spiral (see sources).</p>
+<h2>The code: sunflower.py</h2>
+<p>You need Python and Pillow (<code>pip install pillow</code>). Nothing else. The code saves pictures into a folder called <code>frames</code>, so make that folder first, in the same place as the file: <code>mkdir frames</code>. The file has 15 real code lines, plus comments.</p>
+<pre><code># Sunflower from the golden angle (our own code, Pillow only). Vogel-style model: dot i sits at radius sqrt(i), angle i * ANGLE.
+import math
+from PIL import Image, ImageDraw, ImageFilter, ImageChops
+
+def sunflower(angle=137.50776, n=800, size=1080, name=&quot;sunflower&quot;):
+    dots = Image.new(&quot;RGB&quot;, (size, size), &quot;black&quot;)
+    d = ImageDraw.Draw(dots)
+    for i in range(1, n + 1):
+        r = math.sqrt(i) * size * 0.0175                       # distance grows slowly
+        a = math.radians(i * angle)                            # each dot turns by the same angle
+        x, y = size / 2 + r * math.cos(a), size / 2 + r * math.sin(a)
+        t = i / n
+        d.ellipse((x - 9, y - 9, x + 9, y + 9), fill=(255, int(150 + 80 * t), int(40 + 90 * t)))
+    glow = ImageChops.add(dots, dots.filter(ImageFilter.GaussianBlur(14)))   # soft glow
+    glow.save(f&quot;frames/{name}.png&quot;)
+
+for ang in (137.50776, 137.0, 138.0, 90.0):
+    sunflower(ang, name=f&quot;sunflower-{ang}&quot;)</code></pre>
+<p>Run it: <code>python sunflower.py</code>. It saves four pictures in <code>frames</code>, one for each angle in the <code>for</code> line at the bottom: 137.50776, 137.0, 138.0 and 90.0.</p>
+<h3>How it works, line by line</h3>
+<ul class="lessons"><li><code>r = math.sqrt(i) * ...</code>: dot number <code>i</code> sits at a distance of about the square root of <code>i</code>. The distance grows slowly, so the dots fill a round head.</li><li><code>a = math.radians(i * angle)</code>: dot number <code>i</code> has turned <code>i</code> times the angle. Same turn every time.</li><li><code>x, y = ...</code>: turns that distance and direction into a spot on the picture.</li><li>The colour goes from orange to yellow as <code>t</code> grows (the later dots are yellower).</li><li>The last lines of the function blur a copy and add it back. That gives the soft glow.</li></ul>
+<h2>The experiment: change one number</h2>
+<p>We drew the same 800 dots four times. Only the angle changed.</p>
+<div class="grid">
+<figure><img src="/media/code-art/sunflower-137-5.webp" alt="Sunflower dot pattern with 137.5 degrees: dots fill the circle evenly" width="640" height="640" loading="lazy"><figcaption><b>137.5°</b> The head fills evenly, with spirals going both ways.</figcaption></figure>
+<figure><img src="/media/code-art/sunflower-137-0.webp" alt="Sunflower dot pattern with 137 degrees: curved spiral arms with gaps between them" width="640" height="640" loading="lazy"><figcaption><b>137.0°</b> Just half a degree less, and wide spiral arms with gaps appear.</figcaption></figure>
+<figure><img src="/media/code-art/sunflower-138-0.webp" alt="Sunflower dot pattern with 138 degrees: rays with gaps between them" width="640" height="640" loading="lazy"><figcaption><b>138.0°</b> Half a degree more, and the dots line up in rays with gaps.</figcaption></figure>
+<figure><img src="/media/code-art/sunflower-90.webp" alt="Dots with 90 degrees form a plus sign of four straight lines" width="640" height="640" loading="lazy"><figcaption><b>90°</b> Every dot lands on one of 4 lines. A plus sign, nothing else.</figcaption></figure>
+</div>
+<div class="card"><b>Our quick test (humara test).</b> We also measured the gaps between the outer dots (800 dots, the outer 200 checked). At 137.5077° the gaps were the most even and the largest (mean 1.751, smallest 1.729). At 137.0° the mean was 1.600 and the smallest 1.519. At 138.0° the mean was 0.994 and the smallest 0.963. These numbers only compare the pictures made by this code. They are our own test, not a published result.</div>
+<h2>What is 137.5°, really?</h2>
+<p>The golden angle is about 137.5077640500°. It comes from <code>360 × (1 − 1/φ)</code>, where φ (phi) is the golden ratio, <code>(1 + √5) / 2</code>. "137.5" is a rounded number. We checked this with Python: the arithmetic gives 137.507764.</p>
+<p>Careful: we have <b>not</b> shown here that the golden angle is proven to give the best possible packing. We only show what the picture looks like in this model.</p>
+<h2>Try it yourself</h2>
+<ul><li>Add more angles to the <code>for</code> line at the bottom, for example <code>(137.5, 137.6, 137.4)</code>. How different do they look?</li><li>Change <code>n=800</code> to 300, then 2000. What changes in the picture?</li><li>Try an angle of 120 or 72. What shape do you get? (Think: how many times does it fit in 360?)</li></ul>
+<h2>Remember</h2>
+<p>One small number, the angle, decides the whole picture. Real flowers are more complicated, but this small model shows why 137.5° is special.</p>
+<h2>Sources</h2>
+<ul class="src"><li>Vogel spiral, Wolfram MathWorld: <a href="https://mathworld.wolfram.com/VogelSpiral.html" rel="noopener">mathworld.wolfram.com/VogelSpiral.html</a></li><li>Vogel, H. (1979), "A better way to construct the sunflower head", Mathematical Biosciences 44(3-4):179-189, DOI <a href="https://doi.org/10.1016/0025-5564(79)90080-4" rel="noopener">10.1016/0025-5564(79)90080-4</a></li><li>Golden angle, Wikipedia: <a href="https://en.wikipedia.org/wiki/Golden_angle" rel="noopener">en.wikipedia.org/wiki/Golden_angle</a></li></ul>
+<p>The code and pictures on this page are our own. Next: <a href="/learn/code-art-2/">Neon titli: ek equation →</a></p>
+</main>
+<footer><p>© 2026 Tech Samjho Raj · Free Python and AI lessons · No tracking, no cookies</p>
+<p><a href="/#terms">Terms</a><a href="/#refund">Refunds</a><a href="/#shipping">Shipping and delivery</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy</a></p>
+<p><a href="https://www.youtube.com/@SamjhowithRaj">YouTube</a><a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y">WhatsApp</a><a href="https://t.me/techsamjhoraj">Telegram</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neon titli: ek equation | Code art with Raj</title>
+<meta name="description" content="Draw a neon butterfly from one equation with 18 lines of Python (Pillow only), then change the number K and watch the wings grow and shrink. Free notes, simple English.">
+<link rel="canonical" href="https://www.techsamjhoraj.com/learn/code-art-2/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tech Samjho Raj">
+<meta property="og:title" content="Neon titli: ek equation">
+<meta property="og:description" content="Draw a neon butterfly from one equation with 18 lines of Python (Pillow only), then change the number K and watch the wings grow and shrink. Free notes, simple English.">
+<meta property="og:url" content="https://www.techsamjhoraj.com/learn/code-art-2/">
+<meta property="og:image" content="https://www.techsamjhoraj.com/media/code-art/butterfly-k2.webp">
+<meta property="og:image:alt" content="Neon titli: ek equation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050b17">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://www.techsamjhoraj.com/learn/code-art-2/#lesson","name":"Neon titli: ek equation","description":"Draw a neon butterfly from one equation with 18 lines of Python (Pillow only), then change the number K and watch the wings grow and shrink. Free notes, simple English.","url":"https://www.techsamjhoraj.com/learn/code-art-2/","learningResourceType":"lesson","educationalLevel":"Beginner","inLanguage":"en","publisher":{"@id":"https://www.techsamjhoraj.com/#org"},"author":{"@type":"Person","name":"Raj"}},{"@type":"Organization","@id":"https://www.techsamjhoraj.com/#org","name":"Tech Samjho Raj","url":"https://www.techsamjhoraj.com/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.techsamjhoraj.com/"},{"@type":"ListItem","position":2,"name":"Neon titli: ek equation","item":"https://www.techsamjhoraj.com/learn/code-art-2/"}]}</script>
+<style>:root{--bg:#050b17;--card:#0a1628;--fg:#f4f8ff;--mut:#9fb4c8;--line:#1c6f86;--gold:#25e0e6;--cy:#25e0e6;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background-color:var(--bg);background-image:linear-gradient(rgba(37,224,230,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,224,230,.05) 1px,transparent 1px);background-size:46px 46px;color:var(--fg);font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+a{color:var(--cy)}header,main,footer{max-width:920px;margin:0 auto;padding:0 18px}
+header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-top:16px;padding-bottom:14px;border-bottom:1px solid #12404f}
+header .logo{font:800 21px "Segoe UI",system-ui;color:var(--fg);text-decoration:none;display:inline-flex;align-items:center;gap:10px}header .logo::before{content:"";width:40px;height:40px;background:url(/img/rd/botu.png) center/contain no-repeat}header .logo span{color:var(--cy)}
+header nav{display:flex;flex-wrap:wrap;gap:6px 8px;font-size:15px}header nav a{text-decoration:none;color:#d5e6f5;padding:6px 14px;border:1px solid transparent;border-radius:999px}header nav a:hover{border-color:var(--cy);color:var(--cy);box-shadow:0 0 14px rgba(37,224,230,.3)}
+main{padding-top:30px;padding-bottom:34px}h1{font-size:clamp(30px,5.4vw,46px);line-height:1.08;letter-spacing:-.035em;margin:.2em 0 .4em;font-weight:800}h2{font-size:25px;margin:1.6em 0 .4em;letter-spacing:-.02em}h3{font-size:19px;margin:1.2em 0 .3em}
+p,li{color:#c8dcee}.crumb{font-size:14px;color:var(--mut)}.lead{font-size:19px;color:var(--fg)}
+.cta{display:inline-block;background:#14d3dc;color:#04101c;font-weight:800;text-decoration:none;padding:13px 22px;border-radius:999px;margin:8px 10px 8px 0;box-shadow:0 0 22px rgba(20,211,220,.35)}.cta.alt{background:transparent;color:var(--cy);border:2px solid var(--cy);box-shadow:none}
+pre{background:#050f1e;border:1px solid #12404f;border-radius:14px;padding:14px;overflow-x:auto;font:14.5px/1.55 ui-monospace,Consolas,monospace;color:#b5f3ff}
+.card{background:rgba(8,20,38,.88);border:1.5px solid var(--line);border-radius:18px;padding:16px 20px;margin:12px 0;box-shadow:0 0 18px rgba(37,224,230,.08)}
+ul.lessons{padding-left:20px}ul.lessons li{margin:4px 0}
+details{background:rgba(8,20,38,.88);border:1.5px solid var(--line);border-radius:16px;padding:10px 18px;margin:10px 0}summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid #12404f;padding-top:18px;padding-bottom:36px;font-size:14.5px;color:var(--mut)}footer a{margin-right:12px}
+img{max-width:100%;height:auto;border-radius:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0}.grid figure{margin:0;background:rgba(8,20,38,.88);border:1.5px solid var(--line);border-radius:16px;padding:10px}.grid figcaption{font-size:15px;color:#c8dcee;padding:8px 4px 2px}.grid figcaption b{color:var(--fg)}
+.note{border-left:4px solid var(--cy);padding:6px 14px;background:rgba(8,20,38,.88);border-radius:0 12px 12px 0}
+ul.src li{margin:6px 0;word-break:break-word}</style>
+</head>
+<body>
+<header><a class="logo" href="/"><span>Tech</span> Samjho Raj</a>
+<nav aria-label="Site"><a href="/python/">Python</a><a href="/chatbot/">Chatbot</a><a href="/agentic-ai/">AI agents</a><a href="/python-book/">Book</a><a href="https://www.dimaagdada.com/#play">Dada World</a><a href="/hinglish/">Hinglish</a><a href="/hi/">हिंदी</a></nav></header>
+<main>
+<p class="crumb"><a href="/">Home</a> › Code art › Lesson 2</p>
+<h1>Neon titli: ek equation</h1>
+<p class="lead">Code art with Raj, notes 2. One equation, 18 lines of Python, and a glowing neon butterfly. Then we change one number and watch the wings. Free, simple English.</p>
+<h2>The idea</h2>
+<p>There is a famous curve called the <b>butterfly curve</b>. Temple H. Fay found it in 1989. It is drawn from one equation in polar form: for every angle <code>t</code>, the equation gives a distance <code>r</code> from the centre. Join all the points and a butterfly appears.</p>
+<p>The classic equation is <code>r = e^cos(t) − 2·cos(4t) + sin⁵(t/12)</code>, with <code>t</code> going from 0 to 12π. Our code writes the "2" as a number called <b>K</b>, so we can change it.</p>
+<p class="note"><b>Important:</b> K = 2 is the butterfly curve by Fay. The other K values (4, 1, 0.5, 0) are <b>our own experiments</b> on this page. They are not Fay's curve.</p>
+<h2>The code: butterfly.py</h2>
+<p>You need Python and Pillow (<code>pip install pillow</code>). Make a folder called <code>frames</code> next to the file first (<code>mkdir frames</code>), because the code saves the pictures there. The file has 18 real code lines, plus comments.</p>
+<pre><code># Neon butterfly from ONE equation (our own code). Polar butterfly curve, T. H. Fay (1989):
+#   r = e^cos(t) - K*cos(4t) + sin(t/12)^5      &lt;- K is the &quot;one number&quot; we will change
+import math
+from PIL import Image, ImageDraw, ImageFilter, ImageChops
+
+def butterfly(k=2, size=1080, name=&quot;butterfly&quot;):
+    sc = 0.105 if k &lt;= 2 else 0.082                      # smaller scale so big wings still fit
+    pts = []
+    for i in range(0, 24000):
+        t = i * 12 * math.pi / 24000                      # t from 0 to 12*pi
+        r = math.exp(math.cos(t)) - k * math.cos(4 * t) + math.sin(t / 12) ** 5
+        pts.append((size / 2 + r * math.sin(t) * size * sc, size * 0.46 - r * math.cos(t) * size * sc))
+    glow = Image.new(&quot;RGB&quot;, (size, size), &quot;black&quot;)
+    ImageDraw.Draw(glow).line(pts, fill=(255, 40, 200), width=7)
+    neon = Image.new(&quot;RGB&quot;, (size, size), &quot;black&quot;)
+    for radius in (40, 18, 8):                            # layered blur = neon glow
+        neon = ImageChops.add(neon, glow.filter(ImageFilter.GaussianBlur(radius)))
+    ImageDraw.Draw(neon).line(pts, fill=(255, 230, 255), width=2)   # thin bright core
+    neon.save(f&quot;frames/{name}.png&quot;)
+
+for k in (2, 4, 0.5):
+    butterfly(k, name=f&quot;butterfly-K{k}&quot;)</code></pre>
+<p>Run it: <code>python butterfly.py</code>. It saves three pictures in <code>frames</code>, for K = 2, 4 and 0.5.</p>
+<h3>How it works</h3>
+<ul class="lessons"><li>The loop takes 24,000 tiny steps of <code>t</code> from 0 to 12π. At each step it works out <code>r</code> with the equation.</li><li><code>r * sin(t)</code> and <code>r * cos(t)</code> turn that distance and angle into <code>x</code> and <code>y</code> on the picture.</li><li>The neon look: draw the line thick in pink, blur it three times with different sizes, add the blurs together, then draw a thin bright line on top.</li><li><code>sc</code> is only a scale, so the bigger wings (K above 2) still fit in the picture.</li></ul>
+<h2>The experiment: change K</h2>
+<p>To get all five pictures below, change the <code>for</code> line at the bottom to <code>for k in (2, 4, 1, 0.5, 0):</code> and run it again. Everything else stays the same.</p>
+<div class="grid">
+<figure><img src="/media/code-art/butterfly-k2.webp" alt="Neon pink butterfly curve with K equal to 2: four wings" width="640" height="640" loading="lazy"><figcaption><b>K = 2</b> The classic butterfly curve (Fay, 1989).</figcaption></figure>
+<figure><img src="/media/code-art/butterfly-k4.webp" alt="Neon pink curve with K equal to 4: much larger overlapping wings" width="640" height="640" loading="lazy"><figcaption><b>K = 4</b> Our experiment: much larger wings that overlap.</figcaption></figure>
+<figure><img src="/media/code-art/butterfly-k1.webp" alt="Neon pink curve with K equal to 1: smaller heart-shaped wings" width="640" height="640" loading="lazy"><figcaption><b>K = 1</b> Our experiment: smaller, heart-shaped wings.</figcaption></figure>
+<figure><img src="/media/code-art/butterfly-k0-5.webp" alt="Neon pink curve with K equal to 0.5: a closed notched shape" width="640" height="640" loading="lazy"><figcaption><b>K = 0.5</b> Our experiment: the wings shrink into a closed shape with a notch.</figcaption></figure>
+<figure><img src="/media/code-art/butterfly-k0.webp" alt="Neon pink curve with K equal to 0: nested rings and no wings" width="640" height="640" loading="lazy"><figcaption><b>K = 0</b> Our experiment: no wings, only nested rings.</figcaption></figure>
+</div>
+<p>So the number in front of <code>cos(4t)</code> is what makes the wings. Make it smaller and the wings shrink. Make it bigger and they grow. At zero they are gone.</p>
+<h2>Try it yourself</h2>
+<ul><li>Try K = 3, then K = 6. When do the wings start to overlap?</li><li>Change the 4 in <code>cos(4 * t)</code> to 3, then 5. What happens to the number of wings?</li><li>Change the pink colour <code>(255, 40, 200)</code> to blue or green for a different neon.</li></ul>
+<h2>Remember</h2>
+<p>A drawing can come from one equation. Change one number, K, and you get a different drawing. The sources say the <code>sin⁵(t/12)</code> part was added mainly to make the picture look nicer.</p>
+<h2>Sources</h2>
+<ul class="src"><li>Fay, T. H. (1989), "The Butterfly Curve", American Mathematical Monthly 96(5):442-443, DOI <a href="https://doi.org/10.2307/2325155" rel="noopener">10.2307/2325155</a></li><li>Butterfly curve (transcendental), Wikipedia: <a href="https://en.wikipedia.org/wiki/Butterfly_curve_(transcendental)" rel="noopener">en.wikipedia.org/wiki/Butterfly_curve_(transcendental)</a></li><li>Butterfly Curve and Variations, Wolfram Demonstrations: <a href="https://demonstrations.wolfram.com/ButterflyCurveAndVariations/" rel="noopener">demonstrations.wolfram.com/ButterflyCurveAndVariations</a></li></ul>
+<p>The code and pictures on this page are our own.</p>
+<p>← <a href="/learn/code-art-1/">Sunflower ka secret: 137.5°</a></p>
+</main>
+<footer><p>© 2026 Tech Samjho Raj · Free Python and AI lessons · No tracking, no cookies</p>
+<p><a href="/#terms">Terms</a><a href="/#refund">Refunds</a><a href="/#shipping">Shipping and delivery</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy</a></p>
+<p><a href="https://www.youtube.com/@SamjhowithRaj">YouTube</a><a href="https://whatsapp.com/channel/0029VbDWZ7lEawdpgGPw5t0y">WhatsApp</a><a href="https://t.me/techsamjhoraj">Telegram</a></p></footer>
+</body>
+</html>
